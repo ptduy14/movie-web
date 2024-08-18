@@ -4,12 +4,14 @@ export default function HeroSection() {
   return (
     <div className="relative w-full h-[50rem]">
       <img
-        src="https://phimimg.com/upload/vod/20240731-1/e678e355305124839803c7db9f1bdfb6.jpg"
+        src="https://phimimg.com/upload/vod/20240814-1/0de4eca8c326ebe368bda7072212bbc5.jpg"
         alt=""
         className="w-full h-full"
       />
-      <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
       <div className="absolute w-2/4 top-[20rem] left-6 space-y-5">
         <h2 className="text-4xl font-bold">Phất Ngọc Yên</h2>
         <span className="block">
