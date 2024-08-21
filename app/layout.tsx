@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/effect-fade";
 import Header from "@/components/header";
 
 export const metadata: Metadata = {
