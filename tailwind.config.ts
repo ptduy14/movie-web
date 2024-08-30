@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        netflix: ['Netflix Sans', 'sans-serif'],
+
       },
     },
   },

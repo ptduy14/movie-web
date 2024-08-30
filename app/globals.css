@@ -8,14 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@font-face {
-  font-family: 'Netflix Sans';
-  src: url('/fonts/netflix-sans.woff2') format('woff2'),
-       url('/fonts/netflix-sans.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .container-wrapper {
   width: 96%;
   margin: 0 auto;

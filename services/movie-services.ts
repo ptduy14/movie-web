@@ -1,14 +1,14 @@
 const MovieServices = {
     getNewlyMovies: async (page = 1) => {
-        const res = await fetch(`${process.env.API_DOMAIN}/danh-sach/phim-moi-cap-nhat?page=${page}`, {cache: 'force-cache'});
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/danh-sach/phim-moi-cap-nhat?page=${page}`, {cache: 'no-store'});
         return res.json();
     },
-    getMovies: async (page = 1) => {
-        const res = await fetch(`${process.env.API_DOMAIN}/v1/api/danh-sach/phim-le?page=${page}`, {cache: 'force-cache'});
+    getSingleMovies: async (page = 1) => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/phim-le?page=${page}`, {cache: 'no-store'});
         return res.json();
     },
     getDetailMovie: async (slug: string) => {
-        const res = await fetch(`${process.env.API_DOMAIN}/phim/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/phim/${slug}`);
         return res.json();
     }
 }
