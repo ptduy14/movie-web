@@ -8,6 +8,9 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
         src={movie.thumb_url}
         alt=""
         className="w-full h-full"
+        onError={({ currentTarget }) => {
+          currentTarget.src = 'https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F7buhbtvryuf5a228c512.png'
+        }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
