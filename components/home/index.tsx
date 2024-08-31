@@ -7,6 +7,7 @@ export default async function HomePage() {
   const newlyMoviesFetcher = MovieServices.getNewlyMovies();
   const singleMoviesFetcher = MovieServices.getSingleMovies();
   const tvSeriesFetcher = MovieServices.getTVSeries();
+  const cartoonMoviesFetcher = MovieServices.getCartoonMovies();
   // const newlyMoviesHeroSection = newlyMovies.items.slice(0, 5);
 
   // const detailMovieFetchers = newlyMoviesHeroSection.map((item: Movie) => {
@@ -15,7 +16,7 @@ export default async function HomePage() {
 
   // const detailMovies = await Promise.all(detailMovieFetchers);
 
-  const [newlyMovies, singleMovies, tvSeries] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher]);
+  const [newlyMovies, singleMovies, tvSeries, cartoonMovies] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher, cartoonMoviesFetcher]);
 
   return (
     <div>
@@ -28,6 +29,7 @@ export default async function HomePage() {
         />
         <MovieList movies={singleMovies.data.items} listName="Phim Lẻ" isNewlyMovieItem={false} />
         <MovieList movies={tvSeries.data.items} listName="TV Series" isNewlyMovieItem={false}/>
+        <MovieList movies={cartoonMovies.data.items} listName="Phim Lẻ" isNewlyMovieItem={false}/>
         {/* <MovieList listName="Phim Lẻ"/>
         <MovieList listName="Phim Bộ"/>
         <MovieList listName="Hoạt Hình"/>
