@@ -3,11 +3,14 @@ import NewlyMovie from 'types/newly-movie';
 
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
   return (
-    <div className="h-auto space-y-4">
+    <a className="block h-auto space-y-2" href={`/movie/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
         <img className="w-full h-full" src={movie.poster_url} alt="" />
       </div>
-      <p>{movie.name}</p>
-    </div>
+      <div>
+        <div className="truncate">{movie.name}</div>
+        <div className="truncate text-sm text-[#9B9285]">{movie.origin_name}</div>
+      </div>
+    </a>
   );
 }

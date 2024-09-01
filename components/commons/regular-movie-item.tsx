@@ -2,13 +2,15 @@ import Movie from 'types/movie';
 
 export default function RegularMovieItem({ movie }: { movie: Movie }) {
   return (
-    <div className="relative h-auto">
+    <a className="block h-auto space-y-2" href={`/movie/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
         <img className="w-full h-full" src={`https://phimimg.com/${movie.poster_url}`} alt="" />
       </div>
-      <p className='mt-4'>{movie.name}</p>
-
+      <div>
+        <div className="truncate">{movie.name}</div>
+        <div className="truncate text-sm text-[#9B9285]">{movie.origin_name}</div>
+      </div>
       <div className='absolute top-0 right-0 px-1 bg-[#169f3a]'>{movie.quality}</div>
-    </div>
+    </a>
   );
 }
