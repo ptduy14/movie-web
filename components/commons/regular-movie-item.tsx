@@ -2,7 +2,7 @@ import Movie from 'types/movie';
 
 export default function RegularMovieItem({ movie }: { movie: Movie }) {
   return (
-    <a className="block h-auto space-y-2" href={`/movie/${movie.slug}`}>
+    <a className="block h-auto space-y-2" href={`/movies/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
         <img className="w-full h-full" src={`https://phimimg.com/${movie.poster_url}`} alt="" />
       </div>

@@ -40,7 +40,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   };
 
   const handleClickToNextSlide = () => {
-    swiperRef.current?.slideNext();
+    // swiperRef.current?.slideNext();
   };
 
   return (

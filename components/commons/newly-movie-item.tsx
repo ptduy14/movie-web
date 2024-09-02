@@ -3,7 +3,7 @@ import NewlyMovie from 'types/newly-movie';
 
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
   return (
-    <a className="block h-auto space-y-2" href={`/movie/${movie.slug}`}>
+    <a className="block h-auto space-y-2" href={`/movies/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
         <img className="w-full h-full" src={movie.poster_url} alt="" />
       </div>

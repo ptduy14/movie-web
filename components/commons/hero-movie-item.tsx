@@ -23,7 +23,7 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
         </span>
         <div className="space-x-5 flex items-center">
           <a
-            href=""
+            href={`/movies/${movie.slug}`}
             className="inline-block py-3 px-5 bg-white text-black rounded-md"
           >
             <div className="flex align-top space-x-2">
