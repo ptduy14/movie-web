@@ -13,6 +13,7 @@ export default interface Movie extends NewlyMovie{
     category: Category[],
     country: Country[],
     actor?: string[],
-    director?: string[]
+    director?: string[],
+    content: string,
 }
 

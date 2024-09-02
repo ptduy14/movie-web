@@ -17,6 +17,7 @@ export default async function HomePage() {
 
   // const detailMovies = await Promise.all(detailMovieFetchers);
 
+  // will improve later with Promise.settled()
   const [newlyMovies, singleMovies, tvSeries, cartoonMovies, tvShows] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher, cartoonMoviesFetcher, tvShowsFetcher]);
 
   return (

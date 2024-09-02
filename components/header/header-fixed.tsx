@@ -4,7 +4,7 @@ import { IoSearch } from "react-icons/io5";
 
 export default function HeaderFixed({ isScrolled } : { isScrolled: boolean }) {
   return (
-    <header className={`py-4 fixed left-0 right-0 z-10 bg-black transition-all duration-500 ${isScrolled ? "top-0" : "top-[-70px]"}`}>
+    <header className={`py-4 fixed left-0 right-0 z-20 bg-black transition-all duration-500 ${isScrolled ? "top-0" : "top-[-70px]"}`}>
       <div className="header-container flex items-center justify-between container-wrapper">
       <a className="block" href="/">
               <Image src={logo} alt="Picture of the author" className="w-32" />
