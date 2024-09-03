@@ -15,5 +15,6 @@ export default interface Movie extends NewlyMovie{
     actor?: string[],
     director?: string[],
     content: string,
+    trailer_url: string,
 }
 

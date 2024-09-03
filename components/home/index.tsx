@@ -9,13 +9,6 @@ export default async function HomePage() {
   const tvSeriesFetcher = MovieServices.getTVSeries();
   const cartoonMoviesFetcher = MovieServices.getCartoonMovies();
   const tvShowsFetcher = MovieServices.getTVShows();
-  // const newlyMoviesHeroSection = newlyMovies.items.slice(0, 5);
-
-  // const detailMovieFetchers = newlyMoviesHeroSection.map((item: Movie) => {
-  //   return MovieServices.getDetailMovie(item.slug);
-  // });
-
-  // const detailMovies = await Promise.all(detailMovieFetchers);
 
   // will improve later with Promise.settled()
   const [newlyMovies, singleMovies, tvSeries, cartoonMovies, tvShows] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher, cartoonMoviesFetcher, tvShowsFetcher]);
@@ -33,10 +26,6 @@ export default async function HomePage() {
         <MovieList movies={tvSeries.data.items} listName="TV Series" isNewlyMovieItem={false}/>
         <MovieList movies={cartoonMovies.data.items} listName="Hoạt Hình" isNewlyMovieItem={false}/>
         <MovieList movies={tvShows.data.items} listName="TV Show" isNewlyMovieItem={false}/>
-        {/* <MovieList listName="Phim Lẻ"/>
-        <MovieList listName="Phim Bộ"/>
-        <MovieList listName="Hoạt Hình"/>
-        <MovieList listName="TV Shows"/> */}
       </div>
     </div>
   );
