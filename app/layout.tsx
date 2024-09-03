@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-netflix bg-black text-white relative">
         <Header />
-        <div className="pb-6">{children}</div>
+        <div className="pb-12">{children}</div>
         <Footer />
       </body>
     </html>
