@@ -1,4 +1,6 @@
+import MovieTypePage from "@/components/movie-type"
+
 export default function MovieType({ params } : {params: {slug: string}}) {
     
-    return <h1>{params.slug}</h1>
+    return <MovieTypePage slug={params.slug}/>
 }
