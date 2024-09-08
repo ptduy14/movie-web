@@ -1,7 +1,6 @@
 import HeroSection from './hero-section';
 import MovieList from '../commons/movie-list';
 import MovieServices from 'services/movie-services';
-import Movie from 'types/movie';
 
 export default async function HomePage() {
   const newlyMoviesFetcher = MovieServices.getNewlyMovies();

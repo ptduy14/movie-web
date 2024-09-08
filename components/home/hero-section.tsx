@@ -6,6 +6,7 @@ import NewlyMovie from 'types/newly-movie';
 import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
 import MovieServices from 'services/movie-services';
+import getDescriptionHeroSectionMovies from 'app/actions';
 
 interface DescriptionMovie {
   _id: string;
@@ -18,13 +19,9 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
 
   useEffect(() => {
     const getDescriptionMovies = async () => {
-      const fetcher = movies.map((movie: NewlyMovie) => {
-        return MovieServices.getDetailMovie(movie.slug);
-      });
+      const data = await getDescriptionHeroSectionMovies(movies);
 
-      const detailMovies = await Promise.all(fetcher);
-
-      handleSetDescriptionMovies(detailMovies);
+      handleSetDescriptionMovies(data);
     };
 
     getDescriptionMovies();
@@ -55,7 +52,10 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         const movieContent = descriptionMovies.find((item) => item._id === movie._id);
         return (
           <SwiperSlide key={movie._id} onClick={handleClickToNextSlide}>
-            <HeroMovieItem movie={movie} movieContent={movieContent?.description || 'Đang cập nhật nội dung phim'} />
+            <HeroMovieItem
+              movie={movie}
+              movieContent={movieContent?.description || 'Đang cập nhật nội dung phim'}
+            />
           </SwiperSlide>
         );
       })}
