@@ -5,8 +5,7 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import NewlyMovie from 'types/newly-movie';
 import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
-import MovieServices from 'services/movie-services';
-import getDescriptionHeroSectionMovies from 'app/actions';
+import { getDescriptionHeroSectionMovies } from 'app/actions';
 
 interface DescriptionMovie {
   _id: string;
