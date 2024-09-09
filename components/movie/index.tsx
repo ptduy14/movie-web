@@ -16,7 +16,7 @@ export default function MoviePage({ movie }: { movie: DetailMovie }) {
             <img className="w-full" src={movie.movie.poster_url} alt="" />
             <a
               className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
-              href=""
+              href={`/movies/watch/${movie.movie.slug}`}
             >
               <FaPlay size={25} />
               Xem phim
