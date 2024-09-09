@@ -14,7 +14,7 @@ export async function getDescriptionHeroSectionMovies(movies: NewlyMovie[]) {
 }
 
 
-export async function getMoviesByType(slug: string) {
-    const res = await MovieServices.getMoviesType(slug);
+export async function getMoviesByType(slug: string, page: number) {
+    const res = await MovieServices.getMoviesType(slug, page);
     return res.data.items;
 }
