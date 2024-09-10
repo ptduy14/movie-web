@@ -2,6 +2,7 @@
 import DetailMovie from 'types/detail-movie';
 import VideoPlayer from './video-player';
 import { useState } from 'react';
+import isHaveEpisodesMovie from 'utils/isHaveEpisodesMovie';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
@@ -21,7 +22,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         <h1 className="text-3xl">{movie.movie.name}</h1>
         <h3 className="text-lg text-[#bbb6ae] mt-2">{movie.movie.origin_name}</h3>
       </div>
-      {movie.movie.type === 'series' && (
+      {isHaveEpisodesMovie(movie) && (
         <div className="container-wrapper-movie">
           <h1 className="text-xl">Danh sách tập phim</h1>
           <ul className="flex flex-wrap gap-3 mt-4">
