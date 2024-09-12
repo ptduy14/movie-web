@@ -15,7 +15,7 @@ export default function HeaderDefault() {
               <li className="px-9"><a href="/movies/type/hoat-hinh">Hoạt hình</a></li>
               <li className="px-9"><a href="/movies/type/tv-shows">TV show</a></li>
             </ul>
-            <div className="cursor-pointer"><IoSearch size={20}/></div>
+            <a className="cursor-pointer" href="/search"><IoSearch size={20}/></a>
           </div>
         </header>
       );
