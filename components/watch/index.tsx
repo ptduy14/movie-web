@@ -2,7 +2,7 @@
 import DetailMovie from 'types/detail-movie';
 import VideoPlayer from './video-player';
 import { useState } from 'react';
-import isHaveEpisodesMovie from 'utils/isHaveEpisodesMovie';
+import { isHaveEpisodesMovie } from 'utils/isHaveEpisodesMovie';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
@@ -30,7 +30,9 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
               <li
                 key={index}
                 className={`block ${
-                  episodeIndex === index ? 'text-white bg-[#5E5E5E]' : 'bg-white text-black hover:bg-[#d3d3d3]'
+                  episodeIndex === index
+                    ? 'text-white bg-[#5E5E5E]'
+                    : 'bg-white text-black hover:bg-[#d3d3d3]'
                 } px-3 py-2 rounded-md font-semibold cursor-pointer`}
                 onClick={() => handleSwitchEpisode(index)}
               >

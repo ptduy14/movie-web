@@ -27,9 +27,9 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
             <a href="/movies/type/tv-shows">TV show</a>
           </li>
         </ul>
-        <div className="cursor-pointer">
+        <a className="cursor-pointer" href="/search">
           <IoSearch size={20} />
-        </div>
+        </a>
       </div>
     </header>
   );
