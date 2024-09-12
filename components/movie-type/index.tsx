@@ -5,7 +5,6 @@ import Movie from 'types/movie';
 import RegularMovieItem from '../commons/regular-movie-item';
 import { getMoviesByType } from 'app/actions';
 import LoadingPage from '../loaders/loading-page';
-import MovieTypeHero from './movie-type-hero';
 import { useInView } from 'react-intersection-observer';
 
 export default function MovieTypePage({ slug }: { slug: string }) {
@@ -34,8 +33,7 @@ export default function MovieTypePage({ slug }: { slug: string }) {
   if (isLoadingPage) return <LoadingPage />;
 
   return (
-    <div>
-      <MovieTypeHero />
+    <div className='pt-[3.75rem]'>
       <div className="grid grid-cols-5 gap-6 container-wrapper">
         {movies.map((movie: Movie, index: number) => (
           <RegularMovieItem movie={movie} key={index} />
