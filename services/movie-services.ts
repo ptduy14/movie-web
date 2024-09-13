@@ -28,7 +28,7 @@ const MovieServices = {
         return res.json();
     },
     searchMovie: async (slug: string) => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/tim-kiem?keyword=${slug}&limit=10`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/tim-kiem?keyword=${slug}&limit=15`);
         return res.json();
     }
 }
