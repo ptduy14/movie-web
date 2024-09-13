@@ -27,7 +27,7 @@ export default function SearchMoviePage() {
   }, [valueSearching]);
 
   return (
-    <div className="pt-32 h-screen container-wrapper-movie space-y-14">
+    <div className={`pt-32 ${movies.length === 0 ? 'h-screen' : 'h-full'} container-wrapper-movie space-y-14`}>
       <div className="w-full h-12">
         <input
           type="text"
@@ -38,18 +38,9 @@ export default function SearchMoviePage() {
         />
       </div>
       {isFetching ? (
-        <div className="flex items-center justify-center h-full w-full">
-          <div
-            className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
-            role="status"
-          >
-            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-              Loading...
-            </span>
-          </div>
-        </div>
+        <LoadingPage />
       ) : (
-        <div className="grid grid-cols-5 gap-6 container-wrapper">
+        <div className="grid grid-cols-5 gap-6">
           {movies.map((movie: Movie, index: number) => (
             <RegularMovieItem movie={movie} key={index} />
           ))}
