@@ -13,7 +13,7 @@ export default function MoviePage({ movie }: { movie: DetailMovie }) {
         <div className="bg-black h-full w-full opacity-65 absolute inset-0"></div>
         <div className="container-wrapper-movie relative flex justify-end z-10">
           <div className="w-1/4 absolute left-0 top-0">
-            <img className="w-full" src={movie.movie.poster_url} alt="" />
+            <img className="w-full shadow-custom" src={movie.movie.poster_url} alt="" />
             <a
               className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
               href={`/movies/watch/${movie.movie.slug}`}
