@@ -17,9 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-netflix bg-black text-white relative">
+      <body className="bg-black text-white relative min-h-screen flex flex-col">
         <Header />
-        <div className="pb-12">{children}</div>
+        {/* Add flex-grow here to make sure it expands and pushes footer to the bottom */}
+        <main className="flex-grow pb-12">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

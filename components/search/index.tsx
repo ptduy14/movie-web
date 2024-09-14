@@ -5,7 +5,8 @@ import Movie from 'types/movie';
 import { isNotNull } from 'utils/isHaveEpisodesMovie';
 import { useDebounce } from '../hooks/useDebounce';
 import RegularMovieItem from '../commons/regular-movie-item';
-import LoadingPage from '../loaders/loading-page';
+import LoadingComponent from '../loading/loading-component';
+import BrandingPlaceholder from './branding-placeholder';
 
 export default function SearchMoviePage() {
   const [value, setValue] = useState<string>('');
@@ -27,7 +28,7 @@ export default function SearchMoviePage() {
   }, [valueSearching]);
 
   return (
-    <div className={`pt-32 ${movies.length === 0 ? 'h-screen' : 'h-full'} container-wrapper-movie space-y-14`}>
+    <div className="pt-32 container-wrapper-movie h-full">
       <div className="w-full h-12">
         <input
           type="text"
@@ -38,13 +39,14 @@ export default function SearchMoviePage() {
         />
       </div>
       {isFetching ? (
-        <LoadingPage />
+        <LoadingComponent />
       ) : (
-        <div className="grid grid-cols-5 gap-6">
+        movies.length !== 0 ? 
+        <div className="grid grid-cols-5 gap-6 mt-14">
           {movies.map((movie: Movie, index: number) => (
             <RegularMovieItem movie={movie} key={index} />
           ))}
-        </div>
+        </div> : <BrandingPlaceholder />
       )}
     </div>
   );

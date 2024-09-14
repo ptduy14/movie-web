@@ -8,6 +8,11 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .container-wrapper {
   width: 96%;
   margin: 0 auto;
