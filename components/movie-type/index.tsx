@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import Movie from 'types/movie';
 import RegularMovieItem from '../commons/regular-movie-item';
 import { getMoviesByType } from 'app/actions';
-import LoadingPage from '../loaders/loading-page';
+import LoadingComponent from '../loading/loading-component';
 import { useInView } from 'react-intersection-observer';
 
 export default function MovieTypePage({ slug }: { slug: string }) {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoadingPage, setIsLoadingPage] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [inViewRef, inView] = useInView();
   const [page, setPage] = useState<number>(1);
 
@@ -21,7 +21,7 @@ export default function MovieTypePage({ slug }: { slug: string }) {
 
   useEffect(() => {
     getMovies();
-    setIsLoadingPage(false);
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function MovieTypePage({ slug }: { slug: string }) {
     }
   }, [inView, movies]);
 
-  if (isLoadingPage) return <LoadingPage />;
+  if (isLoading) return <LoadingComponent />;
 
   return (
     <div className='pt-[3.75rem]'>
