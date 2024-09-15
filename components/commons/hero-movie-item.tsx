@@ -5,7 +5,7 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
   return (
     <div className="relative w-full h-[50rem]">
       <img
-        src={movie.thumb_url}
+        src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.poster_url}
         alt=""
         className="w-full h-full"
         onError={({ currentTarget }) => {
