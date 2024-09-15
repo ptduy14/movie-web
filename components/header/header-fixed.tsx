@@ -15,16 +15,16 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
         </a>
         <ul className="flex items-center font-semibold">
           <li className="px-9">
-            <a href="/movies/type/phim-le">Phim lẻ</a>
+            <a href="/movies/format/phim-le">Phim lẻ</a>
           </li>
           <li className="px-9">
-            <a href="/movies/type/phim-bo">Phim bộ</a>
+            <a href="/movies/format/phim-bo">Phim bộ</a>
           </li>
           <li className="px-9">
-            <a href="/movies/type/hoat-hinh">Hoạt hình</a>
+            <a href="/movies/format/hoat-hinh">Hoạt hình</a>
           </li>
           <li className="px-9">
-            <a href="/movies/type/tv-shows">TV show</a>
+            <a href="/movies/format/tv-shows">TV show</a>
           </li>
         </ul>
         <a className="cursor-pointer" href="/search">

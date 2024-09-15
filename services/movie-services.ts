@@ -23,7 +23,7 @@ const MovieServices = {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/phim/${slug}`);
         return res.json();
     },
-    getMoviesType: async (slug: string, page: number) => {
+    getMoviesFormat: async (slug: string, page: number) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/${slug}?page=${page}`);
         return res.json();
     },

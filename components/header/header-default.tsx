@@ -10,10 +10,10 @@ export default function HeaderDefault() {
               <Image src={logo} alt="Picture of the author" className="w-32" />
             </a>
             <ul className="flex items-center font-semibold">
-              <li className="px-9"><a href="/movies/type/phim-le">Phim lẻ</a></li>
-              <li className="px-9"><a href="/movies/type/phim-bo">Phim bộ</a></li>
-              <li className="px-9"><a href="/movies/type/hoat-hinh">Hoạt hình</a></li>
-              <li className="px-9"><a href="/movies/type/tv-shows">TV show</a></li>
+              <li className="px-9"><a href="/movies/format/phim-le">Phim lẻ</a></li>
+              <li className="px-9"><a href="/movies/format/phim-bo">Phim bộ</a></li>
+              <li className="px-9"><a href="/movies/format/hoat-hinh">Hoạt hình</a></li>
+              <li className="px-9"><a href="/movies/format/tv-shows">TV show</a></li>
             </ul>
             <a className="cursor-pointer" href="/search"><IoSearch size={20}/></a>
           </div>
