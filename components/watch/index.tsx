@@ -17,7 +17,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   return (
     <div className="pt-[3.75rem] space-y-10">
-      <VideoPlayer videoUrl={episodeLink} thumbnail={movie.movie.thumb_url} />
+      <VideoPlayer videoUrl={episodeLink} thumbnail={movie.movie.poster_url} />
       <div className="container-wrapper-movie">
         <h1 className="text-3xl">{movie.movie.name}</h1>
         <h3 className="text-lg text-[#bbb6ae] mt-2">{movie.movie.origin_name}</h3>
@@ -36,7 +36,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
                 } px-3 py-2 rounded-md font-semibold cursor-pointer`}
                 onClick={() => handleSwitchEpisode(index)}
               >
-                {ep.name}
+                {`Tập ${index + 1}`}
               </li>
             ))}
           </ul>
