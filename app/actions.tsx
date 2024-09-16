@@ -13,8 +13,8 @@ export async function getDescriptionHeroSectionMovies(movies: NewlyMovie[]) {
   return detailMovies;
 }
 
-export async function getMoviesByType(slug: string, page: number) {
-  const res = await MovieServices.getMoviesType(slug, page);
+export async function getMoviesByFormat(slug: string, page: number) {
+  const res = await MovieServices.getMoviesFormat(slug, page);
   return res.data.items;
 }
 

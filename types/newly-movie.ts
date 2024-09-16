@@ -1,3 +1,5 @@
+import Tmdb from "./tmdb";
+
 export default interface NewlyMovie {
     _id: string,
     name: string,
@@ -5,5 +7,6 @@ export default interface NewlyMovie {
     origin_name: string,
     poster_url: string,
     thumb_url: string,
-    year: number
+    year: number,
+    tmdb: Tmdb
 }
