@@ -6,7 +6,7 @@ import SubType from './sub-type';
 export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
   return (
     <header
-      className={`py-4 fixed left-0 right-0 z-20 bg-black transition-all duration-500 ${
+      className={`fixed left-0 right-0 z-20 bg-black transition-all duration-500 ${
         isScrolled ? 'top-0' : 'top-[-70px]'
       }`}
     >
