@@ -17,14 +17,14 @@ export default async function HomePage() {
       <HeroSection movies={newlyMovies.items.slice(0, 5)} />
       <div className="space-y-8">
         <MovieList
-          listName="Phim mới cập nhật"
+          listName="Phim Mới Cập Nhật"
           movies={newlyMovies.items}
           isNewlyMovieItem={true}
         />
-        <MovieList movies={singleMovies.data.items} listName="Phim Lẻ" isNewlyMovieItem={false} />
-        <MovieList movies={tvSeries.data.items} listName="TV Series" isNewlyMovieItem={false}/>
-        <MovieList movies={cartoonMovies.data.items} listName="Hoạt Hình" isNewlyMovieItem={false}/>
-        <MovieList movies={tvShows.data.items} listName="TV Show" isNewlyMovieItem={false}/>
+        <MovieList movies={singleMovies.data.items} listName="Phim Lẻ Mới Cập Nhật" isNewlyMovieItem={false} />
+        <MovieList movies={tvSeries.data.items} listName="Phim Bộ Mới Cập Nhật" isNewlyMovieItem={false}/>
+        <MovieList movies={cartoonMovies.data.items} listName="Phim Hoạt Hình Mới Cập Nhật" isNewlyMovieItem={false}/>
+        <MovieList movies={tvShows.data.items} listName="TV Show Mới Cập Nhật" isNewlyMovieItem={false}/>
       </div>
     </div>
   );

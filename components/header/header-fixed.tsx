@@ -1,6 +1,7 @@
 import logo from '../../public/logo.png';
 import Image from 'next/image';
 import { IoSearch } from 'react-icons/io5';
+import SubType from './sub-type';
 
 export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
   return (
@@ -25,6 +26,12 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
           </li>
           <li className="px-9">
             <a href="/movies/format/tv-shows">TV show</a>
+          </li>
+          <li className="px-9 relative group">
+            <p className="leading-[3.62rem] cursor-pointer">
+              Thể loại
+            </p>
+            <SubType />
           </li>
         </ul>
         <a className="cursor-pointer" href="/search">
