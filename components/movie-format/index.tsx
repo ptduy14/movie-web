@@ -16,24 +16,27 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
   const getMovies = async () => {
     const data = await getMoviesByFormat(slug, page);
     setMovies((prev) => [...prev, ...data]);
-    setPage((prev) => prev + 1);
+    isLoading && setIsLoading(false);
   };
 
   useEffect(() => {
     getMovies();
-    setIsLoading(false);
   }, []);
 
   useEffect(() => {
     if (inView) {
-      getMovies();
+      setPage((prev) => prev + 1);
     }
-  }, [inView, movies]);
+  }, [inView]);
+
+  useEffect(() => {
+    if (page > 1) getMovies();
+  }, [page]);
 
   if (isLoading) return <LoadingComponent />;
 
   return (
-    <div className='pt-[3.75rem]'>
+    <div className="pt-[3.75rem]">
       <div className="grid grid-cols-5 gap-6 container-wrapper">
         {movies.map((movie: Movie, index: number) => (
           <RegularMovieItem movie={movie} key={index} />
