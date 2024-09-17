@@ -2,7 +2,7 @@
 import { searchingMovie } from 'app/actions';
 import { useEffect, useState } from 'react';
 import Movie from 'types/movie';
-import { isNotNull } from 'utils/isHaveEpisodesMovie';
+import { isNotNull } from 'utils/movie-utils';
 import { useDebounce } from '../hooks/useDebounce';
 import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingComponent from '../loading/loading-component';
