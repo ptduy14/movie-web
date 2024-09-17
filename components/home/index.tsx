@@ -21,10 +21,10 @@ export default async function HomePage() {
           movies={newlyMovies.items}
           isNewlyMovieItem={true}
         />
-        <MovieList movies={singleMovies.data.items} listName="Phim Lẻ Mới Cập Nhật" isNewlyMovieItem={false} />
-        <MovieList movies={tvSeries.data.items} listName="Phim Bộ Mới Cập Nhật" isNewlyMovieItem={false}/>
-        <MovieList movies={cartoonMovies.data.items} listName="Phim Hoạt Hình Mới Cập Nhật" isNewlyMovieItem={false}/>
-        <MovieList movies={tvShows.data.items} listName="TV Show Mới Cập Nhật" isNewlyMovieItem={false}/>
+        <MovieList movies={singleMovies.data.items.slice(0,10)} listName="Phim Lẻ Mới Cập Nhật" isNewlyMovieItem={false} />
+        <MovieList movies={tvSeries.data.items.slice(0,10)} listName="Phim Bộ Mới Cập Nhật" isNewlyMovieItem={false}/>
+        <MovieList movies={cartoonMovies.data.items.slice(0,10)} listName="Phim Hoạt Hình Mới Cập Nhật" isNewlyMovieItem={false}/>
+        <MovieList movies={tvShows.data.items.slice(0,10)} listName="TV Show Mới Cập Nhật" isNewlyMovieItem={false}/>
       </div>
     </div>
   );
