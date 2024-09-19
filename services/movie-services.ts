@@ -27,6 +27,14 @@ const MovieServices = {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/${slug}?page=${page}`);
         return res.json();
     },
+    getMoviesType: async (slug: string, page: number) => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/the-loai/${slug}?page=${page}`);
+        return res.json();
+    },
+    getMoviesCountry: async (slug: string, page: number) => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/quoc-gia/${slug}?page=${page}`);
+        return res.json();
+    },
     searchMovie: async (slug: string) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/tim-kiem?keyword=${slug}&limit=15`);
         return res.json();

@@ -2,7 +2,7 @@
 import DetailMovie from 'types/detail-movie';
 import VideoPlayer from './video-player';
 import { useState } from 'react';
-import { isHaveEpisodesMovie } from 'utils/isHaveEpisodesMovie';
+import { isHaveEpisodesMovie } from 'utils/movie-utils';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
@@ -14,7 +14,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setEpisodeIndex(index);
     setEpisodeLink(movie.episodes[0].server_data[index].link_m3u8);
   };
-
+  
   return (
     <div className="pt-[3.75rem] space-y-10">
       <VideoPlayer videoUrl={episodeLink} thumbnail={movie.movie.poster_url} />

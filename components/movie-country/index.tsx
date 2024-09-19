@@ -3,18 +3,18 @@
 import { useEffect, useState } from 'react';
 import Movie from 'types/movie';
 import RegularMovieItem from '../commons/regular-movie-item';
-import { getMoviesByFormat } from 'app/actions';
+import { getMoviesByCountry } from 'app/actions';
 import LoadingComponent from '../loading/loading-component';
 import { useInView } from 'react-intersection-observer';
 
-export default function MovieFormatPage({ slug }: { slug: string }) {
+export default function MovieCountryPage({ slug }: { slug: string }) {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [inViewRef, inView] = useInView();
   const [page, setPage] = useState<number>(1);
 
   const getMovies = async () => {
-    const data = await getMoviesByFormat(slug, page);
+    const data = await getMoviesByCountry(slug, page);
     setMovies((prev) => [...prev, ...data]);
     isLoading && setIsLoading(false);
   };

@@ -18,6 +18,16 @@ export async function getMoviesByFormat(slug: string, page: number) {
   return res.data.items;
 }
 
+export async function getMoviesByType(slug: string, page: number) {
+  const res = await MovieServices.getMoviesType(slug, page);
+  return res.data.items;
+}
+
+export async function getMoviesByCountry(slug: string, page: number) {
+  const res = await MovieServices.getMoviesCountry(slug, page);
+  return res.data.items;
+}
+
 export async function searchingMovie(slug: string) {
   const res = await MovieServices.searchMovie(slug);
   return res;
