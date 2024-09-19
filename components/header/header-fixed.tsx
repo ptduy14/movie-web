@@ -2,6 +2,7 @@ import logo from '../../public/logo.png';
 import Image from 'next/image';
 import { IoSearch } from 'react-icons/io5';
 import SubType from './sub-type';
+import SubCountries from './sub-countries';
 
 export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
   return (
@@ -16,22 +17,28 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
         </a>
         <ul className="flex items-center font-semibold">
           <li className="px-9">
-            <a href="/movies/format/phim-le">Phim lẻ</a>
+            <a className='hover:text-[#e10711]' href="/movies/format/phim-le">Phim lẻ</a>
           </li>
           <li className="px-9">
-            <a href="/movies/format/phim-bo">Phim bộ</a>
+            <a className='hover:text-[#e10711]' href="/movies/format/phim-bo">Phim bộ</a>
           </li>
           <li className="px-9">
-            <a href="/movies/format/hoat-hinh">Hoạt hình</a>
+            <a className='hover:text-[#e10711]' href="/movies/format/hoat-hinh">Hoạt hình</a>
           </li>
           <li className="px-9">
-            <a href="/movies/format/tv-shows">TV show</a>
+            <a className='hover:text-[#e10711]' href="/movies/format/tv-shows">TV show</a>
           </li>
           <li className="px-9 relative group">
             <p className="leading-[3.62rem] cursor-pointer">
               Thể loại
             </p>
             <SubType />
+          </li>
+          <li className="px-9 relative group">
+            <p className="leading-[3.62rem] hover:text-[#e10711] cursor-pointer">
+              Quốc gia
+            </p>
+            <SubCountries />
           </li>
         </ul>
         <a className="cursor-pointer" href="/search">
