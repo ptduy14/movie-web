@@ -39,12 +39,13 @@ export default function MoviePage({ movie }: { movie: DetailMovie }) {
                 </button>
                 <div className="flex gap-x-2">
                   {movie.movie.category?.map((item, index) => (
-                    <span
+                    <a
                       key={index}
-                      className="text-sm block border-[1px] border-gray-600 px-3 p-1 rounded-2xl"
+                      className="text-sm block border-[1px] border-gray-600 px-3 p-1 rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-500"
+                      href={`/movies/type/${item.slug}`}
                     >
                       {item.name}
-                    </span>
+                    </a>
                   ))}
                 </div>
               </div>
