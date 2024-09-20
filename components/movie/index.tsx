@@ -4,6 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 
 export default function MoviePage({ movie }: { movie: DetailMovie }) {
+  console.log(movie.movie.tmdb)
   return (
     <div>
       <div
@@ -11,7 +12,7 @@ export default function MoviePage({ movie }: { movie: DetailMovie }) {
         style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
       >
         <div className="bg-black h-full w-full opacity-65 absolute inset-0"></div>
-        <div className="container-wrapper-movie relative flex justify-end z-10">
+        <div className="container-wrapper-movie relative flex justify-end">
           <div className="w-1/4 absolute left-0 top-0">
             <img className="w-full shadow-custom" src={movie.movie.thumb_url} alt="" />
             <a
