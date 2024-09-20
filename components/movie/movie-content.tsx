@@ -1,6 +1,7 @@
 import Country from 'types/country';
 import DetailMovie from 'types/detail-movie';
 import Trailer from './trailer';
+import replacePTag from 'utils/replace-p-tag';
 
 export default function MovieContent({ movie }: { movie: DetailMovie }) {
   const directors = movie.movie.director?.join(', ');
@@ -25,7 +26,7 @@ export default function MovieContent({ movie }: { movie: DetailMovie }) {
             </tr>
           </tbody>
         </table>
-        <div>{movie.movie.content}</div>
+        <div>{replacePTag(movie.movie.content)}</div>
         {movie.movie.trailer_url !== '' && <Trailer trailer={movie.movie.trailer_url}/>}
       </div>
     </div>
