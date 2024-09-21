@@ -2,9 +2,9 @@ import DetailMovie from 'types/detail-movie';
 import { FaPlus } from 'react-icons/fa6';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
+import Credit from 'types/credit';
 
-export default function MoviePage({ movie }: { movie: DetailMovie }) {
-  console.log(movie.movie.tmdb)
+export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | null}) {
   return (
     <div>
       <div
@@ -54,7 +54,7 @@ export default function MoviePage({ movie }: { movie: DetailMovie }) {
           </div>
         </div>
       </div>
-      <MovieContent movie={movie} />
+      <MovieContent movie={movie} credit={credit}/>
     </div>
   );
 }
