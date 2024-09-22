@@ -4,7 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
 
-export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | null}) {
+export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit}) {
   return (
     <div>
       <div
