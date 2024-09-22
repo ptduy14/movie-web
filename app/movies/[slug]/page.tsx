@@ -8,7 +8,7 @@ export default async function Movie({ params } : { params: { slug: string }}) {
 
     if (!movie.status) redirect('/') // temporary solution
 
-    let credit = null;
+    let credit;
 
     if (movie.movie.tmdb.id !== '') {
         credit = await TMDBServices.getCredits(movie.movie.tmdb.id);   

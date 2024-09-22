@@ -5,13 +5,14 @@ import DetailMovie from 'types/detail-movie';
 import Credit from 'types/credit';
 import { GrPrevious, GrNext } from 'react-icons/gr';
 import { useRef, useState } from 'react';
+import isNonEmpty from 'utils/is-none-empty';
 
 export default function ActorList({
   movie,
   credit,
 }: {
   movie: DetailMovie;
-  credit: Credit | null;
+  credit: Credit;
 }) {
     // const [isEndSlide, setIsEndSlide] = useState(false);
   const swiperRef = useRef<any>(null);
@@ -23,6 +24,7 @@ export default function ActorList({
   const handleNextSlide = () => {
     swiperRef.current.slideNext();
   };
+
   return (
     <div className="space-y-6">
       <div className="font-bold flex justify-between align-middle">
@@ -42,18 +44,18 @@ export default function ActorList({
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onReachBeginning={()=>{}}
       >
-        {credit
+        {credit.cast !== undefined
           ? credit.cast.map((item) => (
               <SwiperSlide>
                 <ActorItem key={item.id} actor={item} />
               </SwiperSlide>
             ))
-          : movie.movie.actor &&
+          : isNonEmpty(movie.movie.actor) ? 
             movie.movie.actor.map((item, index) => (
               <SwiperSlide>
                 <ActorItem key={index} actor={item} />
               </SwiperSlide>
-            ))}
+            )): <div>Đang cập nhật</div>}
       </Swiper>
     </div>
   );
