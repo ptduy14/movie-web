@@ -6,7 +6,6 @@ import Credit from 'types/credit';
 import TMDBLogo from '../logos/TMDB-Logo';
 
 export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | undefined}) {
-  console.log(credit)
   return (
     <div>
       <div
