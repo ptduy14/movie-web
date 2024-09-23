@@ -1,11 +1,20 @@
 import MoviePage from "@/components/movie"
 import MovieServices from "services/movie-services"
 import { redirect } from "next/navigation";
+import TMDBServices from "services/tmdb-services";
 
 export default async function Movie({ params } : { params: { slug: string }}) {
     const movie = await MovieServices.getDetailMovie(params.slug);
 
     if (!movie.status) redirect('/') // temporary solution
 
-    return <MoviePage movie={movie} />
+    let credit;
+
+    if (movie.movie.tmdb.id !== '') {
+        credit = await TMDBServices.getCredits(movie.movie.tmdb.id);   
+    }
+
+    console.log(movie.movie)
+
+    return <MoviePage movie={movie} credit={credit}/>
 }
