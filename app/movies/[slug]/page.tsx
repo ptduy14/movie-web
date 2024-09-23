@@ -14,7 +14,5 @@ export default async function Movie({ params } : { params: { slug: string }}) {
         credit = await TMDBServices.getCredits(movie.movie.tmdb.id);   
     }
 
-    console.log(movie.movie)
-
     return <MoviePage movie={movie} credit={credit}/>
 }
