@@ -3,8 +3,10 @@ import { FaPlus } from 'react-icons/fa6';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
+import TMDBLogo from '../logos/TMDB-Logo';
 
-export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit}) {
+export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | undefined}) {
+  console.log(credit)
   return (
     <div>
       <div
@@ -28,12 +30,21 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
               <h3 className="text-5xl font-medium">{`${movie.movie.origin_name}`}</h3>
               <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${movie.movie.name} (${movie.movie.year})`}</h4>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-5">
               <div>Trạng thái: {movie.movie.episode_current}</div>
               <div>Thời lượng: {movie.movie.time}</div>
               <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
                 {movie.movie.quality}
               </div>
+              {movie.movie.tmdb.id !== '' && <div className='flex items-center gap-x-2'>
+                <div className='w-[9rem]'>
+                <TMDBLogo />
+                </div>
+                <div className=''>
+                  <span className='font-bold'>{movie.movie.tmdb.vote_average}</span><span>/10</span>
+                </div>
+                <div><span>({movie.movie.tmdb.vote_count} votes)</span></div>
+              </div>}
               <div className="flex justify-between items-center">
                 <button className="flex items-center bg-white px-3 py-2 rounded-md gap-x-2 text-black font-semibold">
                   <FaPlus className="text-black" /> Bộ sưu tập
