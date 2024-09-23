@@ -46,14 +46,14 @@ export default function ActorList({
       >
         {credit.cast !== undefined
           ? credit.cast.map((item) => (
-              <SwiperSlide>
-                <ActorItem key={item.id} actor={item} />
+              <SwiperSlide key={item.id}>
+                <ActorItem actor={item} />
               </SwiperSlide>
             ))
           : isNonEmpty(movie.movie.actor) ? 
             movie.movie.actor.map((item, index) => (
-              <SwiperSlide>
-                <ActorItem key={index} actor={item} />
+              <SwiperSlide key={index}>
+                <ActorItem actor={item} />
               </SwiperSlide>
             )): <div>Đang cập nhật</div>}
       </Swiper>
