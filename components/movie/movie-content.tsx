@@ -6,7 +6,7 @@ import Credit from 'types/credit';
 import isNonEmpty from 'utils/is-none-empty';
 import MovieSummary from './movie-summary';
 
-export default function MovieContent({ movie, credit }: { movie: DetailMovie, credit: Credit}) {
+export default function MovieContent({ movie, credit }: { movie: DetailMovie, credit: Credit | undefined}) {
   const directors = isNonEmpty(movie.movie.director) ? movie.movie.director?.join(', ') : 'Đang cập nhật';
   const countries = movie.movie.country.map((item: Country) => item.name).join(', ');
 

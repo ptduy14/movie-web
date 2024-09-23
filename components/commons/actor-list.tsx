@@ -12,7 +12,7 @@ export default function ActorList({
   credit,
 }: {
   movie: DetailMovie;
-  credit: Credit;
+  credit: Credit | undefined;
 }) {
     // const [isEndSlide, setIsEndSlide] = useState(false);
   const swiperRef = useRef<any>(null);
@@ -44,7 +44,7 @@ export default function ActorList({
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onReachBeginning={()=>{}}
       >
-        {credit.cast !== undefined
+        {credit !== undefined
           ? credit.cast.map((item) => (
               <SwiperSlide key={item.id}>
                 <ActorItem actor={item} />
