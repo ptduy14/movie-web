@@ -6,6 +6,7 @@ import Credit from 'types/credit';
 import { GrPrevious, GrNext } from 'react-icons/gr';
 import { useRef, useState } from 'react';
 import isNonEmpty from 'utils/is-none-empty';
+import creditIsvalid from 'utils/credit-is-valid';
 
 export default function ActorList({
   movie,
@@ -44,8 +45,8 @@ export default function ActorList({
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onReachBeginning={()=>{}}
       >
-        {credit !== undefined
-          ? credit.cast.map((item) => (
+        {creditIsvalid(credit) 
+          ? credit!.cast.map((item) => (
               <SwiperSlide key={item.id}>
                 <ActorItem actor={item} />
               </SwiperSlide>
