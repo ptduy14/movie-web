@@ -1,7 +1,7 @@
 const TMDBServices = {
-  getCredits: async (movieId: number) => {
+  getCredits: async (movieId: number, type: string) => {
     const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
+      `https://api.themoviedb.org/3/${type}/${movieId}/credits?language=en-US`,
       {
         method: 'GET',
         headers: {
