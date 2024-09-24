@@ -4,7 +4,7 @@ import { IoSearch } from 'react-icons/io5';
 import SubType from './sub-type';
 import SubCountries from './sub-countries';
 
-export default function HeaderDefault() {
+export default function HeaderDefault({isScrolled}: {isScrolled: boolean}) {
   return (
     <header className="absolute top-0 left-0 right-0 z-10">
       <div className="header-container flex items-center justify-between container-wrapper">
@@ -32,13 +32,13 @@ export default function HeaderDefault() {
               TV show
             </a>
           </li>
-          <li className="px-9 relative group">
+          <li className={`px-9 relative ${!isScrolled && 'group'}`}>
             <p className="leading-[3.62rem] hover:text-[#e10711] cursor-pointer">
               Thể loại
             </p>
             <SubType />
           </li>
-          <li className="px-9 relative group">
+          <li className={`px-9 relative ${!isScrolled && 'group'}`}>
             <p className="leading-[3.62rem] hover:text-[#e10711] cursor-pointer">
               Quốc gia
             </p>
