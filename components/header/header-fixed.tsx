@@ -28,13 +28,13 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
           <li className="px-9">
             <a className='hover:text-[#e10711]' href="/movies/format/tv-shows">TV show</a>
           </li>
-          <li className="px-9 relative group">
+          <li className={`px-9 relative ${isScrolled && 'group'}`}>
             <p className="leading-[3.62rem] cursor-pointer">
               Thể loại
             </p>
             <SubType />
           </li>
-          <li className="px-9 relative group">
+          <li className={`px-9 relative ${isScrolled && 'group'}`}>
             <p className="leading-[3.62rem] hover:text-[#e10711] cursor-pointer">
               Quốc gia
             </p>

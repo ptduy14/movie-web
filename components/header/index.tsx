@@ -24,7 +24,7 @@ export default function Header() {
   }, []);
 
   return <>
-    <HeaderDefault/>
+    <HeaderDefault isScrolled={isScrolled}/>
     <HeaderFixed isScrolled={isScrolled}/>
   </>
 }
