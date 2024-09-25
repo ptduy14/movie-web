@@ -1,18 +1,36 @@
-import MoviePage from "@/components/movie"
-import MovieServices from "services/movie-services"
-import { redirect } from "next/navigation";
-import TMDBServices from "services/tmdb-services";
+import MoviePage from '@/components/movie';
+import MovieServices from 'services/movie-services';
+import { redirect } from 'next/navigation';
+import TMDBServices from 'services/tmdb-services';
+import { Metadata } from 'next';
+import DetailMovie from 'types/detail-movie';
+import PageParams from 'types/page-params';
 
-export default async function Movie({ params } : { params: { slug: string }}) {
-    const movie = await MovieServices.getDetailMovie(params.slug);
+let movie: DetailMovie;
 
-    if (!movie.status) redirect('/') // temporary solution
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  try {
+    const res = await MovieServices.getDetailMovie(params.slug);
+    if (!res.status) throw new Error("");
+    movie = res;
+  } catch (error) {
+    redirect('/');
+  }
 
-    let credit;
+  return {
+    title: movie.movie.name,
+    description: movie.movie.content,
+  };
+}
 
-    if (movie.movie.tmdb.id !== '') {
-        credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);   
-    }
+export default async function Movie({ params }: PageParams) {
+  const movie = await MovieServices.getDetailMovie(params.slug);
 
-    return <MoviePage movie={movie} credit={credit}/>
+  let credit;
+
+  if (movie.movie.tmdb.id !== '') {
+    credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);
+  }
+
+  return <MoviePage movie={movie} credit={credit} />;
 }
