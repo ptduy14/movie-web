@@ -2,6 +2,7 @@
 
 import NewlyMovie from 'types/newly-movie';
 import MovieServices from 'services/movie-services';
+import { redirect } from 'next/navigation';
 
 export async function getDescriptionHeroSectionMovies(movies: NewlyMovie[]) {
   const fetcher = movies.map((movie: NewlyMovie) => {
@@ -24,8 +25,16 @@ export async function getMoviesByType(slug: string, page: number) {
 }
 
 export async function getMoviesByCountry(slug: string, page: number) {
-  const res = await MovieServices.getMoviesCountry(slug, page);
-  return res.data.items;
+  try {
+    const res = await MovieServices.getMoviesCountry(slug, page);
+    
+    if (res.status === 'error') throw new Error("");
+  
+    return res.data.items;
+  } catch (error) {
+    redirect('/'); 
+  }
+  
 }
 
 export async function searchingMovie(slug: string) {
