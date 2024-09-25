@@ -1,4 +1,4 @@
-const MovieType = [
+const movieType = [
     {
         name: 'Hành Động',
         slug: 'hanh-dong'
@@ -81,4 +81,4 @@ const MovieType = [
     },
 ]
 
-export default MovieType
+export default movieType
