@@ -5,5 +5,5 @@ export function isHaveEpisodesMovie(movie: DetailMovie) {
 }
 
 export function isNotNull(value: string) {
-    return value === '' ? false : true;
+    return value.trim() === '' ? false : true;
 }
