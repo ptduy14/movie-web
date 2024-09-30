@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     'Tìm kiếm phim',
 };
 
-export default function SearchMovie() {
-    return <SearchMoviePage />
+export default function SearchMovie({searchParams}: {searchParams: {name?: string}}) {
+  const movieName = searchParams.name || '';
+
+  return <SearchMoviePage movieName={movieName}/>
 }
