@@ -4,12 +4,21 @@ import VideoPlayer from './video-player';
 import { useEffect, useState } from 'react';
 import { isHaveEpisodesMovie } from 'utils/movie-utils';
 import ServerSection from './server-section';
+import { useRef } from 'react';
+import Progresswatch from './progress-watch';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
-  console.log(movie.episodes);
+  // episodes[serverIndex]: server được chọn
+  // server_data[episodeIndex] || server_data[index]: tập phim
+
   const [serverIndex, setServerIndex] = useState<number>(0);
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
   const [episodeLink, setEpisodeLink] = useState<string>('');
+  const [videoProgress, setVideoProgress] = useState<number | null>(null);
+
+  const [isShowMessage, setIsShowMessage] = useState(false);
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleSwitchEpisode = (index: number) => {
     setEpisodeIndex(index);
@@ -24,12 +33,63 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   useEffect(() => {
     setEpisodeLink(movie.episodes[serverIndex].server_data[0].link_m3u8);
-    setEpisodeIndex(0)
+    setEpisodeIndex(0);
   }, [serverIndex]);
+
+  useEffect(() => {
+    const progress = JSON.parse(localStorage.getItem('progress') || '');
+    if (typeof progress !== 'object' && progress.id !== movie.movie._id) return
+      setEpisodeIndex(progress.episodeIndex);
+      setEpisodeLink(progress.episodeLink);
+      setVideoProgress(progress.duration);
+
+      setIsShowMessage(true);
+  }, []);
+
+  const handleStoreViewingProgress = (e: any) => {
+    const progress = {
+      id: movie.movie._id,
+      duration: videoRef.current?.currentTime,
+      serverIndex,
+      episodeIndex,
+      episodeLink,
+    }
+    
+    localStorage.setItem('progress', JSON.stringify(progress));
+  };
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleStoreViewingProgress);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleStoreViewingProgress);
+    };
+  }, [serverIndex, episodeIndex]);
+
+  useEffect(() => { 
+    let timerId = null;
+
+    if (isShowMessage) {
+      timerId = setTimeout(() => {
+        setIsShowMessage(false);
+      }, 10000)
+    }
+
+    return () => {
+      if (timerId !== null) clearTimeout(timerId);
+    }
+
+  }, [isShowMessage])
 
   return (
     <div className="pt-[3.75rem] space-y-10">
-      <VideoPlayer videoUrl={episodeLink} thumbnail={movie.movie.poster_url} />
+      <Progresswatch isShowMessage={isShowMessage}/>
+      <VideoPlayer
+        ref={videoRef}
+        videoUrl={episodeLink}
+        thumbnail={movie.movie.poster_url}
+        videoProgress={videoProgress}
+      />
       {movie.episodes.length > 1 && (
         <div className="flex items-center">
           Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới
