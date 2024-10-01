@@ -23,22 +23,31 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const handleSwitchEpisode = (index: number) => {
     setEpisodeIndex(index);
     setEpisodeLink(movie.episodes[serverIndex].server_data[index].link_m3u8);
+    setVideoProgress(null);
   };
 
   const handleSetServerIndex = (index: number) => {
     if (index === serverIndex) return;
 
     setServerIndex(index);
+    setEpisodeLink(movie.episodes[serverIndex].server_data[0].link_m3u8);
+    setEpisodeIndex(0);
   };
 
   useEffect(() => {
-    setEpisodeLink(movie.episodes[serverIndex].server_data[0].link_m3u8);
-    setEpisodeIndex(0);
-  }, [serverIndex]);
-
-  useEffect(() => {
-    const progress = JSON.parse(localStorage.getItem('progress') || '');
-    if (typeof progress !== 'object' && progress.id !== movie.movie._id) return
+    const progressJSON = localStorage.getItem('progress' || '');
+    if (!progressJSON) {
+      setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
+      setEpisodeIndex(0);
+      return;
+    }
+    
+    const progress = JSON.parse(progressJSON);
+    if (typeof progress !== 'object' || progress.id !== movie.movie._id || progress.duration === 0) {
+      setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
+      setEpisodeIndex(0);
+      return;
+    }
       setEpisodeIndex(progress.episodeIndex);
       setEpisodeLink(progress.episodeLink);
       setVideoProgress(progress.duration);
@@ -47,10 +56,10 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   }, []);
 
   const handleStoreViewingProgress = (e: any) => {
+
     const progress = {
       id: movie.movie._id,
       duration: videoRef.current?.currentTime,
-      serverIndex,
       episodeIndex,
       episodeLink,
     }
@@ -64,7 +73,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     return () => {
       window.removeEventListener('beforeunload', handleStoreViewingProgress);
     };
-  }, [serverIndex, episodeIndex]);
+  }, [episodeLink]);
 
   useEffect(() => { 
     let timerId = null;
