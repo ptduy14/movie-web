@@ -29,7 +29,11 @@ export default async function Movie({ params }: PageParams) {
   let credit;
 
   if (movie.movie.tmdb.id !== '') {
-    credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);
+    try {
+      credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);
+    } catch (error) {
+      redirect('/')
+    }
   }
 
   return <MoviePage movie={movie} credit={credit} />;
