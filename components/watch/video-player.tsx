@@ -1,13 +1,18 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, forwardRef } from 'react';
 import Hls from 'hls.js';
 import { FaPlay } from 'react-icons/fa';
 
-const VideoPlayer = ({ videoUrl, thumbnail }: { videoUrl: string; thumbnail: string }) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+type VideoPlayerProps = {
+  videoUrl: string;
+  thumbnail: string;
+  videoProgress: number | null;
+};
+
+const VideoPlayer = ({ videoUrl, thumbnail, videoProgress }: VideoPlayerProps, videoRef: React.Ref<HTMLVideoElement> | null) => {
   const overlay = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
+    const video = videoRef && 'current' in videoRef ? videoRef.current : null;
     if (video) {
       if (Hls.isSupported()) {
         const hls = new Hls();
@@ -17,7 +22,9 @@ const VideoPlayer = ({ videoUrl, thumbnail }: { videoUrl: string; thumbnail: str
         // For Safari and other browsers that support HLS natively
         video.src = videoUrl;
       }
+      if (videoProgress) video.currentTime = videoProgress;
     }
+
     return () => {
       if (video && video.src) {
         video.pause();
@@ -29,7 +36,7 @@ const VideoPlayer = ({ videoUrl, thumbnail }: { videoUrl: string; thumbnail: str
   }, [videoUrl]);
 
   const handlePlayVideo = () => {
-    videoRef.current?.play();
+    if (videoRef && 'current' in videoRef) videoRef.current?.play();
     overlay.current?.classList.add('hidden');
   };
 
@@ -38,11 +45,15 @@ const VideoPlayer = ({ videoUrl, thumbnail }: { videoUrl: string; thumbnail: str
       <video ref={videoRef} controls style={{ width: '100%', height: '100%' }} />
       <div ref={overlay} className="absolute inset-0 bg-black flex items-center justify-center">
         <img src={thumbnail} alt="" className="h-full object-center object-cover" />
-        <FaPlay className="absolute cursor-pointer z-10 hover:scale-125 transition-all duration-200" size={40} onClick={handlePlayVideo} />
+        <FaPlay
+          className="absolute cursor-pointer z-10 hover:scale-125 transition-all duration-200"
+          size={40}
+          onClick={handlePlayVideo}
+        />
         <div className="bg-red-600 absolute inset-0 opacity-5"></div>
       </div>
     </div>
   );
 };
 
-export default VideoPlayer;
+export default forwardRef(VideoPlayer) ;

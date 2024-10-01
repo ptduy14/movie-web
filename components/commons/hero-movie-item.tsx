@@ -1,5 +1,6 @@
 import { FaPlay, FaPlus } from "react-icons/fa";
 import NewlyMovie from "types/newly-movie";
+import MovieSummary from "../movie/movie-summary";
 
 export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMovie, movieContent: string }) {
   return (
@@ -18,9 +19,7 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
       <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
       <div className="absolute w-2/4 top-[20rem] left-6 space-y-5">
         <h2 className="text-4xl font-bold">{movie.name}</h2>
-        <span className="block">
-          {movieContent}
-        </span>
+        <MovieSummary summary={movieContent} />
         <div className="space-x-5 flex items-center">
           <a
             href={`/movies/${movie.slug}`}
