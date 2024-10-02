@@ -5,7 +5,7 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
   return (
     <a className="block h-auto space-y-2" href={`/movies/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
-        <img className="w-full h-full" src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url} alt="" />
+        <img loading='lazy' className="w-full h-full" src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url} alt="" />
       </div>
       <div>
         <div className="truncate">{movie.name}</div>
