@@ -22,7 +22,13 @@ const VideoPlayer = ({ videoUrl, thumbnail, videoProgress }: VideoPlayerProps, v
         // For Safari and other browsers that support HLS natively
         video.src = videoUrl;
       }
-      if (videoProgress) video.currentTime = videoProgress;
+      if (videoProgress) {
+        video.currentTime = videoProgress
+        video.addEventListener('canplaythrough', (e) => {
+          video.play();
+          overlay.current?.classList.add('hidden');
+        })
+      };
     }
 
     return () => {
@@ -33,7 +39,7 @@ const VideoPlayer = ({ videoUrl, thumbnail, videoProgress }: VideoPlayerProps, v
       }
       overlay.current?.classList.remove('hidden');
     };
-  }, [videoUrl]);
+  }, [videoUrl, videoProgress]);
 
   const handlePlayVideo = () => {
     if (videoRef && 'current' in videoRef) videoRef.current?.play();

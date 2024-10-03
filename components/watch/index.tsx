@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { isHaveEpisodesMovie } from 'utils/movie-utils';
 import ServerSection from './server-section';
 import { useRef } from 'react';
-import Progresswatch from './progress-watch';
+import ProgresswatchNotification from './progress-watch-notification';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   // episodes[serverIndex]: server được chọn
@@ -15,6 +15,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
   const [episodeLink, setEpisodeLink] = useState<string>('');
   const [videoProgress, setVideoProgress] = useState<number | null>(null);
+  const [progressWatchInfo, setProgressWatchInfo] = useState({
+    progressTime: 0,
+    progressEpIndex: 0,
+    progressEpLink: '',
+  });
 
   const [isShowMessage, setIsShowMessage] = useState(false);
 
@@ -35,35 +40,60 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   };
 
   useEffect(() => {
-    const progressJSON = localStorage.getItem('progress' || '');
-    if (!progressJSON) {
-      setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
-      setEpisodeIndex(0);
-      return;
-    }
-    
-    const progress = JSON.parse(progressJSON);
-    if (typeof progress !== 'object' || progress.id !== movie.movie._id || progress.duration === 0) {
-      setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
-      setEpisodeIndex(0);
-      return;
-    }
-      setEpisodeIndex(progress.episodeIndex);
-      setEpisodeLink(progress.episodeLink);
-      setVideoProgress(progress.duration);
+    // const progressJSON = localStorage.getItem('progress' || '');
+    // if (!progressJSON) {
+    //   setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
+    //   setEpisodeIndex(0);
+    //   return;
+    // }
 
+    // const progress = JSON.parse(progressJSON);
+    // if (typeof progress !== 'object' || progress.id !== movie.movie._id || progress.progressTime === 0) {
+    //   setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
+    //   setEpisodeIndex(0);
+    //   return;
+    // }
+    // setEpisodeIndex(progress.episodeIndex);
+    // setEpisodeLink(progress.episodeLink);
+    // setVideoProgress(progress.progressTime);
+
+    setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
+    setEpisodeIndex(0);
+
+    const progressJSON = localStorage.getItem('progress' || '');
+    if (!progressJSON) return;
+
+    const progress = JSON.parse(progressJSON);
+    if (
+      typeof progress !== 'object' ||
+      progress.id !== movie.movie._id ||
+      progress.progressTime === 0
+    )
+      return;
+
+    setProgressWatchInfo({
+      progressEpIndex: progress.episodeIndex,
+      progressTime: progress.progressTime,
+      progressEpLink: progress.episodeLink,
+    });
+
+    let timerID = setTimeout(() => {
       setIsShowMessage(true);
+    }, 2000);
+
+    return () => {
+      if (timerID) clearTimeout(timerID);
+    };
   }, []);
 
   const handleStoreViewingProgress = (e: any) => {
-
     const progress = {
       id: movie.movie._id,
-      duration: videoRef.current?.currentTime,
+      progressTime: videoRef.current?.currentTime,
       episodeIndex,
       episodeLink,
-    }
-    
+    };
+
     localStorage.setItem('progress', JSON.stringify(progress));
   };
 
@@ -75,24 +105,30 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     };
   }, [episodeLink]);
 
-  useEffect(() => { 
-    let timerId = null;
+  const handleAcceptProgressWatch = () => {
+    setEpisodeIndex(progressWatchInfo.progressEpIndex);
+    setEpisodeLink(progressWatchInfo.progressEpLink);
+    setVideoProgress(progressWatchInfo.progressTime);
 
-    if (isShowMessage) {
-      timerId = setTimeout(() => {
-        setIsShowMessage(false);
-      }, 10000)
-    }
+    setIsShowMessage(false);
 
-    return () => {
-      if (timerId !== null) clearTimeout(timerId);
-    }
+    videoRef.current?.addEventListener('canplaythrough', (e) => {
+      videoRef.current?.play();
+    })
+  };
 
-  }, [isShowMessage])
+  const handleRejectProgressWatch = () => {
+    setIsShowMessage(false);
+  };
 
   return (
     <div className="pt-[3.75rem] space-y-10">
-      <Progresswatch isShowMessage={isShowMessage}/>
+      <ProgresswatchNotification
+        isShowMessage={isShowMessage}
+        progressWatchInfo={progressWatchInfo}
+        handleAcceptProgressWatch={handleAcceptProgressWatch}
+        handleRejectProgressWatch={handleRejectProgressWatch}
+      />
       <VideoPlayer
         ref={videoRef}
         videoUrl={episodeLink}
