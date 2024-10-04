@@ -112,9 +112,9 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
     setIsShowMessage(false);
 
-    videoRef.current?.addEventListener('canplaythrough', (e) => {
-      videoRef.current?.play();
-    })
+    // videoRef.current?.addEventListener('canplaythrough', (e) => {
+    //   videoRef.current?.play();
+    // })
   };
 
   const handleRejectProgressWatch = () => {
@@ -128,6 +128,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         progressWatchInfo={progressWatchInfo}
         handleAcceptProgressWatch={handleAcceptProgressWatch}
         handleRejectProgressWatch={handleRejectProgressWatch}
+        movie={movie}
       />
       <VideoPlayer
         ref={videoRef}
