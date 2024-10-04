@@ -1,10 +1,12 @@
+import DetailMovie from 'types/detail-movie';
 import convertSecondToTime from 'utils/convert-second-to-time';
 
 export default function ProgresswatchNotification({
   isShowMessage,
   progressWatchInfo,
   handleAcceptProgressWatch,
-  handleRejectProgressWatch
+  handleRejectProgressWatch,
+  movie,
 }: {
   isShowMessage: boolean;
   progressWatchInfo: {
@@ -13,10 +15,12 @@ export default function ProgresswatchNotification({
     progressEpLink: string
   },
   handleAcceptProgressWatch: () => void,
-  handleRejectProgressWatch: () => void
+  handleRejectProgressWatch: () => void,
+  movie: DetailMovie
 }) {
     const {progressTime, progressEpIndex} = progressWatchInfo;
-  return (
+    console.log(movie.movie.type)
+    return (
     <div
       className={`fixed top-16 ${
         isShowMessage ? 'right-8' : 'right-[-30rem]'
@@ -24,7 +28,8 @@ export default function ProgresswatchNotification({
     >
       <span className="">
         Hệ thống nhận thấy bạn đang xem đến{' '}
-        <span className="font-bold">tập {progressEpIndex + 1}</span> -{' '}
+        {movie.movie.type !== 'single' && <span className="font-bold">tập {progressEpIndex + 1}-</span>} 
+        {' '}
         <span className="font-bold">{convertSecondToTime(progressTime)}</span>, bạn muốn tiếp tục
         xem chứ ?
       </span>
