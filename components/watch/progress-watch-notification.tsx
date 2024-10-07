@@ -3,13 +3,13 @@ import convertSecondToTime from 'utils/convert-second-to-time';
 
 export default function ProgresswatchNotification({
   isShowMessage,
-  progressWatchInfo,
+  previousWatchProgress,
   handleAcceptProgressWatch,
   handleRejectProgressWatch,
   movie,
 }: {
   isShowMessage: boolean;
-  progressWatchInfo: {
+  previousWatchProgress: {
     progressTime: number,
     progressEpIndex: number,
     progressEpLink: string
@@ -18,7 +18,7 @@ export default function ProgresswatchNotification({
   handleRejectProgressWatch: () => void,
   movie: DetailMovie
 }) {
-    const {progressTime, progressEpIndex} = progressWatchInfo;
+    const {progressTime, progressEpIndex} = previousWatchProgress;
     console.log(movie.movie.type)
     return (
     <div

@@ -15,7 +15,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
   const [episodeLink, setEpisodeLink] = useState<string>('');
   const [videoProgress, setVideoProgress] = useState<number | null>(null);
-  const [progressWatchInfo, setProgressWatchInfo] = useState({
+  const [previousWatchProgress, setPreviousWatchProgress] = useState({
     progressTime: 0,
     progressEpIndex: 0,
     progressEpLink: '',
@@ -40,27 +40,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   };
 
   useEffect(() => {
-    // const progressJSON = localStorage.getItem('progress' || '');
-    // if (!progressJSON) {
-    //   setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
-    //   setEpisodeIndex(0);
-    //   return;
-    // }
-
-    // const progress = JSON.parse(progressJSON);
-    // if (typeof progress !== 'object' || progress.id !== movie.movie._id || progress.progressTime === 0) {
-    //   setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
-    //   setEpisodeIndex(0);
-    //   return;
-    // }
-    // setEpisodeIndex(progress.episodeIndex);
-    // setEpisodeLink(progress.episodeLink);
-    // setVideoProgress(progress.progressTime);
 
     setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
     setEpisodeIndex(0);
 
-    const progressJSON = localStorage.getItem('progress' || '');
+    const progressJSON = localStorage.getItem('progress');
     if (!progressJSON) return;
 
     const progress = JSON.parse(progressJSON);
@@ -71,7 +55,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     )
       return;
 
-    setProgressWatchInfo({
+    setPreviousWatchProgress({
       progressEpIndex: progress.episodeIndex,
       progressTime: progress.progressTime,
       progressEpLink: progress.episodeLink,
@@ -106,15 +90,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   }, [episodeLink]);
 
   const handleAcceptProgressWatch = () => {
-    setEpisodeIndex(progressWatchInfo.progressEpIndex);
-    setEpisodeLink(progressWatchInfo.progressEpLink);
-    setVideoProgress(progressWatchInfo.progressTime);
+    setEpisodeIndex(previousWatchProgress.progressEpIndex);
+    setEpisodeLink(previousWatchProgress.progressEpLink);
+    setVideoProgress(previousWatchProgress.progressTime);
 
     setIsShowMessage(false);
-
-    // videoRef.current?.addEventListener('canplaythrough', (e) => {
-    //   videoRef.current?.play();
-    // })
   };
 
   const handleRejectProgressWatch = () => {
@@ -125,7 +105,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     <div className="pt-[3.75rem] space-y-10">
       <ProgresswatchNotification
         isShowMessage={isShowMessage}
-        progressWatchInfo={progressWatchInfo}
+        previousWatchProgress={previousWatchProgress}
         handleAcceptProgressWatch={handleAcceptProgressWatch}
         handleRejectProgressWatch={handleRejectProgressWatch}
         movie={movie}
