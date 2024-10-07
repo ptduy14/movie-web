@@ -76,4 +76,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     );
   });
 
+// Set a display name for the component
+VideoPlayer.displayName = 'VideoPlayer';
+
 export default VideoPlayer;
