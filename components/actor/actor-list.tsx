@@ -7,6 +7,7 @@ import { GrPrevious, GrNext } from 'react-icons/gr';
 import { useEffect, useRef, useState } from 'react';
 import isNonEmpty from 'utils/is-none-empty';
 import creditIsvalid from 'utils/credit-is-valid';
+import LoadingComponent from '../loading/loading-component';
 
 export default function ActorList({
   movie,
@@ -17,6 +18,7 @@ export default function ActorList({
 }) {
   const [isReachBegin, setIsReachBegin] = useState(false);
   const [isReachEnd, setIsReachEnd] = useState(false);
+  const [isActorReadyToDisplay, setIsActorReadyToDisplay] = useState(false)
   const swiperRef = useRef<any>(null);
 
   const handlePrevSlide = () => {
@@ -27,7 +29,30 @@ export default function ActorList({
     swiperRef.current.slideNext();
   };
 
-  useEffect(() => {}, []);
+  const renderActorItems = () => {
+    if (!isActorReadyToDisplay) {
+      return <LoadingComponent />
+    }
+
+    if (creditIsvalid(credit)) {
+      return credit!.cast.map((item) => (
+        <SwiperSlide key={item.id}>
+          <ActorItem actor={item} />
+        </SwiperSlide>
+      ));
+    }
+
+    if (isNonEmpty(movie.movie.actor)) {
+      return movie.movie.actor.map((item, index) => (
+        <SwiperSlide key={index}>
+          <ActorItem actor={item} />
+        </SwiperSlide>
+      ))
+    }
+
+    return <div>Đang cập nhật</div>
+
+  }
 
   return (
     <div className="space-y-6">
@@ -51,27 +76,16 @@ export default function ActorList({
       <Swiper
         spaceBetween={30}
         slidesPerView={5}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper
+          setIsActorReadyToDisplay(true);
+        }}
         onProgress={(swiper, progess) => {
           progess === 0 ? setIsReachBegin(true) : setIsReachBegin(false);
           progess === 1 ? setIsReachEnd(true) : setIsReachEnd(false);
         }}
       >
-        {creditIsvalid(credit) ? (
-          credit!.cast.map((item) => (
-            <SwiperSlide key={item.id}>
-              <ActorItem actor={item} />
-            </SwiperSlide>
-          ))
-        ) : isNonEmpty(movie.movie.actor) ? (
-          movie.movie.actor.map((item, index) => (
-            <SwiperSlide key={index}>
-              <ActorItem actor={item} />
-            </SwiperSlide>
-          ))
-        ) : (
-          <div>Đang cập nhật</div>
-        )}
+        {renderActorItems()}
       </Swiper>
     </div>
   );
