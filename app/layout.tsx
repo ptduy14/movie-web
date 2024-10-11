@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,13 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-black text-white relative min-h-screen flex flex-col">
-        <Header />
-        {/* Add flex-grow here to make sure it expands and pushes footer to the bottom */}
-        <main className="flex-grow pb-12">
-          {children}
-        </main>
-        <Footer />
+      <body className="bg-black text-white relative flex flex-col">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
