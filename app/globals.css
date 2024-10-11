@@ -22,3 +22,17 @@ html, body {
   width: 85%;
   margin: 0 auto;
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
