@@ -9,6 +9,22 @@ export default function AuthModal() {
   const { isAuthModalOpen, closeAuthModal } = useAuthModel();
   const [showAnimation, setShowAnimation] = useState<boolean>(false);
 
+  // Tắt cuộn khi modal mở
+  useEffect(() => {
+    if (isAuthModalOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `8px`;
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = `0px`;
+    }
+    // Clean up khi component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = `0px`;
+    };
+  }, [isAuthModalOpen]);
+
   useEffect(() => {
     if (isAuthModalOpen) {
       setShowAnimation(true);
