@@ -1,5 +1,6 @@
-import { auth } from 'configs/firebase';
+import { auth, db } from 'configs/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -14,7 +15,19 @@ export async function POST(request: Request) {
     const expirationTime = idTokenResult.expirationTime;
     const refreshToken = user!.refreshToken;
 
-    const response = NextResponse.json({ user }, { status: 200 });
+    // get more info form firestore
+    const docRef = doc(db, "Users", user!.uid);
+    const docSnap = await getDoc(docRef);
+    const userData = docSnap.data();
+
+    // create new response body
+    const responseUserData = {
+      ...userData,
+      accessToken,
+      refreshToken
+    }
+
+    const response = NextResponse.json({ responseUserData }, { status: 200 });
 
     const cookieOption = {
       httpOnly: true,

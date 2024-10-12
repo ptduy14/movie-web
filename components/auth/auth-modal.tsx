@@ -31,10 +31,6 @@ export default function AuthModal() {
     };
   }, [isAuthModalOpen]);
 
-  const handleLoginByCredential = () => {
-    toast.success('Tính năng này chưa thể hoàn thiện vui lòng đăng nhập bằng google');
-  };
-
   const renderForm = () => {
     if (renderSignUpForm) {
       return <SignUpForm setRenderSignUpForm={setRenderSignUpForm}/>

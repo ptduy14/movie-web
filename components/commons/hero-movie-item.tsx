@@ -1,6 +1,7 @@
 import { FaPlay, FaPlus } from "react-icons/fa";
 import NewlyMovie from "types/newly-movie";
 import MovieSummary from "../movie/movie-summary";
+import BtnAddToCollection from "../buttons/btn-add-to-collection";
 
 export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMovie, movieContent: string }) {
   return (
@@ -30,12 +31,7 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
               <span className="block leading-4 font-semibold">Xem phim</span>
             </div>
           </a>
-          <button className="flex items-center space-x-2 bg-[#717171] py-3 px-5 rounded-md">
-            <FaPlus size={18} />
-            <span className="block leading-4 font-semibold">
-              Danh sách phát
-            </span>
-          </button>
+          <BtnAddToCollection variant="primary"/>
         </div>
       </div>
     </div>
