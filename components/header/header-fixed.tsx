@@ -15,7 +15,9 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
 
   useEffect(() => {
     if (user) {
-      setIsShowingAccountProfileIcon(true)
+      setIsShowingAccountProfileIcon(true);
+    } else {
+      setIsShowingAccountProfileIcon(false);
     }
     setLoading(false);
   }, [user])
