@@ -9,12 +9,24 @@ export async function POST(request: Request) {
     await signInWithEmailAndPassword(auth, data.email, data.password);
     const user = auth.currentUser;
 
-    return NextResponse.json(
-      {
-        user,
-      },
-      { status: 200 }
-    );
+    const idTokenResult = await user!.getIdTokenResult();
+    const accessToken = idTokenResult.token;
+    const expirationTime = idTokenResult.expirationTime;
+    const refreshToken = user!.refreshToken;
+
+    const response = NextResponse.json({ user }, { status: 200 });
+
+    const cookieOption = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Chỉ kích hoạt secure khi production
+      expires: new Date(expirationTime),
+      path: '/',
+    };
+
+    response.cookies.set('accessToken', accessToken, cookieOption);
+    response.cookies.set('refreshToken', refreshToken, cookieOption);
+
+    return response;
   } catch (error: any) {
     return NextResponse.json(
       {
