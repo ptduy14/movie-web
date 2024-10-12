@@ -22,6 +22,7 @@ export async function POST(request: Request) {
 
     // create new response body
     const responseUserData = {
+      uid: user!.uid,
       ...userData,
       accessToken,
       refreshToken

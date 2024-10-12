@@ -1,5 +1,4 @@
 import DetailMovie from 'types/detail-movie';
-import { FaPlus } from 'react-icons/fa6';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
@@ -46,7 +45,7 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
                 <div><span>({movie.movie.tmdb.vote_count} votes)</span></div>
               </div>}
               <div className="flex justify-between items-center">
-                <BtnAddToCollection variant='secondary'/>
+                <BtnAddToCollection variant='secondary' detailMovie={movie}/>
                 <div className="flex gap-x-2">
                   {movie.movie.category?.map((item, index) => (
                     <a
