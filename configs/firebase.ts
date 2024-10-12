@@ -8,7 +8,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "moviex-ad32a.firebaseapp.com",
   projectId: "moviex-ad32a",
   storageBucket: "moviex-ad32a.appspot.com",
