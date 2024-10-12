@@ -29,15 +29,15 @@ export async function POST(request: Request) {
 
     const response = NextResponse.json({ responseUserData }, { status: 200 });
 
-    const cookieOption = {
+    const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // Chỉ kích hoạt secure khi production
       expires: new Date(expirationTime),
       path: '/',
     };
 
-    response.cookies.set('accessToken', accessToken, cookieOption);
-    response.cookies.set('refreshToken', refreshToken, cookieOption);
+    response.cookies.set('accessToken', accessToken, cookieOptions);
+    response.cookies.set('refreshToken', refreshToken, cookieOptions);
 
     return response;
   } catch (error: any) {

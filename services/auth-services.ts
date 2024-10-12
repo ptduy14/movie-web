@@ -27,6 +27,11 @@ const AuthServices = {
 
     return res;
   },
+
+  logout: async() => {
+    const res = await fetch('/api/auth/logout');
+    return res;
+  }
 };
 
 export default AuthServices;
