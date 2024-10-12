@@ -38,8 +38,7 @@ export default function LoginForm({
       }
 
       const dataSuccess = await res.json();
-      dispatch(setUser(dataSuccess));
-
+      dispatch(setUser(dataSuccess.responseUserData));
     } catch (error: any) {
       toast.error(getFriendlyErrorMessage(error.message));
     } finally {
