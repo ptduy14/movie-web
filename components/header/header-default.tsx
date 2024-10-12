@@ -15,7 +15,7 @@ export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
 
   useEffect(() => {
     if (user) {
-      setIsShowingAccountProfileIcon(true);
+      setIsShowingAccountProfileIcon(true)
     } else {
       setIsShowingAccountProfileIcon(false);
     }

@@ -3,12 +3,14 @@
 import { FaPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useAuthModel } from "../context/auth-modal-context";
+import DetailMovie from "types/detail-movie";
 
 interface BtnAddToCollectionProps {
   variant: 'primary' | 'secondary'; // Prop để điều chỉnh kiểu dáng
+  detailMovie: DetailMovie;
 }
 
-export default function BtnAddToCollection({variant}: BtnAddToCollectionProps) {
+export default function BtnAddToCollection({variant, detailMovie}: BtnAddToCollectionProps) {
     const user = useSelector((state: any) => state.account.user);
     const {openAuthModal} = useAuthModel();
 
@@ -17,6 +19,8 @@ export default function BtnAddToCollection({variant}: BtnAddToCollectionProps) {
             openAuthModal();
             return;
         }
+
+
     }
 
     return (
