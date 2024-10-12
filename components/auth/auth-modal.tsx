@@ -4,19 +4,25 @@ import Logo from '../../public/mini-logo.png';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { useAuthModel } from '../context/auth-modal-context';
+import LoginForm from './login-form';
+import SignUpForm from './signup-form';
 
 export default function AuthModal() {
   const { isAuthModalOpen, closeAuthModal } = useAuthModel();
   const [showAnimation, setShowAnimation] = useState<boolean>(false);
+  const [renderSignUpForm, setRenderSignUpForm] = useState<boolean>(false);
 
   // Tắt cuộn khi modal mở
   useEffect(() => {
     if (isAuthModalOpen) {
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = `8px`;
+      setShowAnimation(true);
     } else {
       document.body.style.overflow = 'unset';
       document.body.style.paddingRight = `0px`;
+      setShowAnimation(false);
+      setRenderSignUpForm(false);
     }
     // Clean up khi component unmount
     return () => {
@@ -25,17 +31,17 @@ export default function AuthModal() {
     };
   }, [isAuthModalOpen]);
 
-  useEffect(() => {
-    if (isAuthModalOpen) {
-      setShowAnimation(true);
-    } else {
-      setShowAnimation(false);
-    }
-  }, [isAuthModalOpen]);
-
   const handleLoginByCredential = () => {
     toast.success('Tính năng này chưa thể hoàn thiện vui lòng đăng nhập bằng google');
   };
+
+  const renderForm = () => {
+    if (renderSignUpForm) {
+      return <SignUpForm setRenderSignUpForm={setRenderSignUpForm}/>
+    }
+
+    return <LoginForm setRenderSignUpForm={setRenderSignUpForm}/>
+  }
 
   if (!isAuthModalOpen) return null;
 
@@ -61,55 +67,7 @@ export default function AuthModal() {
         <div className="flex justify-center mb-4">
           <Image src={Logo} alt="Logo" className="w-16 h-16" />
         </div>
-        <h2 className="text-center text-white text-lg font-semibold mb-6">
-          Đăng nhập khoản MovieX
-        </h2>
-        {/* Form */}
-        <form>
-          {/* Email Input */}
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-300 mb-1">
-              Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full p-2 border border-slate-600 bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#e20913] rounded"
-              required
-            />
-          </div>
-          {/* Password Input */}
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-300 mb-1">
-              Mật khẩu:
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="w-full p-2 border border-slate-600 bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#e20913] rounded"
-              required
-            />
-          </div>
-          {/* Submit Button */}
-          <div className="flex justify-center mb-4">
-            <button
-              type="submit"
-              className="bg-[#e20913] text-white rounded p-2 w-full hover:bg-red-600 transition duration-200"
-              onClick={handleLoginByCredential}
-            >
-              Đăng nhập
-            </button>
-          </div>
-        </form>
-        {/* Google Login Option */}
-        <div className="flex justify-center">
-          <button
-            type="button"
-            className="bg-gray-800 text-white rounded p-2 w-full hover:bg-gray-700 transition duration-200"
-          >
-            Đăng nhập bằng Google
-          </button>
-        </div>
+        {renderForm()}
       </div>
     </div>
   );
