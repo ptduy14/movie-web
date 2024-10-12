@@ -18,7 +18,6 @@ export default function SearchInput() {
     } else {
       params.delete('name');
     }
-    console.log(term);
     replace(`${pathname}?${params.toString()}`);
   };
 

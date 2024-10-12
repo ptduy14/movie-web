@@ -39,7 +39,6 @@ export default function SignUpForm({
       setRenderSignUpForm(false);
 
     } catch (error: any) {
-      //console.log(error.message);
       toast.error(getFriendlyErrorMessage(error.message));
     } finally {
       setIsLoading(false)
