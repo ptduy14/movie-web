@@ -5,36 +5,31 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import NewlyMovie from 'types/newly-movie';
 import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
-import { getDescriptionHeroSectionMovies } from 'app/actions';
+import { getDetailMovieServerAction } from 'app/actions';
 import DetailMovie from 'types/detail-movie';
+import LoadingComponent from '../loading/loading-component';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
   const swiperRef = useRef<any>(null);
+  const [isFetchingDetailMovie, setIsFetchingDetailMovie] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsFetchingDetailMovie(true);
     const getDescriptionMovies = async () => {
-      const data = await getDescriptionHeroSectionMovies(movies);
+      const data = await getDetailMovieServerAction(movies);
       setDetailMovies(data);
-
-      // handleSetDescriptionMovies(data);
     };
 
+    setIsFetchingDetailMovie(false);
     getDescriptionMovies();
   }, [movies]);
-
-  // const handleSetDescriptionMovies = (detailMovies: any) => {
-  //   detailMovies.forEach((item: any) => {
-  //     setDiscriptionMovies([
-  //       ...descriptionMovies,
-  //       { _id: item.movie._id, description: item.movie.content },
-  //     ]);
-  //   });
-  // };
 
   const handleClickToNextSlide = () => {
     // swiperRef.current?.slideNext();
   };
+
+  if (isFetchingDetailMovie) return <div className='h-[50rem]'><LoadingComponent/></div>
 
   return (
     <Swiper
