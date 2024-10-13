@@ -13,7 +13,7 @@ export default async function HomePage() {
   const [newlyMovies, singleMovies, tvSeries, cartoonMovies, tvShows] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher, cartoonMoviesFetcher, tvShowsFetcher]);
 
   return (
-    <div>
+    <div className='h-full'>
       <HeroSection movies={newlyMovies.items.slice(0, 5)} />
       <div className="space-y-8">
         <MovieList

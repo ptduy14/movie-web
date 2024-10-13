@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 export default function AccountProfileIcon() {
   const user = useSelector((state: any) => state.account.user);
+  if (!user) return;
+  
   return (
     <>
       <Image
