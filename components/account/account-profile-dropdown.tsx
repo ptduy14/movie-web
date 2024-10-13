@@ -41,6 +41,16 @@ export default function AccountProfileDropdown() {
             </a>
           </div>
 
+          {/* Liên kết đến phim đã xem */}
+          <div className="border-b border-gray-500 pb-3 mb-3">
+            <a
+              className="block text-white text-base font-medium hover:text-gray-300 transition-colors"
+              href="/movies/recent"
+            >
+              Phim xem gần đây
+            </a>
+          </div>
+
           {/* Nút đăng xuất */}
           <button
             onClick={handleLogout}
