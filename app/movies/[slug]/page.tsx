@@ -36,7 +36,5 @@ export default async function Movie({ params }: PageParams) {
     }
   }
 
-  console.log('ok')
-
   return <MoviePage movie={movie} credit={credit} />;
 }

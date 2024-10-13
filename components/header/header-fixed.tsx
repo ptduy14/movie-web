@@ -4,8 +4,24 @@ import { IoSearch } from 'react-icons/io5';
 import SubType from './sub-type';
 import SubCountries from './sub-countries';
 import LoginSignUpIcon from '../auth/login-signup-icon';
+import { useSelector } from 'react-redux';
+import AccountProfileIcon from '../account/account-profile-icon';
+import { useEffect, useState } from 'react';
 
 export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
+  const user = useSelector((state: any) => state.account.user);
+  const [isShowingAccountProfileIcon, setIsShowingAccountProfileIcon] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (user) {
+      setIsShowingAccountProfileIcon(true);
+    } else {
+      setIsShowingAccountProfileIcon(false);
+    }
+    setLoading(false);
+  }, [user])
+  
   return (
     <header
       className={`fixed left-0 right-0 z-20 bg-black transition-all duration-500 ${
@@ -51,7 +67,7 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
             <IoSearch size={25} />
           </a>
           <div className={`relative h-full flex items-center pl-6 ${isScrolled && 'group'}`}>
-            <LoginSignUpIcon isScrolled={isScrolled} />
+          {!loading && (isShowingAccountProfileIcon ? <AccountProfileIcon /> : <LoginSignUpIcon isScrolled={isScrolled} />)}
           </div>
         </div>
       </div>

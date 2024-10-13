@@ -1,9 +1,9 @@
 import DetailMovie from 'types/detail-movie';
-import { FaPlus } from 'react-icons/fa6';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
 import TMDBLogo from '../logos/TMDB-Logo';
+import BtnAddToCollection from '../buttons/btn-add-to-collection';
 
 export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | undefined}) {
   return (
@@ -45,9 +45,7 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
                 <div><span>({movie.movie.tmdb.vote_count} votes)</span></div>
               </div>}
               <div className="flex justify-between items-center">
-                <button className="flex items-center bg-white px-3 py-2 rounded-md gap-x-2 text-black font-semibold">
-                  <FaPlus className="text-black" /> Bộ sưu tập
-                </button>
+                <BtnAddToCollection variant='secondary' detailMovie={movie}/>
                 <div className="flex gap-x-2">
                   {movie.movie.category?.map((item, index) => (
                     <a

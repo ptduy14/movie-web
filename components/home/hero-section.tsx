@@ -5,39 +5,31 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import NewlyMovie from 'types/newly-movie';
 import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
-import { getDescriptionHeroSectionMovies } from 'app/actions';
-
-interface DescriptionMovie {
-  _id: string;
-  description: string;
-}
+import { getDetailMovieServerAction } from 'app/actions';
+import DetailMovie from 'types/detail-movie';
+import LoadingComponent from '../loading/loading-component';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
-  const [descriptionMovies, setDiscriptionMovies] = useState<DescriptionMovie[]>([]);
+  const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
   const swiperRef = useRef<any>(null);
+  const [isFetchingDetailMovie, setIsFetchingDetailMovie] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsFetchingDetailMovie(true);
     const getDescriptionMovies = async () => {
-      const data = await getDescriptionHeroSectionMovies(movies);
-
-      handleSetDescriptionMovies(data);
+      const data = await getDetailMovieServerAction(movies);
+      setDetailMovies(data);
     };
 
+    setIsFetchingDetailMovie(false);
     getDescriptionMovies();
   }, [movies]);
-
-  const handleSetDescriptionMovies = (detailMovies: any) => {
-    detailMovies.forEach((item: any) => {
-      setDiscriptionMovies([
-        ...descriptionMovies,
-        { _id: item.movie._id, description: item.movie.content },
-      ]);
-    });
-  };
 
   const handleClickToNextSlide = () => {
     // swiperRef.current?.slideNext();
   };
+
+  if (isFetchingDetailMovie) return <div className='h-[50rem]'><LoadingComponent/></div>
 
   return (
     <Swiper
@@ -47,16 +39,12 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
       loop={true}
       onSwiper={(swiper) => (swiperRef.current = swiper)}
     >
-      {movies.map((movie: NewlyMovie) => {
-        const movieContent = descriptionMovies.find((item) => item._id === movie._id);
-        return (
-          <SwiperSlide key={movie._id} onClick={handleClickToNextSlide}>
-            <HeroMovieItem
-              movie={movie}
-              movieContent={movieContent?.description || 'Đang cập nhật nội dung phim'}
-            />
-          </SwiperSlide>
-        );
+      {detailMovies.map((movie: DetailMovie) => {
+        return <SwiperSlide key={movie.movie._id} onClick={handleClickToNextSlide}>
+        <HeroMovieItem
+          detailMovie={movie}
+        />
+      </SwiperSlide>
       })}
     </Swiper>
   );
