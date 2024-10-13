@@ -5,14 +5,15 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 //import storage from 'redux-persist/lib/storage';
 import userSlice from "./slices/user-slice"
 import storage from './create-storage';
+import progressSlice from './slices/progress-slice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['account'],
+  whitelist: ['account', 'progress'],
 };
 
-const rootReducer = combineReducers({ account: userSlice });
+const rootReducer = combineReducers({ account: userSlice, progress: progressSlice });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
