@@ -26,6 +26,8 @@ export default function MovieCollectionPage() {
   }, [user]);
 
   const getMovieCollection = async () => {
+    if (!user) return;
+
     const userMovieRef = doc(db, 'userMovies', user.id);
     const docSnapshot = await getDoc(userMovieRef);
 
@@ -53,7 +55,6 @@ export default function MovieCollectionPage() {
     <div className="pt-20 space-y-8 h-full">
       <div className="text-2xl font-bold flex justify-center">Bộ sưu tập phim của bạn</div>
       {isLoading ? <LoadingComponent /> : renderMovieCollection()}
-      
     </div>
   );
 }
