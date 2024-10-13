@@ -34,8 +34,6 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
         }
       }
 
-      console.log(videoUrl);
-
       return () => {
         if (video && video.src) {
           video.pause();

@@ -19,7 +19,6 @@ export default function ProgresswatchNotification({
   movie: DetailMovie
 }) {
     const {progressTime, progressEpIndex} = previousWatchProgress;
-    console.log(movie.movie.type)
     return (
     <div
       className={`fixed top-16 ${

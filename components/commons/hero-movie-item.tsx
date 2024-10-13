@@ -1,12 +1,13 @@
-import { FaPlay, FaPlus } from "react-icons/fa";
-import NewlyMovie from "types/newly-movie";
+import { FaPlay } from "react-icons/fa";
 import MovieSummary from "../movie/movie-summary";
+import BtnAddToCollection from "../buttons/btn-add-to-collection";
+import DetailMovie from "types/detail-movie";
 
-export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMovie, movieContent: string }) {
+export default function HeroMovieItem({detailMovie } : { detailMovie: DetailMovie }) {
   return (
     <div className="relative w-full h-[50rem]">
       <img
-        src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.poster_url}
+        src={detailMovie.movie.poster_url}
         alt=""
         className="w-full h-full"
         onError={({ currentTarget }) => {
@@ -18,11 +19,11 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
       <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
       <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
       <div className="absolute w-2/4 top-[20rem] left-6 space-y-5">
-        <h2 className="text-4xl font-bold">{movie.name}</h2>
-        <MovieSummary summary={movieContent} />
+        <h2 className="text-4xl font-bold">{detailMovie.movie.name}</h2>
+        <MovieSummary summary={detailMovie.movie.content || "Đang cập nhật nội dung phim"} />
         <div className="space-x-5 flex items-center">
           <a
-            href={`/movies/${movie.slug}`}
+            href={`/movies/${detailMovie.movie.slug}`}
             className="inline-block py-3 px-5 bg-white text-black rounded-md"
           >
             <div className="flex align-top space-x-2">
@@ -30,12 +31,7 @@ export default function HeroMovieItem({ movie, movieContent } : { movie: NewlyMo
               <span className="block leading-4 font-semibold">Xem phim</span>
             </div>
           </a>
-          <button className="flex items-center space-x-2 bg-[#717171] py-3 px-5 rounded-md">
-            <FaPlus size={18} />
-            <span className="block leading-4 font-semibold">
-              Danh sách phát
-            </span>
-          </button>
+          <BtnAddToCollection variant="primary" detailMovie={detailMovie}/>
         </div>
       </div>
     </div>
