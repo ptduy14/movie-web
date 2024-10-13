@@ -13,7 +13,8 @@ export async function POST(request: Request) {
     if (user) {
       await setDoc(doc(db, "Users", user.uid), {
         email: user.email,
-        name: data.name
+        name: data.name,
+        photo: ''
       })
     }
     

@@ -2,20 +2,21 @@
 
 import { createContext, useContext, useEffect } from 'react';
 import { LoginValidationSchemaType } from 'schemas/login-validation-schema';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../configs/firebase';
 import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../redux/slices/user-slice';
 import { toast } from 'react-toastify';
 import { db } from '../../configs/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import AuthServices from 'services/auth-services';
 
 const AuthContext = createContext<undefined | AuthContextValueType>(undefined);
 
 interface AuthContextValueType {
   login: (data: LoginValidationSchemaType) => Promise<boolean>;
+  loginWithGoogle: () => Promise<boolean>;
 }
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -51,8 +52,44 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     }
   };
 
+  const loginWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+    const user = auth.currentUser;
+    
+    // get more info form firestore
+    const docRef = doc(db, 'Users', user!.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      await setDoc(docRef, {
+        email: user?.email,
+        name: user?.displayName,
+        photo: user?.photoURL
+      });
+    }
+
+    const tokens = await user!.getIdTokenResult();
+    const expirationTime = tokens.expirationTime;
+
+    const userAccountInfo = {
+      id: user!.uid,
+      email: user?.email,
+      name: user?.displayName,
+      accessToken: tokens.token,
+      refreshToken: user!.refreshToken,
+      photo: user?.photoURL
+    };
+
+    await AuthServices.setAuthCookie({ ...userAccountInfo, expirationTime });
+    dispatch(setUser(userAccountInfo));
+
+    return true;
+  }
+
   const AuthContextValue: AuthContextValueType = {
     login,
+    loginWithGoogle
   };
 
   return <AuthContext.Provider value={AuthContextValue}>{children}</AuthContext.Provider>;

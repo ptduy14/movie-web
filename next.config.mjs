@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['img.ophim.live'], // Thêm domain img.ophim.live
+    domains: ['img.ophim.live', 'lh3.googleusercontent.com'],
   },
 };
 
