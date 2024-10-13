@@ -4,7 +4,7 @@ import NewlyMovie from 'types/newly-movie';
 import MovieServices from 'services/movie-services';
 import { redirect } from 'next/navigation';
 
-export async function getDescriptionHeroSectionMovies(movies: NewlyMovie[]) {
+export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
   const fetcher = movies.map((movie: NewlyMovie) => {
     return MovieServices.getDetailMovie(movie.slug);
   });

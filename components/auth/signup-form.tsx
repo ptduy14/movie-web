@@ -104,6 +104,7 @@ export default function SignUpForm({
           <button
             type="submit"
             className="bg-[#e20913] text-white rounded p-2 w-full hover:bg-red-600 transition duration-200"
+            disabled={isLoading}
           >
             {isLoading ? <LoadingSpinerBtn /> : "Đăng ký"}
           </button>

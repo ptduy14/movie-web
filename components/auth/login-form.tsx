@@ -2,14 +2,12 @@ import { SetStateAction, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { loginValidationSchema, LoginValidationSchemaType } from 'schemas/login-validation-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import AuthServices from 'services/auth-services';
-import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAuthModel } from '../context/auth-modal-context';
-import { setUser } from '../../redux/slices/user-slice';
+import { useAuth } from '../context/auth-conext';
 
 export default function LoginForm({
   setRenderSignUpForm,
@@ -22,35 +20,23 @@ export default function LoginForm({
     formState: { errors },
   } = useForm<LoginValidationSchemaType>({ resolver: zodResolver(loginValidationSchema) });
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const {closeAuthModal} = useAuthModel();
+  const { closeAuthModal } = useAuthModel();
+  const { login } = useAuth();
 
   const user = useSelector((state: any) => state.account.user);
-  const dispatch = useDispatch();
 
   const onSubmit: SubmitHandler<LoginValidationSchemaType> = async (data) => {
     setIsLoading(true);
-    try {
-      const res = await AuthServices.login(data);
-
-      if (!res.ok) {
-        const dataError = await res.json();
-        throw new Error(dataError.code || 'Đăng nhập thất bại');
-      }
-
-      const dataSuccess = await res.json();
-      dispatch(setUser(dataSuccess.responseUserData));
-    } catch (error: any) {
-      toast.error(getFriendlyErrorMessage(error.message));
-    } finally {
-      setIsLoading(false);
-    }
+    await login(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     if (user) {
       closeAuthModal();
-      toast.success("Đăng nhập thành công");
+      toast.success('Đăng nhập thành công');
     }
+    setIsLoading(false);
   }, [user]);
 
   return (
@@ -97,6 +83,7 @@ export default function LoginForm({
           <button
             type="submit"
             className="bg-[#e20913] text-white rounded p-2 w-full hover:bg-red-600 transition duration-200"
+            disabled={isLoading}
           >
             {isLoading ? <LoadingSpinerBtn /> : 'Đăng nhập'}
           </button>

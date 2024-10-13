@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../redux/slices/user-slice';
 import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../configs/firebase';
 
 export default function AccountProfileDropdown() {
   const user = useSelector((state: any) => state.account.user);
@@ -13,7 +15,8 @@ export default function AccountProfileDropdown() {
 
   const handleLogout = async () => {
     setIsLoading(true);
-    await AuthServices.logout();
+    await AuthServices.removeAuthCookie();
+    await signOut(auth);
     dispatch(removeUser());
     setIsLoading(false);
   };
@@ -39,12 +42,13 @@ export default function AccountProfileDropdown() {
           </div>
 
           {/* Nút đăng xuất */}
-          <div
+          <button
             onClick={handleLogout}
-            className="bg-[#e20913] text-center py-2 rounded-md cursor-pointer hover:opacity-90 transition-all text-white font-semibold"
+            className="block w-full bg-[#e20913] text-center py-2 rounded-md cursor-pointer hover:opacity-90 transition-all text-white font-semibold"
+            disabled={isLoading}
           >
             {isLoading ? <LoadingSpinerBtn /> : 'Đăng xuất'}
-          </div>
+          </button>
         </>
       )}
     </div>
