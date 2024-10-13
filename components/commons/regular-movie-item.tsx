@@ -1,10 +1,11 @@
 import Movie from 'types/movie';
+import MovieCollection from 'types/movie-collection';
 
-export default function RegularMovieItem({ movie }: { movie: Movie }) {
+export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollection}) {
   return (
     <a className="block relative h-auto space-y-2" href={`/movies/${movie.slug}`}>
       <div className="w-full h-[20.625rem]">
-        <img loading='lazy' className="w-full h-full object-cover" src={`${process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url}`} alt="" />
+        <img loading='lazy' className="w-full h-full object-cover" src={`${isMovie(movie) ? process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url: movie.thumb_url}`} alt="" />
       </div>
       <div>
         <div className="truncate">{movie.name}</div>
@@ -13,4 +14,8 @@ export default function RegularMovieItem({ movie }: { movie: Movie }) {
       <div className='absolute top-0 right-0 px-1 bg-[#e10711]'>{movie.lang + '-' +movie.quality}</div>
     </a>
   );
+}
+
+function isMovie(item: Movie | MovieCollection): item is Movie {
+  return (item as Movie).poster_url !== undefined; // Nếu có thuộc tính 'title', thì đó là Movie
 }
