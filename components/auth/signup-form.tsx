@@ -110,13 +110,6 @@ export default function SignUpForm({
           </button>
         </div>
       </form>
-      {/* Google SignUp Option */}
-      <button
-        type="button"
-        className="bg-gray-800 text-white rounded p-2 w-full hover:bg-gray-700 transition duration-200"
-      >
-        Đăng ký bằng Google
-      </button>
       <div className="text-center mt-6">
         Bạn đã có tài khoản?{' '}
         <span

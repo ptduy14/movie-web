@@ -8,20 +8,22 @@ import { useEffect, useRef, useState } from 'react';
 import { getDetailMovieServerAction } from 'app/actions';
 import DetailMovie from 'types/detail-movie';
 import LoadingComponent from '../loading/loading-component';
+import { useHomePageLoadingContext } from '../context/home-page-loading-context';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
   const swiperRef = useRef<any>(null);
   const [isFetchingDetailMovie, setIsFetchingDetailMovie] = useState<boolean>(false);
 
+  const {isLoadingHomePage, setISLoadingHomePage} = useHomePageLoadingContext();
+
   useEffect(() => {
-    setIsFetchingDetailMovie(true);
     const getDescriptionMovies = async () => {
       const data = await getDetailMovieServerAction(movies);
       setDetailMovies(data);
+      setISLoadingHomePage(false);
     };
 
-    setIsFetchingDetailMovie(false);
     getDescriptionMovies();
   }, [movies]);
 
@@ -29,7 +31,9 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
     // swiperRef.current?.slideNext();
   };
 
-  if (isFetchingDetailMovie) return <div className='h-[50rem]'><LoadingComponent/></div>
+  if (isLoadingHomePage) {
+    return <LoadingComponent />
+  }
 
   return (
     <Swiper

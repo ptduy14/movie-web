@@ -8,6 +8,7 @@ import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { useSelector } from 'react-redux';
 import { useAuthModel } from '../context/auth-modal-context';
 import { useAuth } from '../context/auth-conext';
+import AuthServices from 'services/auth-services';
 
 export default function LoginForm({
   setRenderSignUpForm,
@@ -20,8 +21,9 @@ export default function LoginForm({
     formState: { errors },
   } = useForm<LoginValidationSchemaType>({ resolver: zodResolver(loginValidationSchema) });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingLoginWithGoogle, setIsLoadingLoginWithGoogle] = useState<boolean>(false);
   const { closeAuthModal } = useAuthModel();
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
 
   const user = useSelector((state: any) => state.account.user);
 
@@ -29,6 +31,12 @@ export default function LoginForm({
     setIsLoading(true);
     await login(data);
     setIsLoading(false);
+  };
+
+  const handleLoginWithGoogle = async () => {
+    setIsLoadingLoginWithGoogle(true);
+    await loginWithGoogle();
+    setIsLoadingLoginWithGoogle(false);
   };
 
   useEffect(() => {
@@ -83,7 +91,7 @@ export default function LoginForm({
           <button
             type="submit"
             className="bg-[#e20913] text-white rounded p-2 w-full hover:bg-red-600 transition duration-200"
-            disabled={isLoading}
+            disabled={isLoading || isLoadingLoginWithGoogle}
           >
             {isLoading ? <LoadingSpinerBtn /> : 'Đăng nhập'}
           </button>
@@ -91,10 +99,12 @@ export default function LoginForm({
       </form>
       {/* Google Login Option */}
       <button
+        disabled={isLoadingLoginWithGoogle || isLoading}
         type="button"
         className="bg-gray-800 text-white rounded p-2 w-full hover:bg-gray-700 transition duration-200"
+        onClick={handleLoginWithGoogle}
       >
-        Đăng nhập bằng Google
+        {isLoadingLoginWithGoogle ? <LoadingSpinerBtn /> : 'Đăng nhập bằng Google'}
       </button>
       <div className="text-center mt-6">
         Bạn chưa có tài khoản?{' '}
