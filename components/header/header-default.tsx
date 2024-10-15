@@ -7,11 +7,14 @@ import LoginSignUpIcon from '../auth/login-signup-icon';
 import { useSelector } from 'react-redux';
 import AccountProfileIcon from '../account/account-profile-icon';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
   const user = useSelector((state: any) => state.account.user);
   const [isShowingAccountProfileIcon, setIsShowingAccountProfileIcon] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     if (user) {
@@ -29,23 +32,23 @@ export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
           <Image src={logo} alt="Picture of the author" className="w-32" />
         </a>
         <ul className="flex items-center font-semibold text-lg">
-          <li className="px-8">
-            <a className="leading-[3.62rem] hover:text-[#e10711]" href="/movies/format/phim-le">
+        <li className="px-8">
+            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/phim-le' && 'text-[#e10711]'}`} href="/movies/format/phim-le">
               Phim lẻ
             </a>
           </li>
           <li className="px-8">
-            <a className="leading-[3.62rem] hover:text-[#e10711]" href="/movies/format/phim-bo">
+            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/phim-bo' && 'text-[#e10711]'}`} href="/movies/format/phim-bo">
               Phim bộ
             </a>
           </li>
           <li className="px-8">
-            <a className="leading-[3.62rem] hover:text-[#e10711]" href="/movies/format/hoat-hinh">
+            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/hoat-hinh' && 'text-[#e10711]'}`} href="/movies/format/hoat-hinh">
               Hoạt hình
             </a>
           </li>
           <li className="px-8">
-            <a className="leading-[3.62rem] hover:text-[#e10711]" href="/movies/format/tv-shows">
+            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/tv-shows' && 'text-[#e10711]'}`} href="/movies/format/tv-shows">
               TV show
             </a>
           </li>
