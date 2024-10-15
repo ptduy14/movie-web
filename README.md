@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+   MovieX - An Online Movie Streaming Platform
+</h1>
 
-## Getting Started
+This project is a Next.js-based online movie streaming platform that allows users to watch movies, select episodes, and personalize their viewing experience through a secure login system. The platform features an intuitive user interface, enabling seamless navigation and access to a wide variety of movies and shows. Users can easily track their favorite content and enjoy a tailored experience based on their preferences.
 
-First, run the development server:
+## Features
+- **Movie Streaming:** Seamless streaming of a wide variety of movies and shows.
+- **Episode Selection:** Users can easily choose and navigate between different episodes.
+- **Movie Search:** An intuitive search function to quickly find desired movies or series.
+- **User Registration and Login:** A secure system that allows users to create accounts and log in.
+- **Personalized Experience:** Users can add movies to their favorites list and save their viewing progress, with a complete history of watched content.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h1 align="center">
+  Tech Stack
+</h1>
+<div align="center">
+  <img alt="Nextjs" src="https://www.drupal.org/files/project-images/nextjs-icon-dark-background.png" height="75" />
+  <img alt="React" src="https://user-images.githubusercontent.com/42357900/218828330-592fc93d-d58f-4c78-95dd-4c48967a1619.png" height="75" />
+  <img alt="Tailwind" src="https://user-images.githubusercontent.com/42357900/218828205-2228cc0e-8cdc-4f6a-9dd8-a5793dd8ffe9.svg" width="75" />
+  <img alt="Tailwind" src="https://w7.pngwing.com/pngs/246/288/png-transparent-firebase-hd-logo.png" width="75" />
+  <img alt="Tailwind" src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png" width="75" />
+  <img alt="Vercel" src="https://user-images.githubusercontent.com/42357900/219872747-281e8987-9cbd-4cd9-b068-f0e8e23ad2bf.png" height="75" />
+</div>
