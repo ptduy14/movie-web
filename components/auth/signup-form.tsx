@@ -33,7 +33,6 @@ export default function SignUpForm({
         throw new Error(dataError.code || 'Đăng nhập thất bại');
       }
 
-      //const dataSuccess = await res.json();
       toast.success("Đăng ký tài khoản thành công");
       reset();
       setRenderSignUpForm(false);

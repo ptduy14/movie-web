@@ -52,7 +52,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
           );
         })}
       </Swiper>
-      <div className="absolute z-10 top-[20rem] right-6 border border-white p-4 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300" onClick={handleClickToNextSlide}>
+      <div className="absolute z-10 top-[18rem] right-6 border border-white p-4 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300" onClick={handleClickToNextSlide}>
         <FaChevronRight className="text-white group-hover:text-black transition-colors duration-300" />
       </div>
     </div>
