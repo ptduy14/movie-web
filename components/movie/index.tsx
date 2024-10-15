@@ -16,13 +16,13 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
         <div className="container-wrapper-movie relative flex justify-end">
           <div className="w-1/4 absolute left-0 top-0">
             <img className="w-full shadow-custom" src={movie.movie.thumb_url} alt="" />
-            <a
+            {movie.movie.episode_current !== 'Trailer' && <a
               className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
               href={`/movies/watch/${movie.movie.slug}`}
             >
               <FaPlay size={25} />
               Xem phim
-            </a>
+            </a>}
           </div>
           <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
             <div>

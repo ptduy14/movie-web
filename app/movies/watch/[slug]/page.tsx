@@ -24,5 +24,10 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function MovieWatch({ params }: { params: { slug: string } }) {
   const movie = await MovieServices.getDetailMovie(params.slug);
 
+  if (movie.movie.episode_current === 'Trailer') {
+    redirect(`/movies/${params.slug}`); // Redirect back to the previous route
+    return null; // Return null as the component won't render
+  }
+
   return <MovieWatchPage movie={movie} />;
 }
