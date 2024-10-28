@@ -57,7 +57,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     await signInWithPopup(auth, provider);
     const user = auth.currentUser;
     
-    // get more info form firestore
     const docRef = doc(db, 'Users', user!.uid);
     const docSnap = await getDoc(docRef);
 
