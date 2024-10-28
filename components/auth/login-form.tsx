@@ -34,9 +34,7 @@ export default function LoginForm({
   };
 
   const handleLoginWithGoogle = async () => {
-    setIsLoadingLoginWithGoogle(true);
     await loginWithGoogle();
-    setIsLoadingLoginWithGoogle(false);
   };
 
   useEffect(() => {
