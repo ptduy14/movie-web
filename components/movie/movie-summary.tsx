@@ -7,5 +7,5 @@ export default function MovieSummary({summary}:{summary: string}) {
         if (contentRef.current) contentRef.current.innerHTML = summary;
       }, [])
 
-    return <div ref={contentRef}></div>
+    return <div className="limit-movie-summary" ref={contentRef}></div>
 }
