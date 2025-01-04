@@ -19,6 +19,13 @@ export default function ProgresswatchNotification({
   movie: DetailMovie
 }) {
     const {progressTime, progressEpIndex} = previousWatchProgress;
+    
+    const renderCurrentEpisode= () => {
+      if (movie.episodes[0].server_data.length === 1) return;
+
+      return <span className="font-bold">tập {progressEpIndex + 1}-</span>
+    }
+
     return (
     <div
       className={`fixed top-16 ${
@@ -27,7 +34,7 @@ export default function ProgresswatchNotification({
     >
       <span className="">
         Hệ thống nhận thấy bạn đang xem đến{' '}
-        {movie.movie.type !== 'single' && <span className="font-bold">tập {progressEpIndex + 1}-</span>} 
+        {renderCurrentEpisode()} 
         {' '}
         <span className="font-bold">{convertSecondToTime(progressTime)}</span>, bạn muốn tiếp tục
         xem chứ ?
