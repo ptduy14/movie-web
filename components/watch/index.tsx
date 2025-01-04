@@ -75,9 +75,13 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       progressEpLink: progress.progress.episodeLink,
     });
 
-    let timerID = setTimeout(() => {
-      setIsShowMessage(true);
-    }, 2000);
+    let timerID: any;
+
+    if (progress.id === movie.movie._id) {
+      timerID = setTimeout(() => {
+        setIsShowMessage(true);
+      }, 2000);
+    }
 
     return () => {
       if (timerID) clearTimeout(timerID);
@@ -85,6 +89,8 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   }, []);
 
   const handleStoreViewingProgress = async (e: any) => {
+    if (videoRef.current?.currentTime === 0) return;
+     
     const progress = {
       id: movie.movie._id,
       slug: movie.movie.slug,
