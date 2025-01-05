@@ -5,6 +5,7 @@ import ActorList from '../actor/actor-list';
 import Credit from 'types/credit';
 import isNonEmpty from 'utils/is-none-empty';
 import MovieSummary from './movie-summary';
+import CommentSection from '../comment';
 
 export default function MovieContent({ movie, credit }: { movie: DetailMovie, credit: Credit | undefined}) {
   const directors = isNonEmpty(movie.movie.director) ? movie.movie.director?.join(', ') : 'Đang cập nhật';
@@ -34,6 +35,7 @@ export default function MovieContent({ movie, credit }: { movie: DetailMovie, cr
           <ActorList movie={movie} credit={credit}/>
         </div>
         {movie.movie.trailer_url !== '' && <Trailer trailer={movie.movie.trailer_url}/>}
+        <CommentSection />
       </div>
     </div>
   );
