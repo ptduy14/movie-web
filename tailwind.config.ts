@@ -8,7 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {},
+      colors: {
+        'custome-red': '#e10711'
+      },
       boxShadow: {
         custom: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
       },

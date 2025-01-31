@@ -54,7 +54,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
     if (!progress) return;
 
-    // lưu lại tiến trình xem cuối cùng của phim trước
+    // lưu lại tiến trình xem cuối cùng của phim trước vào db
     if (user && progress && progress.id !== movie.movie._id) {
       // Ensure it's awaited if async
       (async () => {

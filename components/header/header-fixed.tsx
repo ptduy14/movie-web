@@ -37,22 +37,22 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
         </a>
         <ul className="flex items-center font-semibold text-lg">
           <li className="px-8">
-            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/phim-le' && 'text-[#e10711]'}`} href="/movies/format/phim-le">
+            <a className={`hover:text-custome-red ${pathname === '/movies/format/phim-le' && 'text-custome-red'}`} href="/movies/format/phim-le">
               Phim lẻ
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/phim-bo' && 'text-[#e10711]'}`} href="/movies/format/phim-bo">
+            <a className={`hover:text-custome-red ${pathname === '/movies/format/phim-bo' && 'text-custome-red'}`} href="/movies/format/phim-bo">
               Phim bộ
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/hoat-hinh' && 'text-[#e10711]'}`} href="/movies/format/hoat-hinh">
+            <a className={`hover:text-custome-red ${pathname === '/movies/format/hoat-hinh' && 'text-custome-red'}`} href="/movies/format/hoat-hinh">
               Hoạt hình
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-[#e10711] ${pathname === '/movies/format/tv-shows' && 'text-[#e10711]'}`} href="/movies/format/tv-shows">
+            <a className={`hover:text-custome-red ${pathname === '/movies/format/tv-shows' && 'text-custome-red'}`} href="/movies/format/tv-shows">
               TV show
             </a>
           </li>
@@ -61,12 +61,12 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
             <SubType />
           </li>
           <li className={`px-8 relative ${isScrolled && 'group'}`}>
-            <p className="leading-[3.62rem] hover:text-[#e10711] cursor-pointer">Quốc gia</p>
+            <p className="leading-[3.62rem] hover:text-custome-red cursor-pointer">Quốc gia</p>
             <SubCountries />
           </li>
         </ul>
         <div className="flex gap-x-4 items-center h-[3.62rem]">
-          <a className="cursor-pointer hover:text-[#e10711]" href="/search">
+          <a className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </a>
           <div className={`relative h-full flex items-center pl-6 ${isScrolled && 'group'}`}>
