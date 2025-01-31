@@ -12,7 +12,7 @@ export default function AccountProfileIcon() {
       <Image
         src={user.photo || AccountDefaultImg} // Đường dẫn tới hình ảnh
         alt="User Profile"
-        className="cursor-pointer hover:text-[#e10711] transition duration-200 rounded-full"
+        className="cursor-pointer hover:text-custome-red] transition duration-200 rounded-full"
         width={25}
         height={25}
       />
