@@ -11,7 +11,7 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
         <div className="truncate">{movie.name}</div>
         <div className="truncate text-sm text-[#9B9285]">{movie.origin_name}</div>
       </div>
-      <div className='absolute top-0 right-0 px-1 bg-[#e10711]'>{movie.lang + '-' +movie.quality}</div>
+      <div className='absolute top-0 right-0 px-1 bg-custome-red'>{movie.lang + '-' +movie.quality}</div>
     </a>
   );
 }
