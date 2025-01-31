@@ -1,11 +1,11 @@
 'use client';
 
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext } from 'react';
 import { LoginValidationSchemaType } from 'schemas/login-validation-schema';
-import { signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../configs/firebase';
 import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/user-slice';
 import { toast } from 'react-toastify';
 import { db } from '../../configs/firebase';
