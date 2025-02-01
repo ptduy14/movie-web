@@ -10,23 +10,19 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
-  const user = useSelector((state: any) => state.account.user);
-  const [isShowingAccountProfileIcon, setIsShowingAccountProfileIcon] = useState<boolean>(false);
+  const user = useSelector((state: any) => state.auth.user);
+  const [authenticatedUser, setAuthenticatedUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   const pathname = usePathname();
 
   useEffect(() => {
-    if (user) {
-      setIsShowingAccountProfileIcon(true)
-    } else {
-      setIsShowingAccountProfileIcon(false);
-    }
+    setAuthenticatedUser(user);
     setLoading(false);
-  }, [user])
+  }, [user]);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-10">
+    <header className="absolute top-0 left-0 right-0 z-20">
       <div className="header-container flex items-center justify-between container-wrapper">
         <a className="block" href="/">
           <Image src={logo} alt="Picture of the author" className="w-32" />
@@ -66,7 +62,7 @@ export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
             <IoSearch size={25} />
           </a>
           <div className={`relative h-full flex items-center pl-6 ${!isScrolled && 'group'}`}>
-          {!loading && (isShowingAccountProfileIcon ? <AccountProfileIcon /> : <LoginSignUpIcon isScrolled={isScrolled} />)}
+          {!loading && (authenticatedUser ? <AccountProfileIcon  authenticatedUser={authenticatedUser}/> : <LoginSignUpIcon isScrolled={isScrolled} />)}
           </div>
         </div>
       </div>

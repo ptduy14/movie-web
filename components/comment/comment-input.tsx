@@ -1,24 +1,13 @@
 import Image from "next/image";
-import { useSelector } from "react-redux";
 import AccountDefaultImg from "../../public/account-default-img.jpg";
-import { useEffect, useState } from "react";
 
-export default function CommentInput() {
-    const user = useSelector((state: any) => state.account.user);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    useEffect(() => {
-        if (user) setIsAuthenticated(true)
-    }, [user])
-
-    if (!isAuthenticated) return;
-
+export default function CommentInput({authenticatedUser} : {authenticatedUser: any}) {
     return (
         <div>
             <div className="flex items-center border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
                 <div className="mr-3">
                     <Image
-                        src={user.photo || AccountDefaultImg}
+                        src={authenticatedUser.photo || AccountDefaultImg}
                         alt="User Profile"
                         className="cursor-pointer rounded-full"
                         width={40}
