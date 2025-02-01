@@ -16,7 +16,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   // episodes[serverIndex]: server được chọn
   // server_data[episodeIndex] || server_data[index]: tập phim
 
-  const user = useSelector((state: any) => state.account.user);
+  const user = useSelector((state: any) => state.auth.user);
   const progress = useSelector((state: any) => state.progress.progress);
   const dispatch = useDispatch();
 
