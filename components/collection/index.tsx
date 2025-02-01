@@ -14,7 +14,7 @@ export default function MovieCollectionPage() {
   const [movieCollection, setMovieCollection] = useState<MovieCollection[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const user = useSelector((state: any) => state.account.user);
+  const user = useSelector((state: any) => state.auth.user);
   const router = useRouter();
 
   useEffect(() => {

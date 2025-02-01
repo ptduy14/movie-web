@@ -15,7 +15,7 @@ export default function RecentMoviePage() {
   const [recentMovies, setRecentMovies] = useState<A[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const user = useSelector((state: any) => state.account.user);
+  const user = useSelector((state: any) => state.auth.user);
   const router = useRouter();
 
   useEffect(() => {
