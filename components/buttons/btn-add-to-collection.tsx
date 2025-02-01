@@ -18,7 +18,7 @@ interface BtnAddToCollectionProps {
 }
 
 export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCollectionProps) {
-  const user = useSelector((state: any) => state.account.user);
+  const user = useSelector((state: any) => state.auth.user);
   const { openAuthModal } = useAuthModel();
   const [isHandling, setIsHandling] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);

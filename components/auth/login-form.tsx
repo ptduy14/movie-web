@@ -25,7 +25,7 @@ export default function LoginForm({
   const { closeAuthModal } = useAuthModel();
   const { login, loginWithGoogle } = useAuth();
 
-  const user = useSelector((state: any) => state.account.user);
+  const user = useSelector((state: any) => state.auth.user);
 
   const onSubmit: SubmitHandler<LoginValidationSchemaType> = async (data) => {
     setIsLoading(true);

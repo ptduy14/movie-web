@@ -10,10 +10,10 @@ import progressSlice from './slices/progress-slice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['account', 'progress'],
+  whitelist: ['auth', 'progress'],
 };
 
-const rootReducer = combineReducers({ account: userSlice, progress: progressSlice });
+const rootReducer = combineReducers({ auth: userSlice, progress: progressSlice });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
