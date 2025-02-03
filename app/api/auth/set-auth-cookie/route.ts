@@ -8,8 +8,8 @@ export async function POST(request: Request) {
     const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // Chỉ kích hoạt secure khi production
-      expires: new Date(data.expirationTime),
       path: '/',
+      maxAge: 30 * 24 * 60 * 60,
     };
 
     response.cookies.set('accessToken', data.accessToken, cookieOptions);
