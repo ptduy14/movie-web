@@ -20,8 +20,9 @@ export default function MovieCollectionPage() {
   useEffect(() => {
     if (!user) {
       router.push('/');
+      return;
     }
-
+    
     getMovieCollection();
   }, [user]);
 
