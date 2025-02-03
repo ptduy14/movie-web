@@ -33,7 +33,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       const userData = docSnap.data();
 
       const tokens = await user!.getIdTokenResult();
-      const expirationTime = tokens.expirationTime;
 
       const userAccountInfo = {
         id: user!.uid,
@@ -42,7 +41,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         refreshToken: user!.refreshToken,
       };
 
-      await AuthServices.setAuthCookie({ ...userAccountInfo, expirationTime });
+      await AuthServices.setAuthCookie({ ...userAccountInfo });
       dispatch(setUser(userAccountInfo));
 
       return true;
@@ -69,7 +68,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     }
 
     const tokens = await user!.getIdTokenResult();
-    const expirationTime = tokens.expirationTime;
 
     const userAccountInfo = {
       id: user!.uid,
@@ -80,7 +78,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       photo: user?.photoURL
     };
 
-    await AuthServices.setAuthCookie({ ...userAccountInfo, expirationTime });
+    await AuthServices.setAuthCookie({ ...userAccountInfo });
     dispatch(setUser(userAccountInfo));
 
     return true;
