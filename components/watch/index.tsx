@@ -225,7 +225,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         videoProgress={videoProgress}
       />
       {movie.episodes.length > 1 && (
-        <div className="flex items-center">
+        <div className="text-center">
           Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới
         </div>
       )}
