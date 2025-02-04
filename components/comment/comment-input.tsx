@@ -4,8 +4,8 @@ import AccountDefaultImg from "../../public/account-default-img.jpg";
 export default function CommentInput({authenticatedUser} : {authenticatedUser: any}) {
     return (
         <div>
-            <div className="flex items-center border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
-                <div className="mr-3">
+            <div className="flex items-center space-x-3 border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
+                <div>
                     <Image
                         src={authenticatedUser.photo || AccountDefaultImg}
                         alt="User Profile"
