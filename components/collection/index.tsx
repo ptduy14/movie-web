@@ -9,6 +9,7 @@ import MovieCollection from 'types/movie-collection';
 import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingComponent from '../loading/loading-component';
 import BrandingPlaceholder from '../search/branding-placeholder';
+import firebaseServices from 'services/firebase-services';
 
 export default function MovieCollectionPage() {
   const [movieCollection, setMovieCollection] = useState<MovieCollection[] | []>([]);
@@ -22,26 +23,23 @@ export default function MovieCollectionPage() {
       router.push('/');
       return;
     }
-    
+
     getMovieCollection();
   }, [user]);
 
   const getMovieCollection = async () => {
-    if (!user) return;
-
-    const userMovieRef = doc(db, 'userMovies', user.id);
-    const docSnapshot = await getDoc(userMovieRef);
-
-    if (docSnapshot.exists()) {
-      const movies = docSnapshot.data().movies || [];
-      setMovieCollection(movies);
-    }
-
+    const movies = await firebaseServices.getMovieCollection(user.id);
+    setMovieCollection(movies);
     setIsLoading(false);
   };
 
   const renderMovieCollection = () => {
-    if (movieCollection.length === 0) return <div className='h-full w-full'><BrandingPlaceholder/></div>;
+    if (movieCollection.length === 0)
+      return (
+        <div className="h-full w-full">
+          <BrandingPlaceholder />
+        </div>
+      );
 
     return (
       <div className="grid grid-cols-5 gap-6 container-wrapper">
