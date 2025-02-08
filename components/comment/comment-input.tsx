@@ -9,12 +9,10 @@ import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 
 export default function CommentInput({
   movieId,
-  comments,
   authenticatedUser,
   setComments,
 }: {
   movieId: string;
-  comments: IComment[] | [];
   authenticatedUser: any;
   setComments: React.Dispatch<SetStateAction<[] | IComment[]>>;
 }) {
@@ -46,7 +44,7 @@ export default function CommentInput({
       timeStamp: new Date().toDateString(),
     };
 
-    const commentSubmited = await firebaseServices.addMovieComments(movieId, comment, comments);
+    const commentSubmited = await firebaseServices.addMovieComments(movieId, comment);
 
     setComments((prev: IComment[]) => {
         return [commentSubmited, ...prev]
