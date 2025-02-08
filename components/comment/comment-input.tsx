@@ -22,7 +22,9 @@ export default function CommentInput({
   const { openAuthModal } = useAuthModel();
     const [isSubmitingComment, setIsSubmitingComment] = useState<boolean>(false);
 
-  const handleSubmitComment = () => {
+  const handleSubmitComment = (e: any) => {
+    if (e !== null) e.preventDefault();
+    
     if (authenticatedUser === null) {
       openAuthModal();
       return;
@@ -55,7 +57,7 @@ export default function CommentInput({
   };
 
   return (
-    <div>
+    <div className='mt-4'>
       <div className="flex items-center space-x-3 border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
         <div>
           <Image
@@ -66,13 +68,15 @@ export default function CommentInput({
             height={40}
           />
         </div>
-        <input
-          type="text"
-          placeholder="Write a comment..."
-          className="flex-grow bg-transparent text-sm text-gray-700 outline-none placeholder-gray-400"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-        />
+        <form onSubmit={handleSubmitComment}>
+          <input
+            type="text"
+            placeholder="Write a comment..."
+            className="flex-grow bg-transparent text-sm text-gray-700 outline-none placeholder-gray-400"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+        </form>
       </div>
       <div className="text-right mt-3">
         <button
