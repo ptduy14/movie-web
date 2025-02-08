@@ -29,7 +29,7 @@ export default function CommentSection({movieId}: {movieId: string}) {
   return (
     <>
       <div className="block w-full h-[1px] bg-gray-500"></div>
-      <CommentInput authenticatedUser={authenticatedUser} comments={comments} movieId={movieId} setComments={setComments}/>
+      <CommentInput authenticatedUser={authenticatedUser} movieId={movieId} setComments={setComments}/>
       {!isFetchingComments && <Comments comments={comments}/>}
     </>
   );
