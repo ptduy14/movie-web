@@ -55,12 +55,20 @@ export default function CommentInput({
     setIsSubmitingComment(false);
   };
 
+  const renderUserPhoto = () => {
+    if (authenticatedUser === null) return AccountDefaultImg;
+
+    if (authenticatedUser.photo === "") return AccountDefaultImg;
+
+    return authenticatedUser.photo
+  }
+
   return (
     <div className='mt-4'>
       <div className="flex items-center space-x-3 border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
         <div>
           <Image
-            src={authenticatedUser ? authenticatedUser.photo : AccountDefaultImg}
+            src={renderUserPhoto()}
             alt="User Profile"
             className="cursor-pointer rounded-full"
             width={40}
