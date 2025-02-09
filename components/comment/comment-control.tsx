@@ -3,21 +3,27 @@ import IComment from 'types/comment';
 import { CiEdit } from 'react-icons/ci';
 import { MdDelete } from 'react-icons/md';
 import { AiOutlineLike } from 'react-icons/ai';
-import { useEffect } from 'react';
+import firebaseServices from 'services/firebase-services';
+import { toast } from 'react-toastify';
 
 export default function CommentControl({
   comment,
-  isCommentEditing,
   setIsCommentEditing,
+  movieId,
+  setComments
 }: {
   comment: IComment;
-  isCommentEditing: boolean;
   setIsCommentEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  movieId: string,
+  setComments:  React.Dispatch<React.SetStateAction<[] | IComment[]>>
 }) {
   const user = useSelector((state: any) => state.auth.user);
 
-  const handleDeleteComment = () => {
-    console.log(comment);
+  const handleDeleteComment = async () => {
+    await firebaseServices.deleteMovieComment(movieId, comment.id!);
+    
+    setComments((prev: IComment[]) => prev.filter((prevComment: IComment) => prevComment.id! !== comment.id!));
+    toast.success("Đã xóa bình luận");
   }
 
   const renderCommentActions = () => {
