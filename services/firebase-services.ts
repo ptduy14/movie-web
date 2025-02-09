@@ -8,7 +8,6 @@ import {
   orderBy,
   query,
   setDoc,
-  updateDoc,
 } from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
@@ -48,6 +47,7 @@ const firebaseServices = {
           userAvata: docData.userAvata,
           text: docData.text,
           timeStamp: docData.timeStamp,
+          likes: docData.likes
         };
       });
 
@@ -103,6 +103,14 @@ const firebaseServices = {
       console.log(error.message);
     }
   },
+
+  pushNotification: async (userId: string, comment: IComment) => {
+    
+  },
+
+  likeComment: async (userId: string, comment: IComment) => {
+
+  }
 };
 
 export default firebaseServices;
