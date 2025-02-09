@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -91,6 +92,16 @@ const firebaseServices = {
     }
 
     return editedCommentText;
+  },
+
+  deleteMovieComment: async (movieId: string, commentId: string) => {
+    const commentDocRef = doc(db, 'movieComments', movieId, 'comments', commentId);
+
+    try {
+      await deleteDoc(commentDocRef);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   },
 };
 
