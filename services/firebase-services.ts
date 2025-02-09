@@ -108,8 +108,26 @@ const firebaseServices = {
     
   },
 
-  likeComment: async (userId: string, comment: IComment) => {
+  likeComment: async (movieId: string, userId: string, comment: IComment, likeList: string[] | []) => {
+    const commentDocRef = doc(db, 'movieComments', movieId, 'comments', comment.id!);
+ 
+    try {
+      const newLikeList = [...likeList, userId];
+      setDoc(commentDocRef, {likes: newLikeList}, {merge: true});
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  },
 
+  unlikeComment: async(movieId: string, userId: string, comment: IComment, likeList: string[] | []) => {
+    const commentDocRef = doc(db, 'movieComments', movieId, 'comments', comment.id!);
+ 
+    try {
+      const newLikeList = likeList.filter((userIdLiked: string) => userIdLiked !== userId);
+      setDoc(commentDocRef, {likes: newLikeList}, {merge: true});
+    } catch (error: any) {
+      console.log(error.message)
+    }
   }
 };
 
