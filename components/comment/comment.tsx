@@ -21,6 +21,24 @@ export default function Comment({ comment }: { comment: IComment }) {
     setCommentText(comment.text);
   }, [comment]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (isCommentEditing) {
+          if (commentText === "") {
+            setCommentText(comment.text);
+          }
+
+          setIsCommentEditing(false)
+        };
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isCommentEditing, commentText]);
+
   return (
     <div className="p-3 rounded-lg shadow-sm">
       <div className="flex items-center space-x-3">
