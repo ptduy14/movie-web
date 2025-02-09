@@ -44,7 +44,7 @@ export default function CommentInput({
       timeStamp: new Date().toDateString(),
     };
 
-    const commentSubmited = await firebaseServices.addMovieComments(movieId, comment);
+    const commentSubmited = await firebaseServices.addMovieComment(movieId, comment);
 
     setComments((prev: IComment[]) => {
         return [commentSubmited, ...prev]

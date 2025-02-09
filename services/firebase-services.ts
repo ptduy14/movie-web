@@ -33,7 +33,7 @@ const firebaseServices = {
           userId: docData.userId,
           userAvata: docData.userAvata,
           text: docData.text,
-          timeStamp: docData.timeStamp
+          timeStamp: docData.timeStamp,
         };
       });
 
@@ -43,7 +43,7 @@ const firebaseServices = {
     }
   },
 
-  addMovieComments: async (movieId: string, newComment: IComment) => {
+  addMovieComment: async (movieId: string, newComment: IComment) => {
     const movieCommentsDocRef = doc(db, 'movieComments', movieId);
     const commentsCollectionRef = collection(movieCommentsDocRef, 'comments'); // Reference to subcollection
     const docSnapshot = await getDoc(movieCommentsDocRef);
@@ -61,7 +61,19 @@ const firebaseServices = {
     }
 
     return newComment;
-  }, 
+  },
+
+  editMovieComment: async (movieId: string, editedCommentText: string, commentId: string) => {
+    const commentDocRef = doc(db, "movieComments", movieId, "comments", commentId);
+
+    try {
+      setDoc(commentDocRef, {text: editedCommentText}, {merge: true});
+    } catch (error: any) {
+      console.log(error.message);
+    }
+
+    return editedCommentText;
+  },
 };
 
 export default firebaseServices;
