@@ -1,4 +1,14 @@
-import { addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
 
@@ -21,9 +31,12 @@ const firebaseServices = {
 
     if (docSnapshot.exists()) {
       const commentsCollectionRef = collection(movieCommentsRef, 'comments');
-      const querySnapshot = await getDocs(commentsCollectionRef);
+      const querySnapshot = await getDocs(
+        query(commentsCollectionRef, orderBy('timeStamp', 'desc'))
+      );
 
       if (querySnapshot.empty) return [];
+
       const comments: IComment[] = querySnapshot.docs.map((doc) => {
         const docData = doc.data();
 
@@ -55,7 +68,12 @@ const firebaseServices = {
       }
 
       // add document to subcollection
-      addDoc(commentsCollectionRef, newComment);
+      const commentAdded = await addDoc(commentsCollectionRef, newComment);
+
+      return {
+        id: commentAdded.id,
+        ...newComment,
+      };
     } catch (error: any) {
       console.log(error.message);
     }
@@ -64,10 +82,10 @@ const firebaseServices = {
   },
 
   editMovieComment: async (movieId: string, editedCommentText: string, commentId: string) => {
-    const commentDocRef = doc(db, "movieComments", movieId, "comments", commentId);
+    const commentDocRef = doc(db, 'movieComments', movieId, 'comments', commentId);
 
     try {
-      setDoc(commentDocRef, {text: editedCommentText}, {merge: true});
+      setDoc(commentDocRef, { text: editedCommentText }, { merge: true });
     } catch (error: any) {
       console.log(error.message);
     }
