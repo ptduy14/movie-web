@@ -1,4 +1,5 @@
 export default interface IComment {
+    id?: string,
     userName: string;
     userId: string;
     userAvata: string;

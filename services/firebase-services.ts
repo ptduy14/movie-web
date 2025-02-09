@@ -1,7 +1,6 @@
 import { addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
-import { timeStamp } from 'console';
 
 const firebaseServices = {
   getMovieCollection: async (userId: string) => {
@@ -9,12 +8,8 @@ const firebaseServices = {
     const docSnapshot = await getDoc(userMovieRef);
 
     if (docSnapshot.exists()) {
-      const commentsCollectionRef = collection(userMovieRef, "comments");
-      const querySnapshot = await getDocs(commentsCollectionRef);
-
-      if (querySnapshot.empty) return []
-
-      return querySnapshot.docs.map((doc) => {id: doc.id, doc.data()});
+      const movies = docSnapshot.data().movies ?? [];
+      return movies;
     } else {
       return [];
     }
@@ -25,7 +20,23 @@ const firebaseServices = {
     const docSnapshot = await getDoc(movieCommentsRef);
 
     if (docSnapshot.exists()) {
-      const comments = docSnapshot.data().comments ?? [];
+      const commentsCollectionRef = collection(movieCommentsRef, 'comments');
+      const querySnapshot = await getDocs(commentsCollectionRef);
+
+      if (querySnapshot.empty) return [];
+      const comments: IComment[] = querySnapshot.docs.map((doc) => {
+        const docData = doc.data();
+
+        return {
+          id: doc.id,
+          userName: docData.userName,
+          userId: docData.userId,
+          userAvata: docData.userAvata,
+          text: docData.text,
+          timeStamp: docData.timeStamp
+        };
+      });
+
       return comments;
     } else {
       return [];
@@ -50,7 +61,7 @@ const firebaseServices = {
     }
 
     return newComment;
-  },
+  }, 
 };
 
 export default firebaseServices;

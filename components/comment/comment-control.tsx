@@ -16,18 +16,6 @@ export default function CommentControl({
 }) {
   const user = useSelector((state: any) => state.auth.user);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        if (isCommentEditing) setIsCommentEditing(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isCommentEditing]);
-
   const handleDeleteComment = () => {
     console.log(comment);
   }
