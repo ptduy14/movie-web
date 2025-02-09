@@ -11,6 +11,7 @@ import { setProgress } from '../../redux/slices/progress-slice';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from '../../configs/firebase'; // Đường dẫn đến tệp firebase của bạn
 import { A } from '../../redux/slices/progress-slice';
+import CommentSection from '../comment';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   // episodes[serverIndex]: server được chọn
@@ -90,7 +91,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   const handleStoreViewingProgress = async (e: any) => {
     if (videoRef.current?.currentTime === 0) return;
-     
+
     const progress = {
       id: movie.movie._id,
       slug: movie.movie.slug,
@@ -184,11 +185,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     try {
       const userMoviesRef = doc(db, 'recentMovies', user.id);
       const docSnapshot = await getDoc(userMoviesRef);
-  
+
       if (docSnapshot.exists()) {
         const recentMovies = docSnapshot.data()?.movies || [];
         const recentMovie = recentMovies.find((m: any) => m.id === movie.movie._id);
-  
+
         if (!recentMovie) return;
 
         console.log(recentMovie);
@@ -207,7 +208,6 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       console.error('Error fetching recent movie progress:', error.message);
     }
   };
-  
 
   return (
     <div className="pt-[3.75rem] space-y-10">
@@ -258,6 +258,9 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
           </ul>
         </div>
       )}
+      <div className="container-wrapper-movie">
+        <CommentSection movieId={movie.movie._id} />
+      </div>
     </div>
   );
 }
