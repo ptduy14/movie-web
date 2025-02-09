@@ -34,7 +34,7 @@ export default function CommentSection({ movieId }: { movieId: string }) {
         movieId={movieId}
         setComments={setComments}
       />
-      {!isFetchingComments && <Comments movieId={movieId} comments={comments} />}
+      {!isFetchingComments && <Comments movieId={movieId} comments={comments} setComments={setComments}/>}
     </>
   );
 }

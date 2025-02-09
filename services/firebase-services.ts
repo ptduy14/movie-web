@@ -1,13 +1,13 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
   orderBy,
   query,
   setDoc,
-  updateDoc,
 } from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
@@ -47,6 +47,7 @@ const firebaseServices = {
           userAvata: docData.userAvata,
           text: docData.text,
           timeStamp: docData.timeStamp,
+          likes: docData.likes
         };
       });
 
@@ -92,6 +93,24 @@ const firebaseServices = {
 
     return editedCommentText;
   },
+
+  deleteMovieComment: async (movieId: string, commentId: string) => {
+    const commentDocRef = doc(db, 'movieComments', movieId, 'comments', commentId);
+
+    try {
+      await deleteDoc(commentDocRef);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  },
+
+  pushNotification: async (userId: string, comment: IComment) => {
+    
+  },
+
+  likeComment: async (userId: string, comment: IComment) => {
+
+  }
 };
 
 export default firebaseServices;

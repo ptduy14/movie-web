@@ -5,4 +5,5 @@ export default interface IComment {
     userAvata: string;
     text: string;
     timeStamp: string;
+    likes: string[] | [];
 }
