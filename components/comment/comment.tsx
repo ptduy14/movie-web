@@ -21,7 +21,6 @@ export default function Comment({ comment, movieId }: { comment: IComment; movie
     );
 
     setIsCommentEditing(false);
-    console.log(commentText);
   };
 
   useEffect(() => {
