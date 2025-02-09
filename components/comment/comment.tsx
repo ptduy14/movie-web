@@ -3,15 +3,22 @@ import AccountDefaultImg from '../../public/account-default-img.jpg';
 import IComment from 'types/comment';
 import CommentControl from './comment-control';
 import { useEffect, useState } from 'react';
+import firebaseServices from 'services/firebase-services';
 
-export default function Comment({ comment }: { comment: IComment }) {
+export default function Comment({ comment, movieId }: { comment: IComment; movieId: string }) {
   const [isCommentEditing, setIsCommentEditing] = useState<boolean>(false);
-  const [commentText, setCommentText] = useState<string>("");
+  const [commentText, setCommentText] = useState<string>('');
 
-  const handleSubmitEditedComment = (e: any) => {
+  const handleSubmitEditedComment = async (e: any) => {
     e.preventDefault();
 
-    if (commentText === "") return;
+    if (commentText === '') return;
+
+    const editedComment = await firebaseServices.editMovieComment(
+      movieId,
+      commentText,
+      comment.id!
+    );
 
     setIsCommentEditing(false);
     console.log(commentText);
@@ -25,12 +32,12 @@ export default function Comment({ comment }: { comment: IComment }) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (isCommentEditing) {
-          if (commentText === "") {
+          if (commentText === '') {
             setCommentText(comment.text);
           }
 
-          setIsCommentEditing(false)
-        };
+          setIsCommentEditing(false);
+        }
       }
     };
 
