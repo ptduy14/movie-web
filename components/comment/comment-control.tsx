@@ -7,6 +7,8 @@ import firebaseServices from 'services/firebase-services';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { FaRegComment } from 'react-icons/fa';
+import { AiFillLike } from 'react-icons/ai';
+import { useAuthModel } from '../context/auth-modal-context';
 
 export default function CommentControl({
   comment,
@@ -21,11 +23,17 @@ export default function CommentControl({
 }) {
   const user = useSelector((state: any) => state.auth.user);
   const [isCommentOwner, setIsCommentOwner] = useState<boolean>(false);
+  const [isLikedComment, setIsLikedComment] = useState<boolean>(false);
+  const [likeCount, setLikeCount] = useState<number>(0);
+  const { openAuthModal } = useAuthModel();
 
   useEffect(() => {
     if (user && user.id === comment.userId) {
       setIsCommentOwner(true);
+      setIsLikedComment(comment.likes.some((userLiked: string) => userLiked === user.id));
     }
+
+    setLikeCount(comment.likes.length);
   }, [comment, user]);
 
   const handleDeleteComment = async () => {
@@ -34,6 +42,7 @@ export default function CommentControl({
     setComments((prev: IComment[]) =>
       prev.filter((prevComment: IComment) => prevComment.id! !== comment.id!)
     );
+
     toast.success('Đã xóa bình luận');
   };
 
@@ -64,11 +73,35 @@ export default function CommentControl({
     );
   };
 
+  const handleToggleLikeComment = async () => {
+    if (user === null) {
+      openAuthModal();
+      return;
+    }
+
+    if (isLikedComment) {
+      await firebaseServices.unlikeComment(movieId, user.id, comment, comment.likes);
+      setIsLikedComment(false);
+      setLikeCount((prev: number) => prev - 1);
+      return;
+    }
+
+    await firebaseServices.likeComment(movieId, user.id, comment, comment.likes);
+    setLikeCount((prev: number) => prev + 1);
+    setIsLikedComment(true);
+  };
+
   return (
-    <div className=" flex gap-x-4 text-gray-400 text-sm">
-      <div className={`cursor-pointer hover:text-white flex items-center gap-1`}>
-        <AiOutlineLike />
-        {isCommentOwner ? comment.likes.length : 'Thích'}
+    <div className={`flex gap-x-4 text-sm text-gray-400`}>
+      <div
+        className={`cursor-pointer hover:text-white flex items-center gap-1 ${
+          isLikedComment && 'text-blue-600'
+        }`}
+        onClick={handleToggleLikeComment}
+      >
+        {likeCount}
+        {isLikedComment ? <AiFillLike /> : <AiOutlineLike />}
+        Thích
       </div>
       {renderCommentActions()}
     </div>

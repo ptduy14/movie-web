@@ -42,7 +42,7 @@ export default function CommentInput({
       userAvata: authenticatedUser.photo,
       text: commentText,
       timeStamp: new Date().toDateString(),
-      likes: []
+      likes: [authenticatedUser.id]
     };
 
     const commentSubmited = await firebaseServices.addMovieComment(movieId, comment);
