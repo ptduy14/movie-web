@@ -30,9 +30,9 @@ export default function CommentControl({
   useEffect(() => {
     if (user && user.id === comment.userId) {
       setIsCommentOwner(true);
-      setIsLikedComment(comment.likes.some((userLiked: string) => userLiked === user.id));
     }
 
+    setIsLikedComment(comment.likes.some((userLiked: string) => userLiked === user?.id));
     setLikeCount(comment.likes.length);
   }, [comment, user]);
 

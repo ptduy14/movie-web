@@ -18,11 +18,11 @@ export default function CommentInput({
 }) {
   const [commentText, setCommentText] = useState<string>('');
   const { openAuthModal } = useAuthModel();
-    const [isSubmitingComment, setIsSubmitingComment] = useState<boolean>(false);
+  const [isSubmitingComment, setIsSubmitingComment] = useState<boolean>(false);
 
   const handleSubmitComment = (e: any) => {
     if (e !== null) e.preventDefault();
-    
+
     if (authenticatedUser === null) {
       openAuthModal();
       return;
@@ -42,30 +42,30 @@ export default function CommentInput({
       userAvata: authenticatedUser.photo,
       text: commentText,
       timeStamp: new Date().toDateString(),
-      likes: [authenticatedUser.id]
+      likes: [authenticatedUser.id],
     };
 
     const commentSubmited = await firebaseServices.addMovieComment(movieId, comment);
 
     setComments((prev: IComment[]) => {
-        return [commentSubmited, ...prev]
+      return [commentSubmited, ...prev];
     });
 
-    setCommentText("");
+    setCommentText('');
     setIsSubmitingComment(false);
   };
 
   const renderUserPhoto = () => {
     if (authenticatedUser === null) return AccountDefaultImg;
 
-    if (authenticatedUser.photo === "") return AccountDefaultImg;
+    if (authenticatedUser.photo === '') return AccountDefaultImg;
 
-    return authenticatedUser.photo
-  }
+    return authenticatedUser.photo;
+  };
 
   return (
-    <div className='mt-4'>
-      <div className="flex items-center space-x-3 border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white">
+    <div className="mt-4">
+      <div className="flex items-center space-x-3 border border-gray-300 rounded-lg px-4 py-3 shadow-sm bg-white">
         <div>
           <Image
             src={renderUserPhoto()}
@@ -75,11 +75,11 @@ export default function CommentInput({
             height={40}
           />
         </div>
-        <form onSubmit={handleSubmitComment}>
+        <form onSubmit={handleSubmitComment} className='w-full'>
           <input
             type="text"
             placeholder="Write a comment..."
-            className="flex-grow bg-transparent text-sm text-gray-700 outline-none placeholder-gray-400"
+            className="flex-grow bg-transparent text-sm text-gray-700 outline-none placeholder-gray-400 w-full"
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
           />
@@ -91,7 +91,7 @@ export default function CommentInput({
           className="bg-[#e20913] px-5 py-2 rounded-md"
           onClick={handleSubmitComment}
         >
-          {isSubmitingComment ? <LoadingSpinerBtn/> : "Bình luận"}
+          {isSubmitingComment ? <LoadingSpinerBtn /> : 'Bình luận'}
         </button>
       </div>
     </div>
