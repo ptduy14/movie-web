@@ -9,16 +9,18 @@ import { useEffect, useState } from 'react';
 import { FaRegComment } from 'react-icons/fa';
 import { AiFillLike } from 'react-icons/ai';
 import { useAuthModel } from '../context/auth-modal-context';
+import { INotification } from 'types/notification';
+import DetailMovie from 'types/detail-movie';
 
 export default function CommentControl({
   comment,
   setIsCommentEditing,
-  movieId,
+  movie,
   setComments,
 }: {
   comment: IComment;
   setIsCommentEditing: React.Dispatch<React.SetStateAction<boolean>>;
-  movieId: string;
+  movie: DetailMovie;
   setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>;
 }) {
   const user = useSelector((state: any) => state.auth.user);
@@ -37,7 +39,7 @@ export default function CommentControl({
   }, [comment, user]);
 
   const handleDeleteComment = async () => {
-    await firebaseServices.deleteMovieComment(movieId, comment.id!);
+    await firebaseServices.deleteMovieComment(movie.movie._id, comment.id!);
 
     setComments((prev: IComment[]) =>
       prev.filter((prevComment: IComment) => prevComment.id! !== comment.id!)
@@ -72,7 +74,7 @@ export default function CommentControl({
       </>
     );
   };
-
+  // TODO need fix owner like their comment
   const handleToggleLikeComment = async () => {
     if (user === null) {
       openAuthModal();
@@ -80,13 +82,24 @@ export default function CommentControl({
     }
 
     if (isLikedComment) {
-      await firebaseServices.unlikeComment(movieId, user.id, comment, comment.likes);
+      await firebaseServices.unlikeComment(movie.movie._id, user.id, comment);
       setIsLikedComment(false);
       setLikeCount((prev: number) => prev - 1);
       return;
     }
 
-    await firebaseServices.likeComment(movieId, user.id, comment, comment.likes);
+    await firebaseServices.likeComment(movie.movie._id, user.id, comment);
+    // if (user.id !== comment.userId) {
+    //   const notification: INotification = {
+    //     type: "react",
+    //     userActionName: user.id,
+    //     timestamp: new Date().toString(),
+    //     movieSlug: movie.movie.slug,
+    //     movieId: movie.movie._id,
+    //     read: false
+    //   }
+    //   await firebaseServices.createNotification(comment.userId, notification);
+    // }
     setLikeCount((prev: number) => prev + 1);
     setIsLikedComment(true);
   };

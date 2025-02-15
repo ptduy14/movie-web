@@ -1,5 +1,7 @@
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
   deleteDoc,
   doc,
@@ -8,9 +10,11 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
+import { INotification } from 'types/notification';
 
 const firebaseServices = {
   getMovieCollection: async (userId: string) => {
@@ -47,7 +51,7 @@ const firebaseServices = {
           userAvata: docData.userAvata,
           text: docData.text,
           timeStamp: docData.timeStamp,
-          likes: docData.likes
+          likes: docData.likes,
         };
       });
 
@@ -104,31 +108,33 @@ const firebaseServices = {
     }
   },
 
-  pushNotification: async (userId: string, comment: IComment) => {
-    
-  },
-
-  likeComment: async (movieId: string, userId: string, comment: IComment, likeList: string[] | []) => {
+  likeComment: async (movieId: string, userId: string, comment: IComment) => {
     const commentDocRef = doc(db, 'movieComments', movieId, 'comments', comment.id!);
- 
+
     try {
-      const newLikeList = [...likeList, userId];
-      setDoc(commentDocRef, {likes: newLikeList}, {merge: true});
+      await updateDoc(commentDocRef, {
+        likes: arrayUnion(userId),
+      });
     } catch (error: any) {
-      console.log(error.message)
+      console.log(error.message);
     }
   },
 
-  unlikeComment: async(movieId: string, userId: string, comment: IComment, likeList: string[] | []) => {
+  unlikeComment: async (movieId: string, userId: string, comment: IComment) => {
     const commentDocRef = doc(db, 'movieComments', movieId, 'comments', comment.id!);
- 
+
     try {
-      const newLikeList = likeList.filter((userIdLiked: string) => userIdLiked !== userId);
-      setDoc(commentDocRef, {likes: newLikeList}, {merge: true});
+      await updateDoc(commentDocRef, {
+        likes: arrayRemove(userId),
+      });
     } catch (error: any) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  },
+
+  createNotification: async (userId: string, notification: INotification) => {
+    console.log(notification);
+  },
 };
 
 export default firebaseServices;
