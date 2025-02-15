@@ -35,7 +35,7 @@ export default function MovieContent({ movie, credit }: { movie: DetailMovie, cr
           <ActorList movie={movie} credit={credit}/>
         </div>
         {movie.movie.trailer_url !== '' && <Trailer trailer={movie.movie.trailer_url}/>}
-        <CommentSection movieId={movie.movie._id}/>
+        <CommentSection movie={movie}/>
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import IComment from 'types/comment';
 import Comment from './comment';
+import DetailMovie from 'types/detail-movie';
 
 export default function Comments({
   comments,
-  movieId,
+  movie,
   setComments
 }: {
   comments: IComment[] | [];
-  movieId: string;
+  movie: DetailMovie;
   setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>
 }) {
   if (comments.length === 0) return;
@@ -15,7 +16,7 @@ export default function Comments({
   return (
     <div>
       {comments.map((comment: IComment, index: number) => (
-        <Comment key={index} comment={comment} movieId={movieId} setComments={setComments}/>
+        <Comment key={index} comment={comment} movie={movie} setComments={setComments}/>
       ))}
     </div>
   );

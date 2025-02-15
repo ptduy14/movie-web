@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 import firebaseServices from 'services/firebase-services';
 import Comments from './comments';
 import IComment from 'types/comment';
+import DetailMovie from 'types/detail-movie';
 
-export default function CommentSection({ movieId }: { movieId: string }) {
+export default function CommentSection({ movie }: { movie: DetailMovie }) {
   const user = useSelector((state: any) => state.auth.user);
   const [authenticatedUser, setAuthenticatedUser] = useState<object | null>(null);
   const [comments, setComments] = useState<IComment[] | []>([]);
@@ -21,7 +22,7 @@ export default function CommentSection({ movieId }: { movieId: string }) {
   }, []);
 
   const getMovieComments = async () => {
-    const commentsResponse = await firebaseServices.getMovieComments(movieId);
+    const commentsResponse = await firebaseServices.getMovieComments(movie.movie._id);
     setComments(commentsResponse);
     setIsFetchingComments(false);
   };
@@ -31,10 +32,10 @@ export default function CommentSection({ movieId }: { movieId: string }) {
       <div className="block w-full h-[1px] bg-gray-500"></div>
       <CommentInput
         authenticatedUser={authenticatedUser}
-        movieId={movieId}
+        movie={movie}
         setComments={setComments}
       />
-      {!isFetchingComments && <Comments movieId={movieId} comments={comments} setComments={setComments}/>}
+      {!isFetchingComments && <Comments movie={movie} comments={comments} setComments={setComments}/>}
     </>
   );
 }
