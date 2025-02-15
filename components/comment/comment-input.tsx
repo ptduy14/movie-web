@@ -6,13 +6,14 @@ import { useState } from 'react';
 import IComment from 'types/comment';
 import { SetStateAction } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
+import DetailMovie from 'types/detail-movie';
 
 export default function CommentInput({
-  movieId,
+  movie,
   authenticatedUser,
   setComments,
 }: {
-  movieId: string;
+  movie: DetailMovie;
   authenticatedUser: any;
   setComments: React.Dispatch<SetStateAction<[] | IComment[]>>;
 }) {
@@ -45,7 +46,7 @@ export default function CommentInput({
       likes: [authenticatedUser.id],
     };
 
-    const commentSubmited = await firebaseServices.addMovieComment(movieId, comment);
+    const commentSubmited = await firebaseServices.addMovieComment(movie.movie._id, comment);
 
     setComments((prev: IComment[]) => {
       return [commentSubmited, ...prev];
