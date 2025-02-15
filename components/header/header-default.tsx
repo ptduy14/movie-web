@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import AccountProfileIcon from '../account/account-profile-icon';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Notification from '../notification';
 
 export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
   const user = useSelector((state: any) => state.auth.user);
@@ -64,6 +65,9 @@ export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
           <div className={`relative h-full flex items-center pl-6 ${!isScrolled && 'group'}`}>
           {!loading && (authenticatedUser ? <AccountProfileIcon  authenticatedUser={authenticatedUser}/> : <LoginSignUpIcon isScrolled={isScrolled} />)}
           </div>
+          {/* <div className={`relative h-full flex items-center pl-3`}>
+            {!loading && (authenticatedUser && <Notification />)}
+          </div> */}
         </div>
       </div>
     </header>
