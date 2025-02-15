@@ -259,7 +259,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         </div>
       )}
       <div className="container-wrapper-movie">
-        <CommentSection movieId={movie.movie._id} />
+        <CommentSection movie={movie} />
       </div>
     </div>
   );
