@@ -4,14 +4,15 @@ import IComment from 'types/comment';
 import CommentControl from './comment-control';
 import { useEffect, useState } from 'react';
 import firebaseServices from 'services/firebase-services';
+import DetailMovie from 'types/detail-movie';
 
 export default function Comment({
   comment,
-  movieId,
+  movie,
   setComments,
 }: {
   comment: IComment;
-  movieId: string;
+  movie: DetailMovie;
   setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>;
 }) {
   const [isCommentEditing, setIsCommentEditing] = useState<boolean>(false);
@@ -22,7 +23,7 @@ export default function Comment({
 
     if (commentText === '') return;
 
-    await firebaseServices.editMovieComment(movieId, commentText, comment.id!);
+    await firebaseServices.editMovieComment(movie.movie._id, commentText, comment.id!);
 
     setIsCommentEditing(false);
   };
@@ -89,7 +90,7 @@ export default function Comment({
           <CommentControl
             comment={comment}
             setIsCommentEditing={setIsCommentEditing}
-            movieId={movieId}
+            movie={movie}
             setComments={setComments}
           />
         </div>
