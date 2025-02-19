@@ -74,7 +74,7 @@ export default function CommentControl({
       </>
     );
   };
-  // TODO need fix owner like their comment
+  
   const handleToggleLikeComment = async () => {
     if (user === null) {
       openAuthModal();
@@ -89,19 +89,21 @@ export default function CommentControl({
     }
 
     await firebaseServices.likeComment(movie.movie._id, user.id, comment);
-    // if (user.id !== comment.userId) {
-    //   const notification: INotification = {
-    //     type: "react",
-    //     userActionName: user.id,
-    //     timestamp: new Date().toString(),
-    //     movieSlug: movie.movie.slug,
-    //     movieId: movie.movie._id,
-    //     read: false
-    //   }
-    //   await firebaseServices.createNotification(comment.userId, notification);
-    // }
     setLikeCount((prev: number) => prev + 1);
     setIsLikedComment(true);
+
+    // create notification
+    if (user.id !== comment.userId) {
+      const notification: INotification = {
+        type: "react",
+        userActionName: user.name,
+        timestamp: new Date().toString(),
+        movieSlug: movie.movie.slug,
+        movieId: movie.movie._id,
+        read: false
+      }
+      await firebaseServices.createNotification(comment.userId, notification);
+    }
   };
 
   return (
