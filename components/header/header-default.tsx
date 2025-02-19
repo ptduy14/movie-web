@@ -65,9 +65,9 @@ export default function HeaderDefault({ isScrolled }: { isScrolled: boolean }) {
           <div className={`relative h-full flex items-center pl-6 ${!isScrolled && 'group'}`}>
           {!loading && (authenticatedUser ? <AccountProfileIcon  authenticatedUser={authenticatedUser}/> : <LoginSignUpIcon isScrolled={isScrolled} />)}
           </div>
-          {/* <div className={`relative h-full flex items-center pl-3`}>
+          <div className={`relative h-full flex items-center pl-3`}>
             {!loading && (authenticatedUser && <Notification />)}
-          </div> */}
+          </div>  
         </div>
       </div>
     </header>
