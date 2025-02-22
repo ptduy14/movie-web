@@ -32,6 +32,8 @@ export default function CommentControl({
   useEffect(() => {
     if (user && user.id === comment.userId) {
       setIsCommentOwner(true);
+    } else {
+      setIsCommentOwner(false);
     }
 
     setIsLikedComment(comment.likes.some((userLiked: string) => userLiked === user?.id));
@@ -96,13 +98,15 @@ export default function CommentControl({
     if (user.id !== comment.userId) {
       const notification: INotification = {
         type: "react",
-        userActionName: user.name,
+        userCreatedName: user.name,
+        userReciveId: comment.userId,
+        userReciveName: comment.userName,
         timestamp: new Date().toString(),
         movieSlug: movie.movie.slug,
         movieId: movie.movie._id,
         read: false
       }
-      await firebaseServices.createNotification(comment.userId, notification);
+      await firebaseServices.createNotification(notification);
     }
   };
 
