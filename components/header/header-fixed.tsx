@@ -8,23 +8,33 @@ import { useSelector } from 'react-redux';
 import AccountProfileIcon from '../account/account-profile-icon';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Notification from '../notification';
+import { INotificationDropdownState } from 'types/notification';
 
-export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
+export default function HeaderFixed({
+  isShowFixedHeader,
+  notificationDropdownState,
+  setNotificationDropdownState,
+}: {
+  isShowFixedHeader: boolean;
+  notificationDropdownState: INotificationDropdownState;
+  setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
+}) {
   const user = useSelector((state: any) => state.auth.user);
   const [authenticatedUser, setAuthenticatedUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
     setAuthenticatedUser(user);
     setLoading(false);
   }, [user]);
-  
+
   return (
     <header
       className={`fixed left-0 right-0 z-20 bg-black transition-all duration-500 ${
-        isScrolled ? 'top-0' : 'top-[-70px]'
+        isShowFixedHeader ? 'top-0' : 'top-[-70px]'
       }`}
     >
       <div className="header-container flex items-center justify-between container-wrapper">
@@ -33,30 +43,50 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
         </a>
         <ul className="flex items-center font-semibold text-lg">
           <li className="px-8">
-            <a className={`hover:text-custome-red ${pathname === '/movies/format/phim-le' && 'text-custome-red'}`} href="/movies/format/phim-le">
+            <a
+              className={`hover:text-custome-red ${
+                pathname === '/movies/format/phim-le' && 'text-custome-red'
+              }`}
+              href="/movies/format/phim-le"
+            >
               Phim lẻ
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-custome-red ${pathname === '/movies/format/phim-bo' && 'text-custome-red'}`} href="/movies/format/phim-bo">
+            <a
+              className={`hover:text-custome-red ${
+                pathname === '/movies/format/phim-bo' && 'text-custome-red'
+              }`}
+              href="/movies/format/phim-bo"
+            >
               Phim bộ
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-custome-red ${pathname === '/movies/format/hoat-hinh' && 'text-custome-red'}`} href="/movies/format/hoat-hinh">
+            <a
+              className={`hover:text-custome-red ${
+                pathname === '/movies/format/hoat-hinh' && 'text-custome-red'
+              }`}
+              href="/movies/format/hoat-hinh"
+            >
               Hoạt hình
             </a>
           </li>
           <li className="px-8">
-            <a className={`hover:text-custome-red ${pathname === '/movies/format/tv-shows' && 'text-custome-red'}`} href="/movies/format/tv-shows">
+            <a
+              className={`hover:text-custome-red ${
+                pathname === '/movies/format/tv-shows' && 'text-custome-red'
+              }`}
+              href="/movies/format/tv-shows"
+            >
               TV show
             </a>
           </li>
-          <li className={`px-8 relative ${isScrolled && 'group'}`}>
+          <li className={`px-8 relative ${isShowFixedHeader && 'group'}`}>
             <p className="leading-[3.62rem] cursor-pointer">Thể loại</p>
             <SubType />
           </li>
-          <li className={`px-8 relative ${isScrolled && 'group'}`}>
+          <li className={`px-8 relative ${isShowFixedHeader && 'group'}`}>
             <p className="leading-[3.62rem] hover:text-custome-red cursor-pointer">Quốc gia</p>
             <SubCountries />
           </li>
@@ -65,8 +95,22 @@ export default function HeaderFixed({ isScrolled }: { isScrolled: boolean }) {
           <a className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </a>
-          <div className={`relative h-full flex items-center pl-6 ${isScrolled && 'group'}`}>
-          {!loading && (authenticatedUser ? <AccountProfileIcon authenticatedUser={authenticatedUser} /> : <LoginSignUpIcon isScrolled={isScrolled} />)}
+          <div className={`relative h-full flex items-center pl-6 ${isShowFixedHeader && 'group'}`}>
+            {!loading &&
+              (authenticatedUser ? (
+                <AccountProfileIcon authenticatedUser={authenticatedUser} />
+              ) : (
+                <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
+              ))}
+          </div>
+          <div className={`relative h-full flex items-center pl-3`}>
+            {!loading && authenticatedUser && (
+              <Notification
+                isOnFixedHeader={true}
+                notificationDropdownState={notificationDropdownState}
+                setNotificationDropdownState={setNotificationDropdownState}
+              />
+            )}
           </div>
         </div>
       </div>
