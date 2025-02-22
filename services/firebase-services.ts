@@ -132,8 +132,16 @@ const firebaseServices = {
     }
   },
 
-  createNotification: async (userId: string, notification: INotification) => {
-    console.log(notification);
+  createNotification: async (reciveNotificationUserId: string, notification: INotification) => {
+    try {
+      const userNotificationsDocRef = doc(db, 'userNotifications', reciveNotificationUserId);
+      const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications"); 
+      
+      await setDoc(userNotificationsDocRef, { updateAt: new Date() }, {merge: true});
+      await addDoc(userNotificationCollectionRef, notification);
+    } catch (error: any) {
+      console.log(error)
+    }
   },
 };
 

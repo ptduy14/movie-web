@@ -6,3 +6,8 @@ export interface INotification {
     movieId: string,
     read: boolean
 }
+
+export interface INotificationDropdownState {
+    isOpenInHeaderDefault: boolean;
+    isOpenInHeaderFixed: boolean;
+}
