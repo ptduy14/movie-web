@@ -7,10 +7,12 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   orderBy,
   query,
   setDoc,
   updateDoc,
+  where,
 } from 'firebase/firestore';
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
@@ -132,17 +134,47 @@ const firebaseServices = {
     }
   },
 
-  createNotification: async (reciveNotificationUserId: string, notification: INotification) => {
+  createNotification: async (notification: INotification) => {
     try {
-      const userNotificationsDocRef = doc(db, 'userNotifications', reciveNotificationUserId);
+      const userNotificationsDocRef = doc(db, 'userNotifications', notification.userReciveId);
       const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications"); 
       
       await setDoc(userNotificationsDocRef, { updateAt: new Date() }, {merge: true});
       await addDoc(userNotificationCollectionRef, notification);
     } catch (error: any) {
-      console.log(error)
+      console.log(error.message);
     }
   },
+
+  deleteNotification: async (userReciveId: string, userCreatedId: string) => {
+    try {
+      const notificationId = await firebaseServices.findNotificationId(userReciveId, userCreatedId);
+      
+      if (!notificationId) return
+      
+      const mainUserNotificationsDocRef = doc(db, 'userNotifications', userReciveId, "notifications", notificationId);
+      await deleteDoc(mainUserNotificationsDocRef);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  },
+
+  findNotificationId: async (userReciveId: string, userCreatedId: string) => {
+    try {
+      const userNotificationsDocRef = doc(db, 'userNotifications', userReciveId);
+      const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications");
+      
+      const q = query(userNotificationCollectionRef, where("userCreatedId", "==", userCreatedId), limit(1));
+      
+      const querySnapshot = await getDocs(q);
+      const notificationDeleteId = querySnapshot.docs[0].id;
+
+      return notificationDeleteId;
+    } catch (error: any) {
+      console.log(error.message);
+      return null;
+    }
+  }
 };
 
 export default firebaseServices;

@@ -1,10 +1,13 @@
 export interface INotification {
     type: string,
-    userActionName: string,
+    userCreatedName: string,
+    userCreatedId: string,
+    userReciveName: string,
+    userReciveId: string,
     timestamp: string,
     movieSlug: string,
     movieId: string,
-    read: boolean
+    read: boolean,
 }
 
 export interface INotificationDropdownState {
