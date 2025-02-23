@@ -84,21 +84,23 @@ export default function CommentControl({
     }
 
     if (isLikedComment) {
-      await firebaseServices.unlikeComment(movie.movie._id, user.id, comment);
       setIsLikedComment(false);
       setLikeCount((prev: number) => prev - 1);
+      await firebaseServices.unlikeComment(movie.movie._id, user.id, comment);
+      await firebaseServices.deleteNotification(comment.userId, user.id);
       return;
     }
 
-    await firebaseServices.likeComment(movie.movie._id, user.id, comment);
     setLikeCount((prev: number) => prev + 1);
     setIsLikedComment(true);
+    await firebaseServices.likeComment(movie.movie._id, user.id, comment);
 
     // create notification
     if (user.id !== comment.userId) {
       const notification: INotification = {
         type: "react",
         userCreatedName: user.name,
+        userCreatedId: user.id,
         userReciveId: comment.userId,
         userReciveName: comment.userName,
         timestamp: new Date().toString(),
