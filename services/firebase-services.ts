@@ -5,9 +5,11 @@ import {
   collection,
   deleteDoc,
   doc,
+  DocumentData,
   getDoc,
   getDocs,
   limit,
+  onSnapshot,
   orderBy,
   query,
   setDoc,
@@ -174,6 +176,26 @@ const firebaseServices = {
       console.log(error.message);
       return null;
     }
+  },
+
+  listenToUserNotifications: async (userId: string) => {
+    const userNotificationsDocRef = doc(db, 'userNotifications', userId);
+    const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications");
+
+    const q = query(userNotificationCollectionRef);
+
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const notifications: object[] = [];
+
+      querySnapshot.forEach((doc: DocumentData) => {
+        const data:INotification = doc.data();
+        notifications.push(data);
+      });
+      
+      console.log("Notification: ", notifications);
+    });
+
+    return unsubscribe;
   }
 };
 
