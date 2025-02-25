@@ -5,6 +5,7 @@ import DetailMovie from 'types/detail-movie';
 import TMDBLogo from '../logos/TMDB-Logo';
 import Category from 'types/category';
 import { GoDotFill } from "react-icons/go";
+import Link from 'next/link';
 
 export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovie }) {
   const movieCategory = detailMovie.movie.category.map((item: Category, index) => (
@@ -55,7 +56,7 @@ export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovi
         </div>
         <MovieSummary summary={detailMovie.movie.content || 'Đang cập nhật nội dung phim'} />
         <div className="space-x-5 flex items-center">
-          <a
+          <Link
             href={`/movies/${detailMovie.movie.slug}`}
             className="inline-block py-3 px-5 bg-white text-black rounded-md"
           >
@@ -63,7 +64,7 @@ export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovi
               <FaPlay size={18} />
               <span className="block leading-4 font-semibold">Xem phim</span>
             </div>
-          </a>
+          </Link>
           <BtnAddToCollection variant="primary" detailMovie={detailMovie} />
         </div>
       </div>
