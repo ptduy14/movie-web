@@ -178,21 +178,21 @@ const firebaseServices = {
     }
   },
 
-  listenToUserNotifications: async (userId: string) => {
+  listenToUserNotifications: async (userId: string, handleReciveNotificationData: (notifications: INotification[]) => void) => {
     const userNotificationsDocRef = doc(db, 'userNotifications', userId);
     const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications");
 
     const q = query(userNotificationCollectionRef);
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const notifications: object[] = [];
+      const notifications: INotification[] = [];
 
       querySnapshot.forEach((doc: DocumentData) => {
         const data:INotification = doc.data();
         notifications.push(data);
       });
       
-      console.log("Notification: ", notifications);
+      handleReciveNotificationData(notifications);
     });
 
     return unsubscribe;
