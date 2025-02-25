@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react';
 import NotificationList from './notification-list';
-import { INotificationDropdownState } from 'types/notification';
+import { INotification, INotificationDropdownState } from 'types/notification';
 
 export default function NotificationDropDown({
   notificationDropdownState,
   setNotificationDropdownState,
+  notifications
 }: {
   notificationDropdownState: INotificationDropdownState;
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
+  notifications: INotification[]
 }) {
   const notificationDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -38,8 +40,7 @@ export default function NotificationDropDown({
         </div>
       </div>
       <div className="">
-        {/* <div className="px-5">Không có thông báo</div> */}
-        <NotificationList />
+        {notifications.length > 0 ?  <NotificationList notifications={notifications}/> : <div className="px-5">Không có thông báo</div>}
       </div>
     </div>
   );
