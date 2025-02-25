@@ -43,7 +43,7 @@ export default function HeaderFixed({
         <Link className="block" href="/">
           <Image src={logo} alt="Picture of the author" className="w-32" />
         </Link>
-        <ul className="flex items-center font-semibold text-lg">
+        <ul className="flex flex-grow justify-center items-center font-semibold text-lg">
           <li className="px-8">
             <Link
               className={`hover:text-custome-red ${
@@ -93,11 +93,11 @@ export default function HeaderFixed({
             <SubCountries />
           </li>
         </ul>
-        <div className="flex gap-x-4 items-center h-[3.62rem]">
+        <div className="flex w-32 gap-x-4 items-center justify-around h-[3.62rem]">
           <Link className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </Link>
-          <div className={`relative h-full flex items-center pl-6 ${isShowFixedHeader && 'group'}`}>
+          <div className={`relative h-full flex items-center ${isShowFixedHeader && 'group'}`}>
             {!loading &&
               (authenticatedUser ? (
                 <AccountProfileIcon authenticatedUser={authenticatedUser} />
@@ -105,7 +105,7 @@ export default function HeaderFixed({
                 <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
               ))}
           </div>
-          <div className={`relative h-full flex items-center pl-3`}>
+          <div className={`relative h-full flex items-center`}>
             {!loading && authenticatedUser && (
               <Notification
                 isOnFixedHeader={true}
