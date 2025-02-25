@@ -32,6 +32,8 @@ export default function CommentControl({
   useEffect(() => {
     if (user && user.id === comment.userId) {
       setIsCommentOwner(true);
+    } else {
+      setIsCommentOwner(false);
     }
 
     setIsLikedComment(comment.likes.some((userLiked: string) => userLiked === user?.id));
@@ -80,30 +82,35 @@ export default function CommentControl({
       openAuthModal();
       return;
     }
-
+    
     if (isLikedComment) {
-      await firebaseServices.unlikeComment(movie.movie._id, user.id, comment);
       setIsLikedComment(false);
       setLikeCount((prev: number) => prev - 1);
+      await firebaseServices.unlikeComment(movie.movie._id, user.id, comment);
+      // cant accept if user is own this comment and unlike.
+      await firebaseServices.deleteNotification(comment.userId, user.id);
       return;
     }
 
-    await firebaseServices.likeComment(movie.movie._id, user.id, comment);
     setLikeCount((prev: number) => prev + 1);
     setIsLikedComment(true);
+    await firebaseServices.likeComment(movie.movie._id, user.id, comment);
 
+    if (user.id === comment.userId) return
+    
     // create notification
-    if (user.id !== comment.userId) {
-      const notification: INotification = {
-        type: "react",
-        userActionName: user.name,
-        timestamp: new Date().toString(),
-        movieSlug: movie.movie.slug,
-        movieId: movie.movie._id,
-        read: false
-      }
-      await firebaseServices.createNotification(comment.userId, notification);
+    const notification: INotification = {
+      type: "react",
+      userCreatedName: user.name,
+      userCreatedId: user.id,
+      userReciveId: comment.userId,
+      userReciveName: comment.userName,
+      timestamp: new Date().toString(),
+      movieSlug: movie.movie.slug,
+      movieId: movie.movie._id,
+      read: false
     }
+    await firebaseServices.createNotification(notification);
   };
 
   return (

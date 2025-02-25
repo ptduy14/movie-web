@@ -7,6 +7,7 @@ import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../configs/firebase';
+import Link from 'next/link';
 
 export default function AccountProfileDropdown({ authenticatedUser }: { authenticatedUser: any }) {
   const dispatch = useDispatch();
@@ -30,22 +31,22 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
 
       {/* Liên kết đến bộ sưu tập */}
       <div className="border-b border-gray-500 pb-3 mb-3">
-        <a
+        <Link
           className="block text-white text-base font-medium hover:text-gray-300 transition-colors"
           href="/movies/collection"
         >
           Bộ sưu tập
-        </a>
+        </Link>
       </div>
 
       {/* Liên kết đến phim đã xem */}
       <div className="border-b border-gray-500 pb-3 mb-3">
-        <a
+        <Link
           className="block text-white text-base font-medium hover:text-gray-300 transition-colors"
           href="/movies/recent"
         >
           Phim xem gần đây
-        </a>
+        </Link>
       </div>
 
       {/* Nút đăng xuất */}

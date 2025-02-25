@@ -4,6 +4,7 @@ import MovieContent from './movie-content';
 import Credit from 'types/credit';
 import TMDBLogo from '../logos/TMDB-Logo';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
+import Link from 'next/link';
 
 export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | undefined}) {
   return (
@@ -16,13 +17,13 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
         <div className="container-wrapper-movie relative flex justify-end">
           <div className="w-1/4 absolute left-0 top-0">
             <img className="w-full shadow-custom" src={movie.movie.thumb_url} alt="" />
-            {movie.movie.episode_current !== 'Trailer' && <a
+            {movie.movie.episode_current !== 'Trailer' && <Link
               className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
               href={`/movies/watch/${movie.movie.slug}`}
             >
               <FaPlay size={25} />
               Xem phim
-            </a>}
+            </Link>}
           </div>
           <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
             <div>
@@ -48,13 +49,13 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
                 <BtnAddToCollection variant='secondary' detailMovie={movie}/>
                 <div className="flex gap-x-2">
                   {movie.movie.category?.map((item, index) => (
-                    <a
+                    <Link
                       key={index}
                       className="text-sm block border-[1px] border-gray-600 px-3 p-1 rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-500"
                       href={`/movies/type/${item.slug}`}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
