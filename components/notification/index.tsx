@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NotificationDropDown from './notification-dropdown';
 import NotificationIcon from './notification-icon';
-import { INotificationDropdownState } from 'types/notification';
+import { INotification, INotificationDropdownState } from 'types/notification';
 import { useSelector } from 'react-redux';
 import firebaseServices from 'services/firebase-services';
 
@@ -15,13 +15,15 @@ export default function Notification({
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
 }) {
   const user = useSelector((state: any) => state.auth.user);
+  const [notifications, setNotifications] = useState<INotification[] | []>([]);
+  const [notificationsUnreadCount, setNotificationUnreadCount] = useState<number>(0);
 
   useEffect(() => {
     if (!user) return;
     let unsubscribe: (() => void) | null = null;
 
     const fetchNotifications = async () => {
-      unsubscribe = await firebaseServices.listenToUserNotifications(user.id);
+      unsubscribe = await firebaseServices.listenToUserNotifications(user.id, handleReciveNotificationData);
     };
 
     fetchNotifications();
@@ -34,23 +36,38 @@ export default function Notification({
     };
   }, []);
 
+  const handleReciveNotificationData = (notifications: INotification[]) => {
+    let tempCount = 0;
+
+    notifications.forEach((item: INotification) => {
+      if (!item.read) {
+        tempCount++;
+      }
+    })
+
+    setNotificationUnreadCount(tempCount);
+    setNotifications(notifications);
+  }
+
   // base on isOnHeaderDefault to choose what state choosing
   const isOpen = isOnFixedHeader
     ? notificationDropdownState.isOpenInHeaderFixed
     : notificationDropdownState.isOpenInHeaderDefault;
 
   return (
-    <>
+    <div>
       <NotificationIcon
         setNotificationDropdownState={setNotificationDropdownState}
         isOnFixedHeader={isOnFixedHeader}
+        notificationsUnreadCount={notificationsUnreadCount}
       />
       {isOpen && (
         <NotificationDropDown
           notificationDropdownState={notificationDropdownState}
           setNotificationDropdownState={setNotificationDropdownState}
+          notifications={notifications}
         />
       )}
-    </>
+    </div>
   );
 }
