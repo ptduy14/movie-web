@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
+import Link from 'next/link';
 
 export default function HeaderFixed({
   isShowFixedHeader,
@@ -38,49 +39,50 @@ export default function HeaderFixed({
       }`}
     >
       <div className="header-container flex items-center justify-between container-wrapper">
-        <a className="block" href="/">
+        
+        <Link className="block" href="/">
           <Image src={logo} alt="Picture of the author" className="w-32" />
-        </a>
+        </Link>
         <ul className="flex items-center font-semibold text-lg">
           <li className="px-8">
-            <a
+            <Link
               className={`hover:text-custome-red ${
                 pathname === '/movies/format/phim-le' && 'text-custome-red'
               }`}
               href="/movies/format/phim-le"
             >
               Phim lẻ
-            </a>
+            </Link>
           </li>
           <li className="px-8">
-            <a
+            <Link
               className={`hover:text-custome-red ${
                 pathname === '/movies/format/phim-bo' && 'text-custome-red'
               }`}
               href="/movies/format/phim-bo"
             >
               Phim bộ
-            </a>
+            </Link>
           </li>
           <li className="px-8">
-            <a
+            <Link
               className={`hover:text-custome-red ${
                 pathname === '/movies/format/hoat-hinh' && 'text-custome-red'
               }`}
               href="/movies/format/hoat-hinh"
             >
               Hoạt hình
-            </a>
+            </Link>
           </li>
           <li className="px-8">
-            <a
+            <Link
               className={`hover:text-custome-red ${
                 pathname === '/movies/format/tv-shows' && 'text-custome-red'
               }`}
               href="/movies/format/tv-shows"
             >
               TV show
-            </a>
+            </Link>
           </li>
           <li className={`px-8 relative ${isShowFixedHeader && 'group'}`}>
             <p className="leading-[3.62rem] cursor-pointer">Thể loại</p>
@@ -92,9 +94,9 @@ export default function HeaderFixed({
           </li>
         </ul>
         <div className="flex gap-x-4 items-center h-[3.62rem]">
-          <a className="cursor-pointer hover:text-custome-red" href="/search">
+          <Link className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
-          </a>
+          </Link>
           <div className={`relative h-full flex items-center pl-6 ${isShowFixedHeader && 'group'}`}>
             {!loading &&
               (authenticatedUser ? (
