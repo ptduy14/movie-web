@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import NotificationDropDown from './notification-dropdown';
 import NotificationIcon from './notification-icon';
 import { INotificationDropdownState } from 'types/notification';
+import { useSelector } from 'react-redux';
+import firebaseServices from 'services/firebase-services';
 
 export default function Notification({
   isOnFixedHeader,
@@ -11,6 +14,26 @@ export default function Notification({
   notificationDropdownState: INotificationDropdownState;
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
 }) {
+  const user = useSelector((state: any) => state.auth.user);
+
+  useEffect(() => {
+    if (!user) return;
+    let unsubscribe: (() => void) | null = null;
+
+    const fetchNotifications = async () => {
+      unsubscribe = await firebaseServices.listenToUserNotifications(user.id);
+    };
+
+    fetchNotifications();
+
+    return () => {
+      if (unsubscribe) {
+        console.log('🛑 Unsubscribing from notifications...');
+        unsubscribe();
+      }
+    };
+  }, []);
+
   // base on isOnHeaderDefault to choose what state choosing
   const isOpen = isOnFixedHeader
     ? notificationDropdownState.isOpenInHeaderFixed
@@ -18,7 +41,10 @@ export default function Notification({
 
   return (
     <>
-      <NotificationIcon setNotificationDropdownState={setNotificationDropdownState} isOnFixedHeader={isOnFixedHeader} />
+      <NotificationIcon
+        setNotificationDropdownState={setNotificationDropdownState}
+        isOnFixedHeader={isOnFixedHeader}
+      />
       {isOpen && (
         <NotificationDropDown
           notificationDropdownState={notificationDropdownState}
