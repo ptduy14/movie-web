@@ -8,8 +8,8 @@ export default function LikeIcon({ size }: { size: string }) {
       ></path>
       <defs>
         <linearGradient id="a" x1="8" x2="8" y2="16" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#18AFFF"></stop>
-          <stop offset="1" stop-color="#0062DF"></stop>
+          <stop stopColor="#18AFFF"></stop>
+          <stop offset="1" stopColor="#0062DF"></stop>
         </linearGradient>
       </defs>
     </svg>
