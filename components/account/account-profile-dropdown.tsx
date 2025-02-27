@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../../redux/slices/user-slice';
 import AuthServices from 'services/auth-services';
@@ -8,10 +8,14 @@ import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../configs/firebase';
 import Link from 'next/link';
+import { useDropdown } from '../context/dropdown-context';
 
 export default function AccountProfileDropdown({ authenticatedUser }: { authenticatedUser: any }) {
+  const { setAccountDropdownState } = useDropdown();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const accountDropdownRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = async () => {
     setIsLoading(true);
@@ -21,8 +25,29 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    const detectCloseAccountDropdown = (e: MouseEvent) => {
+      if (
+        accountDropdownRef.current !== null &&
+        !accountDropdownRef.current.contains(e.target as Node)
+      ) {
+        setAccountDropdownState({
+          isOpenInHeaderDefault: false,
+          isOpenInHeaderFixed: false,
+        });
+      }
+    };
+
+    document.addEventListener('click', detectCloseAccountDropdown);
+
+    return () => document.removeEventListener('click', detectCloseAccountDropdown);
+  }, []);
+
   return (
-    <div className="group-hover:block hidden border border-slate-600 absolute bg-black right-0 top-[3.625rem] min-w-[14rem] px-5 py-4 rounded-lg shadow-lg space-y-3">
+    <div
+      ref={accountDropdownRef}
+      className="block border border-slate-600 absolute bg-black right-0 top-[3.625rem] min-w-[14rem] px-5 py-4 rounded-lg shadow-lg space-y-3"
+    >
       {/* Thông tin tài khoản */}
       <div className="border-b border-gray-500 pb-3 mb-3">
         <span className="text-white text-base block font-semibold">{authenticatedUser.email}</span>
