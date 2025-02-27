@@ -39,7 +39,6 @@ export default function HeaderFixed({
       }`}
     >
       <div className="header-container flex items-center justify-between container-wrapper">
-        
         <Link className="block" href="/">
           <Image src={logo} alt="Picture of the author" className="w-32" />
         </Link>
@@ -97,14 +96,12 @@ export default function HeaderFixed({
           <Link className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </Link>
-          <div className={`relative h-full flex items-center ${isShowFixedHeader && 'group'}`}>
-            {!loading &&
+          {!loading &&
               (authenticatedUser ? (
-                <AccountProfileIcon authenticatedUser={authenticatedUser} />
+                <AccountProfileIcon authenticatedUser={authenticatedUser} isOnFixedHeader={true} />
               ) : (
                 <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
               ))}
-          </div>
           <div className={`relative h-full flex items-center`}>
             {!loading && authenticatedUser && (
               <Notification

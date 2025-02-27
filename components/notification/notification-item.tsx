@@ -6,7 +6,6 @@ import { FaCommentDots } from 'react-icons/fa';
 import ReplyIcon from '../custom-icons/reply-icon';
 import { INotification } from 'types/notification';
 import Link from 'next/link';
-import { useState } from 'react';
 
 export default function NotificationItem({ notification }: { notification: INotification }) {
   const date = new Date(notification.timestamp);
