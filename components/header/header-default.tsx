@@ -92,16 +92,12 @@ export default function HeaderDefault({
           <Link className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </Link>
-          <div
-            className={`relative h-full flex items-center ${!isShowFixedHeader && 'group'}`}
-          >
-            {!loading &&
-              (authenticatedUser ? (
-                <AccountProfileIcon authenticatedUser={authenticatedUser} />
-              ) : (
-                <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
-              ))}
-          </div>
+          {!loading &&
+            (authenticatedUser ? (
+              <AccountProfileIcon authenticatedUser={authenticatedUser} isOnFixedHeader={false}/>
+            ) : (
+              <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
+            ))}
           <div className={`relative h-full flex items-center`}>
             {!loading && authenticatedUser && (
               <Notification
