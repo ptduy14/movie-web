@@ -6,12 +6,17 @@ import { FaCommentDots } from 'react-icons/fa';
 import ReplyIcon from '../custom-icons/reply-icon';
 import { INotification } from 'types/notification';
 import Link from 'next/link';
+import { useDropdown } from '../context/dropdown-context';
 
 export default function NotificationItem({ notification }: { notification: INotification }) {
+  const { setNotificationDropdownState } = useDropdown();
   const date = new Date(notification.timestamp);
 
   return (
     <Link
+      onClick={() =>
+        setNotificationDropdownState({ isOpenInHeaderDefault: false, isOpenInHeaderFixed: false })
+      }
       href={`${window.location.origin}/movies/${notification.movieSlug}`}
       className={`${
         !notification.read && 'bg-[#2a1313]'
