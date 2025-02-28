@@ -19,6 +19,7 @@ import {
 import { db } from 'configs/firebase';
 import IComment from 'types/comment';
 import { INotification } from 'types/notification';
+import DetailMovie from 'types/detail-movie';
 
 const firebaseServices = {
   getMovieCollection: async (userId: string) => {
@@ -34,14 +35,13 @@ const firebaseServices = {
   },
 
   getMovieComments: async (movieId: string) => {
-    const movieCommentsRef = doc(db, 'movieComments', movieId);
-    const docSnapshot = await getDoc(movieCommentsRef);
+    const movieCommentsDocRef = doc(db, 'movieComments', movieId); 
+    const docSnapshot = await getDoc(movieCommentsDocRef);
 
     if (docSnapshot.exists()) {
-      const commentsCollectionRef = collection(movieCommentsRef, 'comments');
-      const querySnapshot = await getDocs(
-        query(commentsCollectionRef, orderBy('timeStamp', 'desc'))
-      );
+      const movieCommentsSubcollectionRef = collection(movieCommentsDocRef, 'comments');
+      const q = query(movieCommentsSubcollectionRef, orderBy('timeStamp', 'desc'))
+      const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) return [];
 
@@ -66,8 +66,8 @@ const firebaseServices = {
   },
 
   addMovieComment: async (movieId: string, newComment: IComment) => {
-    const movieCommentsDocRef = doc(db, 'movieComments', movieId);
-    const commentsCollectionRef = collection(movieCommentsDocRef, 'comments'); // Reference to subcollection
+    const movieCommentsDocRef = doc(db, 'movieComments', movieId); 
+    const movieCommentsSubcollectionRef = collection(movieCommentsDocRef, 'comments');
     const docSnapshot = await getDoc(movieCommentsDocRef);
 
     try {
@@ -77,7 +77,7 @@ const firebaseServices = {
       }
 
       // add document to subcollection
-      const commentAdded = await addDoc(commentsCollectionRef, newComment);
+      const commentAdded = await addDoc(movieCommentsSubcollectionRef, newComment);
 
       return {
         id: commentAdded.id,
@@ -94,7 +94,7 @@ const firebaseServices = {
     const commentDocRef = doc(db, 'movieComments', movieId, 'comments', commentId);
 
     try {
-      setDoc(commentDocRef, { text: editedCommentText }, { merge: true });
+      updateDoc(commentDocRef, { text: editedCommentText });
     } catch (error: any) {
       console.log(error.message);
     }
@@ -136,12 +136,25 @@ const firebaseServices = {
     }
   },
 
-  createNotification: async (notification: INotification) => {
+  createNotification: async (user: any, comment: IComment, movie: DetailMovie) => {
+    // create notification
+    const notification: INotification = {
+      type: "react",
+      userCreatedName: user.name,
+      userCreatedId: user.id,
+      userReciveId: comment.userId,
+      userReciveName: comment.userName,
+      timestamp: new Date().toString(),
+      movieSlug: movie.movie.slug,
+      movieId: movie.movie._id,
+      read: false
+    }
+
     try {
       const userNotificationsDocRef = doc(db, 'userNotifications', notification.userReciveId);
-      const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications"); 
-      
-      await setDoc(userNotificationsDocRef, { updateAt: new Date() }, {merge: true});
+      const userNotificationCollectionRef = collection(userNotificationsDocRef, 'notifications');
+
+      await setDoc(userNotificationsDocRef, { updateAt: new Date() }, { merge: true });
       await addDoc(userNotificationCollectionRef, notification);
     } catch (error: any) {
       console.log(error.message);
@@ -150,37 +163,51 @@ const firebaseServices = {
 
   deleteNotification: async (userReciveId: string, userCreatedId: string) => {
     try {
-      const notificationId = await firebaseServices.findNotificationId(userReciveId, userCreatedId);
-      
-      if (!notificationId) return
-      
-      const mainUserNotificationsDocRef = doc(db, 'userNotifications', userReciveId, "notifications", notificationId);
+      const notificationId = await firebaseServices.findNotificationByUserCreatedId(userReciveId, userCreatedId);
+
+      if (!notificationId) return;
+
+      const mainUserNotificationsDocRef = doc(
+        db,
+        'userNotifications',
+        userReciveId,
+        'notifications',
+        notificationId
+      );
       await deleteDoc(mainUserNotificationsDocRef);
     } catch (error: any) {
       console.log(error.message);
     }
   },
 
-  findNotificationId: async (userReciveId: string, userCreatedId: string) => {
+  findNotificationByUserCreatedId: async (userReciveId: string, userCreatedId: string) => {
     try {
       const userNotificationsDocRef = doc(db, 'userNotifications', userReciveId);
-      const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications");
-      
-      const q = query(userNotificationCollectionRef, where("userCreatedId", "==", userCreatedId), limit(1));
-      
-      const querySnapshot = await getDocs(q);
-      const notificationDeleteId = querySnapshot.docs[0].id;
+      const userNotificationCollectionRef = collection(userNotificationsDocRef, 'notifications');
 
-      return notificationDeleteId;
+      const q = query(
+        userNotificationCollectionRef,
+        where('userCreatedId', '==', userCreatedId),
+        limit(1)
+      );
+
+      const querySnapshot = await getDocs(q);
+      const result = querySnapshot.docs[0].id;
+
+      return result;
     } catch (error: any) {
       console.log(error.message);
       return null;
     }
   },
 
-  listenToUserNotifications: async (userId: string, handleReciveNotificationData: (notifications: INotification[]) => void) => {
+  // REFACTOR LATER: this logic need to refactor when new comment added
+  listenToUserNotifications: async (
+    userId: string,
+    handleReciveNotificationData: (notifications: INotification[]) => void
+  ) => {
     const userNotificationsDocRef = doc(db, 'userNotifications', userId);
-    const userNotificationCollectionRef = collection(userNotificationsDocRef, "notifications");
+    const userNotificationCollectionRef = collection(userNotificationsDocRef, 'notifications');
 
     const q = query(userNotificationCollectionRef);
 
@@ -188,15 +215,15 @@ const firebaseServices = {
       const notifications: INotification[] = [];
 
       querySnapshot.forEach((doc: DocumentData) => {
-        const data:INotification = doc.data();
+        const data: INotification = doc.data();
         notifications.push(data);
       });
-      
+
       handleReciveNotificationData(notifications);
     });
 
     return unsubscribe;
-  }
+  },
 };
 
 export default firebaseServices;

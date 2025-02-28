@@ -98,19 +98,7 @@ export default function CommentControl({
 
     if (user.id === comment.userId) return
     
-    // create notification
-    const notification: INotification = {
-      type: "react",
-      userCreatedName: user.name,
-      userCreatedId: user.id,
-      userReciveId: comment.userId,
-      userReciveName: comment.userName,
-      timestamp: new Date().toString(),
-      movieSlug: movie.movie.slug,
-      movieId: movie.movie._id,
-      read: false
-    }
-    await firebaseServices.createNotification(notification);
+    await firebaseServices.createNotification(user, comment, movie);
   };
 
   return (
