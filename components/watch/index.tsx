@@ -55,6 +55,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
     if (!progress) return;
 
+    // TODO need fix logic here
     // lưu lại tiến trình xem cuối cùng của phim trước vào db
     if (user && progress && progress.id !== movie.movie._id) {
       // Ensure it's awaited if async
@@ -174,7 +175,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         await setDoc(userMoviesRef, {
           movies: [recentMovie],
         });
-        console.log('Created new movie collection.');
+        console.log('Created new user movie collection.');
       }
     } catch (error: any) {
       console.error('Error storing recent movie:', error.message);
