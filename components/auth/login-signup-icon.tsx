@@ -1,11 +1,12 @@
 import { CgProfile } from 'react-icons/cg';
-import LoginSignUpDropdown from './login-signup-dropdown';
+import { useAuthModel } from '../context/auth-modal-context';
 
 export default function LoginSignUpIcon({ isShowFixedHeader }: { isShowFixedHeader: boolean }) {
+  const {openAuthModal} = useAuthModel();
   return (
     <>
-        <CgProfile className={`cursor-pointer hover:text-custome-red]`} size={25} />
-        <LoginSignUpDropdown />
+        <CgProfile className={`cursor-pointer hover:text-custome-red]`} size={25} onClick={() => openAuthModal()}/>
+        
     </>
   );
 }
