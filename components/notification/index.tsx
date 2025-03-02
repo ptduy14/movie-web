@@ -4,6 +4,7 @@ import NotificationIcon from './notification-icon';
 import { INotification, INotificationDropdownState } from 'types/notification';
 import { useSelector } from 'react-redux';
 import firebaseServices from 'services/firebase-services';
+import { Unsubscribe } from 'firebase/auth';
 
 export default function Notification({
   isOnFixedHeader,
@@ -20,7 +21,7 @@ export default function Notification({
 
   useEffect(() => {
     if (!user) return;
-    let unsubscribe: (() => void) | null = null;
+    let unsubscribe: Unsubscribe | undefined = undefined;
 
     const fetchNotifications = async () => {
       unsubscribe = await firebaseServices.listenToUserNotifications(user.id, handleReciveNotificationData);
