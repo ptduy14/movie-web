@@ -100,7 +100,7 @@ export default function HeaderFixed({
               (authenticatedUser ? (
                 <AccountProfileIcon authenticatedUser={authenticatedUser} isOnFixedHeader={true} />
               ) : (
-                <LoginSignUpIcon isShowFixedHeader={isShowFixedHeader} />
+                <LoginSignUpIcon />
               ))}
           <div className={`relative h-full flex items-center`}>
             {!loading && authenticatedUser && (
