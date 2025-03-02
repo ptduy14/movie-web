@@ -73,6 +73,7 @@ const firebaseServices = {
     } catch (error: any) {
       toast.error('Đã có lỗi xảy ra...');
       console.log(error.message);
+      return [];
     }
   },
 
