@@ -55,15 +55,13 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
     if (!progress) return;
 
-    // TODO need fix logic here
-    // lưu lại tiến trình xem cuối cùng của phim trước vào db
-    if (user && progress && progress.id !== movie.movie._id) {
-      // Ensure it's awaited if async
+    if (user) {
+      // save movie watching progress to firestore
       (async () => {
         await handleAddRecentMovie(progress);
       })();
 
-      // lấy tiến trình xem phim cũ nếu có
+      // get movie watching progress from firestore if exist
       (async () => {
         await handleGetRecentMovieProgress();
       })();
@@ -71,6 +69,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       return;
     }
 
+    // this logic for user not login
     setPreviousWatchProgress({
       progressEpIndex: progress.progress.episodeIndex,
       progressTime: progress.progress.progressTime,
@@ -191,15 +190,19 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         const recentMovies = docSnapshot.data()?.movies || [];
         const recentMovie = recentMovies.find((m: any) => m.id === movie.movie._id);
 
-        if (!recentMovie) return;
-
-        console.log(recentMovie);
-
-        setPreviousWatchProgress({
-          progressEpIndex: recentMovie.progress.episodeIndex,
-          progressTime: recentMovie.progress.progressTime,
-          progressEpLink: recentMovie.progress.episodeLink,
-        });
+        if (recentMovie) {
+          setPreviousWatchProgress({
+            progressEpIndex: recentMovie.progress.episodeIndex,
+            progressTime: recentMovie.progress.progressTime,
+            progressEpLink: recentMovie.progress.episodeLink,
+          });
+        } else {
+          setPreviousWatchProgress({
+            progressEpIndex: progress.progress.episodeIndex,
+            progressTime: progress.progress.progressTime,
+            progressEpLink: progress.progress.episodeLink,
+          }); 
+        }
 
         setTimeout(() => {
           setIsShowMessage(true);
