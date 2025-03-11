@@ -4,7 +4,7 @@ import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import DetailMovie from 'types/detail-movie';
 import TMDBLogo from '../logos/TMDB-Logo';
 import Category from 'types/category';
-import { GoDotFill } from "react-icons/go";
+import { GoDotFill } from 'react-icons/go';
 import Link from 'next/link';
 
 export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovie }) {
@@ -16,30 +16,23 @@ export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovi
   ));
 
   return (
-    <div className="relative w-full h-[50rem]">
-      <div className="w-full h-full relative">
-        <img
-          src={detailMovie.movie.poster_url}
-          alt=""
-          className="w-full h-full"
-          onError={({ currentTarget }) => {
-            currentTarget.src =
-              'https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F7buhbtvryuf5a228c512.png';
-          }}
-        />
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-      </div>
+    <div
+      className="container-wrapper relative w-full h-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${detailMovie.movie.poster_url})` }}
+    >
+      <div className="absolute inset-0 bg-black opacity-45"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
       <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
+
       <div className="absolute w-2/4 top-[15rem] left-6 space-y-5">
         <h2 className="text-5xl font-bold">{detailMovie.movie.name}</h2>
-        <div className='flex items-center gap-x-2 text-sm'>
+        <div className="flex items-center gap-x-2 text-sm">
           <div>{detailMovie.movie.year}</div>
-          <GoDotFill size={12}/>
+          <GoDotFill size={12} />
           <div>{movieCategory}</div>
-          <GoDotFill size={12}/>
+          <GoDotFill size={12} />
           <div>{detailMovie.movie.episode_current}</div>
         </div>
         <div className="flex items-center gap-x-2">
