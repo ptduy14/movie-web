@@ -7,11 +7,14 @@ import ServerSection from './server-section';
 import { useRef } from 'react';
 import ProgresswatchNotification from './progress-watch-notification';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProgress } from '../../redux/slices/progress-slice';
+import { removeProgress, setProgress } from '../../redux/slices/progress-slice';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from '../../configs/firebase'; // Đường dẫn đến tệp firebase của bạn
 import { A } from '../../redux/slices/progress-slice';
 import CommentSection from '../comment';
+import { IoMdReturnLeft } from 'react-icons/io';
+import { IRecentMovie } from 'types/recent-movie';
+import firebaseServices from 'services/firebase-services';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   // episodes[serverIndex]: server được chọn
@@ -30,8 +33,8 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     progressEpIndex: 0,
     progressEpLink: '',
   });
-
   const [isShowMessage, setIsShowMessage] = useState(false);
+  const [isFirstPlay, setIsFirstPlay] = useState<boolean>(true);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -54,42 +57,78 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setEpisodeIndex(0);
 
     if (!progress) return;
-
-    if (user) {
-      // save movie watching progress to firestore
-      (async () => {
-        await handleAddRecentMovie(progress);
-      })();
-
-      // get movie watching progress from firestore if exist
-      (async () => {
-        await handleGetRecentMovieProgress();
-      })();
-
-      return;
-    }
-
-    // this logic for user not login
-    setPreviousWatchProgress({
-      progressEpIndex: progress.progress.episodeIndex,
-      progressTime: progress.progress.progressTime,
-      progressEpLink: progress.progress.episodeLink,
-    });
-
+    
     let timerID: any;
 
-    if (progress.id === movie.movie._id) {
-      timerID = setTimeout(() => {
-        setIsShowMessage(true);
-      }, 2000);
-    }
+    restoreGuestWatchProgress();
+    
 
-    return () => {
-      if (timerID) clearTimeout(timerID);
-    };
+    // console.log(progress);
+    // if (user) {
+    //   // check if previous movie is current movie then use immediately this data
+    //   if (progress.id === movie.movie._id) {
+    //     setPreviousWatchProgress({
+    //       progressEpIndex: progress.progress.episodeIndex,
+    //       progressTime: progress.progress.progressTime,
+    //       progressEpLink: progress.progress.episodeLink,
+    //     });
+
+    //     setIsShowMessage(true);
+
+    //     // save movie watching progress to firestore
+    //     (async () => {
+    //       await handleAddRecentMovie(progress);
+    //     })();
+
+    //     return;
+    //   } 
+      
+    //   // save movie watching progress to firestore
+    //   (async () => {
+    //     await handleAddRecentMovie(progress);
+    //   })();
+    //   console.log('ok');
+    //   // get movie watching progress from firestore if exist
+    //   (async () => {
+    //     await handleGetRecentMovieProgress();
+    //   })();
+
+    //   return;
+    // }
+
+    // // this logic for user not login
+    // setPreviousWatchProgress({
+    //   progressEpIndex: progress.progress.episodeIndex,
+    //   progressTime: progress.progress.progressTime,
+    //   progressEpLink: progress.progress.episodeLink,
+    // });
+
+    // let timerID: any;
+
+    // if (progress.id === movie.movie._id) {
+    //   timerID = setTimeout(() => {
+    //     setIsShowMessage(true);
+    //   }, 2000);
+    // }
+
+    // return () => {
+    //   if (timerID) clearTimeout(timerID);
+    // };
   }, []);
 
-  const handleStoreViewingProgress = async (e: any) => {
+  const restoreGuestWatchProgress = () => {
+      if (progress.id !== movie.movie._id) return; 
+
+      // for user not authenticated
+      setPreviousWatchProgress({
+        progressEpIndex: progress.progress.episodeIndex,
+        progressTime: progress.progress.progressTime,
+        progressEpLink: progress.progress.episodeLink,
+      });
+      setIsShowMessage(true);
+  }
+
+  const handleStoreTempViewProgress = async (e: any) => {
     if (videoRef.current?.currentTime === 0) return;
 
     const progress = {
@@ -111,12 +150,41 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   };
 
   useEffect(() => {
-    window.addEventListener('beforeunload', handleStoreViewingProgress);
+    window.addEventListener('beforeunload', handleStoreTempViewProgress);
 
     return () => {
-      window.removeEventListener('beforeunload', handleStoreViewingProgress);
+      window.removeEventListener('beforeunload', handleStoreTempViewProgress);
     };
-  }, [episodeLink, user]);
+  }, [serverIndex, episodeLink, user]);
+  
+  useEffect(() => {
+    
+    if (!videoRef.current || !isFirstPlay || !user) return;
+
+    const videoElement = videoRef.current;
+
+    const handleStoreRecentMovie = async () => {
+      const recentMovieData: IRecentMovie = {
+        id: movie.movie._id,
+        slug: movie.movie.slug,
+        thumb_url: movie.movie.thumb_url,
+        name: movie.movie.name,
+        origin_name: movie.movie.origin_name,
+        lang: movie.movie.lang,
+        quality: movie.movie.quality
+      }
+
+      await firebaseServices.storeRecentMovies(recentMovieData, user.id);
+      setIsFirstPlay(false);
+    }
+
+    videoElement.addEventListener('playing', handleStoreRecentMovie);
+
+    return () => {
+      videoElement.removeEventListener('playing', handleStoreRecentMovie);
+    }
+
+  }, [isFirstPlay, user])
 
   const handleAcceptProgressWatch = () => {
     setEpisodeIndex(previousWatchProgress.progressEpIndex);
@@ -130,88 +198,59 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setIsShowMessage(false);
   };
 
-  const handleAddRecentMovie = async (progress: A) => {
-    const recentMovie = {
-      id: progress.id,
-      slug: progress.slug,
-      thumb_url: progress.thumb_url,
-      name: progress.name,
-      origin_name: progress.origin_name,
-      lang: progress.lang,
-      quality: progress.quality,
-      progress: {
-        progressTime: progress.progress.progressTime,
-        episodeIndex: progress.progress.episodeIndex,
-        episodeLink: progress.progress.episodeLink,
-      },
-    };
+  // const handleAddRecentMovie = async (progress: A) => {
+  //   const recentMovie = {
+  //     id: progress.id,
+  //     slug: progress.slug,
+  //     thumb_url: progress.thumb_url,
+  //     name: progress.name,
+  //     origin_name: progress.origin_name,
+  //     lang: progress.lang,
+  //     quality: progress.quality,
+  //     progress: {
+  //       progressTime: progress.progress.progressTime,
+  //       episodeIndex: progress.progress.episodeIndex,
+  //       episodeLink: progress.progress.episodeLink,
+  //     },
+  //   };
 
-    try {
-      //console.log("Attempting to store recent movie:", recentMovie);
-      const userMoviesRef = doc(db, 'recentMovies', user.id);
-      const docSnapshot = await getDoc(userMoviesRef);
+  //   try {
+  //     //console.log("Attempting to store recent movie:", recentMovie);
+  //     const userMoviesRef = doc(db, 'recentMovies', user.id);
+  //     const docSnapshot = await getDoc(userMoviesRef);
 
-      if (docSnapshot.exists()) {
-        const recentMovies = docSnapshot.data()?.movies || [];
-        const existingRecentMovieIndex = recentMovies.findIndex(
-          (m: any) => m.id === recentMovie.id
-        );
+  //     if (docSnapshot.exists()) {
+  //       const recentMovies = docSnapshot.data()?.movies || [];
+  //       const existingRecentMovieIndex = recentMovies.findIndex(
+  //         (m: any) => m.id === recentMovie.id
+  //       );
 
-        if (existingRecentMovieIndex !== -1) {
-          recentMovies[existingRecentMovieIndex] = recentMovie;
+  //       if (existingRecentMovieIndex !== -1) {
+  //         recentMovies[existingRecentMovieIndex] = recentMovie;
 
-          await updateDoc(userMoviesRef, {
-            movies: recentMovies,
-          });
-          console.log('Updated existing movie.');
-        } else {
-          await updateDoc(userMoviesRef, {
-            movies: arrayUnion(recentMovie),
-          });
-          console.log('Added new movie.');
-        }
-      } else {
-        await setDoc(userMoviesRef, {
-          movies: [recentMovie],
-        });
-        console.log('Created new user movie collection.');
-      }
-    } catch (error: any) {
-      console.error('Error storing recent movie:', error.message);
-    }
-  };
+  //         await updateDoc(userMoviesRef, {
+  //           movies: recentMovies,
+  //         });
+  //         console.log('Updated existing movie.');
+  //       } else {
+  //         await updateDoc(userMoviesRef, {
+  //           movies: arrayUnion(recentMovie),
+  //         });
+  //         console.log('Added new movie.');
+  //       }
+  //     } else {
+  //       await setDoc(userMoviesRef, {
+  //         movies: [recentMovie],
+  //       });
+  //       console.log('Created new user movie collection.');
+  //     }
 
-  const handleGetRecentMovieProgress = async () => {
-    try {
-      const userMoviesRef = doc(db, 'recentMovies', user.id);
-      const docSnapshot = await getDoc(userMoviesRef);
-
-      if (docSnapshot.exists()) {
-        const recentMovies = docSnapshot.data()?.movies || [];
-        const recentMovie = recentMovies.find((m: any) => m.id === movie.movie._id);
-
-        if (recentMovie) {
-          setPreviousWatchProgress({
-            progressEpIndex: recentMovie.progress.episodeIndex,
-            progressTime: recentMovie.progress.progressTime,
-            progressEpLink: recentMovie.progress.episodeLink,
-          });
-        } else {
-          setPreviousWatchProgress({
-            progressEpIndex: progress.progress.episodeIndex,
-            progressTime: progress.progress.progressTime,
-            progressEpLink: progress.progress.episodeLink,
-          }); 
-        }
-
-        setTimeout(() => {
-          setIsShowMessage(true);
-        }, 2000);
-      }
-    } catch (error: any) {
-      console.error('Error fetching recent movie progress:', error.message);
-    }
-  };
+  //     // remove stograge previous movie progress after store.
+  //     // dispatch(removeProgress());
+  //   } catch (error: any) {
+  //     console.error('Error storing recent movie:', error.message);
+  //   }
+  // };
 
   return (
     <div className="pt-[3.75rem] space-y-10">
