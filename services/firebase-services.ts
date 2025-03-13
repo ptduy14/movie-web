@@ -21,6 +21,7 @@ import IComment from 'types/comment';
 import { INotification } from 'types/notification';
 import DetailMovie from 'types/detail-movie';
 import { toast } from 'react-toastify';
+import { IRecentMovie } from 'types/recent-movie';
 
 const firebaseServices = {
   getMovieCollection: async (userId: string) => {
@@ -244,6 +245,37 @@ const firebaseServices = {
       console.log(error.message);
     }
   },
+
+  storeRecentMovies: async (recentMovie: IRecentMovie, userId: string) => {
+    try {
+      const userRecentMovieDocRef = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
+      const userRecentMovieDoc = await getDoc(userRecentMovieDocRef);
+
+      if (userRecentMovieDoc.exists()) {
+        return;
+      }
+
+      await setDoc(userRecentMovieDocRef, recentMovie);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }, 
+
+  getRecentMovies: async(userId: string) => {
+    try {
+      const userRecentMovieDocRef = collection(db, 'recentMovies', userId, 'movies');
+      const res = await getDocs(userRecentMovieDocRef);
+
+      if (!res.empty) {
+        return res.docs.map((doc: DocumentData) => ({id: doc.id, ...doc.data()}));
+      }
+
+      return [];
+    } catch (error: any) {
+      console.log(error.message);
+      return [];
+    }
+  }
 };
 
 export default firebaseServices;

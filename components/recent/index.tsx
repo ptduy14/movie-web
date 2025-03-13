@@ -10,9 +10,11 @@ import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingComponent from '../loading/loading-component';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import { A } from '../../redux/slices/progress-slice';
+import firebaseServices from 'services/firebase-services';
+import { IRecentMovie } from 'types/recent-movie';
 
 export default function RecentMoviePage() {
-  const [recentMovies, setRecentMovies] = useState<A[] | []>([]);
+  const [recentMovies, setRecentMovies] = useState<IRecentMovie[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const user = useSelector((state: any) => state.auth.user);
@@ -21,22 +23,15 @@ export default function RecentMoviePage() {
   useEffect(() => {
     if (!user) {
       router.push('/');
+      return;
     }
 
-    getRecentMovies();
+    getRecentMovies(user.id);
   }, [user]);
 
-  const getRecentMovies = async () => {
-    if (!user) return;
-
-    const userMovieRef = doc(db, 'recentMovies', user.id);
-    const docSnapshot = await getDoc(userMovieRef);
-
-    if (docSnapshot.exists()) {
-      const movies = docSnapshot.data().movies || [];
-      setRecentMovies(movies);
-    }
-
+  const getRecentMovies = async (userId: string) => {
+    const movies = await firebaseServices.getRecentMovies(userId);
+    setRecentMovies(movies);
     setIsLoading(false);
   };
 
