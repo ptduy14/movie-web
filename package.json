@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.8",
     "firebase": "^10.14.1",
+    "firebase-admin": "^13.2.0",
     "hls.js": "^1.5.15",
     "next": "14.2.5",
     "react": "^18",

@@ -9,7 +9,7 @@ import ProgresswatchNotification from './progress-watch-notification';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeProgress, setProgress } from '../../redux/slices/progress-slice';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
-import { db } from '../../configs/firebase'; // Đường dẫn đến tệp firebase của bạn
+import { db } from '../../lib/firebase'; // Đường dẫn đến tệp firebase của bạn
 import { A } from '../../redux/slices/progress-slice';
 import CommentSection from '../comment';
 import { IoMdReturnLeft } from 'react-icons/io';
@@ -33,7 +33,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     progressEpIndex: 0,
     progressEpLink: '',
   });
-  const [isShowMessage, setIsShowMessage] = useState(false);
+  const [isShowToastProgress, setIsShowToastProgress] = useState(false);
   const [isFirstPlay, setIsFirstPlay] = useState<boolean>(true);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -56,82 +56,73 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
     setEpisodeIndex(0);
 
-    if (!progress) return;
-    
-    let timerID: any;
+    // restore progress watching of user authenticated
+    if (user) {
+      restoreUserWatchProgress(user.id, movie.movie._id);
+    }
 
-    restoreGuestWatchProgress();
-    
-
-    // console.log(progress);
-    // if (user) {
-    //   // check if previous movie is current movie then use immediately this data
-    //   if (progress.id === movie.movie._id) {
-    //     setPreviousWatchProgress({
-    //       progressEpIndex: progress.progress.episodeIndex,
-    //       progressTime: progress.progress.progressTime,
-    //       progressEpLink: progress.progress.episodeLink,
-    //     });
-
-    //     setIsShowMessage(true);
-
-    //     // save movie watching progress to firestore
-    //     (async () => {
-    //       await handleAddRecentMovie(progress);
-    //     })();
-
-    //     return;
-    //   } 
-      
-    //   // save movie watching progress to firestore
-    //   (async () => {
-    //     await handleAddRecentMovie(progress);
-    //   })();
-    //   console.log('ok');
-    //   // get movie watching progress from firestore if exist
-    //   (async () => {
-    //     await handleGetRecentMovieProgress();
-    //   })();
-
-    //   return;
-    // }
-
-    // // this logic for user not login
-    // setPreviousWatchProgress({
-    //   progressEpIndex: progress.progress.episodeIndex,
-    //   progressTime: progress.progress.progressTime,
-    //   progressEpLink: progress.progress.episodeLink,
-    // });
-
-    // let timerID: any;
-
-    // if (progress.id === movie.movie._id) {
-    //   timerID = setTimeout(() => {
-    //     setIsShowMessage(true);
-    //   }, 2000);
-    // }
-
-    // return () => {
-    //   if (timerID) clearTimeout(timerID);
-    // };
+    restoreGuestWatchProgress(progress);
   }, []);
 
-  const restoreGuestWatchProgress = () => {
-      if (progress.id !== movie.movie._id) return; 
+  const restoreUserWatchProgress = async (userId: string, movieId: string) => {
+    const res: any = await firebaseServices.getProgressWatchOfMovie(userId, movieId);
 
-      // for user not authenticated
-      setPreviousWatchProgress({
-        progressEpIndex: progress.progress.episodeIndex,
-        progressTime: progress.progress.progressTime,
-        progressEpLink: progress.progress.episodeLink,
-      });
-      setIsShowMessage(true);
+    if (!res.status) {
+      return;
+    }
+
+    setPreviousWatchProgress({
+      progressEpIndex: res.progressEpIndex,
+      progressTime: res.progressTime,
+      progressEpLink: res.progressEpLink,
+    });
+    
+    setTimeout(() => {
+      setIsShowToastProgress(true);
+    }, 2000)
   }
 
-  const handleStoreTempViewProgress = async (e: any) => {
+  const restoreGuestWatchProgress = (progress: any) => {
+    if (progress.id !== movie.movie._id) return;
+
+    setPreviousWatchProgress({
+      progressEpIndex: progress.progress.episodeIndex,
+      progressTime: progress.progress.progressTime,
+      progressEpLink: progress.progress.episodeLink,
+    });
+
+    setTimeout(() => {
+      setIsShowToastProgress(true);
+    }, 2000)
+  };
+
+  const handleTrackingProgressWatch = async (e: any) => {
     if (videoRef.current?.currentTime === 0) return;
 
-    const progress = {
+    // store data for user not authenticated
+    if (!user) {
+      const progress = {
+        id: movie.movie._id,
+        slug: movie.movie.slug,
+        thumb_url: movie.movie.thumb_url,
+        name: movie.movie.name,
+        origin_name: movie.movie.origin_name,
+        lang: movie.movie.lang,
+        quality: movie.movie.quality,
+        progress: {
+          progressTime: videoRef.current?.currentTime,
+          episodeIndex,
+          episodeLink,
+        },
+      };
+
+      dispatch(setProgress(progress));
+      return;
+    }
+
+    // store data for user authenticated
+    const recentMovieData: IRecentMovie = {
+      userId: user.id,
       id: movie.movie._id,
       slug: movie.movie.slug,
       thumb_url: movie.movie.thumb_url,
@@ -139,26 +130,30 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       origin_name: movie.movie.origin_name,
       lang: movie.movie.lang,
       quality: movie.movie.quality,
-      progress: {
-        progressTime: videoRef.current?.currentTime,
-        episodeIndex,
-        episodeLink,
-      },
+      progressEpIndex: episodeIndex || 0,
+      progressTime:  videoRef.current?.currentTime || 0,
+      progressEpLink: episodeLink || movie.episodes[0].server_data[0].link_m3u8,
     };
 
-    dispatch(setProgress(progress));
+    // Convert the data into a JSON string
+    const jsonData = JSON.stringify(recentMovieData);
+
+    // Create a Blob with the correct MIME type
+    const blob = new Blob([jsonData], { type: 'application/json' });
+
+    // this route will handle store recent movie and progress of movie
+    navigator.sendBeacon('/api/movies/store-recent-movie', blob);
   };
 
   useEffect(() => {
-    window.addEventListener('beforeunload', handleStoreTempViewProgress);
+    window.addEventListener('beforeunload', handleTrackingProgressWatch);
 
     return () => {
-      window.removeEventListener('beforeunload', handleStoreTempViewProgress);
+      window.removeEventListener('beforeunload', handleTrackingProgressWatch);
     };
-  }, [serverIndex, episodeLink, user]);
-  
+  }, [episodeLink, user]);
+
   useEffect(() => {
-    
     if (!videoRef.current || !isFirstPlay || !user) return;
 
     const videoElement = videoRef.current;
@@ -171,91 +166,39 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         name: movie.movie.name,
         origin_name: movie.movie.origin_name,
         lang: movie.movie.lang,
-        quality: movie.movie.quality
-      }
+        quality: movie.movie.quality,
+        progressEpIndex: progress.progress.episodeIndex || 0,
+        progressTime: progress.progress.progressTime || 0,
+        progressEpLink: progress.progress.episodeLink || movie.episodes[0].server_data[0].link_m3u8,
+      };
 
       await firebaseServices.storeRecentMovies(recentMovieData, user.id);
       setIsFirstPlay(false);
-    }
+    };
 
     videoElement.addEventListener('playing', handleStoreRecentMovie);
 
     return () => {
       videoElement.removeEventListener('playing', handleStoreRecentMovie);
-    }
-
-  }, [isFirstPlay, user])
+    };
+  }, [isFirstPlay, user]);
 
   const handleAcceptProgressWatch = () => {
     setEpisodeIndex(previousWatchProgress.progressEpIndex);
     setEpisodeLink(previousWatchProgress.progressEpLink);
     setVideoProgress(previousWatchProgress.progressTime);
 
-    setIsShowMessage(false);
+    setIsShowToastProgress(false);
   };
 
   const handleRejectProgressWatch = () => {
-    setIsShowMessage(false);
+    setIsShowToastProgress(false);
   };
-
-  // const handleAddRecentMovie = async (progress: A) => {
-  //   const recentMovie = {
-  //     id: progress.id,
-  //     slug: progress.slug,
-  //     thumb_url: progress.thumb_url,
-  //     name: progress.name,
-  //     origin_name: progress.origin_name,
-  //     lang: progress.lang,
-  //     quality: progress.quality,
-  //     progress: {
-  //       progressTime: progress.progress.progressTime,
-  //       episodeIndex: progress.progress.episodeIndex,
-  //       episodeLink: progress.progress.episodeLink,
-  //     },
-  //   };
-
-  //   try {
-  //     //console.log("Attempting to store recent movie:", recentMovie);
-  //     const userMoviesRef = doc(db, 'recentMovies', user.id);
-  //     const docSnapshot = await getDoc(userMoviesRef);
-
-  //     if (docSnapshot.exists()) {
-  //       const recentMovies = docSnapshot.data()?.movies || [];
-  //       const existingRecentMovieIndex = recentMovies.findIndex(
-  //         (m: any) => m.id === recentMovie.id
-  //       );
-
-  //       if (existingRecentMovieIndex !== -1) {
-  //         recentMovies[existingRecentMovieIndex] = recentMovie;
-
-  //         await updateDoc(userMoviesRef, {
-  //           movies: recentMovies,
-  //         });
-  //         console.log('Updated existing movie.');
-  //       } else {
-  //         await updateDoc(userMoviesRef, {
-  //           movies: arrayUnion(recentMovie),
-  //         });
-  //         console.log('Added new movie.');
-  //       }
-  //     } else {
-  //       await setDoc(userMoviesRef, {
-  //         movies: [recentMovie],
-  //       });
-  //       console.log('Created new user movie collection.');
-  //     }
-
-  //     // remove stograge previous movie progress after store.
-  //     // dispatch(removeProgress());
-  //   } catch (error: any) {
-  //     console.error('Error storing recent movie:', error.message);
-  //   }
-  // };
 
   return (
     <div className="pt-[3.75rem] space-y-10">
       <ProgresswatchNotification
-        isShowMessage={isShowMessage}
+        isShowMessage={isShowToastProgress}
         previousWatchProgress={previousWatchProgress}
         handleAcceptProgressWatch={handleAcceptProgressWatch}
         handleRejectProgressWatch={handleRejectProgressWatch}

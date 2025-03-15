@@ -1,4 +1,5 @@
 export interface IRecentMovie {
+  userId?: string,
   id: string;
   slug: string;
   thumb_url: string;
@@ -6,4 +7,7 @@ export interface IRecentMovie {
   origin_name: string;
   lang: string;
   quality: string;
+  progressTime?: number;
+  progressEpIndex?: number;
+  progressEpLink?: string;
 }

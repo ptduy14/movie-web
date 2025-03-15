@@ -6,7 +6,7 @@ import { removeUser } from '../../redux/slices/user-slice';
 import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
-import { auth } from '../../configs/firebase';
+import { auth } from '../../lib/firebase';
 import Link from 'next/link';
 import { useDropdown } from '../context/dropdown-context';
 

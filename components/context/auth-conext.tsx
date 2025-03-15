@@ -3,12 +3,12 @@
 import { createContext, useContext } from 'react';
 import { LoginValidationSchemaType } from 'schemas/login-validation-schema';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../configs/firebase';
+import { auth } from '../../lib/firebase';
 import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/user-slice';
 import { toast } from 'react-toastify';
-import { db } from '../../configs/firebase';
+import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import AuthServices from 'services/auth-services';
 
