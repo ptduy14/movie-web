@@ -16,7 +16,7 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore';
-import { db } from 'configs/firebase';
+import { db } from 'lib/firebase';
 import IComment from 'types/comment';
 import { INotification } from 'types/notification';
 import DetailMovie from 'types/detail-movie';
@@ -224,8 +224,7 @@ const firebaseServices = {
     handleReciveNotificationData: (notifications: INotification[]) => void
   ) => {
     try {
-      const userNotificationsDocRef = doc(db, 'userNotifications', userId);
-      const userNotificationCollectionRef = collection(userNotificationsDocRef, 'notifications');
+      const userNotificationCollectionRef = collection(db, 'userNotifications', userId, 'notifications');
 
       const q = query(userNotificationCollectionRef);
 
@@ -252,6 +251,7 @@ const firebaseServices = {
       const userRecentMovieDoc = await getDoc(userRecentMovieDocRef);
 
       if (userRecentMovieDoc.exists()) {
+        
         return;
       }
 
@@ -274,6 +274,22 @@ const firebaseServices = {
     } catch (error: any) {
       console.log(error.message);
       return [];
+    }
+  },
+
+  getProgressWatchOfMovie: async (userId: string, movieId: string) => {
+    try {
+      const DocRef = doc(db, 'recentMovies', userId, 'movies', movieId);
+      const docSnap = await getDoc(DocRef);
+
+      if (docSnap.exists()) {
+        return {status: true, ...docSnap.data()};
+      }
+
+      return {status: false}
+    } catch (error: any) {
+      console.log(error.message);
+      return {status: false}
     }
   }
 };
