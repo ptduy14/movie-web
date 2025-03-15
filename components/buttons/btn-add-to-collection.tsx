@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useAuthModel } from '../context/auth-modal-context';
 import DetailMovie from 'types/detail-movie';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
-import { db } from '../../configs/firebase'; // Đường dẫn đến tệp firebase của bạn
+import { db } from '../../lib/firebase'; // Đường dẫn đến tệp firebase của bạn
 import { toast } from 'react-toastify';
 import { useEffect, useState, useCallback } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';

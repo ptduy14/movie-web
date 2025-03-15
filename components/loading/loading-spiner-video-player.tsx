@@ -3,7 +3,7 @@ import React from "react";
 export default function LoadingSpinnerVideoPlayer() {
   return (
     <svg
-      className="absolute z-10 animate-spin cursor-pointer hover:scale-125 transition-all duration-200"
+      className="absolute z-10 animate-spin transition-all duration-200"
       width={40}
       height={40}
       viewBox="0 0 24 24"

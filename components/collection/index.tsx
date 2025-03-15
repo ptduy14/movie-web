@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from 'configs/firebase';
+import { db } from 'lib/firebase';
 import MovieCollection from 'types/movie-collection';
 import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingComponent from '../loading/loading-component';
