@@ -1,4 +1,5 @@
 export interface INotification {
+    id?: string,
     type: string,
     userCreatedName: string,
     userCreatedId: string,
