@@ -218,6 +218,11 @@ const firebaseServices = {
     }
   },
 
+  readedNotification: async(notification: INotification) => {
+    const userNotificationDocRef = doc(db, 'userNotifications', notification.userReciveId, 'notifications', notification.id!);
+    setDoc(userNotificationDocRef, {read: true}, {merge: true});
+  },
+
   // REFACTOR LATER: this logic need to refactor when new comment added
   listenToUserNotifications: async (
     userId: string,
@@ -232,7 +237,7 @@ const firebaseServices = {
         const notifications: INotification[] = [];
 
         querySnapshot.forEach((doc: DocumentData) => {
-          const data: INotification = doc.data();
+          const data: INotification = {id: doc.id, ...doc.data()};
           notifications.push(data);
         });
 

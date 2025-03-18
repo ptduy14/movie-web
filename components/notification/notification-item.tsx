@@ -7,16 +7,23 @@ import ReplyIcon from '../custom-icons/reply-icon';
 import { INotification } from 'types/notification';
 import Link from 'next/link';
 import { useDropdown } from '../context/dropdown-context';
+import firebaseServices from 'services/firebase-services';
 
 export default function NotificationItem({ notification }: { notification: INotification }) {
   const { setNotificationDropdownState } = useDropdown();
   const date = new Date(notification.timestamp);
+  const handleReadedNotification = async (notification: INotification) => {
+    await firebaseServices.readedNotification(notification);
+  }
 
   return (
     <Link
-      onClick={() =>
-        setNotificationDropdownState({ isOpenInHeaderDefault: false, isOpenInHeaderFixed: false })
-      }
+      onClick={() => {
+        setNotificationDropdownState({ isOpenInHeaderDefault: false, isOpenInHeaderFixed: false });
+        if (!notification.read) {
+          handleReadedNotification(notification);
+        }
+      }}
       href={`${window.location.origin}/movies/${notification.movieSlug}`}
       className={`${
         !notification.read && 'bg-[#2a1313]'
