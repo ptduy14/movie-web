@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
   return (
     <Link className="block h-auto space-y-2" href={`/movies/${movie.slug}`}>
-      <div className="relative w-full h-[20.625rem]">
+      <div className="relative w-full aspect-[2/3]">
         <Image src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url} fill={true} alt='' sizes="100%"/>
       </div>
       <div>

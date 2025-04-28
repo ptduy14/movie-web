@@ -26,7 +26,7 @@ export default function HeroMovieItem({ detailMovie }: { detailMovie: DetailMovi
       <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
       <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
 
-      <div className="absolute w-2/4 top-[15rem] left-6 space-y-5">
+      <div className="absolute w-2/4 bottom-[5rem] left-6 space-y-5">
         <h2 className="text-5xl font-bold">{detailMovie.movie.name}</h2>
         <div className="flex items-center gap-x-2 text-sm">
           <div>{detailMovie.movie.year}</div>
