@@ -83,7 +83,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   }
 
   const restoreGuestWatchProgress = (progress: any) => {
-    if (progress.id !== movie.movie._id) return;
+    if (progress?.id !== movie.movie._id) return;
 
     setPreviousWatchProgress({
       progressEpIndex: progress.progress.episodeIndex,
