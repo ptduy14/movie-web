@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       {/* Add flex-grow here to make sure it expands and pushes footer to the bottom */}
-      <main className="flex-grow pb-24">{children}</main>
+      <main className="flex-grow pb-24 min-h-screen">{children}</main>
       <Footer />
     </>
   );
