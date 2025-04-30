@@ -7,7 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from 'lib/firebase';
 import MovieCollection from 'types/movie-collection';
 import RegularMovieItem from '../commons/regular-movie-item';
-import LoadingComponent from '../loading/loading-component';
+import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import firebaseServices from 'services/firebase-services';
 
@@ -53,7 +53,7 @@ export default function MovieCollectionPage() {
   return (
     <div className="pt-20 space-y-8 h-full">
       <div className="text-2xl font-bold flex justify-center">Bộ sưu tập phim của bạn</div>
-      {isLoading ? <LoadingComponent /> : renderMovieCollection()}
+      {isLoading ? <LoadingSpinner /> : renderMovieCollection()}
     </div>
   );
 }
