@@ -7,7 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from 'lib/firebase';
 import MovieCollection from 'types/movie-collection';
 import RegularMovieItem from '../commons/regular-movie-item';
-import LoadingComponent from '../loading/loading-component';
+import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import { A } from '../../redux/slices/progress-slice';
 import firebaseServices from 'services/firebase-services';
@@ -60,7 +60,7 @@ export default function RecentMoviePage() {
           MovieX giờ đã có tính năng lưu tiến trình tất cả phim mà bạn đã xem
         </div>
       </div>
-      {isLoading ? <LoadingComponent /> : renderRecentMovies()}
+      {isLoading ? <LoadingSpinner /> : renderRecentMovies()}
     </div>
   );
 }

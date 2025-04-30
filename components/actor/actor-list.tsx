@@ -7,7 +7,7 @@ import { GrPrevious, GrNext } from 'react-icons/gr';
 import { useEffect, useRef, useState } from 'react';
 import isNonEmpty from 'utils/is-none-empty';
 import creditIsvalid from 'utils/credit-is-valid';
-import LoadingComponent from '../loading/loading-component';
+import LoadingSpinner from '../loading/loading-spinner';
 
 export default function ActorList({
   movie,
@@ -31,7 +31,7 @@ export default function ActorList({
 
   const renderActorItems = () => {
     if (!isActorReadyToDisplay) {
-      return <LoadingComponent />
+      return <LoadingSpinner />
     }
 
     if (creditIsvalid(credit)) {

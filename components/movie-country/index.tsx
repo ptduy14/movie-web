@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Movie from 'types/movie';
 import RegularMovieItem from '../commons/regular-movie-item';
 import { getMoviesByCountry } from 'app/actions';
-import LoadingComponent from '../loading/loading-component';
+import LoadingSpinner from '../loading/loading-spinner';
 import { useInView } from 'react-intersection-observer';
 
 export default function MovieCountryPage({ slug }: { slug: string }) {
@@ -33,7 +33,7 @@ export default function MovieCountryPage({ slug }: { slug: string }) {
     if (page > 1) getMovies();
   }, [page]);
 
-  if (isLoading) return <LoadingComponent />;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div className="pt-[3.75rem]">
