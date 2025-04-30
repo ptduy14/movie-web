@@ -5,7 +5,7 @@ import Movie from 'types/movie';
 import { isNotNull } from 'utils/movie-utils';
 import { useDebounce } from '../hooks/useDebounce';
 import RegularMovieItem from '../commons/regular-movie-item';
-import LoadingComponent from '../loading/loading-component';
+import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from './branding-placeholder';
 import SearchInput from './search-input';
 
@@ -31,7 +31,7 @@ export default function SearchMoviePage({ movieName }: { movieName: string }) {
         <SearchInput />
       </div>
       {isFetching ? (
-        <LoadingComponent />
+        <LoadingSpinner />
       ) : movies.length !== 0 ? (
         <div className="grid grid-cols-5 gap-6 mt-14">
           {movies.map((movie: Movie, index: number) => (
