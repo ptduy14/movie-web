@@ -6,9 +6,21 @@ import Credit from 'types/credit';
 import isNonEmpty from 'utils/is-none-empty';
 import MovieSummary from './movie-summary';
 import CommentSection from '../comment';
+import MovieImage from 'types/movie-image';
+import MovieImageList from '../movie-images/movie-image-list';
 
-export default function MovieContent({ movie, credit }: { movie: DetailMovie, credit: Credit | undefined}) {
-  const directors = isNonEmpty(movie.movie.director) ? movie.movie.director?.join(', ') : 'Đang cập nhật';
+export default function MovieContent({
+  movie,
+  credit,
+  images,
+}: {
+  movie: DetailMovie;
+  credit: Credit | undefined;
+  images: MovieImage[];
+}) {
+  const directors = isNonEmpty(movie.movie.director)
+    ? movie.movie.director?.join(', ')
+    : 'Đang cập nhật';
   const countries = movie.movie.country.map((item: Country) => item.name).join(', ');
 
   return (
@@ -30,12 +42,15 @@ export default function MovieContent({ movie, credit }: { movie: DetailMovie, cr
             </tr>
           </tbody>
         </table>
-        <MovieSummary summary={movie.movie.content}/>
+        <MovieSummary summary={movie.movie.content} />
         <div>
-          <ActorList movie={movie} credit={credit}/>
+          <ActorList movie={movie} credit={credit} />
         </div>
-        {movie.movie.trailer_url !== '' && <Trailer trailer={movie.movie.trailer_url}/>}
-        <CommentSection movie={movie}/>
+        <div>
+          <MovieImageList images={images} />
+        </div>
+        {movie.movie.trailer_url !== '' && <Trailer trailer={movie.movie.trailer_url} />}
+        <CommentSection movie={movie} />
       </div>
     </div>
   );
