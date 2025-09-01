@@ -26,14 +26,19 @@ export default function SearchMoviePage({ movieName }: { movieName: string }) {
   }, [movieName]);
 
   return (
-    <div className="pt-32 container-wrapper-movie h-full">
-      <div className="w-full h-12">
+    <div className="pt-20 lg:pt-32 container-wrapper-movie h-full px-4 lg:px-0">
+      {/* Search Input Section */}
+      <div className="w-full h-12 lg:h-12 mb-6 lg:mb-0">
         <SearchInput />
       </div>
+
+      {/* Results Section */}
       {isFetching ? (
-        <LoadingSpinner />
+        <div className="flex justify-center items-center py-20">
+          <LoadingSpinner />
+        </div>
       ) : movies.length !== 0 ? (
-        <div className="grid grid-cols-5 gap-6 mt-14">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6 mt-8 lg:mt-14">
           {movies.map((movie: Movie, index: number) => (
             <RegularMovieItem movie={movie} key={index} />
           ))}
