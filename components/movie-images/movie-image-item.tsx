@@ -1,10 +1,18 @@
 import MovieImage from 'types/movie-image';
 import Image from 'next/image';
 
-export default function MovieImageItem({ image }: { image: MovieImage }) {
+interface MovieImageItemProps {
+  image: MovieImage;
+  onClick?: () => void;
+}
+
+export default function MovieImageItem({ image, onClick }: MovieImageItemProps) {
   return (
     <div className="w-full">
-      <div className="w-full aspect-video rounded-lg overflow-hidden relative">
+      <div
+        className="w-full aspect-video rounded-lg overflow-hidden relative cursor-pointer hover:opacity-90 transition-opacity duration-200"
+        onClick={onClick}
+      >
         <Image
           src={`${process.env.NEXT_PUBLIC_TMDB_IMG_DOMAIN}/t/p/w500${image.file_path}`}
           alt="Movie Image"
