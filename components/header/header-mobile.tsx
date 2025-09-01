@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../public/logo.png';
 import Image from 'next/image';
-import { IoSearch, IoMenu, IoClose } from 'react-icons/io5';
+import { IoSearch, IoMenu, IoClose, IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,8 @@ import LoginSignUpIcon from '../auth/login-signup-icon';
 import AccountProfileIcon from '../account/account-profile-icon';
 import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
+import movieType from '../../data/movie-type';
+import countries from '../../data/countries';
 
 export default function HeaderMobile({
   isShowFixedHeader,
@@ -21,6 +23,8 @@ export default function HeaderMobile({
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTypeSubmenuOpen, setIsTypeSubmenuOpen] = useState(false);
+  const [isCountrySubmenuOpen, setIsCountrySubmenuOpen] = useState(false);
   const user = useSelector((state: any) => state.auth.user);
   const [authenticatedUser, setAuthenticatedUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -38,6 +42,18 @@ export default function HeaderMobile({
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsTypeSubmenuOpen(false);
+    setIsCountrySubmenuOpen(false);
+  };
+
+  const toggleTypeSubmenu = () => {
+    setIsTypeSubmenuOpen(!isTypeSubmenuOpen);
+    setIsCountrySubmenuOpen(false); // Close country submenu when opening type
+  };
+
+  const toggleCountrySubmenu = () => {
+    setIsCountrySubmenuOpen(!isCountrySubmenuOpen);
+    setIsTypeSubmenuOpen(false); // Close type submenu when opening country
   };
 
   return (
@@ -93,103 +109,151 @@ export default function HeaderMobile({
             </div>
 
             {/* Menu Content */}
-            <div className="p-4">
-              {/* Navigation Links */}
-              <nav className="mb-8">
-                <ul className="space-y-4">
-                  <li>
-                    <Link
-                      className={`block py-2 text-lg font-medium transition-colors ${
-                        pathname === '/movies/format/phim-le'
-                          ? 'text-custome-red'
-                          : 'text-white hover:text-custome-red'
-                      }`}
-                      href="/movies/format/phim-le"
-                      onClick={closeMobileMenu}
-                    >
-                      Phim lẻ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={`block py-2 text-lg font-medium transition-colors ${
-                        pathname === '/movies/format/phim-bo'
-                          ? 'text-custome-red'
-                          : 'text-white hover:text-custome-red'
-                      }`}
-                      href="/movies/format/phim-bo"
-                      onClick={closeMobileMenu}
-                    >
-                      Phim bộ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={`block py-2 text-lg font-medium transition-colors ${
-                        pathname === '/movies/format/hoat-hinh'
-                          ? 'text-custome-red'
-                          : 'text-white hover:text-custome-red'
-                      }`}
-                      href="/movies/format/hoat-hinh"
-                      onClick={closeMobileMenu}
-                    >
-                      Hoạt hình
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={`block py-2 text-lg font-medium transition-colors ${
-                        pathname === '/movies/format/tv-shows'
-                          ? 'text-custome-red'
-                          : 'text-white hover:text-custome-red'
-                      }`}
-                      href="/movies/format/tv-shows"
-                      onClick={closeMobileMenu}
-                    >
-                      TV show
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
-                      href="/movies/type"
-                      onClick={closeMobileMenu}
-                    >
-                      Thể loại
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
-                      href="/movies/country"
-                      onClick={closeMobileMenu}
-                    >
-                      Quốc gia
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
+            <div className="flex flex-col h-full">
+              <div className="flex-1 overflow-y-auto p-4 pb-8">
+                {/* Navigation Links */}
+                <nav className="mb-8">
+                  <ul className="space-y-4">
+                    <li>
+                      <Link
+                        className={`block py-2 text-lg font-medium transition-colors ${
+                          pathname === '/movies/format/phim-le'
+                            ? 'text-custome-red'
+                            : 'text-white hover:text-custome-red'
+                        }`}
+                        href="/movies/format/phim-le"
+                        onClick={closeMobileMenu}
+                      >
+                        Phim lẻ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={`block py-2 text-lg font-medium transition-colors ${
+                          pathname === '/movies/format/phim-bo'
+                            ? 'text-custome-red'
+                            : 'text-white hover:text-custome-red'
+                        }`}
+                        href="/movies/format/phim-bo"
+                        onClick={closeMobileMenu}
+                      >
+                        Phim bộ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={`block py-2 text-lg font-medium transition-colors ${
+                          pathname === '/movies/format/hoat-hinh'
+                            ? 'text-custome-red'
+                            : 'text-white hover:text-custome-red'
+                        }`}
+                        href="/movies/format/hoat-hinh"
+                        onClick={closeMobileMenu}
+                      >
+                        Hoạt hình
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={`block py-2 text-lg font-medium transition-colors ${
+                          pathname === '/movies/format/tv-shows'
+                            ? 'text-custome-red'
+                            : 'text-white hover:text-custome-red'
+                        }`}
+                        href="/movies/format/tv-shows"
+                        onClick={closeMobileMenu}
+                      >
+                        TV show
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="flex items-center justify-between w-full py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
+                        onClick={toggleTypeSubmenu}
+                      >
+                        Thể loại
+                        {isTypeSubmenuOpen ? (
+                          <IoChevronUp size={20} />
+                        ) : (
+                          <IoChevronDown size={20} />
+                        )}
+                      </button>
+                      {isTypeSubmenuOpen && (
+                        <ul className="ml-4 mt-2 space-y-2 border-l border-gray-700 pl-4">
+                          {movieType.map((item) => (
+                            <li key={item.slug}>
+                              <Link
+                                className={`block py-1 text-base transition-colors ${
+                                  pathname === `/movies/type/${item.slug}`
+                                    ? 'text-custome-red'
+                                    : 'text-gray-300 hover:text-custome-red'
+                                }`}
+                                href={`/movies/type/${item.slug}`}
+                                onClick={closeMobileMenu}
+                              >
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                    <li>
+                      <button
+                        className="flex items-center justify-between w-full py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
+                        onClick={toggleCountrySubmenu}
+                      >
+                        Quốc gia
+                        {isCountrySubmenuOpen ? (
+                          <IoChevronUp size={20} />
+                        ) : (
+                          <IoChevronDown size={20} />
+                        )}
+                      </button>
+                      {isCountrySubmenuOpen && (
+                        <ul className="ml-4 mt-2 space-y-2 border-l border-gray-700 pl-4">
+                          {countries.map((item) => (
+                            <li key={item.slug}>
+                              <Link
+                                className={`block py-1 text-base transition-colors ${
+                                  pathname === `/movies/country/${item.slug}`
+                                    ? 'text-custome-red'
+                                    : 'text-gray-300 hover:text-custome-red'
+                                }`}
+                                href={`/movies/country/${item.slug}`}
+                                onClick={closeMobileMenu}
+                              >
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  </ul>
+                </nav>
 
-              {/* User Section */}
-              <div className="border-t border-gray-800 pt-4">
-                {!loading &&
-                  (authenticatedUser ? (
-                    <div className="flex items-center justify-between">
-                      <AccountProfileIcon
-                        authenticatedUser={authenticatedUser}
-                        isOnFixedHeader={false}
-                      />
-                      <div className="relative">
-                        <Notification
+                {/* User Section */}
+                <div className="border-t border-gray-800 pt-4">
+                  {!loading &&
+                    (authenticatedUser ? (
+                      <div className="flex items-center justify-between">
+                        <AccountProfileIcon
+                          authenticatedUser={authenticatedUser}
                           isOnFixedHeader={false}
-                          notificationDropdownState={notificationDropdownState}
-                          setNotificationDropdownState={setNotificationDropdownState}
                         />
+                        <div className="relative">
+                          <Notification
+                            isOnFixedHeader={false}
+                            notificationDropdownState={notificationDropdownState}
+                            setNotificationDropdownState={setNotificationDropdownState}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <LoginSignUpIcon />
-                  ))}
+                    ) : (
+                      <LoginSignUpIcon />
+                    ))}
+                </div>
               </div>
             </div>
           </div>
