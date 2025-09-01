@@ -74,8 +74,22 @@ export default function MovieImageList({ images }: { images: MovieImage[] }) {
           </div>
         </div>
         <Swiper
-          spaceBetween={30}
-          slidesPerView={3}
+          spaceBetween={16}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 24,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
             setIsImagesReadyToDisplay(true);
