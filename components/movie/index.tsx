@@ -5,8 +5,18 @@ import Credit from 'types/credit';
 import TMDBLogo from '../logos/TMDB-Logo';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import Link from 'next/link';
+import Image from 'next/image';
+import MovieImage from 'types/movie-image';
 
-export default function MoviePage({ movie, credit }: { movie: DetailMovie,  credit: Credit | undefined}) {
+export default function MoviePage({
+  movie,
+  credit,
+  images,
+}: {
+  movie: DetailMovie;
+  credit: Credit | undefined;
+  images: MovieImage[];
+}) {
   return (
     <div>
       <div
@@ -16,14 +26,24 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
         <div className="bg-black h-full w-full opacity-65 absolute inset-0"></div>
         <div className="container-wrapper-movie relative flex justify-end">
           <div className="w-1/4 absolute left-0 top-0">
-            <img className="w-full shadow-custom" src={movie.movie.thumb_url} alt="" />
-            {movie.movie.episode_current !== 'Trailer' && <Link
-              className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
-              href={`/movies/watch/${movie.movie.slug}`}
-            >
-              <FaPlay size={25} />
-              Xem phim
-            </Link>}
+            <div className="relative w-full aspect-[2/3]">
+              <Image
+                src={movie.movie.thumb_url}
+                alt={movie.movie.name}
+                fill
+                className="object-cover shadow-custom"
+                sizes="(max-width: 768px) 100vw, 25vw"
+              />
+            </div>
+            {movie.movie.episode_current !== 'Trailer' && (
+              <Link
+                className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
+                href={`/movies/watch/${movie.movie.slug}`}
+              >
+                <FaPlay size={25} />
+                Xem phim
+              </Link>
+            )}
           </div>
           <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
             <div>
@@ -36,17 +56,22 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
               <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
                 {movie.movie.quality}
               </div>
-              {movie.movie.tmdb.id !== '' && <div className='flex items-center gap-x-2'>
-                <div className='w-[9rem]'>
-                <TMDBLogo />
+              {movie.movie.tmdb.id !== '' && (
+                <div className="flex items-center gap-x-2">
+                  <div className="w-[9rem]">
+                    <TMDBLogo />
+                  </div>
+                  <div className="">
+                    <span className="font-bold">{movie.movie.tmdb.vote_average}</span>
+                    <span>/10</span>
+                  </div>
+                  <div>
+                    <span>({movie.movie.tmdb.vote_count} votes)</span>
+                  </div>
                 </div>
-                <div className=''>
-                  <span className='font-bold'>{movie.movie.tmdb.vote_average}</span><span>/10</span>
-                </div>
-                <div><span>({movie.movie.tmdb.vote_count} votes)</span></div>
-              </div>}
+              )}
               <div className="flex justify-between items-center">
-                <BtnAddToCollection variant='secondary' detailMovie={movie}/>
+                <BtnAddToCollection variant="secondary" detailMovie={movie} />
                 <div className="flex gap-x-2">
                   {movie.movie.category?.map((item, index) => (
                     <Link
@@ -63,7 +88,7 @@ export default function MoviePage({ movie, credit }: { movie: DetailMovie,  cred
           </div>
         </div>
       </div>
-      <MovieContent movie={movie} credit={credit}/>
+      <MovieContent movie={movie} credit={credit} images={images} />
     </div>
   );
 }
