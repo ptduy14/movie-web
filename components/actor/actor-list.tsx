@@ -18,7 +18,7 @@ export default function ActorList({
 }) {
   const [isReachBegin, setIsReachBegin] = useState(false);
   const [isReachEnd, setIsReachEnd] = useState(false);
-  const [isActorReadyToDisplay, setIsActorReadyToDisplay] = useState(false)
+  const [isActorReadyToDisplay, setIsActorReadyToDisplay] = useState(false);
   const swiperRef = useRef<any>(null);
 
   const handlePrevSlide = () => {
@@ -31,7 +31,7 @@ export default function ActorList({
 
   const renderActorItems = () => {
     if (!isActorReadyToDisplay) {
-      return <LoadingSpinner />
+      return <LoadingSpinner />;
     }
 
     if (creditIsvalid(credit)) {
@@ -47,12 +47,11 @@ export default function ActorList({
         <SwiperSlide key={index}>
           <ActorItem actor={item} />
         </SwiperSlide>
-      ))
+      ));
     }
 
-    return <div>Đang cập nhật</div>
-
-  }
+    return <div>Đang cập nhật</div>;
+  };
 
   return (
     <div className="space-y-6">
@@ -74,10 +73,24 @@ export default function ActorList({
         </div>
       </div>
       <Swiper
-        spaceBetween={30}
-        slidesPerView={5}
+        spaceBetween={16}
+        slidesPerView={2}
+        breakpoints={{
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
         onSwiper={(swiper) => {
-          swiperRef.current = swiper
+          swiperRef.current = swiper;
           setIsActorReadyToDisplay(true);
         }}
         onProgress={(swiper, progess) => {

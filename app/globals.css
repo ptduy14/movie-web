@@ -28,6 +28,13 @@ html, body {
   margin: 0 auto;
 }
 
+@media (max-width: 1023px) {
+  .container-wrapper-movie {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

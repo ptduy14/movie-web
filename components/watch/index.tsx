@@ -76,11 +76,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       progressTime: res.progressTime,
       progressEpLink: res.progressEpLink,
     });
-    
+
     setTimeout(() => {
       setIsShowToastProgress(true);
-    }, 2000)
-  }
+    }, 2000);
+  };
 
   const restoreGuestWatchProgress = (progress: any) => {
     if (progress?.id !== movie.movie._id) return;
@@ -93,7 +93,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
     setTimeout(() => {
       setIsShowToastProgress(true);
-    }, 2000)
+    }, 2000);
   };
 
   const handleTrackingProgressWatch = async (e: any) => {
@@ -131,7 +131,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       lang: movie.movie.lang,
       quality: movie.movie.quality,
       progressEpIndex: episodeIndex || 0,
-      progressTime:  videoRef.current?.currentTime || 0,
+      progressTime: videoRef.current?.currentTime || 0,
       progressEpLink: episodeLink || movie.episodes[0].server_data[0].link_m3u8,
     };
 
@@ -196,7 +196,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   };
 
   return (
-    <div className="pt-[3.75rem] space-y-10">
+    <div className="pt-20 lg:pt-[3.75rem] space-y-6 lg:space-y-10">
       <ProgresswatchNotification
         isShowMessage={isShowToastProgress}
         previousWatchProgress={previousWatchProgress}
@@ -211,7 +211,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         videoProgress={videoProgress}
       />
       {movie.episodes.length > 1 && (
-        <div className="text-center">
+        <div className="text-center text-sm lg:text-base px-4">
           Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới
         </div>
       )}
@@ -220,14 +220,14 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         serverIndex={serverIndex}
         handleSetServerIndex={handleSetServerIndex}
       />
-      <div className="container-wrapper-movie">
-        <h1 className="text-3xl">{movie.movie.name}</h1>
-        <h3 className="text-lg text-[#bbb6ae] mt-2">{movie.movie.origin_name}</h3>
+      <div className="container-wrapper-movie px-4 lg:px-0">
+        <h1 className="text-xl lg:text-3xl">{movie.movie.name}</h1>
+        <h3 className="text-base lg:text-lg text-[#bbb6ae] mt-2">{movie.movie.origin_name}</h3>
       </div>
       {isHaveEpisodesMovie(movie) && (
-        <div className="container-wrapper-movie">
-          <h1 className="text-xl">Danh sách tập phim</h1>
-          <ul className="flex flex-wrap gap-3 mt-4">
+        <div className="container-wrapper-movie px-4 lg:px-0">
+          <h1 className="text-lg lg:text-xl">Danh sách tập phim</h1>
+          <ul className="flex flex-wrap gap-2 lg:gap-3 mt-4">
             {movie.episodes[0].server_data.map((ep, index) => (
               <li
                 key={index}
@@ -235,7 +235,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
                   episodeIndex === index
                     ? 'text-white bg-[#5E5E5E]'
                     : 'bg-white text-black hover:bg-[#d3d3d3]'
-                } px-3 py-2 rounded-md font-semibold cursor-pointer`}
+                } px-2 lg:px-3 py-1.5 lg:py-2 rounded-md font-semibold cursor-pointer text-sm lg:text-base`}
                 onClick={() => handleSwitchEpisode(index)}
               >
                 {`Tập ${index + 1}`}
@@ -244,7 +244,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
           </ul>
         </div>
       )}
-      <div className="container-wrapper-movie">
+      <div className="container-wrapper-movie px-4 lg:px-0">
         <CommentSection movie={movie} />
       </div>
     </div>
