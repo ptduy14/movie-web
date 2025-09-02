@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Movie from 'types/movie';
 import RegularMovieItem from '../commons/regular-movie-item';
 import { getMoviesByFormat } from 'app/actions';
@@ -13,15 +13,15 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
   const [inViewRef, inView] = useInView();
   const [page, setPage] = useState<number>(1);
 
-  const getMovies = async () => {
+  const getMovies = useCallback(async () => {
     const data = await getMoviesByFormat(slug, page);
     setMovies((prev) => [...prev, ...data]);
     isLoading && setIsLoading(false);
-  };
+  }, [slug, page, isLoading]);
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [getMovies]);
 
   useEffect(() => {
     if (inView) {
@@ -31,13 +31,13 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
 
   useEffect(() => {
     if (page > 1) getMovies();
-  }, [page]);
+  }, [page, getMovies]);
 
   if (isLoading) return <LoadingComponent />;
 
   return (
     <div className="pt-[3.75rem]">
-      <div className="grid grid-cols-5 gap-6 container-wrapper">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 container-wrapper px-4 sm:px-6 md:px-8 lg:px-0">
         {movies.map((movie: Movie, index: number) => (
           <RegularMovieItem movie={movie} key={index} />
         ))}
