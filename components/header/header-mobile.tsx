@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import LoginSignUpIcon from '../auth/login-signup-icon';
 import AccountProfileIcon from '../account/account-profile-icon';
+import AccountProfileMobile from '../account/account-profile-mobile';
 import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
 import movieType from '../../data/movie-type';
@@ -110,7 +111,7 @@ export default function HeaderMobile({
 
             {/* Menu Content */}
             <div className="flex flex-col h-full">
-              <div className="flex-1 overflow-y-auto p-4 pb-8">
+              <div className="flex-1 overflow-y-auto p-4 pb-16">
                 {/* Navigation Links */}
                 <nav className="mb-8">
                   <ul className="space-y-4">
@@ -237,18 +238,21 @@ export default function HeaderMobile({
                 <div className="border-t border-gray-800 pt-4">
                   {!loading &&
                     (authenticatedUser ? (
-                      <div className="flex items-center justify-between">
-                        <AccountProfileIcon
+                      <div className="space-y-4">
+                        {/* Mobile Account Profile */}
+                        <AccountProfileMobile
                           authenticatedUser={authenticatedUser}
-                          isOnFixedHeader={false}
+                          onCloseMenu={closeMobileMenu}
                         />
-                        <div className="relative">
-                          <Notification
-                            isOnFixedHeader={false}
-                            notificationDropdownState={notificationDropdownState}
-                            setNotificationDropdownState={setNotificationDropdownState}
-                          />
-                        </div>
+
+                        {/* Notification */}
+                        <Notification
+                          isOnFixedHeader={false}
+                          notificationDropdownState={notificationDropdownState}
+                          setNotificationDropdownState={setNotificationDropdownState}
+                          isMobile={true}
+                          onCloseMenu={closeMobileMenu}
+                        />
                       </div>
                     ) : (
                       <LoginSignUpIcon />

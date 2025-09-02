@@ -6,10 +6,12 @@ import HeaderMobile from './header-mobile';
 import { INotificationDropdownState } from 'types/notification';
 import { useDropdown } from '../context/dropdown-context';
 import { IAccountDropdownState } from 'types/account-dropdown';
+import { useHomePageLoadingContext } from '../context/home-page-loading-context';
 
 export default function Header() {
   const { setAccountDropdownState, setNotificationDropdownState, notificationDropdownState } =
     useDropdown();
+  const { isLoadingHomePage } = useHomePageLoadingContext();
   const [isShowFixedHeader, setIsShowFixedHeader] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -46,7 +48,7 @@ export default function Header() {
       setIsMobile(window.innerWidth < 1024); // lg breakpoint
     };
 
-    // Initial check
+    // Initial check - ensure mobile detection happens immediately
     handleResize();
 
     window.addEventListener('scroll', handleScroll);
@@ -57,6 +59,13 @@ export default function Header() {
       window.removeEventListener('resize', handleResize);
     };
   }, [setAccountDropdownState, setNotificationDropdownState]);
+
+  // Separate effect to ensure mobile detection is correct during loading
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 1024);
+    }
+  }, [isLoadingHomePage]);
 
   return (
     <>
