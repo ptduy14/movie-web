@@ -21,6 +21,7 @@ export default function RecentMoviePage() {
   const router = useRouter();
 
   const getRecentMovies = useCallback(async (userId: string) => {
+    if (!userId) return;
     const movies = await firebaseServices.getRecentMovies(userId);
     setRecentMovies(movies);
     setIsLoading(false);
@@ -32,7 +33,7 @@ export default function RecentMoviePage() {
       return;
     }
 
-    getRecentMovies(user.id);
+    getRecentMovies(user?.id);
   }, [user, router, getRecentMovies]);
 
   const renderRecentMovies = () => {

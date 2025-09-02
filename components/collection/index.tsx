@@ -19,10 +19,11 @@ export default function MovieCollectionPage() {
   const router = useRouter();
 
   const getMovieCollection = useCallback(async () => {
+    if (!user?.id) return;
     const movies = await firebaseServices.getMovieCollection(user.id);
     setMovieCollection(movies);
     setIsLoading(false);
-  }, [user.id]);
+  }, [user?.id]);
 
   useEffect(() => {
     if (!user) {
