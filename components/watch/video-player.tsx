@@ -45,10 +45,12 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       };
     }, [videoUrl, videoProgress]);
 
-    const handleCanPlayThrough = (video: any) => {
+    const handleCanPlayThrough = (video: HTMLVideoElement | null) => {
+      if (!video) return;
       setIsCanPlay(true);
 
-      if (videoProgress) {
+      if (videoProgress && videoProgress > 0) {
+        video.currentTime = videoProgress;
         video.play();
         overlay.current?.classList.add('hidden');
       }
@@ -60,18 +62,13 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     };
 
     useEffect(() => {
-      if (videoRef && 'current' in videoRef) {
-        videoRef.current?.addEventListener('canplaythrough', () =>
-          handleCanPlayThrough(videoRef.current)
-        );
-      }
+      const video = videoRef && 'current' in videoRef ? videoRef.current : null;
+      if (!video) return;
 
-      return () => {
-        if (videoRef && 'current' in videoRef)
-          videoRef.current?.addEventListener('canplaythrough', () =>
-            handleCanPlayThrough(videoRef.current)
-          );
-      };
+      const handler = () => handleCanPlayThrough(video);
+      video.addEventListener('canplaythrough', handler);
+
+      return () => video.removeEventListener('canplaythrough', handler);
     }, [videoProgress]);
 
     return (

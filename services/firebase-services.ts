@@ -288,15 +288,28 @@ const firebaseServices = {
       const docSnap = await getDoc(DocRef);
 
       if (docSnap.exists()) {
-        return {status: true, ...docSnap.data()};
+        return { status: true, ...docSnap.data() };
       }
 
-      return {status: false}
+      return { status: false };
     } catch (error: any) {
       console.log(error.message);
-      return {status: false}
+      return { status: false };
     }
-  }
+  },
+
+  /**
+   * Update watch progress for logged-in user (Firestore).
+   * Use setDoc with merge to create or update.
+   */
+  updateWatchProgress: async (recentMovie: IRecentMovie, userId: string) => {
+    try {
+      const userRecentMovieDocRef = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
+      await setDoc(userRecentMovieDocRef, { ...recentMovie, userId }, { merge: true });
+    } catch (error: any) {
+      console.log('updateWatchProgress error:', error.message);
+    }
+  },
 };
 
 export default firebaseServices;
