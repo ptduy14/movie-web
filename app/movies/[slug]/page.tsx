@@ -11,7 +11,7 @@ let movie: DetailMovie;
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
   try {
     const res = await MovieServices.getDetailMovie(params.slug);
-    if (!res.status) throw new Error("");
+    if (!res.status) throw new Error('');
     movie = res;
   } catch (error) {
     redirect('/');
@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 export default async function Movie({ params }: PageParams) {
   const movie = await MovieServices.getDetailMovie(params.slug);
+  const res = await MovieServices.getMovieImages(params.slug);
 
   let credit;
 
@@ -32,9 +33,9 @@ export default async function Movie({ params }: PageParams) {
     try {
       credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);
     } catch (error) {
-      redirect('/')
+      redirect('/');
     }
   }
 
-  return <MoviePage movie={movie} credit={credit} />;
+  return <MoviePage movie={movie} credit={credit} images={res.data.images} />;
 }
