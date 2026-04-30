@@ -1,37 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-export interface A {
-  id: string;
-  lang: string;
-  name: string;
-  origin_name: string;
-  quality: string;
-  slug: string;
-  thumb_url: string;
-  progress: { id: string; progressTime: number; episodeIndex: number; episodeLink: string };
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { IRecentMovie } from 'types/recent-movie';
 
 export interface ProgressState {
-  progress: A | null;
+  movies: Record<string, IRecentMovie>;
 }
 
 const initialState: ProgressState = {
-  progress: null,
+  movies: {},
 };
 
 export const progressSlice = createSlice({
   name: 'progress',
   initialState,
   reducers: {
-    setProgress: (state, action) => {
-      state.progress = action.payload;
+    setProgress: (state, action: PayloadAction<IRecentMovie>) => {
+      state.movies[action.payload.id] = action.payload;
     },
-    removeProgress: (state) => {
-      state.progress = null;
+    removeProgress: (state, action: PayloadAction<string>) => {
+      delete state.movies[action.payload];
+    },
+    clearAllProgress: (state) => {
+      state.movies = {};
     },
   },
 });
 
-export const { setProgress, removeProgress } = progressSlice.actions;
+export const { setProgress, removeProgress, clearAllProgress } = progressSlice.actions;
 
 export default progressSlice.reducer;
