@@ -8,7 +8,7 @@ import type DetailMovie from 'types/detail-movie';
 import type { IRecentMovie } from 'types/recent-movie';
 
 const AUTO_SAVE_INTERVAL_MS = 20000; // 20 seconds
-const MIN_PROGRESS_TO_SHOW_NOTIFICATION = 60; // Chỉ hiện noti nếu đã xem > 60s
+const MIN_PROGRESS_TO_SHOW_NOTIFICATION = 60; // Show resume notification only if watched > 60s
 
 export interface PreviousWatchProgress {
   progressTime: number;
@@ -36,14 +36,16 @@ export interface UseWatchProgressReturn {
   videoProgress: number | null;
 }
 
-function buildProgressPayload(
+function buildRecentMovie(
   movie: DetailMovie,
   currentTime: number,
   episodeIndex: number,
   episodeLink: string,
-  defaultEpLink: string
-) {
+  defaultEpLink: string,
+  userId?: string
+): IRecentMovie {
   return {
+    ...(userId ? { userId } : {}),
     id: movie.movie._id,
     slug: movie.movie.slug,
     thumb_url: movie.movie.thumb_url,
@@ -68,7 +70,9 @@ export function useWatchProgress({
   setServerIndex,
 }: UseWatchProgressOptions): UseWatchProgressReturn {
   const user = useSelector((state: any) => state.auth.user);
-  const progress = useSelector((state: any) => state.progress.progress);
+  const guestMovies = useSelector(
+    (state: any) => state.progress?.movies as Record<string, IRecentMovie> | undefined
+  );
   const dispatch = useDispatch();
 
   const [previousWatchProgress, setPreviousWatchProgress] = useState<PreviousWatchProgress>({
@@ -79,7 +83,7 @@ export function useWatchProgress({
   const [isShowToastProgress, setIsShowToastProgress] = useState(false);
   const [videoProgress, setVideoProgress] = useState<number | null>(null);
 
-  // Refs để tránh stale closure trong event handlers
+  // Refs to avoid stale closures in event handlers
   const progressRef = useRef({ episodeIndex, episodeLink, serverIndex });
   progressRef.current = { episodeIndex, episodeLink, serverIndex };
 
@@ -90,68 +94,64 @@ export function useWatchProgress({
 
   const defaultEpLink = movie.episodes?.[0]?.server_data?.[0]?.link_m3u8 || '';
 
-  const saveProgress = useCallback(
+  // ===== SAVE PATHS =====
+
+  // Guest: persist to Redux (redux-persist → localStorage)
+  const saveGuestProgress = useCallback(
+    (time: number) => {
+      const { episodeIndex: epIdx, episodeLink: epLink } = progressRef.current;
+      const recentMovie = buildRecentMovie(movie, time, epIdx, epLink, defaultEpLink);
+      dispatch(setProgress(recentMovie));
+    },
+    [movie, defaultEpLink, dispatch]
+  );
+
+  // Logged-in: write to Firestore via SDK (auto-save & pause flows)
+  const saveUserProgressFirebase = useCallback(
+    async (time: number) => {
+      if (!user) return;
+      const { episodeIndex: epIdx, episodeLink: epLink } = progressRef.current;
+      const recentMovie = buildRecentMovie(movie, time, epIdx, epLink, defaultEpLink, user.id);
+      await firebaseServices.updateWatchProgress(recentMovie, user.id);
+    },
+    [user, movie, defaultEpLink]
+  );
+
+  // Persist while viewing (interval / pause): branch by auth state
+  const saveProgressLive = useCallback(
     (currentTime?: number) => {
       const video = videoRef.current;
       const time = currentTime ?? video?.currentTime ?? 0;
-
       if (time <= 0 || !movieIdRef.current) return;
 
-      const { episodeIndex: epIdx, episodeLink: epLink } = progressRef.current;
-
-      // Guest: lưu Redux (persist -> localStorage)
       if (!user) {
-        dispatch(
-          setProgress({
-            id: movie.movie._id,
-            slug: movie.movie.slug,
-            thumb_url: movie.movie.thumb_url,
-            name: movie.movie.name,
-            origin_name: movie.movie.origin_name,
-            lang: movie.movie.lang,
-            quality: movie.movie.quality,
-            progress: {
-              progressTime: time,
-              episodeIndex: epIdx,
-              episodeLink: epLink,
-            },
-          })
-        );
-        return;
+        saveGuestProgress(time);
+      } else {
+        saveUserProgressFirebase(time);
       }
-
-      // Logged-in: gửi lên API (Firestore)
-      const recentMovieData: IRecentMovie = {
-        userId: user.id,
-        ...buildProgressPayload(movie, time, epIdx, epLink, defaultEpLink),
-      };
-      const blob = new Blob([JSON.stringify(recentMovieData)], {
-        type: 'application/json',
-      });
-      navigator.sendBeacon('/api/movies/store-recent-movie', blob);
     },
-    [user, movie, defaultEpLink, dispatch, videoRef]
+    [user, saveGuestProgress, saveUserProgressFirebase, videoRef]
   );
 
-  const saveProgressToFirebase = useCallback(
-    async (currentTime?: number) => {
-      if (!user) return;
+  // Persist on unload: must be synchronous. Guest → Redux; user → sendBeacon
+  const saveProgressOnUnload = useCallback(() => {
+    const video = videoRef.current;
+    const time = video?.currentTime ?? 0;
+    if (time <= 0 || !movieIdRef.current) return;
 
-      const video = videoRef.current;
-      const time = currentTime ?? video?.currentTime ?? 0;
-      if (time <= 0) return;
+    if (!user) {
+      saveGuestProgress(time);
+      return;
+    }
 
-      const { episodeIndex: epIdx, episodeLink: epLink } = progressRef.current;
-      const recentMovie: IRecentMovie = {
-        userId: user.id,
-        ...buildProgressPayload(movie, time, epIdx, epLink, defaultEpLink),
-      };
-      await firebaseServices.updateWatchProgress(recentMovie, user.id);
-    },
-    [user, movie, defaultEpLink, videoRef]
-  );
+    const { episodeIndex: epIdx, episodeLink: epLink } = progressRef.current;
+    const recentMovie = buildRecentMovie(movie, time, epIdx, epLink, defaultEpLink, user.id);
+    const blob = new Blob([JSON.stringify(recentMovie)], { type: 'application/json' });
+    navigator.sendBeacon('/api/movies/store-recent-movie', blob);
+  }, [user, movie, defaultEpLink, saveGuestProgress, videoRef]);
 
-  // Validate episodeLink tồn tại trong movie (tránh detect sai phim)
+  // ===== RESTORE =====
+
   const isValidEpisodeLink = useCallback(
     (link: string) => {
       if (!link) return false;
@@ -165,14 +165,15 @@ export function useWatchProgress({
     [movie.episodes]
   );
 
-  // Restore progress khi mount
+  // Restore for signed-in users (Firestore)
   useEffect(() => {
+    if (!user) return;
+    let cancelled = false;
     const movieId = movie.movie._id;
 
-    const restoreUser = async () => {
-      if (!user) return;
+    (async () => {
       const res: any = await firebaseServices.getProgressWatchOfMovie(user.id, movieId);
-      if (!res?.status) return;
+      if (cancelled || !res?.status) return;
 
       const epLink = res.progressEpLink ?? '';
       const epIndex = res.progressEpIndex ?? 0;
@@ -187,74 +188,84 @@ export function useWatchProgress({
         progressTime,
         progressEpLink: epLink,
       });
-      setTimeout(() => setIsShowToastProgress(true), 2000);
+      setTimeout(() => {
+        if (!cancelled) setIsShowToastProgress(true);
+      }, 2000);
+    })();
+
+    return () => {
+      cancelled = true;
     };
+  }, [movie.movie._id, user, isValidEpisodeLink]);
 
-    const restoreGuest = () => {
-      if (progress?.id !== movieId || hasShownRestoreRef.current) return;
-      const p = progress.progress;
-      if (!p || (p.progressTime ?? 0) < MIN_PROGRESS_TO_SHOW_NOTIFICATION) return;
-
-      const epLink = p.episodeLink ?? '';
-      if (!isValidEpisodeLink(epLink)) return;
-
-      hasShownRestoreRef.current = true;
-      setPreviousWatchProgress({
-        progressEpIndex: p.episodeIndex ?? 0,
-        progressTime: p.progressTime ?? 0,
-        progressEpLink: epLink,
-      });
-      setTimeout(() => setIsShowToastProgress(true), 2000);
-    };
-
-    if (user) {
-      restoreUser();
-    } else {
-      restoreGuest();
-    }
-  }, [movie.movie._id, user, progress, isValidEpisodeLink]);
-
-  // Auto-save mỗi 20s (chỉ user đăng nhập -> Firebase)
+  // Restore for guests (Redux)
   useEffect(() => {
-    if (!user) return;
+    if (user) return;
+    const movieId = movie.movie._id;
+    const stored = guestMovies?.[movieId];
+    if (!stored || hasShownRestoreRef.current) return;
 
+    const progressTime = stored.progressTime ?? 0;
+    const epLink = stored.progressEpLink ?? '';
+    const epIndex = stored.progressEpIndex ?? 0;
+
+    if (progressTime < MIN_PROGRESS_TO_SHOW_NOTIFICATION) return;
+    if (!isValidEpisodeLink(epLink)) return;
+
+    hasShownRestoreRef.current = true;
+    setPreviousWatchProgress({
+      progressEpIndex: epIndex,
+      progressTime,
+      progressEpLink: epLink,
+    });
+    const t = setTimeout(() => setIsShowToastProgress(true), 2000);
+    return () => clearTimeout(t);
+  }, [movie.movie._id, user, guestMovies, isValidEpisodeLink]);
+
+  // ===== AUTO-SAVE INTERVAL =====
+  useEffect(() => {
     const interval = setInterval(() => {
       const video = videoRef.current;
       if (video && !video.paused && video.currentTime > 0) {
-        saveProgressToFirebase(video.currentTime);
+        saveProgressLive(video.currentTime);
       }
     }, AUTO_SAVE_INTERVAL_MS);
 
     return () => clearInterval(interval);
-  }, [user, saveProgressToFirebase, videoRef]);
+  }, [saveProgressLive, videoRef]);
 
-  // Lưu khi: reload, đóng tab, ẩn tab, back
+  // ===== SAVE ON UNLOAD / HIDE / SPA-UNMOUNT =====
+  const saveOnUnloadRef = useRef(saveProgressOnUnload);
+  saveOnUnloadRef.current = saveProgressOnUnload;
+
   useEffect(() => {
-    const handleSave = () => saveProgress();
-
-    window.addEventListener('beforeunload', handleSave);
-    window.addEventListener('pagehide', handleSave);
+    let lastSaveAt = 0;
+    const debouncedSave = () => {
+      const now = Date.now();
+      if (now - lastSaveAt < 2000) return;
+      lastSaveAt = now;
+      saveOnUnloadRef.current();
+    };
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') saveProgress();
+      if (document.visibilityState === 'hidden') debouncedSave();
     };
+
+    window.addEventListener('pagehide', debouncedSave);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    const handlePopState = () => saveProgress();
-    window.addEventListener('popstate', handlePopState);
-
     return () => {
-      window.removeEventListener('beforeunload', handleSave);
-      window.removeEventListener('pagehide', handleSave);
+      window.removeEventListener('pagehide', debouncedSave);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('popstate', handlePopState);
+      // Final save on component unmount (SPA navigation via Link)
+      debouncedSave();
     };
-  }, [saveProgress]);
+  }, []);
 
+  // ===== ACCEPT/REJECT =====
   const handleAcceptProgressWatch = useCallback(() => {
     const { progressEpIndex, progressEpLink, progressTime } = previousWatchProgress;
 
-    // Tìm serverIndex tương ứng với episodeLink đã lưu
     if (setServerIndex && movie.episodes) {
       for (let i = 0; i < movie.episodes.length; i++) {
         const found = movie.episodes[i].server_data?.some((s) => s?.link_m3u8 === progressEpLink);

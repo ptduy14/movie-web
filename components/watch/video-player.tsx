@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, forwardRef, useState } from 'react';
+import React, { useRef, useEffect, forwardRef, useState, useCallback } from 'react';
 import Hls from 'hls.js';
 import { FaPlay } from 'react-icons/fa';
 import LoadingSpinnerVideoPlayer from '../loading/loading-spiner-video-player';
@@ -14,62 +14,78 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     const overlay = useRef<HTMLDivElement | null>(null);
     const [isCanPlay, setIsCanPlay] = useState<boolean>(false);
 
+    const getVideo = useCallback(() => {
+      return videoRef && 'current' in videoRef ? videoRef.current : null;
+    }, [videoRef]);
+
+    // Initialize HLS — reruns only when videoUrl changes (not tied to videoProgress)
     useEffect(() => {
       if (!videoUrl) return;
+      const video = getVideo();
+      if (!video) return;
 
-      const video = videoRef && 'current' in videoRef ? videoRef.current : null;
+      setIsCanPlay(false);
+      overlay.current?.classList.remove('hidden');
 
-      if (video) {
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(videoUrl);
-          hls.attachMedia(video);
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          // For Safari and other browsers that support HLS natively
-          video.src = videoUrl;
-        }
-
-        if (videoProgress) {
-          video.currentTime = videoProgress;
-        }
+      let hls: Hls | null = null;
+      if (Hls.isSupported()) {
+        hls = new Hls();
+        hls.loadSource(videoUrl);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoUrl;
       }
 
       return () => {
-        if (video && video.src) {
+        hls?.destroy();
+        if (video.src || hls) {
           video.pause();
-          video.removeAttribute('src'); // Stop the video stream
+          video.removeAttribute('src');
           video.load();
         }
-
         overlay.current?.classList.remove('hidden');
       };
-    }, [videoUrl, videoProgress]);
+    }, [videoUrl, getVideo]);
 
-    const handleCanPlayThrough = (video: HTMLVideoElement | null) => {
+    // Seek + autoplay when videoProgress is set (user accepts resume)
+    // Split effect to avoid HLS re-init like the previous bug
+    useEffect(() => {
+      if (!videoProgress || videoProgress <= 0) return;
+      const video = getVideo();
       if (!video) return;
-      setIsCanPlay(true);
 
-      if (videoProgress && videoProgress > 0) {
+      const applyProgress = () => {
         video.currentTime = videoProgress;
-        video.play();
+        video.play().catch(() => {});
         overlay.current?.classList.add('hidden');
+      };
+
+      // If video is ready → apply now; otherwise wait for canplay
+      if (video.readyState >= 2) {
+        applyProgress();
+      } else {
+        video.addEventListener('canplay', applyProgress, { once: true });
+        return () => video.removeEventListener('canplay', applyProgress);
       }
-    };
+    }, [videoProgress, getVideo]);
+
+    const handleCanPlayThrough = useCallback(() => {
+      setIsCanPlay(true);
+    }, []);
 
     const handlePlayVideo = () => {
-      if (videoRef && 'current' in videoRef) videoRef.current?.play();
+      const video = getVideo();
+      video?.play();
       overlay.current?.classList.add('hidden');
     };
 
     useEffect(() => {
-      const video = videoRef && 'current' in videoRef ? videoRef.current : null;
+      const video = getVideo();
       if (!video) return;
 
-      const handler = () => handleCanPlayThrough(video);
-      video.addEventListener('canplaythrough', handler);
-
-      return () => video.removeEventListener('canplaythrough', handler);
-    }, [videoProgress]);
+      video.addEventListener('canplaythrough', handleCanPlayThrough);
+      return () => video.removeEventListener('canplaythrough', handleCanPlayThrough);
+    }, [handleCanPlayThrough, getVideo]);
 
     return (
       <div className="relative w-full h-[34rem]">
