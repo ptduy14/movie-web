@@ -29,7 +29,7 @@ export default function SearchInput() {
   return (
     <input
       type="text"
-      className="w-full h-full text-black px-3 text-lg"
+      className="w-full h-full text-black px-3 text-base lg:text-lg rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
       placeholder="Nhập tên phim..."
       onChange={(e) => setInputValue(e.target.value)}
       defaultValue={searchParams.get('name')?.toString()}

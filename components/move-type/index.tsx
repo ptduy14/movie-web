@@ -36,13 +36,13 @@ export default function MovieTypePage({ slug }: { slug: string }) {
   if (isLoading) return <LoadingComponent />;
 
   return (
-    <div className="pt-[3.75rem]">
-      <div className="grid grid-cols-5 gap-6 container-wrapper">
+    <div className="pt-20 lg:pt-[3.75rem]">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6 container-wrapper px-4 lg:px-0">
         {movies.map((movie: Movie, index: number) => (
           <RegularMovieItem movie={movie} key={index} />
         ))}
       </div>
-      <div ref={inViewRef} className="flex items-end justify-center h-12 w-full">
+      <div ref={inViewRef} className="flex items-end justify-center h-12 w-full py-8">
         <div
           className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
           role="status"

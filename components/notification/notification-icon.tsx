@@ -44,12 +44,15 @@ export default function NotificationIcon({
   };
   return (
     <div
-      className="relative cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-200"
+      className="relative cursor-pointer hover:bg-gray-800/50 rounded-full p-2 transition-all duration-200 group"
       onClick={toogleSetNotificationDropdownState}
       aria-label="Notifications"
     >
       {renderUnreadNotificationCount(notificationsUnreadCount)}
-      <IoIosNotifications size={25} />
+      <IoIosNotifications
+        size={24}
+        className="text-white group-hover:text-custome-red transition-colors"
+      />
     </div>
   );
 }

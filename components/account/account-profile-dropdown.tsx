@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import Link from 'next/link';
 import { useDropdown } from '../context/dropdown-context';
+import { IoBookmark, IoTime, IoPerson, IoLogOut } from 'react-icons/io5';
 
 export default function AccountProfileDropdown({ authenticatedUser }: { authenticatedUser: any }) {
   const { setAccountDropdownState } = useDropdown();
@@ -41,47 +42,94 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
     document.addEventListener('click', detectCloseAccountDropdown);
 
     return () => document.removeEventListener('click', detectCloseAccountDropdown);
-  }, []);
+  }, [setAccountDropdownState]);
 
   return (
     <div
       ref={accountDropdownRef}
-      className="block border border-slate-600 absolute bg-black right-0 top-[3.625rem] min-w-[14rem] px-5 py-4 rounded-lg shadow-lg space-y-3"
+      className="absolute bg-black/95 backdrop-blur-sm border border-gray-700 right-0 top-[3.625rem] min-w-[16rem] max-w-[20rem] rounded-xl shadow-2xl overflow-hidden z-50"
     >
-      {/* Thông tin tài khoản */}
-      <div className="border-b border-gray-500 pb-3 mb-3">
-        <span className="text-white text-base block font-semibold">{authenticatedUser.email}</span>
-        <span className="text-gray-400 text-sm block mt-1">{authenticatedUser.name}</span>
+      {/* User Info Header */}
+      <div className="px-4 py-4 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-gray-600">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <span className="text-white font-semibold text-sm">
+              {authenticatedUser.name?.charAt(0)?.toUpperCase() ||
+                authenticatedUser.email?.charAt(0)?.toUpperCase() ||
+                'U'}
+            </span>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-white font-semibold text-sm truncate">
+              {authenticatedUser.name || 'User'}
+            </p>
+            <p className="text-gray-400 text-xs truncate">{authenticatedUser.email}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Liên kết đến bộ sưu tập */}
-      <div className="border-b border-gray-500 pb-3 mb-3">
+      {/* Menu Items */}
+      <div className="py-2">
+        {/* Collection Link */}
         <Link
-          className="block text-white text-base font-medium hover:text-gray-300 transition-colors"
           href="/movies/collection"
+          className="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+          onClick={() =>
+            setAccountDropdownState({
+              isOpenInHeaderDefault: false,
+              isOpenInHeaderFixed: false,
+            })
+          }
         >
-          Bộ sưu tập
+          <IoBookmark size={18} />
+          <span className="text-sm font-medium">Bộ sưu tập</span>
         </Link>
-      </div>
 
-      {/* Liên kết đến phim đã xem */}
-      <div className="border-b border-gray-500 pb-3 mb-3">
+        {/* Recent Movies Link */}
         <Link
-          className="block text-white text-base font-medium hover:text-gray-300 transition-colors"
           href="/movies/recent"
+          className="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+          onClick={() =>
+            setAccountDropdownState({
+              isOpenInHeaderDefault: false,
+              isOpenInHeaderFixed: false,
+            })
+          }
         >
-          Phim xem gần đây
+          <IoTime size={18} />
+          <span className="text-sm font-medium">Phim xem gần đây</span>
         </Link>
-      </div>
 
-      {/* Nút đăng xuất */}
-      <button
-        onClick={handleLogout}
-        className="block w-full bg-[#e20913] text-center py-2 rounded-md cursor-pointer hover:opacity-90 transition-all text-white font-semibold"
-        disabled={isLoading}
-      >
-        {isLoading ? <LoadingSpinerBtn /> : 'Đăng xuất'}
-      </button>
+        {/* Profile Link */}
+        <Link
+          href="/profile"
+          className="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+          onClick={() =>
+            setAccountDropdownState({
+              isOpenInHeaderDefault: false,
+              isOpenInHeaderFixed: false,
+            })
+          }
+        >
+          <IoPerson size={18} />
+          <span className="text-sm font-medium">Thông tin cá nhân</span>
+        </Link>
+
+        {/* Divider */}
+        <div className="border-t border-gray-700 my-2"></div>
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          disabled={isLoading}
+          className="flex items-center space-x-3 px-4 py-3 w-full text-red-400 hover:text-red-300 hover:bg-red-900/20 transition-colors disabled:opacity-50"
+        >
+          <IoLogOut size={18} />
+          <span className="text-sm font-medium">
+            {isLoading ? <LoadingSpinerBtn /> : 'Đăng xuất'}
+          </span>
+        </button>
+      </div>
     </div>
   );
 }

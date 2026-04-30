@@ -25,7 +25,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
     };
 
     getDescriptionMovies();
-  }, [movies]);
+  }, [movies, setISLoadingHomePage]);
 
   const handleClickToNextSlide = () => {
     swiperRef.current?.slideNext();
@@ -36,7 +36,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   }
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <Swiper
         modules={[EffectFade, Autoplay]}
         effect="fade"
@@ -47,13 +47,28 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         {detailMovies.map((movie: DetailMovie) => {
           return (
             <SwiperSlide key={movie.movie._id}>
-              <HeroMovieItem detailMovie={movie}/>
+              <HeroMovieItem detailMovie={movie} />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <div className="absolute z-10 top-[18rem] right-6 border border-white p-4 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300" onClick={handleClickToNextSlide}>
+      {/* Desktop Navigation Button */}
+      <div
+        className="hidden lg:block absolute z-10 top-[18rem] right-6 border border-white p-4 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300"
+        onClick={handleClickToNextSlide}
+      >
         <FaChevronRight className="text-white group-hover:text-black transition-colors duration-300" />
+      </div>
+
+      {/* Mobile/Tablet Navigation Button */}
+      <div
+        className="lg:hidden absolute z-10 top-1/2 right-4 transform -translate-y-1/2 border border-white/80 p-3 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300"
+        onClick={handleClickToNextSlide}
+      >
+        <FaChevronRight
+          className="text-white group-hover:text-black transition-colors duration-300"
+          size={16}
+        />
       </div>
     </div>
   );
