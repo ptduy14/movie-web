@@ -9,7 +9,6 @@ import MovieCollection from 'types/movie-collection';
 import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
-import { A } from '../../redux/slices/progress-slice';
 import firebaseServices from 'services/firebase-services';
 import { IRecentMovie } from 'types/recent-movie';
 
