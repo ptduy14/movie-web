@@ -35,6 +35,10 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
     return <LoadingComponent />;
   }
 
+  // Build a quick lookup so we can pair each DetailMovie with its source NewlyMovie
+  // (NewlyMovie carries fields not returned by detail endpoint: imdb, modified, sub_docquyen, ...).
+  const listItemBySlug = new Map(movies.map((m) => [m.slug, m]));
+
   return (
     <div className="relative">
       <Swiper
@@ -47,7 +51,10 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         {detailMovies.map((movie: DetailMovie) => {
           return (
             <SwiperSlide key={movie.movie._id}>
-              <HeroMovieItem detailMovie={movie} />
+              <HeroMovieItem
+                detailMovie={movie}
+                listItem={listItemBySlug.get(movie.movie.slug)}
+              />
             </SwiperSlide>
           );
         })}
