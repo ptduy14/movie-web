@@ -11,6 +11,7 @@ import { AiFillLike } from 'react-icons/ai';
 import { useAuthModel } from '../context/auth-modal-context';
 import { INotification } from 'types/notification';
 import DetailMovie from 'types/detail-movie';
+import { useTranslations } from 'next-intl';
 
 export default function CommentControl({
   comment,
@@ -23,6 +24,7 @@ export default function CommentControl({
   movie: DetailMovie;
   setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>;
 }) {
+  const t = useTranslations('comment');
   const user = useSelector((state: any) => state.auth.user);
   const [isCommentOwner, setIsCommentOwner] = useState<boolean>(false);
   const [isLikedComment, setIsLikedComment] = useState<boolean>(false);
@@ -47,14 +49,14 @@ export default function CommentControl({
       prev.filter((prevComment: IComment) => prevComment.id! !== comment.id!)
     );
 
-    toast.success('Đã xóa bình luận');
+    toast.success(t('deleted'));
   };
 
   const renderCommentActions = () => {
     if (!isCommentOwner) {
       return (
         <div className="cursor-pointer hover:text-white flex items-center gap-1">
-          <FaRegComment /> <p>Trả lời</p>
+          <FaRegComment /> <p>{t('reply')}</p>
         </div>
       );
     }
@@ -65,13 +67,13 @@ export default function CommentControl({
           className="cursor-pointer hover:text-white flex items-center gap-1"
           onClick={() => setIsCommentEditing(true)}
         >
-          <CiEdit /> <p>Chỉnh sửa</p>
+          <CiEdit /> <p>{t('edit')}</p>
         </div>
         <div
           className="cursor-pointer hover:text-white flex items-center gap-1"
           onClick={handleDeleteComment}
         >
-          <MdDelete /> <p>Xóa</p>
+          <MdDelete /> <p>{t('delete')}</p>
         </div>
       </>
     );
@@ -111,7 +113,7 @@ export default function CommentControl({
       >
         {likeCount}
         {isLikedComment ? <AiFillLike /> : <AiOutlineLike />}
-        Thích
+        {t('like')}
       </div>
       {renderCommentActions()}
     </div>

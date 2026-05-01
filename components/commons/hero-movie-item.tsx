@@ -10,6 +10,7 @@ import { Link } from 'i18n/routing';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
+import { useTranslations } from 'next-intl';
 
 interface HeroMovieItemProps {
   detailMovie: DetailMovie;
@@ -31,6 +32,8 @@ const formatVoteCount = (count?: number) => {
 };
 
 export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemProps) {
+  const t = useTranslations('movie');
+  const tRating = useTranslations('movie.rating');
   const movie = detailMovie.movie;
 
   // Prefer listItem fields (guaranteed from /v1/api/home), fall back to detail
@@ -97,7 +100,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
               </div>
               {tmdb!.vote_count > 0 && (
                 <span className="text-sm text-white/60">
-                  ({formatVoteCount(tmdb!.vote_count)} votes)
+                  ({formatVoteCount(tmdb!.vote_count)} {tRating('votes')})
                 </span>
               )}
             </div>
@@ -111,14 +114,14 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
               </div>
               {imdb!.vote_count > 0 && (
                 <span className="text-sm text-white/60">
-                  ({formatVoteCount(imdb!.vote_count)} votes)
+                  ({formatVoteCount(imdb!.vote_count)} {tRating('votes')})
                 </span>
               )}
             </div>
           )}
         </div>
 
-        <MovieSummary summary={movie.content || 'Đang cập nhật nội dung phim'} />
+        <MovieSummary summary={movie.content || t('info.fallbackContent')} />
         <div className="space-x-5 flex items-center">
           <Link
             href={`/movies/${movie.slug}`}
@@ -126,7 +129,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           >
             <div className="flex align-top space-x-2">
               <FaPlay size={18} />
-              <span className="block leading-4 font-semibold">Xem phim</span>
+              <span className="block leading-4 font-semibold">{t('watch')}</span>
             </div>
           </Link>
           <BtnAddToCollection variant="primary" detailMovie={detailMovie} />
@@ -184,7 +187,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
             >
               <div className="flex items-center justify-center gap-x-2">
                 <FaPlay size={16} />
-                <span>Xem phim</span>
+                <span>{t('watch')}</span>
               </div>
             </Link>
             <div className="w-full">

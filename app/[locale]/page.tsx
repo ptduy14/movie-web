@@ -1,10 +1,7 @@
 import HomePage from '@/components/home';
 import { Metadata } from 'next';
-
-const FALLBACK_TITLE =
-  'MovieX - Xem Phim Online | Phim Lẻ | TV Show | Phim Bộ | Hoạt Hình | Vietsub | Lồng Tiếng Cập Nhật Liên Tục';
-const FALLBACK_DESCRIPTION =
-  'Xem phim online với hàng nghìn phim lẻ, TV show, phim bộ thuộc nhiều thể loại hấp dẫn, đã được lồng tiếng và cập nhật mới nhất mỗi ngày. Trải nghiệm xem phim chất lượng cao hoàn toàn miễn phí tại MovieX.';
+import { getTranslations } from 'next-intl/server';
+import { routing } from 'i18n/routing';
 
 interface OPhimSeoOnPage {
   titleHead?: string;
@@ -14,55 +11,79 @@ interface OPhimSeoOnPage {
 }
 
 /**
- * Build dynamic metadata from OPhim's `/v1/api/home` `seoOnPage` block.
- * - Revalidates every hour to keep SEO content fresh without hitting OPhim every request.
- * - Falls back to static strings on any fetch / parse failure.
+ * Build dynamic metadata for the home page.
+ *
+ * - For Vietnamese locale: prefer OPhim's `seoOnPage` block (already in VI).
+ * - For other locales: fall back to translated strings from `messages/<locale>.json`
+ *   (OPhim doesn't provide SEO content in other languages).
+ * - Adds `<link rel="alternate" hreflang>` so Google indexes both locales.
+ * - ISR revalidates hourly to keep content fresh.
  */
-export async function generateMetadata(): Promise<Metadata> {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/home`, {
-      next: { revalidate: 3600 }, // ISR: refresh hourly
-    });
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
 
-    if (!res.ok) throw new Error('Home metadata fetch failed');
+  const fallbackTitle = t('homeTitle');
+  const fallbackDescription = t('homeDescription');
 
-    const json = await res.json();
-    const seo: OPhimSeoOnPage | undefined = json?.data?.seoOnPage;
-    const cdn: string | undefined = json?.data?.APP_DOMAIN_CDN_IMAGE;
+  // Hreflang alternates for SEO
+  const alternates = {
+    canonical: `/${locale}`,
+    languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+  };
 
-    const title = seo?.titleHead || FALLBACK_TITLE;
-    const description = seo?.descriptionHead || FALLBACK_DESCRIPTION;
+  let title = fallbackTitle;
+  let description = fallbackDescription;
+  let ogImages: string[] = [];
 
-    // og_image paths are relative — prepend CDN domain if available
-    const ogImages =
-      seo?.og_image && cdn
-        ? seo.og_image
-            .slice(0, 4) // cap to first 4 to avoid bloated head tags
-            .map((path) => (path.startsWith('http') ? path : `${cdn}${path}`))
-        : [];
+  // Only call OPhim for VI — its seoOnPage is Vietnamese-only.
+  // For EN, stick with our locally-translated strings.
+  if (locale === 'vi') {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/home`, {
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        const seo: OPhimSeoOnPage | undefined = json?.data?.seoOnPage;
+        const cdn: string | undefined = json?.data?.APP_DOMAIN_CDN_IMAGE;
 
-    return {
+        if (seo?.titleHead) title = seo.titleHead;
+        if (seo?.descriptionHead) description = seo.descriptionHead;
+
+        if (seo?.og_image && cdn) {
+          ogImages = seo.og_image
+            .slice(0, 4)
+            .map((path) => (path.startsWith('http') ? path : `${cdn}${path}`));
+        }
+      }
+    } catch {
+      // Fall through to fallback strings
+    }
+  }
+
+  return {
+    title,
+    description,
+    alternates,
+    openGraph: {
       title,
       description,
-      openGraph: {
-        title,
-        description,
-        type: (seo?.og_type as 'website') || 'website',
-        images: ogImages.length > 0 ? ogImages : undefined,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-        images: ogImages.length > 0 ? ogImages : undefined,
-      },
-    };
-  } catch {
-    return {
-      title: FALLBACK_TITLE,
-      description: FALLBACK_DESCRIPTION,
-    };
-  }
+      type: 'website',
+      locale,
+      images: ogImages.length > 0 ? ogImages : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ogImages.length > 0 ? ogImages : undefined,
+    },
+  };
 }
 
 export default function Home() {

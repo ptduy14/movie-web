@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface MovieSummaryProps {
   summary: string;
@@ -8,6 +9,7 @@ interface MovieSummaryProps {
 }
 
 export default function MovieSummary({ summary, expandable = false }: MovieSummaryProps) {
+  const t = useTranslations('movie.summary');
   const contentRef = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -36,7 +38,7 @@ export default function MovieSummary({ summary, expandable = false }: MovieSumma
           onClick={() => setIsExpanded((prev) => !prev)}
           className="mt-2 text-sm font-semibold text-red-400 hover:text-red-300 transition-colors"
         >
-          {isExpanded ? 'Thu gọn' : 'Xem thêm'}
+          {isExpanded ? t('showLess') : t('showMore')}
         </button>
       )}
     </div>

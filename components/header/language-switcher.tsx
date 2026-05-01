@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useTransition } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
 import { useRouter, usePathname, type Locale } from 'i18n/routing';
 import { doc, setDoc } from 'firebase/firestore';
@@ -14,6 +14,8 @@ interface LocaleOption {
   label: string;
 }
 
+// Labels are intentionally rendered in their NATIVE language so users can find
+// their language even when the UI is currently in another locale.
 const LOCALES: LocaleOption[] = [
   { code: 'vi', flag: '🇻🇳', label: 'Tiếng Việt' },
   { code: 'en', flag: '🇺🇸', label: 'English' },
@@ -30,6 +32,7 @@ const LOCALES: LocaleOption[] = [
  * Click outside → close. Click an option → switch route preserving current path.
  */
 export default function LanguageSwitcher() {
+  const t = useTranslations('header.language');
   const currentLocale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
@@ -74,7 +77,7 @@ export default function LanguageSwitcher() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-1.5 px-2 py-1.5 rounded hover:bg-white/10 transition-colors"
-        aria-label="Chọn ngôn ngữ / Select language"
+        aria-label={t('selectLanguage')}
         aria-expanded={open}
       >
         <IoLanguage className="text-lg" />

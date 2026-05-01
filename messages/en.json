@@ -1,10 +1,364 @@
 {
   "common": {
     "loading": "Loading...",
+    "loadingMovies": "Loading movies...",
     "error": "Something went wrong",
     "retry": "Retry",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "submit": "Submit",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "updating": "Updating",
+    "notUpdated": "Not set",
+    "unknown": "Unknown",
+    "comingSoon": "This feature is coming soon"
+  },
+
+  "header": {
+    "menu": {
+      "singleMovies": "Movies",
+      "tvSeries": "TV Series",
+      "cartoons": "Animation",
+      "tvShows": "TV Shows",
+      "categories": "Genres",
+      "countries": "Countries"
+    },
+    "language": {
+      "selectLanguage": "Select language",
+      "viName": "Tiếng Việt",
+      "enName": "English"
+    },
+    "search": "Search movies"
+  },
+
+  "home": {
+    "lists": {
+      "newlyUpdated": "Newly Updated",
+      "singleNewlyUpdated": "Latest Movies",
+      "tvSeriesNewlyUpdated": "Latest TV Series",
+      "cartoonNewlyUpdated": "Latest Animation",
+      "tvShowsNewlyUpdated": "Latest TV Shows"
+    },
+    "banner": {
+      "todayCount": "Today,",
+      "todaySuffix": "new movies just dropped 🔥",
+      "library": "Library",
+      "movies": "movies"
+    }
+  },
+
+  "card": {
     "watchNow": "Watch now",
-    "showMore": "Show more",
-    "showLess": "Show less"
+    "addToCollection": "Add to collection",
+    "removeFromCollection": "Remove from collection",
+    "newBadge": "New",
+    "exclusiveBadge": "Exclusive"
+  },
+
+  "movie": {
+    "watch": "Watch movie",
+    "info": {
+      "title": "Movie info",
+      "director": "Director",
+      "country": "Country",
+      "releaseYear": "Release year",
+      "duration": "Duration",
+      "status": "Status",
+      "content": "Synopsis",
+      "fallbackContent": "Synopsis is being updated"
+    },
+    "summary": {
+      "showMore": "Show more",
+      "showLess": "Show less"
+    },
+    "actor": {
+      "title": "CAST"
+    },
+    "rating": {
+      "viewOnImdb": "View on IMDb",
+      "viewOnTmdb": "View on TMDB",
+      "votes": "votes"
+    }
+  },
+
+  "watch": {
+    "serverHint": "If playback is laggy, try one of the servers below",
+    "episodeList": "Episodes",
+    "episodeLabel": "Ep {index}",
+    "progressNotification": {
+      "episodePrefix": "ep {index}-",
+      "message": "We noticed you stopped at",
+      "question": "would you like to continue watching?",
+      "accept": "Yes",
+      "reject": "Restart from beginning"
+    }
+  },
+
+  "lists": {
+    "endOfList": "🎬 You've reached the end",
+    "errorLoading": "❌ Failed to load movies",
+    "emptyCategory": "No movies in this category yet",
+    "searchPlaceholder": "Enter movie name..."
+  },
+
+  "auth": {
+    "login": {
+      "title": "Sign in to MovieX",
+      "email": "Email:",
+      "password": "Password:",
+      "submit": "Sign in",
+      "google": "Sign in with Google",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign up",
+      "successToast": "Signed in successfully",
+      "failedToast": "Sign in failed"
+    },
+    "signup": {
+      "title": "Sign up for MovieX",
+      "username": "Username:",
+      "email": "Email:",
+      "password": "Password:",
+      "submit": "Sign up",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "successToast": "Account created successfully"
+    }
+  },
+
+  "accountMenu": {
+    "collection": "Collection",
+    "recent": "Recently watched",
+    "profile": "Profile",
+    "logout": "Sign out"
+  },
+
+  "collection": {
+    "title": "Your movie collection"
+  },
+
+  "recent": {
+    "title": "Recently watched",
+    "subtitle": "MovieX now saves your watch progress for every movie you view"
+  },
+
+  "profile": {
+    "loginRequired": {
+      "title": "Sign in required",
+      "message": "You need to sign in to view your profile"
+    },
+    "page": {
+      "title": "Profile",
+      "subtitle": "Manage your account information and settings"
+    },
+    "menu": {
+      "personalInfo": "Profile",
+      "security": "Security",
+      "language": "Language",
+      "support": "Support"
+    },
+    "personalInfo": {
+      "heading": "Profile",
+      "edit": "Edit",
+      "avatar": "Avatar",
+      "avatarHelp": "JPG, PNG or GIF. Max 2MB.",
+      "displayName": "Display name",
+      "displayNameRequired": "Display name is required",
+      "displayNameMinLength": "Name must be at least 2 characters",
+      "email": "Email",
+      "invalidEmail": "Invalid email",
+      "accountInfo": "Account info",
+      "accountId": "Account ID",
+      "createdAt": "Created at",
+      "successToast": "Profile updated successfully",
+      "errorToast": "Failed to update profile"
+    },
+    "security": {
+      "heading": "Account security",
+      "changePassword": "Change password",
+      "passwordLabel": "Password",
+      "passwordSecure": "Your password is secure",
+      "twoFactor": "Two-factor authentication",
+      "twoFactorInactive": "Not enabled",
+      "form": {
+        "title": "Change password",
+        "current": "Current password",
+        "currentRequired": "Current password is required",
+        "new": "New password",
+        "newRequired": "New password is required",
+        "newMinLength": "Password must be at least 6 characters",
+        "confirm": "Confirm new password",
+        "confirmRequired": "Please confirm your password",
+        "confirmMismatch": "Passwords do not match",
+        "requirements": "Password requirements:",
+        "req1": "• At least 6 characters",
+        "req2": "• Mix uppercase, lowercase and numbers",
+        "req3": "• Avoid using personal information"
+      },
+      "tips": {
+        "heading": "Security tips",
+        "tip1": "Never share your password with anyone",
+        "tip2": "Sign out from public devices",
+        "tip3": "Change your password periodically"
+      },
+      "toasts": {
+        "mismatch": "New password and confirmation do not match",
+        "success": "Password changed successfully",
+        "error": "Failed to change password",
+        "wrongCurrent": "Current password is incorrect",
+        "weakNew": "New password is too weak",
+        "reauth": "Please sign in again to change your password",
+        "userNotFound": "User not found"
+      }
+    },
+    "language": {
+      "heading": "Language settings",
+      "description": "Choose the display language for the app interface. Changes apply immediately.",
+      "current": "Current language",
+      "additional": "Additional settings",
+      "autoDetect": "Auto-detect language from browser",
+      "showNative": "Show language names in native script",
+      "infoHeading": "💡 Info",
+      "infoMessage": "Changing the language affects the entire app interface. Some content may still appear in the original language if not yet translated."
+    },
+    "support": {
+      "heading": "Support",
+      "intro": "We're here to help. Choose the contact method that works best for you.",
+      "methods": {
+        "emailTitle": "Email support",
+        "emailDesc": "Send us an email",
+        "emailAction": "Send email",
+        "chatTitle": "Live chat",
+        "chatDesc": "Chat with our support team",
+        "chatAvail": "Available 24/7",
+        "chatAction": "Start chat",
+        "phoneTitle": "Phone",
+        "phoneDesc": "Call us directly",
+        "phoneAction": "Call now"
+      },
+      "form": {
+        "heading": "Send a support message",
+        "name": "Full name",
+        "nameRequired": "Full name is required",
+        "email": "Email",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email",
+        "category": "Issue type",
+        "categoryRequired": "Please select an issue type",
+        "categoryPlaceholder": "Select issue type",
+        "subject": "Subject",
+        "subjectRequired": "Subject is required",
+        "content": "Content",
+        "contentRequired": "Content is required",
+        "contentMinLength": "Content must be at least 10 characters",
+        "contentPlaceholder": "Describe your issue in detail...",
+        "submit": "Send message"
+      },
+      "categories": {
+        "tech": "Technical issue",
+        "account": "Account",
+        "payment": "Payment",
+        "feature": "Feature request",
+        "bugReport": "Bug report",
+        "other": "Other"
+      },
+      "faq": {
+        "heading": "Frequently asked questions",
+        "q1": "How do I change my password?",
+        "a1": "Go to \"Security\" in the left menu and select \"Change password\". You'll need to enter your current and new password.",
+        "q2": "I forgot my password, what should I do?",
+        "a2": "Use the \"Forgot password\" feature on the sign-in page. We'll send a reset link to your email.",
+        "q3": "How do I delete my account?",
+        "a3": "Contact us at support@moviex.com for help with account deletion."
+      },
+      "hours": {
+        "heading": "Support hours",
+        "schedule": "Mon - Fri: 8:00 - 18:00 (GMT+7)\nSat - Sun: 9:00 - 17:00 (GMT+7)"
+      },
+      "toasts": {
+        "sent": "Your message has been sent successfully! We'll respond within 24 hours.",
+        "error": "Failed to send message. Please try again."
+      }
+    }
+  },
+
+  "comment": {
+    "submit": "Comment",
+    "reply": "Reply",
+    "edit": "Edit",
+    "delete": "Delete",
+    "like": "Like",
+    "deleted": "Comment deleted"
+  },
+
+  "notification": {
+    "title": "Notifications",
+    "markRead": "Mark as read",
+    "empty": "No notifications yet",
+    "emptySubtitle": "You'll be notified when there's new activity",
+    "actions": {
+      "did": "",
+      "liked": "liked",
+      "replied": "replied to",
+      "yourComment": "your comment."
+    }
+  },
+
+  "footer": {
+    "description": "MovieX - Free high-quality online movie streaming with Vietsub, dubbing, voiceover Full HD. Vast library of new releases, theater hits, TV series, and movies from Vietnam, Korea, China, Thailand, Japan, US/Europe and more across many genres. Discover the best 4K streaming platform of 2024!",
+    "info": {
+      "heading": "Information",
+      "faq": "FAQ",
+      "privacy": "Privacy policy",
+      "terms": "Terms of use",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "categories": {
+      "heading": "Movie categories",
+      "single": "Movies",
+      "series": "TV Series",
+      "theater": "Theater Movies",
+      "anime": "Anime",
+      "cartoon": "Animation",
+      "action": "Action",
+      "romance": "Romance",
+      "horror": "Horror",
+      "sciFi": "Sci-Fi",
+      "newest": "New Releases"
+    },
+    "copyright": "© 2024 MOVIEX. All rights reserved.",
+    "disclaimer": "MOVIEX does not host any content on this site. All content is sourced from third parties.",
+    "seo": "High-quality online movie streaming at MOVIEX — the leading streaming platform in Vietnam"
+  },
+
+  "errors": {
+    "invalidCredentials": "Invalid sign-in credentials",
+    "userNotFound": "Account not found.",
+    "wrongPassword": "Incorrect password.",
+    "emailInUse": "This email is already in use.",
+    "invalidEmail": "Invalid email address",
+    "default": "An error occurred. Please try again later."
+  },
+
+  "toasts": {
+    "addedToCollection": "Added to collection",
+    "removedFromCollection": "Removed from collection",
+    "alreadyInCollection": "Movie is already in your collection",
+    "addedToCollectionLong": "Movie added to your collection",
+    "removedFromCollectionLong": "Movie removed from your collection.",
+    "genericError": "Something went wrong"
+  },
+
+  "metadata": {
+    "homeTitle": "MovieX - Watch Movies Online | Movies | TV Shows | Series | Animation | Subtitled | Dubbed",
+    "homeDescription": "Watch thousands of movies, TV shows, and series across many genres online — subtitled or dubbed and updated daily. Enjoy high-quality streaming for free at MovieX.",
+    "searchTitle": "Search movies",
+    "recentTitle": "Recently watched",
+    "collectionTitle": "Movie collection"
   }
 }
