@@ -58,7 +58,7 @@ export default function MovieContent({
               </tr>
             </tbody>
           </table>
-          <MovieSummary summary={movie.movie.content} />
+          <MovieSummary summary={movie.movie.content} expandable />
           <div>
             <ActorList movie={movie} credit={credit} />
           </div>
@@ -98,7 +98,7 @@ export default function MovieContent({
         {/* Movie Summary */}
         <div className="bg-gray-900/50 rounded-lg p-4">
           <h3 className="text-lg font-bold text-white mb-4">Nội dung phim</h3>
-          <MovieSummary summary={movie.movie.content} />
+          <MovieSummary summary={movie.movie.content} expandable />
         </div>
 
         {/* Actors Section */}
