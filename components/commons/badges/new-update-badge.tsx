@@ -1,3 +1,6 @@
+'use client';
+import { useTranslations } from 'next-intl';
+
 interface NewUpdateBadgeProps {
   /** ISO 8601 timestamp string from `modified.time` */
   modifiedAt?: string;
@@ -15,6 +18,7 @@ export default function NewUpdateBadge({
   modifiedAt,
   thresholdHours = 24,
 }: NewUpdateBadgeProps) {
+  const t = useTranslations('card');
   if (!modifiedAt) return null;
 
   const modifiedTime = Date.parse(modifiedAt);
@@ -25,7 +29,7 @@ export default function NewUpdateBadge({
 
   return (
     <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase rounded bg-red-600 text-white shadow animate-pulse">
-      Mới
+      {t('newBadge')}
     </span>
   );
 }

@@ -1,17 +1,26 @@
+/**
+ * Maps a Firebase Auth error code to a key in the i18n `errors.*` namespace.
+ *
+ * Caller pattern (client component):
+ *   const tErr = useTranslations('errors');
+ *   toast.error(tErr(getFriendlyErrorMessage(error.code)));
+ *
+ * Returning a key (rather than a translated string) keeps this util pure /
+ * server-safe and lets each caller scope its translator however it wants.
+ */
 export default function getFriendlyErrorMessage(errorCode: string): string {
   switch (errorCode) {
     case 'auth/invalid-credential':
-      return 'Thông tin đăng nhập không hợp lệ';
+      return 'invalidCredentials';
     case 'auth/user-not-found':
-      return 'Tài khoản không tồn tại.';
+      return 'userNotFound';
     case 'auth/wrong-password':
-      return 'Mật khẩu không chính xác.';
+      return 'wrongPassword';
     case 'auth/email-already-in-use':
-      return 'Email này đã được sử dụng.';
+      return 'emailInUse';
     case 'auth/invalid-email':
-      return 'Địa chỉ email không hợp lệ';
-    // Thêm các mã lỗi khác nếu cần
+      return 'invalidEmail';
     default:
-      return 'Đã xảy ra lỗi. Vui lòng thử lại sau.';
+      return 'default';
   }
 }

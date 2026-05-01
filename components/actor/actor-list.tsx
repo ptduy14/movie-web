@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import isNonEmpty from 'utils/is-none-empty';
 import creditIsvalid from 'utils/credit-is-valid';
 import LoadingSpinner from '../loading/loading-spinner';
+import { useTranslations } from 'next-intl';
 
 export default function ActorList({
   movie,
@@ -16,6 +17,8 @@ export default function ActorList({
   movie: DetailMovie;
   credit: Credit | undefined;
 }) {
+  const t = useTranslations('movie');
+  const tCommon = useTranslations('common');
   const [isReachBegin, setIsReachBegin] = useState(false);
   const [isReachEnd, setIsReachEnd] = useState(false);
   const [isActorReadyToDisplay, setIsActorReadyToDisplay] = useState(false);
@@ -50,13 +53,13 @@ export default function ActorList({
       ));
     }
 
-    return <div>Đang cập nhật</div>;
+    return <div>{tCommon('updating')}</div>;
   };
 
   return (
     <div className="space-y-6">
       <div className="font-bold flex justify-between align-middle">
-        <div>DIỄN VIÊN</div>
+        <div>{t('actor.title')}</div>
         <div className="flex gap-x-2">
           <div
             onClick={handlePrevSlide}

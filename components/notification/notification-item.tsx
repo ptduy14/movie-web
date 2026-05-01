@@ -8,8 +8,10 @@ import { INotification } from 'types/notification';
 import { Link } from 'i18n/routing';
 import { useDropdown } from '../context/dropdown-context';
 import firebaseServices from 'services/firebase-services';
+import { useTranslations } from 'next-intl';
 
 export default function NotificationItem({ notification }: { notification: INotification }) {
+  const t = useTranslations('notification.actions');
   const { setNotificationDropdownState } = useDropdown();
   const date = new Date(notification.timestamp);
   const handleReadedNotification = async (notification: INotification) => {
@@ -44,8 +46,8 @@ export default function NotificationItem({ notification }: { notification: INoti
 
       <div className="flex-1 space-y-2 text-sm">
         <p>
-          <b>{notification.userCreatedName}</b> đã{' '}
-          {notification.type === 'react' ? 'thích' : 'trả lời'} bình luận của bạn.
+          <b>{notification.userCreatedName}</b> {t('did')}
+          {notification.type === 'react' ? t('liked') : t('replied')} {t('yourComment')}
         </p>
         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
           {`${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1)

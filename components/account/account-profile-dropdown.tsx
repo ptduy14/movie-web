@@ -9,9 +9,11 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { Link } from 'i18n/routing';
 import { useDropdown } from '../context/dropdown-context';
+import { useTranslations } from 'next-intl';
 import { IoBookmark, IoTime, IoPerson, IoLogOut } from 'react-icons/io5';
 
 export default function AccountProfileDropdown({ authenticatedUser }: { authenticatedUser: any }) {
+  const t = useTranslations('accountMenu');
   const { setAccountDropdownState } = useDropdown();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -82,7 +84,7 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
           }
         >
           <IoBookmark size={18} />
-          <span className="text-sm font-medium">Bộ sưu tập</span>
+          <span className="text-sm font-medium">{t('collection')}</span>
         </Link>
 
         {/* Recent Movies Link */}
@@ -97,7 +99,7 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
           }
         >
           <IoTime size={18} />
-          <span className="text-sm font-medium">Phim xem gần đây</span>
+          <span className="text-sm font-medium">{t('recent')}</span>
         </Link>
 
         {/* Profile Link */}
@@ -112,7 +114,7 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
           }
         >
           <IoPerson size={18} />
-          <span className="text-sm font-medium">Thông tin cá nhân</span>
+          <span className="text-sm font-medium">{t('profile')}</span>
         </Link>
 
         {/* Divider */}
@@ -126,7 +128,7 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
         >
           <IoLogOut size={18} />
           <span className="text-sm font-medium">
-            {isLoading ? <LoadingSpinerBtn /> : 'Đăng xuất'}
+            {isLoading ? <LoadingSpinerBtn /> : t('logout')}
           </span>
         </button>
       </div>

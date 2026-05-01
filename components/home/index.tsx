@@ -2,8 +2,11 @@ import HeroSection from './hero-section';
 import MovieList from '../commons/movie-list';
 import MovieServices from 'services/movie-services';
 import DailyUpdateBanner from './daily-update-banner';
+import { getTranslations } from 'next-intl/server';
 
 export default async function HomePage() {
+  const t = await getTranslations('home.lists');
+
   const newlyMoviesFetcher = MovieServices.getNewlyMovies();
   const singleMoviesFetcher = MovieServices.getSingleMovies();
   const tvSeriesFetcher = MovieServices.getTVSeries();
@@ -29,15 +32,27 @@ export default async function HomePage() {
       <HeroSection movies={newlyItems.slice(0, 5)} />
       <DailyUpdateBanner count={itemsUpdateInDay} totalLibrary={totalLibrary} />
       <div className="space-y-8">
+        <MovieList listName={t('newlyUpdated')} movies={newlyItems} isNewlyMovieItem={true} />
         <MovieList
-          listName="Phim Mới Cập Nhật"
-          movies={newlyItems}
-          isNewlyMovieItem={true}
+          movies={singleMovies.data.items.slice(0, 10)}
+          listName={t('singleNewlyUpdated')}
+          isNewlyMovieItem={false}
         />
-        <MovieList movies={singleMovies.data.items.slice(0, 10)} listName="Phim Lẻ Mới Cập Nhật" isNewlyMovieItem={false} />
-        <MovieList movies={tvSeries.data.items.slice(0, 10)} listName="Phim Bộ Mới Cập Nhật" isNewlyMovieItem={false} />
-        <MovieList movies={cartoonMovies.data.items.slice(0, 10)} listName="Phim Hoạt Hình Mới Cập Nhật" isNewlyMovieItem={false} />
-        <MovieList movies={tvShows.data.items.slice(0, 10)} listName="TV Show Mới Cập Nhật" isNewlyMovieItem={false} />
+        <MovieList
+          movies={tvSeries.data.items.slice(0, 10)}
+          listName={t('tvSeriesNewlyUpdated')}
+          isNewlyMovieItem={false}
+        />
+        <MovieList
+          movies={cartoonMovies.data.items.slice(0, 10)}
+          listName={t('cartoonNewlyUpdated')}
+          isNewlyMovieItem={false}
+        />
+        <MovieList
+          movies={tvShows.data.items.slice(0, 10)}
+          listName={t('tvShowsNewlyUpdated')}
+          isNewlyMovieItem={false}
+        />
       </div>
     </div>
   );

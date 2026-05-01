@@ -11,8 +11,10 @@ import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import firebaseServices from 'services/firebase-services';
 import { IRecentMovie } from 'types/recent-movie';
+import { useTranslations } from 'next-intl';
 
 export default function RecentMoviePage() {
+  const t = useTranslations('recent');
   const [recentMovies, setRecentMovies] = useState<IRecentMovie[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -55,9 +57,9 @@ export default function RecentMoviePage() {
   return (
     <div className="pt-16 md:pt-20 space-y-6 md:space-y-8 h-full px-4 md:px-0">
       <div>
-        <div className="text-xl md:text-2xl font-bold text-center">Phim xem gần đây</div>
+        <div className="text-xl md:text-2xl font-bold text-center">{t('title')}</div>
         <div className="text-sm md:text-base text-center mt-1 text-gray-300 px-4 md:px-0">
-          MovieX giờ đã có tính năng lưu tiến trình tất cả phim mà bạn đã xem
+          {t('subtitle')}
         </div>
       </div>
       {isLoading ? <LoadingSpinner /> : renderRecentMovies()}

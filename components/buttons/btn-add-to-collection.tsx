@@ -15,6 +15,7 @@ import {
   addToCollection,
   removeFromCollection,
 } from '../../redux/slices/collection-slice';
+import { useTranslations } from 'next-intl';
 
 interface BtnAddToCollectionProps {
   variant: 'primary' | 'secondary'; // Prop để điều chỉnh kiểu dáng
@@ -22,6 +23,8 @@ interface BtnAddToCollectionProps {
 }
 
 export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCollectionProps) {
+  const tToast = useTranslations('toasts');
+  const tAccount = useTranslations('accountMenu');
   const user = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch();
   const { openAuthModal } = useAuthModel();
@@ -69,7 +72,7 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
         });
       }
 
-      toast.success('Phim đã được thêm vào bộ sưu tập');
+      toast.success(tToast('addedToCollectionLong'));
       setIsExistedInCollection(true);
       // Keep Redux cache in sync so card overlay buttons re-render correctly
       dispatch(addToCollection(movie));
@@ -96,7 +99,7 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
           movies: updatedMovies,
         });
 
-        toast.success('Phim đã được xoá khỏi bộ sưu tập.');
+        toast.success(tToast('removedFromCollectionLong'));
         setIsExistedInCollection(false);
         // Keep Redux cache in sync
         dispatch(removeFromCollection(detailMovie.movie._id));
@@ -145,7 +148,7 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
       ) : (
         <>
           {isExistedInCollection ? <TiTick size={18} /> : <FaPlus size={18} />}
-          <span className="block leading-4 font-semibold">Bộ sưu tập</span>
+          <span className="block leading-4 font-semibold">{tAccount('collection')}</span>
         </>
       )}
     </button>

@@ -10,8 +10,10 @@ import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import firebaseServices from 'services/firebase-services';
+import { useTranslations } from 'next-intl';
 
 export default function MovieCollectionPage() {
+  const t = useTranslations('collection');
   const [movieCollection, setMovieCollection] = useState<MovieCollection[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -53,7 +55,7 @@ export default function MovieCollectionPage() {
 
   return (
     <div className="pt-16 md:pt-20 space-y-6 md:space-y-8 h-full px-4 md:px-0">
-      <div className="text-xl md:text-2xl font-bold text-center">Bộ sưu tập phim của bạn</div>
+      <div className="text-xl md:text-2xl font-bold text-center">{t('title')}</div>
       {isLoading ? <LoadingSpinner /> : renderMovieCollection()}
     </div>
   );
