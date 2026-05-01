@@ -12,13 +12,16 @@ export default async function HomePage() {
   // will improve later with Promise.settled()
   const [newlyMovies, singleMovies, tvSeries, cartoonMovies, tvShows] = await Promise.all([newlyMoviesFetcher, singleMoviesFetcher, tvSeriesFetcher, cartoonMoviesFetcher, tvShowsFetcher]);
 
+  // /v1/api/home now returns response wrapped in `data` (consistent with other v1 endpoints)
+  const newlyItems = newlyMovies?.data?.items ?? [];
+
   return (
     <div className='h-full'>
-      <HeroSection movies={newlyMovies.items.slice(0, 5)} />
+      <HeroSection movies={newlyItems.slice(0, 5)} />
       <div className="space-y-8">
         <MovieList
           listName="Phim Mới Cập Nhật"
-          movies={newlyMovies.items}
+          movies={newlyItems}
           isNewlyMovieItem={true}
         />
         <MovieList movies={singleMovies.data.items.slice(0,10)} listName="Phim Lẻ Mới Cập Nhật" isNewlyMovieItem={false} />
