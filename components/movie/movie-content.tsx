@@ -8,6 +8,7 @@ import MovieSummary from './movie-summary';
 import CommentSection from '../comment';
 import MovieImage from 'types/movie-image';
 import MovieImageList from '../movie-images/movie-image-list';
+import Link from 'next/link';
 
 export default function MovieContent({
   movie,
@@ -21,7 +22,20 @@ export default function MovieContent({
   const directors = isNonEmpty(movie.movie.director)
     ? movie.movie.director?.join(', ')
     : 'Đang cập nhật';
-  const countries = movie.movie.country.map((item: Country) => item.name).join(', ');
+
+  const countryChips = (
+    <div className="flex flex-wrap gap-2">
+      {movie.movie.country.map((item: Country, index) => (
+        <Link
+          key={index}
+          href={`/movies/country/${item.slug}`}
+          className="inline-block text-sm border border-gray-600 px-3 py-1 rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+        >
+          {item.name}
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <div className="container-wrapper-movie">
@@ -36,7 +50,7 @@ export default function MovieContent({
               </tr>
               <tr>
                 <td className="pb-3 align-top uppercase text-base">Quốc gia</td>
-                <td className="pb-3 font-bold">{countries}</td>
+                <td className="pb-3">{countryChips}</td>
               </tr>
               <tr>
                 <td className="pb-3 align-top uppercase text-base">Năm phát hành</td>
@@ -44,7 +58,7 @@ export default function MovieContent({
               </tr>
             </tbody>
           </table>
-          <MovieSummary summary={movie.movie.content} />
+          <MovieSummary summary={movie.movie.content} expandable />
           <div>
             <ActorList movie={movie} credit={credit} />
           </div>
@@ -69,9 +83,9 @@ export default function MovieContent({
           </div>
 
           {/* Country */}
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col space-y-2">
             <span className="text-sm text-gray-400 uppercase tracking-wide">Quốc gia</span>
-            <span className="text-white font-medium">{countries}</span>
+            {countryChips}
           </div>
 
           {/* Release Year */}
@@ -84,7 +98,7 @@ export default function MovieContent({
         {/* Movie Summary */}
         <div className="bg-gray-900/50 rounded-lg p-4">
           <h3 className="text-lg font-bold text-white mb-4">Nội dung phim</h3>
-          <MovieSummary summary={movie.movie.content} />
+          <MovieSummary summary={movie.movie.content} expandable />
         </div>
 
         {/* Actors Section */}

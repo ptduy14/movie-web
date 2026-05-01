@@ -2,11 +2,11 @@ import DetailMovie from 'types/detail-movie';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
-import TMDBLogo from '../logos/TMDB-Logo';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import Link from 'next/link';
 import Image from 'next/image';
 import MovieImage from 'types/movie-image';
+import RatingLinks from '../commons/rating-links';
 
 export default function MoviePage({
   movie,
@@ -58,20 +58,7 @@ export default function MoviePage({
                 <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
                   {movie.movie.quality}
                 </div>
-                {movie.movie.tmdb.id !== '' && (
-                  <div className="flex items-center gap-x-2">
-                    <div className="w-[9rem]">
-                      <TMDBLogo />
-                    </div>
-                    <div className="">
-                      <span className="font-bold">{movie.movie.tmdb.vote_average}</span>
-                      <span>/10</span>
-                    </div>
-                    <div>
-                      <span>({movie.movie.tmdb.vote_count} votes)</span>
-                    </div>
-                  </div>
-                )}
+                <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} />
                 <div className="flex justify-between items-center">
                   <BtnAddToCollection variant="secondary" detailMovie={movie} />
                   <div className="flex gap-x-2">
@@ -136,18 +123,14 @@ export default function MoviePage({
                   </span>
                 </div>
 
-                {/* TMDB Rating */}
-                {movie.movie.tmdb.id !== '' && (
-                  <div className="flex items-center gap-x-2 mt-2">
-                    <div className="w-12 h-3">
-                      <TMDBLogo />
-                    </div>
-                    <div className="text-white text-sm">
-                      <span className="font-bold">{movie.movie.tmdb.vote_average}</span>
-                      <span>/10</span>
-                    </div>
-                  </div>
-                )}
+                {/* Ratings (TMDB + IMDb) */}
+                <div className="mt-2">
+                  <RatingLinks
+                    imdb={movie.movie.imdb}
+                    tmdb={movie.movie.tmdb}
+                    variant="compact"
+                  />
+                </div>
               </div>
             </div>
           </div>
