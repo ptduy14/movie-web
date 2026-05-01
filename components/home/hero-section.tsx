@@ -13,25 +13,35 @@ import { FaChevronRight } from 'react-icons/fa6';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
+  const [hasFetched, setHasFetched] = useState<boolean>(false);
   const swiperRef = useRef<any>(null);
 
-  const { isLoadingHomePage, setISLoadingHomePage } = useHomePageLoadingContext();
+  const { setISLoadingHomePage } = useHomePageLoadingContext();
 
   useEffect(() => {
+    let cancelled = false;
+    setHasFetched(false);
+
     const getDescriptionMovies = async () => {
       const data = await getDetailMovieServerAction(movies);
+      if (cancelled) return;
       setDetailMovies(data);
+      setHasFetched(true);
       setISLoadingHomePage(false);
     };
 
     getDescriptionMovies();
+
+    return () => {
+      cancelled = true;
+    };
   }, [movies, setISLoadingHomePage]);
 
   const handleClickToNextSlide = () => {
     swiperRef.current?.slideNext();
   };
 
-  if (isLoadingHomePage) {
+  if (!hasFetched) {
     return <HeroSectionSkeleton />;
   }
 
@@ -51,10 +61,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         {detailMovies.map((movie: DetailMovie) => {
           return (
             <SwiperSlide key={movie.movie._id}>
-              <HeroMovieItem
-                detailMovie={movie}
-                listItem={listItemBySlug.get(movie.movie.slug)}
-              />
+              <HeroMovieItem detailMovie={movie} listItem={listItemBySlug.get(movie.movie.slug)} />
             </SwiperSlide>
           );
         })}
