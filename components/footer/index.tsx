@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from 'i18n/routing';
 import { FaGithub } from "react-icons/fa";
 
 export default function Footer() {

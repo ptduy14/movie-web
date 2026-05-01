@@ -3,7 +3,7 @@ import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import Image from 'next/image';
 import MovieImage from 'types/movie-image';
 import RatingLinks from '../commons/rating-links';

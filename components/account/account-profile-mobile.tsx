@@ -7,7 +7,7 @@ import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import AccountDefaultImg from '../../public/account-default-img.jpg';
 import Image from 'next/image';
 import {

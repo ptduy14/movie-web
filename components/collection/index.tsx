@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'i18n/routing';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from 'lib/firebase';
 import MovieCollection from 'types/movie-collection';

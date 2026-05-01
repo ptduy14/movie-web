@@ -1,0 +1,10 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "watchNow": "Watch now",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  }
+}

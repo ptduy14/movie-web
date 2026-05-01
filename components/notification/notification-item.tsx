@@ -5,7 +5,7 @@ import LikeIcon from '../custom-icons/like-icon';
 import { FaCommentDots } from 'react-icons/fa';
 import ReplyIcon from '../custom-icons/reply-icon';
 import { INotification } from 'types/notification';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import { useDropdown } from '../context/dropdown-context';
 import firebaseServices from 'services/firebase-services';
 

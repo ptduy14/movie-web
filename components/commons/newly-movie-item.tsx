@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import Movie from 'types/movie';
 import NewlyMovie from 'types/newly-movie';
 import Image from 'next/image';

@@ -6,7 +6,7 @@ import NewlyMovie from 'types/newly-movie';
 import TMDBLogo from '../logos/TMDB-Logo';
 import Category from 'types/category';
 import { GoDotFill } from 'react-icons/go';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
