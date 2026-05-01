@@ -45,7 +45,7 @@ export default function RatingLinks({ imdb, tmdb, variant = 'default' }: RatingL
             href={buildTmdbUrl(tmdb!.type, tmdb!.id)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-600/20 hover:bg-emerald-600/40 transition-colors text-sm"
+            className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-600/30 hover:bg-emerald-600/55 transition-colors text-sm"
             title="Xem trên TMDB"
           >
             <span className="font-bold">{tmdb!.vote_average.toFixed(1)}</span>
@@ -58,7 +58,7 @@ export default function RatingLinks({ imdb, tmdb, variant = 'default' }: RatingL
             href={buildImdbUrl(imdb!.id)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-yellow-400/20 hover:bg-yellow-400/40 transition-colors text-sm"
+            className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-yellow-400/30 hover:bg-yellow-400/55 transition-colors text-sm"
             title="Xem trên IMDb"
           >
             <FaImdb className="text-yellow-400" />
@@ -77,7 +77,7 @@ export default function RatingLinks({ imdb, tmdb, variant = 'default' }: RatingL
           href={buildTmdbUrl(tmdb!.type, tmdb!.id)}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 px-3 py-2 rounded-md bg-emerald-900/30 hover:bg-emerald-900/50 border border-emerald-700/50 hover:border-emerald-500 transition-all"
+          className="group inline-flex items-center gap-3 px-3 py-2 rounded-md bg-emerald-600/30 hover:bg-emerald-600/55 transition-colors transition-all"
           title="Xem trên TMDB"
         >
           <div className="w-[5rem] flex-shrink-0">
@@ -99,7 +99,7 @@ export default function RatingLinks({ imdb, tmdb, variant = 'default' }: RatingL
           href={buildImdbUrl(imdb!.id)}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 px-3 py-2 rounded-md bg-yellow-900/30 hover:bg-yellow-900/50 border border-yellow-700/50 hover:border-yellow-500 transition-all"
+          className="group inline-flex items-center gap-3 px-3 py-2 rounded-md bg-yellow-400/30 hover:bg-yellow-400/55 transition-colors transition-all"
           title="Xem trên IMDb"
         >
           <FaImdb className="text-yellow-400 text-3xl flex-shrink-0" />
