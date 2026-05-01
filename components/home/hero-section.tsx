@@ -7,7 +7,7 @@ import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
 import { getDetailMovieServerAction } from 'app/actions';
 import DetailMovie from 'types/detail-movie';
-import LoadingComponent from '../loading/loading-component';
+import HeroSectionSkeleton from './hero-section-skeleton';
 import { useHomePageLoadingContext } from '../context/home-page-loading-context';
 import { FaChevronRight } from 'react-icons/fa6';
 
@@ -32,7 +32,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   };
 
   if (isLoadingHomePage) {
-    return <LoadingComponent />;
+    return <HeroSectionSkeleton />;
   }
 
   // Build a quick lookup so we can pair each DetailMovie with its source NewlyMovie

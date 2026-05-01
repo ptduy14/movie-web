@@ -8,6 +8,7 @@ import { GrNext } from 'react-icons/gr';
 import { GrPrevious } from 'react-icons/gr';
 import { useRef } from 'react';
 import { useHomePageLoadingContext } from '../context/home-page-loading-context';
+import MovieListSkeleton from './movie-list-skeleton';
 
 interface MovieListProps {
   listName: string;
@@ -28,7 +29,7 @@ export default function MovieList({ listName, movies, isNewlyMovieItem }: MovieL
     swiperRef.current.slideNext();
   };
 
-  if (isLoadingHomePage) return <></>;
+  if (isLoadingHomePage) return <MovieListSkeleton />;
 
   return (
     <div className="container-wrapper space-y-4">
