@@ -14,6 +14,7 @@ import {
 import userSlice from './slices/user-slice';
 import storage from './create-storage';
 import progressSlice from './slices/progress-slice';
+import collectionSlice from './slices/collection-slice';
 
 // v1: migrate progress slice from `{ progress: A | null }`
 // to `{ movies: Record<string, IRecentMovie> }`. Reset prior slice shape.
@@ -32,7 +33,14 @@ const persistConfig = {
   migrate: createMigrate(migrations as any, { debug: false }),
 };
 
-const rootReducer = combineReducers({ auth: userSlice, progress: progressSlice });
+// `collection` intentionally NOT persisted — it's source-of-truth-from-Firestore,
+// rehydrated by `useCollectionFetcher` on app boot. Persisting could go stale
+// across devices.
+const rootReducer = combineReducers({
+  auth: userSlice,
+  progress: progressSlice,
+  collection: collectionSlice,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

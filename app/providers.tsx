@@ -11,8 +11,19 @@ import persistStore from 'redux-persist/es/persistStore';
 import AuthProvider from '@/components/context/auth-conext';
 import HomePageLoadingProvider from '@/components/context/home-page-loading-context';
 import { DropdownProvider } from '@/components/context/dropdown-context';
+import useCollectionFetcher from 'hooks/useCollectionFetcher';
 
 const persistor = persistStore(store);
+
+/**
+ * Mounts side-effect hooks that need to run inside the Redux Provider tree.
+ * Currently: bootstraps the user's movie collection from Firestore once per
+ * login session (see `useCollectionFetcher`).
+ */
+function GlobalEffects() {
+  useCollectionFetcher();
+  return null;
+}
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -21,6 +32,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <AuthProvider>
         <AuthModalProvider>
           <HomePageLoadingProvider>
+            <GlobalEffects />
             <AuthModal />
             <DropdownProvider>
               <Layout>{children}</Layout>
