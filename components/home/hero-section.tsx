@@ -7,33 +7,47 @@ import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
 import { getDetailMovieServerAction } from 'app/actions';
 import DetailMovie from 'types/detail-movie';
-import LoadingComponent from '../loading/loading-component';
+import HeroSectionSkeleton from './hero-section-skeleton';
 import { useHomePageLoadingContext } from '../context/home-page-loading-context';
 import { FaChevronRight } from 'react-icons/fa6';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
+  const [hasFetched, setHasFetched] = useState<boolean>(false);
   const swiperRef = useRef<any>(null);
 
-  const { isLoadingHomePage, setISLoadingHomePage } = useHomePageLoadingContext();
+  const { setISLoadingHomePage } = useHomePageLoadingContext();
 
   useEffect(() => {
+    let cancelled = false;
+    setHasFetched(false);
+
     const getDescriptionMovies = async () => {
       const data = await getDetailMovieServerAction(movies);
+      if (cancelled) return;
       setDetailMovies(data);
+      setHasFetched(true);
       setISLoadingHomePage(false);
     };
 
     getDescriptionMovies();
+
+    return () => {
+      cancelled = true;
+    };
   }, [movies, setISLoadingHomePage]);
 
   const handleClickToNextSlide = () => {
     swiperRef.current?.slideNext();
   };
 
-  if (isLoadingHomePage) {
-    return <LoadingComponent />;
+  if (!hasFetched) {
+    return <HeroSectionSkeleton />;
   }
+
+  // Build a quick lookup so we can pair each DetailMovie with its source NewlyMovie
+  // (NewlyMovie carries fields not returned by detail endpoint: imdb, modified, sub_docquyen, ...).
+  const listItemBySlug = new Map(movies.map((m) => [m.slug, m]));
 
   return (
     <div className="relative">
@@ -47,7 +61,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         {detailMovies.map((movie: DetailMovie) => {
           return (
             <SwiperSlide key={movie.movie._id}>
-              <HeroMovieItem detailMovie={movie} />
+              <HeroMovieItem detailMovie={movie} listItem={listItemBySlug.get(movie.movie.slug)} />
             </SwiperSlide>
           );
         })}

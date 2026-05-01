@@ -2,15 +2,19 @@
 
 import { FaPlus } from 'react-icons/fa';
 import { TiTick } from 'react-icons/ti';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuthModel } from '../context/auth-modal-context';
 import DetailMovie from 'types/detail-movie';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from '../../lib/firebase'; // Đường dẫn đến tệp firebase của bạn
 import { toast } from 'react-toastify';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import MovieCollection from 'types/movie-collection';
+import {
+  addToCollection,
+  removeFromCollection,
+} from '../../redux/slices/collection-slice';
 
 interface BtnAddToCollectionProps {
   variant: 'primary' | 'secondary'; // Prop để điều chỉnh kiểu dáng
@@ -19,6 +23,7 @@ interface BtnAddToCollectionProps {
 
 export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCollectionProps) {
   const user = useSelector((state: any) => state.auth.user);
+  const dispatch = useDispatch();
   const { openAuthModal } = useAuthModel();
   const [isHandling, setIsHandling] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -66,6 +71,8 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
 
       toast.success('Phim đã được thêm vào bộ sưu tập');
       setIsExistedInCollection(true);
+      // Keep Redux cache in sync so card overlay buttons re-render correctly
+      dispatch(addToCollection(movie));
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -91,6 +98,8 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
 
         toast.success('Phim đã được xoá khỏi bộ sưu tập.');
         setIsExistedInCollection(false);
+        // Keep Redux cache in sync
+        dispatch(removeFromCollection(detailMovie.movie._id));
       }
     } catch (error: any) {
       console.log(error.message);

@@ -1,7 +1,7 @@
 const MovieServices = {
   getNewlyMovies: async (page = 1) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/danh-sach/phim-moi-cap-nhat?page=${page}`,
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/home?page=${page}`,
       { cache: 'no-store' }
     );
     return res.json();
