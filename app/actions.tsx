@@ -2,7 +2,8 @@
 
 import NewlyMovie from 'types/newly-movie';
 import MovieServices from 'services/movie-services';
-import { redirect } from 'next/navigation';
+import { redirect } from 'i18n/routing';
+import { getLocale } from 'next-intl/server';
 
 export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
   const fetcher = movies.map((movie: NewlyMovie) => {
@@ -32,7 +33,8 @@ export async function getMoviesByCountry(slug: string, page: number) {
   
     return res.data.items;
   } catch (error) {
-    redirect('/'); 
+    const locale = await getLocale();
+    redirect({ href: '/', locale });
   }
   
 }

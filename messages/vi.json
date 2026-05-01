@@ -1,0 +1,10 @@
+{
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã có lỗi xảy ra",
+    "retry": "Thử lại",
+    "watchNow": "Xem ngay",
+    "showMore": "Xem thêm",
+    "showLess": "Thu gọn"
+  }
+}

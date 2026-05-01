@@ -7,7 +7,7 @@ import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import { useDropdown } from '../context/dropdown-context';
 import { IoBookmark, IoTime, IoPerson, IoLogOut } from 'react-icons/io5';
 

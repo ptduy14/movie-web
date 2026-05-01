@@ -8,7 +8,7 @@ import MovieSummary from './movie-summary';
 import CommentSection from '../comment';
 import MovieImage from 'types/movie-image';
 import MovieImageList from '../movie-images/movie-image-list';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 
 export default function MovieContent({
   movie,

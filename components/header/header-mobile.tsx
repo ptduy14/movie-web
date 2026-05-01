@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import logo from '../../public/logo.png';
 import Image from 'next/image';
 import { IoSearch, IoMenu, IoClose, IoChevronDown, IoChevronUp } from 'react-icons/io5';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link } from 'i18n/routing';
+import { usePathname } from 'i18n/routing';
 import { useSelector } from 'react-redux';
 import LoginSignUpIcon from '../auth/login-signup-icon';
 import AccountProfileIcon from '../account/account-profile-icon';
@@ -13,6 +13,7 @@ import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
 import movieType from '../../data/movie-type';
 import countries from '../../data/countries';
+import LanguageSwitcher from './language-switcher';
 
 export default function HeaderMobile({
   isShowFixedHeader,
@@ -80,14 +81,17 @@ export default function HeaderMobile({
             <Image src={logo} alt="Movie Web Logo" className="w-24 h-auto" />
           </Link>
 
-          {/* Search Icon */}
-          <Link
-            className="text-white hover:text-custome-red transition-colors"
-            href="/search"
-            aria-label="Search movies"
-          >
-            <IoSearch size={24} />
-          </Link>
+          {/* Right side actions: language + search */}
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Link
+              className="text-white hover:text-custome-red transition-colors"
+              href="/search"
+              aria-label="Search movies"
+            >
+              <IoSearch size={24} />
+            </Link>
+          </div>
         </div>
       </header>
 
