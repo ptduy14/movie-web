@@ -1,13 +1,41 @@
+'use client';
+
 import DetailMovie from 'types/detail-movie';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import Credit from 'types/credit';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import Image from 'next/image';
 import MovieImage from 'types/movie-image';
 import RatingLinks from '../commons/rating-links';
+import { useLocale, useTranslations } from 'next-intl';
+import {
+  localizedCategory,
+  localizedEpisodeCurrent,
+  localizedTime,
+  preferredTitle,
+  secondaryTitle,
+} from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
+/**
+ * Movie detail page shell.
+ *
+ * Marked `'use client'` because:
+ *  - Most children (BtnAddToCollection, ActorList, MovieImageList,
+ *    CommentSection) are already client components.
+ *  - Avoids the async server component complexity that triggered an
+ *    "Internal error: Cannot read properties of null" inside the React
+ *    Server Components reconciler when this was an `async` server component
+ *    with `getTranslations()` / `getLocale()` calls combined with nested
+ *    async children.
+ *  - Translations and locale are read via the `useTranslations` / `useLocale`
+ *    hooks instead — same data, simpler render path.
+ *
+ * Note: the parent `[slug]/page.tsx` server component still fetches movie /
+ * credits / images data and passes them as props.
+ */
 export default function MoviePage({
   movie,
   credit,
@@ -17,6 +45,16 @@ export default function MoviePage({
   credit: Credit | undefined;
   images: MovieImage[];
 }) {
+  const t = useTranslations('movie');
+  const locale = useLocale() as Locale;
+
+  // Locale-aware title display + pattern-localized status/duration.
+  // No Gemini API calls — saves quota for the synopsis only.
+  const primaryTitle = preferredTitle(movie.movie.name, movie.movie.origin_name, locale);
+  const subTitle = secondaryTitle(movie.movie.name, movie.movie.origin_name, locale);
+  const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
+  const time = localizedTime(movie.movie.time, locale);
+
   return (
     <div>
       {/* Desktop Layout */}
@@ -43,18 +81,24 @@ export default function MoviePage({
                   href={`/movies/watch/${movie.movie.slug}`}
                 >
                   <FaPlay size={25} />
-                  Xem phim
+                  {t('watch')}
                 </Link>
               )}
             </div>
             <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
               <div>
-                <h3 className="text-5xl font-medium">{`${movie.movie.origin_name}`}</h3>
-                <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${movie.movie.name} (${movie.movie.year})`}</h4>
+                <h3 className="text-5xl font-medium">{primaryTitle}</h3>
+                {subTitle && (
+                  <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${subTitle} (${movie.movie.year})`}</h4>
+                )}
               </div>
               <div className="space-y-5">
-                <div>Trạng thái: {movie.movie.episode_current}</div>
-                <div>Thời lượng: {movie.movie.time}</div>
+                <div>
+                  {t('info.status')}: {episodeCurrent}
+                </div>
+                <div>
+                  {t('info.duration')}: {time}
+                </div>
                 <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
                   {movie.movie.quality}
                 </div>
@@ -68,7 +112,7 @@ export default function MoviePage({
                         className="text-sm block border-[1px] border-gray-600 px-3 p-1 rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-500"
                         href={`/movies/type/${item.slug}`}
                       >
-                        {item.name}
+                        {localizedCategory(item.slug, locale)}
                       </Link>
                     ))}
                   </div>
@@ -105,18 +149,18 @@ export default function MoviePage({
 
               {/* Movie Info */}
               <div className="flex-1 min-w-0">
-                <h1 className="text-xl font-bold text-white mb-1 truncate">
-                  {movie.movie.origin_name}
-                </h1>
-                <h2 className="text-base text-gray-300 mb-2 truncate">
-                  {movie.movie.name} ({movie.movie.year})
-                </h2>
+                <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
+                {subTitle && (
+                  <h2 className="text-base text-gray-300 mb-2 truncate">
+                    {subTitle} ({movie.movie.year})
+                  </h2>
+                )}
 
                 {/* Quick Info */}
                 <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
-                  <span>{movie.movie.episode_current}</span>
+                  <span>{episodeCurrent}</span>
                   <span>•</span>
-                  <span>{movie.movie.time}</span>
+                  <span>{time}</span>
                   <span>•</span>
                   <span className="bg-[#169f3a] px-2 py-0.5 rounded text-white text-xs">
                     {movie.movie.quality}
@@ -145,7 +189,7 @@ export default function MoviePage({
               href={`/movies/watch/${movie.movie.slug}`}
             >
               <FaPlay size={20} />
-              Xem phim
+              {t('watch')}
             </Link>
           )}
 
@@ -162,7 +206,7 @@ export default function MoviePage({
                 className="text-sm border border-gray-600 px-3 py-1 rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
                 href={`/movies/type/${item.slug}`}
               >
-                {item.name}
+                {localizedCategory(item.slug, locale)}
               </Link>
             ))}
           </div>

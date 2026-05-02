@@ -7,10 +7,12 @@ import LoginSignUpIcon from '../auth/login-signup-icon';
 import { useSelector } from 'react-redux';
 import AccountProfileIcon from '../account/account-profile-icon';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname } from 'i18n/routing';
 import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
+import LanguageSwitcher from './language-switcher';
+import { useTranslations } from 'next-intl';
 
 export default function HeaderFixed({
   isShowFixedHeader,
@@ -21,6 +23,7 @@ export default function HeaderFixed({
   notificationDropdownState: INotificationDropdownState;
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
 }) {
+  const t = useTranslations('header.menu');
   const user = useSelector((state: any) => state.auth.user);
   const [authenticatedUser, setAuthenticatedUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +53,7 @@ export default function HeaderFixed({
               }`}
               href="/movies/format/phim-le"
             >
-              Phim lẻ
+              {t('singleMovies')}
             </Link>
           </li>
           <li className="px-8">
@@ -60,7 +63,7 @@ export default function HeaderFixed({
               }`}
               href="/movies/format/phim-bo"
             >
-              Phim bộ
+              {t('tvSeries')}
             </Link>
           </li>
           <li className="px-8">
@@ -70,7 +73,7 @@ export default function HeaderFixed({
               }`}
               href="/movies/format/hoat-hinh"
             >
-              Hoạt hình
+              {t('cartoons')}
             </Link>
           </li>
           <li className="px-8">
@@ -80,19 +83,20 @@ export default function HeaderFixed({
               }`}
               href="/movies/format/tv-shows"
             >
-              TV show
+              {t('tvShows')}
             </Link>
           </li>
           <li className={`px-8 relative ${isShowFixedHeader && 'group'}`}>
-            <p className="leading-[3.62rem] cursor-pointer">Thể loại</p>
+            <p className="leading-[3.62rem] cursor-pointer">{t('categories')}</p>
             <SubType />
           </li>
           <li className={`px-8 relative ${isShowFixedHeader && 'group'}`}>
-            <p className="leading-[3.62rem] hover:text-custome-red cursor-pointer">Quốc gia</p>
+            <p className="leading-[3.62rem] hover:text-custome-red cursor-pointer">{t('countries')}</p>
             <SubCountries />
           </li>
         </ul>
-        <div className="flex w-32 gap-x-4 items-center justify-around h-[3.62rem]">
+        <div className="flex gap-x-3 items-center justify-end min-w-[10rem] h-[3.62rem]">
+          <LanguageSwitcher />
           <Link className="cursor-pointer hover:text-custome-red" href="/search">
             <IoSearch size={25} />
           </Link>

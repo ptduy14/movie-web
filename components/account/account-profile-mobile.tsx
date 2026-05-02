@@ -7,7 +7,7 @@ import AuthServices from 'services/auth-services';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import AccountDefaultImg from '../../public/account-default-img.jpg';
 import Image from 'next/image';
 import {
@@ -18,6 +18,7 @@ import {
   IoTime,
   IoLogOut,
 } from 'react-icons/io5';
+import { useTranslations } from 'next-intl';
 
 interface AccountProfileMobileProps {
   authenticatedUser: any;
@@ -28,6 +29,7 @@ export default function AccountProfileMobile({
   authenticatedUser,
   onCloseMenu,
 }: AccountProfileMobileProps) {
+  const t = useTranslations('accountMenu');
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -84,7 +86,7 @@ export default function AccountProfileMobile({
             className="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
           >
             <IoBookmark size={18} />
-            <span className="text-sm font-medium">Bộ sưu tập</span>
+            <span className="text-sm font-medium">{t('collection')}</span>
           </Link>
 
           {/* Recent Movies Link */}
@@ -94,7 +96,7 @@ export default function AccountProfileMobile({
             className="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
           >
             <IoTime size={18} />
-            <span className="text-sm font-medium">Phim xem gần đây</span>
+            <span className="text-sm font-medium">{t('recent')}</span>
           </Link>
 
           {/* Profile Link */}
@@ -104,7 +106,7 @@ export default function AccountProfileMobile({
             className="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
           >
             <IoPerson size={18} />
-            <span className="text-sm font-medium">Thông tin cá nhân</span>
+            <span className="text-sm font-medium">{t('profile')}</span>
           </Link>
 
           {/* Logout Button */}
@@ -115,7 +117,7 @@ export default function AccountProfileMobile({
           >
             <IoLogOut size={18} />
             <span className="text-sm font-medium">
-              {isLoading ? <LoadingSpinerBtn /> : 'Đăng xuất'}
+              {isLoading ? <LoadingSpinerBtn /> : t('logout')}
             </span>
           </button>
         </div>

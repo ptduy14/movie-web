@@ -8,10 +8,12 @@ import PersonalInfo from './personal-info';
 import SecuritySettings from './security-settings';
 import LanguageSettings from './language-settings';
 import SupportContact from './support-contact';
+import { useTranslations } from 'next-intl';
 
 export type ProfileSection = 'personal' | 'security' | 'language' | 'support';
 
 export default function Profile() {
+  const t = useTranslations('profile');
   const user = useSelector((state: RootState) => state.auth.user) as any;
   const [activeSection, setActiveSection] = useState<ProfileSection>('personal');
 
@@ -20,8 +22,8 @@ export default function Profile() {
       <div className="pt-20 lg:pt-32 container-wrapper-movie h-full px-4 lg:px-0">
         <div className="flex justify-center items-center py-20">
           <div className="text-center">
-            <h2 className="text-white text-xl font-semibold mb-4">Vui lòng đăng nhập</h2>
-            <p className="text-gray-400">Bạn cần đăng nhập để xem thông tin cá nhân</p>
+            <h2 className="text-white text-xl font-semibold mb-4">{t('loginRequired.title')}</h2>
+            <p className="text-gray-400">{t('loginRequired.message')}</p>
           </div>
         </div>
       </div>
@@ -48,8 +50,8 @@ export default function Profile() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl lg:text-3xl font-bold text-white mb-2">Thông tin cá nhân</h1>
-          <p className="text-gray-400">Quản lý thông tin tài khoản và cài đặt của bạn</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-white mb-2">{t('page.title')}</h1>
+          <p className="text-gray-400">{t('page.subtitle')}</p>
         </div>
 
         {/* Main Content */}
@@ -89,10 +91,10 @@ export default function Profile() {
               {/* Menu Items */}
               <nav className="space-y-2">
                 {[
-                  { id: 'personal', label: 'Thông tin cá nhân' },
-                  { id: 'security', label: 'Bảo mật' },
-                  { id: 'language', label: 'Ngôn ngữ' },
-                  { id: 'support', label: 'Hỗ trợ' },
+                  { id: 'personal', label: t('menu.personalInfo') },
+                  { id: 'security', label: t('menu.security') },
+                  { id: 'language', label: t('menu.language') },
+                  { id: 'support', label: t('menu.support') },
                 ].map((item) => {
                   const isActive = activeSection === item.id;
 

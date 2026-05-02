@@ -9,12 +9,14 @@ import { useSelector } from 'react-redux';
 import { useAuthModel } from '../context/auth-modal-context';
 import { useAuth } from '../context/auth-conext';
 import AuthServices from 'services/auth-services';
+import { useTranslations } from 'next-intl';
 
 export default function LoginForm({
   setRenderSignUpForm,
 }: {
   setRenderSignUpForm: React.Dispatch<SetStateAction<boolean>>;
 }) {
+  const t = useTranslations('auth.login');
   const {
     register,
     handleSubmit,
@@ -40,20 +42,20 @@ export default function LoginForm({
   useEffect(() => {
     if (user) {
       closeAuthModal();
-      toast.success('Đăng nhập thành công');
+      toast.success(t('successToast'));
     }
     setIsLoading(false);
   }, [user]);
 
   return (
     <>
-      <h2 className="text-center text-white text-lg font-semibold mb-6">Đăng nhập khoản MovieX</h2>
+      <h2 className="text-center text-white text-lg font-semibold mb-6">{t('title')}</h2>
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Email Input */}
         <div className="mb-2">
           <label htmlFor="email" className="block text-gray-300 mb-1">
-            Email:
+            {t('email')}
           </label>
           <input
             type="text"
@@ -68,7 +70,7 @@ export default function LoginForm({
         {/* Password Input */}
         <div className="mb-6">
           <label htmlFor="password" className="block text-gray-300 mb-1">
-            Mật khẩu:
+            {t('password')}
           </label>
           <input
             type="password"
@@ -91,7 +93,7 @@ export default function LoginForm({
             className="bg-[#e20913] text-white rounded p-2 w-full hover:bg-red-600 transition duration-200"
             disabled={isLoading || isLoadingLoginWithGoogle}
           >
-            {isLoading ? <LoadingSpinerBtn /> : 'Đăng nhập'}
+            {isLoading ? <LoadingSpinerBtn /> : t('submit')}
           </button>
         </div>
       </form>
@@ -102,15 +104,15 @@ export default function LoginForm({
         className="bg-gray-800 text-white rounded p-2 w-full hover:bg-gray-700 transition duration-200"
         onClick={handleLoginWithGoogle}
       >
-        {isLoadingLoginWithGoogle ? <LoadingSpinerBtn /> : 'Đăng nhập bằng Google'}
+        {isLoadingLoginWithGoogle ? <LoadingSpinerBtn /> : t('google')}
       </button>
       <div className="text-center mt-6">
-        Bạn chưa có tài khoản?{' '}
+        {t('noAccount')}{' '}
         <span
           className="underline text-[#e20913] font-bold cursor-pointer"
           onClick={() => setRenderSignUpForm(true)}
         >
-          Đăng ký
+          {t('signupLink')}
         </span>
       </div>
     </>

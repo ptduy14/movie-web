@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.8",
     "firebase": "^10.14.1",
     "firebase-admin": "^13.2.0",
     "hls.js": "^1.5.15",
     "next": "14.2.5",
+    "next-intl": "^4.11.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
@@ -23,6 +25,7 @@
     "react-redux": "^9.1.2",
     "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
+    "server-only": "^0.0.1",
     "swiper": "^11.1.9",
     "zod": "^3.23.8"
   },

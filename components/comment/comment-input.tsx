@@ -7,6 +7,7 @@ import IComment from 'types/comment';
 import { SetStateAction } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import DetailMovie from 'types/detail-movie';
+import { useTranslations } from 'next-intl';
 
 export default function CommentInput({
   movie,
@@ -17,6 +18,7 @@ export default function CommentInput({
   authenticatedUser: any;
   setComments: React.Dispatch<SetStateAction<[] | IComment[]>>;
 }) {
+  const t = useTranslations('comment');
   const [commentText, setCommentText] = useState<string>('');
   const { openAuthModal } = useAuthModel();
   const [isSubmitingComment, setIsSubmitingComment] = useState<boolean>(false);
@@ -92,7 +94,7 @@ export default function CommentInput({
           className="bg-[#e20913] px-5 py-2 rounded-md"
           onClick={handleSubmitComment}
         >
-          {isSubmitingComment ? <LoadingSpinerBtn /> : 'Bình luận'}
+          {isSubmitingComment ? <LoadingSpinerBtn /> : t('submit')}
         </button>
       </div>
     </div>

@@ -1,0 +1,365 @@
+{
+  "common": {
+    "loading": "Đang tải...",
+    "loadingMovies": "Đang tải phim...",
+    "error": "Đã có lỗi xảy ra",
+    "retry": "Thử lại",
+    "save": "Lưu",
+    "saveChanges": "Lưu thay đổi",
+    "cancel": "Hủy",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "submit": "Gửi",
+    "close": "Đóng",
+    "yes": "Có",
+    "no": "Không",
+    "updating": "Đang cập nhật",
+    "notUpdated": "Chưa cập nhật",
+    "unknown": "Không xác định",
+    "comingSoon": "Tính năng này sẽ sớm được triển khai"
+  },
+
+  "header": {
+    "menu": {
+      "singleMovies": "Phim lẻ",
+      "tvSeries": "Phim bộ",
+      "cartoons": "Hoạt hình",
+      "tvShows": "TV show",
+      "categories": "Thể loại",
+      "countries": "Quốc gia"
+    },
+    "language": {
+      "selectLanguage": "Chọn ngôn ngữ",
+      "viName": "Tiếng Việt",
+      "enName": "English"
+    },
+    "search": "Tìm kiếm phim"
+  },
+
+  "home": {
+    "lists": {
+      "newlyUpdated": "Phim Mới Cập Nhật",
+      "singleNewlyUpdated": "Phim Lẻ Mới Cập Nhật",
+      "tvSeriesNewlyUpdated": "Phim Bộ Mới Cập Nhật",
+      "cartoonNewlyUpdated": "Phim Hoạt Hình Mới Cập Nhật",
+      "tvShowsNewlyUpdated": "TV Show Mới Cập Nhật"
+    },
+    "banner": {
+      "todayCount": "Hôm nay có",
+      "todaySuffix": "phim mới vừa lên sóng 🔥",
+      "library": "Thư viện",
+      "movies": "phim"
+    }
+  },
+
+  "card": {
+    "watchNow": "Xem ngay",
+    "addToCollection": "Thêm vào bộ sưu tập",
+    "removeFromCollection": "Xóa khỏi bộ sưu tập",
+    "newBadge": "Mới",
+    "exclusiveBadge": "Độc quyền"
+  },
+
+  "movie": {
+    "watch": "Xem phim",
+    "info": {
+      "title": "Thông tin phim",
+      "director": "Đạo diễn",
+      "country": "Quốc gia",
+      "releaseYear": "Năm phát hành",
+      "duration": "Thời lượng",
+      "status": "Trạng thái",
+      "content": "Nội dung phim",
+      "fallbackContent": "Đang cập nhật nội dung phim"
+    },
+    "summary": {
+      "showMore": "Xem thêm",
+      "showLess": "Thu gọn",
+      "aiTranslated": "🤖 Bản dịch tự động bằng AI"
+    },
+    "actor": {
+      "title": "DIỄN VIÊN"
+    },
+    "rating": {
+      "viewOnImdb": "Xem trên IMDb",
+      "viewOnTmdb": "Xem trên TMDB",
+      "votes": "votes"
+    }
+  },
+
+  "watch": {
+    "serverHint": "Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới",
+    "episodeList": "Danh sách tập phim",
+    "episodeLabel": "Tập {index}",
+    "progressNotification": {
+      "episodePrefix": "tập {index}-",
+      "message": "Hệ thống nhận thấy bạn đang xem đến",
+      "question": "bạn muốn tiếp tục xem chứ ?",
+      "accept": "Có",
+      "reject": "Xem lại từ đầu"
+    }
+  },
+
+  "lists": {
+    "endOfList": "🎬 Bạn đã xem hết danh sách",
+    "errorLoading": "❌ Đã có lỗi khi tải phim",
+    "emptyCategory": "Chưa có phim nào trong danh mục này",
+    "searchPlaceholder": "Nhập tên phim..."
+  },
+
+  "auth": {
+    "login": {
+      "title": "Đăng nhập khoản MovieX",
+      "email": "Email:",
+      "password": "Mật khẩu:",
+      "submit": "Đăng nhập",
+      "google": "Đăng nhập bằng Google",
+      "noAccount": "Bạn chưa có tài khoản?",
+      "signupLink": "Đăng ký",
+      "successToast": "Đăng nhập thành công",
+      "failedToast": "Đăng nhập thất bại"
+    },
+    "signup": {
+      "title": "Đăng ký khoản MovieX",
+      "username": "Tên tài khoản:",
+      "email": "Email:",
+      "password": "Mật khẩu:",
+      "submit": "Đăng ký",
+      "haveAccount": "Bạn đã có tài khoản?",
+      "loginLink": "Đăng Nhập",
+      "successToast": "Đăng ký tài khoản thành công"
+    }
+  },
+
+  "accountMenu": {
+    "collection": "Bộ sưu tập",
+    "recent": "Phim xem gần đây",
+    "profile": "Thông tin cá nhân",
+    "logout": "Đăng xuất"
+  },
+
+  "collection": {
+    "title": "Bộ sưu tập phim của bạn"
+  },
+
+  "recent": {
+    "title": "Phim xem gần đây",
+    "subtitle": "MovieX giờ đã có tính năng lưu tiến trình tất cả phim mà bạn đã xem"
+  },
+
+  "profile": {
+    "loginRequired": {
+      "title": "Vui lòng đăng nhập",
+      "message": "Bạn cần đăng nhập để xem thông tin cá nhân"
+    },
+    "page": {
+      "title": "Thông tin cá nhân",
+      "subtitle": "Quản lý thông tin tài khoản và cài đặt của bạn"
+    },
+    "menu": {
+      "personalInfo": "Thông tin cá nhân",
+      "security": "Bảo mật",
+      "language": "Ngôn ngữ",
+      "support": "Hỗ trợ"
+    },
+    "personalInfo": {
+      "heading": "Thông tin cá nhân",
+      "edit": "Chỉnh sửa",
+      "avatar": "Ảnh đại diện",
+      "avatarHelp": "JPG, PNG hoặc GIF. Tối đa 2MB.",
+      "displayName": "Tên hiển thị",
+      "displayNameRequired": "Tên hiển thị là bắt buộc",
+      "displayNameMinLength": "Tên phải có ít nhất 2 ký tự",
+      "email": "Email",
+      "invalidEmail": "Email không hợp lệ",
+      "accountInfo": "Thông tin tài khoản",
+      "accountId": "ID tài khoản",
+      "createdAt": "Ngày tạo",
+      "successToast": "Cập nhật thông tin thành công",
+      "errorToast": "Có lỗi xảy ra khi cập nhật thông tin"
+    },
+    "security": {
+      "heading": "Bảo mật tài khoản",
+      "changePassword": "Đổi mật khẩu",
+      "passwordLabel": "Mật khẩu",
+      "passwordSecure": "Mật khẩu của bạn đã được bảo mật",
+      "twoFactor": "Xác thực 2 lớp",
+      "twoFactorInactive": "Chưa được kích hoạt",
+      "form": {
+        "title": "Thay đổi mật khẩu",
+        "current": "Mật khẩu hiện tại",
+        "currentRequired": "Mật khẩu hiện tại là bắt buộc",
+        "new": "Mật khẩu mới",
+        "newRequired": "Mật khẩu mới là bắt buộc",
+        "newMinLength": "Mật khẩu phải có ít nhất 6 ký tự",
+        "confirm": "Xác nhận mật khẩu mới",
+        "confirmRequired": "Xác nhận mật khẩu là bắt buộc",
+        "confirmMismatch": "Mật khẩu xác nhận không khớp",
+        "requirements": "Yêu cầu mật khẩu:",
+        "req1": "• Ít nhất 6 ký tự",
+        "req2": "• Nên bao gồm chữ hoa, chữ thường và số",
+        "req3": "• Tránh sử dụng thông tin cá nhân"
+      },
+      "tips": {
+        "heading": "Mẹo bảo mật",
+        "tip1": "Không chia sẻ mật khẩu với bất kỳ ai",
+        "tip2": "Đăng xuất khỏi các thiết bị công cộng",
+        "tip3": "Thay đổi mật khẩu định kỳ"
+      },
+      "toasts": {
+        "mismatch": "Mật khẩu mới và xác nhận mật khẩu không khớp",
+        "success": "Đổi mật khẩu thành công",
+        "error": "Có lỗi xảy ra khi đổi mật khẩu",
+        "wrongCurrent": "Mật khẩu hiện tại không chính xác",
+        "weakNew": "Mật khẩu mới quá yếu",
+        "reauth": "Vui lòng đăng nhập lại để thay đổi mật khẩu",
+        "userNotFound": "Không tìm thấy người dùng"
+      }
+    },
+    "language": {
+      "heading": "Cài đặt ngôn ngữ",
+      "description": "Chọn ngôn ngữ hiển thị cho giao diện ứng dụng. Thay đổi này sẽ được áp dụng ngay lập tức.",
+      "current": "Ngôn ngữ hiện tại",
+      "additional": "Cài đặt bổ sung",
+      "autoDetect": "Tự động phát hiện ngôn ngữ từ trình duyệt",
+      "showNative": "Hiển thị tên ngôn ngữ bằng tiếng bản địa",
+      "infoHeading": "💡 Thông tin",
+      "infoMessage": "Việc thay đổi ngôn ngữ sẽ ảnh hưởng đến toàn bộ giao diện ứng dụng. Một số nội dung có thể vẫn hiển thị bằng ngôn ngữ gốc nếu chưa được dịch."
+    },
+    "support": {
+      "heading": "Hỗ trợ",
+      "intro": "Chúng tôi luôn sẵn sàng hỗ trợ bạn. Chọn phương thức liên hệ phù hợp nhất với bạn.",
+      "methods": {
+        "emailTitle": "Email hỗ trợ",
+        "emailDesc": "Gửi email cho chúng tôi",
+        "emailAction": "Gửi email",
+        "chatTitle": "Chat trực tuyến",
+        "chatDesc": "Trò chuyện với nhân viên hỗ trợ",
+        "chatAvail": "Có sẵn 24/7",
+        "chatAction": "Bắt đầu chat",
+        "phoneTitle": "Điện thoại",
+        "phoneDesc": "Gọi điện trực tiếp",
+        "phoneAction": "Gọi ngay"
+      },
+      "form": {
+        "heading": "Gửi tin nhắn hỗ trợ",
+        "name": "Họ và tên",
+        "nameRequired": "Họ và tên là bắt buộc",
+        "email": "Email",
+        "emailRequired": "Email là bắt buộc",
+        "emailInvalid": "Email không hợp lệ",
+        "category": "Loại vấn đề",
+        "categoryRequired": "Vui lòng chọn loại vấn đề",
+        "categoryPlaceholder": "Chọn loại vấn đề",
+        "subject": "Tiêu đề",
+        "subjectRequired": "Tiêu đề là bắt buộc",
+        "content": "Nội dung",
+        "contentRequired": "Nội dung là bắt buộc",
+        "contentMinLength": "Nội dung phải có ít nhất 10 ký tự",
+        "contentPlaceholder": "Mô tả chi tiết vấn đề của bạn...",
+        "submit": "Gửi tin nhắn"
+      },
+      "categories": {
+        "tech": "Vấn đề kỹ thuật",
+        "account": "Tài khoản",
+        "payment": "Thanh toán",
+        "feature": "Tính năng",
+        "bugReport": "Báo lỗi",
+        "other": "Khác"
+      },
+      "faq": {
+        "heading": "Câu hỏi thường gặp",
+        "q1": "Làm thế nào để đổi mật khẩu?",
+        "a1": "Vào phần \"Bảo mật\" trong menu bên trái và chọn \"Đổi mật khẩu\". Bạn cần nhập mật khẩu hiện tại và mật khẩu mới.",
+        "q2": "Tôi quên mật khẩu, phải làm sao?",
+        "a2": "Sử dụng tính năng \"Quên mật khẩu\" trên trang đăng nhập. Chúng tôi sẽ gửi link đặt lại mật khẩu qua email của bạn.",
+        "q3": "Làm sao để xóa tài khoản?",
+        "a3": "Liên hệ với chúng tôi qua email support@moviex.com để được hỗ trợ xóa tài khoản."
+      },
+      "hours": {
+        "heading": "Giờ hỗ trợ",
+        "schedule": "Thứ 2 - Thứ 6: 8:00 - 18:00 (GMT+7)\nThứ 7 - Chủ nhật: 9:00 - 17:00 (GMT+7)"
+      },
+      "toasts": {
+        "sent": "Tin nhắn của bạn đã được gửi thành công! Chúng tôi sẽ phản hồi trong vòng 24 giờ.",
+        "error": "Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại."
+      }
+    }
+  },
+
+  "comment": {
+    "submit": "Bình luận",
+    "reply": "Trả lời",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "like": "Thích",
+    "deleted": "Đã xóa bình luận"
+  },
+
+  "notification": {
+    "title": "Thông báo",
+    "markRead": "Đánh dấu đã đọc",
+    "empty": "Không có thông báo nào",
+    "emptySubtitle": "Bạn sẽ nhận được thông báo khi có hoạt động mới",
+    "actions": {
+      "did": "đã ",
+      "liked": "thích",
+      "replied": "trả lời",
+      "yourComment": "bình luận của bạn."
+    }
+  },
+
+  "footer": {
+    "description": "MovieX - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng tiếng Full HD. Kho phim mới không lỗ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung Quốc, Thái Lan, Nhật Bản, Âu Mỹ... đã đang thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!",
+    "info": {
+      "heading": "Thông tin",
+      "faq": "Hỏi đáp",
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng",
+      "about": "Giới thiệu",
+      "contact": "Liên hệ"
+    },
+    "categories": {
+      "heading": "Danh mục phim",
+      "single": "Phim Lẻ",
+      "series": "Phim Bộ",
+      "theater": "Phim Chiếu Rạp",
+      "anime": "Anime",
+      "cartoon": "Phim Hoạt Hình",
+      "action": "Phim Hành Động",
+      "romance": "Phim Tình Cảm",
+      "horror": "Phim Kinh Dị",
+      "sciFi": "Phim Viễn Tưởng",
+      "newest": "Phim Mới"
+    },
+    "copyright": "© 2024 MOVIEX. Tất cả các quyền được bảo lưu.",
+    "disclaimer": "MOVIEX không lưu trữ bất kỳ nội dung nào trên trang web này. Tất cả nội dung đều được lấy từ các nguồn bên thứ ba.",
+    "seo": "Xem phim online chất lượng cao tại MOVIEX - Trang web xem phim trực tuyến hàng đầu Việt Nam"
+  },
+
+  "errors": {
+    "invalidCredentials": "Thông tin đăng nhập không hợp lệ",
+    "userNotFound": "Tài khoản không tồn tại.",
+    "wrongPassword": "Mật khẩu không chính xác.",
+    "emailInUse": "Email này đã được sử dụng.",
+    "invalidEmail": "Địa chỉ email không hợp lệ",
+    "default": "Đã xảy ra lỗi. Vui lòng thử lại sau."
+  },
+
+  "toasts": {
+    "addedToCollection": "Đã thêm vào bộ sưu tập",
+    "removedFromCollection": "Đã xóa khỏi bộ sưu tập",
+    "alreadyInCollection": "Phim đã có trong bộ sưu tập",
+    "addedToCollectionLong": "Phim đã được thêm vào bộ sưu tập",
+    "removedFromCollectionLong": "Phim đã được xoá khỏi bộ sưu tập.",
+    "genericError": "Có lỗi xảy ra"
+  },
+
+  "metadata": {
+    "homeTitle": "MovieX - Xem Phim Online | Phim Lẻ | TV Show | Phim Bộ | Hoạt Hình | Vietsub | Lồng Tiếng Cập Nhật Liên Tục",
+    "homeDescription": "Xem phim online với hàng nghìn phim lẻ, TV show, phim bộ thuộc nhiều thể loại hấp dẫn, đã được lồng tiếng và cập nhật mới nhất mỗi ngày. Trải nghiệm xem phim chất lượng cao hoàn toàn miễn phí tại MovieX.",
+    "searchTitle": "Tìm kiếm phim",
+    "recentTitle": "Phim xem gần đây",
+    "collectionTitle": "Bộ sưu tập phim"
+  }
+}

@@ -1,3 +1,5 @@
+'use client';
+
 import Country from 'types/country';
 import DetailMovie from 'types/detail-movie';
 import Trailer from './trailer';
@@ -8,8 +10,17 @@ import MovieSummary from './movie-summary';
 import CommentSection from '../comment';
 import MovieImage from 'types/movie-image';
 import MovieImageList from '../movie-images/movie-image-list';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
+import { useLocale, useTranslations } from 'next-intl';
+import { localizedCountry } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
+/**
+ * Marked `'use client'` for the same reasons as `MoviePage` — most descendants
+ * (CommentSection, ActorList, MovieImageList, MovieSummary) are already client
+ * components, and async-server-component nesting was triggering a React
+ * Server Components reconciler internal error during dev compile.
+ */
 export default function MovieContent({
   movie,
   credit,
@@ -19,9 +30,12 @@ export default function MovieContent({
   credit: Credit | undefined;
   images: MovieImage[];
 }) {
+  const t = useTranslations('movie.info');
+  const tCommon = useTranslations('common');
+  const locale = useLocale() as Locale;
   const directors = isNonEmpty(movie.movie.director)
     ? movie.movie.director?.join(', ')
-    : 'Đang cập nhật';
+    : tCommon('updating');
 
   const countryChips = (
     <div className="flex flex-wrap gap-2">
@@ -31,7 +45,7 @@ export default function MovieContent({
           href={`/movies/country/${item.slug}`}
           className="inline-block text-sm border border-gray-600 px-3 py-1 rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
         >
-          {item.name}
+          {localizedCountry(item.slug, locale)}
         </Link>
       ))}
     </div>
@@ -45,15 +59,15 @@ export default function MovieContent({
           <table className="w-full">
             <tbody>
               <tr>
-                <td className="pb-3 w-1/5 align-top uppercase text-base">Đạo diễn</td>
+                <td className="pb-3 w-1/5 align-top uppercase text-base">{t('director')}</td>
                 <td className="pb-3 font-bold">{directors}</td>
               </tr>
               <tr>
-                <td className="pb-3 align-top uppercase text-base">Quốc gia</td>
+                <td className="pb-3 align-top uppercase text-base">{t('country')}</td>
                 <td className="pb-3">{countryChips}</td>
               </tr>
               <tr>
-                <td className="pb-3 align-top uppercase text-base">Năm phát hành</td>
+                <td className="pb-3 align-top uppercase text-base">{t('releaseYear')}</td>
                 <td className="pb-3 font-bold">{movie.movie.year}</td>
               </tr>
             </tbody>
@@ -74,30 +88,30 @@ export default function MovieContent({
       <div className="lg:hidden px-4 py-6 space-y-6">
         {/* Movie Details Card */}
         <div className="bg-gray-900/50 rounded-lg p-4 space-y-4">
-          <h3 className="text-lg font-bold text-white mb-4">Thông tin phim</h3>
+          <h3 className="text-lg font-bold text-white mb-4">{t('title')}</h3>
 
           {/* Director */}
           <div className="flex flex-col space-y-1">
-            <span className="text-sm text-gray-400 uppercase tracking-wide">Đạo diễn</span>
+            <span className="text-sm text-gray-400 uppercase tracking-wide">{t('director')}</span>
             <span className="text-white font-medium">{directors}</span>
           </div>
 
           {/* Country */}
           <div className="flex flex-col space-y-2">
-            <span className="text-sm text-gray-400 uppercase tracking-wide">Quốc gia</span>
+            <span className="text-sm text-gray-400 uppercase tracking-wide">{t('country')}</span>
             {countryChips}
           </div>
 
           {/* Release Year */}
           <div className="flex flex-col space-y-1">
-            <span className="text-sm text-gray-400 uppercase tracking-wide">Năm phát hành</span>
+            <span className="text-sm text-gray-400 uppercase tracking-wide">{t('releaseYear')}</span>
             <span className="text-white font-medium">{movie.movie.year}</span>
           </div>
         </div>
 
         {/* Movie Summary */}
         <div className="bg-gray-900/50 rounded-lg p-4">
-          <h3 className="text-lg font-bold text-white mb-4">Nội dung phim</h3>
+          <h3 className="text-lg font-bold text-white mb-4">{t('content')}</h3>
           <MovieSummary summary={movie.movie.content} expandable />
         </div>
 

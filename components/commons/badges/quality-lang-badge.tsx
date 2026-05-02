@@ -1,3 +1,8 @@
+'use client';
+import { useLocale } from 'next-intl';
+import { localizedLang } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
+
 interface QualityLangBadgeProps {
   quality?: string;
   lang?: string;
@@ -5,17 +10,27 @@ interface QualityLangBadgeProps {
 
 /**
  * Top-right corner badge: combines lang + quality into a single chip.
- * Falls back gracefully when one of the fields is missing.
+ *
+ * Lang strings come from OPhim raw response (Vietnamese). We localize via
+ * the LANG_MAP and then shorten common forms to fit a small chip.
+ *
+ * Quality is universal (HD/Full HD/4K) — no localization.
  */
 export default function QualityLangBadge({ quality, lang }: QualityLangBadgeProps) {
+  const locale = useLocale() as Locale;
   if (!quality && !lang) return null;
 
-  // Shorten common verbose lang strings for compact display
-  const shortLang = lang
-    ?.replace(/Vietsub \+ Thuyết Minh/i, 'Vsub+TM')
+  let shortLang = lang ? localizedLang(lang, locale) : '';
+  // Compact common variants to keep the chip narrow
+  shortLang = shortLang
+    .replace(/Vietsub \+ Thuyết Minh/i, 'Vsub+TM')
+    .replace(/Vietsub \+ Lồng Tiếng/i, 'Vsub+LT')
     .replace(/Thuyết Minh/i, 'TM')
     .replace(/Lồng Tiếng/i, 'LT')
-    .replace(/Vietsub/i, 'Vsub');
+    .replace(/Vietsub/i, 'Vsub')
+    .replace(/Sub \+ Voiceover/i, 'Sub+VO')
+    .replace(/Sub \+ Dubbed/i, 'Sub+Dub')
+    .replace(/Voiceover/i, 'VO');
 
   const label = [shortLang, quality].filter(Boolean).join(' · ');
 

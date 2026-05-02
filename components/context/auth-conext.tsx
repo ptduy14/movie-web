@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import AuthServices from 'services/auth-services';
+import { useTranslations } from 'next-intl';
 
 const AuthContext = createContext<undefined | AuthContextValueType>(undefined);
 
@@ -21,6 +22,7 @@ interface AuthContextValueType {
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch();
+  const tErr = useTranslations('errors');
 
   const login = async (data: LoginValidationSchemaType) => {
     try {
@@ -46,7 +48,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
       return true;
     } catch (error: any) {
-      toast.error(getFriendlyErrorMessage(error.code));
+      toast.error(tErr(getFriendlyErrorMessage(error.code)));
       return false;
     }
   };

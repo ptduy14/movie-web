@@ -1,4 +1,6 @@
+'use client';
 import { FaPlay } from 'react-icons/fa';
+import { useTranslations, useLocale } from 'next-intl';
 import type Category from 'types/category';
 import type Country from 'types/country';
 import type Imdb from 'types/imdb';
@@ -6,6 +8,13 @@ import type Tmdb from 'types/tmdb';
 import type MovieCollection from 'types/movie-collection';
 import RatingBadge from './badges/rating-badge';
 import AddToCollectionOverlayBtn from './add-to-collection-overlay-btn';
+import {
+  localizedCategory,
+  localizedCountry,
+  localizedTime,
+  localizedEpisodeCurrent,
+} from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 interface MovieCardOverlayProps {
   name: string;
@@ -48,13 +57,16 @@ export default function MovieCardOverlay({
   tmdb,
   collectionItem,
 }: MovieCardOverlayProps) {
-  // Build metadata items, skipping empty/invalid values
+  const t = useTranslations('card');
+  const locale = useLocale() as Locale;
+  // Build metadata items, skipping empty/invalid values.
+  // `time` and `episodeCurrent` are pattern-localized — no Gemini call needed.
   const meta: string[] = [];
   if (year) meta.push(String(year));
-  const firstCountry = countries?.[0]?.name;
-  if (firstCountry) meta.push(firstCountry);
-  if (time && !time.startsWith('?')) meta.push(time);
-  if (episodeCurrent) meta.push(episodeCurrent);
+  const firstCountrySlug = countries?.[0]?.slug;
+  if (firstCountrySlug) meta.push(localizedCountry(firstCountrySlug, locale));
+  if (time && !time.startsWith('?')) meta.push(localizedTime(time, locale));
+  if (episodeCurrent) meta.push(localizedEpisodeCurrent(episodeCurrent, locale));
 
   return (
     <div
@@ -95,7 +107,7 @@ export default function MovieCardOverlay({
                 key={c.slug}
                 className="text-[9px] md:text-[10px] px-1.5 py-0.5 bg-white/15 backdrop-blur-sm rounded text-white/90"
               >
-                {c.name}
+                {localizedCategory(c.slug, locale)}
               </span>
             ))}
           </div>
@@ -105,7 +117,7 @@ export default function MovieCardOverlay({
         <div className="flex items-center justify-between gap-2 pt-1">
           <div className="flex items-center gap-1.5 text-[11px] md:text-xs font-bold text-red-400">
             <FaPlay className="text-[9px] md:text-[10px]" />
-            <span>Xem ngay</span>
+            <span>{t('watchNow')}</span>
           </div>
           {collectionItem && <AddToCollectionOverlayBtn collectionItem={collectionItem} />}
         </div>
