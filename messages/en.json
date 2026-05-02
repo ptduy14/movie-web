@@ -74,7 +74,8 @@
     },
     "summary": {
       "showMore": "Show more",
-      "showLess": "Show less"
+      "showLess": "Show less",
+      "aiTranslated": "🤖 Translated by AI"
     },
     "actor": {
       "title": "CAST"

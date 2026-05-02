@@ -10,7 +10,13 @@ import Image from 'next/image';
 import MovieImage from 'types/movie-image';
 import RatingLinks from '../commons/rating-links';
 import { useLocale, useTranslations } from 'next-intl';
-import { localizedCategory } from 'constants/i18n-mappings';
+import {
+  localizedCategory,
+  localizedEpisodeCurrent,
+  localizedTime,
+  preferredTitle,
+  secondaryTitle,
+} from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
 /**
@@ -41,6 +47,13 @@ export default function MoviePage({
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;
+
+  // Locale-aware title display + pattern-localized status/duration.
+  // No Gemini API calls — saves quota for the synopsis only.
+  const primaryTitle = preferredTitle(movie.movie.name, movie.movie.origin_name, locale);
+  const subTitle = secondaryTitle(movie.movie.name, movie.movie.origin_name, locale);
+  const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
+  const time = localizedTime(movie.movie.time, locale);
 
   return (
     <div>
@@ -74,15 +87,17 @@ export default function MoviePage({
             </div>
             <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
               <div>
-                <h3 className="text-5xl font-medium">{`${movie.movie.origin_name}`}</h3>
-                <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${movie.movie.name} (${movie.movie.year})`}</h4>
+                <h3 className="text-5xl font-medium">{primaryTitle}</h3>
+                {subTitle && (
+                  <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${subTitle} (${movie.movie.year})`}</h4>
+                )}
               </div>
               <div className="space-y-5">
                 <div>
-                  {t('info.status')}: {movie.movie.episode_current}
+                  {t('info.status')}: {episodeCurrent}
                 </div>
                 <div>
-                  {t('info.duration')}: {movie.movie.time}
+                  {t('info.duration')}: {time}
                 </div>
                 <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
                   {movie.movie.quality}
@@ -134,18 +149,18 @@ export default function MoviePage({
 
               {/* Movie Info */}
               <div className="flex-1 min-w-0">
-                <h1 className="text-xl font-bold text-white mb-1 truncate">
-                  {movie.movie.origin_name}
-                </h1>
-                <h2 className="text-base text-gray-300 mb-2 truncate">
-                  {movie.movie.name} ({movie.movie.year})
-                </h2>
+                <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
+                {subTitle && (
+                  <h2 className="text-base text-gray-300 mb-2 truncate">
+                    {subTitle} ({movie.movie.year})
+                  </h2>
+                )}
 
                 {/* Quick Info */}
                 <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
-                  <span>{movie.movie.episode_current}</span>
+                  <span>{episodeCurrent}</span>
                   <span>•</span>
-                  <span>{movie.movie.time}</span>
+                  <span>{time}</span>
                   <span>•</span>
                   <span className="bg-[#169f3a] px-2 py-0.5 rounded text-white text-xs">
                     {movie.movie.quality}

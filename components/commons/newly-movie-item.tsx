@@ -1,4 +1,7 @@
+'use client';
+
 import { Link } from 'i18n/routing';
+import { useLocale } from 'next-intl';
 import Movie from 'types/movie';
 import NewlyMovie from 'types/newly-movie';
 import Image from 'next/image';
@@ -7,8 +10,16 @@ import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
 import MovieCardOverlay from './movie-card-overlay';
+import { preferredTitle, secondaryTitle } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
+  const locale = useLocale() as Locale;
+  // For non-vi: use origin_name as the visible primary title (already in the
+  // source language for most movies). Avoids spending Gemini quota on titles.
+  const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
+  const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
+
   return (
     <Link className="group block h-auto space-y-2" href={`/movies/${movie.slug}`}>
       {/*
@@ -49,7 +60,7 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
 
         {/* Hover info overlay — fade in from bottom on this card only */}
         <MovieCardOverlay
-          name={movie.name}
+          name={primaryTitle}
           year={movie.year}
           episodeCurrent={movie.episode_current}
           categories={movie.category}
@@ -70,8 +81,8 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
       </div>
 
       <div>
-        <div className="truncate">{movie.name}</div>
-        <div className="truncate text-sm text-[#9B9285]">{movie.origin_name}</div>
+        <div className="truncate">{primaryTitle}</div>
+        {subTitle && <div className="truncate text-sm text-[#9B9285]">{subTitle}</div>}
       </div>
     </Link>
   );

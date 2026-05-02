@@ -214,3 +214,94 @@ export function localizedFormat(slug: string, locale: Locale): string {
 export function localizedLang(rawLang: string, locale: Locale): string {
   return LANG_MAP[locale]?.[rawLang] ?? LANG_MAP.vi[rawLang] ?? rawLang;
 }
+
+// ============================================================================
+// PATTERN-BASED LOCALIZERS
+// OPhim returns predictable Vietnamese strings for `time` and `episode_current`.
+// We localize them via deterministic regex replacement → no API call cost.
+// ============================================================================
+
+/**
+ * Localize duration strings.
+ *
+ *   "45 phút/tập"        → "45 min/ep"
+ *   "117 Phút"           → "117 mins"
+ *   "? phút/tập"         → "? min/ep"
+ *   "1 giờ 30 phút"      → "1 hr 30 min"
+ *
+ * Returns the original string unchanged for `vi` locale or unrecognized formats.
+ */
+export function localizedTime(time: string | undefined, locale: Locale): string {
+  if (!time) return '';
+  if (locale === 'vi') return time;
+
+  if (locale === 'en') {
+    return time
+      .replace(/phút\/tập/gi, 'min/ep')
+      .replace(/giờ/gi, 'hr')
+      .replace(/\bphút\b/gi, 'min')
+      .replace(/\bPhút\b/g, 'mins'); // capitalized form (e.g., "117 Phút") usually means total minutes
+  }
+
+  return time;
+}
+
+/**
+ * Localize episode status strings.
+ *
+ *   "Tập 4"                  → "Ep 4"
+ *   "Tập đặc biệt"           → "Special"
+ *   "Hoàn tất (10/10)"       → "Completed (10/10)"
+ *   "Trailer"                → "Trailer" (universal, kept as-is)
+ *   "Full"                   → "Full" (universal)
+ *
+ * Returns original on locale `vi` or no pattern match.
+ */
+export function localizedEpisodeCurrent(
+  episodeCurrent: string | undefined,
+  locale: Locale
+): string {
+  if (!episodeCurrent) return '';
+  if (locale === 'vi') return episodeCurrent;
+
+  if (locale === 'en') {
+    return episodeCurrent
+      .replace(/^Hoàn tất\s*\(([^)]+)\)$/i, 'Completed ($1)')
+      .replace(/^Tập đặc biệt$/i, 'Special')
+      .replace(/^Tập\s+(\S+)/i, 'Ep $1');
+  }
+
+  return episodeCurrent;
+}
+
+/**
+ * Pick the locale-appropriate movie display title.
+ *
+ * Strategy: avoid spending Gemini API quota on translating titles. Instead,
+ * for non-vi locales prefer `origin_name` (already in the source language for
+ * most movies — "Your Friends & Neighbors", "The Bangkok Red Opera", etc.).
+ *
+ * Returns the raw `name` for `vi` locale or when `origin_name` is missing.
+ */
+export function preferredTitle(
+  name: string,
+  origin_name: string | undefined,
+  locale: Locale
+): string {
+  if (locale === 'vi') return name;
+  return origin_name?.trim() || name;
+}
+
+/**
+ * The "secondary" title shown beneath the primary one — flips with `preferredTitle`.
+ */
+export function secondaryTitle(
+  name: string,
+  origin_name: string | undefined,
+  locale: Locale
+): string {
+  if (locale === 'vi') return origin_name ?? '';
+  // For non-vi: name (Vietnamese) is the secondary; if origin_name was missing
+  // primary already used `name`, so show nothing here to avoid duplicate.
+  return origin_name?.trim() ? name : '';
+}
