@@ -6,6 +6,19 @@ const MovieServices = {
     );
     return res.json();
   },
+  /**
+   * Paginated list of newly-added movies — used by the translation cron job
+   * to walk the full catalog page-by-page. Sorted by `modified.time` desc.
+   * Items here do NOT include `content` (synopsis); detail endpoint is needed
+   * for that.
+   */
+  getNewMovies: async (page = 1, limit = 24) => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/phim-moi?page=${page}&limit=${limit}`,
+      { cache: 'no-store' }
+    );
+    return res.json();
+  },
   getSingleMovies: async (page = 1) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/phim-le?page=${page}`,
