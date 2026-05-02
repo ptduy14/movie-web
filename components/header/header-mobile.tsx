@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import logo from '../../public/logo.png';
 import Image from 'next/image';
 import { IoSearch, IoMenu, IoClose, IoChevronDown, IoChevronUp } from 'react-icons/io5';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link } from 'i18n/routing';
+import { usePathname } from 'i18n/routing';
 import { useSelector } from 'react-redux';
 import LoginSignUpIcon from '../auth/login-signup-icon';
 import AccountProfileIcon from '../account/account-profile-icon';
@@ -13,6 +13,10 @@ import Notification from '../notification';
 import { INotificationDropdownState } from 'types/notification';
 import movieType from '../../data/movie-type';
 import countries from '../../data/countries';
+import LanguageSwitcher from './language-switcher';
+import { useTranslations, useLocale } from 'next-intl';
+import { localizedCategory, localizedCountry } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 export default function HeaderMobile({
   isShowFixedHeader,
@@ -23,6 +27,8 @@ export default function HeaderMobile({
   notificationDropdownState: INotificationDropdownState;
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
 }) {
+  const t = useTranslations('header.menu');
+  const locale = useLocale() as Locale;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTypeSubmenuOpen, setIsTypeSubmenuOpen] = useState(false);
   const [isCountrySubmenuOpen, setIsCountrySubmenuOpen] = useState(false);
@@ -80,14 +86,17 @@ export default function HeaderMobile({
             <Image src={logo} alt="Movie Web Logo" className="w-24 h-auto" />
           </Link>
 
-          {/* Search Icon */}
-          <Link
-            className="text-white hover:text-custome-red transition-colors"
-            href="/search"
-            aria-label="Search movies"
-          >
-            <IoSearch size={24} />
-          </Link>
+          {/* Right side actions: language + search */}
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Link
+              className="text-white hover:text-custome-red transition-colors"
+              href="/search"
+              aria-label="Search movies"
+            >
+              <IoSearch size={24} />
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -125,7 +134,7 @@ export default function HeaderMobile({
                         href="/movies/format/phim-le"
                         onClick={closeMobileMenu}
                       >
-                        Phim lẻ
+                        {t('singleMovies')}
                       </Link>
                     </li>
                     <li>
@@ -138,7 +147,7 @@ export default function HeaderMobile({
                         href="/movies/format/phim-bo"
                         onClick={closeMobileMenu}
                       >
-                        Phim bộ
+                        {t('tvSeries')}
                       </Link>
                     </li>
                     <li>
@@ -151,7 +160,7 @@ export default function HeaderMobile({
                         href="/movies/format/hoat-hinh"
                         onClick={closeMobileMenu}
                       >
-                        Hoạt hình
+                        {t('cartoons')}
                       </Link>
                     </li>
                     <li>
@@ -164,7 +173,7 @@ export default function HeaderMobile({
                         href="/movies/format/tv-shows"
                         onClick={closeMobileMenu}
                       >
-                        TV show
+                        {t('tvShows')}
                       </Link>
                     </li>
                     <li>
@@ -172,7 +181,7 @@ export default function HeaderMobile({
                         className="flex items-center justify-between w-full py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
                         onClick={toggleTypeSubmenu}
                       >
-                        Thể loại
+                        {t('categories')}
                         {isTypeSubmenuOpen ? (
                           <IoChevronUp size={20} />
                         ) : (
@@ -192,7 +201,7 @@ export default function HeaderMobile({
                                 href={`/movies/type/${item.slug}`}
                                 onClick={closeMobileMenu}
                               >
-                                {item.name}
+                                {localizedCategory(item.slug, locale)}
                               </Link>
                             </li>
                           ))}
@@ -204,7 +213,7 @@ export default function HeaderMobile({
                         className="flex items-center justify-between w-full py-2 text-lg font-medium text-white hover:text-custome-red transition-colors"
                         onClick={toggleCountrySubmenu}
                       >
-                        Quốc gia
+                        {t('countries')}
                         {isCountrySubmenuOpen ? (
                           <IoChevronUp size={20} />
                         ) : (
@@ -224,7 +233,7 @@ export default function HeaderMobile({
                                 href={`/movies/country/${item.slug}`}
                                 onClick={closeMobileMenu}
                               >
-                                {item.name}
+                                {localizedCountry(item.slug, locale)}
                               </Link>
                             </li>
                           ))}

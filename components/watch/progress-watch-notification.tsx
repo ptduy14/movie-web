@@ -1,3 +1,5 @@
+'use client';
+import { useTranslations } from 'next-intl';
 import DetailMovie from 'types/detail-movie';
 import convertSecondToTime from 'utils/convert-second-to-time';
 
@@ -10,38 +12,40 @@ export default function ProgresswatchNotification({
 }: {
   isShowMessage: boolean;
   previousWatchProgress: {
-    progressTime: number,
-    progressEpIndex: number,
-    progressEpLink: string
-  },
-  handleAcceptProgressWatch: () => void,
-  handleRejectProgressWatch: () => void,
-  movie: DetailMovie
+    progressTime: number;
+    progressEpIndex: number;
+    progressEpLink: string;
+  };
+  handleAcceptProgressWatch: () => void;
+  handleRejectProgressWatch: () => void;
+  movie: DetailMovie;
 }) {
-    const {progressTime, progressEpIndex} = previousWatchProgress;
-    
-    const renderCurrentEpisode= () => {
-      if (movie.episodes[0].server_data.length === 1) return;
+  const t = useTranslations('watch.progressNotification');
+  const { progressTime, progressEpIndex } = previousWatchProgress;
 
-      return <span className="font-bold">tập {progressEpIndex + 1}-</span>
-    }
+  const renderCurrentEpisode = () => {
+    if (movie.episodes[0].server_data.length === 1) return;
+    return <span className="font-bold">{t('episodePrefix', { index: progressEpIndex + 1 })}</span>;
+  };
 
-    return (
+  return (
     <div
       className={`fixed top-16 ${
         isShowMessage ? 'right-8' : 'right-[-30rem]'
       }  bg-white z-20 text-black w-96 px-4 py-2 transition-all duration-500 space-y-4`}
     >
       <span className="">
-        Hệ thống nhận thấy bạn đang xem đến{' '}
-        {renderCurrentEpisode()} 
-        {' '}
-        <span className="font-bold">{convertSecondToTime(progressTime)}</span>, bạn muốn tiếp tục
-        xem chứ ?
+        {t('message')}{' '}
+        {renderCurrentEpisode()}{' '}
+        <span className="font-bold">{convertSecondToTime(progressTime)}</span>, {t('question')}
       </span>
       <div className="flex items-center justify-center space-x-10">
-        <button onClick={handleAcceptProgressWatch} className="px-6 py-2 bg-black text-white">Có</button>
-        <button onClick={handleRejectProgressWatch} className="px-6 py-2 bg-[#5e5e5e] text-white">Xem lại từ đầu</button>
+        <button onClick={handleAcceptProgressWatch} className="px-6 py-2 bg-black text-white">
+          {t('accept')}
+        </button>
+        <button onClick={handleRejectProgressWatch} className="px-6 py-2 bg-[#5e5e5e] text-white">
+          {t('reject')}
+        </button>
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
-import Link from 'next/link';
+'use client';
+
+import { Link } from 'i18n/routing';
+import { useLocale } from 'next-intl';
 import Movie from 'types/movie';
 import MovieCollection from 'types/movie-collection';
 import Image from 'next/image';
@@ -7,10 +10,15 @@ import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
 import MovieCardOverlay from './movie-card-overlay';
+import { preferredTitle, secondaryTitle } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollection }) {
   // MovieCollection lacks v1/home extension fields — narrow with type guard
   const isMovieType = isMovie(movie);
+  const locale = useLocale() as Locale;
+  const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
+  const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
 
   return (
     <Link className="group block relative h-auto space-y-2" href={`/movies/${movie.slug}`}>
@@ -52,7 +60,7 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
             when the type guard confirms a Movie shape.
             collectionItem: Movie path uses _id; MovieCollection path passes through. */}
         <MovieCardOverlay
-          name={movie.name}
+          name={primaryTitle}
           year={isMovieType ? movie.year : undefined}
           episodeCurrent={isMovieType ? movie.episode_current : undefined}
           categories={isMovieType ? movie.category : undefined}
@@ -77,8 +85,8 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
       </div>
 
       <div>
-        <div className="truncate">{movie.name}</div>
-        <div className="truncate text-sm text-[#9B9285]">{movie.origin_name}</div>
+        <div className="truncate">{primaryTitle}</div>
+        {subTitle && <div className="truncate text-sm text-[#9B9285]">{subTitle}</div>}
       </div>
     </Link>
   );

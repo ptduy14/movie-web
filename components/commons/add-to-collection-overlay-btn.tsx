@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { db } from 'lib/firebase';
 import { useAuthModel } from '../context/auth-modal-context';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
@@ -40,6 +41,8 @@ interface Props {
  *    container has `pointer-events-none`.
  */
 export default function AddToCollectionOverlayBtn({ collectionItem }: Props) {
+  const tCard = useTranslations('card');
+  const tToast = useTranslations('toasts');
   const user = useSelector((state: any) => state.auth.user);
   const isInCollection = useSelector((state: any) =>
     (state.collection.movies as MovieCollection[]).some(
@@ -74,7 +77,7 @@ export default function AddToCollectionOverlayBtn({ collectionItem }: Props) {
           await updateDoc(userMoviesRef, { movies: updated });
         }
         dispatch(removeFromCollection(collectionItem.id));
-        toast.success('Đã xóa khỏi bộ sưu tập');
+        toast.success(tToast('removedFromCollection'));
       } else {
         // Add path
         const snapshot = await getDoc(userMoviesRef);
@@ -86,11 +89,11 @@ export default function AddToCollectionOverlayBtn({ collectionItem }: Props) {
           await setDoc(userMoviesRef, { movies: [collectionItem] });
         }
         dispatch(addToCollection(collectionItem));
-        toast.success('Đã thêm vào bộ sưu tập');
+        toast.success(tToast('addedToCollection'));
       }
     } catch (err: any) {
       console.log(err.message);
-      toast.error('Có lỗi xảy ra');
+      toast.error(tToast('genericError'));
     } finally {
       setIsHandling(false);
     }
@@ -101,8 +104,8 @@ export default function AddToCollectionOverlayBtn({ collectionItem }: Props) {
       type="button"
       onClick={handleClick}
       disabled={isHandling}
-      title={isInCollection ? 'Xóa khỏi bộ sưu tập' : 'Thêm vào bộ sưu tập'}
-      aria-label={isInCollection ? 'Xóa khỏi bộ sưu tập' : 'Thêm vào bộ sưu tập'}
+      title={isInCollection ? tCard('removeFromCollection') : tCard('addToCollection')}
+      aria-label={isInCollection ? tCard('removeFromCollection') : tCard('addToCollection')}
       aria-pressed={isInCollection}
       className={[
         'pointer-events-auto flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full border backdrop-blur-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed',

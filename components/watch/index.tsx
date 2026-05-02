@@ -9,8 +9,10 @@ import { useRef } from 'react';
 import ProgresswatchNotification from './progress-watch-notification';
 import { useWatchProgress } from 'hooks/useWatchProgress';
 import CommentSection from '../comment';
+import { useTranslations } from 'next-intl';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
+  const t = useTranslations('watch');
   const [serverIndex, setServerIndex] = useState<number>(0);
   const [episodeIndex, setEpisodeIndex] = useState<number>(0);
   const [episodeLink, setEpisodeLink] = useState<string>('');
@@ -72,7 +74,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       />
       {movie.episodes.length > 1 && (
         <div className="text-center text-sm lg:text-base px-4">
-          Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới
+          {t('serverHint')}
         </div>
       )}
       <ServerSection
@@ -86,7 +88,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
       </div>
       {isHaveEpisodesMovie(movie) && (
         <div className="container-wrapper-movie px-4 lg:px-0">
-          <h1 className="text-lg lg:text-xl">Danh sách tập phim</h1>
+          <h1 className="text-lg lg:text-xl">{t('episodeList')}</h1>
           <ul className="flex flex-wrap gap-2 lg:gap-3 mt-4">
             {movie.episodes[0].server_data.map((ep, index) => (
               <li
@@ -98,7 +100,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
                 } px-2 lg:px-3 py-1.5 lg:py-2 rounded-md font-semibold cursor-pointer text-sm lg:text-base`}
                 onClick={() => handleSwitchEpisode(index)}
               >
-                {`Tập ${index + 1}`}
+                {t('episodeLabel', { index: index + 1 })}
               </li>
             ))}
           </ul>

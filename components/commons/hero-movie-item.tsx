@@ -1,3 +1,4 @@
+'use client';
 import { FaPlay, FaImdb } from 'react-icons/fa';
 import MovieSummary from '../movie/movie-summary';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
@@ -6,10 +7,18 @@ import NewlyMovie from 'types/newly-movie';
 import TMDBLogo from '../logos/TMDB-Logo';
 import Category from 'types/category';
 import { GoDotFill } from 'react-icons/go';
-import Link from 'next/link';
+import { Link } from 'i18n/routing';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
+import { useTranslations, useLocale } from 'next-intl';
+import {
+  preferredTitle,
+  secondaryTitle,
+  localizedCategory,
+  localizedEpisodeCurrent,
+} from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 interface HeroMovieItemProps {
   detailMovie: DetailMovie;
@@ -31,6 +40,9 @@ const formatVoteCount = (count?: number) => {
 };
 
 export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemProps) {
+  const t = useTranslations('movie');
+  const tRating = useTranslations('movie.rating');
+  const locale = useLocale() as Locale;
   const movie = detailMovie.movie;
 
   // Prefer listItem fields (guaranteed from /v1/api/home), fall back to detail
@@ -41,9 +53,14 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
   const quality = listItem?.quality ?? movie.quality;
   const lang = listItem?.lang ?? movie.lang;
 
+  // For non-vi locale, prefer the source-language `origin_name` as primary
+  // title to avoid spending Gemini quota on title translation.
+  const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
+  const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
+
   const movieCategory = movie.category.map((item: Category, index) => (
     <span key={index}>
-      {item.name}
+      {localizedCategory(item.slug, locale)}
       {index < movie.category.length - 1 ? '/' : ''}
     </span>
   ));
@@ -74,14 +91,15 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           <QualityLangBadge quality={quality} lang={lang} />
         </div>
 
-        <h2 className="text-5xl font-bold">{movie.name}</h2>
+        <h2 className="text-5xl font-bold">{primaryTitle}</h2>
+        {subTitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
 
         <div className="flex items-center gap-x-2 text-sm">
           <div>{movie.year}</div>
           <GoDotFill size={12} />
           <div>{movieCategory}</div>
           <GoDotFill size={12} />
-          <div>{movie.episode_current}</div>
+          <div>{localizedEpisodeCurrent(movie.episode_current, locale)}</div>
         </div>
 
         {/* Ratings row — TMDB + IMDb side-by-side */}
@@ -97,7 +115,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
               </div>
               {tmdb!.vote_count > 0 && (
                 <span className="text-sm text-white/60">
-                  ({formatVoteCount(tmdb!.vote_count)} votes)
+                  ({formatVoteCount(tmdb!.vote_count)} {tRating('votes')})
                 </span>
               )}
             </div>
@@ -111,14 +129,14 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
               </div>
               {imdb!.vote_count > 0 && (
                 <span className="text-sm text-white/60">
-                  ({formatVoteCount(imdb!.vote_count)} votes)
+                  ({formatVoteCount(imdb!.vote_count)} {tRating('votes')})
                 </span>
               )}
             </div>
           )}
         </div>
 
-        <MovieSummary summary={movie.content || 'Đang cập nhật nội dung phim'} />
+        <MovieSummary summary={movie.content || t('info.fallbackContent')} />
         <div className="space-x-5 flex items-center">
           <Link
             href={`/movies/${movie.slug}`}
@@ -126,7 +144,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           >
             <div className="flex align-top space-x-2">
               <FaPlay size={18} />
-              <span className="block leading-4 font-semibold">Xem phim</span>
+              <span className="block leading-4 font-semibold">{t('watch')}</span>
             </div>
           </Link>
           <BtnAddToCollection variant="primary" detailMovie={detailMovie} />
@@ -147,15 +165,18 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           </div>
 
           {/* Movie Title */}
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
-            {movie.name}
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-1 leading-tight">
+            {primaryTitle}
           </h2>
+          {subTitle && (
+            <h3 className="text-sm md:text-base text-white/60 mb-2">{subTitle}</h3>
+          )}
 
           {/* Movie Metadata */}
           <div className="flex items-center gap-x-3 mb-3 text-sm text-white/90 flex-wrap">
             <div>{movie.year}</div>
             <div className="text-white/60">•</div>
-            <div>{movie.episode_current}</div>
+            <div>{localizedEpisodeCurrent(movie.episode_current, locale)}</div>
             {showTmdb && (
               <>
                 <div className="text-white/60">•</div>
@@ -184,7 +205,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
             >
               <div className="flex items-center justify-center gap-x-2">
                 <FaPlay size={16} />
-                <span>Xem phim</span>
+                <span>{t('watch')}</span>
               </div>
             </Link>
             <div className="w-full">

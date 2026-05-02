@@ -1,0 +1,67 @@
+name: Translate movies (cron)
+
+# Schedule: every hour at :15 (offset to avoid GitHub's heavy :00 minute load).
+# GitHub Actions cron runs in UTC. Minimum interval is 5 minutes, but the
+# scheduler frequently delays cron runs by 5–15 minutes under load — that's
+# acceptable for a translation cache filler.
+#
+# Required repository secrets:
+#   - SITE_URL      e.g. https://moviex.vercel.app   (no trailing slash)
+#   - CRON_SECRET   matches the env var on the server
+on:
+  schedule:
+    - cron: '15 * * * *'
+  # Manual trigger from GitHub Actions UI — useful for backfills / tests.
+  # The "pages" input lets you process more pages than the hourly default.
+  workflow_dispatch:
+    inputs:
+      locale:
+        description: 'Target locale (currently only `en` is wired up)'
+        required: true
+        default: 'en'
+        type: choice
+        options:
+          - en
+      pages:
+        description: 'Number of OPhim pages to process this run (1-20)'
+        required: true
+        default: '5'
+        type: string
+
+# Stop a queued run if a previous one is still going to avoid double-translating.
+concurrency:
+  group: translate-cron-${{ github.event.inputs.locale || 'en' }}
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Resolve inputs
+        id: inputs
+        run: |
+          LOCALE="${{ github.event.inputs.locale || 'en' }}"
+          PAGES="${{ github.event.inputs.pages || '5' }}"
+          echo "locale=$LOCALE" >> "$GITHUB_OUTPUT"
+          echo "pages=$PAGES"   >> "$GITHUB_OUTPUT"
+
+      - name: Hit translation cron endpoint
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          LOCALE: ${{ steps.inputs.outputs.locale }}
+          PAGES: ${{ steps.inputs.outputs.pages }}
+        run: |
+          set -e
+          echo "Triggering: $SITE_URL/api/translate/cron-batch?locale=$LOCALE&pages=$PAGES"
+          # `-fsS` so the step fails on HTTP 4xx/5xx and prints errors to stderr.
+          # `--max-time 90` covers the server's 60s ceiling + 30s network slack.
+          RESPONSE=$(curl -fsS \
+            --max-time 90 \
+            -X POST \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json" \
+            "$SITE_URL/api/translate/cron-batch?locale=$LOCALE&pages=$PAGES")
+          echo "Server response:"
+          echo "$RESPONSE" | jq . || echo "$RESPONSE"

@@ -1,7 +1,9 @@
+'use client';
 import { useEffect, useRef } from 'react';
 import NotificationList from './notification-list';
 import { INotification, INotificationDropdownState } from 'types/notification';
 import { IoNotifications, IoCheckmarkDone, IoClose } from 'react-icons/io5';
+import { useTranslations } from 'next-intl';
 
 export default function NotificationDropDown({
   notificationDropdownState,
@@ -12,6 +14,7 @@ export default function NotificationDropDown({
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
   notifications: INotification[];
 }) {
+  const t = useTranslations('notification');
   const notificationDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +42,7 @@ export default function NotificationDropDown({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <IoNotifications className="text-white" size={20} />
-            <h3 className="text-white font-semibold text-lg">Thông báo</h3>
+            <h3 className="text-white font-semibold text-lg">{t('title')}</h3>
           </div>
           <div className="flex items-center space-x-2">
             <button
@@ -50,7 +53,7 @@ export default function NotificationDropDown({
               }}
             >
               <IoCheckmarkDone size={16} />
-              <span>Đánh dấu đã đọc</span>
+              <span>{t('markRead')}</span>
             </button>
             <button
               className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-lg transition-colors"
@@ -74,10 +77,8 @@ export default function NotificationDropDown({
         ) : (
           <div className="flex flex-col items-center justify-center py-12 px-6">
             <IoNotifications className="text-gray-500 mb-3" size={48} />
-            <p className="text-gray-400 text-center">Không có thông báo nào</p>
-            <p className="text-gray-500 text-sm text-center mt-1">
-              Bạn sẽ nhận được thông báo khi có hoạt động mới
-            </p>
+            <p className="text-gray-400 text-center">{t('empty')}</p>
+            <p className="text-gray-500 text-sm text-center mt-1">{t('emptySubtitle')}</p>
           </div>
         )}
       </div>
