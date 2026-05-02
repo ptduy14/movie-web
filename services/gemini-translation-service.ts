@@ -1,5 +1,5 @@
 import 'server-only';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI, SchemaType, type Schema } from '@google/generative-ai';
 
 /**
  * Gemini-backed text translation service.
@@ -93,6 +93,26 @@ export interface BatchTranslationItem {
 }
 
 /**
+ * JSON schema for Gemini's structured output mode. Forces the model to emit
+ * a syntactically valid JSON array — no escape errors from HTML quotes,
+ * Vietnamese diacritics, or stray newlines in `content`.
+ *
+ * Without this, Gemini's free-form JSON occasionally breaks on inputs like
+ * `<p>"Andrew" Cooper</p>` because the inner double quotes aren't escaped.
+ */
+const BATCH_RESPONSE_SCHEMA: Schema = {
+  type: SchemaType.ARRAY,
+  items: {
+    type: SchemaType.OBJECT,
+    properties: {
+      id: { type: SchemaType.STRING },
+      content: { type: SchemaType.STRING },
+    },
+    required: ['id', 'content'],
+  },
+};
+
+/**
  * Translate multiple movie synopses in a SINGLE Gemini request.
  *
  * Rationale:
@@ -100,19 +120,23 @@ export interface BatchTranslationItem {
  *   parallel = 5 calls; in 1 batched prompt = 1 call. Same total tokens, 1/N
  *   the RPM consumption.
  *
- * The model is asked to return a JSON array preserving input order. We also
- * expose an `id`-keyed map to callers so they don't have to track indices.
+ * Output reliability:
+ *   We use Gemini's *structured output* mode (`responseMimeType: application/json`
+ *   + `responseSchema`) so the model is forced to emit valid JSON. This was
+ *   added after observing parse failures at ~position 8800 caused by
+ *   unescaped quotes inside HTML-bearing translations.
  *
- * Robustness:
- *   - Strips markdown code fences if Gemini wraps the JSON.
- *   - On parse failure → throws so the caller can fall back to per-item calls.
- *   - On size mismatch → returns whatever was parsed (caller validates).
+ * Robustness fallbacks:
+ *   - On parse failure → throws so the caller can decide (fallback to original
+ *     content, retry per-item, etc.).
+ *   - Entries missing `id` or `content` are skipped silently — callers detect
+ *     by comparing the returned map size to input size.
  */
 export async function translateMovieContentsBatch(
   items: BatchTranslationItem[],
   targetLocale: string
 ): Promise<Map<string, string>> {
-  if (!model) {
+  if (!genAI) {
     throw new Error('Gemini model not initialized — check GEMINI_API_KEY');
   }
   if (items.length === 0) return new Map();
@@ -122,43 +146,46 @@ export async function translateMovieContentsBatch(
     throw new Error(`Unsupported translation target: ${targetLocale}`);
   }
 
-  // Encode inputs as numbered list to make the JSON output mapping unambiguous.
-  // We use `id` field instead of index so reordering / partial responses still
-  // work for the caller.
+  // Re-instantiate the model with structured-output config. Doing this per
+  // call is cheap (no network) and lets the single-translation function above
+  // keep its plain-text output mode.
+  const structuredModel = genAI.getGenerativeModel({
+    model: GEMINI_MODEL,
+    generationConfig: {
+      responseMimeType: 'application/json',
+      responseSchema: BATCH_RESPONSE_SCHEMA,
+    },
+  });
+
   const inputJson = JSON.stringify(items.map((it) => ({ id: it.id, content: it.content })));
 
   const prompt = `You are translating multiple movie synopses from Vietnamese to ${targetLanguage}.
 
-Input is a JSON array. For each entry, translate the "content" field while keeping the "id" field unchanged.
+Input is a JSON array of {id, content}. For each entry, translate the "content" field while keeping the "id" field unchanged.
 
 Rules:
 - Translate naturally, like a movie description (not literal word-for-word).
 - PRESERVE all HTML tags exactly (<p>, <br>, <strong>, etc.). Translate only the text inside tags.
 - Keep proper nouns (character / place names) as-is unless there's a widely-known ${targetLanguage} equivalent.
-- Output ONLY a valid JSON array of {"id": "<original id>", "content": "<translated>"} objects.
-- Do NOT add explanations, markdown wrappers, or code fences.
 - Return entries in the SAME order as input.
 
 Input JSON:
 ${inputJson}`;
 
-  const result = await model.generateContent(prompt);
-  let text = result.response.text().trim();
-
-  // Strip accidental markdown fences
-  text = text
-    .replace(/^```(?:json)?\s*/i, '')
-    .replace(/\s*```$/i, '')
-    .trim();
+  const result = await structuredModel.generateContent(prompt);
+  const text = result.response.text();
 
   let parsed: Array<{ id?: string; content?: string }>;
   try {
     parsed = JSON.parse(text);
   } catch (err) {
-    throw new Error(`Gemini batch response was not valid JSON: ${(err as Error).message}`);
+    // Should not happen with responseSchema, but stay defensive
+    throw new Error(
+      `Gemini structured-output JSON was unparseable: ${(err as Error).message}`
+    );
   }
   if (!Array.isArray(parsed)) {
-    throw new Error('Gemini batch response was not a JSON array');
+    throw new Error('Gemini structured-output was not a JSON array');
   }
 
   const out = new Map<string, string>();
