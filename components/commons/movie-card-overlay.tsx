@@ -8,7 +8,12 @@ import type Tmdb from 'types/tmdb';
 import type MovieCollection from 'types/movie-collection';
 import RatingBadge from './badges/rating-badge';
 import AddToCollectionOverlayBtn from './add-to-collection-overlay-btn';
-import { localizedCategory, localizedCountry } from 'constants/i18n-mappings';
+import {
+  localizedCategory,
+  localizedCountry,
+  localizedTime,
+  localizedEpisodeCurrent,
+} from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
 interface MovieCardOverlayProps {
@@ -54,13 +59,14 @@ export default function MovieCardOverlay({
 }: MovieCardOverlayProps) {
   const t = useTranslations('card');
   const locale = useLocale() as Locale;
-  // Build metadata items, skipping empty/invalid values
+  // Build metadata items, skipping empty/invalid values.
+  // `time` and `episodeCurrent` are pattern-localized — no Gemini call needed.
   const meta: string[] = [];
   if (year) meta.push(String(year));
   const firstCountrySlug = countries?.[0]?.slug;
   if (firstCountrySlug) meta.push(localizedCountry(firstCountrySlug, locale));
-  if (time && !time.startsWith('?')) meta.push(time);
-  if (episodeCurrent) meta.push(episodeCurrent);
+  if (time && !time.startsWith('?')) meta.push(localizedTime(time, locale));
+  if (episodeCurrent) meta.push(localizedEpisodeCurrent(episodeCurrent, locale));
 
   return (
     <div

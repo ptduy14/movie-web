@@ -4,6 +4,7 @@ import TMDBServices from 'services/tmdb-services';
 import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
+import { getLocalizedMovieContent } from 'services/movie-content-localizer';
 
 interface MoviePageParams {
   params: { locale: string; slug: string };
@@ -22,9 +23,20 @@ export async function generateMetadata({ params }: MoviePageParams): Promise<Met
     if (!res?.status) {
       return { title: 'Movie not found' };
     }
+
+    // Localize description (cache-aware, falls back to original on failure)
+    const description = res.movie?.content
+      ? await getLocalizedMovieContent(
+          res.movie._id,
+          params.locale,
+          res.movie.content,
+          res.movie.modified?.time ?? null
+        )
+      : undefined;
+
     return {
       title: res.movie?.name,
-      description: res.movie?.content,
+      description,
     };
   } catch {
     return { title: 'Movie' };
@@ -50,6 +62,16 @@ export default async function Movie({ params }: MoviePageParams) {
       // Non-fatal: detail page still renders without TMDB credits
       credit = undefined;
     }
+  }
+
+  // Localize the description into the active locale (no-op for VI, AI-translated for others)
+  if (movie.movie.content) {
+    movie.movie.content = await getLocalizedMovieContent(
+      movie.movie._id,
+      params.locale,
+      movie.movie.content,
+      movie.movie.modified?.time ?? null
+    );
   }
 
   return <MoviePage movie={movie} credit={credit} images={res?.data?.images ?? []} />;
