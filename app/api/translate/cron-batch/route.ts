@@ -7,7 +7,7 @@ import { routing } from 'i18n/routing';
  *
  * Auth:
  *   Requires `Authorization: Bearer <CRON_SECRET>` header. Without this an
- *   anonymous attacker could spam the endpoint and burn your Gemini quota.
+ *   anonymous attacker could spam the endpoint and burn your Groq quota.
  *
  * Query params:
  *   - `locale`  (default `en`)  — target locale; must be in `routing.locales`
@@ -37,10 +37,7 @@ export async function POST(req: NextRequest) {
   // ---- 1. Auth gate ----
   const expected = process.env.CRON_SECRET;
   if (!expected) {
-    return NextResponse.json(
-      { error: 'CRON_SECRET not configured on server' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'CRON_SECRET not configured on server' }, { status: 500 });
   }
   const authHeader = req.headers.get('authorization');
   if (authHeader !== `Bearer ${expected}`) {
