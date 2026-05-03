@@ -7,7 +7,7 @@ import { isHaveEpisodesMovie } from 'utils/movie-utils';
 import ServerSection from './server-section';
 import { useRef } from 'react';
 import ProgresswatchNotification from './progress-watch-notification';
-import { useWatchProgress } from 'hooks/useWatchProgress';
+import { useVideoProgress } from 'hooks/useVideoProgress';
 import CommentSection from '../comment';
 import { useTranslations } from 'next-intl';
 
@@ -20,13 +20,13 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const {
-    previousWatchProgress,
-    isShowToastProgress,
-    handleAcceptProgressWatch,
-    handleRejectProgressWatch,
+    restoredProgress,
+    isShowResumePrompt,
+    handleAcceptResume,
+    handleRejectResume,
     setVideoProgress,
     videoProgress,
-  } = useWatchProgress({
+  } = useVideoProgress({
     movie,
     videoRef,
     episodeIndex,
@@ -60,10 +60,10 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   return (
     <div className="pt-20 lg:pt-[3.75rem] space-y-6 lg:space-y-10">
       <ProgresswatchNotification
-        isShowMessage={isShowToastProgress}
-        previousWatchProgress={previousWatchProgress}
-        handleAcceptProgressWatch={handleAcceptProgressWatch}
-        handleRejectProgressWatch={handleRejectProgressWatch}
+        isShowResumePrompt={isShowResumePrompt}
+        restoredProgress={restoredProgress}
+        handleAcceptResume={handleAcceptResume}
+        handleRejectResume={handleRejectResume}
         movie={movie}
       />
       <VideoPlayer
