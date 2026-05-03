@@ -42,7 +42,7 @@ jobs:
         id: inputs
         run: |
           LOCALE="${{ github.event.inputs.locale || 'en' }}"
-          PAGES="${{ github.event.inputs.pages || '5' }}"
+          PAGES="${{ github.event.inputs.pages || '2' }}"
           echo "locale=$LOCALE" >> "$GITHUB_OUTPUT"
           echo "pages=$PAGES"   >> "$GITHUB_OUTPUT"
 
