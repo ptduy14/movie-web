@@ -16,7 +16,7 @@ import type { Locale } from 'i18n/routing';
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
   const locale = useLocale() as Locale;
   // For non-vi: use origin_name as the visible primary title (already in the
-  // source language for most movies). Avoids spending Gemini quota on titles.
+  // source language for most movies). Avoids spending Groq quota on titles.
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
 

@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.8",
     "firebase": "^10.14.1",
     "firebase-admin": "^13.2.0",
+    "groq-sdk": "^1.1.2",
     "hls.js": "^1.5.15",
     "next": "14.2.5",
     "next-intl": "^4.11.0",
