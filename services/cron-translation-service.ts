@@ -1,7 +1,7 @@
 import 'server-only';
 import MovieServices from './movie-services';
 import { getCachedTranslation, saveCachedTranslation } from './firebase-translation-service';
-import { translateMovieContentsBatch } from './gemini-translation-service';
+import { translateMovieContentsBatch } from './groq-translation-service';
 import { getCronProgress, saveCronProgress } from './cron-progress-service';
 import type { CronProgress, CronRunResult } from 'types/cron-meta';
 
@@ -33,7 +33,7 @@ interface OPhimDetailItem {
  *      a. Fetch list from OPhim → 24 items with `_id`, `slug`, `modified.time`.
  *      b. Cache lookup in parallel; identify which movies are missing or stale.
  *      c. For misses: fetch the detail endpoint to get `content` (parallel).
- *      d. Send all misses' contents in ONE batched Gemini call.
+ *      d. Send all misses' contents in ONE batched Groq call.
  *      e. Save translations to Firestore (parallel writes).
  *      f. Persist progress so a crash leaves us at a safe checkpoint.
  *   4. Stop early if approaching the 60s Vercel timeout.
@@ -41,15 +41,12 @@ interface OPhimDetailItem {
  *
  * Cost behaviour:
  *   - Cache-aware: pages where every movie is already translated cost 0
- *     Gemini calls (only Firestore reads).
- *   - One Gemini call per page max, regardless of how many movies are missing
+ *     Groq calls (only Firestore reads).
+ *   - One Groq call per page max, regardless of how many movies are missing
  *     (1..24).
  *   - OPhim list + detail fetches are unbounded but free.
  */
-export async function runCronBatch(
-  locale: string,
-  pageCount: number
-): Promise<CronRunResult> {
+export async function runCronBatch(locale: string, pageCount: number): Promise<CronRunResult> {
   const startTime = Date.now();
 
   if (locale === 'vi') {
@@ -73,9 +70,7 @@ export async function runCronBatch(
   // Determine starting page. Wrap to 1 when we've cycled past the end so the
   // cron keeps catching newly-added or recently-modified movies.
   let nextPage =
-    progress.totalPages > 0 && progress.lastPage >= progress.totalPages
-      ? 1
-      : progress.lastPage + 1;
+    progress.totalPages > 0 && progress.lastPage >= progress.totalPages ? 1 : progress.lastPage + 1;
   const startPage = nextPage;
 
   let pagesProcessed = 0;
@@ -187,7 +182,7 @@ interface PageResult {
  *   1. Fetch the list page (24 items, no `content`).
  *   2. Probe Firestore cache for each item in parallel.
  *   3. For cache misses: fetch detail endpoint in parallel to get `content`.
- *   4. Batched Gemini call for all (movieId, content) pairs that need work.
+ *   4. Batched Groq call for all (movieId, content) pairs that need work.
  *   5. Persist each translated item to Firestore (parallel best-effort).
  */
 async function processPage(locale: string, page: number): Promise<PageResult> {
@@ -236,17 +231,14 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
         const detail: OPhimDetailItem = await MovieServices.getDetailMovie(m.slug);
         return { item: m, detail };
       } catch (err: any) {
-        console.warn(
-          `[cron-translation-service] detail fetch failed for ${m.slug}:`,
-          err.message
-        );
+        console.warn(`[cron-translation-service] detail fetch failed for ${m.slug}:`, err.message);
         return { item: m, detail: null };
       }
     })
   );
 
   // Filter to those with NON-EMPTY content. Empty `<p></p>` or whitespace-only
-  // content gives Gemini nothing to translate; skip rather than waste a slot
+  // content gives Groq nothing to translate; skip rather than waste a slot
   // in the batch.
   const toTranslate = detailFetches
     .filter((d) => {
@@ -264,9 +256,7 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
     }));
 
   // Diagnose detail-fetch / empty-content failures so we can see them in logs
-  const detailFailedItems = misses.filter(
-    (m) => !toTranslate.find((t) => t.movieId === m._id)
-  );
+  const detailFailedItems = misses.filter((m) => !toTranslate.find((t) => t.movieId === m._id));
   if (detailFailedItems.length > 0) {
     console.log(
       `[cron-translation-service] page ${page}: ${detailFailedItems.length} movies skipped (no content / fetch failed):`,
@@ -286,7 +276,7 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
     };
   }
 
-  // 3. ONE batched Gemini call for all misses on this page
+  // 3. ONE batched Groq call for all misses on this page
   let translatedMap: Map<string, string>;
   try {
     translatedMap = await translateMovieContentsBatch(
@@ -294,10 +284,7 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
       locale
     );
   } catch (err: any) {
-    console.warn(
-      `[cron-translation-service] batch translate failed on page ${page}:`,
-      err.message
-    );
+    console.warn(`[cron-translation-service] batch translate failed on page ${page}:`, err.message);
     return {
       itemsSeen: items.length,
       cacheHits,
@@ -307,13 +294,11 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
     };
   }
 
-  // 3b. Retry pass for IDs Gemini omitted from the batch response.
-  // Even with structured output, Gemini occasionally drops items from large
-  // batches. Send the missing ones in a second smaller batch to catch them.
+  // 3b. Retry
   const missingFromBatch = toTranslate.filter((t) => !translatedMap.has(t.movieId));
   if (missingFromBatch.length > 0) {
     console.log(
-      `[cron-translation-service] page ${page}: Gemini omitted ${missingFromBatch.length} entries, retrying:`,
+      `[cron-translation-service] page ${page}: Groq omitted ${missingFromBatch.length} entries, retrying:`,
       missingFromBatch.map((m) => m.slug)
     );
     try {
@@ -323,20 +308,17 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
       );
       retryMap.forEach((v, k) => translatedMap.set(k, v));
     } catch (err: any) {
-      console.warn(
-        `[cron-translation-service] retry batch failed on page ${page}:`,
-        err.message
-      );
+      console.warn(`[cron-translation-service] retry batch failed on page ${page}:`, err.message);
       // Non-fatal — those items remain unsaved and will be retried next cron run
     }
   }
 
   // 4. Persist each translation (parallel best-effort)
-  let geminiFailed = 0;
+  let GroqFailed = 0;
   const writes = toTranslate.map((t) => {
     const content = translatedMap.get(t.movieId);
     if (!content) {
-      geminiFailed += 1;
+      GroqFailed += 1;
       return Promise.resolve();
     }
     return saveCachedTranslation(t.movieId, locale, {
@@ -347,11 +329,11 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
   });
   await Promise.all(writes);
 
-  const translated = toTranslate.length - geminiFailed;
+  const translated = toTranslate.length - GroqFailed;
 
-  if (geminiFailed > 0) {
+  if (GroqFailed > 0) {
     console.log(
-      `[cron-translation-service] page ${page}: ${geminiFailed} entries still missing after retry — will be picked up by next cron run`
+      `[cron-translation-service] page ${page}: ${GroqFailed} entries still missing after retry — will be picked up by next cron run`
     );
   }
 
@@ -359,7 +341,7 @@ async function processPage(locale: string, page: number): Promise<PageResult> {
     itemsSeen: items.length,
     cacheHits,
     translated,
-    failed: detailFailed + geminiFailed,
+    failed: detailFailed + GroqFailed,
     totalItems,
   };
 }

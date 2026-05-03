@@ -14,7 +14,7 @@ export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
 
   const detailMovies = await Promise.all(fetcher);
 
-  // Batched localization: 1 Gemini call for ALL cache-miss movies in this set
+  // Batched localization: 1 Groq call for ALL cache-miss movies in this set
   // instead of N parallel calls (saves free-tier RPM quota).
   // No-op when locale === 'vi'.
   const items = detailMovies
@@ -50,15 +50,14 @@ export async function getMoviesByType(slug: string, page: number) {
 export async function getMoviesByCountry(slug: string, page: number) {
   try {
     const res = await MovieServices.getMoviesCountry(slug, page);
-    
-    if (res.status === 'error') throw new Error("");
-  
+
+    if (res.status === 'error') throw new Error('');
+
     return res.data.items;
   } catch (error) {
     const locale = await getLocale();
     redirect({ href: '/', locale });
   }
-  
 }
 
 export async function searchingMovie(slug: string) {

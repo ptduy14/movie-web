@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(type tailwind.config.*)",
+      "Bash(npm install *)",
+      "Bash(npm list *)",
+      "Bash(dir middleware.ts)",
+      "Bash(dir /B app)",
+      "Bash(git mv *)",
+      "Bash(curl -s \"https://ophim1.com/phim/ban-be-and-hang-xom-phan-2\")",
+      "Bash(curl -s \"https://ophim1.com/phim/ban-be-and-hang-xom-phan-2/images\")",
+      "Bash(python -m json.tool)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

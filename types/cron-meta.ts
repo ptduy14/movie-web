@@ -14,7 +14,7 @@ export interface CronProgress {
   totalItems: number;
   /** Lifetime count of movies the cron has iterated over. */
   totalProcessed: number;
-  /** Lifetime count of movies actually sent to Gemini (cache misses). */
+  /** Lifetime count of movies actually sent to Groq (cache misses). */
   totalTranslated: number;
   /** Lifetime count of movies skipped because Firestore cache was fresh. */
   totalSkippedCache: number;

@@ -54,7 +54,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
   const lang = listItem?.lang ?? movie.lang;
 
   // For non-vi locale, prefer the source-language `origin_name` as primary
-  // title to avoid spending Gemini quota on title translation.
+  // title to avoid spending Groq quota on title translation.
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
 
@@ -83,11 +83,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
       <div className="hidden lg:block absolute w-2/4 bottom-[5rem] left-6 space-y-5">
         {/* Status badges row */}
         <div className="flex items-center gap-2 flex-wrap">
-          {subDocquyen ? (
-            <ExclusiveBadge />
-          ) : (
-            <NewUpdateBadge modifiedAt={modifiedAt} />
-          )}
+          {subDocquyen ? <ExclusiveBadge /> : <NewUpdateBadge modifiedAt={modifiedAt} />}
           <QualityLangBadge quality={quality} lang={lang} />
         </div>
 
@@ -156,11 +152,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
         <div className="bg-gradient-to-t from-black via-black/80 to-transparent p-4 pb-8">
           {/* Status badges */}
           <div className="flex items-center gap-2 mb-2 flex-wrap">
-            {subDocquyen ? (
-              <ExclusiveBadge />
-            ) : (
-              <NewUpdateBadge modifiedAt={modifiedAt} />
-            )}
+            {subDocquyen ? <ExclusiveBadge /> : <NewUpdateBadge modifiedAt={modifiedAt} />}
             <QualityLangBadge quality={quality} lang={lang} />
           </div>
 
@@ -168,9 +160,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-1 leading-tight">
             {primaryTitle}
           </h2>
-          {subTitle && (
-            <h3 className="text-sm md:text-base text-white/60 mb-2">{subTitle}</h3>
-          )}
+          {subTitle && <h3 className="text-sm md:text-base text-white/60 mb-2">{subTitle}</h3>}
 
           {/* Movie Metadata */}
           <div className="flex items-center gap-x-3 mb-3 text-sm text-white/90 flex-wrap">

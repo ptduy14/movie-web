@@ -60,7 +60,7 @@ export default function MovieCardOverlay({
   const t = useTranslations('card');
   const locale = useLocale() as Locale;
   // Build metadata items, skipping empty/invalid values.
-  // `time` and `episodeCurrent` are pattern-localized — no Gemini call needed.
+  // `time` and `episodeCurrent` are pattern-localized — no Groq call needed.
   const meta: string[] = [];
   if (year) meta.push(String(year));
   const firstCountrySlug = countries?.[0]?.slug;
