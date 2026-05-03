@@ -12,6 +12,7 @@ import {
   onSnapshot,
   orderBy,
   query,
+  serverTimestamp,
   setDoc,
   updateDoc,
   where,
@@ -218,9 +219,15 @@ const firebaseServices = {
     }
   },
 
-  readedNotification: async(notification: INotification) => {
-    const userNotificationDocRef = doc(db, 'userNotifications', notification.userReciveId, 'notifications', notification.id!);
-    setDoc(userNotificationDocRef, {read: true}, {merge: true});
+  readedNotification: async (notification: INotification) => {
+    const userNotificationDocRef = doc(
+      db,
+      'userNotifications',
+      notification.userReciveId,
+      'notifications',
+      notification.id!
+    );
+    setDoc(userNotificationDocRef, { read: true }, { merge: true });
   },
 
   // REFACTOR LATER: this logic need to refactor when new comment added
@@ -229,7 +236,12 @@ const firebaseServices = {
     handleReciveNotificationData: (notifications: INotification[]) => void
   ) => {
     try {
-      const userNotificationCollectionRef = collection(db, 'userNotifications', userId, 'notifications');
+      const userNotificationCollectionRef = collection(
+        db,
+        'userNotifications',
+        userId,
+        'notifications'
+      );
 
       const q = query(userNotificationCollectionRef);
 
@@ -237,7 +249,7 @@ const firebaseServices = {
         const notifications: INotification[] = [];
 
         querySnapshot.forEach((doc: DocumentData) => {
-          const data: INotification = {id: doc.id, ...doc.data()};
+          const data: INotification = { id: doc.id, ...doc.data() };
           notifications.push(data);
         });
 
@@ -256,7 +268,6 @@ const firebaseServices = {
       const userRecentMovieDoc = await getDoc(userRecentMovieDocRef);
 
       if (userRecentMovieDoc.exists()) {
-        
         return;
       }
 
@@ -264,15 +275,15 @@ const firebaseServices = {
     } catch (error: any) {
       console.log(error.message);
     }
-  }, 
+  },
 
-  getRecentMovies: async(userId: string) => {
+  getRecentMovies: async (userId: string) => {
     try {
       const userRecentMovieDocRef = collection(db, 'recentMovies', userId, 'movies');
       const res = await getDocs(userRecentMovieDocRef);
 
       if (!res.empty) {
-        return res.docs.map((doc: DocumentData) => ({id: doc.id, ...doc.data()}));
+        return res.docs.map((doc: DocumentData) => ({ id: doc.id, ...doc.data() }));
       }
 
       return [];
@@ -308,6 +319,40 @@ const firebaseServices = {
       await setDoc(userRecentMovieDocRef, { ...recentMovie, userId }, { merge: true });
     } catch (error: any) {
       console.log('updateWatchProgress error:', error.message);
+    }
+  },
+
+  // ─── viewing_progress collection ────────────────────────────────────────────
+
+  getViewingProgress: async (
+    userId: string,
+    movieId: string
+  ): Promise<{ position: number; episodeIndex: number; episodeLink: string } | null> => {
+    try {
+      const docRef = doc(db, 'viewing_progress', `${userId}_${movieId}`);
+      const snap = await getDoc(docRef);
+      if (!snap.exists()) return null;
+      const data = snap.data();
+      return {
+        position: data.position as number,
+        episodeIndex: data.episodeIndex as number,
+        episodeLink: data.episodeLink as string,
+      };
+    } catch {
+      return null;
+    }
+  },
+
+  syncViewingProgress: async (
+    userId: string,
+    movieId: string,
+    data: { position: number; episodeIndex: number; episodeLink: string }
+  ): Promise<void> => {
+    try {
+      const docRef = doc(db, 'viewing_progress', `${userId}_${movieId}`);
+      await setDoc(docRef, { ...data, updatedAt: serverTimestamp() });
+    } catch (error: any) {
+      console.error('syncViewingProgress error:', error.message);
     }
   },
 };
