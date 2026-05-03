@@ -1,17 +1,11 @@
 import 'server-only';
 import { cache } from 'react';
-import {
-  translateMovieContent,
-  translateMovieContentsBatch,
-} from './gemini-translation-service';
-import {
-  getCachedTranslation,
-  saveCachedTranslation,
-} from './firebase-translation-service';
+import { translateMovieContent, translateMovieContentsBatch } from './groq-translation-service';
+import { getCachedTranslation, saveCachedTranslation } from './firebase-translation-service';
 
 /**
  * Server-side orchestrator: get the locale-correct content for a movie,
- * using the Firestore translation cache and falling back to Gemini on miss.
+ * using the Firestore translation cache and falling back to Groq on miss.
  *
  * Decision flow:
  *   1. locale === 'vi' (default) or empty content → return original, no work.
@@ -20,20 +14,20 @@ import {
  *        return cached translation (fresh).
  *      - If different → translation is stale (OPhim updated content) →
  *        treat as cache miss to re-translate.
- *   3. Cache miss → call Gemini → store in cache → return.
+ *   3. Cache miss → call Groq → store in cache → return.
  *   4. On any unexpected error → return original Vietnamese content. The
  *      user sees the Vietnamese text instead of a broken page; we log the
  *      problem for the operator.
  *
  * Pure function from the caller's perspective: input movie id + content,
  * output is the localized content string. All side effects (Firestore writes,
- * Gemini calls) are best-effort and don't propagate failures.
+ * Groq calls) are best-effort and don't propagate failures.
  */
 /**
  * Wrapped in React `cache()` so multiple callers within a single render
  * (e.g., `generateMetadata` AND the page component asking for the same
  * movie+locale) share ONE underlying Promise. This prevents a hidden
- * second Gemini API call per page load that would otherwise occur on
+ * second Groq API call per page load that would otherwise occur on
  * cache miss before the Firestore write completes.
  */
 export const getLocalizedMovieContent = cache(async function getLocalizedMovieContent(
@@ -65,8 +59,8 @@ export const getLocalizedMovieContent = cache(async function getLocalizedMovieCo
       // else: stale → re-translate below
     }
 
-    // 3. Cache miss / stale → translate via Gemini
-    const translated = await translateMovieContent(originalContent, locale);
+    // 3. Cache miss / stale → translate via Groq
+    const translated = await translateMovieContent(movieId, originalContent, locale);
 
     // Best-effort cache write — don't await failure into the user request
     saveCachedTranslation(movieId, locale, {
@@ -86,7 +80,7 @@ export const getLocalizedMovieContent = cache(async function getLocalizedMovieCo
 });
 
 // ============================================================================
-// BATCH LOCALIZATION (saves Gemini RPM by combining multiple movies in 1 call)
+// BATCH LOCALIZATION (saves Groq RPM by combining multiple movies in 1 call)
 // ============================================================================
 
 export interface BatchLocalizeItem {
@@ -96,19 +90,19 @@ export interface BatchLocalizeItem {
 }
 
 /**
- * Localize content for many movies at once, minimizing Gemini API calls.
+ * Localize content for many movies at once, minimizing Groq API calls.
  *
  * Algorithm:
  *   1. For each input item, check Firestore cache (parallel reads).
  *   2. Items with fresh cache → use cached content.
- *   3. Items with cache miss / stale → collected and sent to Gemini in
+ *   3. Items with cache miss / stale → collected and sent to Groq in
  *      ONE batched prompt (5 movies = 1 API call instead of 5).
  *   4. Save each new translation to cache (parallel writes, best-effort).
  *   5. Build result map combining cache hits + fresh translations.
  *
  * Falls back gracefully:
  *   - locale === 'vi' → returns originals immediately, no I/O
- *   - Gemini batch fails → returns originals for the missing items (cache
+ *   - Groq batch fails → returns originals for the missing items (cache
  *     hits still returned)
  *   - Firestore unreachable → still attempts translation
  *
@@ -161,7 +155,7 @@ export async function localizeMovieContentsBatch(
 
   if (toTranslate.length === 0) return result;
 
-  // 2. ONE Gemini call for all cache misses
+  // 2. ONE batched Groq call for all cache misses
   try {
     const translatedMap = await translateMovieContentsBatch(
       toTranslate.map((it) => ({ id: it.movieId, content: it.content })),

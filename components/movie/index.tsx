@@ -49,7 +49,7 @@ export default function MoviePage({
   const locale = useLocale() as Locale;
 
   // Locale-aware title display + pattern-localized status/duration.
-  // No Gemini API calls — saves quota for the synopsis only.
+  // No Groq API calls — saves quota for the synopsis only.
   const primaryTitle = preferredTitle(movie.movie.name, movie.movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.movie.name, movie.movie.origin_name, locale);
   const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
@@ -169,11 +169,7 @@ export default function MoviePage({
 
                 {/* Ratings (TMDB + IMDb) */}
                 <div className="mt-2">
-                  <RatingLinks
-                    imdb={movie.movie.imdb}
-                    tmdb={movie.movie.tmdb}
-                    variant="compact"
-                  />
+                  <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} variant="compact" />
                 </div>
               </div>
             </div>
