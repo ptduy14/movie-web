@@ -155,13 +155,25 @@ export function useVideoProgress({
 
   // ===== RESTORE PROGRESS =====
 
-  // Logged users: read from Firestore (source of truth for multi-device)
+  // Logged users: Firestore first, localStorage as fallback.
+  // Fallback handles: (a) no Firestore data yet (first visit / sync lag),
+  // (b) user logged in on a different page after a guest session.
   useEffect(() => {
     if (!user) return;
     let cancelled = false;
 
     (async () => {
-      const progress = await firebaseServices.getViewingProgress(user.id, movieId);
+      let progress = await firebaseServices.getViewingProgress(user.id, movieId);
+
+      if (!progress) {
+        // Fallback to localStorage — opportunistically sync it to Firestore for next visit
+        const stored = getVideoProgress(movieId);
+        if (stored && stored.position > 0) {
+          firebaseServices.syncViewingProgress(user.id, movieId, stored);
+          progress = stored;
+        }
+      }
+
       if (cancelled || !progress) return;
 
       const { position, episodeIndex: epIdx, episodeLink: epLink } = progress;
