@@ -3,7 +3,7 @@
 > Real-user traffic + product analytics tracking for movie-web.
 > Single source of truth for every analytics decision. Updated after each phase.
 
-**Status:** Phase 2/6 complete
+**Status:** Phase 3/6 complete
 
 ---
 
@@ -27,6 +27,7 @@
 |---|---|
 | `lib/posthog/client.ts` | Singleton init, exports the `posthog` instance |
 | `components/analytics/PostHogProvider.tsx` | React provider + manual pageview tracker (App Router compat) |
+| `components/analytics/AuthIdentifier.tsx` | Redux subscriber → `posthog.identify` on login, `posthog.reset` on logout |
 | `app/providers.tsx` | Mounts `PostHogProvider` in the tree |
 | `next.config.mjs` | Reverse proxy `/api/__relay/*` → `us.i.posthog.com` (ad-block bypass) |
 | `.env` | `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`, `NEXT_PUBLIC_POSTHOG_UI_HOST` |
@@ -62,11 +63,21 @@ PostHog `init()` is not idempotent. React Strict Mode + locale segment switches 
 ### 3.5. Locale property on pageview
 We extract the locale from the first path segment (`/vi/movies/foo` → `vi`) and attach it to every pageview, so PostHog dashboards can break down by VI vs EN with no extra setup.
 
-### 3.6. Identify strategy (Phase 3 — upcoming)
-The project has no global `onAuthStateChanged` listener. Auth state lives in **Redux + redux-persist**. Plan: subscribe to `state.auth.user`:
-- `null → object` → `posthog.identify(uid, { email, name })`
-- `object → null` → `posthog.reset()`
-- Also covers redux-persist rehydration on page reload
+### 3.6. Identify strategy
+The project has no global `onAuthStateChanged` listener. Auth state lives in **Redux + redux-persist** (whitelist: `auth`), so we subscribe to `state.auth.user` from `AuthIdentifier`. Transitions:
+
+| Previous | Current | Action |
+|---|---|---|
+| `null` | `object` | `posthog.identify(uid, { email, name })` — covers fresh login AND redux-persist rehydration on page reload |
+| `object` | `null` | `posthog.reset()` — clears distinct_id on logout |
+| `object A` | `object B` | `posthog.reset()` then `identify(B)` — defensive against rare account-switch without going through null |
+| `null` / `object` | same | no-op |
+
+State tracked via `useRef` to detect the transition without re-firing on unrelated re-renders.
+
+**Why we identify on rehydration**: redux-persist restores `state.auth.user` from localStorage on app boot. Without re-calling `identify`, PostHog would treat the returning user as anonymous until they explicitly log in again. Re-identifying is idempotent — same `distinct_id` keeps the existing person profile.
+
+**Privacy**: only `email` and `name` are sent as person properties. `accessToken` and `refreshToken` (also in the Redux user object) are explicitly NOT sent.
 
 ---
 
@@ -100,7 +111,7 @@ NEXT_PUBLIC_POSTHOG_UI_HOST="https://us.posthog.com"
 |---|---|---|
 | 1. Setup | Done | Deps, env, reverse proxy |
 | 2. Init client + provider + pageview | Done | `lib/posthog/client.ts`, `PostHogProvider`, mounted in tree |
-| 3. Auth identify | Pending | Redux subscriber → `identify` / `reset` |
+| 3. Auth identify | Done | Redux subscriber → `identify` / `reset` |
 | 4. Event schema + tracking points | Pending | Watch funnel, search, collection, comment, auth |
 | 5. Privacy & GDPR | Pending | Cookie consent / cookieless mode |
 | 6. Verify & dashboard | Pending | Test events, build PostHog dashboards |

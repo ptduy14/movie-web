@@ -4,6 +4,7 @@ import { Suspense, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { PostHogProvider as PHProvider } from 'posthog-js/react';
 import { initPostHog, posthog } from 'lib/posthog/client';
+import AuthIdentifier from './AuthIdentifier';
 
 function PageviewTrackerInner() {
   const pathname = usePathname();
@@ -41,6 +42,7 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
   return (
     <PHProvider client={posthog}>
       <PageviewTracker />
+      <AuthIdentifier />
       {children}
     </PHProvider>
   );
