@@ -9,8 +9,6 @@ const nextConfig = {
   images: {
     domains: ['img.ophim.live', 'lh3.googleusercontent.com', 'image.tmdb.org'],
   },
-  // Required by PostHog reverse proxy: PostHog endpoints must NOT have a
-  // trailing-slash redirect applied — that would break event ingestion.
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
@@ -33,23 +31,15 @@ const nextConfig = {
       },
     ];
   },
-  // PostHog reverse proxy — routes analytics traffic through our own domain to
-  // bypass ad-blockers (which block *.posthog.com directly, costing ~20-30%
-  // of real-user data). Must be `rewrites` (not redirects) so the URL stays
-  // `/ingest/...` from the browser's perspective.
   async rewrites() {
     return [
       {
-        source: '/ingest/static/:path*',
+        source: '/api/__relay/static/:path*',
         destination: 'https://us-assets.i.posthog.com/static/:path*',
       },
       {
-        source: '/ingest/:path*',
+        source: '/api/__relay/:path*',
         destination: 'https://us.i.posthog.com/:path*',
-      },
-      {
-        source: '/ingest/decide',
-        destination: 'https://us.i.posthog.com/decide',
       },
     ];
   },
