@@ -8,6 +8,7 @@ import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from './branding-placeholder';
 import SearchInput from './search-input';
+import { analytics } from 'lib/posthog/events';
 
 export default function SearchMoviePage({ movieName }: { movieName: string }) {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -18,8 +19,10 @@ export default function SearchMoviePage({ movieName }: { movieName: string }) {
       if (isNotNull(movieName)) {
         setIsFetching(true);
         const res = await searchingMovie(movieName);
-        setMovies(res.data.items);
+        const items = res.data.items;
+        setMovies(items);
         setIsFetching(false);
+        analytics.searchPerformed(movieName, items?.length ?? 0);
       }
     };
     fetchData();
