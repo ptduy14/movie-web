@@ -12,6 +12,7 @@ import AuthProvider from '@/components/context/auth-conext';
 import HomePageLoadingProvider from '@/components/context/home-page-loading-context';
 import { DropdownProvider } from '@/components/context/dropdown-context';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
+import PostHogProvider from '@/components/analytics/PostHogProvider';
 
 const persistor = persistStore(store);
 
@@ -29,18 +30,20 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}></PersistGate>
-      <AuthProvider>
-        <AuthModalProvider>
-          <HomePageLoadingProvider>
-            <GlobalEffects />
-            <AuthModal />
-            <DropdownProvider>
-              <Layout>{children}</Layout>
-            </DropdownProvider>
-            <ToastContainer />
-          </HomePageLoadingProvider>
-        </AuthModalProvider>
-      </AuthProvider>
+      <PostHogProvider>
+        <AuthProvider>
+          <AuthModalProvider>
+            <HomePageLoadingProvider>
+              <GlobalEffects />
+              <AuthModal />
+              <DropdownProvider>
+                <Layout>{children}</Layout>
+              </DropdownProvider>
+              <ToastContainer />
+            </HomePageLoadingProvider>
+          </AuthModalProvider>
+        </AuthProvider>
+      </PostHogProvider>
     </Provider>
   );
 }
