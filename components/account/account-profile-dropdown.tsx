@@ -11,6 +11,7 @@ import { Link } from 'i18n/routing';
 import { useDropdown } from '../context/dropdown-context';
 import { useTranslations } from 'next-intl';
 import { IoBookmark, IoTime, IoPerson, IoLogOut } from 'react-icons/io5';
+import { analytics } from 'lib/posthog/events';
 
 export default function AccountProfileDropdown({ authenticatedUser }: { authenticatedUser: any }) {
   const t = useTranslations('accountMenu');
@@ -22,6 +23,7 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
 
   const handleLogout = async () => {
     setIsLoading(true);
+    analytics.authLogout();
     await AuthServices.removeAuthCookie();
     await signOut(auth);
     dispatch(removeUser());

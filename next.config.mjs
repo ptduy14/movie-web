@@ -9,6 +9,7 @@ const nextConfig = {
   images: {
     domains: ['img.ophim.live', 'lh3.googleusercontent.com', 'image.tmdb.org'],
   },
+  skipTrailingSlashRedirect: true,
   async redirects() {
     return [
       // Preserve old non-localized URLs by routing them to the default locale.
@@ -27,6 +28,18 @@ const nextConfig = {
         source: '/search',
         destination: '/vi/search',
         permanent: false,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/__relay/static/:path*',
+        destination: 'https://us-assets.i.posthog.com/static/:path*',
+      },
+      {
+        source: '/api/__relay/:path*',
+        destination: 'https://us.i.posthog.com/:path*',
       },
     ];
   },

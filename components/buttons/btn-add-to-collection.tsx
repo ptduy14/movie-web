@@ -16,6 +16,7 @@ import {
   removeFromCollection,
 } from '../../redux/slices/collection-slice';
 import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 
 interface BtnAddToCollectionProps {
   variant: 'primary' | 'secondary'; // Prop để điều chỉnh kiểu dáng
@@ -76,6 +77,7 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
       setIsExistedInCollection(true);
       // Keep Redux cache in sync so card overlay buttons re-render correctly
       dispatch(addToCollection(movie));
+      analytics.collectionAdded(detailMovie.movie._id);
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -103,6 +105,7 @@ export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCol
         setIsExistedInCollection(false);
         // Keep Redux cache in sync
         dispatch(removeFromCollection(detailMovie.movie._id));
+        analytics.collectionRemoved(detailMovie.movie._id);
       }
     } catch (error: any) {
       console.log(error.message);
