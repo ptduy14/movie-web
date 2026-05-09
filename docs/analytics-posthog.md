@@ -3,7 +3,7 @@
 > Real-user traffic + product analytics tracking for movie-web.
 > Single source of truth for every analytics decision. Updated after each phase.
 
-**Status:** Phase 3/6 complete
+**Status:** Phase 4/6 complete
 
 ---
 
@@ -26,8 +26,10 @@
 | File | Role |
 |---|---|
 | `lib/posthog/client.ts` | Singleton init, exports the `posthog` instance |
+| `lib/posthog/events.ts` | Typed event wrapper (`analytics.movieViewed`, `analytics.authLogin`, ...) — single source of truth for event names + property shape |
 | `components/analytics/PostHogProvider.tsx` | React provider + manual pageview tracker (App Router compat) |
 | `components/analytics/AuthIdentifier.tsx` | Redux subscriber → `posthog.identify` on login, `posthog.reset` on logout |
+| `hooks/useWatchAnalytics.ts` | Video lifecycle tracker (play / progress milestones / completed) |
 | `app/providers.tsx` | Mounts `PostHogProvider` in the tree |
 | `next.config.mjs` | Reverse proxy `/api/__relay/*` → `us.i.posthog.com` (ad-block bypass) |
 | `.env` | `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`, `NEXT_PUBLIC_POSTHOG_UI_HOST` |
@@ -112,31 +114,48 @@ NEXT_PUBLIC_POSTHOG_UI_HOST="https://us.posthog.com"
 | 1. Setup | Done | Deps, env, reverse proxy |
 | 2. Init client + provider + pageview | Done | `lib/posthog/client.ts`, `PostHogProvider`, mounted in tree |
 | 3. Auth identify | Done | Redux subscriber → `identify` / `reset` |
-| 4. Event schema + tracking points | Pending | Watch funnel, search, collection, comment, auth |
+| 4. Event schema + tracking points | Done | Watch funnel, search, collection, comment, auth |
 | 5. Privacy & GDPR | Pending | Cookie consent / cookieless mode |
 | 6. Verify & dashboard | Pending | Test events, build PostHog dashboards |
 
 ---
 
-## 6. Event schema (Phase 4 — upcoming)
+## 6. Event schema
 
-| Event | Properties | Trigger |
-|---|---|---|
-| `$pageview` | `$current_url`, `locale` | Auto, on every route change |
-| `$pageleave` | (auto) | Tab close / navigate away |
-| `movie_viewed` | `movie_id`, `slug`, `title`, `type`, `genre`, `country`, `year` | Movie detail page mount |
-| `movie_play_started` | `movie_id`, `episode`, `server` | First `play` event of the video |
-| `movie_play_progress` | `movie_id`, `percent` (25/50/75/95) | Throttled milestone |
-| `movie_play_completed` | `movie_id`, `watch_duration` | `ended` event |
-| `episode_switched` | `movie_id`, `from`, `to` | Click on a different episode |
-| `server_switched` | `movie_id`, `from`, `to` | Click on a different server |
-| `resume_accepted` / `resume_rejected` | `movie_id`, `position` | User responds to resume prompt |
-| `search_performed` | `query`, `results_count` | Search results returned |
-| `collection_added` / `collection_removed` | `movie_id` | Click add / remove button |
-| `comment_posted` | `movie_id`, `comment_length` | Comment submitted successfully |
-| `auth_signup` | `method` (`'email'` / `'google'`) | Signup success |
-| `auth_login` | `method` | Login success |
-| `auth_logout` | (no props) | Logout button |
+All events are emitted via the typed wrapper in `lib/posthog/events.ts`. The wrapper is the single source of truth — to add or rename an event, update that file and the schema below in lockstep.
+
+| Event | Properties | Trigger | Wrapper call | Source file |
+|---|---|---|---|---|
+| `$pageview` | `$current_url`, `locale` | Auto, on every route change | (built-in) | `components/analytics/PostHogProvider.tsx` |
+| `$pageleave` | (auto) | Tab close / navigate away | (built-in) | (SDK) |
+| `movie_viewed` | `movie_id`, `slug`, `title`, `type`, `genre[]`, `country[]`, `year` | Movie detail page mount | `analytics.movieViewed(...)` | `components/movie/index.tsx` |
+| `movie_play_started` | `movie_id`, `episode`, `server` | First `play` event of the video | `analytics.moviePlayStarted(...)` | `hooks/useWatchAnalytics.ts` |
+| `movie_play_progress` | `movie_id`, `percent` (25/50/75/95) | Throttled milestone via `timeupdate` | `analytics.moviePlayProgress(...)` | `hooks/useWatchAnalytics.ts` |
+| `movie_play_completed` | `movie_id`, `watch_duration` (seconds) | `ended` event | `analytics.moviePlayCompleted(...)` | `hooks/useWatchAnalytics.ts` |
+| `episode_switched` | `movie_id`, `from`, `to` | Click on a different episode | `analytics.episodeSwitched(...)` | `components/watch/index.tsx` |
+| `server_switched` | `movie_id`, `from`, `to` | Click on a different server | `analytics.serverSwitched(...)` | `components/watch/index.tsx` |
+| `resume_accepted` | `movie_id`, `position` | User accepts resume prompt | `analytics.resumeAccepted(...)` | `hooks/useVideoProgress.ts` |
+| `resume_rejected` | `movie_id`, `position` | User rejects resume prompt | `analytics.resumeRejected(...)` | `hooks/useVideoProgress.ts` |
+| `search_performed` | `query`, `results_count` | Search results returned | `analytics.searchPerformed(...)` | `components/search/index.tsx` |
+| `collection_added` | `movie_id` | After Firestore write succeeds | `analytics.collectionAdded(...)` | `components/buttons/btn-add-to-collection.tsx` |
+| `collection_removed` | `movie_id` | After Firestore write succeeds | `analytics.collectionRemoved(...)` | `components/buttons/btn-add-to-collection.tsx` |
+| `comment_posted` | `movie_id`, `comment_length` | Comment submitted successfully | `analytics.commentPosted(...)` | `components/comment/comment-input.tsx` |
+| `auth_signup` | `method` (`'email'` / `'google'`) | Signup success | `analytics.authSignup(...)` | `components/auth/signup-form.tsx` |
+| `auth_login` | `method` | Login success (email or Google popup) | `analytics.authLogin(...)` | `components/context/auth-conext.tsx` |
+| `auth_logout` | (no props) | Logout button click | `analytics.authLogout()` | `components/account/account-profile-dropdown.tsx`, `account-profile-mobile.tsx`, `profile/profile-sidebar.tsx` |
+
+### 6.1. Watch lifecycle: `useWatchAnalytics`
+
+`useWatchAnalytics` is a co-resident hook with `useVideoProgress` on the watch page. It attaches `play`, `timeupdate`, `ended` listeners to the same `videoRef` and tracks four milestones (25/50/75/95%) using a `Set<number>` ref to ensure each fires at most once per (movie + episode + server) combo. The hook resets internal state on episode/server change so multi-episode binge watching produces clean per-episode metrics.
+
+`watch_duration` is computed as `Date.now() - playStartTimestamp` in seconds, which measures *real wall-clock time spent on the page* rather than video duration. This is more useful for engagement insights (counts paused / buffering time) — if a user watches a 90-min movie in 2 hours due to pauses, the metric reflects 2 hours.
+
+### 6.2. Funnel insights this enables (build in PostHog UI in Phase 6)
+
+- **Watch funnel**: `movie_viewed` → `movie_play_started` → `movie_play_progress (50%)` → `movie_play_completed` — measures top-of-funnel conversion and drop-off
+- **Search quality**: `search_performed` → `movie_viewed` (with referrer = search) — measures whether searches lead anywhere
+- **Signup conversion**: `$pageview` → `auth_signup` (group by `referrer`) — measures acquisition by source
+- **Collection-driven retention**: cohort of `collection_added` users vs all users on D7/D30 retention
 
 ---
 

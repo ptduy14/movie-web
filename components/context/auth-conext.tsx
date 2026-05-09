@@ -12,6 +12,7 @@ import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import AuthServices from 'services/auth-services';
 import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 
 const AuthContext = createContext<undefined | AuthContextValueType>(undefined);
 
@@ -45,6 +46,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
       await AuthServices.setAuthCookie({ ...userAccountInfo });
       dispatch(setUser(userAccountInfo));
+      analytics.authLogin('email');
 
       return true;
     } catch (error: any) {
@@ -82,6 +84,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
     await AuthServices.setAuthCookie({ ...userAccountInfo });
     dispatch(setUser(userAccountInfo));
+    analytics.authLogin('google');
 
     return true;
   }
