@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import DetailMovie from 'types/detail-movie';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
@@ -10,6 +11,7 @@ import Image from 'next/image';
 import MovieImage from 'types/movie-image';
 import RatingLinks from '../commons/rating-links';
 import { useLocale, useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 import {
   localizedCategory,
   localizedEpisodeCurrent,
@@ -47,6 +49,18 @@ export default function MoviePage({
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;
+
+  useEffect(() => {
+    analytics.movieViewed({
+      movie_id: movie.movie._id,
+      slug: movie.movie.slug,
+      title: movie.movie.name,
+      type: movie.movie.type,
+      genre: movie.movie.category?.map((c) => c.name),
+      country: movie.movie.country?.map((c) => c.name),
+      year: movie.movie.year,
+    });
+  }, [movie.movie._id]);
 
   // Locale-aware title display + pattern-localized status/duration.
   // No Groq API calls — saves quota for the synopsis only.

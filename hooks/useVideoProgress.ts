@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import firebaseServices from 'services/firebase-services';
 import { saveVideoProgress, getVideoProgress } from 'lib/video-progress-storage';
+import { analytics } from 'lib/posthog/events';
 import type DetailMovie from 'types/detail-movie';
 import type { IRecentMovie } from 'types/recent-movie';
 
@@ -315,11 +316,13 @@ export function useVideoProgress({
     setEpisodeLink(epLink);
     setVideoProgress(position);
     setIsShowResumePrompt(false);
-  }, [restoredProgress, setEpisodeIndex, setEpisodeLink, setServerIndex, movie.episodes]);
+    analytics.resumeAccepted(movieId, position);
+  }, [restoredProgress, setEpisodeIndex, setEpisodeLink, setServerIndex, movie.episodes, movieId]);
 
   const handleRejectResume = useCallback(() => {
     setIsShowResumePrompt(false);
-  }, []);
+    analytics.resumeRejected(movieId, restoredProgress.position);
+  }, [movieId, restoredProgress.position]);
 
   return {
     restoredProgress,

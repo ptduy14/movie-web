@@ -8,6 +8,8 @@ import ServerSection from './server-section';
 import { useRef } from 'react';
 import ProgresswatchNotification from './progress-watch-notification';
 import { useVideoProgress } from 'hooks/useVideoProgress';
+import { useWatchAnalytics } from 'hooks/useWatchAnalytics';
+import { analytics } from 'lib/posthog/events';
 import CommentSection from '../comment';
 import { useTranslations } from 'next-intl';
 
@@ -37,7 +39,16 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setServerIndex,
   });
 
+  useWatchAnalytics({
+    movieId: movie.movie._id,
+    episodeIndex,
+    serverIndex,
+    videoRef,
+  });
+
   const handleSwitchEpisode = (index: number) => {
+    if (index === episodeIndex) return;
+    analytics.episodeSwitched(movie.movie._id, episodeIndex, index);
     setEpisodeIndex(index);
     setEpisodeLink(movie.episodes[serverIndex].server_data[index].link_m3u8);
     setVideoProgress(null);
@@ -45,7 +56,7 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   const handleSetServerIndex = (index: number) => {
     if (index === serverIndex) return;
-
+    analytics.serverSwitched(movie.movie._id, serverIndex, index);
     setServerIndex(index);
     setEpisodeLink(movie.episodes[index].server_data[0].link_m3u8);
     setEpisodeIndex(0);

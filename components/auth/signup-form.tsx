@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 
 export default function SignUpForm({
   setRenderSignUpForm,
@@ -38,6 +39,7 @@ export default function SignUpForm({
       }
 
       toast.success(t('successToast'));
+      analytics.authSignup('email');
       reset();
       setRenderSignUpForm(false);
     } catch (error: any) {
