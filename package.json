@@ -17,6 +17,8 @@
     "hls.js": "^1.5.15",
     "next": "14.2.5",
     "next-intl": "^4.11.0",
+    "posthog-js": "^1.372.10",
+    "posthog-node": "^5.21.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
