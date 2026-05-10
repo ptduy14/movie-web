@@ -19,6 +19,7 @@ import {
   IoLogOut,
 } from 'react-icons/io5';
 import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 
 interface AccountProfileMobileProps {
   authenticatedUser: any;
@@ -36,6 +37,7 @@ export default function AccountProfileMobile({
 
   const handleLogout = async () => {
     setIsLoading(true);
+    analytics.authLogout();
     await AuthServices.removeAuthCookie();
     await signOut(auth);
     dispatch(removeUser());

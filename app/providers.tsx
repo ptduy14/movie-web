@@ -14,6 +14,7 @@ import { DropdownProvider } from '@/components/context/dropdown-context';
 import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
 import DisclaimerGuard from '@/components/disclaimer/disclaimer-guard';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
+import PostHogProvider from '@/components/analytics/PostHogProvider';
 
 const persistor = persistStore(store);
 
@@ -37,22 +38,24 @@ export default function Providers({
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}></PersistGate>
-      <AuthProvider>
-        <AuthModalProvider>
-          <DisclaimerModalProvider initialAccepted={initialDisclaimerAccepted}>
-            <DisclaimerGuard>
-              <HomePageLoadingProvider>
-                <GlobalEffects />
-                <AuthModal />
-                <DropdownProvider>
-                  <Layout>{children}</Layout>
-                </DropdownProvider>
-                <ToastContainer />
-              </HomePageLoadingProvider>
-            </DisclaimerGuard>
-          </DisclaimerModalProvider>
-        </AuthModalProvider>
-      </AuthProvider>
+      <PostHogProvider>
+        <AuthProvider>
+          <AuthModalProvider>
+            <DisclaimerModalProvider initialAccepted={initialDisclaimerAccepted}>
+              <DisclaimerGuard>
+                <HomePageLoadingProvider>
+                  <GlobalEffects />
+                  <AuthModal />
+                  <DropdownProvider>
+                    <Layout>{children}</Layout>
+                  </DropdownProvider>
+                  <ToastContainer />
+                </HomePageLoadingProvider>
+              </DisclaimerGuard>
+            </DisclaimerModalProvider>
+          </AuthModalProvider>
+        </AuthProvider>
+      </PostHogProvider>
     </Provider>
   );
 }
