@@ -12,7 +12,7 @@ import AuthProvider from '@/components/context/auth-conext';
 import HomePageLoadingProvider from '@/components/context/home-page-loading-context';
 import { DropdownProvider } from '@/components/context/dropdown-context';
 import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
-import DisclaimerModal from '@/components/disclaimer/disclaimer-modal';
+import DisclaimerGuard from '@/components/disclaimer/disclaimer-guard';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
 
 const persistor = persistStore(store);
@@ -27,22 +27,29 @@ function GlobalEffects() {
   return null;
 }
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  initialDisclaimerAccepted,
+}: {
+  children: React.ReactNode;
+  initialDisclaimerAccepted: boolean;
+}) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}></PersistGate>
       <AuthProvider>
         <AuthModalProvider>
-          <DisclaimerModalProvider>
-            <HomePageLoadingProvider>
-              <GlobalEffects />
-              <AuthModal />
-              <DisclaimerModal />
-              <DropdownProvider>
-                <Layout>{children}</Layout>
-              </DropdownProvider>
-              <ToastContainer />
-            </HomePageLoadingProvider>
+          <DisclaimerModalProvider initialAccepted={initialDisclaimerAccepted}>
+            <DisclaimerGuard>
+              <HomePageLoadingProvider>
+                <GlobalEffects />
+                <AuthModal />
+                <DropdownProvider>
+                  <Layout>{children}</Layout>
+                </DropdownProvider>
+                <ToastContainer />
+              </HomePageLoadingProvider>
+            </DisclaimerGuard>
           </DisclaimerModalProvider>
         </AuthModalProvider>
       </AuthProvider>
