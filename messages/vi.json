@@ -107,6 +107,20 @@
     "searchPlaceholder": "Nhập tên phim..."
   },
 
+  "disclaimer": {
+    "eyebrow": "Lưu ý",
+    "title": "Tuyên bố miễn trừ trách nhiệm",
+    "intro": "MovieX là một dự án phi thương mại được tạo ra cho mục đích học tập.",
+    "points": {
+      "purpose": "Chỉ phục vụ mục đích học tập và nghiên cứu",
+      "thirdParty": "Nội dung được cung cấp bởi các nguồn bên thứ ba",
+      "noHosting": "Không trực tiếp lưu trữ phim trên máy chủ của chúng tôi",
+      "contact": "Liên hệ với chúng tôi nếu có vấn đề về bản quyền"
+    },
+    "agree": "Đồng ý & Tiếp tục",
+    "learnMore": "Tìm hiểu thêm"
+  },
+
   "auth": {
     "login": {
       "title": "Đăng nhập khoản MovieX",
