@@ -1,11 +1,13 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers';
 import { routing } from 'i18n/routing';
 import '../globals.css';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import Providers from '../providers';
+import { DISCLAIMER_COOKIE_NAME } from '@/components/disclaimer/disclaimer-constants';
 
 /**
  * Locale segment layout — owns the full app shell.
@@ -41,11 +43,16 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
+  const cookieStore = await cookies();
+  const disclaimerEnabled = process.env.NEXT_PUBLIC_DISCLAIMER_MODAL_ENABLED === 'true';
+  const cookieAccepted = cookieStore.get(DISCLAIMER_COOKIE_NAME)?.value === '1';
+  const initialDisclaimerAccepted = !disclaimerEnabled || cookieAccepted;
+
   return (
     <html lang={locale}>
       <body className="bg-black text-white relative flex flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers initialDisclaimerAccepted={initialDisclaimerAccepted}>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>

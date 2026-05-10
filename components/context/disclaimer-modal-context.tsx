@@ -1,7 +1,9 @@
 'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
-
-const DISCLAIMER_STORAGE_KEY = 'moviex_disclaimer_accepted';
+import { createContext, useContext, useState } from 'react';
+import {
+  DISCLAIMER_COOKIE_MAX_AGE,
+  DISCLAIMER_COOKIE_NAME,
+} from '../disclaimer/disclaimer-constants';
 
 interface DisclaimerModalContextValueType {
   isDisclaimerOpen: boolean;
@@ -12,27 +14,19 @@ const DisclaimerModalContext = createContext<DisclaimerModalContextValueType | u
   undefined
 );
 
-export default function DisclaimerModalProvider({ children }: { children: React.ReactNode }) {
-  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    const isEnabled = process.env.NEXT_PUBLIC_DISCLAIMER_MODAL_ENABLED === 'true';
-    if (!isEnabled) return;
-
-    try {
-      const accepted = window.localStorage.getItem(DISCLAIMER_STORAGE_KEY);
-      if (!accepted) setIsDisclaimerOpen(true);
-    } catch {
-      // localStorage unavailable (private mode, SSR edge cases) — fail open and show the modal.
-      setIsDisclaimerOpen(true);
-    }
-  }, []);
+export default function DisclaimerModalProvider({
+  children,
+  initialAccepted,
+}: {
+  children: React.ReactNode;
+  initialAccepted: boolean;
+}) {
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState<boolean>(!initialAccepted);
 
   const acceptDisclaimer = () => {
-    try {
-      window.localStorage.setItem(DISCLAIMER_STORAGE_KEY, '1');
-    } catch {
-      // ignore — user will see the modal again next visit
+    if (typeof document !== 'undefined') {
+      const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie = `${DISCLAIMER_COOKIE_NAME}=1; path=/; max-age=${DISCLAIMER_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
     }
     setIsDisclaimerOpen(false);
   };

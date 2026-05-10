@@ -13,23 +13,19 @@ export default function DisclaimerModal() {
   const [showAnimation, setShowAnimation] = useState<boolean>(false);
 
   useEffect(() => {
-    if (isDisclaimerOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = `8px`;
-      // next paint → animate in
-      const id = requestAnimationFrame(() => setShowAnimation(true));
-      return () => cancelAnimationFrame(id);
+    if (!isDisclaimerOpen) {
+      setShowAnimation(false);
+      return;
     }
-    document.body.style.overflow = 'unset';
-    document.body.style.paddingRight = `0px`;
-    setShowAnimation(false);
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = '8px';
+    const id = requestAnimationFrame(() => setShowAnimation(true));
     return () => {
+      cancelAnimationFrame(id);
       document.body.style.overflow = 'unset';
-      document.body.style.paddingRight = `0px`;
+      document.body.style.paddingRight = '0px';
     };
   }, [isDisclaimerOpen]);
-
-  if (!isDisclaimerOpen) return null;
 
   const features = [
     { Icon: FiBookOpen, label: t('points.purpose') },
