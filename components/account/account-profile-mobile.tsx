@@ -65,10 +65,10 @@ export default function AccountProfileMobile({
             height={40}
           />
           <div className="flex-1 min-w-0">
-            <p className="text-white font-medium text-sm truncate">
+            <p className="text-white font-medium text-sm truncate" data-private>
               {authenticatedUser.name || 'User'}
             </p>
-            <p className="text-gray-400 text-xs truncate">{authenticatedUser.email}</p>
+            <p className="text-gray-400 text-xs truncate" data-private>{authenticatedUser.email}</p>
           </div>
         </div>
         {isExpanded ? (

@@ -76,10 +76,11 @@ export default function Comment({
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
                 className="w-full text-gray-400 bg-transparent outline-none border border-gray-400 rounded-lg px-1 py-1"
+                data-private
               />
             </form>
           ) : (
-            <p className="text-gray-400 mt-1">{commentText}</p>
+            <p className="text-gray-400 mt-1" data-private>{commentText}</p>
           )}
         </div>
       </div>

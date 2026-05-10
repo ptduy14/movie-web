@@ -64,10 +64,10 @@ export default function AccountProfileDropdown({ authenticatedUser }: { authenti
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-white font-semibold text-sm truncate">
+            <p className="text-white font-semibold text-sm truncate" data-private>
               {authenticatedUser.name || 'User'}
             </p>
-            <p className="text-gray-400 text-xs truncate">{authenticatedUser.email}</p>
+            <p className="text-gray-400 text-xs truncate" data-private>{authenticatedUser.email}</p>
           </div>
         </div>
       </div>
