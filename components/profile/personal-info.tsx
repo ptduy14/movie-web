@@ -207,7 +207,7 @@ export default function PersonalInfo({ user }: PersonalInfoProps) {
               })}
             />
           ) : (
-            <div className="p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white">
+            <div className="p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white" data-private>
               {user.email}
             </div>
           )}
