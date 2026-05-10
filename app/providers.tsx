@@ -11,6 +11,8 @@ import persistStore from 'redux-persist/es/persistStore';
 import AuthProvider from '@/components/context/auth-conext';
 import HomePageLoadingProvider from '@/components/context/home-page-loading-context';
 import { DropdownProvider } from '@/components/context/dropdown-context';
+import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
+import DisclaimerGuard from '@/components/disclaimer/disclaimer-guard';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
 import PostHogProvider from '@/components/analytics/PostHogProvider';
 
@@ -26,21 +28,31 @@ function GlobalEffects() {
   return null;
 }
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  initialDisclaimerAccepted,
+}: {
+  children: React.ReactNode;
+  initialDisclaimerAccepted: boolean;
+}) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}></PersistGate>
       <PostHogProvider>
         <AuthProvider>
           <AuthModalProvider>
-            <HomePageLoadingProvider>
-              <GlobalEffects />
-              <AuthModal />
-              <DropdownProvider>
-                <Layout>{children}</Layout>
-              </DropdownProvider>
-              <ToastContainer />
-            </HomePageLoadingProvider>
+            <DisclaimerModalProvider initialAccepted={initialDisclaimerAccepted}>
+              <DisclaimerGuard>
+                <HomePageLoadingProvider>
+                  <GlobalEffects />
+                  <AuthModal />
+                  <DropdownProvider>
+                    <Layout>{children}</Layout>
+                  </DropdownProvider>
+                  <ToastContainer />
+                </HomePageLoadingProvider>
+              </DisclaimerGuard>
+            </DisclaimerModalProvider>
           </AuthModalProvider>
         </AuthProvider>
       </PostHogProvider>
