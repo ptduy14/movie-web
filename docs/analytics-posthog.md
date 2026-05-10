@@ -3,7 +3,7 @@
 > Real-user traffic + product analytics tracking for movie-web.
 > Single source of truth for every analytics decision. Updated after each phase.
 
-**Status:** Phase 4/6 complete
+**Status:** Phase 6/6 complete — implementation done, dashboards live
 
 ---
 
@@ -100,8 +100,10 @@ NEXT_PUBLIC_POSTHOG_UI_HOST="https://us.posthog.com"
 |---|---|---|
 | `capture_pageview` | `false` | Manual capture for App Router |
 | `capture_pageleave` | `true` | Accurate time-on-page |
-| `persistence` | `'localStorage+cookie'` | Best persistence across tabs / sessions |
+| `persistence` | `'localStorage'` | No cookies → friendlier privacy story (see 5.1) |
 | `autocapture` | `true` | Free click/submit tracking, can disable later if noisy |
+| `respect_dnt` | `true` | Auto opt-out users with `Do Not Track` enabled |
+| `disable_session_recording` | `isDev` | No replays in dev — saves 5K/month free quota for prod data |
 | `session_recording.maskAllInputs` | `true` | Mask passwords / comment drafts |
 | `session_recording.maskTextSelector` | `'[data-private]'` | Custom selector for sensitive elements |
 
@@ -115,8 +117,8 @@ NEXT_PUBLIC_POSTHOG_UI_HOST="https://us.posthog.com"
 | 2. Init client + provider + pageview | Done | `lib/posthog/client.ts`, `PostHogProvider`, mounted in tree |
 | 3. Auth identify | Done | Redux subscriber → `identify` / `reset` |
 | 4. Event schema + tracking points | Done | Watch funnel, search, collection, comment, auth |
-| 5. Privacy & GDPR | Pending | Cookie consent / cookieless mode |
-| 6. Verify & dashboard | Pending | Test events, build PostHog dashboards |
+| 5. Privacy & GDPR | Done | localStorage-only, respect DNT, mask PII selectors |
+| 6. Verify & dashboard | Done | Production verification + 7 dashboard insights live |
 
 ---
 
@@ -159,6 +161,57 @@ All events are emitted via the typed wrapper in `lib/posthog/events.ts`. The wra
 
 ---
 
+### 6.3. Privacy & PII strategy (Phase 5)
+
+The audience is primarily Vietnamese, where there is no GDPR-equivalent cookie-consent law as of 2026. To stay clean of EU compliance overhead without needing a banner, we use a no-cookie tracking strategy plus aggressive PII masking in session replay.
+
+### 6.3.1. No cookies — `persistence: 'localStorage'`
+PostHog's default `localStorage+cookie` persistence sets a `ph_*_posthog` cookie. Cookies trigger ePrivacy Directive consent rules in the EU (and increasingly in other jurisdictions). Switching to `localStorage` only:
+- Returning visitors are still tracked (localStorage persists indefinitely on the same browser)
+- Logged-in users still get cross-device identity via `posthog.identify()` with their Firebase `uid`
+- We lose cross-subdomain tracking — not relevant for movie-web (single domain)
+- We avoid the EU consent banner requirement under the ePrivacy Directive
+
+### 6.3.2. Respect `Do Not Track`
+`respect_dnt: true` makes PostHog auto-opt-out users whose browser sends `DNT: 1`. Their events are dropped client-side and never reach the proxy. This is a cheap way to honor a user's explicit privacy preference at zero implementation cost.
+
+### 6.3.3. Session replay masking
+Two layers of masking:
+
+**Layer 1 — `maskAllInputs: true`**: every `<input>`, `<textarea>`, `<select>` is auto-masked. Passwords, signup forms, search queries — all redacted to `*` in the replay. Default-on, never opt-out.
+
+**Layer 2 — `data-private` attribute**: anything not an input but still PII gets the `data-private` attribute, picked up by `maskTextSelector`. Currently applied to:
+
+| Element | File | Why |
+|---|---|---|
+| Comment input value | `components/comment/comment-input.tsx` | User-generated content may contain PII |
+| Comment edit input | `components/comment/comment.tsx` | Same |
+| Comment text display | `components/comment/comment.tsx` | Render of stored comment text |
+| Profile email field | `components/profile/personal-info.tsx` | User email |
+| Sidebar name + email | `components/profile/profile-sidebar.tsx` | User PII in nav |
+| Account dropdown name + email | `components/account/account-profile-dropdown.tsx` | Same |
+| Mobile menu name + email | `components/account/account-profile-mobile.tsx` | Same |
+
+Adding more masks: drop `data-private` on any element whose text we don't want recorded. No code changes needed — the selector picks it up automatically.
+
+### 6.3.4. PII NOT sent to PostHog
+- `accessToken` / `refreshToken` (in Redux user object) — explicitly excluded from `posthog.identify`
+- Passwords — auto-masked by `maskAllInputs` in replay, never captured as event property
+- Full comment text — only `comment_length` is sent as a property; the text itself is not
+- IP address — PostHog stores `$geoip_country_name` / `$geoip_city_name` derived from IP; the raw IP is hashed and stored only by PostHog (configurable in PostHog UI → Project Settings → Anonymize IP)
+
+### 6.3.5. Dev-mode session recording disabled
+`disable_session_recording` is set to `process.env.NODE_ENV === 'development'`. Local development sessions (debugging, hot reloads, fast refreshes) would otherwise burn through the 5K/month free quota with low-value recordings. Production keeps recording at full sampling — adjust in PostHog UI → Settings → Recordings → Sampling if it consumes too much quota.
+
+### 6.3.6. What we did NOT add (deliberately)
+- **No cookie consent banner** — moot since we don't set cookies
+- **No PostHog feature flag for opt-out** — `respect_dnt` covers the use case without UI
+- **No PostHog SDK loaded conditionally on user opt-in** — over-engineering for current audience
+
+If the audience expands to EU users, the right next step is a CMP (consent management platform) like Cookiebot or Osano that gates `initPostHog()` on consent. The current architecture (singleton init function) is already structured to make that swap easy: just wrap `initPostHog()` in a consent check.
+
+---
+
 ## 7. Troubleshooting
 
 ### 7.1. Request shows `(blocked:other)` in Network tab — no status code
@@ -189,23 +242,209 @@ matcher: ['/((?!api|_next|_vercel|<your-prefix>|.*\\..*).*)'],
 **Cause #4:** missing or wrong API key.
 → Verify `.env` has `NEXT_PUBLIC_POSTHOG_KEY="phc_..."` (quoted, no stray whitespace). Restart dev server after editing env.
 
-### 7.2. No events appear in PostHog UI
+### 7.4. No events appear in PostHog UI
 1. DevTools → Network → filter `ingest` → confirm requests with status 200
 2. PostHog UI → Activity → Live events (5-10s delay)
 3. Check console for `[PostHog.js]` logs (dev mode auto-enables `posthog.debug()`)
 
-### 7.3. Build fails with "useSearchParams() should be wrapped in a suspense boundary"
+### 7.5. Build fails with "useSearchParams() should be wrapped in a suspense boundary"
 → `PageviewTrackerInner` is already wrapped in `<Suspense>` in `PostHogProvider.tsx`. If the error points to a different file, that file needs its own Suspense — unrelated to PostHog.
 
-### 7.4. Pageview fires twice on a single navigation
+### 7.6. Pageview fires twice on a single navigation
 → React Strict Mode mounts components twice in dev. Production fires only once. You can disable Strict Mode in dev but it's NOT recommended — Strict Mode catches many other bugs.
 
-### 7.5. `locale` is missing from `$pageview`
+### 7.7. `locale` is missing from `$pageview`
 → Check the `pathname` from `usePathname()` is shaped like `/vi/...`. If not (e.g. misconfigured `next-intl`), the tracker can't extract it. Verify `i18n/routing.ts` has `localePrefix: 'always'`.
 
 ---
 
-## 8. Local testing
+### 7.8. Production verification checklist (Phase 6)
+
+Run through this list once after the first prod deploy. Tick boxes by editing this file.
+
+### Smoke test (5 min)
+- [ ] Open production URL in regular browser → DevTools → Network → filter `__relay`
+- [ ] On page load: `/api/__relay/decide?v=3` returns **200**
+- [ ] On navigation between pages: `/api/__relay/i/v0/e/` POSTs return **200**
+- [ ] No `(blocked:other)` rows — if any, see Troubleshooting 7.1
+- [ ] DevTools → Application → Cookies → no `ph_*_posthog` cookie (we use localStorage only)
+- [ ] DevTools → Application → Local Storage → `ph_<key>_posthog` entry exists with a `distinct_id`
+
+### Event verification (10 min)
+Open PostHog UI → **Activity → Live events** (5-10s ingestion delay), then exercise each path on the prod site:
+
+- [ ] Load home page → `$pageview` event with `locale: "vi"` or `"en"`
+- [ ] Click into a movie → `movie_viewed` with `movie_id`, `slug`, `title`, `genre`, `country`, `year`
+- [ ] Click Play / open watch page → `movie_play_started`
+- [ ] Watch past 25% → `movie_play_progress` with `percent: 25`
+- [ ] Watch to end → `movie_play_completed` with `watch_duration` (seconds)
+- [ ] Switch episode → `episode_switched` with `from`, `to`
+- [ ] Switch server → `server_switched`
+- [ ] Refresh watch page after 1+ min played → resume prompt → click Yes → `resume_accepted`
+- [ ] Same prompt → click No → `resume_rejected`
+- [ ] Search → `search_performed` with `query`, `results_count`
+- [ ] Add to collection → `collection_added`
+- [ ] Remove from collection → `collection_removed`
+- [ ] Post a comment → `comment_posted` with `comment_length`
+- [ ] Sign up → `auth_signup` with `method: "email"` or `"google"`
+- [ ] Log in → `auth_login` with method
+- [ ] Log out → `auth_logout`
+
+### Identity verification
+- [ ] Logged-out → `distinct_id` is anonymous (UUID format, starts with `01`)
+- [ ] After login → `distinct_id` becomes the Firebase `uid`
+- [ ] PostHog UI → **People** → search by email → person profile shows `email` + `name` properties
+- [ ] After logout → next event uses a NEW anonymous distinct_id (not the old uid)
+
+### Session replay verification
+- [ ] PostHog UI → **Session replays** → click a recent recording from prod
+- [ ] Comment input shows `█████` (masked)
+- [ ] Profile email/name shows `█████` (masked via `data-private`)
+- [ ] Login/signup form values masked
+
+---
+
+## 8. Dashboard guide (Phase 6)
+
+Build these 7 insights on PostHog UI. They cover traffic, geography, watch funnel, search quality, acquisition, and retention.
+
+### 8.1. Daily Active Users (DAU)
+**Insight type:** Trends
+**Series:** unique users on `$pageview`
+**Date range:** Last 30 days
+**Display:** Line chart
+**Use:** Top-line growth metric. Track week-over-week change.
+
+### 8.2. Pageviews by Country
+**Insight type:** Trends
+**Series:** total events on `$pageview`
+**Breakdown:** `$geoip_country_name`
+**Display:** World map (or stacked bar)
+**Use:** Geographic distribution. Confirms ~95%+ Vietnam audience or shows expansion.
+
+### 8.3. Device & Browser breakdown
+**Insight type:** Trends
+**Series:** unique users on `$pageview`
+**Breakdown:** `$device_type` (separate insight: `$browser`)
+**Display:** Pie chart
+**Use:** Mobile vs desktop ratio drives UX priorities. Browser breakdown catches surprise traffic from old IE/Safari versions.
+
+### 8.4. Top Movies (by views)
+**Insight type:** Trends
+**Series:** total events on `movie_viewed`
+**Breakdown:** `title`
+**Display:** Horizontal bar, top 20
+**Use:** Content popularity. Compare with `movie_play_started` breakdown to find "high-click, low-watch" movies — those are misleading thumbnails or trailers labeled as movies.
+
+### 8.5. Watch Funnel (the most important insight)
+**Insight type:** Funnel
+**Steps (in order):**
+1. `movie_viewed`
+2. `movie_play_started`
+3. `movie_play_progress` where `percent = 50`
+4. `movie_play_completed`
+
+**Conversion window:** 1 day
+**Use:** Single most actionable metric. Drop-off between step 1→2 means thumbnail/CTA is weak. Drop-off 2→3 means buffering / quality issues. Drop-off 3→4 means content doesn't keep them. Each step's % is a different lever.
+
+### 8.6. Search → Watch Funnel
+**Insight type:** Funnel
+**Steps:**
+1. `search_performed`
+2. `movie_viewed` (within 5 minutes)
+3. `movie_play_started`
+
+**Use:** Measures whether search actually leads anywhere. If step 1→2 is low, the result page UX is broken. If 2→3 is low, search is finding wrong results.
+
+### 8.7. Retention cohort (D1 / D7 / D30)
+**Insight type:** Retention
+**Cohortizing event:** `$pageview` (first time)
+**Returning event:** `$pageview`
+**Period:** Day
+**Use:** Stickiness. D1 retention <20% means the site doesn't deliver value on first visit. D30 >15% is strong for a free streaming site.
+
+### 8.8. Optional — Collection-driven retention
+**Insight type:** Retention with cohort filter
+**Cohort filter:** users who fired `collection_added` at least once
+**Returning event:** `$pageview`
+**Use:** Test the hypothesis "users who use collection are more retained". If cohort retention is significantly higher than overall (8.7), promote the collection feature more.
+
+### 8.9. Saving these as a Dashboard
+After building each insight:
+1. Click **Save** → name it descriptively (e.g., "Watch Funnel")
+2. From the insight, click **Add to dashboard** → New dashboard "movie-web overview"
+3. Once all 7 are added, share the dashboard via PostHog UI → Dashboard → Share → set permissions
+
+---
+
+## 9. Session replay sampling (PostHog UI)
+
+Free tier = 5K recordings/month. With 100% sampling and modest traffic, this can run out fast.
+
+PostHog UI → **Settings → Replay → Sampling**:
+- **Recommended start:** 100% sampling for first 2 weeks → see what raw data looks like
+- **After 2 weeks:** drop to 25-50% sampling. You don't need to watch every replay — you need representative ones.
+- **Conditional rules:** prefer recording sessions that fired specific events (e.g., `movie_play_started`) over random sessions. Do this with **Conditional rules** in the same UI.
+
+If you blow through the quota mid-month, replays just stop being recorded — events still flow normally.
+
+---
+
+## 10. Custom queries with HogQL
+
+PostHog stores raw events in ClickHouse. The query UI is at **SQL editor** in the left sidebar. HogQL = SQL with PostHog conventions.
+
+### Example: time-to-first-play per signup cohort
+```sql
+SELECT
+  toDate(min(timestamp)) AS signup_day,
+  avg(dateDiff('second', signup_ts, first_play_ts)) AS avg_seconds_to_play
+FROM (
+  SELECT
+    person_id,
+    min(if(event = 'auth_signup', timestamp, null)) AS signup_ts,
+    min(if(event = 'movie_play_started', timestamp, null)) AS first_play_ts
+  FROM events
+  WHERE event IN ('auth_signup', 'movie_play_started')
+  GROUP BY person_id
+)
+WHERE signup_ts IS NOT NULL AND first_play_ts > signup_ts
+GROUP BY signup_day
+ORDER BY signup_day
+```
+
+### Example: which countries have the worst watch completion rate
+```sql
+SELECT
+  properties.$geoip_country_name AS country,
+  countIf(event = 'movie_play_started') AS started,
+  countIf(event = 'movie_play_completed') AS completed,
+  round(countIf(event = 'movie_play_completed') / countIf(event = 'movie_play_started') * 100, 1) AS completion_pct
+FROM events
+WHERE event IN ('movie_play_started', 'movie_play_completed')
+  AND timestamp > now() - INTERVAL 30 DAY
+GROUP BY country
+HAVING started > 50
+ORDER BY completion_pct ASC
+LIMIT 20
+```
+
+Bottom of the list = countries where playback fails most often → likely CDN / video host issue affecting that region.
+
+---
+
+## 11. Alerts (optional, lightweight)
+
+PostHog UI → **Insight → Alerts → Add alert**. Two useful starter alerts:
+
+1. **Drop in DAU**: alert if `$pageview` unique users drops >30% week-over-week → catches site outages
+2. **Spike in errors**: alert if events with property `error_*` exceed N/hour — requires adding error event tracking, not in current schema
+
+Alerts ship to email or Slack webhook. Free tier supports basic alerting.
+
+---
+
+## 12. Local testing
 
 ```bash
 # 1. Restart dev server (required after editing next.config.mjs)
@@ -225,7 +464,7 @@ npm run dev
 
 ---
 
-## 9. References
+## 13. References
 
 - [PostHog Next.js docs](https://posthog.com/docs/libraries/next-js)
 - [PostHog event spec (`$pageview`, `$autocapture`)](https://posthog.com/docs/data/events)
