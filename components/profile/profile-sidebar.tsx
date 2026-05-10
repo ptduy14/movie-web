@@ -79,8 +79,8 @@ export default function ProfileSidebar({
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-white font-semibold text-sm truncate">{user.name || 'User'}</p>
-            <p className="text-gray-400 text-xs truncate">{user.email}</p>
+            <p className="text-white font-semibold text-sm truncate" data-private>{user.name || 'User'}</p>
+            <p className="text-gray-400 text-xs truncate" data-private>{user.email}</p>
           </div>
         </div>
       </div>

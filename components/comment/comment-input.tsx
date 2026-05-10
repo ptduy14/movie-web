@@ -87,6 +87,7 @@ export default function CommentInput({
             className="flex-grow bg-transparent text-sm text-gray-700 outline-none placeholder-gray-400 w-full"
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
+            data-private
           />
         </form>
       </div>
