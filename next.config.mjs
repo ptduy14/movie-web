@@ -7,6 +7,7 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig = {
   reactStrictMode: false,
   images: {
+    unoptimized: true,
     domains: ['img.ophim.live', 'lh3.googleusercontent.com', 'image.tmdb.org'],
   },
   skipTrailingSlashRedirect: true,
