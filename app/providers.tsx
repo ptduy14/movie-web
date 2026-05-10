@@ -11,6 +11,8 @@ import persistStore from 'redux-persist/es/persistStore';
 import AuthProvider from '@/components/context/auth-conext';
 import HomePageLoadingProvider from '@/components/context/home-page-loading-context';
 import { DropdownProvider } from '@/components/context/dropdown-context';
+import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
+import DisclaimerModal from '@/components/disclaimer/disclaimer-modal';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
 
 const persistor = persistStore(store);
@@ -31,14 +33,17 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <PersistGate persistor={persistor}></PersistGate>
       <AuthProvider>
         <AuthModalProvider>
-          <HomePageLoadingProvider>
-            <GlobalEffects />
-            <AuthModal />
-            <DropdownProvider>
-              <Layout>{children}</Layout>
-            </DropdownProvider>
-            <ToastContainer />
-          </HomePageLoadingProvider>
+          <DisclaimerModalProvider>
+            <HomePageLoadingProvider>
+              <GlobalEffects />
+              <AuthModal />
+              <DisclaimerModal />
+              <DropdownProvider>
+                <Layout>{children}</Layout>
+              </DropdownProvider>
+              <ToastContainer />
+            </HomePageLoadingProvider>
+          </DisclaimerModalProvider>
         </AuthModalProvider>
       </AuthProvider>
     </Provider>
