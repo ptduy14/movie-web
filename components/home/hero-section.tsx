@@ -61,28 +61,22 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         {detailMovies.map((movie: DetailMovie) => {
           return (
             <SwiperSlide key={movie.movie._id}>
-              <HeroMovieItem detailMovie={movie} listItem={listItemBySlug.get(movie.movie.slug)} />
+              <HeroMovieItem
+                detailMovie={movie}
+                listItem={listItemBySlug.get(movie.movie.slug)}
+                onNextSlide={handleClickToNextSlide}
+              />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      {/* Desktop Navigation Button */}
+      {/* Desktop Navigation Button — mobile button is rendered inside HeroMovieItem
+          so it can vertically center on the variable-height poster image. */}
       <div
         className="hidden lg:block absolute z-10 top-[18rem] right-6 border border-white p-4 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300"
         onClick={handleClickToNextSlide}
       >
         <FaChevronRight className="text-white group-hover:text-black transition-colors duration-300" />
-      </div>
-
-      {/* Mobile/Tablet Navigation Button */}
-      <div
-        className="lg:hidden absolute z-10 top-1/2 right-4 transform -translate-y-1/2 border border-white/80 p-3 rounded-full group hover:border-black hover:bg-white cursor-pointer transition-all duration-300"
-        onClick={handleClickToNextSlide}
-      >
-        <FaChevronRight
-          className="text-white group-hover:text-black transition-colors duration-300"
-          size={16}
-        />
       </div>
     </div>
   );

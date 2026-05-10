@@ -1,5 +1,6 @@
 'use client';
 import { FaPlay, FaImdb } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa6';
 import MovieSummary from '../movie/movie-summary';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import DetailMovie from 'types/detail-movie';
@@ -29,6 +30,12 @@ interface HeroMovieItemProps {
    * fields when missing.
    */
   listItem?: NewlyMovie;
+  /**
+   * Optional callback for the mobile "next slide" chevron rendered over the
+   * poster. Lives here (not in the parent) so it can be vertically centered
+   * on the image wrapper regardless of the poster's natural aspect ratio.
+   */
+  onNextSlide?: () => void;
 }
 
 const isValidScore = (score?: number) => typeof score === 'number' && score > 0;
@@ -39,7 +46,7 @@ const formatVoteCount = (count?: number) => {
   return String(count);
 };
 
-export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemProps) {
+export default function HeroMovieItem({ detailMovie, listItem, onNextSlide }: HeroMovieItemProps) {
   const t = useTranslations('movie');
   const tRating = useTranslations('movie.rating');
   const locale = useLocale() as Locale;
@@ -69,108 +76,142 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
   const showTmdb = isValidScore(tmdb?.vote_average);
 
   return (
-    <div
-      className="container-wrapper relative w-full h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${movie.poster_url})` }}
-    >
-      <div className="absolute inset-0 bg-black opacity-45"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
-      <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
+    <div className="relative w-full">
+      {/* Desktop Layout — full-bleed background poster with overlaid content */}
+      <div
+        className="hidden lg:block container-wrapper relative w-full lg:h-screen bg-cover bg-center"
+        style={{ backgroundImage: `url(${movie.poster_url})` }}
+      >
+        <div className="absolute inset-0 bg-black opacity-45"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
+        <div className="absolute inset-0 bg-gradient-to-l from-black to-10%"></div>
 
-      {/* Desktop Layout */}
-      <div className="hidden lg:block absolute w-2/4 bottom-[5rem] left-6 space-y-5">
-        {/* Status badges row */}
-        <div className="flex items-center gap-2 flex-wrap">
-          {subDocquyen ? <ExclusiveBadge /> : <NewUpdateBadge modifiedAt={modifiedAt} />}
-          <QualityLangBadge quality={quality} lang={lang} />
-        </div>
+        <div className="absolute w-2/4 bottom-[5rem] left-6 space-y-5">
+          {/* Status badges row */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {subDocquyen ? <ExclusiveBadge /> : <NewUpdateBadge modifiedAt={modifiedAt} />}
+            <QualityLangBadge quality={quality} lang={lang} />
+          </div>
 
-        <h2 className="text-5xl font-bold">{primaryTitle}</h2>
-        {subTitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
+          <h2 className="text-5xl font-bold">{primaryTitle}</h2>
+          {subTitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
 
-        <div className="flex items-center gap-x-2 text-sm">
-          <div>{movie.year}</div>
-          <GoDotFill size={12} />
-          <div>{movieCategory}</div>
-          <GoDotFill size={12} />
-          <div>{localizedEpisodeCurrent(movie.episode_current, locale)}</div>
-        </div>
+          <div className="flex items-center gap-x-2 text-sm">
+            <div>{movie.year}</div>
+            <GoDotFill size={12} />
+            <div>{movieCategory}</div>
+            <GoDotFill size={12} />
+            <div>{localizedEpisodeCurrent(movie.episode_current, locale)}</div>
+          </div>
 
-        {/* Ratings row — TMDB + IMDb side-by-side */}
-        <div className="flex items-center gap-x-4 flex-wrap">
-          {showTmdb && (
-            <div className="flex items-center gap-x-2">
-              <div className="w-[6rem]">
-                <TMDBLogo />
+          {/* Ratings row — TMDB + IMDb side-by-side */}
+          <div className="flex items-center gap-x-4 flex-wrap">
+            {showTmdb && (
+              <div className="flex items-center gap-x-2">
+                <div className="w-[6rem]">
+                  <TMDBLogo />
+                </div>
+                <div>
+                  <span className="font-bold">{tmdb!.vote_average.toFixed(1)}</span>
+                  <span className="text-white/60">/10</span>
+                </div>
+                {tmdb!.vote_count > 0 && (
+                  <span className="text-sm text-white/60">
+                    ({formatVoteCount(tmdb!.vote_count)} {tRating('votes')})
+                  </span>
+                )}
               </div>
-              <div>
-                <span className="font-bold">{tmdb!.vote_average.toFixed(1)}</span>
-                <span className="text-white/60">/10</span>
+            )}
+            {showImdb && (
+              <div className="flex items-center gap-x-2">
+                <FaImdb className="text-yellow-400 text-3xl" />
+                <div>
+                  <span className="font-bold">{imdb!.vote_average.toFixed(1)}</span>
+                  <span className="text-white/60">/10</span>
+                </div>
+                {imdb!.vote_count > 0 && (
+                  <span className="text-sm text-white/60">
+                    ({formatVoteCount(imdb!.vote_count)} {tRating('votes')})
+                  </span>
+                )}
               </div>
-              {tmdb!.vote_count > 0 && (
-                <span className="text-sm text-white/60">
-                  ({formatVoteCount(tmdb!.vote_count)} {tRating('votes')})
-                </span>
-              )}
-            </div>
-          )}
-          {showImdb && (
-            <div className="flex items-center gap-x-2">
-              <FaImdb className="text-yellow-400 text-3xl" />
-              <div>
-                <span className="font-bold">{imdb!.vote_average.toFixed(1)}</span>
-                <span className="text-white/60">/10</span>
-              </div>
-              {imdb!.vote_count > 0 && (
-                <span className="text-sm text-white/60">
-                  ({formatVoteCount(imdb!.vote_count)} {tRating('votes')})
-                </span>
-              )}
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <MovieSummary summary={movie.content || t('info.fallbackContent')} />
-        <div className="space-x-5 flex items-center">
-          <Link
-            href={`/movies/${movie.slug}`}
-            className="inline-block py-3 px-5 bg-white text-black rounded-md"
-          >
-            <div className="flex align-top space-x-2">
-              <FaPlay size={18} />
-              <span className="block leading-4 font-semibold">{t('watch')}</span>
-            </div>
-          </Link>
-          <BtnAddToCollection variant="primary" detailMovie={detailMovie} />
+          <MovieSummary summary={movie.content || t('info.fallbackContent')} />
+          <div className="space-x-5 flex items-center">
+            <Link
+              href={`/movies/${movie.slug}`}
+              className="inline-block py-3 px-5 bg-white text-black rounded-md"
+            >
+              <div className="flex align-top space-x-2">
+                <FaPlay size={18} />
+                <span className="block leading-4 font-semibold">{t('watch')}</span>
+              </div>
+            </Link>
+            <BtnAddToCollection variant="primary" detailMovie={detailMovie} />
+          </div>
         </div>
       </div>
 
-      {/* Mobile/Tablet Layout */}
-      <div className="lg:hidden absolute inset-0 flex flex-col justify-end">
-        <div className="bg-gradient-to-t from-black via-black/80 to-transparent p-4 pb-8">
+      {/* Mobile/Tablet Layout — uncropped poster scales to fit width, content stacks below.
+          `pt-14` offsets the absolute mobile header so the poster top isn't clipped. */}
+      <div className="lg:hidden flex flex-col w-full pt-14">
+        <div className="relative w-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={movie.poster_url}
+            alt={primaryTitle}
+            className="block w-full h-auto"
+          />
+          {/* Soft fade-out so the poster blends into the dark content area below */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+
+          {/* Next-slide chevron — vertically centered on the poster. Lives inside
+              the image wrapper so it tracks the actual image height. */}
+          {onNextSlide && (
+            <button
+              type="button"
+              aria-label="Next slide"
+              onClick={onNextSlide}
+              className="absolute z-10 top-1/2 right-3 -translate-y-1/2
+                         flex items-center justify-center w-9 h-9 rounded-full
+                         bg-white/10 backdrop-blur-md ring-1 ring-white/20
+                         shadow-lg shadow-black/20
+                         text-white/90 hover:bg-white/20 hover:text-white
+                         active:scale-90 transition-all duration-200"
+            >
+              <FaChevronRight size={13} />
+            </button>
+          )}
+        </div>
+
+        <div className="bg-black px-4 pt-3 pb-6 space-y-3">
           {/* Status badges */}
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             {subDocquyen ? <ExclusiveBadge /> : <NewUpdateBadge modifiedAt={modifiedAt} />}
             <QualityLangBadge quality={quality} lang={lang} />
           </div>
 
           {/* Movie Title */}
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-1 leading-tight">
-            {primaryTitle}
-          </h2>
-          {subTitle && <h3 className="text-sm md:text-base text-white/60 mb-2">{subTitle}</h3>}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              {primaryTitle}
+            </h2>
+            {subTitle && <h3 className="text-sm md:text-base text-white/60 mt-1">{subTitle}</h3>}
+          </div>
 
           {/* Movie Metadata */}
-          <div className="flex items-center gap-x-3 mb-3 text-sm text-white/90 flex-wrap">
+          <div className="flex items-center gap-x-3 text-sm text-white/90 flex-wrap">
             <div>{movie.year}</div>
             <div className="text-white/60">•</div>
             <div>{localizedEpisodeCurrent(movie.episode_current, locale)}</div>
             {showTmdb && (
               <>
                 <div className="text-white/60">•</div>
-                <div className="text-white text-sm">
+                <div className="text-white">
                   <span className="font-bold">{tmdb!.vote_average.toFixed(1)}</span>
                   <span className="text-white/60">/10 TMDB</span>
                 </div>
@@ -179,7 +220,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
             {showImdb && (
               <>
                 <div className="text-white/60">•</div>
-                <div className="flex items-center gap-x-1 text-sm">
+                <div className="flex items-center gap-x-1">
                   <FaImdb className="text-yellow-400 text-base" />
                   <span className="font-bold">{imdb!.vote_average.toFixed(1)}</span>
                 </div>
@@ -188,7 +229,7 @@ export default function HeroMovieItem({ detailMovie, listItem }: HeroMovieItemPr
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-3">
+          <div className="space-y-3 pt-1">
             <Link
               href={`/movies/${movie.slug}`}
               className="block w-full bg-white text-black rounded-lg py-3 px-4 text-center font-semibold"

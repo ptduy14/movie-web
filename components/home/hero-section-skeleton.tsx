@@ -12,8 +12,9 @@
  */
 export default function HeroSectionSkeleton() {
   return (
-    <div className="relative">
-      <div className="container-wrapper relative w-full h-screen bg-neutral-900 overflow-hidden">
+    <div className="relative w-full">
+      {/* ===== Desktop layout — mirrors HeroMovieItem desktop block ===== */}
+      <div className="hidden lg:block container-wrapper relative w-full lg:h-screen bg-neutral-900 overflow-hidden">
         {/* Match real hero gradient overlays so background tone is consistent */}
         <div className="absolute inset-0 bg-black opacity-45"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
@@ -24,8 +25,7 @@ export default function HeroSectionSkeleton() {
         {/* Background shimmer on the poster area */}
         <div className="absolute inset-0 bg-neutral-800/40 animate-pulse"></div>
 
-        {/* ===== Desktop layout ===== */}
-        <div className="hidden lg:block absolute w-2/4 bottom-[5rem] left-6 space-y-5">
+        <div className="absolute w-2/4 bottom-[5rem] left-6 space-y-5">
           {/* Badges row (Exclusive/NEW + Quality·Lang) */}
           <div className="flex items-center gap-2">
             <SkeletonBar w="w-24" h="h-5" />
@@ -63,32 +63,37 @@ export default function HeroSectionSkeleton() {
             <SkeletonBar w="w-44" h="h-12" rounded="rounded-md" />
           </div>
         </div>
+      </div>
 
-        {/* ===== Mobile/Tablet layout ===== */}
-        <div className="lg:hidden absolute inset-0 flex flex-col justify-end">
-          <div className="bg-gradient-to-t from-black via-black/80 to-transparent p-4 pb-8 space-y-3">
-            {/* Badges */}
-            <div className="flex items-center gap-2">
-              <SkeletonBar w="w-20" h="h-5" />
-              <SkeletonBar w="w-16" h="h-5" />
-            </div>
+      {/* ===== Mobile/Tablet layout — mirrors HeroMovieItem mobile block =====
+          `pt-14` mirrors the offset in HeroMovieItem so skeleton/real layouts match. */}
+      <div className="lg:hidden flex flex-col w-full pt-14">
+        {/* Poster placeholder — uses landscape aspect ratio to match scaled poster */}
+        <div className="relative w-full aspect-[16/9] bg-neutral-800/40 animate-pulse"></div>
 
-            {/* Title */}
-            <SkeletonBar w="w-3/4" h="h-7" />
+        <div className="bg-black px-4 pt-3 pb-6 space-y-3">
+          {/* Badges */}
+          <div className="flex items-center gap-2">
+            <SkeletonBar w="w-20" h="h-5" />
+            <SkeletonBar w="w-16" h="h-5" />
+          </div>
 
-            {/* Metadata inline */}
-            <div className="flex items-center gap-x-3 flex-wrap">
-              <SkeletonBar w="w-10" h="h-3" />
-              <SkeletonBar w="w-16" h="h-3" />
-              <SkeletonBar w="w-14" h="h-3" />
-              <SkeletonBar w="w-12" h="h-3" />
-            </div>
+          {/* Title */}
+          <SkeletonBar w="w-3/4" h="h-7" />
+          <SkeletonBar w="w-1/2" h="h-4" />
 
-            {/* Buttons */}
-            <div className="space-y-3 pt-2">
-              <SkeletonBar w="w-full" h="h-12" rounded="rounded-lg" />
-              <SkeletonBar w="w-full" h="h-12" rounded="rounded-lg" />
-            </div>
+          {/* Metadata inline */}
+          <div className="flex items-center gap-x-3 flex-wrap">
+            <SkeletonBar w="w-10" h="h-3" />
+            <SkeletonBar w="w-16" h="h-3" />
+            <SkeletonBar w="w-14" h="h-3" />
+            <SkeletonBar w="w-12" h="h-3" />
+          </div>
+
+          {/* Buttons */}
+          <div className="space-y-3 pt-1">
+            <SkeletonBar w="w-full" h="h-12" rounded="rounded-lg" />
+            <SkeletonBar w="w-full" h="h-12" rounded="rounded-lg" />
           </div>
         </div>
       </div>
