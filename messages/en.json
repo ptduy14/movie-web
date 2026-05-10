@@ -107,6 +107,19 @@
     "searchPlaceholder": "Enter movie name..."
   },
 
+  "disclaimer": {
+    "title": "Disclaimer",
+    "intro": "MovieX is a non-commercial project created for educational purposes.",
+    "points": {
+      "purpose": "Educational and research purposes only",
+      "thirdParty": "Content provided by third-party sources",
+      "noHosting": "No media hosted directly on our servers",
+      "contact": "Contact us for any copyright concerns"
+    },
+    "agree": "Accept & Continue",
+    "learnMore": "Learn more"
+  },
+
   "auth": {
     "login": {
       "title": "Sign in to MovieX",
