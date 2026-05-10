@@ -108,6 +108,7 @@
   },
 
   "disclaimer": {
+    "eyebrow": "Notice",
     "title": "Disclaimer",
     "intro": "MovieX is a non-commercial project created for educational purposes.",
     "points": {
