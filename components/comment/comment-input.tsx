@@ -8,6 +8,7 @@ import { SetStateAction } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import DetailMovie from 'types/detail-movie';
 import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
 
 export default function CommentInput({
   movie,
@@ -54,6 +55,7 @@ export default function CommentInput({
       return [commentSubmited, ...prev];
     });
 
+    analytics.commentPosted(movie.movie._id, commentText.length);
     setCommentText('');
     setIsSubmitingComment(false);
   };

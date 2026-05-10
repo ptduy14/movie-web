@@ -10,6 +10,7 @@ import { auth } from '../../lib/firebase';
 import { useState } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { toast } from 'react-toastify';
+import { analytics } from 'lib/posthog/events';
 
 interface ProfileSidebarProps {
   activeSection: ProfileSection;
@@ -51,6 +52,7 @@ export default function ProfileSidebar({
   const handleLogout = async () => {
     setIsLoggingOut(true);
     try {
+      analytics.authLogout();
       await AuthServices.removeAuthCookie();
       await signOut(auth);
       dispatch(removeUser());
