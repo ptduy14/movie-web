@@ -19,7 +19,13 @@ export default function DailyUpdateBanner({ count }: DailyUpdateBannerProps) {
 
   return (
     <div className="container-wrapper">
-      <div className="mt-6 mb-6 mx-4 md:mx-0 flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-red-600/20 via-red-500/10 to-transparent border-l-4 border-red-500">
+      {/*
+        Vertical margins (mt-8 / mb-8 = 32px) match the `space-y-8` rhythm of
+        the section list below. Earlier 24px on this banner created a visibly
+        tighter gap above "Tiếp Tục Xem" than between subsequent rows, which
+        broke the rhythm of the home page.
+      */}
+      <div className="mt-8 mb-8 mx-4 md:mx-0 flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-red-600/20 via-red-500/10 to-transparent border-l-4 border-red-500">
         <MdNewReleases className="text-red-500 text-2xl flex-shrink-0 animate-pulse" />
         <div className="text-sm md:text-base">
           <span className="font-semibold text-white">{t('todayCount')} </span>
