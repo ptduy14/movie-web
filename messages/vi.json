@@ -37,6 +37,7 @@
   },
 
   "home": {
+    "continueWatching": "Tiếp Tục Xem",
     "lists": {
       "newlyUpdated": "Phim Mới Cập Nhật",
       "singleNewlyUpdated": "Phim Lẻ Mới Cập Nhật",
