@@ -2,6 +2,7 @@ import type { Locale } from 'i18n/routing';
 import type Tmdb from 'types/tmdb';
 import type { TmdbLogo } from 'types/tmdb-logo';
 import TMDBServices from 'services/tmdb-services';
+import { getCachedLogos, setCachedLogos } from 'services/tmdb-images-cache';
 
 const TMDB_LOGO_BASE = `${process.env.NEXT_PUBLIC_TMDB_IMG_DOMAIN}/t/p/w500`;
 
@@ -78,12 +79,24 @@ export function pickLogoUrl(logos: TmdbLogo[] | undefined, locale: Locale): stri
 }
 
 /**
- * Fetch images from TMDB and apply `pickLogoUrl` in one call.
+ * Resolve the best TMDB logo URL for a title, with an Upstash cache layer in
+ * front of the TMDB images endpoint.
+ *
+ * Flow:
+ *  1. Cache hit  → run picker against cached logos and return.
+ *  2. Cache miss → fetch TMDB → write logos array to cache (7-day TTL) → run
+ *                  picker → return.
+ *
+ * The cache stores the raw `logos` array (locale-agnostic) rather than the
+ * resolved URL so that picker logic changes — new denylist entries, threshold
+ * tweaks, locale-strict rule changes — take effect immediately without
+ * waiting for TTL expiry. Empty arrays are cached too so titles without
+ * logos don't burn a TMDB call on every render.
  *
  * Returns `null` when:
- *  - the movie has no TMDB id,
- *  - the TMDB request fails,
- *  - or no logo matches the locale-strict fallback chain.
+ *  - the movie has no TMDB id (skip entirely),
+ *  - the TMDB request fails AND there is no cache entry,
+ *  - or the picker rejects every available logo for this locale.
  *
  * Never throws — callers can safely use the result as an optional prop.
  */
@@ -92,9 +105,19 @@ export async function fetchMovieLogoUrl(
   locale: Locale
 ): Promise<string | null> {
   if (!tmdb?.id || !tmdb?.type) return null;
+
   try {
-    const res = await TMDBServices.getImages(tmdb.id, tmdb.type);
-    return pickLogoUrl(res.logos, locale);
+    let logos = await getCachedLogos(tmdb.type, tmdb.id);
+    if (logos === undefined) {
+      const res = await TMDBServices.getImages(tmdb.id, tmdb.type);
+      logos = res.logos ?? [];
+      // Awaited (not fire-and-forget) because Vercel serverless functions can
+      // terminate before in-flight promises resolve, silently dropping the
+      // write. `setCachedLogos` swallows its own errors, so the await is
+      // bounded by Upstash latency (~20-50ms) and won't throw.
+      await setCachedLogos(tmdb.type, tmdb.id, logos);
+    }
+    return pickLogoUrl(logos, locale);
   } catch {
     return null;
   }
