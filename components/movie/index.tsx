@@ -106,7 +106,7 @@ export default function MoviePage({
                 </Link>
               )}
             </div>
-            <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
+            <div className=" w-3/4 pl-14 pb-6 space-y-6 ">
               <div>
                 {logoUrl ? (
                   <MovieLogo
