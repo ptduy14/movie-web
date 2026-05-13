@@ -10,6 +10,7 @@ import { Link } from 'i18n/routing';
 import Image from 'next/image';
 import MovieImage from 'types/movie-image';
 import RatingLinks from '../commons/rating-links';
+import MovieLogo from '../commons/movie-logo';
 import { useLocale, useTranslations } from 'next-intl';
 import { analytics } from 'lib/posthog/events';
 import {
@@ -42,10 +43,16 @@ export default function MoviePage({
   movie,
   credit,
   images,
+  logoUrl,
 }: {
   movie: DetailMovie;
   credit: Credit | undefined;
   images: MovieImage[];
+  /**
+   * TMDB title-card logo for the active locale (vi → en → langless). When
+   * `null`/`undefined`, the heading renders as plain text instead.
+   */
+  logoUrl?: string | null;
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;
@@ -101,7 +108,15 @@ export default function MoviePage({
             </div>
             <div className=" w-3/4 pl-14 pb-6 space-y-10 ">
               <div>
-                <h3 className="text-5xl font-medium">{primaryTitle}</h3>
+                {logoUrl ? (
+                  <MovieLogo
+                    src={logoUrl}
+                    alt={primaryTitle}
+                    className="block max-h-32 w-auto max-w-[30rem] object-contain object-left drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
+                  />
+                ) : (
+                  <h3 className="text-5xl font-medium">{primaryTitle}</h3>
+                )}
                 {subTitle && (
                   <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${subTitle} (${movie.movie.year})`}</h4>
                 )}
@@ -163,7 +178,15 @@ export default function MoviePage({
 
               {/* Movie Info */}
               <div className="flex-1 min-w-0">
-                <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
+                {logoUrl ? (
+                  <MovieLogo
+                    src={logoUrl}
+                    alt={primaryTitle}
+                    className="block max-h-12 w-auto max-w-full object-contain object-left mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]"
+                  />
+                ) : (
+                  <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
+                )}
                 {subTitle && (
                   <h2 className="text-base text-gray-300 mb-2 truncate">
                     {subTitle} ({movie.movie.year})
