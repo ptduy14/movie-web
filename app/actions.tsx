@@ -5,6 +5,8 @@ import MovieServices from 'services/movie-services';
 import { redirect } from 'i18n/routing';
 import { getLocale } from 'next-intl/server';
 import { localizeMovieContentsBatch } from 'services/movie-content-localizer';
+import { fetchMovieLogoUrl } from 'utils/tmdb-logo';
+import type { Locale } from 'i18n/routing';
 
 export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
   const locale = await getLocale();
@@ -35,6 +37,28 @@ export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
   });
 
   return detailMovies;
+}
+
+/**
+ * Resolve TMDB logo URLs for a batch of hero movies, keyed by movie slug.
+ *
+ * Each movie triggers one TMDB images request, fired in parallel. Missing or
+ * failed lookups map to `null` so the component falls back to text. With Next
+ * data cache disabled, this is a fresh fan-out per hero render — keep an eye
+ * on Vercel function duration if the hero slide count grows.
+ */
+export async function getHeroLogoUrlsServerAction(
+  movies: NewlyMovie[]
+): Promise<Record<string, string | null>> {
+  const locale = (await getLocale()) as Locale;
+  const urls = await Promise.all(
+    movies.map((m) => fetchMovieLogoUrl(m.tmdb, locale))
+  );
+  const map: Record<string, string | null> = {};
+  movies.forEach((m, i) => {
+    map[m.slug] = urls[i];
+  });
+  return map;
 }
 
 export async function getMoviesByFormat(slug: string, page: number) {
