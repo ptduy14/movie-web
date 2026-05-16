@@ -57,6 +57,7 @@
     "watchNow": "Xem ngay",
     "addToCollection": "Thêm vào bộ sưu tập",
     "removeFromCollection": "Xóa khỏi bộ sưu tập",
+    "removeFromRecent": "Xóa khỏi danh sách đã xem",
     "newBadge": "Mới",
     "exclusiveBadge": "Độc quyền"
   },
@@ -367,6 +368,7 @@
     "alreadyInCollection": "Phim đã có trong bộ sưu tập",
     "addedToCollectionLong": "Phim đã được thêm vào bộ sưu tập",
     "removedFromCollectionLong": "Phim đã được xoá khỏi bộ sưu tập.",
+    "removedFromRecent": "Đã xóa khỏi danh sách đã xem",
     "genericError": "Có lỗi xảy ra"
   },
 
