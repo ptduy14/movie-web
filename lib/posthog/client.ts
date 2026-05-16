@@ -12,6 +12,12 @@ export function initPostHog(): void {
   const apiHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
   const uiHost = process.env.NEXT_PUBLIC_POSTHOG_UI_HOST;
   const isDev = process.env.NODE_ENV === 'development';
+  const enableInDev = process.env.NEXT_PUBLIC_POSTHOG_ENABLE_DEV === 'true';
+
+  if (isDev && !enableInDev) {
+    console.info('[PostHog] disabled in dev (set NEXT_PUBLIC_POSTHOG_ENABLE_DEV=true to enable)');
+    return;
+  }
 
   if (!key) {
     if (isDev) {
