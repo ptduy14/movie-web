@@ -72,3 +72,29 @@ export function getRecentMovies(): IRecentMovie[] {
   const store = readStore();
   return Object.values(store).sort((a, b) => (b.updatedAt ?? 0) - (a.updatedAt ?? 0));
 }
+
+/**
+ * Single-entry lookup. Replaces the former `getVideoProgress(movieId)` from
+ * the deprecated `vp` store now that progress lives on the same `IRecentMovie`
+ * shape. Callers needing the bare progress fields read `progressTime` etc.
+ * directly off the returned object.
+ */
+export function getRecentMovie(movieId: string): IRecentMovie | null {
+  return readStore()[movieId] ?? null;
+}
+
+/**
+ * Drop all stored entries. Called after a successful guest → logged-in sync
+ * so that subsequent reads source from Firestore (the now-canonical store
+ * for authenticated users) and we don't re-upload the same data on every
+ * login event.
+ */
+export function clearRecentMovies(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Quota / private-mode failures are non-fatal — the only consequence is
+    // a re-sync next login, which is idempotent.
+  }
+}

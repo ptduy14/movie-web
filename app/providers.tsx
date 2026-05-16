@@ -14,17 +14,23 @@ import { DropdownProvider } from '@/components/context/dropdown-context';
 import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
 import DisclaimerGuard from '@/components/disclaimer/disclaimer-guard';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
+import useGuestLoginSync from 'hooks/useGuestLoginSync';
 import PostHogProvider from '@/components/analytics/PostHogProvider';
 
 const persistor = persistStore(store);
 
 /**
  * Mounts side-effect hooks that need to run inside the Redux Provider tree.
- * Currently: bootstraps the user's movie collection from Firestore once per
- * login session (see `useCollectionFetcher`).
+ * Currently:
+ *  - `useCollectionFetcher`: bootstraps the user's movie collection from
+ *    Firestore once per login session.
+ *  - `useGuestLoginSync`: on guest → login transition, migrates the local
+ *    `recent_movies` history into Firestore so the home-page "Continue
+ *    Watching" section keeps the user's progress across the auth boundary.
  */
 function GlobalEffects() {
   useCollectionFetcher();
+  useGuestLoginSync();
   return null;
 }
 
