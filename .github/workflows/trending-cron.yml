@@ -1,0 +1,64 @@
+name: Update trending movies (cron)
+
+# Runs every Monday at 01:15 UTC (offset to avoid GitHub's heavy :00 load).
+# Queries PostHog HogQL with a normalized trending score formula and commits
+# the result to public/data/trending.json so the app can serve it statically.
+#
+# Required repository secrets:
+#   POSTHOG_PROJECT_ID        — numeric project ID (PostHog URL: /project/<id>/...)
+#   POSTHOG_PERSONAL_API_KEY  — personal API key from PostHog → Settings → Personal API keys
+#                               (NOT the phc_... project ingestion key)
+
+on:
+  schedule:
+    - cron: '15 1 * * 1'
+  workflow_dispatch:
+    inputs:
+      interval_days:
+        description: 'Days to look back for trending data'
+        required: false
+        default: '7'
+        type: string
+      limit:
+        description: 'Number of movies in result'
+        required: false
+        default: '10'
+        type: string
+
+concurrency:
+  group: trending-cron
+  cancel-in-progress: false
+
+jobs:
+  update-trending:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch trending movies from PostHog
+        env:
+          POSTHOG_PROJECT_ID:       ${{ secrets.POSTHOG_PROJECT_ID }}
+          POSTHOG_PERSONAL_API_KEY: ${{ secrets.POSTHOG_PERSONAL_API_KEY }}
+          TRENDING_INTERVAL_DAYS:   ${{ github.event.inputs.interval_days || '7' }}
+          TRENDING_LIMIT:           ${{ github.event.inputs.limit || '10' }}
+        run: node scripts/fetch-trending.mjs
+
+      - name: Commit & push trending.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/trending.json
+          if git diff --cached --quiet; then
+            echo "No changes — trending data is up to date."
+          else
+            git commit -m "chore: update trending movies [skip ci]"
+            git push
+          fi

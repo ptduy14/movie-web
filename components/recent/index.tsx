@@ -3,10 +3,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'i18n/routing';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from 'lib/firebase';
-import MovieCollection from 'types/movie-collection';
-import RegularMovieItem from '../commons/regular-movie-item';
+import { toast } from 'react-toastify';
+import ContinueWatchingItem from '../commons/continue-watching-item';
 import LoadingSpinner from '../loading/loading-spinner';
 import BrandingPlaceholder from '../search/branding-placeholder';
 import firebaseServices from 'services/firebase-services';
@@ -15,6 +13,7 @@ import { useTranslations } from 'next-intl';
 
 export default function RecentMoviePage() {
   const t = useTranslations('recent');
+  const tToast = useTranslations('toasts');
   const [recentMovies, setRecentMovies] = useState<IRecentMovie[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -37,6 +36,21 @@ export default function RecentMoviePage() {
     getRecentMovies(user?.id);
   }, [user, router, getRecentMovies]);
 
+  const handleDelete = useCallback(
+    async (movieId: string) => {
+      setRecentMovies((prev) => prev.filter((m) => m.id !== movieId));
+      try {
+        if (!user?.id) return;
+        const ok = await firebaseServices.removeRecentMovie(user.id, movieId);
+        if (!ok) throw new Error('Firestore delete failed');
+        toast.success(tToast('removedFromRecent'));
+      } catch {
+        toast.error(tToast('genericError'));
+      }
+    },
+    [user?.id, tToast]
+  );
+
   const renderRecentMovies = () => {
     if (recentMovies.length === 0)
       return (
@@ -46,9 +60,14 @@ export default function RecentMoviePage() {
       );
 
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 container-wrapper">
-        {recentMovies.map((movie: MovieCollection, index) => (
-          <RegularMovieItem movie={movie} key={index} />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 container-wrapper">
+        {recentMovies.map((movie) => (
+          <ContinueWatchingItem
+            movie={movie}
+            target="detail"
+            onDelete={handleDelete}
+            key={movie.id}
+          />
         ))}
       </div>
     );

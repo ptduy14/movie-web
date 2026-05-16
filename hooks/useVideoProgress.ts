@@ -8,11 +8,7 @@ import { analytics } from 'lib/posthog/events';
 import type DetailMovie from 'types/detail-movie';
 import type { IRecentMovie } from 'types/recent-movie';
 
-/**
- * Extract the resume-prompt fields from a consolidated `IRecentMovie` entry.
- * Returns `null` for entries with no usable progress so callers can treat
- * "no entry" and "entry without progress" identically.
- */
+/** Extract resume-prompt fields. Returns null when no usable progress. */
 function toRestoredProgress(entry: IRecentMovie | null): {
   position: number;
   episodeIndex: number;
@@ -28,9 +24,9 @@ function toRestoredProgress(entry: IRecentMovie | null): {
   };
 }
 
-const LS_INTERVAL_MS = 20_000; // localStorage every 20s
-const FS_INTERVAL_MS = 60_000; // Firestore every 60s (logged users only)
-const MIN_PROGRESS_TO_SHOW = 60; // seconds
+const LS_INTERVAL_MS = 20_000;
+const FS_INTERVAL_MS = 60_000;
+const MIN_PROGRESS_TO_SHOW = 60;
 
 export interface RestoredProgress {
   position: number;
@@ -80,7 +76,7 @@ export function useVideoProgress({
 
   const movieId = movie.movie._id;
 
-  // Refs to avoid stale closures in async callbacks and event handlers
+  // Refs prevent stale closures in async callbacks and event handlers.
   const progressRef = useRef({ episodeIndex, episodeLink, serverIndex });
   progressRef.current = { episodeIndex, episodeLink, serverIndex };
 
@@ -88,8 +84,6 @@ export function useVideoProgress({
   userRef.current = user;
 
   const hasRestoredRef = useRef(false);
-
-  // ===== HELPERS =====
 
   const isValidEpisodeLink = useCallback(
     (link: string) => {
@@ -104,13 +98,7 @@ export function useVideoProgress({
     [movie.episodes]
   );
 
-  /**
-   * Build the `IRecentMovie` entry that's now the single shared shape for
-   * both localStorage and Firestore writes. Captures `videoRef.current.duration`
-   * opportunistically — undefined until the player fires `loadedmetadata`, in
-   * which case we drop the field and the UI hides the progress bar for this
-   * save.
-   */
+  /** Single shape used for both localStorage and Firestore writes. */
   const buildRecentMovieEntry = useCallback(
     (time: number): IRecentMovie => {
       const rawDuration = videoRef.current?.duration;
@@ -135,8 +123,6 @@ export function useVideoProgress({
     [movie.movie, videoRef]
   );
 
-  // ===== SAVE PATHS =====
-
   const saveToLocalStorage = useCallback(
     (time: number) => {
       if (time <= 0) return;
@@ -145,15 +131,6 @@ export function useVideoProgress({
     [buildRecentMovieEntry]
   );
 
-  /**
-   * Persist the current entry to Firestore `recentMovies/{userId}/movies/{movieId}`.
-   * After the storage consolidation this is the single Firestore write path —
-   * resume-prompt lookups and Continue Watching now both read from this same
-   * doc, so we no longer maintain a parallel `viewing_progress` collection.
-   * `updateWatchProgress` uses `setDoc({merge: true})` which both creates
-   * the doc on first save AND preserves any caller-supplied metadata fields
-   * across updates.
-   */
   const syncToFirestore = useCallback(
     async (time: number) => {
       const currentUser = userRef.current;
@@ -163,29 +140,14 @@ export function useVideoProgress({
     [buildRecentMovieEntry]
   );
 
-  // Always up-to-date ref for force-sync — used in event handlers to avoid stale closures
   const forceSyncRef = useRef<(time: number) => void>(() => {});
   forceSyncRef.current = (time: number) => {
     saveToLocalStorage(time);
     if (userRef.current) syncToFirestore(time);
   };
 
-  // Note: the guest → logged-in sync effect previously lived here (synced
-  // just the current movie's progress on login). It's been replaced by an
-  // app-level `useGuestLoginSync` hook that syncs the full localStorage
-  // history regardless of which page the user is on at login time.
-  //
-  // The mount-time `storeRecentMovies` effect was also removed: with Firestore
-  // writes now using `updateWatchProgress` with merge=true, the first periodic
-  // save creates the entry; mount-only inserts produced metadata-only docs
-  // that the Continue Watching filter (`progressTime >= 1`) would hide anyway.
-
-  // ===== RESTORE PROGRESS =====
-
-  // Logged users: Firestore first, localStorage as fallback.
-  // Fallback handles: (a) no Firestore doc yet (first visit / sync lag,
-  // or login from a non-watch page before guest sync completes), and
-  // (b) Firestore read failed transiently.
+  // Logged users: Firestore first, localStorage as fallback (handles sync
+  // lag or a transient FS read failure).
   useEffect(() => {
     if (!user) return;
     let cancelled = false;
@@ -197,8 +159,6 @@ export function useVideoProgress({
       if (!progress) {
         const lsEntry = getRecentMovie(movieId);
         progress = toRestoredProgress(lsEntry);
-        // Opportunistically push the localStorage entry up to Firestore so
-        // next time this user lands here, the FS path resolves directly.
         if (progress && lsEntry) {
           firebaseServices.updateWatchProgress(lsEntry, user.id);
         }
@@ -220,7 +180,7 @@ export function useVideoProgress({
     };
   }, [movieId, user?.id, isValidEpisodeLink]);
 
-  // Guests: read from localStorage `rm` (now the single guest store).
+  // Guests: read from localStorage.
   useEffect(() => {
     if (user) return;
     const progress = toRestoredProgress(getRecentMovie(movieId));
@@ -233,7 +193,7 @@ export function useVideoProgress({
     return () => clearTimeout(t);
   }, [movieId, user, isValidEpisodeLink]);
 
-  // ===== AUTO-SAVE: localStorage every 20s (both guest and logged users) =====
+  // Auto-save to localStorage every 20s (guest + auth).
   useEffect(() => {
     const id = setInterval(() => {
       const video = videoRef.current;
@@ -244,7 +204,7 @@ export function useVideoProgress({
     return () => clearInterval(id);
   }, [saveToLocalStorage, videoRef]);
 
-  // ===== AUTO-SYNC: Firestore every 60s (logged users only) =====
+  // Auto-sync to Firestore every 60s (auth only).
   useEffect(() => {
     if (!user) return;
     const id = setInterval(() => {
@@ -256,7 +216,7 @@ export function useVideoProgress({
     return () => clearInterval(id);
   }, [user, syncToFirestore, videoRef]);
 
-  // ===== FORCE SYNC ON PAUSE =====
+  // Force-sync on pause.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -271,7 +231,7 @@ export function useVideoProgress({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoRef]);
 
-  // ===== FORCE SYNC ON VISIBILITY CHANGE / PAGE HIDE / SPA UNMOUNT =====
+  // Force-sync on visibility hide / page hide / SPA unmount.
   useEffect(() => {
     let lastSavedAt = 0;
 
@@ -287,14 +247,7 @@ export function useVideoProgress({
       if (document.visibilityState === 'hidden') debouncedForceSync();
     };
 
-    // pagehide: for logged users use sendBeacon (survives tab/browser close);
-    // for guests save directly to localStorage (synchronous).
-    //
-    // Beacon payload is the full `IRecentMovie` shape so the API route can
-    // merge progress + metadata into `recentMovies/{userId}/movies/{movieId}`
-    // in one write. (Previously we sent only progress, but after the storage
-    // consolidation metadata fields live on the same doc and must be present
-    // when the doc is first created.)
+    // pagehide: auth → sendBeacon (survives tab close), guest → sync localStorage.
     const handlePageHide = () => {
       const currentUser = userRef.current;
       const time = videoRef.current?.currentTime ?? 0;
@@ -320,14 +273,11 @@ export function useVideoProgress({
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('pagehide', handlePageHide);
-      // SPA unmount (Next.js Link navigation) — save to localStorage synchronously
       const time = videoRef.current?.currentTime ?? 0;
       if (time > 0) saveRecentMovie(buildRecentMovieEntry(time));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieId]);
-
-  // ===== ACCEPT / REJECT RESUME =====
 
   const handleAcceptResume = useCallback(() => {
     const { position, episodeIndex: epIdx, episodeLink: epLink } = restoredProgress;

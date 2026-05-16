@@ -261,21 +261,9 @@ const firebaseServices = {
     }
   },
 
-  // ─── recentMovies collection — single source of truth for watch progress ──
-  //
-  // After the 2026-05-16 storage consolidation this collection serves both
-  // use cases:
-  //   - Single-doc lookup for the resume prompt on the watch page
-  //   - Collection scan for the home-page "Continue Watching" section
-  //
-  // The previous `viewing_progress` collection and its `storeRecentMovies` /
-  // `getProgressWatchOfMovie` helpers were removed because their shapes were
-  // strict subsets of `IRecentMovie` and they doubled Firestore writes.
+  // ─── recentMovies collection ──────────────────────────────────────────────
 
-  /**
-   * Scan all recent-movie entries for a user. Returned array is unsorted —
-   * callers sort by `updatedAt` desc to render Continue Watching.
-   */
+  /** List all recent-watched entries for a user (unsorted). */
   getRecentMovies: async (userId: string): Promise<IRecentMovie[]> => {
     try {
       const ref = collection(db, 'recentMovies', userId, 'movies');
@@ -288,12 +276,7 @@ const firebaseServices = {
     }
   },
 
-  /**
-   * Single-doc fetch. Replaces the former `getProgressWatchOfMovie` (which
-   * leaked a `{status, ...}` union) and the now-deleted `getViewingProgress`.
-   * Returns `null` for missing / errored reads so the resume-prompt flow
-   * can treat both cases identically.
-   */
+  /** Fetch one recent-watched entry. Returns null when missing or on error. */
   getRecentMovie: async (userId: string, movieId: string): Promise<IRecentMovie | null> => {
     try {
       const ref = doc(db, 'recentMovies', userId, 'movies', movieId);
@@ -305,14 +288,19 @@ const firebaseServices = {
     }
   },
 
-  /**
-   * Upsert watch progress. `setDoc({merge: true})` creates the doc on first
-   * save and preserves any fields the caller didn't include on subsequent
-   * partial saves. Always stamps `updatedAt: Date.now()` so the value is a
-   * plain JS number consistent with the `IRecentMovie` type and the
-   * localStorage layer — Firestore's `serverTimestamp()` would return a
-   * Timestamp object that breaks numeric sort/compare on the client.
-   */
+  /** Delete one recent-watched entry. Returns false on failure (non-fatal). */
+  removeRecentMovie: async (userId: string, movieId: string): Promise<boolean> => {
+    try {
+      const ref = doc(db, 'recentMovies', userId, 'movies', movieId);
+      await deleteDoc(ref);
+      return true;
+    } catch (error: any) {
+      console.log('removeRecentMovie error:', error.message);
+      return false;
+    }
+  },
+
+  /** Upsert watch progress. `updatedAt` stamped client-side for numeric sort. */
   updateWatchProgress: async (recentMovie: IRecentMovie, userId: string): Promise<void> => {
     try {
       const ref = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
