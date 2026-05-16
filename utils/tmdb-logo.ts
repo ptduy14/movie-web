@@ -2,7 +2,7 @@ import type { Locale } from 'i18n/routing';
 import type Tmdb from 'types/tmdb';
 import type { TmdbLogo } from 'types/tmdb-logo';
 import TMDBServices from 'services/tmdb-services';
-import { getCachedLogos, setCachedLogos } from 'services/tmdb-images-cache';
+import { getCachedLogos, setCachedLogos, getCachedPosters, setCachedPosters } from 'services/tmdb-images-cache';
 
 const TMDB_LOGO_BASE = `${process.env.NEXT_PUBLIC_TMDB_IMG_DOMAIN}/t/p/w500`;
 
@@ -76,6 +76,39 @@ export function pickLogoUrl(logos: TmdbLogo[] | undefined, locale: Locale): stri
     return `${TMDB_LOGO_BASE}${best.file_path}`;
   }
   return null;
+}
+
+const TMDB_POSTER_BASE = `${process.env.NEXT_PUBLIC_TMDB_IMG_DOMAIN}/t/p/w500`;
+
+/**
+ * Resolve the best TMDB portrait poster URL for a title, with Upstash cache
+ * (same pattern as fetchMovieLogoUrl — 7-day TTL, raw array stored so picker
+ * logic can change without a cache flush).
+ *
+ * Picker strategy: en > any language, sorted by vote_average within each group.
+ */
+export async function fetchMoviePosterUrl(
+  tmdb: Pick<Tmdb, 'id' | 'type'> | undefined
+): Promise<string | null> {
+  if (!tmdb?.id || !tmdb?.type) return null;
+  try {
+    let posters = await getCachedPosters(tmdb.type, tmdb.id);
+    if (posters === undefined) {
+      const res = await TMDBServices.getImages(tmdb.id, tmdb.type);
+      posters = res.posters ?? [];
+      await setCachedPosters(tmdb.type, tmdb.id, posters);
+    }
+    if (posters.length === 0) return null;
+    const sorted = [...posters].sort((a, b) => {
+      const aEn = a.iso_639_1 === 'en' ? 1 : 0;
+      const bEn = b.iso_639_1 === 'en' ? 1 : 0;
+      if (aEn !== bEn) return bEn - aEn;
+      return b.vote_average - a.vote_average;
+    });
+    return `${TMDB_POSTER_BASE}${sorted[0].file_path}`;
+  } catch {
+    return null;
+  }
 }
 
 /**

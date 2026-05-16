@@ -16,9 +16,10 @@ export interface TmdbLogo {
 
 /**
  * Subset of the `/3/{type}/{id}/images` response we care about.
- * The endpoint also returns `posters` and `backdrops` — we only consume `logos`.
+ * The endpoint also returns `backdrops` — we consume `logos` and `posters`.
  */
 export interface TmdbImagesResponse {
   id: number;
   logos?: TmdbLogo[];
+  posters?: TmdbLogo[];
 }
