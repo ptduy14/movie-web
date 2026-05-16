@@ -38,6 +38,9 @@
 
   "home": {
     "continueWatching": "Tiếp Tục Xem",
+    "trending": {
+      "title": "Top 5 Hot Trong Tuần"
+    },
     "lists": {
       "newlyUpdated": "Phim Mới Cập Nhật",
       "singleNewlyUpdated": "Phim Lẻ Mới Cập Nhật",
