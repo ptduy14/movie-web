@@ -5,7 +5,7 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import NewlyMovie from 'types/newly-movie';
 import HeroMovieItem from '../commons/hero-movie-item';
 import { useEffect, useRef, useState } from 'react';
-import { getDetailMovieServerAction } from 'app/actions';
+import { getDetailMovieServerAction, getHeroLogoUrlsServerAction } from 'app/actions';
 import DetailMovie from 'types/detail-movie';
 import HeroSectionSkeleton from './hero-section-skeleton';
 import { useHomePageLoadingContext } from '../context/home-page-loading-context';
@@ -13,6 +13,7 @@ import { FaChevronRight } from 'react-icons/fa6';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
   const [detailMovies, setDetailMovies] = useState<DetailMovie[]>([]);
+  const [logoUrls, setLogoUrls] = useState<Record<string, string | null>>({});
   const [hasFetched, setHasFetched] = useState<boolean>(false);
   const swiperRef = useRef<any>(null);
 
@@ -23,9 +24,15 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
     setHasFetched(false);
 
     const getDescriptionMovies = async () => {
-      const data = await getDetailMovieServerAction(movies);
+      // Fetch details + logos in parallel — logos hit TMDB's cached endpoint
+      // and shouldn't gate the hero render if they're slow.
+      const [data, logos] = await Promise.all([
+        getDetailMovieServerAction(movies),
+        getHeroLogoUrlsServerAction(movies),
+      ]);
       if (cancelled) return;
       setDetailMovies(data);
+      setLogoUrls(logos);
       setHasFetched(true);
       setISLoadingHomePage(false);
     };
@@ -64,6 +71,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
               <HeroMovieItem
                 detailMovie={movie}
                 listItem={listItemBySlug.get(movie.movie.slug)}
+                logoUrl={logoUrls[movie.movie.slug] ?? null}
                 onNextSlide={handleClickToNextSlide}
               />
             </SwiperSlide>
