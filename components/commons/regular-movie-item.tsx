@@ -10,7 +10,7 @@ import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
 import MovieCardOverlay from './movie-card-overlay';
-import { preferredTitle, secondaryTitle } from 'constants/i18n-mappings';
+import { preferredTitle, secondaryTitle, localizedCountry } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
 export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollection }) {
@@ -20,8 +20,22 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
 
+  // Netflix-style `year · country` meta line for non-vi locales (matches
+  // NewlyMovieItem). Only computable for the `Movie` shape — `MovieCollection`
+  // (Firestore-backed) lacks year/country fields, so we fall back to empty.
+  const metaLine =
+    locale !== 'vi' && isMovieType
+      ? [
+          movie.year ? String(movie.year) : '',
+          movie.country?.[0]?.slug ? localizedCountry(movie.country[0].slug, locale) : '',
+        ]
+          .filter(Boolean)
+          .join(' · ')
+      : '';
+  const secondLine = locale === 'vi' ? subTitle : metaLine;
+
   return (
-    <Link className="group block relative h-auto space-y-2" href={`/movies/${movie.slug}`}>
+    <Link className="group block relative h-auto space-y-2 select-none" href={`/movies/${movie.slug}`}>
       {/* See NewlyMovieItem note: `isolate` scopes badge z-indices so they
           don't bleed through header dropdowns (z-10). */}
       <div className="relative w-full aspect-[2/3] overflow-hidden rounded isolate">
@@ -86,7 +100,7 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
 
       <div>
         <div className="truncate">{primaryTitle}</div>
-        {subTitle && <div className="truncate text-sm text-[#9B9285]">{subTitle}</div>}
+        {secondLine && <div className="truncate text-sm text-[#9B9285]">{secondLine}</div>}
       </div>
     </Link>
   );

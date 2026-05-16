@@ -51,7 +51,7 @@ export default function ContinueWatchingItem({ movie }: { movie: IRecentMovie })
 
   return (
     <Link
-      className="group block h-auto space-y-2"
+      className="group block h-auto space-y-2 select-none"
       href={`/movies/watch/${movie.slug}`}
     >
       {/*

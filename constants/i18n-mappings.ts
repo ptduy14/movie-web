@@ -293,7 +293,19 @@ export function preferredTitle(
 }
 
 /**
- * The "secondary" title shown beneath the primary one — flips with `preferredTitle`.
+ * The "secondary" title shown beneath the primary one in CARD components
+ * (newly / regular / continue-watching). Hero + detail pages have their own
+ * subtitle logic — see those files.
+ *
+ * Locale-asymmetric by design:
+ *  - `vi`: returns `origin_name` (the original-language title) so Vietnamese
+ *    viewers see the source-language alt name as context — useful for
+ *    recognizing the movie from its international title.
+ *  - `en` and other non-vi locales: returns empty. English-speaking viewers
+ *    don't gain meaningful context from a Vietnamese alt name in a small
+ *    card, and the bilingual stack adds visual noise to the grid. Callers
+ *    already gate render with `subTitle && ...`, so this just suppresses the
+ *    `<div>` entirely.
  */
 export function secondaryTitle(
   name: string,
@@ -301,7 +313,5 @@ export function secondaryTitle(
   locale: Locale
 ): string {
   if (locale === 'vi') return origin_name ?? '';
-  // For non-vi: name (Vietnamese) is the secondary; if origin_name was missing
-  // primary already used `name`, so show nothing here to avoid duplicate.
-  return origin_name?.trim() ? name : '';
+  return '';
 }
