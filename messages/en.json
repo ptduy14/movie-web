@@ -57,6 +57,7 @@
     "watchNow": "Watch now",
     "addToCollection": "Add to collection",
     "removeFromCollection": "Remove from collection",
+    "removeFromRecent": "Remove from recent",
     "newBadge": "New",
     "exclusiveBadge": "Exclusive"
   },
@@ -367,6 +368,7 @@
     "alreadyInCollection": "Movie is already in your collection",
     "addedToCollectionLong": "Movie added to your collection",
     "removedFromCollectionLong": "Movie removed from your collection.",
+    "removedFromRecent": "Removed from recent",
     "genericError": "Something went wrong"
   },
 
