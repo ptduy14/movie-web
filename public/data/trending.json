@@ -1,0 +1,51 @@
+{
+  "updated_at": "2026-05-16T17:25:06.560Z",
+  "interval_days": 7,
+  "movies": [
+    {
+      "title": "The Boys (Phần 5)",
+      "slug": "the-boys-phan-5",
+      "movie_id": "695f5290f063d23bbbc21c06",
+      "views": 82,
+      "plays": 65,
+      "completions": 3,
+      "trending_score": 1
+    },
+    {
+      "title": "Rẽ Trái (Phần 2)",
+      "slug": "re-trai-phan-2",
+      "movie_id": "628746299e983cdfde3acd28",
+      "views": 1,
+      "plays": 20,
+      "completions": 1,
+      "trending_score": 0.259
+    },
+    {
+      "title": "Gen V",
+      "slug": "gen-v",
+      "movie_id": "6516791360ad693b7c9a62eb",
+      "views": 3,
+      "plays": 16,
+      "completions": 1,
+      "trending_score": 0.239
+    },
+    {
+      "title": "Trò Chơi Vương Quyền 6",
+      "slug": "tro-choi-vuong-quyen-6",
+      "movie_id": "622c87f02c855970a7f99ec1",
+      "views": 1,
+      "plays": 9,
+      "completions": 1,
+      "trending_score": 0.191
+    },
+    {
+      "title": "Thế Hệ V (Phần 2)",
+      "slug": "the-he-v-phan-2",
+      "movie_id": "68cb7d3e93eac2e8f9a183e1",
+      "views": 3,
+      "plays": 6,
+      "completions": 1,
+      "trending_score": 0.178
+    }
+  ]
+}
