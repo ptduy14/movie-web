@@ -12,7 +12,6 @@ import {
   onSnapshot,
   orderBy,
   query,
-  serverTimestamp,
   setDoc,
   updateDoc,
   where,
@@ -262,97 +261,68 @@ const firebaseServices = {
     }
   },
 
-  storeRecentMovies: async (recentMovie: IRecentMovie, userId: string) => {
+  // ─── recentMovies collection — single source of truth for watch progress ──
+  //
+  // After the 2026-05-16 storage consolidation this collection serves both
+  // use cases:
+  //   - Single-doc lookup for the resume prompt on the watch page
+  //   - Collection scan for the home-page "Continue Watching" section
+  //
+  // The previous `viewing_progress` collection and its `storeRecentMovies` /
+  // `getProgressWatchOfMovie` helpers were removed because their shapes were
+  // strict subsets of `IRecentMovie` and they doubled Firestore writes.
+
+  /**
+   * Scan all recent-movie entries for a user. Returned array is unsorted —
+   * callers sort by `updatedAt` desc to render Continue Watching.
+   */
+  getRecentMovies: async (userId: string): Promise<IRecentMovie[]> => {
     try {
-      const userRecentMovieDocRef = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
-      const userRecentMovieDoc = await getDoc(userRecentMovieDocRef);
-
-      if (userRecentMovieDoc.exists()) {
-        return;
-      }
-
-      await setDoc(userRecentMovieDocRef, recentMovie);
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  },
-
-  getRecentMovies: async (userId: string) => {
-    try {
-      const userRecentMovieDocRef = collection(db, 'recentMovies', userId, 'movies');
-      const res = await getDocs(userRecentMovieDocRef);
-
-      if (!res.empty) {
-        return res.docs.map((doc: DocumentData) => ({ id: doc.id, ...doc.data() }));
-      }
-
-      return [];
+      const ref = collection(db, 'recentMovies', userId, 'movies');
+      const res = await getDocs(ref);
+      if (res.empty) return [];
+      return res.docs.map((d: DocumentData) => ({ id: d.id, ...d.data() }) as IRecentMovie);
     } catch (error: any) {
       console.log(error.message);
       return [];
-    }
-  },
-
-  getProgressWatchOfMovie: async (userId: string, movieId: string) => {
-    try {
-      const DocRef = doc(db, 'recentMovies', userId, 'movies', movieId);
-      const docSnap = await getDoc(DocRef);
-
-      if (docSnap.exists()) {
-        return { status: true, ...docSnap.data() };
-      }
-
-      return { status: false };
-    } catch (error: any) {
-      console.log(error.message);
-      return { status: false };
     }
   },
 
   /**
-   * Update watch progress for logged-in user (Firestore).
-   * Use setDoc with merge to create or update.
+   * Single-doc fetch. Replaces the former `getProgressWatchOfMovie` (which
+   * leaked a `{status, ...}` union) and the now-deleted `getViewingProgress`.
+   * Returns `null` for missing / errored reads so the resume-prompt flow
+   * can treat both cases identically.
    */
-  updateWatchProgress: async (recentMovie: IRecentMovie, userId: string) => {
+  getRecentMovie: async (userId: string, movieId: string): Promise<IRecentMovie | null> => {
     try {
-      const userRecentMovieDocRef = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
-      await setDoc(userRecentMovieDocRef, { ...recentMovie, userId }, { merge: true });
-    } catch (error: any) {
-      console.log('updateWatchProgress error:', error.message);
-    }
-  },
-
-  // ─── viewing_progress collection ────────────────────────────────────────────
-
-  getViewingProgress: async (
-    userId: string,
-    movieId: string
-  ): Promise<{ position: number; episodeIndex: number; episodeLink: string } | null> => {
-    try {
-      const docRef = doc(db, 'viewing_progress', `${userId}_${movieId}`);
-      const snap = await getDoc(docRef);
+      const ref = doc(db, 'recentMovies', userId, 'movies', movieId);
+      const snap = await getDoc(ref);
       if (!snap.exists()) return null;
-      const data = snap.data();
-      return {
-        position: data.position as number,
-        episodeIndex: data.episodeIndex as number,
-        episodeLink: data.episodeLink as string,
-      };
+      return { id: snap.id, ...snap.data() } as IRecentMovie;
     } catch {
       return null;
     }
   },
 
-  syncViewingProgress: async (
-    userId: string,
-    movieId: string,
-    data: { position: number; episodeIndex: number; episodeLink: string }
-  ): Promise<void> => {
+  /**
+   * Upsert watch progress. `setDoc({merge: true})` creates the doc on first
+   * save and preserves any fields the caller didn't include on subsequent
+   * partial saves. Always stamps `updatedAt: Date.now()` so the value is a
+   * plain JS number consistent with the `IRecentMovie` type and the
+   * localStorage layer — Firestore's `serverTimestamp()` would return a
+   * Timestamp object that breaks numeric sort/compare on the client.
+   */
+  updateWatchProgress: async (recentMovie: IRecentMovie, userId: string): Promise<void> => {
     try {
-      const docRef = doc(db, 'viewing_progress', `${userId}_${movieId}`);
-      await setDoc(docRef, { ...data, updatedAt: serverTimestamp() });
+      const ref = doc(db, 'recentMovies', userId, 'movies', recentMovie.id);
+      await setDoc(
+        ref,
+        { ...recentMovie, userId, updatedAt: Date.now() },
+        { merge: true }
+      );
     } catch (error: any) {
-      console.error('syncViewingProgress error:', error.message);
+      console.log('updateWatchProgress error:', error.message);
     }
   },
 };

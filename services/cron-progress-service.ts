@@ -2,7 +2,7 @@ import 'server-only';
 import { db } from 'lib/firebase-admin';
 import type { CronProgress } from 'types/cron-meta';
 
-const COLLECTION = 'cron_meta';
+const COLLECTION = 'cronMeta';
 
 const docId = (locale: string) => `translations_${locale}`;
 

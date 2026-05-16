@@ -72,7 +72,7 @@ export default function PersonalInfo({ user }: PersonalInfoProps) {
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
     try {
-      const userRef = doc(db, 'Users', user.id);
+      const userRef = doc(db, 'users', user.id);
       const updateData: any = {
         name: data.name,
         email: data.email,
