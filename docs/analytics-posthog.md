@@ -89,9 +89,15 @@ State tracked via `useRef` to detect the transition without re-firing on unrelat
 ```bash
 # .env
 NEXT_PUBLIC_POSTHOG_KEY="phc_xxxxxxxxxxxxxxxx"   # Project API key (from PostHog UI)
-NEXT_PUBLIC_POSTHOG_HOST="/api/__relay"               # Reverse proxy path
+NEXT_PUBLIC_POSTHOG_HOST="/api/__relay"          # Reverse proxy path
 NEXT_PUBLIC_POSTHOG_UI_HOST="https://us.posthog.com"
+
+# Optional — set "true" to enable PostHog in local dev. Default: disabled in
+# dev so local browsing doesn't pollute production analytics.
+NEXT_PUBLIC_POSTHOG_ENABLE_DEV="true"
 ```
+
+**Dev behavior:** `initPostHog()` short-circuits when `NODE_ENV === 'development'` unless `NEXT_PUBLIC_POSTHOG_ENABLE_DEV=true`. When disabled, every `analytics.*()` call becomes a no-op (PostHog SDK methods are safe to call before `init()`). Console shows `[PostHog] disabled in dev` on app load — confirms the guard is active.
 
 > Region: if the PostHog project is in **EU** instead of US, update two places in `next.config.mjs`: `us.i.posthog.com` → `eu.i.posthog.com`, `us-assets.i.posthog.com` → `eu-assets.i.posthog.com`.
 
