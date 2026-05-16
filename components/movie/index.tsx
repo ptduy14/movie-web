@@ -65,6 +65,10 @@ export default function MoviePage({
       genre: movie.movie.category?.map((c) => c.name),
       country: movie.movie.country?.map((c) => c.name),
       year: movie.movie.year,
+      thumb_url: movie.movie.thumb_url,
+      tmdb_id: movie.movie.tmdb?.id,
+      tmdb_type: movie.movie.tmdb?.type,
+      tmdb_rating: movie.movie.tmdb?.vote_average,
     });
   }, [movie.movie._id]);
 

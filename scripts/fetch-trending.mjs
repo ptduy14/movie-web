@@ -23,12 +23,17 @@ if (!PROJECT_ID || !PERSONAL_API_KEY) {
 const HOGQL = `
 WITH base AS (
   SELECT
-    anyIf(properties.title, event = 'movie_viewed') AS title,
-    anyIf(properties.slug,  event = 'movie_viewed') AS slug,
-    properties.movie_id                             AS movie_id,
-    countIf(event = 'movie_viewed')                 AS views,
-    countIf(event = 'movie_play_started')           AS plays,
-    countIf(event = 'movie_play_completed')         AS completions
+    anyIf(properties.title,       event = 'movie_viewed') AS title,
+    anyIf(properties.slug,        event = 'movie_viewed') AS slug,
+    anyIf(properties.thumb_url,   event = 'movie_viewed') AS thumb_url,
+    anyIf(properties.year,        event = 'movie_viewed') AS year,
+    anyIf(properties.tmdb_id,     event = 'movie_viewed') AS tmdb_id,
+    anyIf(properties.tmdb_type,   event = 'movie_viewed') AS tmdb_type,
+    anyIf(properties.tmdb_rating, event = 'movie_viewed') AS tmdb_rating,
+    properties.movie_id                                   AS movie_id,
+    countIf(event = 'movie_viewed')                       AS views,
+    countIf(event = 'movie_play_started')                 AS plays,
+    countIf(event = 'movie_play_completed')               AS completions
   FROM events
   WHERE event IN ('movie_viewed', 'movie_play_started', 'movie_play_completed')
     AND timestamp > now() - INTERVAL ${INTERVAL_DAYS} DAY

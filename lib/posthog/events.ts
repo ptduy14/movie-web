@@ -10,6 +10,10 @@ type MovieRef = {
   genre?: string[];
   country?: string[];
   year?: number;
+  thumb_url?: string;
+  tmdb_id?: string;
+  tmdb_type?: string;
+  tmdb_rating?: number;
 };
 
 type ProgressMilestone = 25 | 50 | 75 | 95;
@@ -42,8 +46,7 @@ export const analytics = {
   searchPerformed: (query: string, resultsCount: number) =>
     posthog.capture('search_performed', { query, results_count: resultsCount }),
 
-  collectionAdded: (movieId: string) =>
-    posthog.capture('collection_added', { movie_id: movieId }),
+  collectionAdded: (movieId: string) => posthog.capture('collection_added', { movie_id: movieId }),
 
   collectionRemoved: (movieId: string) =>
     posthog.capture('collection_removed', { movie_id: movieId }),
