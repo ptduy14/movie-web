@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { getLocalizedMovieContent } from 'services/movie-content-localizer';
+import { fetchMovieLogoUrl } from 'utils/tmdb-logo';
+import type { Locale } from 'i18n/routing';
 
 interface MoviePageParams {
   params: { locale: string; slug: string };
@@ -64,6 +66,9 @@ export default async function Movie({ params }: MoviePageParams) {
     }
   }
 
+  // Best-effort logo lookup. Falls back to null → component renders text title.
+  const logoUrl = await fetchMovieLogoUrl(movie.movie.tmdb, params.locale as Locale);
+
   // Localize the description into the active locale (no-op for VI, AI-translated for others)
   if (movie.movie.content) {
     movie.movie.content = await getLocalizedMovieContent(
@@ -74,5 +79,12 @@ export default async function Movie({ params }: MoviePageParams) {
     );
   }
 
-  return <MoviePage movie={movie} credit={credit} images={res?.data?.images ?? []} />;
+  return (
+    <MoviePage
+      movie={movie}
+      credit={credit}
+      images={res?.data?.images ?? []}
+      logoUrl={logoUrl}
+    />
+  );
 }

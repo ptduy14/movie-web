@@ -6,6 +6,7 @@ import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import DetailMovie from 'types/detail-movie';
 import NewlyMovie from 'types/newly-movie';
 import TMDBLogo from '../logos/TMDB-Logo';
+import MovieLogo from './movie-logo';
 import Category from 'types/category';
 import { GoDotFill } from 'react-icons/go';
 import { Link } from 'i18n/routing';
@@ -31,6 +32,12 @@ interface HeroMovieItemProps {
    */
   listItem?: NewlyMovie;
   /**
+   * TMDB title-card logo URL resolved at the page level. When present, it
+   * replaces the text title heading; `null`/`undefined` keeps the text
+   * heading (used for titles without a TMDB id or matching logo).
+   */
+  logoUrl?: string | null;
+  /**
    * Optional callback for the mobile "next slide" chevron rendered over the
    * poster. Lives here (not in the parent) so it can be vertically centered
    * on the image wrapper regardless of the poster's natural aspect ratio.
@@ -46,7 +53,12 @@ const formatVoteCount = (count?: number) => {
   return String(count);
 };
 
-export default function HeroMovieItem({ detailMovie, listItem, onNextSlide }: HeroMovieItemProps) {
+export default function HeroMovieItem({
+  detailMovie,
+  listItem,
+  logoUrl,
+  onNextSlide,
+}: HeroMovieItemProps) {
   const t = useTranslations('movie');
   const tRating = useTranslations('movie.rating');
   const locale = useLocale() as Locale;
@@ -95,7 +107,15 @@ export default function HeroMovieItem({ detailMovie, listItem, onNextSlide }: He
             <QualityLangBadge quality={quality} lang={lang} />
           </div>
 
-          <h2 className="text-5xl font-bold">{primaryTitle}</h2>
+          {logoUrl ? (
+            <MovieLogo
+              src={logoUrl}
+              alt={primaryTitle}
+              className="block max-h-[7.5rem] w-auto max-w-[28rem] object-contain object-left drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
+            />
+          ) : (
+            <h2 className="text-5xl font-bold">{primaryTitle}</h2>
+          )}
           {subTitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
 
           <div className="flex items-center gap-x-2 text-sm">
@@ -197,9 +217,17 @@ export default function HeroMovieItem({ detailMovie, listItem, onNextSlide }: He
 
           {/* Movie Title */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-              {primaryTitle}
-            </h2>
+            {logoUrl ? (
+              <MovieLogo
+                src={logoUrl}
+                alt={primaryTitle}
+                className="block max-h-16 w-auto max-w-[16rem] object-contain object-left drop-shadow-[0_3px_6px_rgba(0,0,0,0.55)]"
+              />
+            ) : (
+              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                {primaryTitle}
+              </h2>
+            )}
             {subTitle && <h3 className="text-sm md:text-base text-white/60 mt-1">{subTitle}</h3>}
           </div>
 
