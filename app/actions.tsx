@@ -51,9 +51,7 @@ export async function getHeroLogoUrlsServerAction(
   movies: NewlyMovie[]
 ): Promise<Record<string, string | null>> {
   const locale = (await getLocale()) as Locale;
-  const urls = await Promise.all(
-    movies.map((m) => fetchMovieLogoUrl(m.tmdb, locale))
-  );
+  const urls = await Promise.all(movies.map((m) => fetchMovieLogoUrl(m.tmdb, locale)));
   const map: Record<string, string | null> = {};
   movies.forEach((m, i) => {
     map[m.slug] = urls[i];

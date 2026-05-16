@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:firestore": "node --env-file=.env scripts/migrate-firestore-collections.js",
+    "migrate:firestore:dry": "node --env-file=.env scripts/migrate-firestore-collections.js --dry-run"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
