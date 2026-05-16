@@ -10,7 +10,7 @@ import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
 import NewUpdateBadge from './badges/new-update-badge';
 import MovieCardOverlay from './movie-card-overlay';
-import { preferredTitle, secondaryTitle } from 'constants/i18n-mappings';
+import { preferredTitle, secondaryTitle, localizedCountry } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
 export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie }) {
@@ -20,8 +20,25 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
 
+  // Netflix-style meta line under the title (year · country). Only rendered
+  // for non-vi locales — `vi` already shows the `origin_name` subtitle which
+  // adds enough context. On `en` the bilingual subtitle is suppressed, so the
+  // meta line fills the void with useful info instead of just blank space.
+  const metaLine =
+    locale !== 'vi'
+      ? [
+          movie.year ? String(movie.year) : '',
+          movie.country?.[0]?.slug ? localizedCountry(movie.country[0].slug, locale) : '',
+        ]
+          .filter(Boolean)
+          .join(' · ')
+      : '';
+  // The "second line" picks whichever the current locale provides. Cleaner
+  // than two parallel conditionals at the render site.
+  const secondLine = locale === 'vi' ? subTitle : metaLine;
+
   return (
-    <Link className="group block h-auto space-y-2" href={`/movies/${movie.slug}`}>
+    <Link className="group block h-auto space-y-2 select-none" href={`/movies/${movie.slug}`}>
       {/*
         `isolate` (CSS `isolation: isolate`) creates a stacking context scoped
         to this card. Without it, badges' z-20 / z-30 escape to the document
@@ -82,7 +99,7 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
 
       <div>
         <div className="truncate">{primaryTitle}</div>
-        {subTitle && <div className="truncate text-sm text-[#9B9285]">{subTitle}</div>}
+        {secondLine && <div className="truncate text-sm text-[#9B9285]">{secondLine}</div>}
       </div>
     </Link>
   );

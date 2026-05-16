@@ -16,7 +16,6 @@ import NewUpdateBadge from './badges/new-update-badge';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   preferredTitle,
-  secondaryTitle,
   localizedCategory,
   localizedEpisodeCurrent,
 } from 'constants/i18n-mappings';
@@ -75,7 +74,13 @@ export default function HeroMovieItem({
   // For non-vi locale, prefer the source-language `origin_name` as primary
   // title to avoid spending Groq quota on title translation.
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
-  const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
+  // Subtitle in hero/detail intentionally diverges from the card-grid behavior
+  // (`secondaryTitle`, which picks the OTHER language for bilingual context).
+  // Here the LOGO often replaces the primary text — so the subtitle's job is
+  // to anchor the title in the user's locale language. We hide it when it
+  // would just duplicate the primary text (no-logo case).
+  const subTitle = preferredTitle(movie.name, movie.origin_name, locale);
+  const showSubtitle = Boolean(logoUrl) && subTitle.length > 0;
 
   const movieCategory = movie.category.map((item: Category, index) => (
     <span key={index}>
@@ -116,7 +121,7 @@ export default function HeroMovieItem({
           ) : (
             <h2 className="text-5xl font-bold">{primaryTitle}</h2>
           )}
-          {subTitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
+          {showSubtitle && <h3 className="text-xl text-white/70 -mt-3">{subTitle}</h3>}
 
           <div className="flex items-center gap-x-2 text-sm">
             <div>{movie.year}</div>
@@ -228,7 +233,7 @@ export default function HeroMovieItem({
                 {primaryTitle}
               </h2>
             )}
-            {subTitle && <h3 className="text-sm md:text-base text-white/60 mt-1">{subTitle}</h3>}
+            {showSubtitle && <h3 className="text-sm md:text-base text-white/60 mt-1">{subTitle}</h3>}
           </div>
 
           {/* Movie Metadata */}
