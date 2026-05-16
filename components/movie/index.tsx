@@ -18,7 +18,6 @@ import {
   localizedEpisodeCurrent,
   localizedTime,
   preferredTitle,
-  secondaryTitle,
 } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
@@ -72,7 +71,13 @@ export default function MoviePage({
   // Locale-aware title display + pattern-localized status/duration.
   // No Groq API calls — saves quota for the synopsis only.
   const primaryTitle = preferredTitle(movie.movie.name, movie.movie.origin_name, locale);
-  const subTitle = secondaryTitle(movie.movie.name, movie.movie.origin_name, locale);
+  // Subtitle here intentionally mirrors `primaryTitle` (locale-language) so it
+  // anchors the title in the user's UI language even when the TMDB logo
+  // replaces the primary text in a different language. Hide when no logo —
+  // the primary text already serves the locale-anchor role and showing the
+  // same string twice would just be visual noise.
+  const subTitle = primaryTitle;
+  const showSubtitle = Boolean(logoUrl) && subTitle.length > 0;
   const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
   const time = localizedTime(movie.movie.time, locale);
 
@@ -117,7 +122,7 @@ export default function MoviePage({
                 ) : (
                   <h3 className="text-5xl font-medium">{primaryTitle}</h3>
                 )}
-                {subTitle && (
+                {showSubtitle && (
                   <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${subTitle} (${movie.movie.year})`}</h4>
                 )}
               </div>
@@ -187,7 +192,7 @@ export default function MoviePage({
                 ) : (
                   <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
                 )}
-                {subTitle && (
+                {showSubtitle && (
                   <h2 className="text-base text-gray-300 mb-2 truncate">
                     {subTitle} ({movie.movie.year})
                   </h2>
