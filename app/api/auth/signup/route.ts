@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     const user = auth.currentUser;
 
     if (user) {
-      await setDoc(doc(db, "Users", user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         name: data.name,
         photo: ''
