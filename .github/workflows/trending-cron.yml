@@ -8,6 +8,8 @@ name: Update trending movies (cron)
 #   POSTHOG_PROJECT_ID        — numeric project ID (PostHog URL: /project/<id>/...)
 #   POSTHOG_PERSONAL_API_KEY  — personal API key from PostHog → Settings → Personal API keys
 #                               (NOT the phc_... project ingestion key)
+#   TMDB_ACCESS_TOKEN         — TMDB v4 read access token (Bearer). Used to bake
+#                               poster_url + live tmdb_rating into trending.json.
 
 on:
   schedule:
@@ -47,6 +49,7 @@ jobs:
         env:
           POSTHOG_PROJECT_ID:       ${{ secrets.POSTHOG_PROJECT_ID }}
           POSTHOG_PERSONAL_API_KEY: ${{ secrets.POSTHOG_PERSONAL_API_KEY }}
+          TMDB_ACCESS_TOKEN:        ${{ secrets.TMDB_ACCESS_TOKEN }}
           TRENDING_INTERVAL_DAYS:   ${{ github.event.inputs.interval_days || '7' }}
           TRENDING_LIMIT:           ${{ github.event.inputs.limit || '10' }}
         run: node scripts/fetch-trending.mjs

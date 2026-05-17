@@ -68,7 +68,6 @@ export default function MoviePage({
       thumb_url: movie.movie.thumb_url,
       tmdb_id: movie.movie.tmdb?.id,
       tmdb_type: movie.movie.tmdb?.type,
-      tmdb_rating: movie.movie.tmdb?.vote_average,
     });
   }, [movie.movie._id]);
 

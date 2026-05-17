@@ -13,7 +13,6 @@ type MovieRef = {
   thumb_url?: string;
   tmdb_id?: string;
   tmdb_type?: string;
-  tmdb_rating?: number;
 };
 
 type ProgressMilestone = 25 | 50 | 75 | 95;

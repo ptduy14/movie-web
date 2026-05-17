@@ -1,19 +1,15 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from 'i18n/routing';
 import { FaStar } from 'react-icons/fa';
-import MovieServices from 'services/movie-services';
-import { fetchMoviePosterUrl } from 'utils/tmdb-logo';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 
 interface TrendingMovie {
   slug: string;
   title: string;
-  thumb_url?: string;
+  poster_url: string | null;
   year?: number;
-  tmdb_id?: string;
-  tmdb_type?: string;
-  tmdb_rating?: number;
+  tmdb_rating?: number | null;
   trending_score: number;
 }
 
@@ -39,45 +35,22 @@ export default async function TrendingSection() {
     getTrendingMovies(),
   ]);
 
-  if (trendingMovies.length === 0) return null;
-
-  // Fallback: movies without tmdb_id/tmdb_type in JSON (old cron data) still
-  // need a detail call to get TMDB info. Drops to zero calls once cron re-runs
-  // with the new PostHog fields.
-  const needsFallback = trendingMovies.filter((m) => !m.tmdb_id || !m.tmdb_type);
-  const fallbackResults = await Promise.allSettled(
-    needsFallback.map((m) => MovieServices.getDetailMovie(m.slug))
-  );
-  const fallbackMap = new Map(
-    needsFallback.map((m, i) => {
-      const r = fallbackResults[i];
-      return [m.slug, r.status === 'fulfilled' ? r.value?.movie ?? null : null];
-    })
-  );
-
-  // Fetch TMDB posters in parallel — prefer JSON fields, fall back to detail data
-  const tmdbPosters = await Promise.all(
-    trendingMovies.map((m) => {
-      const id = m.tmdb_id ?? fallbackMap.get(m.slug)?.tmdb?.id;
-      const type = m.tmdb_type ?? fallbackMap.get(m.slug)?.tmdb?.type;
-      return fetchMoviePosterUrl(id && type ? { id, type } : undefined);
-    })
-  );
-
+  // poster_url is baked into trending.json by scripts/fetch-trending.mjs
+  // (TMDB poster, then thumb_url fallback). Movies without any poster are
+  // dropped here so the grid never renders an empty card.
   const movies = trendingMovies
-    .map((m, i) => {
-      const fallback = fallbackMap.get(m.slug);
-      const poster = tmdbPosters[i] || m.thumb_url || fallback?.thumb_url || '';
-      if (!poster) return null;
-      return {
-        rank: i + 1,
-        slug: m.slug,
-        title: m.title,
-        poster_url: poster,
-        year: m.year ?? fallback?.year ?? 0,
-        rating: m.tmdb_rating ?? fallback?.tmdb?.vote_average ?? 0,
-      };
-    })
+    .map((m, i) =>
+      m.poster_url
+        ? {
+            rank: i + 1,
+            slug: m.slug,
+            title: m.title,
+            poster_url: m.poster_url,
+            year: m.year ?? 0,
+            rating: m.tmdb_rating ?? 0,
+          }
+        : null
+    )
     .filter((m): m is NonNullable<typeof m> => m !== null);
 
   if (movies.length === 0) return null;
