@@ -1,10 +1,13 @@
 {
   "updated_at": "2026-05-17T00:00:00.000Z",
   "interval_days": 7,
-  "_note": "Manual fill from PostHog HogQL output + TMDB lookups (poster_url, tmdb_id, tmdb_type). tmdb_rating values are approximations from public knowledge — cron job will overwrite with precise vote_average on next run. Movies whose Vietnamese titles could not be mapped to TMDB (poster_url: null) will be filtered out by the component.",
+  "_note": "Manual fill from PostHog HogQL output + TMDB lookups. title.en is the official TMDB show name (with `(Season N)` appended when parseable from the VI title). tmdb_rating values are approximations from public knowledge — cron job will overwrite with precise vote_average on next run.",
   "movies": [
     {
-      "title": "The Boys (Phần 5)",
+      "title": {
+        "vi": "The Boys (Phần 5)",
+        "en": "The Boys (Season 5)"
+      },
       "slug": "the-boys-phan-5",
       "thumb_url": "https://img.ophim.live/uploads/movies/the-boys-phan-5-thumb-1775624659696.jpg",
       "year": 2026,
@@ -19,7 +22,10 @@
       "trending_score": 1
     },
     {
-      "title": "Rẽ Trái (Phần 2)",
+      "title": {
+        "vi": "Rẽ Trái (Phần 2)",
+        "en": null
+      },
       "slug": "re-trai-phan-2",
       "thumb_url": null,
       "year": 2009,
@@ -34,7 +40,10 @@
       "trending_score": 0.269
     },
     {
-      "title": "Gen V",
+      "title": {
+        "vi": "Gen V",
+        "en": "Gen V"
+      },
       "slug": "gen-v",
       "thumb_url": null,
       "year": 2023,
@@ -49,7 +58,10 @@
       "trending_score": 0.239
     },
     {
-      "title": "Trò Chơi Vương Quyền 6",
+      "title": {
+        "vi": "Trò Chơi Vương Quyền 6",
+        "en": "Game of Thrones (Season 6)"
+      },
       "slug": "tro-choi-vuong-quyen-6",
       "thumb_url": "https://img.ophim.live/uploads/movies/tro-choi-vuong-quyen-6-thumb.jpg",
       "year": 2016,
@@ -64,7 +76,10 @@
       "trending_score": 0.199
     },
     {
-      "title": "Thế Hệ V (Phần 2)",
+      "title": {
+        "vi": "Thế Hệ V (Phần 2)",
+        "en": "Gen V (Season 2)"
+      },
       "slug": "the-he-v-phan-2",
       "thumb_url": null,
       "year": 2025,
@@ -79,7 +94,10 @@
       "trending_score": 0.182
     },
     {
-      "title": "Rẽ Trái (Phần 3)",
+      "title": {
+        "vi": "Rẽ Trái (Phần 3)",
+        "en": null
+      },
       "slug": "re-trai-phan-3",
       "thumb_url": null,
       "year": 2010,
@@ -94,7 +112,10 @@
       "trending_score": 0.169
     },
     {
-      "title": "Cậu Bé Mất Tích (Phần 2)",
+      "title": {
+        "vi": "Cậu Bé Mất Tích (Phần 2)",
+        "en": "Stranger Things (Season 2)"
+      },
       "slug": "cau-be-mat-tich-phan-2",
       "thumb_url": "https://img.ophim.live/uploads/movies/cau-be-mat-tich-phan-2-thumb.jpg",
       "year": 2017,
@@ -109,7 +130,10 @@
       "trending_score": 0.162
     },
     {
-      "title": "Cậu Bé Mất Tích (Phần 1)",
+      "title": {
+        "vi": "Cậu Bé Mất Tích (Phần 1)",
+        "en": "Stranger Things (Season 1)"
+      },
       "slug": "cau-be-mat-tich-phan-1",
       "thumb_url": null,
       "year": 2016,
@@ -124,7 +148,10 @@
       "trending_score": 0.149
     },
     {
-      "title": "Cuộc Chiến Ngân Hà: Maul - Chúa Tể Bóng Tối (Phần 1)",
+      "title": {
+        "vi": "Cuộc Chiến Ngân Hà: Maul - Chúa Tể Bóng Tối (Phần 1)",
+        "en": "Star Wars: Maul - Shadow Lord (Season 1)"
+      },
       "slug": "cuoc-chien-ngan-ha-maul-chua-te-bong-toi",
       "thumb_url": null,
       "year": 2026,
@@ -139,7 +166,10 @@
       "trending_score": 0.127
     },
     {
-      "title": "Tố Tụng (Phần 1)",
+      "title": {
+        "vi": "Tố Tụng (Phần 1)",
+        "en": null
+      },
       "slug": "to-tung-phan-1",
       "thumb_url": null,
       "year": 2011,
