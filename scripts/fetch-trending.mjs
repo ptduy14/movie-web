@@ -91,19 +91,43 @@ async function queryPostHog() {
   )
 }
 
-// Live vote_average from TMDB — avoids carrying a snapshot rating in the
-// PostHog event (which would go stale between view and cron run).
-async function fetchTmdbRating(id, type) {
+// Live vote_average + official English title from TMDB.
+// - vote_average: avoids carrying a snapshot rating in the PostHog event
+//   (which would go stale between view and cron run).
+// - title_en: lets the UI render English titles in EN locale instead of
+//   showing the Vietnamese source-API name (e.g., "Stranger Things"
+//   instead of "Cậu Bé Mất Tích"). Free, accurate, deterministic —
+//   beats AI translation which mangles proper nouns.
+async function fetchTmdbDetail(id, type) {
   try {
     const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, {
       headers: { accept: 'application/json', Authorization: `Bearer ${TMDB_TOKEN}` },
     })
-    if (!res.ok) return null
+    if (!res.ok) return { rating: null, title_en: null }
     const data = await res.json()
-    return typeof data.vote_average === 'number' ? data.vote_average : null
+    return {
+      rating: typeof data.vote_average === 'number' ? data.vote_average : null,
+      // TV shows expose `name`, movies expose `title`. Cover both.
+      title_en: data.name ?? data.title ?? null,
+    }
   } catch {
-    return null
+    return { rating: null, title_en: null }
   }
+}
+
+// Source API titles encode season as "(Phần N)" or trailing " N". When we
+// switch to the TMDB show-level English name we lose that info, so re-attach
+// it as "(Season N)" for UI clarity (otherwise "Stranger Things S1" and "S2"
+// would render identically).
+function appendSeasonSuffix(titleEn, titleVi) {
+  if (!titleEn || !titleVi) return titleEn
+  // Pattern 1: "(Phần N)" — e.g., "The Boys (Phần 5)"
+  let m = titleVi.match(/\(Phần\s+(\d+)\)/i)
+  if (m) return `${titleEn} (Season ${m[1]})`
+  // Pattern 2: trailing number — e.g., "Trò Chơi Vương Quyền 6"
+  m = titleVi.match(/\s(\d+)\s*$/)
+  if (m) return `${titleEn} (Season ${m[1]})`
+  return titleEn
 }
 
 // Trending section requires consistent English-language posters for design
@@ -130,16 +154,26 @@ async function fetchTmdbPosterUrl(id, type) {
 }
 
 async function enrichWithTmdb(movie) {
+  const { title: titleVi, ...rest } = movie
   if (!movie.tmdb_id || !movie.tmdb_type) {
-    return { ...movie, tmdb_rating: null, poster_url: movie.thumb_url || null }
+    return {
+      ...rest,
+      title: { vi: titleVi, en: null },
+      tmdb_rating: null,
+      poster_url: movie.thumb_url || null,
+    }
   }
-  const [rating, posterUrl] = await Promise.all([
-    fetchTmdbRating(movie.tmdb_id, movie.tmdb_type),
+  const [detail, posterUrl] = await Promise.all([
+    fetchTmdbDetail(movie.tmdb_id, movie.tmdb_type),
     fetchTmdbPosterUrl(movie.tmdb_id, movie.tmdb_type),
   ])
   return {
-    ...movie,
-    tmdb_rating: rating,
+    ...rest,
+    title: {
+      vi: titleVi,
+      en: appendSeasonSuffix(detail.title_en, titleVi),
+    },
+    tmdb_rating: detail.rating,
     poster_url: posterUrl || movie.thumb_url || null,
   }
 }
@@ -168,7 +202,8 @@ async function main() {
     const posterStatus = m.poster_url
       ? (m.poster_url.includes('image.tmdb.org') ? 'tmdb' : 'fallback')
       : 'none'
-    console.log(`  ${i + 1}. ${m.title} (score: ${m.trending_score}, rating: ${m.tmdb_rating ?? 'n/a'}, poster: ${posterStatus})`)
+    const titleLog = m.title?.en ? `${m.title.en} / ${m.title.vi}` : m.title?.vi
+    console.log(`  ${i + 1}. ${titleLog} (score: ${m.trending_score}, rating: ${m.tmdb_rating ?? 'n/a'}, poster: ${posterStatus})`)
   })
 }
 
