@@ -106,25 +106,23 @@ async function fetchTmdbRating(id, type) {
   }
 }
 
-// Mirrors fetchMoviePosterUrl in utils/tmdb-logo.ts: English-tagged posters
-// first, then by community vote_average. Baked into trending.json so the
-// component can render without any runtime TMDB call.
+// Trending section requires consistent English-language posters for design
+// uniformity. We deliberately do NOT include `null` (langless/textless)
+// posters here — a textless artwork can still carry non-English text that
+// was mis-tagged on upload, which has caused Vietnamese posters to slip
+// through. If a title has no English poster, return null and let the caller
+// fall back to thumb_url.
 async function fetchTmdbPosterUrl(id, type) {
   try {
     const res = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}/images?include_image_language=en,null`,
+      `https://api.themoviedb.org/3/${type}/${id}/images?include_image_language=en`,
       { headers: { accept: 'application/json', Authorization: `Bearer ${TMDB_TOKEN}` } }
     )
     if (!res.ok) return null
     const data = await res.json()
-    const posters = data.posters ?? []
+    const posters = (data.posters ?? []).filter((p) => p.iso_639_1 === 'en')
     if (posters.length === 0) return null
-    const sorted = [...posters].sort((a, b) => {
-      const aEn = a.iso_639_1 === 'en' ? 1 : 0
-      const bEn = b.iso_639_1 === 'en' ? 1 : 0
-      if (aEn !== bEn) return bEn - aEn
-      return b.vote_average - a.vote_average
-    })
+    const sorted = [...posters].sort((a, b) => b.vote_average - a.vote_average)
     return `${TMDB_IMG_DOMAIN}/t/p/w500${sorted[0].file_path}`
   } catch {
     return null
