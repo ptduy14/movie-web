@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server';
-import { Link } from 'i18n/routing';
-import { FaStar } from 'react-icons/fa';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
+import TrendingSlider, { type TrendingItem } from './trending-slider';
 
 interface TrendingMovie {
   slug: string;
@@ -36,24 +35,20 @@ export default async function TrendingSection() {
   ]);
 
   // poster_url is baked into trending.json by scripts/fetch-trending.mjs
-  // (TMDB poster, then thumb_url fallback). Movies without any poster are
-  // dropped here so the grid never renders an empty card.
-  const movies = trendingMovies
-    .map((m, i) =>
-      m.poster_url
-        ? {
-            rank: i + 1,
-            slug: m.slug,
-            title: m.title,
-            poster_url: m.poster_url,
-            year: m.year ?? 0,
-            rating: m.tmdb_rating ?? 0,
-          }
-        : null
-    )
-    .filter((m): m is NonNullable<typeof m> => m !== null);
+  // (TMDB poster, then thumb_url fallback). Filter first, then assign ranks
+  // — so missing-poster items don't produce gaps like "1, 3, 4, 7" in the UI.
+  const items: TrendingItem[] = trendingMovies
+    .filter((m): m is TrendingMovie & { poster_url: string } => Boolean(m.poster_url))
+    .map((m, i) => ({
+      rank: i + 1,
+      slug: m.slug,
+      title: m.title,
+      poster_url: m.poster_url,
+      year: m.year ?? 0,
+      rating: m.tmdb_rating ?? 0,
+    }));
 
-  if (movies.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <div className="container-wrapper space-y-4">
@@ -64,57 +59,7 @@ export default async function TrendingSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 px-4 md:px-0">
-        {movies.map((movie) => (
-          <Link
-            key={movie.slug}
-            href={`/movies/${movie.slug}`}
-            className="relative flex items-end group"
-          >
-            <span
-              className="relative z-0 flex-shrink-0 font-black leading-none pb-3 -mr-5 select-none pointer-events-none text-right"
-              style={{
-                fontSize: 'clamp(56px, 8.5vw, 128px)',
-                width: 'clamp(36px, 5.2vw, 80px)',
-                WebkitTextStroke: '3px rgba(255,255,255,0.30)',
-                color: 'transparent',
-              }}
-            >
-              {movie.rank}
-            </span>
-
-            <div className="relative z-10 flex-1 min-w-0 rounded-xl overflow-hidden bg-gray-800 shadow-lg">
-              <div className="aspect-[2/3]">
-                <img
-                  src={movie.poster_url}
-                  alt={movie.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.07]"
-                />
-              </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 gap-1">
-                <p className="text-xs font-bold uppercase tracking-wide leading-tight line-clamp-2">
-                  {movie.title}
-                </p>
-                <div className="flex items-center gap-1.5 text-[11px] text-gray-300">
-                  <FaStar className="text-yellow-400 shrink-0 text-[9px]" />
-                  <span>{movie.rating.toFixed(1)}</span>
-                  <span>·</span>
-                  <span>{movie.year}</span>
-                </div>
-              </div>
-
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm border-2 border-white/60 flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-300">
-                  <svg className="w-4 h-4 fill-white ml-0.5" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <TrendingSlider items={items} />
     </div>
   );
 }

@@ -18,7 +18,7 @@ const PERSONAL_API_KEY = process.env.POSTHOG_PERSONAL_API_KEY
 const TMDB_TOKEN       = process.env.TMDB_ACCESS_TOKEN
 const TMDB_IMG_DOMAIN  = process.env.TMDB_IMG_DOMAIN         || 'https://image.tmdb.org'
 const INTERVAL_DAYS    = Number(process.env.TRENDING_INTERVAL_DAYS || '7')
-const LIMIT            = Number(process.env.TRENDING_LIMIT         || '5')
+const LIMIT            = Number(process.env.TRENDING_LIMIT         || '10')
 
 if (!PROJECT_ID || !PERSONAL_API_KEY || !TMDB_TOKEN) {
   console.error('Missing required env vars: POSTHOG_PROJECT_ID, POSTHOG_PERSONAL_API_KEY, TMDB_ACCESS_TOKEN')
