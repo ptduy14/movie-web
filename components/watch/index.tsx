@@ -2,9 +2,8 @@
 
 import DetailMovie from 'types/detail-movie';
 import VideoPlayer from './video-player';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { isHaveEpisodesMovie } from 'utils/movie-utils';
-import ServerSection from './server-section';
 import { useRef } from 'react';
 import ProgresswatchNotification from './progress-watch-notification';
 import { useVideoProgress } from 'hooks/useVideoProgress';
@@ -12,6 +11,10 @@ import { useWatchAnalytics } from 'hooks/useWatchAnalytics';
 import { analytics } from 'lib/posthog/events';
 import CommentSection from '../comment';
 import { useTranslations } from 'next-intl';
+import type {
+  NextEpisodePreview,
+  PlayerServer,
+} from './video-controls/player-context';
 
 export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
   const t = useTranslations('watch');
@@ -54,19 +57,63 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     setVideoProgress(null);
   };
 
-  const handleSetServerIndex = (index: number) => {
-    if (index === serverIndex) return;
-    analytics.serverSwitched(movie.movie._id, serverIndex, index);
-    setServerIndex(index);
-    setEpisodeLink(movie.episodes[index].server_data[0].link_m3u8);
-    setEpisodeIndex(0);
-    setVideoProgress(null);
+  /**
+   * Language (= OPhim server) switch from the in-player menu. Preserves the
+   * current playback time and clamps the episode index against the new
+   * server's episode count. Drives the existing `videoProgress` resume
+   * mechanism so the player seeks to the same time after HLS reloads.
+   */
+  const handleSwitchLanguage = (newServerIndex: number) => {
+    if (newServerIndex === serverIndex) return;
+    const newServer = movie.episodes[newServerIndex];
+    if (!newServer?.server_data?.length) return;
+
+    const preservedTime = videoRef.current?.currentTime ?? 0;
+    const clampedEp = Math.min(episodeIndex, newServer.server_data.length - 1);
+
+    analytics.serverSwitched(movie.movie._id, serverIndex, newServerIndex);
+    setServerIndex(newServerIndex);
+    setEpisodeIndex(clampedEp);
+    setEpisodeLink(newServer.server_data[clampedEp].link_m3u8);
+    // Only resume if the user was past the very beginning — avoids a jarring
+    // seek when they switch language right after pressing play.
+    setVideoProgress(preservedTime > 3 ? preservedTime : null);
+  };
+
+  const handleNextEpisode = () => {
+    const list = movie.episodes[serverIndex]?.server_data ?? [];
+    const next = episodeIndex + 1;
+    if (next >= list.length) return;
+    handleSwitchEpisode(next);
   };
 
   useEffect(() => {
     setEpisodeLink(movie.episodes[0].server_data[0].link_m3u8);
     setEpisodeIndex(0);
   }, [movie.movie._id, movie.episodes]);
+
+  // ---- Derived props for VideoPlayer ----
+  const servers: PlayerServer[] = useMemo(
+    () =>
+      movie.episodes.map((srv) => ({
+        name: srv.server_name,
+        episodeCount: srv.server_data.length,
+      })),
+    [movie.episodes]
+  );
+
+  const nextEpisode: NextEpisodePreview | null = useMemo(() => {
+    const list = movie.episodes[serverIndex]?.server_data ?? [];
+    const nextIdx = episodeIndex + 1;
+    if (nextIdx >= list.length) return null;
+    return {
+      index: nextIdx,
+      label: isHaveEpisodesMovie(movie)
+        ? t('episodeLabel', { index: nextIdx + 1 })
+        : list[nextIdx].name,
+      thumbnail: movie.movie.thumb_url || movie.movie.poster_url,
+    };
+  }, [movie, serverIndex, episodeIndex, t]);
 
   return (
     <div className="pt-20 lg:pt-[3.75rem] space-y-6 lg:space-y-10">
@@ -88,16 +135,11 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
             ? t('episodeLabel', { index: episodeIndex + 1 })
             : undefined,
         }}
-      />
-      {movie.episodes.length > 1 && (
-        <div className="text-center text-sm lg:text-base px-4">
-          {t('serverHint')}
-        </div>
-      )}
-      <ServerSection
-        movie={movie}
-        serverIndex={serverIndex}
-        handleSetServerIndex={handleSetServerIndex}
+        servers={servers}
+        currentServerIndex={serverIndex}
+        onSwitchLanguage={handleSwitchLanguage}
+        nextEpisode={nextEpisode}
+        onNextEpisode={handleNextEpisode}
       />
       <div className="container-wrapper-movie px-4 lg:px-0">
         <h1 className="text-xl lg:text-3xl">{movie.movie.name}</h1>

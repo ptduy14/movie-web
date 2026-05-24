@@ -3,17 +3,41 @@ import Hls from 'hls.js';
 import { FaPlay } from 'react-icons/fa';
 import LoadingSpinnerVideoPlayer from '../loading/loading-spiner-video-player';
 import VideoControlsOverlay from './video-controls';
-import type { PlayerMeta } from './video-controls/player-context';
+import type {
+  NextEpisodePreview,
+  PlayerMeta,
+  PlayerServer,
+} from './video-controls/player-context';
 
 type VideoPlayerProps = {
   videoUrl: string;
   thumbnail: string;
   videoProgress: number | null;
   meta: PlayerMeta;
+
+  // Phase 2 — passes through to VideoControlsOverlay
+  servers: PlayerServer[];
+  currentServerIndex: number;
+  onSwitchLanguage: (newServerIndex: number) => void;
+  nextEpisode: NextEpisodePreview | null;
+  onNextEpisode: () => void;
 };
 
 const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
-  ({ videoUrl, thumbnail, videoProgress, meta }, videoRef) => {
+  (
+    {
+      videoUrl,
+      thumbnail,
+      videoProgress,
+      meta,
+      servers,
+      currentServerIndex,
+      onSwitchLanguage,
+      nextEpisode,
+      onNextEpisode,
+    },
+    videoRef
+  ) => {
     const overlay = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const [isCanPlay, setIsCanPlay] = useState<boolean>(false);
@@ -33,7 +57,10 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       if (!video) return;
 
       setIsCanPlay(false);
-      setHasStarted(false);
+      // Only reset hasStarted when there's no pending resume. A language
+      // switch sets `videoProgress` to the previous currentTime to preserve
+      // playback context — in that case we want to skip the poster.
+      if (!videoProgress) setHasStarted(false);
       overlay.current?.classList.remove('hidden');
 
       let hls: Hls | null = null;
@@ -54,10 +81,12 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
         }
         overlay.current?.classList.remove('hidden');
       };
+      // videoProgress is intentionally not a dep — checked once at setup.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [videoUrl, getVideo]);
 
-    // Seek + autoplay when videoProgress is set (user accepts resume)
-    // Split effect to avoid HLS re-init like the previous bug
+    // Seek + autoplay when videoProgress is set (user accepts resume or
+    // language switch). Split effect to avoid HLS re-init.
     useEffect(() => {
       if (!videoProgress || videoProgress <= 0) return;
       const video = getVideo();
@@ -70,7 +99,6 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
         setHasStarted(true);
       };
 
-      // If video is ready → apply now; otherwise wait for canplay
       if (video.readyState >= 2) {
         applyProgress();
       } else {
@@ -100,19 +128,21 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
 
     return (
       <div ref={containerRef} className="relative w-full aspect-video bg-black">
-        {/* The native element. NO `controls` — overlay owns the UI. `playsInline`
-            keeps mobile Safari from auto-jumping to native fullscreen. */}
         <video
           ref={videoRef}
           playsInline
           className="absolute inset-0 h-full w-full"
         />
 
-        {/* Custom controls — only active after first play. */}
         <VideoControlsOverlay
           videoRef={videoRef as React.RefObject<HTMLVideoElement | null>}
           containerRef={containerRef}
           meta={meta}
+          servers={servers}
+          currentServerIndex={currentServerIndex}
+          onSwitchLanguage={onSwitchLanguage}
+          nextEpisode={nextEpisode}
+          onNextEpisode={onNextEpisode}
           disabled={!hasStarted}
         />
 

@@ -33,7 +33,8 @@
       "Bash(node -e \"const d=require\\('D:/personal-project/movie-web/.tmp-list.json'\\); const slugs=\\(d.items||[]\\).slice\\(0,3\\).map\\(i=>i.slug\\); console.log\\(JSON.stringify\\(slugs\\)\\);\")",
       "Bash(node -e \"const en=require\\('D:/personal-project/movie-web/messages/en.json'\\); console.log\\('top keys:', Object.keys\\(en\\).join\\(','\\)\\); console.log\\('watch keys:', Object.keys\\(en.watch||{}\\).join\\(','\\)\\);\")",
       "Bash(echo \"EXIT=$?\")",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(powershell -NoProfile -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Milliseconds 500; Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue\")"
     ]
   }
 }
