@@ -82,6 +82,12 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         videoUrl={episodeLink}
         thumbnail={movie.movie.poster_url}
         videoProgress={videoProgress}
+        meta={{
+          title: movie.movie.name,
+          episodeLabel: isHaveEpisodesMovie(movie)
+            ? t('episodeLabel', { index: episodeIndex + 1 })
+            : undefined,
+        }}
       />
       {movie.episodes.length > 1 && (
         <div className="text-center text-sm lg:text-base px-4">

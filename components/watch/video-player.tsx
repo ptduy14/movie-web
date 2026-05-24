@@ -2,17 +2,25 @@ import React, { useRef, useEffect, forwardRef, useState, useCallback } from 'rea
 import Hls from 'hls.js';
 import { FaPlay } from 'react-icons/fa';
 import LoadingSpinnerVideoPlayer from '../loading/loading-spiner-video-player';
+import VideoControlsOverlay from './video-controls';
+import type { PlayerMeta } from './video-controls/player-context';
 
 type VideoPlayerProps = {
   videoUrl: string;
   thumbnail: string;
   videoProgress: number | null;
+  meta: PlayerMeta;
 };
 
 const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
-  ({ videoUrl, thumbnail, videoProgress }, videoRef) => {
+  ({ videoUrl, thumbnail, videoProgress, meta }, videoRef) => {
     const overlay = useRef<HTMLDivElement | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const [isCanPlay, setIsCanPlay] = useState<boolean>(false);
+    // Becomes true on first user interaction with the pre-play poster. Until
+    // then, the custom controls overlay stays disabled so the poster + FaPlay
+    // CTA owns the surface (matches the previous UX).
+    const [hasStarted, setHasStarted] = useState<boolean>(false);
 
     const getVideo = useCallback(() => {
       return videoRef && 'current' in videoRef ? videoRef.current : null;
@@ -25,6 +33,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       if (!video) return;
 
       setIsCanPlay(false);
+      setHasStarted(false);
       overlay.current?.classList.remove('hidden');
 
       let hls: Hls | null = null;
@@ -58,6 +67,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
         video.currentTime = videoProgress;
         video.play().catch(() => {});
         overlay.current?.classList.add('hidden');
+        setHasStarted(true);
       };
 
       // If video is ready → apply now; otherwise wait for canplay
@@ -77,6 +87,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       const video = getVideo();
       video?.play();
       overlay.current?.classList.add('hidden');
+      setHasStarted(true);
     };
 
     useEffect(() => {
@@ -88,20 +99,40 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     }, [handleCanPlayThrough, getVideo]);
 
     return (
-      <div className="relative w-full h-[34rem]">
-        <video ref={videoRef} controls style={{ width: '100%', height: '100%' }} />
-        <div ref={overlay} className="absolute inset-0 bg-black flex items-center justify-center">
-          <img src={thumbnail} alt="" className="h-full object-center object-cover" />
+      <div ref={containerRef} className="relative w-full aspect-video bg-black">
+        {/* The native element. NO `controls` — overlay owns the UI. `playsInline`
+            keeps mobile Safari from auto-jumping to native fullscreen. */}
+        <video
+          ref={videoRef}
+          playsInline
+          className="absolute inset-0 h-full w-full"
+        />
+
+        {/* Custom controls — only active after first play. */}
+        <VideoControlsOverlay
+          videoRef={videoRef as React.RefObject<HTMLVideoElement | null>}
+          containerRef={containerRef}
+          meta={meta}
+          disabled={!hasStarted}
+        />
+
+        {/* Pre-play poster + spinner. Sits above the controls overlay (z-20)
+            until the user clicks Play. Then it hides via classList. */}
+        <div
+          ref={overlay}
+          className="absolute inset-0 z-20 flex items-center justify-center bg-black"
+        >
+          <img src={thumbnail} alt="" className="h-full w-full object-cover object-center" />
           {isCanPlay ? (
             <FaPlay
-              className="absolute cursor-pointer z-10 hover:scale-125 transition-all duration-200"
+              className="absolute z-10 cursor-pointer text-ink-primary transition-all duration-200 hover:scale-125"
               size={40}
               onClick={handlePlayVideo}
             />
           ) : (
             <LoadingSpinnerVideoPlayer />
           )}
-          <div className="bg-red-600 absolute inset-0 opacity-5"></div>
+          <div className="absolute inset-0 bg-red-600 opacity-5"></div>
         </div>
       </div>
     );
