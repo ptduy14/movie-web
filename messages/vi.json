@@ -102,6 +102,24 @@
       "question": "bạn muốn tiếp tục xem chứ ?",
       "accept": "Có",
       "reject": "Xem lại từ đầu"
+    },
+    "player": {
+      "settings": {
+        "speed": "Tốc độ phát",
+        "language": "Âm thanh / Ngôn ngữ",
+        "autoPlayNext": "Tự động phát tập tiếp theo",
+        "normal": "Bình thường"
+      },
+      "nextEpisode": {
+        "upNext": "Tập tiếp theo",
+        "playNow": "Phát ngay",
+        "playInSeconds": "Phát sau {seconds}s",
+        "dismiss": "Đóng"
+      },
+      "lock": {
+        "lock": "Khóa màn hình",
+        "holdToUnlock": "Giữ để mở khóa"
+      }
     }
   },
 

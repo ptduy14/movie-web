@@ -102,6 +102,24 @@
       "question": "would you like to continue watching?",
       "accept": "Yes",
       "reject": "Restart from beginning"
+    },
+    "player": {
+      "settings": {
+        "speed": "Playback speed",
+        "language": "Audio / Language",
+        "autoPlayNext": "Auto-play next episode",
+        "normal": "Normal"
+      },
+      "nextEpisode": {
+        "upNext": "Up next",
+        "playNow": "Play now",
+        "playInSeconds": "Playing in {seconds}s",
+        "dismiss": "Dismiss"
+      },
+      "lock": {
+        "lock": "Lock screen",
+        "holdToUnlock": "Hold to unlock"
+      }
     }
   },
 
