@@ -14,7 +14,26 @@
       "Bash(python -m json.tool)",
       "Bash(npm uninstall *)",
       "Bash(git log *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem -Path \"D:\\\\personal-project\\\\movie-web\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(cd /d D:\\\\personal-project\\\\movie-web)",
+      "Bash(dir /B)",
+      "Bash(curl -s \"https://ophim1.com/phim/the-glory\")",
+      "Bash(curl -s \"https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1\")",
+      "Bash(curl -s \"https://ophim1.com/phim/gia-nghiep\")",
+      "Bash(python -c \"import sys, json; d=json.loads\\(sys.stdin.read\\(\\)\\); ep=d.get\\('episodes',[]\\); print\\('servers:', len\\(ep\\)\\); [print\\(s.get\\('server_name'\\), '->', len\\(s.get\\('server_data',[]\\)\\), 'eps; first sample:', s.get\\('server_data',[{}]\\)[0]\\) for s in ep[:2]]; print\\('subtitle key in movie?', 'subtitles' in d.get\\('movie',{}\\) or 'sub' in d.get\\('movie',{}\\)\\)\")",
+      "Bash(node -e \"const d=require\\('/tmp/ophim.json'\\); const ep=d.episodes||[]; console.log\\('servers:', ep.length\\); ep.slice\\(0,2\\).forEach\\(s => { console.log\\(s.server_name, '->', \\(s.server_data||[]\\).length, 'eps'\\); console.log\\('first sample keys:', Object.keys\\(\\(s.server_data||[]\\)[0]||{}\\)\\); console.log\\('first sample:', JSON.stringify\\(\\(s.server_data||[]\\)[0]\\)\\); }\\); console.log\\('movie keys:', Object.keys\\(d.movie||{}\\)\\);\")",
+      "Bash(curl -s \"https://ophim1.com/phim/gia-nghiep\" -o D:/personal-project/movie-web/.tmp-ophim.json)",
+      "Bash(node -e \"const d=require\\('D:/personal-project/movie-web/.tmp-ophim.json'\\); const ep=d.episodes||[]; console.log\\('servers:', ep.length\\); ep.slice\\(0,2\\).forEach\\(s => { console.log\\(s.server_name, '->', \\(s.server_data||[]\\).length, 'eps'\\); console.log\\('first sample:', JSON.stringify\\(\\(s.server_data||[]\\)[0]\\)\\); }\\); console.log\\('movie keys:', Object.keys\\(d.movie||{}\\).join\\(','\\)\\);\")",
+      "Bash(curl -s \"https://vip.opstream90.com/20260517/32179_7fbeed7a/index.m3u8\")",
+      "Bash(curl -s \"https://ophim1.com/danh-sach/phim-bo?page=1\" -o D:/personal-project/movie-web/.tmp-list.json)",
+      "Bash(node -e \"const d=require\\('D:/personal-project/movie-web/.tmp-list.json'\\); const slugs=\\(d.items||[]\\).slice\\(0,5\\).map\\(i=>i.slug\\); console.log\\(slugs\\);\")",
+      "Bash(curl -s \"https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=2\" -o D:/personal-project/movie-web/.tmp-list.json)",
+      "Bash(node -e \"const d=require\\('D:/personal-project/movie-web/.tmp-list.json'\\); const slugs=\\(d.items||[]\\).slice\\(0,3\\).map\\(i=>i.slug\\); console.log\\(JSON.stringify\\(slugs\\)\\);\")",
+      "Bash(node -e \"const en=require\\('D:/personal-project/movie-web/messages/en.json'\\); console.log\\('top keys:', Object.keys\\(en\\).join\\(','\\)\\); console.log\\('watch keys:', Object.keys\\(en.watch||{}\\).join\\(','\\)\\);\")",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npx next *)"
     ]
   }
 }
