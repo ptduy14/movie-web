@@ -97,7 +97,7 @@ export default function ProgressBar() {
   const tooltipTime = tooltipPct !== null && duration > 0 ? (tooltipPct / 100) * duration : 0;
 
   return (
-    <div className="group relative w-full select-none py-3">
+    <div className="group relative w-full select-none py-2 lg:py-3">
       <div
         ref={trackRef}
         role="slider"

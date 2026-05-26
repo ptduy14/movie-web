@@ -70,8 +70,8 @@ export default function NextEpisodeCard() {
       }`}
       aria-hidden={!visible}
     >
-      <div className="flex items-center gap-3 overflow-hidden rounded-xl bg-black/85 p-3 shadow-custom backdrop-blur-md ring-1 ring-white/10">
-        <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-md bg-white/5">
+      <div className="flex items-center gap-2 overflow-hidden rounded-xl bg-black/85 p-2 shadow-custom backdrop-blur-md ring-1 ring-white/10 lg:gap-3 lg:p-3">
+        <div className="relative h-12 w-20 shrink-0 overflow-hidden rounded-md bg-white/5 lg:h-16 lg:w-28">
           {nextEpisode.thumbnail && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -86,7 +86,7 @@ export default function NextEpisodeCard() {
             <SparklesIcon size={12} />
             {t('nextEpisode.upNext')}
           </div>
-          <div className="line-clamp-1 text-sm font-semibold text-ink-primary">
+          <div className="line-clamp-1 text-xs font-semibold text-ink-primary lg:text-sm">
             {nextEpisode.label}
           </div>
           <button
