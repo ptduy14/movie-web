@@ -1,187 +1,186 @@
 {
-  "updated_at": "2026-05-17T00:00:00.000Z",
+  "updated_at": "2026-05-25T05:49:52.186Z",
   "interval_days": 7,
-  "_note": "Manual fill from PostHog HogQL output + TMDB lookups. title.en is the official TMDB show name (with `(Season N)` appended when parseable from the VI title). tmdb_rating values are approximations from public knowledge — cron job will overwrite with precise vote_average on next run.",
   "movies": [
     {
-      "title": {
-        "vi": "The Boys (Phần 5)",
-        "en": "The Boys (Season 5)"
-      },
       "slug": "the-boys-phan-5",
       "thumb_url": "https://img.ophim.live/uploads/movies/the-boys-phan-5-thumb-1775624659696.jpg",
       "year": 2026,
       "tmdb_id": "76479",
       "tmdb_type": "tv",
-      "tmdb_rating": 8.4,
-      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg",
       "movie_id": "695f5290f063d23bbbc21c06",
-      "views": 73,
-      "plays": 60,
-      "completions": 3,
-      "trending_score": 1
+      "views": 46,
+      "plays": 39,
+      "completions": 2,
+      "trending_score": 1,
+      "title": {
+        "vi": "The Boys (Phần 5)",
+        "en": "The Boys (Season 5)"
+      },
+      "tmdb_rating": 8.462,
+      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
     },
     {
-      "title": {
-        "vi": "Rẽ Trái (Phần 2)",
-        "en": null
-      },
-      "slug": "re-trai-phan-2",
-      "thumb_url": null,
-      "year": 2009,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "tmdb_rating": null,
-      "poster_url": null,
-      "movie_id": "628746299e983cdfde3acd28",
+      "slug": "cau-be-mat-tich-phan-3",
+      "thumb_url": "https://img.ophim.live/uploads/movies/cau-be-mat-tich-phan-3-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "66732",
+      "tmdb_type": "tv",
+      "movie_id": "6246f226c78eb57bbfe375c9",
       "views": 1,
-      "plays": 20,
-      "completions": 1,
-      "trending_score": 0.269
+      "plays": 13,
+      "completions": 2,
+      "trending_score": 0.538,
+      "title": {
+        "vi": "Cậu Bé Mất Tích (Phần 3)",
+        "en": "Stranger Things (Season 3)"
+      },
+      "tmdb_rating": 8.566,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"
     },
     {
+      "slug": "cau-be-mat-tich-phan-5",
+      "thumb_url": "https://img.ophim.live/uploads/movies/cau-be-mat-tich-phan-5-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "66732",
+      "tmdb_type": "tv",
+      "movie_id": "69182d116b8fd310082ad5cc",
+      "views": 1,
+      "plays": 29,
+      "completions": 1,
+      "trending_score": 0.502,
       "title": {
-        "vi": "Gen V",
-        "en": "Gen V"
+        "vi": "Cậu bé mất tích (Phần 5)",
+        "en": "Stranger Things (Season 5)"
       },
-      "slug": "gen-v",
-      "thumb_url": null,
+      "tmdb_rating": 8.566,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"
+    },
+    {
+      "slug": "cau-be-mat-tich-phan-4",
+      "thumb_url": "https://img.ophim.live/uploads/movies/cau-be-mat-tich-phan-4-thumb.jpg",
+      "year": 2022,
+      "tmdb_id": "66732",
+      "tmdb_type": "tv",
+      "movie_id": "6290878b9e983cdfde47886a",
+      "views": 1,
+      "plays": 26,
+      "completions": 1,
+      "trending_score": 0.471,
+      "title": {
+        "vi": "Cậu bé mất tích (Phần 4)",
+        "en": "Stranger Things (Season 4)"
+      },
+      "tmdb_rating": 8.566,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"
+    },
+    {
+      "slug": "samurai-mat-xanh",
+      "thumb_url": "https://img.ophim.live/uploads/movies/samurai-mat-xanh-thumb.jpg",
       "year": 2023,
+      "tmdb_id": "225180",
+      "tmdb_type": "tv",
+      "movie_id": "6544f7d103f63c57cb7982e4",
+      "views": 1,
+      "plays": 7,
+      "completions": 1,
+      "trending_score": 0.276,
+      "title": {
+        "vi": "Samurai mắt xanh",
+        "en": "BLUE EYE SAMURAI"
+      },
+      "tmdb_rating": 8.483,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fXm3JT4WLQVnwukdvghtAblc1wc.jpg"
+    },
+    {
+      "slug": "cuoc-chien-sinh-tu-ii",
+      "thumb_url": "https://img.ophim.live/uploads/movies/cuoc-chien-sinh-tu-ii-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "931285",
+      "tmdb_type": "movie",
+      "movie_id": "6a0148426d4243e068f9f11b",
+      "views": 8,
+      "plays": 4,
+      "completions": 1,
+      "trending_score": 0.276,
+      "title": {
+        "vi": "Cuộc Chiến Sinh Tử II",
+        "en": "Mortal Kombat II"
+      },
+      "tmdb_rating": 6.811,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lIsMeDbwntNXSUVHmWMMRXEZOVc.jpg"
+    },
+    {
+      "slug": "the-he-v-phan-2",
+      "thumb_url": "https://img.ophim.live/uploads/movies/the-he-v-phan-2-thumb.jpg",
+      "year": 2025,
       "tmdb_id": "205715",
       "tmdb_type": "tv",
-      "tmdb_rating": 7.9,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uuot1N5AgZ7xRCKgm4ZCwOhgIJu.jpg",
-      "movie_id": "6516791360ad693b7c9a62eb",
-      "views": 2,
-      "plays": 15,
+      "movie_id": "68cb7d3e93eac2e8f9a183e1",
+      "views": 1,
+      "plays": 4,
       "completions": 1,
-      "trending_score": 0.239
-    },
-    {
-      "title": {
-        "vi": "Trò Chơi Vương Quyền 6",
-        "en": "Game of Thrones (Season 6)"
-      },
-      "slug": "tro-choi-vuong-quyen-6",
-      "thumb_url": "https://img.ophim.live/uploads/movies/tro-choi-vuong-quyen-6-thumb.jpg",
-      "year": 2016,
-      "tmdb_id": "1399",
-      "tmdb_type": "tv",
-      "tmdb_rating": 8.4,
-      "poster_url": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
-      "movie_id": "622c87f02c855970a7f99ec1",
-      "views": 2,
-      "plays": 9,
-      "completions": 1,
-      "trending_score": 0.199
-    },
-    {
+      "trending_score": 0.245,
       "title": {
         "vi": "Thế Hệ V (Phần 2)",
         "en": "Gen V (Season 2)"
       },
-      "slug": "the-he-v-phan-2",
-      "thumb_url": null,
-      "year": 2025,
-      "tmdb_id": "205715",
+      "tmdb_rating": 7.664,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uuot1N5AgZ7xRCKgm4ZCwOhgIJu.jpg"
+    },
+    {
+      "slug": "to-tung-phan-3",
+      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-3-thumb.jpg",
+      "year": 2013,
+      "tmdb_id": "37680",
       "tmdb_type": "tv",
-      "tmdb_rating": 7.9,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uuot1N5AgZ7xRCKgm4ZCwOhgIJu.jpg",
-      "movie_id": "68cb7d3e93eac2e8f9a183e1",
-      "views": 3,
-      "plays": 6,
-      "completions": 1,
-      "trending_score": 0.182
-    },
-    {
-      "title": {
-        "vi": "Rẽ Trái (Phần 3)",
-        "en": null
-      },
-      "slug": "re-trai-phan-3",
-      "thumb_url": null,
-      "year": 2010,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "tmdb_rating": null,
-      "poster_url": null,
-      "movie_id": "628746699e983cdfde3acd6f",
-      "views": 1,
-      "plays": 25,
-      "completions": 0,
-      "trending_score": 0.169
-    },
-    {
-      "title": {
-        "vi": "Cậu Bé Mất Tích (Phần 2)",
-        "en": "Stranger Things (Season 2)"
-      },
-      "slug": "cau-be-mat-tich-phan-2",
-      "thumb_url": "https://img.ophim.live/uploads/movies/cau-be-mat-tich-phan-2-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "66732",
-      "tmdb_type": "tv",
-      "tmdb_rating": 8.6,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
-      "movie_id": "6246f224c78eb57bbfe375be",
-      "views": 3,
-      "plays": 3,
-      "completions": 1,
-      "trending_score": 0.162
-    },
-    {
-      "title": {
-        "vi": "Cậu Bé Mất Tích (Phần 1)",
-        "en": "Stranger Things (Season 1)"
-      },
-      "slug": "cau-be-mat-tich-phan-1",
-      "thumb_url": null,
-      "year": 2016,
-      "tmdb_id": "66732",
-      "tmdb_type": "tv",
-      "tmdb_rating": 8.6,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
-      "movie_id": "6246f223c78eb57bbfe375af",
-      "views": 1,
-      "plays": 22,
-      "completions": 0,
-      "trending_score": 0.149
-    },
-    {
-      "title": {
-        "vi": "Cuộc Chiến Ngân Hà: Maul - Chúa Tể Bóng Tối (Phần 1)",
-        "en": "Star Wars: Maul - Shadow Lord (Season 1)"
-      },
-      "slug": "cuoc-chien-ngan-ha-maul-chua-te-bong-toi",
-      "thumb_url": null,
-      "year": 2026,
-      "tmdb_id": "289219",
-      "tmdb_type": "tv",
-      "tmdb_rating": 8.0,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fTfLd3s9yBNOzbFHD2aXvwEs93H.jpg",
-      "movie_id": "69da18d7db41bcecb8de0412",
-      "views": 5,
-      "plays": 17,
-      "completions": 0,
-      "trending_score": 0.127
-    },
-    {
-      "title": {
-        "vi": "Tố Tụng (Phần 1)",
-        "en": null
-      },
-      "slug": "to-tung-phan-1",
-      "thumb_url": null,
-      "year": 2011,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "tmdb_rating": null,
-      "poster_url": null,
-      "movie_id": "6269eee8fa02df5563cc356b",
+      "movie_id": "6269ef06fa02df5563cc358a",
       "views": 2,
+      "plays": 18,
+      "completions": 0,
+      "trending_score": 0.193,
+      "title": {
+        "vi": "Tố Tụng (Phần 3)",
+        "en": "Suits (Season 3)"
+      },
+      "tmdb_rating": 8.216,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
+    },
+    {
+      "slug": "to-tung-phan-4",
+      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-4-thumb.jpg",
+      "year": 2014,
+      "tmdb_id": "37680",
+      "tmdb_type": "tv",
+      "movie_id": "6269ef17fa02df5563cc3597",
+      "views": 4,
       "plays": 17,
       "completions": 0,
-      "trending_score": 0.119
+      "trending_score": 0.192,
+      "title": {
+        "vi": "Tố Tụng (Phần 4)",
+        "en": "Suits (Season 4)"
+      },
+      "tmdb_rating": 8.216,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
+    },
+    {
+      "slug": "to-tung-phan-5",
+      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-5-thumb.jpg",
+      "year": 2015,
+      "tmdb_id": "37680",
+      "tmdb_type": "tv",
+      "movie_id": "6269ef25fa02df5563cc35a5",
+      "views": 2,
+      "plays": 11,
+      "completions": 0,
+      "trending_score": 0.122,
+      "title": {
+        "vi": "Tố Tụng (Phần 5)",
+        "en": "Suits (Season 5)"
+      },
+      "tmdb_rating": 8.216,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
     }
   ]
 }
