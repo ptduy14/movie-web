@@ -122,12 +122,19 @@ export default function VideoControlsOverlay({
   const lastTapRef = useRef<{ time: number; x: number; y: number } | null>(null);
   const [seekFlash, setSeekFlash] = useState<'left' | 'right' | null>(null);
 
-  // Hide native cursor when overlay auto-hides on desktop.
+  // Hide the native cursor only during ACTIVE idle playback (overlay enabled
+  // + controls auto-hidden). When the overlay is disabled (pre-play poster
+  // phase between episode switches), the user needs the cursor to find the
+  // Play button. Cleanup resets the cursor on unmount so it never gets stuck
+  // on `none`.
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    container.style.cursor = visible ? '' : 'none';
-  }, [visible, containerRef]);
+    container.style.cursor = disabled || visible ? '' : 'none';
+    return () => {
+      if (container) container.style.cursor = '';
+    };
+  }, [visible, disabled, containerRef]);
 
   if (disabled) return null;
 
