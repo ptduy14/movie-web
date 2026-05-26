@@ -127,7 +127,12 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     }, [handleCanPlayThrough, getVideo]);
 
     return (
-      <div ref={containerRef} className="relative w-full aspect-video bg-black">
+      // `isolate` creates a new stacking context so the overlay's internal
+      // z-indexes (controls z-10, poster z-20, next-ep z-20, settings z-30,
+      // lock z-40) stay scoped to the player. Without this they leak into the
+      // root context and the page's fixed-positioned ProgresswatchNotification
+      // (z-20) gets covered by the poster.
+      <div ref={containerRef} className="relative isolate w-full aspect-video bg-black">
         <video
           ref={videoRef}
           playsInline

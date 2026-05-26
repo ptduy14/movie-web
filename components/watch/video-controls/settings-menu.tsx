@@ -44,7 +44,7 @@ export default function SettingsMenu({ open, onClose }: SettingsMenuProps) {
     }
   }, [open]);
 
-  // Click outside → close. Pointerdown on backdrop closes the menu.
+  // Keyboard: ESC navigates back / closes.
   useEffect(() => {
     if (!open) return;
     const handler = (e: KeyboardEvent) => {
@@ -58,11 +58,31 @@ export default function SettingsMenu({ open, onClose }: SettingsMenuProps) {
     return () => window.removeEventListener('keydown', handler);
   }, [open, onClose, panel]);
 
+  // Document-level pointerdown — closes the menu on clicks ANYWHERE outside
+  // the panel (including outside the player itself). The in-player backdrop
+  // handles clicks inside the player; this catches clicks on the page around
+  // it. Listener is attached after the open state commits, so the gear-click
+  // that opens the menu doesn't immediately close it.
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: PointerEvent) => {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (rootRef.current && rootRef.current.contains(target)) return;
+      onClose();
+    };
+    document.addEventListener('pointerdown', handler);
+    return () => document.removeEventListener('pointerdown', handler);
+  }, [open, onClose]);
+
   const currentServer = servers[currentServerIndex];
 
   return (
     <div
-      className={`pointer-events-none absolute inset-0 z-30 flex items-end justify-end p-4 transition-opacity duration-200 lg:p-6 ${
+      // pb-20 / lg:pb-24 lifts the panel above the bottom bar (progress + 1
+      // row of controls ≈ 80–96px) so it doesn't overlap the gear / fullscreen
+      // icons. Right padding keeps it aligned with the bottom-bar right edge.
+      className={`pointer-events-none absolute inset-0 z-30 flex items-end justify-end p-4 pb-20 transition-opacity duration-200 lg:p-6 lg:pb-24 ${
         open ? 'opacity-100' : 'opacity-0'
       }`}
       aria-hidden={!open}

@@ -120,7 +120,6 @@ export default function VideoControlsOverlay({
 
   // Tap/double-tap state for the click-through layer.
   const lastTapRef = useRef<{ time: number; x: number; y: number } | null>(null);
-  const singleTapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [seekFlash, setSeekFlash] = useState<'left' | 'right' | null>(null);
 
   // Hide native cursor when overlay auto-hides on desktop.
@@ -132,6 +131,19 @@ export default function VideoControlsOverlay({
 
   if (disabled) return null;
 
+  /**
+   * Desktop UX: single click → instant toggle play/pause; double-click → enter
+   * fullscreen. To avoid a 280ms delay on every single click (waiting to see
+   * if a second click arrives), we toggle on EVERY click. On a real
+   * double-click, the second click toggles again — net-zero play state — and
+   * then we fire fullscreen. Result: zero perceived delay on single clicks;
+   * brief play→pause→play flicker on double-clicks (same pattern as YouTube).
+   *
+   * Mobile UX: single tap reveals controls (via auto-hide's touchstart
+   * binding); double-tap → ±10s seek with ripple. No "tap to toggle" on
+   * mobile because users would accidentally pause when trying to dismiss
+   * controls.
+   */
   const handleTapSurface = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isLocked) return;
     if (e.target !== e.currentTarget) return;
@@ -149,30 +161,27 @@ export default function VideoControlsOverlay({
       Math.abs(y - last.y) < 40;
 
     if (isDouble) {
-      if (singleTapTimer.current) {
-        clearTimeout(singleTapTimer.current);
-        singleTapTimer.current = null;
-      }
       lastTapRef.current = null;
-
       if (e.pointerType === 'touch') {
+        // Mobile: zone-based seek (first tap did nothing — nothing to undo).
         const isLeft = x - rect.left < rect.width / 2;
         actions.seekBy(isLeft ? -10 : 10);
         setSeekFlash(isLeft ? 'left' : 'right');
         setTimeout(() => setSeekFlash(null), SEEK_FEEDBACK_MS);
       } else {
+        // Desktop: enter fullscreen. The first click already toggled play/
+        // pause — undo it here so net play state is preserved.
+        actions.toggle();
         actions.toggleFullscreen(containerRef.current);
       }
       return;
     }
 
     lastTapRef.current = { time: now, x, y };
-    if (singleTapTimer.current) clearTimeout(singleTapTimer.current);
-    singleTapTimer.current = setTimeout(() => {
-      if (e.pointerType !== 'touch') actions.toggle();
-      singleTapTimer.current = null;
-      lastTapRef.current = null;
-    }, DOUBLE_TAP_MS);
+    if (e.pointerType !== 'touch') {
+      // Instant desktop toggle. No delay.
+      actions.toggle();
+    }
   };
 
   const contextValue = {
@@ -199,8 +208,6 @@ export default function VideoControlsOverlay({
         onPointerDown={handleTapSurface}
         {...bindContainer}
       >
-        <BufferingSpinner />
-
         {/* Mobile gesture HUD */}
         {hud && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -237,16 +244,25 @@ export default function VideoControlsOverlay({
           </div>
         )}
 
-        {/* Controls chrome */}
+        {/* Controls chrome. `pointer-events-none` on the wrapper lets clicks on
+            the empty middle area (and on the top/bottom gradient backgrounds)
+            pass through to the tap surface for click-anywhere-to-toggle. The
+            actual buttons inside set `pointer-events-auto` to stay clickable. */}
         <div
-          className={`absolute inset-0 transition-opacity duration-300 ease-out-expo ${
+          className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ease-out-expo ${
             visible && !isLocked ? 'opacity-100' : 'opacity-0'
-          } ${isLocked ? 'pointer-events-none' : ''}`}
+          }`}
         >
           <TopBar />
-          {(!state.isPlaying || visible) && <CenterControls />}
+          {/* Center controls hidden during buffering so the spinner has the
+              stage to itself (and not behind the play button). */}
+          {!state.isBuffering && (!state.isPlaying || visible) && <CenterControls />}
           <BottomBar onOpenSettings={() => setSettingsOpen(true)} />
         </div>
+
+        {/* Buffering spinner rendered AFTER the chrome so it sits on top in
+            source order. Pointer-events-none keeps it from blocking taps. */}
+        <BufferingSpinner />
 
         <NextEpisodeCard />
         <SettingsMenu open={settingsOpen} onClose={() => setSettingsOpen(false)} />

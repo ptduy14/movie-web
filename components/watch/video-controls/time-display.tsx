@@ -19,7 +19,7 @@ export default function TimeDisplay() {
       type="button"
       onClick={() => setShowRemaining((v) => !v)}
       title="Toggle remaining / elapsed"
-      className="select-none text-sm font-medium tabular-nums text-ink-primary outline-none transition-opacity hover:opacity-80 focus-visible:opacity-80"
+      className="select-none text-xs font-medium tabular-nums text-ink-primary outline-none transition-opacity hover:opacity-80 focus-visible:opacity-80 lg:text-sm"
     >
       <span>{display}</span>
       <span className="mx-1 text-ink-secondary">/</span>

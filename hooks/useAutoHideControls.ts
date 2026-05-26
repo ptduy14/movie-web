@@ -4,10 +4,12 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * Controls overlay visibility logic:
- *   - Always visible while paused, buffering, ended, or when something inside
- *     the overlay has keyboard focus (a11y critical).
- *   - While playing, hide after `idleMs` of no mouse movement / touch.
- *   - Any pointer activity inside the container resets the timer.
+ *   - Always visible while paused, buffering, ended, or when `forceVisible`
+ *     is set (e.g. settings menu open).
+ *   - While playing: any pointer/touch/focus activity inside the player shows
+ *     controls and (re)starts the idle timer. After `idleMs` of no activity,
+ *     controls fade out — even if the cursor is still inside the player.
+ *   - Mouse leaving the player → hide immediately (matches YouTube/Netflix).
  */
 export interface UseAutoHideOptions {
   isPlaying: boolean;
@@ -33,7 +35,7 @@ export interface UseAutoHideReturn {
   };
 }
 
-const DEFAULT_IDLE_MS = 3000;
+const DEFAULT_IDLE_MS = 2500;
 
 export function useAutoHideControls({
   isPlaying,
@@ -44,7 +46,6 @@ export function useAutoHideControls({
 }: UseAutoHideOptions): UseAutoHideReturn {
   const [visible, setVisible] = useState(true);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const hoveringRef = useRef(false);
 
   const clear = () => {
     if (timer.current) {
@@ -53,11 +54,13 @@ export function useAutoHideControls({
     }
   };
 
+  // Reasons to stay visible regardless of cursor activity. Hovering is NOT
+  // in this list — hover only resets the idle timer via onActivity, it does
+  // not block hiding.
   const shouldStayOpen = useCallback(() => {
     if (!isPlaying) return true;
     if (isBuffering || isEnded) return true;
     if (forceVisible) return true;
-    if (hoveringRef.current) return true;
     return false;
   }, [isPlaying, isBuffering, isEnded, forceVisible]);
 
@@ -84,13 +87,16 @@ export function useAutoHideControls({
 
   const bindContainer = {
     onMouseMove: onActivity,
-    onMouseEnter: () => {
-      hoveringRef.current = true;
-      onActivity();
-    },
+    onMouseEnter: onActivity,
     onMouseLeave: () => {
-      hoveringRef.current = false;
-      scheduleHide();
+      // Hide immediately when the cursor leaves the player — UNLESS something
+      // (paused, settings open, …) wants controls to stay visible.
+      clear();
+      if (shouldStayOpen()) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
     },
     onTouchStart: onActivity,
     onFocus: onActivity,

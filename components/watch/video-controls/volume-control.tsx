@@ -26,9 +26,9 @@ export default function VolumeControl() {
         type="button"
         onClick={actions.toggleMute}
         aria-label={state.muted ? 'Unmute' : 'Mute'}
-        className="rounded p-2 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip"
+        className="rounded p-1.5 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip lg:p-2"
       >
-        <Icon size={22} />
+        <Icon className="h-5 w-5 lg:h-[22px] lg:w-[22px]" />
       </button>
       <div
         className={`flex items-center overflow-hidden transition-[width,opacity] duration-200 ease-out-expo ${

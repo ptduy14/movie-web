@@ -47,26 +47,32 @@ export default function BottomBar({ onOpenSettings }: BottomBarProps) {
     }
   };
 
+  // Gradient height + icon sizes scale up at `lg:` so the bar isn't dominant
+  // on small mobile players.
+  const iconClass = 'h-5 w-5 lg:h-[22px] lg:w-[22px]';
+  const btnClass =
+    'rounded p-1.5 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip lg:p-2';
+
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 pb-2 pt-8 lg:px-6 lg:pb-3 lg:pt-12">
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 pb-1 pt-6 lg:px-6 lg:pb-3 lg:pt-12">
       <div className="pointer-events-auto">
         <ProgressBar />
-        <div className="flex items-center justify-between gap-2 pt-1">
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between gap-1 pt-0.5 lg:gap-2 lg:pt-1">
+          <div className="flex items-center gap-0.5 lg:gap-1">
             <button
               type="button"
               onClick={actions.toggle}
               aria-label={state.isPlaying ? 'Pause' : 'Play'}
-              className="rounded p-2 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip"
+              className={btnClass}
             >
-              <PlayPauseIcon size={22} />
+              <PlayPauseIcon className={iconClass} />
             </button>
             <VolumeControl />
             <div className="ml-2 hidden lg:block">
               <TimeDisplay />
             </div>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 lg:gap-1">
             <div className="block lg:hidden">
               <TimeDisplay />
             </div>
@@ -75,26 +81,26 @@ export default function BottomBar({ onOpenSettings }: BottomBarProps) {
                 type="button"
                 onClick={togglePip}
                 aria-label="Picture in Picture"
-                className="rounded p-2 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip"
+                className={btnClass}
               >
-                <PipIcon size={22} />
+                <PipIcon className={iconClass} />
               </button>
             )}
             <button
               type="button"
               onClick={onOpenSettings}
               aria-label="Settings"
-              className="rounded p-2 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip"
+              className={btnClass}
             >
-              <SettingsIcon size={22} />
+              <SettingsIcon className={iconClass} />
             </button>
             <button
               type="button"
               onClick={() => actions.toggleFullscreen(containerRef.current)}
               aria-label={state.isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-              className="rounded p-2 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip"
+              className={btnClass}
             >
-              <FsIcon size={22} />
+              <FsIcon className={iconClass} />
             </button>
           </div>
         </div>
