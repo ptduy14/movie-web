@@ -1,150 +1,42 @@
 {
-  "updated_at": "2026-06-01T06:19:24.938Z",
+  "updated_at": "2026-06-08T06:08:03.618Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "samurai-mat-xanh",
-      "thumb_url": "https://img.ophim.live/uploads/movies/samurai-mat-xanh-thumb.jpg",
-      "year": 2023,
-      "tmdb_id": "225180",
+      "slug": "to-tung-phan-9",
+      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-9-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "37680",
       "tmdb_type": "tv",
-      "movie_id": "6544f7d103f63c57cb7982e4",
-      "views": 1,
-      "plays": 22,
-      "completions": 1,
-      "trending_score": 0.795,
-      "title": {
-        "vi": "Samurai mắt xanh",
-        "en": "BLUE EYE SAMURAI"
-      },
-      "tmdb_rating": 8.484,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fXm3JT4WLQVnwukdvghtAblc1wc.jpg"
-    },
-    {
-      "slug": "rick-va-morty-phan-8",
-      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-8-thumb.jpg",
-      "year": 2025,
-      "tmdb_id": "60625",
-      "tmdb_type": "tv",
-      "movie_id": "683442b011ae6766a749c6d8",
+      "movie_id": "626de1243a2c0c6289b8dd35",
       "views": 2,
-      "plays": 13,
-      "completions": 1,
-      "trending_score": 0.674,
-      "title": {
-        "vi": "Rick và Morty (Phần 8)",
-        "en": "Rick and Morty (Season 8)"
-      },
-      "tmdb_rating": 8.677,
-      "poster_url": "https://image.tmdb.org/t/p/w500/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg"
-    },
-    {
-      "slug": "to-tung-phan-7",
-      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-7-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "37680",
-      "tmdb_type": "tv",
-      "movie_id": "626de1033a2c0c6289b8dd1b",
-      "views": 5,
-      "plays": 23,
-      "completions": 0,
-      "trending_score": 0.526,
-      "title": {
-        "vi": "Tố tụng (Phần 7)",
-        "en": "Suits (Season 7)"
-      },
-      "tmdb_rating": 8.2,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
-    },
-    {
-      "slug": "bi-kich-cua-mot-sieu-nang-luc-gia",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bi-kich-cua-mot-sieu-nang-luc-gia-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "",
-      "tmdb_type": null,
-      "movie_id": "62a4c7607a956fb5db09c0b1",
-      "views": 4,
-      "plays": 24,
-      "completions": 0,
-      "trending_score": 0.514,
-      "title": {
-        "vi": "Bi Kịch Của Một Siêu Năng Lực Gia",
-        "en": null
-      },
-      "tmdb_rating": null,
-      "poster_url": "https://img.ophim.live/uploads/movies/bi-kich-cua-mot-sieu-nang-luc-gia-thumb.jpg"
-    },
-    {
-      "slug": "to-tung-phan-6",
-      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-6-thumb.jpg",
-      "year": 2016,
-      "tmdb_id": "37680",
-      "tmdb_type": "tv",
-      "movie_id": "626de0f13a2c0c6289b8dd08",
-      "views": 4,
       "plays": 18,
       "completions": 0,
-      "trending_score": 0.414,
+      "trending_score": 0.45,
       "title": {
-        "vi": "Tố tụng (Phần 6)",
-        "en": "Suits (Season 6)"
+        "vi": "Tố tụng (Phần 9)",
+        "en": "Suits (Season 9)"
       },
-      "tmdb_rating": 8.2,
+      "tmdb_rating": 8.217,
       "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
     },
     {
-      "slug": "nguyet-lan-y-ky",
-      "thumb_url": "https://img.ophim.live/uploads/movies/nguyet-lan-y-ky-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "278275",
+      "slug": "bat-kha-chien-bai",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-thumb.jpg",
+      "year": 2021,
+      "tmdb_id": "95557",
       "tmdb_type": "tv",
-      "movie_id": "69cbbf964da3bf6eb346f5e5",
-      "views": 1,
-      "plays": 22,
+      "movie_id": "627ab32fdb9df06c65947c44",
+      "views": 8,
+      "plays": 8,
       "completions": 0,
-      "trending_score": 0.395,
+      "trending_score": 0.378,
       "title": {
-        "vi": "Nguyệt Lân Ỷ Kỷ",
-        "en": "Veil of Shadows"
+        "vi": "Bất Khả Chiến Bại",
+        "en": "INVINCIBLE"
       },
-      "tmdb_rating": 8.5,
-      "poster_url": "https://image.tmdb.org/t/p/w500/y5d81ViUlIBXxeEKsDAayxvEdAv.jpg"
-    },
-    {
-      "slug": "the-boys-phan-5",
-      "thumb_url": "https://img.ophim.live/uploads/movies/the-boys-phan-5-thumb-1775624659696.jpg",
-      "year": 2026,
-      "tmdb_id": "76479",
-      "tmdb_type": "tv",
-      "movie_id": "695f5290f063d23bbbc21c06",
-      "views": 7,
-      "plays": 5,
-      "completions": 0,
-      "trending_score": 0.283,
-      "title": {
-        "vi": "The Boys (Phần 5)",
-        "en": "The Boys (Season 5)"
-      },
-      "tmdb_rating": 8.455,
-      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
-    },
-    {
-      "slug": "biet-doi-sieu-kho",
-      "thumb_url": "https://img.ophim.live/uploads/movies/biet-doi-sieu-kho-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "259837",
-      "tmdb_type": "tv",
-      "movie_id": "6a06d46af616ee3807e3b727",
-      "views": 2,
-      "plays": 12,
-      "completions": 0,
-      "trending_score": 0.257,
-      "title": {
-        "vi": "Biệt Đội Siêu Khờ",
-        "en": "The WONDERfools"
-      },
-      "tmdb_rating": 9.171,
-      "poster_url": "https://image.tmdb.org/t/p/w500/jj7AYkz2OLRDL1wfJmjTXyWQ5I4.jpg"
+      "tmdb_rating": 8.635,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lxVS24ZhG3WQf3IMbkFIg6olT6A.jpg"
     },
     {
       "slug": "to-tung-phan-8",
@@ -153,34 +45,142 @@
       "tmdb_id": "37680",
       "tmdb_type": "tv",
       "movie_id": "626de1153a2c0c6289b8dd29",
-      "views": 3,
-      "plays": 10,
+      "views": 4,
+      "plays": 12,
       "completions": 0,
-      "trending_score": 0.252,
+      "trending_score": 0.367,
       "title": {
         "vi": "Tố tụng (Phần 8)",
         "en": "Suits (Season 8)"
       },
-      "tmdb_rating": 8.2,
+      "tmdb_rating": 8.217,
       "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
     },
     {
-      "slug": "sieu-anh-hung-pha-hoai-phan-3",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-anh-hung-pha-hoai-phan-3-thumb.jpg",
-      "year": 2022,
+      "slug": "sieu-anh-hung-pha-hoai-phan-2",
+      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-anh-hung-pha-hoai-phan-2-thumb.jpg",
+      "year": 2020,
       "tmdb_id": "76479",
       "tmdb_type": "tv",
-      "movie_id": "6299e8967a956fb5dbf86d34",
+      "movie_id": "629e58af7a956fb5dbfe9bcb",
       "views": 2,
-      "plays": 10,
+      "plays": 11,
       "completions": 0,
-      "trending_score": 0.224,
+      "trending_score": 0.294,
       "title": {
-        "vi": "Siêu Anh Hùng Phá Hoại: Phần 3",
-        "en": "The Boys (Season 3)"
+        "vi": "Siêu Anh Hùng Phá Hoại (Phần 2)",
+        "en": "The Boys (Season 2)"
       },
       "tmdb_rating": 8.455,
       "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
+    },
+    {
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "69cbbf964da3bf6eb346f5e5",
+      "views": 0,
+      "plays": 12,
+      "completions": 0,
+      "trending_score": 0.267,
+      "title": {
+        "vi": null,
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": null
+    },
+    {
+      "slug": "rick-va-morty-phan-8",
+      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-8-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "60625",
+      "tmdb_type": "tv",
+      "movie_id": "683442b011ae6766a749c6d8",
+      "views": 5,
+      "plays": 4,
+      "completions": 0,
+      "trending_score": 0.214,
+      "title": {
+        "vi": "Rick và Morty (Phần 8)",
+        "en": "Rick and Morty (Season 8)"
+      },
+      "tmdb_rating": 8.678,
+      "poster_url": "https://image.tmdb.org/t/p/w500/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg"
+    },
+    {
+      "slug": "bat-kha-chien-bai-phan-3",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-phan-3-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "95557",
+      "tmdb_type": "tv",
+      "movie_id": "67c90feb6d0cb5514859dc75",
+      "views": 3,
+      "plays": 6,
+      "completions": 0,
+      "trending_score": 0.208,
+      "title": {
+        "vi": "BẤT KHẢ CHIẾN BẠI (Phần 3)",
+        "en": "INVINCIBLE (Season 3)"
+      },
+      "tmdb_rating": 8.635,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lxVS24ZhG3WQf3IMbkFIg6olT6A.jpg"
+    },
+    {
+      "slug": "lang-lang-phan-3",
+      "thumb_url": "https://img.ophim.live/uploads/movies/lang-lang-phan-3-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "85552",
+      "tmdb_type": "tv",
+      "movie_id": "69df1bc8006591e10814bd8c",
+      "views": 3,
+      "plays": 5,
+      "completions": 0,
+      "trending_score": 0.186,
+      "title": {
+        "vi": "Lâng Lâng (Phần 3)",
+        "en": "Euphoria (Season 3)"
+      },
+      "tmdb_rating": 8.288,
+      "poster_url": "https://image.tmdb.org/t/p/w500/aJrG7OkoTMPWG5c8opz8a93AZPY.jpg"
+    },
+    {
+      "slug": "den-tu-abyss-ngay-khong-tat-nang-o-lang-hoang-kim",
+      "thumb_url": "https://img.ophim.live/uploads/movies/den-tu-abyss-ngay-khong-tat-nang-o-lang-hoang-kim-thumb.jpg",
+      "year": 2022,
+      "tmdb_id": "72636",
+      "tmdb_type": "tv",
+      "movie_id": "62c674d6a862e5da382704f1",
+      "views": 2,
+      "plays": 6,
+      "completions": 0,
+      "trending_score": 0.183,
+      "title": {
+        "vi": "Đến Từ Abyss: Ngày Không Tắt Nắng Ở Làng Hoàng Kim",
+        "en": "Made in Abyss"
+      },
+      "tmdb_rating": 8.32,
+      "poster_url": "https://image.tmdb.org/t/p/w500/f6U3odfIb3pCXMGKRTQGGF9o1Qg.jpg"
+    },
+    {
+      "slug": "duoc-su-tu-su",
+      "thumb_url": "https://img.ophim.live/uploads/movies/duoc-su-tu-su-thumb.jpg",
+      "year": 2023,
+      "tmdb_id": "220542",
+      "tmdb_type": "tv",
+      "movie_id": "653a15e0aab68118a3b68e6b",
+      "views": 1,
+      "plays": 7,
+      "completions": 0,
+      "trending_score": 0.181,
+      "title": {
+        "vi": "Dược sư tự sự",
+        "en": "The Apothecary Diaries"
+      },
+      "tmdb_rating": 8.593,
+      "poster_url": "https://image.tmdb.org/t/p/w500/e3ojpANrFnmJCyeBNTinYwyBCIN.jpg"
     }
   ]
 }
