@@ -20,9 +20,11 @@ type Panel = 'root' | 'speed' | 'language';
 export interface SettingsMenuProps {
   open: boolean;
   onClose: () => void;
+  /** Opens the keyboard-shortcut help overlay. */
+  onShowShortcuts: () => void;
 }
 
-export default function SettingsMenu({ open, onClose }: SettingsMenuProps) {
+export default function SettingsMenu({ open, onClose, onShowShortcuts }: SettingsMenuProps) {
   const t = useTranslations('watch.player');
   const {
     state,
@@ -35,6 +37,14 @@ export default function SettingsMenu({ open, onClose }: SettingsMenuProps) {
   } = usePlayer();
   const [panel, setPanel] = useState<Panel>('root');
   const rootRef = useRef<HTMLDivElement | null>(null);
+
+  // Only surface the keyboard-shortcuts entry where a physical keyboard is
+  // likely (fine pointer = mouse/trackpad). Pointless on touch-only devices.
+  const [hasKeyboard, setHasKeyboard] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    setHasKeyboard(window.matchMedia('(pointer: fine)').matches);
+  }, []);
 
   // Reset to root when menu closes — better UX than persisting deep panel.
   useEffect(() => {
@@ -125,6 +135,20 @@ export default function SettingsMenu({ open, onClose }: SettingsMenuProps) {
             checked={autoPlayNext}
             onChange={setAutoPlayNext}
           />
+          {hasKeyboard && (
+            <Row
+              label={t('shortcuts.title')}
+              onClick={() => {
+                onClose();
+                onShowShortcuts();
+              }}
+              trailing={
+                <kbd className="rounded border border-white/15 bg-surface-chip px-1.5 py-0.5 text-[11px] font-semibold leading-none text-ink-primary">
+                  ?
+                </kbd>
+              }
+            />
+          )}
         </Panel>
 
         {/* Speed panel */}

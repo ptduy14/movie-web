@@ -119,6 +119,22 @@
       "lock": {
         "lock": "Lock screen",
         "holdToUnlock": "Hold to unlock"
+      },
+      "shortcuts": {
+        "title": "Keyboard shortcuts",
+        "close": "Close",
+        "playPause": "Play / pause",
+        "back10": "Back 10s",
+        "forward10": "Forward 10s",
+        "seek5": "Back / forward 5s",
+        "volume": "Volume up / down",
+        "mute": "Mute",
+        "fullscreen": "Fullscreen",
+        "speed": "Speed down / up",
+        "jump": "Jump to 0–90%",
+        "pip": "Picture-in-Picture",
+        "nextEpisode": "Next episode",
+        "help": "Show this help"
       }
     }
   },

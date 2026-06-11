@@ -119,6 +119,22 @@
       "lock": {
         "lock": "Khóa màn hình",
         "holdToUnlock": "Giữ để mở khóa"
+      },
+      "shortcuts": {
+        "title": "Phím tắt",
+        "close": "Đóng",
+        "playPause": "Phát / tạm dừng",
+        "back10": "Lùi 10s",
+        "forward10": "Tiến 10s",
+        "seek5": "Lùi / tiến 5s",
+        "volume": "Tăng / giảm âm lượng",
+        "mute": "Tắt tiếng",
+        "fullscreen": "Toàn màn hình",
+        "speed": "Giảm / tăng tốc độ",
+        "jump": "Nhảy đến 0–90%",
+        "pip": "Hình trong hình",
+        "nextEpisode": "Tập tiếp theo",
+        "help": "Hiện trợ giúp này"
       }
     }
   },
