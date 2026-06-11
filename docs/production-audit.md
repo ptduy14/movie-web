@@ -236,3 +236,20 @@ Sprint 5 — POLISH:              user ratings + share → live trending → a11
 - **Content-aware cache invalidation:** translation pipeline compares `sourceModifiedAt` vs OPhim `modified.time` (`services/movie-content-localizer.ts:52-54`).
 - **Authenticated cron:** `app/api/translate/cron-batch/route.ts:38-45` (`Bearer CRON_SECRET`) — apply the same auth discipline to `progress/sync`.
 - **i18n baseline:** 287/287 key parity — keep it green; just close the three profile leaks.
+
+---
+
+## 9. Layer 3 implementation log
+
+Tracks what has actually shipped from the feature roadmap (§5), and what was attempted and rolled back.
+
+**Shipped (2026-06-11):**
+- ✅ **"More Like This" row** on the detail page — same-first-genre titles via `getMoviesType`, rendered as a responsive **grid** (`components/movie/related-movies.tsx`), fetched server-side in `app/[locale]/movies/[slug]/page.tsx`.
+- ✅ **Genre rows on the home page** — 3 popular genres (`hanh-dong`, `tinh-cam`, `kinh-di`) via `MovieList` (`components/home/index.tsx`).
+- ✅ **Detail page layout redesign** — full-bleed cinematic hero (poster + bottom-left info cluster, ratings/Watch/My List/**Share**) + a **centered** content column (Overview + Details + Cast + Stills + Trailer + More Like This grid + narrow Comments), replacing the old offset 3/4-width split. `Share` button added (Web Share API + clipboard fallback). Surfaced `Language` in the details panel.
+- ✅ **Search empty + zero-result states** — replaced the shared faint "MOVIEX" placeholder with two distinct states (Apple TV / Netflix patterns): initial = prompt + browse-by-genre chips + trending row; zero-result = clear "No results for '{query}'" + tip + genre chips + suggestions. New `components/search/search-discovery.tsx`; trending read server-side from `trending.json` in the search page and passed down. Search input restyled from off-brand white/blue to dark + `brand` red. New `search` i18n namespace (en+vi). `components/search/branding-placeholder.tsx` is now **dead code** (removable).
+
+**Attempted and REVERTED — revisit later:**
+- ⏸️ **Comment section visual polish** (attempted 2026-06-11, reverted by user — redesign output was not visually satisfactory). Intended changes were: dark composer surface (replace the bright white box), localized placeholder (currently hardcoded "Write a comment..."), auto-grow textarea, count header + empty state, readable (white) comment body, brand-red like state, edit Save/Cancel buttons, remove the dead "Reply" affordance. The underlying problems from §5 still stand — re-approach the **visual design** before re-implementing. Files: `components/comment/*`. (i18n keys were reverted too; the `comment` namespace is back to its original 6 keys.)
+
+**Still open in Tier 1 (next candidates):** search empty/zero-result state (`components/search/index.tsx:49`), fix broken stubs (mark-all-read `notification-dropdown.tsx:50`, avatar upload `personal-info.tsx:81`), cast → filmography (`components/actor/actor-item.tsx`).

@@ -150,6 +150,16 @@
     "searchPlaceholder": "Nhập tên phim..."
   },
 
+  "search": {
+    "promptTitle": "Tìm bộ phim bạn muốn xem",
+    "promptSubtitle": "Nhập tên phim ở trên, hoặc khám phá theo thể loại bên dưới",
+    "browseByGenre": "Khám phá theo thể loại",
+    "trending": "Thịnh hành",
+    "noResultsTitle": "Không tìm thấy kết quả cho “{query}”",
+    "noResultsSubtitle": "Thử từ khóa khác hoặc kiểm tra lại chính tả",
+    "suggestions": "Có thể bạn thích"
+  },
+
   "disclaimer": {
     "eyebrow": "Lưu ý",
     "title": "Tuyên bố miễn trừ trách nhiệm",

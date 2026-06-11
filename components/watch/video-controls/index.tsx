@@ -214,7 +214,7 @@ export default function VideoControlsOverlay({
   return (
     <PlayerProvider value={contextValue}>
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 z-10 select-none"
         onPointerDown={handleTapSurface}
         {...bindContainer}
       >

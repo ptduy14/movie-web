@@ -150,6 +150,16 @@
     "searchPlaceholder": "Enter movie name..."
   },
 
+  "search": {
+    "promptTitle": "Find a movie to watch",
+    "promptSubtitle": "Type a title above, or explore by genre below",
+    "browseByGenre": "Browse by genre",
+    "trending": "Trending now",
+    "noResultsTitle": "No results for “{query}”",
+    "noResultsSubtitle": "Try a different keyword or check your spelling",
+    "suggestions": "You might like"
+  },
+
   "disclaimer": {
     "eyebrow": "Notice",
     "title": "Disclaimer",
