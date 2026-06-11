@@ -19,6 +19,7 @@ import BufferingSpinner from './buffering-spinner';
 import SettingsMenu from './settings-menu';
 import NextEpisodeCard from './next-episode-card';
 import LockScreen from './lock-screen';
+import KeyboardHint from './keyboard-hint';
 import { formatTime } from './progress-bar';
 
 const DOUBLE_TAP_MS = 280;
@@ -65,13 +66,14 @@ export default function VideoControlsOverlay({
     usePlayerPersistence(videoRef);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
 
   const { visible, bindContainer } = useAutoHideControls({
     isPlaying: state.isPlaying,
     isBuffering: state.isBuffering,
     isEnded: state.isEnded,
-    forceVisible: settingsOpen,
+    forceVisible: settingsOpen || helpOpen,
   });
 
   useKeyboardShortcuts({
@@ -79,6 +81,7 @@ export default function VideoControlsOverlay({
     state,
     actions,
     onNextEpisode,
+    onToggleHelp: () => setHelpOpen((v) => !v),
   });
 
   const { brightness, hud } = useMobileGestures({
@@ -272,7 +275,12 @@ export default function VideoControlsOverlay({
         <BufferingSpinner />
 
         <NextEpisodeCard />
-        <SettingsMenu open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+        <SettingsMenu
+          open={settingsOpen}
+          onClose={() => setSettingsOpen(false)}
+          onShowShortcuts={() => setHelpOpen(true)}
+        />
+        <KeyboardHint open={helpOpen} onClose={() => setHelpOpen(false)} />
         <LockScreen />
       </div>
     </PlayerProvider>

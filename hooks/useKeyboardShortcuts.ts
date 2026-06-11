@@ -15,6 +15,8 @@ export interface UseKeyboardShortcutsOptions {
   actions: PlayerActions;
   /** Fires when user hits N (next episode). Optional — wired in Phase 2. */
   onNextEpisode?: () => void;
+  /** Fires when user hits ? — toggles the keyboard-shortcut help overlay. */
+  onToggleHelp?: () => void;
   /** Step in seconds for ← / → */
   smallStep?: number;
   /** Step in seconds for J / L */
@@ -38,6 +40,7 @@ export function useKeyboardShortcuts({
   state,
   actions,
   onNextEpisode,
+  onToggleHelp,
   smallStep = 5,
   bigStep = 10,
 }: UseKeyboardShortcutsOptions) {
@@ -49,6 +52,8 @@ export function useKeyboardShortcuts({
   actionsRef.current = actions;
   const onNextRef = useRef(onNextEpisode);
   onNextRef.current = onNextEpisode;
+  const onToggleHelpRef = useRef(onToggleHelp);
+  onToggleHelpRef.current = onToggleHelp;
 
   // Track in-viewport — shortcuts only apply when the player is visible. This
   // matters on long watch pages where the user might be scrolled to comments.
@@ -152,6 +157,10 @@ export function useKeyboardShortcuts({
         case 'N':
           e.preventDefault();
           onNextRef.current?.();
+          return;
+        case '?':
+          e.preventDefault();
+          onToggleHelpRef.current?.();
           return;
       }
 

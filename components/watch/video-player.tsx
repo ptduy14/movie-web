@@ -3,17 +3,29 @@ import Hls from 'hls.js';
 import { FaPlay } from 'react-icons/fa';
 import LoadingSpinnerVideoPlayer from '../loading/loading-spiner-video-player';
 import VideoControlsOverlay from './video-controls';
+import ProgresswatchNotification from './progress-watch-notification';
 import type {
   NextEpisodePreview,
   PlayerMeta,
   PlayerServer,
 } from './video-controls/player-context';
 
+/** Resume-prompt data, surfaced as a top-center card inside the player. */
+export type ResumePrompt = {
+  show: boolean;
+  position: number;
+  episodeIndex: number;
+  isMultiEpisode: boolean;
+  onAccept: () => void;
+  onReject: () => void;
+};
+
 type VideoPlayerProps = {
   videoUrl: string;
   thumbnail: string;
   videoProgress: number | null;
   meta: PlayerMeta;
+  resume: ResumePrompt;
 
   // Phase 2 — passes through to VideoControlsOverlay
   servers: PlayerServer[];
@@ -30,6 +42,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       thumbnail,
       videoProgress,
       meta,
+      resume,
       servers,
       currentServerIndex,
       onSwitchLanguage,
@@ -128,10 +141,10 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
 
     return (
       // `isolate` creates a new stacking context so the overlay's internal
-      // z-indexes (controls z-10, poster z-20, next-ep z-20, settings z-30,
-      // lock z-40) stay scoped to the player. Without this they leak into the
-      // root context and the page's fixed-positioned ProgresswatchNotification
-      // (z-20) gets covered by the poster.
+      // z-indexes (controls z-10, poster z-20, next-ep z-20, resume prompt
+      // z-30, settings z-30, help z-40, lock z-40) stay scoped to the player.
+      // The resume prompt sits at z-30 so it stays visible above the pre-play
+      // poster (z-20) during the poster phase.
       <div ref={containerRef} className="relative isolate w-full aspect-video bg-black">
         <video
           ref={videoRef}
@@ -169,6 +182,17 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           )}
           <div className="absolute inset-0 bg-red-600 opacity-5"></div>
         </div>
+
+        {/* Resume prompt — top-center, above the poster. Stays inside the
+            player surface instead of floating over the page. */}
+        <ProgresswatchNotification
+          show={resume.show}
+          position={resume.position}
+          episodeIndex={resume.episodeIndex}
+          isMultiEpisode={resume.isMultiEpisode}
+          onAccept={resume.onAccept}
+          onReject={resume.onReject}
+        />
       </div>
     );
   }

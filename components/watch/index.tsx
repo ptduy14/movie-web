@@ -5,7 +5,6 @@ import VideoPlayer from './video-player';
 import { useEffect, useMemo, useState } from 'react';
 import { isHaveEpisodesMovie } from 'utils/movie-utils';
 import { useRef } from 'react';
-import ProgresswatchNotification from './progress-watch-notification';
 import { useVideoProgress } from 'hooks/useVideoProgress';
 import { useWatchAnalytics } from 'hooks/useWatchAnalytics';
 import { analytics } from 'lib/posthog/events';
@@ -117,13 +116,6 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   return (
     <div className="pt-20 lg:pt-[3.75rem] space-y-6 lg:space-y-10">
-      <ProgresswatchNotification
-        isShowResumePrompt={isShowResumePrompt}
-        restoredProgress={restoredProgress}
-        handleAcceptResume={handleAcceptResume}
-        handleRejectResume={handleRejectResume}
-        movie={movie}
-      />
       <VideoPlayer
         ref={videoRef}
         videoUrl={episodeLink}
@@ -134,6 +126,14 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
           episodeLabel: isHaveEpisodesMovie(movie)
             ? t('episodeLabel', { index: episodeIndex + 1 })
             : undefined,
+        }}
+        resume={{
+          show: isShowResumePrompt,
+          position: restoredProgress.position,
+          episodeIndex: restoredProgress.episodeIndex,
+          isMultiEpisode: isHaveEpisodesMovie(movie),
+          onAccept: handleAcceptResume,
+          onReject: handleRejectResume,
         }}
         servers={servers}
         currentServerIndex={serverIndex}
