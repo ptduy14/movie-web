@@ -2,8 +2,10 @@
 
 import { useEffect } from 'react';
 import DetailMovie from 'types/detail-movie';
+import type Movie from 'types/movie';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
+import ShareButton from './share-button';
 import Credit from 'types/credit';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import { Link } from 'i18n/routing';
@@ -37,12 +39,18 @@ import type { Locale } from 'i18n/routing';
  *
  * Note: the parent `[slug]/page.tsx` server component still fetches movie /
  * credits / images data and passes them as props.
+ *
+ * Layout (redesigned): a single full-bleed cinematic hero (backdrop +
+ * bottom-left info cluster) followed by a CENTERED content column rendered by
+ * `MovieContent`. The previous offset 3/4-width split was replaced to remove
+ * the empty left gutter and let the discovery shelves/grid breathe.
  */
 export default function MoviePage({
   movie,
   credit,
   images,
   logoUrl,
+  relatedMovies = [],
 }: {
   movie: DetailMovie;
   credit: Credit | undefined;
@@ -52,6 +60,8 @@ export default function MoviePage({
    * `null`/`undefined`, the heading renders as plain text instead.
    */
   logoUrl?: string | null;
+  /** "More Like This" — same-genre titles, fetched server-side. */
+  relatedMovies?: Movie[];
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;
@@ -74,187 +84,114 @@ export default function MoviePage({
   // Locale-aware title display + pattern-localized status/duration.
   // No Groq API calls — saves quota for the synopsis only.
   const primaryTitle = preferredTitle(movie.movie.name, movie.movie.origin_name, locale);
-  // Subtitle here intentionally mirrors `primaryTitle` (locale-language) so it
-  // anchors the title in the user's UI language even when the TMDB logo
-  // replaces the primary text in a different language. Hide when no logo —
-  // the primary text already serves the locale-anchor role and showing the
-  // same string twice would just be visual noise.
+  // Subtitle mirrors `primaryTitle` (locale language) so it anchors the title
+  // in the user's UI language even when the TMDB logo replaces the primary
+  // text. Hidden when there's no logo (the primary text already serves that
+  // role and repeating it would be visual noise).
   const subTitle = primaryTitle;
   const showSubtitle = Boolean(logoUrl) && subTitle.length > 0;
   const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
   const time = localizedTime(movie.movie.time, locale);
+  const hasCategories = Boolean(movie.movie.category && movie.movie.category.length > 0);
 
   return (
     <div>
-      {/* Desktop Layout */}
-      <div className="hidden lg:block">
-        <div
-          className="relative w-full h-[37rem] bg-no-repeat bg-cover flex items-end justify-center"
-          style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
-        >
-          <div className="bg-black h-full w-full opacity-65 absolute inset-0"></div>
-          <div className="container-wrapper-movie relative flex justify-end">
-            <div className="w-1/4 absolute left-0 top-0">
-              <div className="relative w-full aspect-[2/3]">
+      {/* Cinematic full-bleed hero */}
+      <div
+        className="relative w-full min-h-[30rem] bg-cover bg-center bg-no-repeat lg:min-h-[42rem]"
+        style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
+      >
+        <div className="absolute inset-0 bg-black/55"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+
+        <div className="container-wrapper-movie relative flex min-h-[30rem] items-end px-4 pb-6 lg:min-h-[42rem] lg:px-0 lg:pb-10">
+          <div className="flex w-full items-end gap-4 lg:gap-8">
+            {/* Poster — kept for the IMDb/Netflix vibe */}
+            <div className="w-24 shrink-0 sm:w-32 lg:w-52">
+              <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg shadow-custom">
                 <Image
                   src={movie.movie.thumb_url}
                   alt={movie.movie.name}
                   fill
-                  className="object-cover shadow-custom"
-                  sizes="(max-width: 768px) 100vw, 25vw"
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 30vw, 13vw"
                 />
               </div>
-              {movie.movie.episode_current !== 'Trailer' && (
-                <Link
-                  className="bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-md mt-5"
-                  href={`/movies/watch/${movie.movie.slug}`}
-                >
-                  <FaPlay size={25} />
-                  {t('watch')}
-                </Link>
-              )}
             </div>
-            <div className=" w-3/4 pl-14 pb-6 space-y-6 ">
+
+            {/* Info cluster */}
+            <div className="min-w-0 flex-1 space-y-4 pb-1 lg:space-y-6">
               <div>
                 {logoUrl ? (
                   <MovieLogo
                     src={logoUrl}
                     alt={primaryTitle}
-                    className="block max-h-32 w-auto max-w-[30rem] object-contain object-left drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
+                    className="block max-h-20 w-auto max-w-[20rem] object-contain object-left drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)] lg:max-h-28 lg:max-w-[30rem]"
                   />
                 ) : (
-                  <h3 className="text-5xl font-medium">{primaryTitle}</h3>
+                  <h1 className="text-2xl font-semibold lg:text-5xl">{primaryTitle}</h1>
                 )}
                 {showSubtitle && (
-                  <h4 className="text-2xl text-[#bbb6ae] font-normal mt-2">{`${subTitle} (${movie.movie.year})`}</h4>
-                )}
-              </div>
-              <div className="space-y-5">
-                <div>
-                  {t('info.status')}: {episodeCurrent}
-                </div>
-                <div>
-                  {t('info.duration')}: {time}
-                </div>
-                <div className="px-3 py-1 bg-[#169f3a] inline-block rounded-md font-semibold">
-                  {movie.movie.quality}
-                </div>
-                <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} />
-                <div className="flex justify-between items-center">
-                  <BtnAddToCollection variant="secondary" detailMovie={movie} />
-                  <div className="flex gap-x-2">
-                    {movie.movie.category?.map((item, index) => (
-                      <Link
-                        key={index}
-                        className="text-sm block border-[1px] border-gray-600 px-3 p-1 rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-500"
-                        href={`/movies/type/${item.slug}`}
-                      >
-                        {localizedCategory(item.slug, locale)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile/Tablet Layout */}
-      <div className="lg:hidden">
-        {/* Hero Section */}
-        <div
-          className="relative w-full h-[50vh] bg-no-repeat bg-cover bg-center"
-          style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-
-          {/* Movie Poster and Info */}
-          <div className="absolute bottom-0 left-0 right-0 p-4">
-            <div className="flex gap-x-4 items-end">
-              {/* Movie Poster */}
-              <div className="relative w-24 h-36 flex-shrink-0">
-                <Image
-                  src={movie.movie.thumb_url}
-                  alt={movie.movie.name}
-                  fill
-                  className="object-cover rounded-lg shadow-lg"
-                  sizes="96px"
-                />
-              </div>
-
-              {/* Movie Info */}
-              <div className="flex-1 min-w-0">
-                {logoUrl ? (
-                  <MovieLogo
-                    src={logoUrl}
-                    alt={primaryTitle}
-                    className="block max-h-12 w-auto max-w-full object-contain object-left mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]"
-                  />
-                ) : (
-                  <h1 className="text-xl font-bold text-white mb-1 truncate">{primaryTitle}</h1>
-                )}
-                {showSubtitle && (
-                  <h2 className="text-base text-gray-300 mb-2 truncate">
-                    {subTitle} ({movie.movie.year})
+                  <h2 className="mt-2 text-base font-normal text-[#bbb6ae] lg:mt-3 lg:text-2xl">
+                    {`${subTitle} (${movie.movie.year})`}
                   </h2>
                 )}
+              </div>
 
-                {/* Quick Info */}
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
-                  <span>{episodeCurrent}</span>
-                  <span>•</span>
-                  <span>{time}</span>
-                  <span>•</span>
-                  <span className="bg-[#169f3a] px-2 py-0.5 rounded text-white text-xs">
+              {/* Meta line: status · duration · quality + ratings */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-200 lg:text-base">
+                {episodeCurrent && <span>{episodeCurrent}</span>}
+                {time && <span className="text-gray-500">•</span>}
+                {time && <span>{time}</span>}
+                {movie.movie.quality && (
+                  <span className="rounded bg-[#169f3a] px-2 py-0.5 text-xs font-semibold text-white">
                     {movie.movie.quality}
                   </span>
-                </div>
-
-                {/* Ratings (TMDB + IMDb) */}
-                <div className="mt-2">
-                  <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} variant="compact" />
-                </div>
+                )}
+                <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} variant="compact" />
               </div>
+
+              {/* Actions */}
+              <div className="flex flex-wrap items-center gap-3">
+                {movie.movie.episode_current !== 'Trailer' && (
+                  <Link
+                    className="flex items-center gap-x-2 rounded-md bg-[#e20913] px-5 py-2.5 font-semibold uppercase text-white transition duration-200 hover:bg-[#c20810]"
+                    href={`/movies/watch/${movie.movie.slug}`}
+                  >
+                    <FaPlay size={18} />
+                    {t('watch')}
+                  </Link>
+                )}
+                <BtnAddToCollection variant="secondary" detailMovie={movie} />
+                <ShareButton title={movie.movie.name} />
+              </div>
+
+              {/* Genre chips */}
+              {hasCategories && (
+                <div className="flex flex-wrap gap-2">
+                  {movie.movie.category.map((item, index) => (
+                    <Link
+                      key={index}
+                      className="block rounded-2xl border border-gray-600 px-3 py-1 text-xs transition-all duration-300 hover:border-white hover:bg-white hover:text-black lg:text-sm"
+                      href={`/movies/type/${item.slug}`}
+                    >
+                      {localizedCategory(item.slug, locale)}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        </div>
-
-        {/* Action Section */}
-        <div className="bg-gray-900/50 p-4 space-y-4">
-          {/* Watch Button */}
-          {movie.movie.episode_current !== 'Trailer' && (
-            <Link
-              className="w-full bg-[#e20913] flex items-center justify-center text-center py-3 uppercase font-semibold text-lg gap-x-2 rounded-lg"
-              href={`/movies/watch/${movie.movie.slug}`}
-            >
-              <FaPlay size={20} />
-              {t('watch')}
-            </Link>
-          )}
-
-          {/* Collection Button */}
-          <div className="flex justify-center">
-            <BtnAddToCollection variant="secondary" detailMovie={movie} />
-          </div>
-
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2 justify-center">
-            {movie.movie.category?.map((item, index) => (
-              <Link
-                key={index}
-                className="text-sm border border-gray-600 px-3 py-1 rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-                href={`/movies/type/${item.slug}`}
-              >
-                {localizedCategory(item.slug, locale)}
-              </Link>
-            ))}
           </div>
         </div>
       </div>
 
-      <MovieContent movie={movie} credit={credit} images={images} />
+      <MovieContent
+        movie={movie}
+        credit={credit}
+        images={images}
+        relatedMovies={relatedMovies}
+      />
     </div>
   );
 }

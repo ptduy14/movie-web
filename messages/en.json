@@ -67,6 +67,9 @@
 
   "movie": {
     "watch": "Watch movie",
+    "moreLikeThis": "More Like This",
+    "share": "Share",
+    "linkCopied": "Link copied to clipboard",
     "info": {
       "title": "Movie info",
       "director": "Director",
@@ -74,6 +77,7 @@
       "releaseYear": "Release year",
       "duration": "Duration",
       "status": "Status",
+      "language": "Language",
       "content": "Synopsis",
       "fallbackContent": "Synopsis is being updated"
     },

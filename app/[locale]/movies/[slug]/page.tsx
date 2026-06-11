@@ -7,6 +7,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getLocalizedMovieContent } from 'services/movie-content-localizer';
 import { fetchMovieLogoUrl } from 'utils/tmdb-logo';
 import type { Locale } from 'i18n/routing';
+import type Movie from 'types/movie';
 
 interface MoviePageParams {
   params: { locale: string; slug: string };
@@ -54,6 +55,20 @@ export default async function Movie({ params }: MoviePageParams) {
     redirect(`/${params.locale}`);
   }
 
+  // "More Like This" — same first-genre titles. Kicked off here so it runs
+  // concurrently with the images/credits/logo fetches below. Best-effort:
+  // any failure or a categoryless movie yields an empty list (row hidden).
+  const firstCategorySlug = movie.movie.category?.[0]?.slug;
+  const relatedPromise: Promise<Movie[]> = firstCategorySlug
+    ? MovieServices.getMoviesType(firstCategorySlug, 1)
+        .then((r) =>
+          ((r?.data?.items ?? []) as Movie[])
+            .filter((m) => m._id !== movie.movie._id)
+            .slice(0, 12)
+        )
+        .catch(() => [])
+    : Promise.resolve([]);
+
   const res = await MovieServices.getMovieImages(params.slug);
 
   let credit;
@@ -79,12 +94,15 @@ export default async function Movie({ params }: MoviePageParams) {
     );
   }
 
+  const relatedMovies = await relatedPromise;
+
   return (
     <MoviePage
       movie={movie}
       credit={credit}
       images={res?.data?.images ?? []}
       logoUrl={logoUrl}
+      relatedMovies={relatedMovies}
     />
   );
 }

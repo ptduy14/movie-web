@@ -67,6 +67,9 @@
 
   "movie": {
     "watch": "Xem phim",
+    "moreLikeThis": "Phim Liên Quan",
+    "share": "Chia sẻ",
+    "linkCopied": "Đã sao chép liên kết",
     "info": {
       "title": "Thông tin phim",
       "director": "Đạo diễn",
@@ -74,6 +77,7 @@
       "releaseYear": "Năm phát hành",
       "duration": "Thời lượng",
       "status": "Trạng thái",
+      "language": "Ngôn ngữ",
       "content": "Nội dung phim",
       "fallbackContent": "Đang cập nhật nội dung phim"
     },
