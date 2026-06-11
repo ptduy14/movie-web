@@ -3,6 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from 'i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { useDebounce } from '../hooks/useDebounce';
 
 export default function SearchInput() {
@@ -31,12 +32,15 @@ export default function SearchInput() {
   }, [searchValue]);
 
   return (
-    <input
-      type="text"
-      className="w-full h-full text-black px-3 text-base lg:text-lg rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-      placeholder={t('searchPlaceholder')}
-      onChange={(e) => setInputValue(e.target.value)}
-      defaultValue={searchParams.get('name')?.toString()}
-    />
+    <div className="relative h-full w-full">
+      <FaSearch className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+      <input
+        type="text"
+        className="h-full w-full rounded-lg border border-white/10 bg-white/5 pl-11 pr-4 text-base text-white outline-none transition-colors placeholder:text-gray-500 focus:border-brand lg:text-lg"
+        placeholder={t('searchPlaceholder')}
+        onChange={(e) => setInputValue(e.target.value)}
+        defaultValue={searchParams.get('name')?.toString()}
+      />
+    </div>
   );
 }
