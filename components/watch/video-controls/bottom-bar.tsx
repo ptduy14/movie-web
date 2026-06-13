@@ -51,7 +51,7 @@ export default function BottomBar({ onOpenSettings }: BottomBarProps) {
   // on small mobile players.
   const iconClass = 'h-5 w-5 lg:h-[22px] lg:w-[22px]';
   const btnClass =
-    'rounded p-1.5 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip lg:p-2';
+    'rounded p-2.5 text-ink-primary outline-none transition-colors duration-150 hover:bg-surface-chip focus-visible:bg-surface-chip lg:p-2';
 
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 pb-1 pt-6 lg:px-6 lg:pb-3 lg:pt-12">

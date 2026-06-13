@@ -60,7 +60,7 @@ export default function ActorList({
     <div className="space-y-6">
       <div className="font-bold flex justify-between align-middle">
         <div>{t('actor.title')}</div>
-        <div className="flex gap-x-2">
+        <div className="hidden lg:flex gap-x-2">
           <div
             onClick={handlePrevSlide}
             className={`${isReachBegin ? 'opacity-30' : 'cursor-pointer'}`}
@@ -77,7 +77,7 @@ export default function ActorList({
       </div>
       <Swiper
         spaceBetween={16}
-        slidesPerView={2}
+        slidesPerView={2.2}
         breakpoints={{
           640: {
             slidesPerView: 3,

@@ -4,6 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import LoadingSpinnerVideoPlayer from '../loading/loading-spiner-video-player';
 import VideoControlsOverlay from './video-controls';
 import ProgresswatchNotification from './progress-watch-notification';
+import { isTouchDevice, requestVideoFullscreen } from 'utils/mobile-fullscreen';
 import type {
   NextEpisodePreview,
   PlayerMeta,
@@ -129,6 +130,10 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
       video?.play();
       overlay.current?.classList.add('hidden');
       setHasStarted(true);
+      // Mobile: tapping Play enters fullscreen-landscape (this runs inside the
+      // tap gesture, so the fullscreen request is allowed). Orientation lock is
+      // handled centrally on `fullscreenchange` in usePlayerState.
+      if (isTouchDevice()) requestVideoFullscreen(containerRef.current, video);
     };
 
     useEffect(() => {

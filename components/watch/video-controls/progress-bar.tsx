@@ -110,7 +110,7 @@ export default function ProgressBar() {
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="relative h-1 w-full cursor-pointer rounded-full bg-white/20 transition-[height] duration-150 ease-out-expo group-hover:h-1.5"
+        className="relative h-1 w-full cursor-pointer rounded-full bg-white/20 transition-[height] duration-150 ease-out-expo group-hover:h-1.5 touch:h-1.5"
       >
         {/* Buffered range */}
         <div
@@ -124,7 +124,7 @@ export default function ProgressBar() {
         />
         {/* Thumb */}
         <div
-          className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand opacity-0 shadow-custom transition-opacity duration-150 group-hover:opacity-100"
+          className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand opacity-0 shadow-custom transition-opacity duration-150 group-hover:opacity-100 touch:opacity-100"
           style={{ left: `${Math.max(0, Math.min(100, activePct))}%` }}
         />
         {/* Hover tooltip */}

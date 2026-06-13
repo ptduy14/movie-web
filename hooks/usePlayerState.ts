@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { isTouchDevice } from 'utils/mobile-fullscreen';
 
 /**
  * Subscribes to the <video> element's media events and returns derived state +
@@ -160,8 +161,23 @@ export function usePlayerState(
 
   // Track fullscreen state separately — it lives on `document`, not `video`.
   useEffect(() => {
-    const handleFsChange = () =>
-      setState((s) => ({ ...s, isFullscreen: !!document.fullscreenElement }));
+    const handleFsChange = () => {
+      const fs = !!document.fullscreenElement || !!(document as any).webkitFullscreenElement;
+      setState((s) => ({ ...s, isFullscreen: fs }));
+      // Lock to landscape on mobile when entering fullscreen; release on exit.
+      // iOS rejects the lock API but rotates natively, so this is best-effort.
+      const orientation = (typeof screen !== 'undefined' ? screen.orientation : undefined) as any;
+      if (orientation?.lock) {
+        if (fs && isTouchDevice()) orientation.lock('landscape').catch(() => {});
+        else if (!fs) {
+          try {
+            orientation.unlock?.();
+          } catch {
+            /* noop */
+          }
+        }
+      }
+    };
     document.addEventListener('fullscreenchange', handleFsChange);
     document.addEventListener('webkitfullscreenchange', handleFsChange as any);
     return () => {

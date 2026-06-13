@@ -6,6 +6,7 @@ import type Movie from 'types/movie';
 import { FaPlay } from 'react-icons/fa';
 import MovieContent from './movie-content';
 import ShareButton from './share-button';
+import StickyWatchCta from './sticky-watch-cta';
 import Credit from 'types/credit';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import { Link } from 'i18n/routing';
@@ -191,6 +192,11 @@ export default function MoviePage({
         credit={credit}
         images={images}
         relatedMovies={relatedMovies}
+      />
+
+      <StickyWatchCta
+        slug={movie.movie.slug}
+        isTrailer={movie.movie.episode_current === 'Trailer'}
       />
     </div>
   );
