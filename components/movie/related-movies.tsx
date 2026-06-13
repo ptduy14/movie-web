@@ -27,7 +27,7 @@ export default function RelatedMovies({ title, movies }: RelatedMoviesProps) {
         {title}
       </h2>
 
-      <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5 lg:gap-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5 lg:gap-4">
         {movies.map((movie) => (
           <RegularMovieItem key={movie._id} movie={movie} />
         ))}
