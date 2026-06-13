@@ -355,12 +355,19 @@
   },
 
   "comment": {
+    "heading": "Comments",
     "submit": "Comment",
-    "reply": "Reply",
+    "placeholder": "Write a comment…",
+    "cancel": "Cancel",
+    "save": "Save",
     "edit": "Edit",
     "delete": "Delete",
     "like": "Like",
-    "deleted": "Comment deleted"
+    "deleted": "Comment deleted",
+    "empty": "No comments yet. Be the first to comment!",
+    "you": "You",
+    "sortNewest": "Newest",
+    "sortTop": "Top"
   },
 
   "notification": {
