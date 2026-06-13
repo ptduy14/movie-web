@@ -64,7 +64,7 @@ export default async function Movie({ params }: MoviePageParams) {
         .then((r) =>
           ((r?.data?.items ?? []) as Movie[])
             .filter((m) => m._id !== movie.movie._id)
-            .slice(0, 12)
+            .slice(0, 10)
         )
         .catch(() => [])
     : Promise.resolve([]);
