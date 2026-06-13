@@ -1,3 +1,26 @@
+export type MovieFilters = {
+  category?: string;
+  country?: string;
+  year?: string;
+  sortField?: string;
+  sortType?: 'asc' | 'desc';
+};
+
+// Build the `&key=value` suffix for the cross-filter params the OPhim browse
+// endpoints (the-loai / quoc-gia / danh-sach) support. Verified: keyword
+// search (tim-kiem) ignores these, so they're only wired to browse endpoints.
+function buildFilterQuery(filters?: MovieFilters): string {
+  if (!filters) return '';
+  const p = new URLSearchParams();
+  if (filters.category) p.set('category', filters.category);
+  if (filters.country) p.set('country', filters.country);
+  if (filters.year) p.set('year', filters.year);
+  if (filters.sortField) p.set('sort_field', filters.sortField);
+  if (filters.sortType) p.set('sort_type', filters.sortType);
+  const s = p.toString();
+  return s ? `&${s}` : '';
+}
+
 const MovieServices = {
   getNewlyMovies: async (page = 1) => {
     const res = await fetch(
@@ -55,21 +78,21 @@ const MovieServices = {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/phim/${slug}/images`);
     return res.json();
   },
-  getMoviesFormat: async (slug: string, page: number) => {
+  getMoviesFormat: async (slug: string, page: number, filters?: MovieFilters) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/${slug}?page=${page}`
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/danh-sach/${slug}?page=${page}${buildFilterQuery(filters)}`
     );
     return res.json();
   },
-  getMoviesType: async (slug: string, page: number) => {
+  getMoviesType: async (slug: string, page: number, filters?: MovieFilters) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/the-loai/${slug}?page=${page}`
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/the-loai/${slug}?page=${page}${buildFilterQuery(filters)}`
     );
     return res.json();
   },
-  getMoviesCountry: async (slug: string, page: number) => {
+  getMoviesCountry: async (slug: string, page: number, filters?: MovieFilters) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/quoc-gia/${slug}?page=${page}`
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/quoc-gia/${slug}?page=${page}${buildFilterQuery(filters)}`
     );
     return res.json();
   },
