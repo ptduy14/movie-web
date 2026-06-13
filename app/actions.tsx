@@ -1,7 +1,7 @@
 'use server';
 
 import NewlyMovie from 'types/newly-movie';
-import MovieServices from 'services/movie-services';
+import MovieServices, { type MovieFilters } from 'services/movie-services';
 import { redirect } from 'i18n/routing';
 import { getLocale } from 'next-intl/server';
 import { localizeMovieContentsBatch } from 'services/movie-content-localizer';
@@ -59,19 +59,19 @@ export async function getHeroLogoUrlsServerAction(
   return map;
 }
 
-export async function getMoviesByFormat(slug: string, page: number) {
-  const res = await MovieServices.getMoviesFormat(slug, page);
+export async function getMoviesByFormat(slug: string, page: number, filters?: MovieFilters) {
+  const res = await MovieServices.getMoviesFormat(slug, page, filters);
   return res.data.items;
 }
 
-export async function getMoviesByType(slug: string, page: number) {
-  const res = await MovieServices.getMoviesType(slug, page);
+export async function getMoviesByType(slug: string, page: number, filters?: MovieFilters) {
+  const res = await MovieServices.getMoviesType(slug, page, filters);
   return res.data.items;
 }
 
-export async function getMoviesByCountry(slug: string, page: number) {
+export async function getMoviesByCountry(slug: string, page: number, filters?: MovieFilters) {
   try {
-    const res = await MovieServices.getMoviesCountry(slug, page);
+    const res = await MovieServices.getMoviesCountry(slug, page, filters);
 
     if (res.status === 'error') throw new Error('');
 

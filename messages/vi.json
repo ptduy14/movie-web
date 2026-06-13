@@ -161,6 +161,18 @@
     "suggestions": "Có thể bạn thích"
   },
 
+  "filter": {
+    "genre": "Thể loại",
+    "country": "Quốc gia",
+    "year": "Năm",
+    "sort": "Sắp xếp",
+    "all": "Tất cả",
+    "clear": "Xóa lọc",
+    "sortLatest": "Mới nhất",
+    "sortYearDesc": "Năm: mới nhất",
+    "sortYearAsc": "Năm: cũ nhất"
+  },
+
   "disclaimer": {
     "eyebrow": "Lưu ý",
     "title": "Tuyên bố miễn trừ trách nhiệm",
