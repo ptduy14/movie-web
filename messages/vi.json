@@ -38,6 +38,7 @@
 
   "home": {
     "continueWatching": "Tiếp Tục Xem",
+    "becauseYouWatched": "Vì bạn đã xem {name}",
     "trending": {
       "title": "Top Phim Trending Trong Tuần"
     },

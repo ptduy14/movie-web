@@ -3,6 +3,7 @@ import MovieList from '../commons/movie-list';
 import MovieServices from 'services/movie-services';
 import DailyUpdateBanner from './daily-update-banner';
 import ContinueWatchingSection from './continue-watching-section';
+import BecauseYouWatchedSection from './because-you-watched-section';
 import TrendingSection from './trending-section';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { localizedCategory } from 'constants/i18n-mappings';
@@ -49,6 +50,7 @@ export default async function HomePage() {
       <DailyUpdateBanner count={itemsUpdateInDay} totalLibrary={totalLibrary} />
       <div className="space-y-8">
         <ContinueWatchingSection />
+        <BecauseYouWatchedSection />
         <TrendingSection />
         <MovieList listName={t('newlyUpdated')} movies={newlyItems} isNewlyMovieItem={true} />
         <MovieList
