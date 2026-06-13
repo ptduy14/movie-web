@@ -149,17 +149,19 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         <div className="container-wrapper-movie px-4 lg:px-0">
           <h1 className="text-lg lg:text-xl">{t('episodeList')}</h1>
           <ul className="flex flex-wrap gap-2 lg:gap-3 mt-4">
-            {movie.episodes[0].server_data.map((ep, index) => (
-              <li
-                key={index}
-                className={`block ${
-                  episodeIndex === index
-                    ? 'text-white bg-[#5E5E5E]'
-                    : 'bg-white text-black hover:bg-[#d3d3d3]'
-                } px-2 lg:px-3 py-1.5 lg:py-2 rounded-md font-semibold cursor-pointer text-sm lg:text-base`}
-                onClick={() => handleSwitchEpisode(index)}
-              >
-                {t('episodeLabel', { index: index + 1 })}
+            {(movie.episodes[serverIndex]?.server_data ?? []).map((_ep, index) => (
+              <li key={index}>
+                <button
+                  type="button"
+                  onClick={() => handleSwitchEpisode(index)}
+                  className={`flex min-h-[44px] min-w-[44px] items-center justify-center ${
+                    episodeIndex === index
+                      ? 'text-white bg-[#5E5E5E]'
+                      : 'bg-white text-black hover:bg-[#d3d3d3]'
+                  } px-3 rounded-md font-semibold text-sm lg:min-h-0 lg:py-2 lg:text-base`}
+                >
+                  {t('episodeLabel', { index: index + 1 })}
+                </button>
               </li>
             ))}
           </ul>

@@ -115,7 +115,7 @@ export function LockToggleButton() {
       type="button"
       onClick={() => setIsLocked(true)}
       aria-label={t('lock.lock')}
-      className="pointer-events-auto rounded-full bg-black/40 p-2 text-ink-primary backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand"
+      className="pointer-events-auto rounded-full bg-black/40 p-2.5 text-ink-primary backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand"
     >
       <UnlockIcon size={18} />
     </button>

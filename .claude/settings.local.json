@@ -34,7 +34,25 @@
       "Bash(node -e \"const en=require\\('D:/personal-project/movie-web/messages/en.json'\\); console.log\\('top keys:', Object.keys\\(en\\).join\\(','\\)\\); console.log\\('watch keys:', Object.keys\\(en.watch||{}\\).join\\(','\\)\\);\")",
       "Bash(echo \"EXIT=$?\")",
       "Bash(npx next *)",
-      "Bash(powershell -NoProfile -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Milliseconds 500; Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue\")"
+      "Bash(powershell -NoProfile -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Milliseconds 500; Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue\")",
+      "Bash(echo \"tsc exit: $?\")",
+      "Bash(find app *)",
+      "Bash(ls public/)",
+      "Bash(grep -vE \":0$\")",
+      "Bash(find . -path ./node_modules -prune -o \\\\\\( -name \"error.tsx\" -o -name \"not-found.tsx\" -o -name \"global-error.tsx\" -o -name \"loading.tsx\" \\\\\\) -print)",
+      "Bash(find . -path ./node_modules -prune -o \\\\\\( -name \"sitemap*\" -o -name \"robots*\" -o -name \"manifest*\" -o -name \"opengraph-image*\" -o -name \"favicon*\" \\\\\\) -print)",
+      "Bash(grep -rn \"next/font\" app components)",
+      "Bash(grep -rni \"application/ld+json\\\\|schema.org\\\\|jsonld\\\\|json-ld\" app components)",
+      "Bash(grep -rn \"export const dynamic\\\\|export const revalidate\\\\|force-dynamic\\\\|generateStaticParams\" app)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('messages/en.json',encoding='utf-8'\\)\\); print\\('top-level:', list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('messages/vi.json',encoding='utf-8'\\)\\); print\\('top-level:', list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(grep -rL \"setRequestLocale\" app/[locale]/**/page.tsx app/[locale]/page.tsx)",
+      "Bash(grep -rl \"setRequestLocale\" app/[locale])",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "WebSearch",
+      "Bash(node -e ' *)"
     ]
   }
 }

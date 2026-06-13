@@ -5,9 +5,12 @@ import { MovieImagesOverlay } from './movie-images-overlay';
 import MovieImage from 'types/movie-image';
 import { GrPrevious, GrNext } from 'react-icons/gr';
 import { useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import LoadingSpinner from '../loading/loading-spinner';
 
 export default function MovieImageList({ images }: { images: MovieImage[] }) {
+  const t = useTranslations('movie');
+  const tCommon = useTranslations('common');
   const [isReachBegin, setIsReachBegin] = useState(false);
   const [isReachEnd, setIsReachEnd] = useState(false);
   const [isImagesReadyToDisplay, setIsImagesReadyToDisplay] = useState(false);
@@ -45,7 +48,7 @@ export default function MovieImageList({ images }: { images: MovieImage[] }) {
       ));
     }
 
-    return <div>Đang cập nhật</div>;
+    return <div>{tCommon('updating')}</div>;
   };
 
   // Don't render if no images
@@ -57,8 +60,8 @@ export default function MovieImageList({ images }: { images: MovieImage[] }) {
     <>
       <div className="space-y-6">
         <div className="font-bold flex justify-between align-middle">
-          <div>HÌNH ẢNH</div>
-          <div className="flex gap-x-2">
+          <div>{t('images')}</div>
+          <div className="hidden lg:flex gap-x-2">
             <div
               onClick={handlePrevSlide}
               className={`${isReachBegin ? 'opacity-30' : 'cursor-pointer'}`}
@@ -75,7 +78,7 @@ export default function MovieImageList({ images }: { images: MovieImage[] }) {
         </div>
         <Swiper
           spaceBetween={16}
-          slidesPerView={1}
+          slidesPerView={1.2}
           breakpoints={{
             640: {
               slidesPerView: 2,
