@@ -173,6 +173,13 @@
     "sortYearAsc": "Năm: cũ nhất"
   },
 
+  "bottomNav": {
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "myList": "Bộ sưu tập",
+    "profile": "Tài khoản"
+  },
+
   "disclaimer": {
     "eyebrow": "Lưu ý",
     "title": "Tuyên bố miễn trừ trách nhiệm",

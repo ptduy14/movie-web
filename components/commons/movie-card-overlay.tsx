@@ -69,15 +69,26 @@ export default function MovieCardOverlay({
   if (episodeCurrent) meta.push(localizedEpisodeCurrent(episodeCurrent, locale));
 
   return (
-    <div
-      className={[
-        'absolute inset-0 z-30 flex flex-col justify-end p-2.5 md:p-3 pointer-events-none',
-        'bg-gradient-to-t from-black via-black/85 to-transparent',
-        // Fade in (300ms duration + 300ms delay), fade out instantly (delay-0).
-        'opacity-0 transition-opacity duration-300',
-        'group-hover:opacity-100 group-hover:delay-300',
-      ].join(' ')}
-    >
+    <>
+      {/* Touch-only persistent Add-to-collection button. On touch devices the
+          hover info overlay never appears, so without this the add action is
+          unreachable. Hidden on hover-capable pointers (desktop uses the
+          overlay button below). */}
+      {collectionItem && (
+        <div className="hidden touch:block absolute top-1.5 right-1.5 z-30">
+          <AddToCollectionOverlayBtn collectionItem={collectionItem} />
+        </div>
+      )}
+
+      <div
+        className={[
+          'absolute inset-0 z-30 flex flex-col justify-end p-2.5 md:p-3 pointer-events-none',
+          'bg-gradient-to-t from-black via-black/85 to-transparent',
+          // Fade in (300ms duration + 300ms delay), fade out instantly (delay-0).
+          'opacity-0 transition-opacity duration-300',
+          'group-hover:opacity-100 group-hover:delay-300',
+        ].join(' ')}
+      >
       <div className="space-y-1.5">
         {/* Title */}
         <div className="text-xs md:text-sm font-bold text-white line-clamp-2 leading-snug">
@@ -123,5 +134,6 @@ export default function MovieCardOverlay({
         </div>
       </div>
     </div>
+    </>
   );
 }

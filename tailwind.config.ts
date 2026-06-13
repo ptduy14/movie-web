@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -34,6 +35,13 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // `touch:` applies on devices that can't hover (phones/tablets), `can-hover:`
+    // on hover-capable pointers. Used to reveal hover-only card actions on touch.
+    plugin(({ addVariant }) => {
+      addVariant('touch', '@media (hover: none)');
+      addVariant('can-hover', '@media (hover: hover)');
+    }),
+  ],
 };
 export default config;
