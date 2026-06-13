@@ -86,3 +86,21 @@ export async function searchingMovie(slug: string) {
   const res = await MovieServices.searchMovie(slug);
   return res;
 }
+
+/**
+ * "Because you watched" — given a watched movie's slug, resolve its first
+ * genre (from the detail endpoint, since recent-movie records don't store
+ * category) and return same-genre titles. Best-effort: any failure or a
+ * categoryless movie yields an empty list so the rail hides.
+ */
+export async function getBecauseYouWatched(slug: string) {
+  try {
+    const detail = await MovieServices.getDetailMovie(slug);
+    const category = detail?.movie?.category?.[0];
+    if (!category?.slug) return [];
+    const res = await MovieServices.getMoviesType(category.slug, 1);
+    return res?.data?.items ?? [];
+  } catch {
+    return [];
+  }
+}

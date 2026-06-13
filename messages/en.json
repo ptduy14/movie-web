@@ -38,6 +38,7 @@
 
   "home": {
     "continueWatching": "Continue Watching",
+    "becauseYouWatched": "Because you watched {name}",
     "trending": {
       "title": "Top Trending This Week"
     },
