@@ -355,12 +355,19 @@
   },
 
   "comment": {
+    "heading": "Bình luận",
     "submit": "Bình luận",
-    "reply": "Trả lời",
+    "placeholder": "Viết bình luận…",
+    "cancel": "Hủy",
+    "save": "Lưu",
     "edit": "Chỉnh sửa",
     "delete": "Xóa",
     "like": "Thích",
-    "deleted": "Đã xóa bình luận"
+    "deleted": "Đã xóa bình luận",
+    "empty": "Chưa có bình luận. Hãy là người đầu tiên bình luận!",
+    "you": "Bạn",
+    "sortNewest": "Mới nhất",
+    "sortTop": "Nhiều thích"
   },
 
   "notification": {

@@ -5,18 +5,23 @@ import DetailMovie from 'types/detail-movie';
 export default function Comments({
   comments,
   movie,
-  setComments
+  setComments,
 }: {
   comments: IComment[] | [];
   movie: DetailMovie;
-  setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>
+  setComments: React.Dispatch<React.SetStateAction<[] | IComment[]>>;
 }) {
-  if (comments.length === 0) return;
+  if (comments.length === 0) return null;
 
   return (
-    <div>
+    <div className="divide-y divide-white/5">
       {comments.map((comment: IComment, index: number) => (
-        <Comment key={index} comment={comment} movie={movie} setComments={setComments}/>
+        <Comment
+          key={comment.id ?? index}
+          comment={comment}
+          movie={movie}
+          setComments={setComments}
+        />
       ))}
     </div>
   );
