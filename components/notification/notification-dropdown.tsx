@@ -9,13 +9,16 @@ export default function NotificationDropDown({
   notificationDropdownState,
   setNotificationDropdownState,
   notifications,
+  onMarkAllAsRead,
 }: {
   notificationDropdownState: INotificationDropdownState;
   setNotificationDropdownState: React.Dispatch<React.SetStateAction<INotificationDropdownState>>;
   notifications: INotification[];
+  onMarkAllAsRead: () => void;
 }) {
   const t = useTranslations('notification');
   const notificationDropdownRef = useRef<HTMLDivElement>(null);
+  const hasUnread = notifications.some((n) => !n.read);
 
   useEffect(() => {
     const detectCloseNotificationDropdown = (event: MouseEvent) => {
@@ -45,16 +48,15 @@ export default function NotificationDropDown({
             <h3 className="text-white font-semibold text-lg">{t('title')}</h3>
           </div>
           <div className="flex items-center space-x-2">
-            <button
-              className="flex items-center space-x-2 px-3 py-1.5 text-sm text-blue-400 hover:text-blue-300 hover:bg-blue-900/20 rounded-lg transition-colors"
-              onClick={() => {
-                // Add mark all as read functionality here
-                console.log('Mark all as read');
-              }}
-            >
-              <IoCheckmarkDone size={16} />
-              <span>{t('markRead')}</span>
-            </button>
+            {hasUnread && (
+              <button
+                className="flex items-center space-x-2 px-3 py-1.5 text-sm text-blue-400 hover:text-blue-300 hover:bg-blue-900/20 rounded-lg transition-colors"
+                onClick={onMarkAllAsRead}
+              >
+                <IoCheckmarkDone size={16} />
+                <span>{t('markRead')}</span>
+              </button>
+            )}
             <button
               className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-lg transition-colors"
               onClick={() =>

@@ -15,6 +15,7 @@ import {
   setDoc,
   updateDoc,
   where,
+  writeBatch,
 } from 'firebase/firestore';
 import { db } from 'lib/firebase';
 import IComment from 'types/comment';
@@ -227,6 +228,29 @@ const firebaseServices = {
       notification.id!
     );
     setDoc(userNotificationDocRef, { read: true }, { merge: true });
+  },
+
+  // Mark every unread notification for a user as read in one batched write.
+  // The active onSnapshot listener pushes the updated docs, so the unread
+  // count + list refresh automatically — no manual local-state update needed.
+  markAllNotificationsRead: async (userId: string) => {
+    try {
+      const userNotificationCollectionRef = collection(
+        db,
+        'userNotifications',
+        userId,
+        'notifications'
+      );
+      const q = query(userNotificationCollectionRef, where('read', '==', false));
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) return;
+
+      const batch = writeBatch(db);
+      snapshot.forEach((docSnap) => batch.update(docSnap.ref, { read: true }));
+      await batch.commit();
+    } catch (error: any) {
+      console.log(error.message);
+    }
   },
 
   // REFACTOR LATER: this logic need to refactor when new comment added

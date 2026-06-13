@@ -58,6 +58,11 @@ export default function Notification({
     setNotifications(notifications);
   };
 
+  const handleMarkAllAsRead = async () => {
+    if (!user || notificationsUnreadCount === 0) return;
+    await firebaseServices.markAllNotificationsRead(user.id);
+  };
+
   // base on isOnHeaderDefault to choose what state choosing
   const isOpen = isOnFixedHeader
     ? notificationDropdownState.isOpenInHeaderFixed
@@ -70,10 +75,7 @@ export default function Notification({
         notifications={notifications}
         notificationsUnreadCount={notificationsUnreadCount}
         onCloseMenu={onCloseMenu}
-        onMarkAllAsRead={() => {
-          // Add mark all as read functionality here
-          console.log('Mark all as read');
-        }}
+        onMarkAllAsRead={handleMarkAllAsRead}
       />
     );
   }
@@ -90,6 +92,7 @@ export default function Notification({
           notificationDropdownState={notificationDropdownState}
           setNotificationDropdownState={setNotificationDropdownState}
           notifications={notifications}
+          onMarkAllAsRead={handleMarkAllAsRead}
         />
       )}
     </div>
