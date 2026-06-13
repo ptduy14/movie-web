@@ -108,7 +108,7 @@ export default function AddToCollectionOverlayBtn({ collectionItem }: Props) {
       aria-label={isInCollection ? tCard('removeFromCollection') : tCard('addToCollection')}
       aria-pressed={isInCollection}
       className={[
-        'pointer-events-auto flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full border backdrop-blur-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed',
+        'pointer-events-auto flex items-center justify-center w-9 h-9 md:w-8 md:h-8 rounded-full border backdrop-blur-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed',
         isInCollection
           ? 'bg-emerald-500/30 border-emerald-400 hover:bg-emerald-500/50'
           : 'bg-white/15 border-white/40 hover:bg-white/40 hover:border-white',

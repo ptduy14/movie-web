@@ -173,6 +173,13 @@
     "sortYearAsc": "Year: oldest"
   },
 
+  "bottomNav": {
+    "home": "Home",
+    "search": "Search",
+    "myList": "My List",
+    "profile": "Profile"
+  },
+
   "disclaimer": {
     "eyebrow": "Notice",
     "title": "Disclaimer",

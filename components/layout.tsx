@@ -1,5 +1,6 @@
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import BottomNav from '@/components/header/bottom-nav';
 import React from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -9,6 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Add flex-grow here to make sure it expands and pushes footer to the bottom */}
       <main className="flex-grow pb-24">{children}</main>
       <Footer />
+      <BottomNav />
     </>
   );
 }
