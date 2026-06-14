@@ -60,7 +60,7 @@ export default function CommentSection({ movie }: { movie: DetailMovie }) {
             <button
               type="button"
               onClick={() => setSort('newest')}
-              className={`rounded-md px-3 py-1 transition-colors ${
+              className={`rounded-md px-3 py-2 transition-colors ${
                 sort === 'newest' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'
               }`}
             >
@@ -69,7 +69,7 @@ export default function CommentSection({ movie }: { movie: DetailMovie }) {
             <button
               type="button"
               onClick={() => setSort('top')}
-              className={`rounded-md px-3 py-1 transition-colors ${
+              className={`rounded-md px-3 py-2 transition-colors ${
                 sort === 'top' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'
               }`}
             >

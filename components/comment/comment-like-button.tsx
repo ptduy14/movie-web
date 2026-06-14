@@ -58,7 +58,7 @@ export default function CommentLikeButton({
     <button
       type="button"
       onClick={handleToggleLike}
-      className={`flex items-center gap-1.5 text-sm transition-colors ${
+      className={`flex items-center gap-1.5 py-2 text-sm transition-colors ${
         isLiked ? 'text-[#e20913]' : 'text-gray-400 hover:text-white'
       }`}
     >

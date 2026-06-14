@@ -88,8 +88,8 @@ export default function Profile() {
                 </div>
               </div>
 
-              {/* Menu Items */}
-              <nav className="space-y-2">
+              {/* Menu Items — horizontal scroll strip on mobile, vertical sidebar on lg */}
+              <nav className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:space-y-2 lg:overflow-visible lg:px-0 lg:pb-0">
                 {[
                   { id: 'personal', label: t('menu.personalInfo') },
                   { id: 'security', label: t('menu.security') },
@@ -102,13 +102,13 @@ export default function Profile() {
                     <button
                       key={item.id}
                       onClick={() => setActiveSection(item.id as ProfileSection)}
-                      className={`w-full flex items-center space-x-3 px-3 py-3 rounded-lg text-left transition-colors ${
+                      className={`flex min-h-[44px] flex-shrink-0 items-center justify-center whitespace-nowrap rounded-lg px-4 text-sm font-medium transition-colors lg:w-full lg:justify-start ${
                         isActive
                           ? 'bg-custome-red text-white'
-                          : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                          : 'text-gray-300 hover:bg-gray-800/50 hover:text-white'
                       }`}
                     >
-                      <span className="text-sm font-medium">{item.label}</span>
+                      {item.label}
                     </button>
                   );
                 })}
