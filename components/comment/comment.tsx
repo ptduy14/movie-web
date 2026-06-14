@@ -85,18 +85,18 @@ export default function Comment({
           </div>
 
           {isOwner && !isCommentEditing && (
-            <div className="flex shrink-0 items-center gap-3 text-gray-400">
+            <div className="flex shrink-0 items-center gap-4 text-gray-400">
               <button
                 type="button"
                 onClick={() => setIsCommentEditing(true)}
-                className="flex items-center gap-1 text-sm transition-colors hover:text-white"
+                className="flex items-center gap-1 py-2 text-sm transition-colors hover:text-white"
               >
                 <CiEdit size={16} /> {t('edit')}
               </button>
               <button
                 type="button"
                 onClick={handleDelete}
-                className="flex items-center gap-1 text-sm transition-colors hover:text-white"
+                className="flex items-center gap-1 py-2 text-sm transition-colors hover:text-white"
               >
                 <MdDelete size={16} /> {t('delete')}
               </button>
@@ -111,7 +111,7 @@ export default function Comment({
               rows={2}
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
-              className="w-full resize-none rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-colors focus:border-white/30"
+              className="w-full resize-none rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-base text-white outline-none transition-colors focus:border-white/30"
               data-private
             />
             <div className="mt-2 flex gap-2">

@@ -107,7 +107,7 @@ export default function CommentInput({
           ref={textareaRef}
           rows={1}
           placeholder={t('placeholder')}
-          className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-gray-500 focus:border-[#e20913]"
+          className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-gray-500 focus:border-[#e20913]"
           value={commentText}
           onChange={(e) => {
             setCommentText(e.target.value);

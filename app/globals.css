@@ -57,3 +57,15 @@ html, body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+/* Mobile touch polish — kill the blue tap-flash on touch devices. */
+@media (hover: none) {
+  a,
+  button,
+  [role='button'],
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
