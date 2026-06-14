@@ -48,7 +48,7 @@ export default function MovieList({ listName, movies, isNewlyMovieItem }: MovieL
         Named groups scope `group-hover/list:` selectors to this row only.
       */}
       <Swiper
-        slidesPerView={2}
+        slidesPerView={2.2}
         spaceBetween={16}
         breakpoints={{
           640: { slidesPerView: 3, spaceBetween: 20 },

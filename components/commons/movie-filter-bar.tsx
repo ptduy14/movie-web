@@ -105,7 +105,7 @@ export default function MovieFilterBar({
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold lg:text-3xl">{title}</h1>
 
-      <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-1">
+      <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
         {dimensions.includes('category') && (
           <FilterDropdown
             label={t('genre')}

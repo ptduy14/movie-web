@@ -29,7 +29,7 @@ export default function TrendingSlider({ items }: TrendingSliderProps) {
     // Named group (`group/list`) — see commons/movie-list.tsx for the rationale:
     // each card uses default `group` for hover, so the ancestor must be scoped.
     <Swiper
-      slidesPerView={3}
+      slidesPerView={2.2}
       spaceBetween={12}
       breakpoints={{
         768: { slidesPerView: 5, spaceBetween: 20 },
@@ -64,7 +64,7 @@ export default function TrendingSlider({ items }: TrendingSliderProps) {
                 />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 gap-1">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 touch:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 gap-1">
                 <p className="text-xs font-bold uppercase tracking-wide leading-tight line-clamp-2">
                   {movie.title}
                 </p>
