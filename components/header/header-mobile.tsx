@@ -43,6 +43,17 @@ export default function HeaderMobile({
     setLoading(false);
   }, [user]);
 
+  // Lock body scroll while the mobile drawer is open (stops the page scrolling
+  // behind the overlay).
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };

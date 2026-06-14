@@ -396,6 +396,9 @@
     "markRead": "Mark as read",
     "empty": "No notifications yet",
     "emptySubtitle": "You'll be notified when there's new activity",
+    "unreadCount": "{count} unread",
+    "allRead": "All caught up",
+    "showMore": "Show {count} more",
     "actions": {
       "did": "",
       "liked": "liked",

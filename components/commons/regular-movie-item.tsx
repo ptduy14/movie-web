@@ -43,7 +43,7 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
           src={`${isMovieType ? process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url : movie.thumb_url}`}
           fill={true}
           alt={movie.name}
-          sizes="100%"
+          sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 18vw"
         />
 
         {/* Top-left: Exclusive or NEW (only on Movie shape) */}

@@ -396,6 +396,9 @@
     "markRead": "Đánh dấu đã đọc",
     "empty": "Không có thông báo nào",
     "emptySubtitle": "Bạn sẽ nhận được thông báo khi có hoạt động mới",
+    "unreadCount": "{count} thông báo chưa đọc",
+    "allRead": "Tất cả đã đọc",
+    "showMore": "Xem thêm {count} thông báo",
     "actions": {
       "did": "đã ",
       "liked": "thích",
