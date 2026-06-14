@@ -82,7 +82,7 @@ export default function BecauseYouWatchedSection() {
       </div>
 
       <Swiper
-        slidesPerView={2}
+        slidesPerView={2.2}
         spaceBetween={16}
         breakpoints={{
           640: { slidesPerView: 3, spaceBetween: 20 },

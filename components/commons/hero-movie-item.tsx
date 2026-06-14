@@ -184,12 +184,15 @@ export default function HeroMovieItem({
       {/* Mobile/Tablet Layout — uncropped poster scales to fit width, content stacks below.
           `pt-14` offsets the absolute mobile header so the poster top isn't clipped. */}
       <div className="lg:hidden flex flex-col w-full pt-14">
-        <div className="relative w-full">
+        {/* Fixed 16:9 box reserves height before the image loads → no CLS
+            (matches the hero skeleton's aspect ratio). */}
+        <div className="relative w-full aspect-video">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={movie.poster_url}
             alt={primaryTitle}
-            className="block w-full h-auto"
+            loading="eager"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           {/* Soft fade-out so the poster blends into the dark content area below */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
