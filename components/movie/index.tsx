@@ -97,9 +97,10 @@ export default function MoviePage({
 
   return (
     <div>
-      {/* Cinematic full-bleed hero */}
+      {/* Cinematic full-bleed hero — DESKTOP only (poster + info cluster).
+          Mobile uses the single-column streaming layout below. */}
       <div
-        className="relative w-full min-h-[30rem] bg-cover bg-center bg-no-repeat lg:min-h-[42rem]"
+        className="hidden lg:block relative w-full min-h-[42rem] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
       >
         <div className="absolute inset-0 bg-black/55"></div>
@@ -184,6 +185,81 @@ export default function MoviePage({
               )}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile hero — single column (full-width backdrop + content below).
+          Streaming-app pattern (Netflix/Apple): no side poster, full-width
+          actions for thumb reach. */}
+      <div className="lg:hidden">
+        <div
+          className="relative w-full aspect-[16/10] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          <div className="absolute inset-x-0 bottom-0 px-4 pb-3">
+            {logoUrl ? (
+              <MovieLogo
+                src={logoUrl}
+                alt={primaryTitle}
+                className="block max-h-16 w-auto max-w-[14rem] object-contain object-left drop-shadow-[0_3px_6px_rgba(0,0,0,0.6)]"
+              />
+            ) : (
+              <h1 className="text-2xl font-semibold drop-shadow">{primaryTitle}</h1>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4 px-4 pb-2 pt-3">
+          {showSubtitle && (
+            <h2 className="text-base font-normal text-[#bbb6ae]">{`${subTitle} (${movie.movie.year})`}</h2>
+          )}
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-200">
+            {episodeCurrent && <span>{episodeCurrent}</span>}
+            {time && <span className="text-gray-500">•</span>}
+            {time && <span>{time}</span>}
+            {movie.movie.quality && (
+              <span className="rounded bg-[#169f3a] px-2 py-0.5 text-xs font-semibold text-white">
+                {movie.movie.quality}
+              </span>
+            )}
+            <RatingLinks imdb={movie.movie.imdb} tmdb={movie.movie.tmdb} variant="compact" />
+          </div>
+
+          <div className="space-y-2.5">
+            {movie.movie.episode_current !== 'Trailer' && (
+              <Link
+                href={`/movies/watch/${movie.movie.slug}`}
+                className="flex min-h-[48px] w-full items-center justify-center gap-x-2 rounded-lg bg-[#e20913] font-semibold uppercase text-white transition duration-200 hover:bg-[#c20810]"
+              >
+                <FaPlay size={18} />
+                {t('watch')}
+              </Link>
+            )}
+            <div className="flex gap-2.5">
+              <div className="flex-1 [&>button]:w-full [&>button]:justify-center">
+                <BtnAddToCollection variant="secondary" detailMovie={movie} />
+              </div>
+              <div className="flex-1 [&>button]:w-full [&>button]:justify-center">
+                <ShareButton title={movie.movie.name} />
+              </div>
+            </div>
+          </div>
+
+          {hasCategories && (
+            <div className="flex flex-wrap gap-2">
+              {movie.movie.category.map((item, index) => (
+                <Link
+                  key={index}
+                  className="block rounded-2xl border border-gray-600 px-3 py-1 text-xs transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+                  href={`/movies/type/${item.slug}`}
+                >
+                  {localizedCategory(item.slug, locale)}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
