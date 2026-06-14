@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { INotification } from 'types/notification';
 import NotificationList from './notification-list';
 import { IoChevronDown, IoChevronUp, IoNotifications, IoCheckmarkDone } from 'react-icons/io5';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface NotificationMobileProps {
   notifications: INotification[];
@@ -18,6 +19,8 @@ export default function NotificationMobile({
   onCloseMenu,
   onMarkAllAsRead,
 }: NotificationMobileProps) {
+  const t = useTranslations('notification');
+  const locale = useLocale();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
@@ -47,11 +50,11 @@ export default function NotificationMobile({
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-white font-medium text-sm">Thông báo</p>
+            <p className="text-white font-medium text-sm">{t('title')}</p>
             <p className="text-gray-400 text-xs">
               {notificationsUnreadCount > 0
-                ? `${notificationsUnreadCount} thông báo chưa đọc`
-                : 'Tất cả đã đọc'}
+                ? t('unreadCount', { count: notificationsUnreadCount })
+                : t('allRead')}
             </p>
           </div>
         </div>
@@ -72,7 +75,7 @@ export default function NotificationMobile({
               className="flex items-center space-x-2 p-2 rounded-lg w-full text-blue-400 hover:text-blue-300 hover:bg-blue-900/20 transition-colors"
             >
               <IoCheckmarkDone size={16} />
-              <span className="text-sm font-medium">Đánh dấu tất cả đã đọc</span>
+              <span className="text-sm font-medium">{t('markRead')}</span>
             </button>
           )}
 
@@ -98,11 +101,15 @@ export default function NotificationMobile({
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-white text-sm">
-                          <span className="font-semibold">{notification.userCreatedName}</span> đã{' '}
-                          {notification.type === 'react' ? 'thích' : 'trả lời'} bình luận của bạn.
+                          <span className="font-semibold">{notification.userCreatedName}</span>{' '}
+                          {t('actions.did')}
+                          {notification.type === 'react'
+                            ? t('actions.liked')
+                            : t('actions.replied')}{' '}
+                          {t('actions.yourComment')}
                         </p>
                         <p className="text-gray-400 text-xs mt-1">
-                          {new Date(notification.timestamp).toLocaleString('vi-VN', {
+                          {new Date(notification.timestamp).toLocaleString(locale, {
                             day: '2-digit',
                             month: '2-digit',
                             year: 'numeric',
@@ -122,7 +129,7 @@ export default function NotificationMobile({
                 {notifications.length > 5 && (
                   <div className="text-center pt-2">
                     <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                      Xem thêm {notifications.length - 5} thông báo
+                      {t('showMore', { count: notifications.length - 5 })}
                     </button>
                   </div>
                 )}
@@ -130,7 +137,7 @@ export default function NotificationMobile({
             ) : (
               <div className="text-center py-8">
                 <IoNotifications className="text-gray-500 mx-auto mb-3" size={32} />
-                <p className="text-gray-400 text-sm">Không có thông báo nào</p>
+                <p className="text-gray-400 text-sm">{t('empty')}</p>
               </div>
             )}
           </div>
