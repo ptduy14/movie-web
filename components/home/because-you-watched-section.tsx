@@ -2,20 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import firebaseServices from 'services/firebase-services';
 import { getRecentMovies as getLocalRecentMovies } from 'lib/recent-movies-storage';
 import { getBecauseYouWatched } from 'app/actions';
 import RegularMovieItem from '../commons/regular-movie-item';
-import { preferredTitle } from 'constants/i18n-mappings';
 import type { IRecentMovie } from 'types/recent-movie';
 import type Movie from 'types/movie';
-import type { Locale } from 'i18n/routing';
 
 /**
- * "Because you watched X" — personalized genre rail derived from the user's
+ * "Top picks for you" — personalized genre rail derived from the user's
  * most-recently-watched title. Works for logged-in users (Firestore recent)
  * AND guests (localStorage recent). Hidden when there's no watch history or no
  * same-genre titles to suggest.
@@ -25,11 +23,9 @@ import type { Locale } from 'i18n/routing';
  */
 export default function BecauseYouWatchedSection() {
   const t = useTranslations('home');
-  const locale = useLocale() as Locale;
   const user = useSelector((state: any) => state.auth.user);
 
   const [items, setItems] = useState<Movie[] | null>(null);
-  const [sourceName, setSourceName] = useState<string>('');
   const swiperRef = useRef<any>(null);
 
   useEffect(() => {
@@ -59,7 +55,6 @@ export default function BecauseYouWatchedSection() {
       const suggestions = raw.filter((m) => m.slug && !watchedSlugs.has(m.slug)).slice(0, 10);
 
       if (!cancelled) {
-        setSourceName(preferredTitle(source.name, source.origin_name, locale));
         setItems(suggestions);
       }
     };
@@ -68,7 +63,7 @@ export default function BecauseYouWatchedSection() {
     return () => {
       cancelled = true;
     };
-  }, [user?.id, locale]);
+  }, [user?.id]);
 
   if (!items || items.length === 0) return null;
 
@@ -77,7 +72,7 @@ export default function BecauseYouWatchedSection() {
       <div className="px-4 md:px-0">
         <h2 className="relative inline-block pl-4 text-xl md:text-2xl font-bold tracking-tight">
           <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 md:h-7 bg-gradient-to-b from-red-500 to-red-700 rounded-full"></span>
-          {t('becauseYouWatched', { name: sourceName })}
+          {t('topPicks')}
         </h2>
       </div>
 

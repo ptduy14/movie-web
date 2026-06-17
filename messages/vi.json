@@ -38,7 +38,7 @@
 
   "home": {
     "continueWatching": "Tiếp Tục Xem",
-    "becauseYouWatched": "Vì bạn đã xem {name}",
+    "topPicks": "Tuyển chọn cho bạn",
     "trending": {
       "title": "Top Phim Trending Trong Tuần"
     },
