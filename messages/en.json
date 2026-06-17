@@ -38,7 +38,7 @@
 
   "home": {
     "continueWatching": "Continue Watching",
-    "becauseYouWatched": "Because you watched {name}",
+    "topPicks": "Top picks for you",
     "trending": {
       "title": "Top Trending This Week"
     },

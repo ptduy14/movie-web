@@ -52,7 +52,8 @@
       "mcp__visualize__read_me",
       "mcp__visualize__show_widget",
       "WebSearch",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "PowerShell(npx tsc --noEmit 2>&1)"
     ]
   }
 }
