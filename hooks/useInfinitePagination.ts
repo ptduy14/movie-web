@@ -5,12 +5,19 @@ import { useInView } from 'react-intersection-observer';
 
 const DEFAULT_PAGE_SIZE = 24; // OPhim default totalItemsPerPage
 
+/**
+ * A fetcher may return a bare items array, or `{ items, totalItems }` to also
+ * surface the catalog-wide total (used for the "N titles" header count).
+ */
+export type PaginatedFetch<T> = { items: T[]; totalItems?: number | null };
+
 export interface UseInfinitePaginationOptions<T> {
   /**
-   * Async fetcher that returns the items for a given page (1-indexed).
+   * Async fetcher that returns the items for a given page (1-indexed). May
+   * return a bare `T[]`, or `{ items, totalItems }` to also report the total.
    * Throwing will surface as `error` and pause pagination until `retry()` is called.
    */
-  fetcher: (page: number) => Promise<T[]>;
+  fetcher: (page: number) => Promise<T[] | PaginatedFetch<T>>;
   /**
    * When this value changes, the hook resets entirely (items, page, hasMore, error)
    * and re-fetches from page 1. Useful when route param like `slug` changes.
@@ -25,6 +32,8 @@ export interface UseInfinitePaginationOptions<T> {
 
 export interface UseInfinitePaginationReturn<T> {
   items: T[];
+  /** Catalog-wide total from the API's pagination block, if the fetcher reported it. */
+  totalItems: number | null;
   isLoading: boolean; // initial load only
   isLoadingMore: boolean; // pagination load
   hasMore: boolean;
@@ -51,6 +60,7 @@ export function useInfinitePagination<T>({
   pageSize = DEFAULT_PAGE_SIZE,
 }: UseInfinitePaginationOptions<T>): UseInfinitePaginationReturn<T> {
   const [items, setItems] = useState<T[]>([]);
+  const [totalItems, setTotalItems] = useState<number | null>(null);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
@@ -73,6 +83,7 @@ export function useInfinitePagination<T>({
   // Reset everything when resetKey changes
   useEffect(() => {
     setItems([]);
+    setTotalItems(null);
     setPage(1);
     setIsLoading(true);
     setIsLoadingMore(false);
@@ -94,8 +105,13 @@ export function useInfinitePagination<T>({
       setError(null);
 
       try {
-        const data = await fetcherRef.current(page);
+        const result = await fetcherRef.current(page);
         if (cancelled) return;
+
+        const data = Array.isArray(result) ? result : result.items;
+        if (!Array.isArray(result) && typeof result.totalItems === 'number') {
+          setTotalItems(result.totalItems);
+        }
 
         if (!data || data.length === 0) {
           setHasMore(false);
@@ -139,6 +155,7 @@ export function useInfinitePagination<T>({
 
   return {
     items,
+    totalItems,
     isLoading,
     isLoadingMore,
     hasMore,

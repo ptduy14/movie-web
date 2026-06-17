@@ -28,18 +28,25 @@ export default function MovieTypePage({ slug }: { slug: string }) {
         year: year || undefined,
         ...parseSort(sort),
       };
-      return getMoviesByType(slug, page, filters) as Promise<Movie[]>;
+      return getMoviesByType(slug, page, filters) as Promise<{
+        items: Movie[];
+        totalItems: number | null;
+      }>;
     },
     [slug, country, year, sort]
   );
 
-  const { items: movies, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
+  const { items: movies, totalItems, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
     useInfinitePagination<Movie>({ fetcher, resetKey: `${slug}|${country}|${year}|${sort}` });
 
   return (
     <div className="pt-20 lg:pt-[3.75rem]">
       <div className="container-wrapper px-4 lg:px-0">
-        <MovieFilterBar title={localizedCategory(slug, locale)} dimensions={['country', 'year']} />
+        <MovieFilterBar
+          title={localizedCategory(slug, locale)}
+          dimensions={['country', 'year']}
+          count={totalItems}
+        />
       </div>
 
       {isLoading ? (

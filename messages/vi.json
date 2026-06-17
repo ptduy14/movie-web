@@ -163,6 +163,10 @@
   },
 
   "filter": {
+    "browse": "Duyệt phim",
+    "count": "{count, number} phim",
+    "filtersLabel": "Lọc",
+    "activeLabel": "Đang lọc",
     "genre": "Thể loại",
     "country": "Quốc gia",
     "year": "Năm",

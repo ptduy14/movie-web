@@ -163,6 +163,10 @@
   },
 
   "filter": {
+    "browse": "Browse",
+    "count": "{count, number} titles",
+    "filtersLabel": "Filters",
+    "activeLabel": "Filtering",
     "genre": "Genre",
     "country": "Country",
     "year": "Year",

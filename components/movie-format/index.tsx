@@ -30,12 +30,15 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
         year: year || undefined,
         ...parseSort(sort),
       };
-      return getMoviesByFormat(slug, page, filters) as Promise<Movie[]>;
+      return getMoviesByFormat(slug, page, filters) as Promise<{
+        items: Movie[];
+        totalItems: number | null;
+      }>;
     },
     [slug, category, country, year, sort]
   );
 
-  const { items: movies, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
+  const { items: movies, totalItems, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
     useInfinitePagination<Movie>({
       fetcher,
       resetKey: `${slug}|${category}|${country}|${year}|${sort}`,
@@ -47,6 +50,7 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
         <MovieFilterBar
           title={localizedFormat(slug, locale)}
           dimensions={['category', 'country', 'year']}
+          count={totalItems}
         />
       </div>
 
