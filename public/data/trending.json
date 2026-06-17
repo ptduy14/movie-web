@@ -1,78 +1,24 @@
 {
-  "updated_at": "2026-06-08T06:08:03.618Z",
+  "updated_at": "2026-06-15T06:38:00.147Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "to-tung-phan-9",
-      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-9-thumb.jpg",
-      "year": 2019,
-      "tmdb_id": "37680",
+      "slug": "spider-noir",
+      "thumb_url": "https://img.ophim.live/uploads/movies/spider-noir-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "220102",
       "tmdb_type": "tv",
-      "movie_id": "626de1243a2c0c6289b8dd35",
-      "views": 2,
-      "plays": 18,
-      "completions": 0,
-      "trending_score": 0.45,
-      "title": {
-        "vi": "Tố tụng (Phần 9)",
-        "en": "Suits (Season 9)"
-      },
-      "tmdb_rating": 8.217,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
-    },
-    {
-      "slug": "bat-kha-chien-bai",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-thumb.jpg",
-      "year": 2021,
-      "tmdb_id": "95557",
-      "tmdb_type": "tv",
-      "movie_id": "627ab32fdb9df06c65947c44",
-      "views": 8,
-      "plays": 8,
-      "completions": 0,
-      "trending_score": 0.378,
-      "title": {
-        "vi": "Bất Khả Chiến Bại",
-        "en": "INVINCIBLE"
-      },
-      "tmdb_rating": 8.635,
-      "poster_url": "https://image.tmdb.org/t/p/w500/lxVS24ZhG3WQf3IMbkFIg6olT6A.jpg"
-    },
-    {
-      "slug": "to-tung-phan-8",
-      "thumb_url": "https://img.ophim.live/uploads/movies/to-tung-phan-8-thumb.jpg",
-      "year": 2018,
-      "tmdb_id": "37680",
-      "tmdb_type": "tv",
-      "movie_id": "626de1153a2c0c6289b8dd29",
-      "views": 4,
+      "movie_id": "6a1671f012f0391f00d24b9f",
+      "views": 5,
       "plays": 12,
-      "completions": 0,
-      "trending_score": 0.367,
+      "completions": 1,
+      "trending_score": 0.576,
       "title": {
-        "vi": "Tố tụng (Phần 8)",
-        "en": "Suits (Season 8)"
+        "vi": "Spider-Noir",
+        "en": "Spider-Noir"
       },
-      "tmdb_rating": 8.217,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fO0nFvGcbTHpwZGLkr98xuZ5hFs.jpg"
-    },
-    {
-      "slug": "sieu-anh-hung-pha-hoai-phan-2",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-anh-hung-pha-hoai-phan-2-thumb.jpg",
-      "year": 2020,
-      "tmdb_id": "76479",
-      "tmdb_type": "tv",
-      "movie_id": "629e58af7a956fb5dbfe9bcb",
-      "views": 2,
-      "plays": 11,
-      "completions": 0,
-      "trending_score": 0.294,
-      "title": {
-        "vi": "Siêu Anh Hùng Phá Hoại (Phần 2)",
-        "en": "The Boys (Season 2)"
-      },
-      "tmdb_rating": 8.455,
-      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
+      "tmdb_rating": 8.551,
+      "poster_url": "https://image.tmdb.org/t/p/w500/kVZMLSkaYgH1cJpN19Y4vzmvbku.jpg"
     },
     {
       "slug": null,
@@ -80,11 +26,11 @@
       "year": null,
       "tmdb_id": null,
       "tmdb_type": null,
-      "movie_id": "69cbbf964da3bf6eb346f5e5",
+      "movie_id": "62c674d6a862e5da382704f1",
       "views": 0,
-      "plays": 12,
-      "completions": 0,
-      "trending_score": 0.267,
+      "plays": 13,
+      "completions": 1,
+      "trending_score": 0.5,
       "title": {
         "vi": null,
         "en": null
@@ -93,94 +39,148 @@
       "poster_url": null
     },
     {
-      "slug": "rick-va-morty-phan-8",
-      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-8-thumb.jpg",
-      "year": 2025,
-      "tmdb_id": "60625",
+      "slug": "bai-hoc-dang-doi",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bai-hoc-dang-doi-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "276161",
       "tmdb_type": "tv",
-      "movie_id": "683442b011ae6766a749c6d8",
-      "views": 5,
-      "plays": 4,
+      "movie_id": "6a2283ae2c0a4eaf26572b57",
+      "views": 11,
+      "plays": 36,
       "completions": 0,
-      "trending_score": 0.214,
+      "trending_score": 0.46,
       "title": {
-        "vi": "Rick và Morty (Phần 8)",
-        "en": "Rick and Morty (Season 8)"
+        "vi": "Bài Học Đáng Đời",
+        "en": "Teach You a Lesson"
       },
-      "tmdb_rating": 8.678,
-      "poster_url": "https://image.tmdb.org/t/p/w500/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg"
+      "tmdb_rating": 9.425,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fMECSPrTmRClSViMsXFYmiYIcWP.jpg"
     },
     {
-      "slug": "bat-kha-chien-bai-phan-3",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-phan-3-thumb.jpg",
-      "year": 2025,
+      "slug": "tinh-yeu-anh-danh-cho-em",
+      "thumb_url": "https://img.ophim.live/uploads/movies/tinh-yeu-anh-danh-cho-em-thumb.jpg",
+      "year": 2023,
+      "tmdb_id": "225178",
+      "tmdb_type": "tv",
+      "movie_id": "6447830a4f963f302bcb8f78",
+      "views": 2,
+      "plays": 52,
+      "completions": 0,
+      "trending_score": 0.433,
+      "title": {
+        "vi": "Tình Yêu Anh Dành Cho Em",
+        "en": "The Love You Give Me"
+      },
+      "tmdb_rating": 8.4,
+      "poster_url": "https://image.tmdb.org/t/p/w500/qL282eKyVyYanby06A4dzNNWsxK.jpg"
+    },
+    {
+      "slug": "bat-kha-chien-bai",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-thumb.jpg",
+      "year": 2021,
       "tmdb_id": "95557",
       "tmdb_type": "tv",
-      "movie_id": "67c90feb6d0cb5514859dc75",
-      "views": 3,
-      "plays": 6,
+      "movie_id": "627ab32fdb9df06c65947c44",
+      "views": 12,
+      "plays": 9,
       "completions": 0,
-      "trending_score": 0.208,
+      "trending_score": 0.269,
       "title": {
-        "vi": "BẤT KHẢ CHIẾN BẠI (Phần 3)",
-        "en": "INVINCIBLE (Season 3)"
+        "vi": "Bất Khả Chiến Bại",
+        "en": "INVINCIBLE"
       },
-      "tmdb_rating": 8.635,
+      "tmdb_rating": 8.636,
       "poster_url": "https://image.tmdb.org/t/p/w500/lxVS24ZhG3WQf3IMbkFIg6olT6A.jpg"
     },
     {
-      "slug": "lang-lang-phan-3",
-      "thumb_url": "https://img.ophim.live/uploads/movies/lang-lang-phan-3-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "85552",
+      "slug": "gia-dinh-hien-dai-phan-2",
+      "thumb_url": "https://img.ophim.live/uploads/movies/gia-dinh-hien-dai-phan-2-thumb.jpg",
+      "year": 2010,
+      "tmdb_id": "1421",
       "tmdb_type": "tv",
-      "movie_id": "69df1bc8006591e10814bd8c",
-      "views": 3,
-      "plays": 5,
+      "movie_id": "64bcd7eff9e5c68186f7b5f3",
+      "views": 1,
+      "plays": 29,
       "completions": 0,
-      "trending_score": 0.186,
+      "trending_score": 0.24,
       "title": {
-        "vi": "Lâng Lâng (Phần 3)",
-        "en": "Euphoria (Season 3)"
+        "vi": "Gia Đình Hiện Đại (Phần 2)",
+        "en": "Modern Family (Season 2)"
       },
-      "tmdb_rating": 8.288,
-      "poster_url": "https://image.tmdb.org/t/p/w500/aJrG7OkoTMPWG5c8opz8a93AZPY.jpg"
+      "tmdb_rating": 7.909,
+      "poster_url": "https://image.tmdb.org/t/p/w500/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg"
     },
     {
-      "slug": "den-tu-abyss-ngay-khong-tat-nang-o-lang-hoang-kim",
-      "thumb_url": "https://img.ophim.live/uploads/movies/den-tu-abyss-ngay-khong-tat-nang-o-lang-hoang-kim-thumb.jpg",
-      "year": 2022,
-      "tmdb_id": "72636",
-      "tmdb_type": "tv",
-      "movie_id": "62c674d6a862e5da382704f1",
-      "views": 2,
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "653a15e0aab68118a3b68e6b",
+      "views": 0,
+      "plays": 31,
+      "completions": 0,
+      "trending_score": 0.238,
+      "title": {
+        "vi": null,
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": null
+    },
+    {
+      "slug": "tho-oi",
+      "thumb_url": "https://img.ophim.live/uploads/movies/tho-oi-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1528577",
+      "tmdb_type": "movie",
+      "movie_id": "697859d5eea244e3e8a691e9",
+      "views": 7,
       "plays": 6,
       "completions": 0,
-      "trending_score": 0.183,
+      "trending_score": 0.163,
       "title": {
-        "vi": "Đến Từ Abyss: Ngày Không Tắt Nắng Ở Làng Hoàng Kim",
-        "en": "Made in Abyss"
+        "vi": "Thỏ Ơi!!",
+        "en": "Bunny!!"
       },
-      "tmdb_rating": 8.32,
-      "poster_url": "https://image.tmdb.org/t/p/w500/f6U3odfIb3pCXMGKRTQGGF9o1Qg.jpg"
+      "tmdb_rating": 7,
+      "poster_url": "https://image.tmdb.org/t/p/w500/hYUBNcOwAzjdJIbtjGHvz3eH0Tg.jpg"
     },
     {
-      "slug": "duoc-su-tu-su",
-      "thumb_url": "https://img.ophim.live/uploads/movies/duoc-su-tu-su-thumb.jpg",
-      "year": 2023,
-      "tmdb_id": "220542",
+      "slug": "rick-va-morty-phan-9",
+      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-9-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "60625",
       "tmdb_type": "tv",
-      "movie_id": "653a15e0aab68118a3b68e6b",
-      "views": 1,
-      "plays": 7,
+      "movie_id": "6a13d0dce12218d7285724c1",
+      "views": 4,
+      "plays": 9,
       "completions": 0,
-      "trending_score": 0.181,
+      "trending_score": 0.136,
       "title": {
-        "vi": "Dược sư tự sự",
-        "en": "The Apothecary Diaries"
+        "vi": "Rick và Morty (Phần 9)",
+        "en": "Rick and Morty (Season 9)"
       },
-      "tmdb_rating": 8.593,
-      "poster_url": "https://image.tmdb.org/t/p/w500/e3ojpANrFnmJCyeBNTinYwyBCIN.jpg"
+      "tmdb_rating": 8.679,
+      "poster_url": "https://image.tmdb.org/t/p/w500/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg"
+    },
+    {
+      "slug": "gia-dinh-hien-dai-phan-1",
+      "thumb_url": "https://img.ophim.live/uploads/movies/gia-dinh-hien-dai-phan-1-thumb.jpg",
+      "year": 2009,
+      "tmdb_id": "1421",
+      "tmdb_type": "tv",
+      "movie_id": "64bcd7576f63d8738aec1af3",
+      "views": 1,
+      "plays": 12,
+      "completions": 0,
+      "trending_score": 0.109,
+      "title": {
+        "vi": "Gia Đình Hiện Đại (Phần 1)",
+        "en": "Modern Family (Season 1)"
+      },
+      "tmdb_rating": 7.909,
+      "poster_url": "https://image.tmdb.org/t/p/w500/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg"
     }
   ]
 }
