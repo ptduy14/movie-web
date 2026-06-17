@@ -1,10 +1,18 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from 'i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
-import { IoChevronDown, IoClose, IoCheckmark } from 'react-icons/io5';
+import {
+  IoChevronDown,
+  IoClose,
+  IoCheckmark,
+  IoLayersOutline,
+  IoOptionsOutline,
+  IoSwapVertical,
+} from 'react-icons/io5';
 import {
   CATEGORY_MAP,
   COUNTRY_MAP,
@@ -41,9 +49,12 @@ interface Option {
 export default function MovieFilterBar({
   title,
   dimensions,
+  count,
 }: {
   title: string;
   dimensions: FilterDimension[];
+  /** Catalog-wide result total shown next to the title. Hidden when null/undefined. */
+  count?: number | null;
 }) {
   const t = useTranslations('filter');
   const locale = useLocale() as Locale;
@@ -55,8 +66,6 @@ export default function MovieFilterBar({
   const country = searchParams.get('country') ?? '';
   const year = searchParams.get('year') ?? '';
   const sort = searchParams.get('sort') ?? '';
-  const hasActive = Boolean(category || country || year || sort);
-
   const setParam = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) params.set(key, value);
@@ -67,7 +76,8 @@ export default function MovieFilterBar({
 
   const clearAll = () => {
     const params = new URLSearchParams(searchParams.toString());
-    ['category', 'country', 'year', 'sort'].forEach((k) => params.delete(k));
+    // Sort is a separate concern (kept in its own control), so clear filters only.
+    ['category', 'country', 'year'].forEach((k) => params.delete(k));
     const qs = params.toString();
     replace(qs ? `${pathname}?${qs}` : pathname);
   };
@@ -101,52 +111,100 @@ export default function MovieFilterBar({
     [t]
   );
 
+  const currentSortLabel = sortOptions.find((o) => o.value === sort)?.label ?? t('sortLatest');
+
+  const activeFilters: { param: 'category' | 'country' | 'year'; label: string }[] = [];
+  if (category) activeFilters.push({ param: 'category', label: localizedCategory(category, locale) });
+  if (country) activeFilters.push({ param: 'country', label: localizedCountry(country, locale) });
+  if (year) activeFilters.push({ param: 'year', label: year });
+
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-semibold lg:text-3xl">{title}</h1>
+    <div>
+      <div className="space-y-4">
+        {/* Eyebrow — gives the bare title an editorial "section landing" feel (Apple TV). */}
+        <p className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
+          <IoLayersOutline size={13} />
+          {t('browse')}
+        </p>
 
-      <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-        {dimensions.includes('category') && (
-          <FilterDropdown
-            label={t('genre')}
-            value={category}
-            options={categoryOptions}
-            onChange={(v) => setParam('category', v)}
-          />
-        )}
-        {dimensions.includes('country') && (
-          <FilterDropdown
-            label={t('country')}
-            value={country}
-            options={countryOptions}
-            onChange={(v) => setParam('country', v)}
-          />
-        )}
-        {dimensions.includes('year') && (
-          <FilterDropdown
-            label={t('year')}
-            value={year}
-            options={yearOptions}
-            onChange={(v) => setParam('year', v)}
-          />
-        )}
-        <FilterDropdown
-          label={t('sort')}
-          value={sort}
-          options={sortOptions}
-          onChange={(v) => setParam('sort', v)}
-        />
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight lg:text-3xl">{title}</h1>
+          {typeof count === 'number' && (
+            <span className="text-sm text-white/50">{t('count', { count })}</span>
+          )}
+        </div>
 
-        {hasActive && (
+        {/* Control bar — filters left, sort pushed right (Netflix / Prime pattern). */}
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mr-0.5 hidden items-center gap-1.5 text-xs text-white/40 sm:flex">
+              <IoOptionsOutline size={14} />
+              {t('filtersLabel')}
+            </span>
+            {dimensions.includes('category') && (
+              <FilterDropdown
+                label={t('genre')}
+                value={category}
+                options={categoryOptions}
+                onChange={(v) => setParam('category', v)}
+              />
+            )}
+            {dimensions.includes('country') && (
+              <FilterDropdown
+                label={t('country')}
+                value={country}
+                options={countryOptions}
+                onChange={(v) => setParam('country', v)}
+              />
+            )}
+            {dimensions.includes('year') && (
+              <FilterDropdown
+                label={t('year')}
+                value={year}
+                options={yearOptions}
+                onChange={(v) => setParam('year', v)}
+              />
+            )}
+          </div>
+
+          <FilterDropdown
+            label={t('sort')}
+            value={sort}
+            options={sortOptions}
+            onChange={(v) => setParam('sort', v)}
+            variant="ghost"
+            align="right"
+            display={`${t('sort')}: ${currentSortLabel}`}
+            leadingIcon={<IoSwapVertical size={15} />}
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 border-t border-white/10" />
+
+      {activeFilters.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 pt-3">
+          <span className="text-xs text-white/40">{t('activeLabel')}:</span>
+          {activeFilters.map((f) => (
+            <button
+              key={f.param}
+              type="button"
+              onClick={() => setParam(f.param, '')}
+              className="flex items-center gap-1.5 rounded-full border border-brand/50 bg-brand-muted px-3 py-1 text-xs text-white transition-colors hover:border-brand"
+            >
+              {f.label}
+              <IoClose size={14} className="text-brand" />
+            </button>
+          ))}
           <button
             type="button"
             onClick={clearAll}
-            className="ml-1 flex shrink-0 items-center gap-1 px-2 py-2 text-sm text-brand transition-colors hover:text-brand-hover"
+            className="ml-1 text-xs text-brand transition-colors hover:text-brand-hover"
           >
-            <IoClose size={16} /> {t('clear')}
+            {t('clear')}
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -156,11 +214,21 @@ function FilterDropdown({
   value,
   options,
   onChange,
+  variant = 'filter',
+  align = 'left',
+  display,
+  leadingIcon,
 }: {
   label: string;
   value: string;
   options: Option[];
   onChange: (value: string) => void;
+  /** 'filter' = bordered pill (left group); 'ghost' = borderless text (the sort control). */
+  variant?: 'filter' | 'ghost';
+  align?: 'left' | 'right';
+  /** Override the trigger text (e.g. the sort control always shows "Sort: Latest"). */
+  display?: string;
+  leadingIcon?: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -176,40 +244,35 @@ function FilterDropdown({
     return () => document.removeEventListener('mousedown', handler);
   }, [open]);
 
+  const buttonText = display ?? (active ? `${label}: ${current?.label ?? value}` : label);
+  const buttonClass =
+    variant === 'ghost'
+      ? `flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm transition-colors ${
+          open ? 'text-white' : 'text-gray-300 hover:text-white'
+        }`
+      : `flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm transition-colors ${
+          active
+            ? 'border-brand bg-white/5 text-white'
+            : 'border-white/15 text-gray-300 hover:border-white/30'
+        }`;
+
   return (
     <div ref={ref} className="relative shrink-0">
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${
-          active
-            ? 'border-brand text-white'
-            : 'border-white/15 text-gray-300 hover:border-white/30'
-        }`}
-      >
-        <span className="whitespace-nowrap">{active ? `${label}: ${current?.label ?? value}` : label}</span>
-        {active ? (
-          <span
-            role="button"
-            aria-label="Clear"
-            onClick={(e) => {
-              e.stopPropagation();
-              onChange('');
-            }}
-            className="text-brand"
-          >
-            <IoClose size={16} />
-          </span>
-        ) : (
-          <IoChevronDown
-            size={16}
-            className={`transition-transform ${open ? 'rotate-180' : ''}`}
-          />
-        )}
+      <button type="button" onClick={() => setOpen((o) => !o)} className={buttonClass}>
+        {leadingIcon}
+        <span className="whitespace-nowrap">{buttonText}</span>
+        <IoChevronDown
+          size={14}
+          className={`transition-transform ${open ? 'rotate-180' : ''}`}
+        />
       </button>
 
       {open && (
-        <div className="absolute left-0 z-30 mt-2 max-h-72 w-44 overflow-y-auto rounded-lg border border-white/10 bg-black/95 py-1 shadow-custom backdrop-blur-md">
+        <div
+          className={`absolute z-30 mt-2 max-h-72 w-44 overflow-y-auto rounded-lg border border-white/10 bg-black/95 py-1 shadow-custom backdrop-blur-md ${
+            align === 'right' ? 'right-0' : 'left-0'
+          }`}
+        >
           {options.map((o) => (
             <button
               key={o.value || 'all'}

@@ -61,12 +61,12 @@ export async function getHeroLogoUrlsServerAction(
 
 export async function getMoviesByFormat(slug: string, page: number, filters?: MovieFilters) {
   const res = await MovieServices.getMoviesFormat(slug, page, filters);
-  return res.data.items;
+  return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
 }
 
 export async function getMoviesByType(slug: string, page: number, filters?: MovieFilters) {
   const res = await MovieServices.getMoviesType(slug, page, filters);
-  return res.data.items;
+  return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
 }
 
 export async function getMoviesByCountry(slug: string, page: number, filters?: MovieFilters) {
@@ -75,7 +75,7 @@ export async function getMoviesByCountry(slug: string, page: number, filters?: M
 
     if (res.status === 'error') throw new Error('');
 
-    return res.data.items;
+    return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
   } catch (error) {
     const locale = await getLocale();
     redirect({ href: '/', locale });
