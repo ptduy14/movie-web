@@ -1,42 +1,24 @@
 {
-  "updated_at": "2026-06-15T06:38:00.147Z",
+  "updated_at": "2026-06-22T06:40:49.308Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "spider-noir",
-      "thumb_url": "https://img.ophim.live/uploads/movies/spider-noir-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "220102",
-      "tmdb_type": "tv",
-      "movie_id": "6a1671f012f0391f00d24b9f",
-      "views": 5,
-      "plays": 12,
+      "slug": "as-the-gods-will",
+      "thumb_url": "https://img.ophim.live/uploads/movies/as-the-gods-will-thumb.jpg",
+      "year": 2014,
+      "tmdb_id": "241863",
+      "tmdb_type": "movie",
+      "movie_id": "6231d1a23c735a9a446ddb51",
+      "views": 3,
+      "plays": 2,
       "completions": 1,
-      "trending_score": 0.576,
+      "trending_score": 0.562,
       "title": {
-        "vi": "Spider-Noir",
-        "en": "Spider-Noir"
+        "vi": "As the Gods Will",
+        "en": "As the Gods Will"
       },
-      "tmdb_rating": 8.551,
-      "poster_url": "https://image.tmdb.org/t/p/w500/kVZMLSkaYgH1cJpN19Y4vzmvbku.jpg"
-    },
-    {
-      "slug": null,
-      "thumb_url": null,
-      "year": null,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "movie_id": "62c674d6a862e5da382704f1",
-      "views": 0,
-      "plays": 13,
-      "completions": 1,
-      "trending_score": 0.5,
-      "title": {
-        "vi": null,
-        "en": null
-      },
-      "tmdb_rating": null,
-      "poster_url": null
+      "tmdb_rating": 7.1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/3Obn9IR47fjhbtYtNrO7CBSrZ2w.jpg"
     },
     {
       "slug": "bai-hoc-dang-doi",
@@ -45,142 +27,160 @@
       "tmdb_id": "276161",
       "tmdb_type": "tv",
       "movie_id": "6a2283ae2c0a4eaf26572b57",
-      "views": 11,
-      "plays": 36,
+      "views": 1,
+      "plays": 13,
       "completions": 0,
-      "trending_score": 0.46,
+      "trending_score": 0.433,
       "title": {
         "vi": "Bài Học Đáng Đời",
         "en": "Teach You a Lesson"
       },
-      "tmdb_rating": 9.425,
+      "tmdb_rating": 9.498,
       "poster_url": "https://image.tmdb.org/t/p/w500/fMECSPrTmRClSViMsXFYmiYIcWP.jpg"
     },
     {
-      "slug": "tinh-yeu-anh-danh-cho-em",
-      "thumb_url": "https://img.ophim.live/uploads/movies/tinh-yeu-anh-danh-cho-em-thumb.jpg",
-      "year": 2023,
-      "tmdb_id": "225178",
+      "slug": "spider-noir",
+      "thumb_url": "https://img.ophim.live/uploads/movies/spider-noir-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "220102",
       "tmdb_type": "tv",
-      "movie_id": "6447830a4f963f302bcb8f78",
-      "views": 2,
-      "plays": 52,
+      "movie_id": "6a1671f012f0391f00d24b9f",
+      "views": 6,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.433,
+      "trending_score": 0.262,
       "title": {
-        "vi": "Tình Yêu Anh Dành Cho Em",
-        "en": "The Love You Give Me"
+        "vi": "Spider-Noir",
+        "en": "Spider-Noir"
       },
-      "tmdb_rating": 8.4,
-      "poster_url": "https://image.tmdb.org/t/p/w500/qL282eKyVyYanby06A4dzNNWsxK.jpg"
+      "tmdb_rating": 8.521,
+      "poster_url": "https://image.tmdb.org/t/p/w500/kVZMLSkaYgH1cJpN19Y4vzmvbku.jpg"
     },
     {
-      "slug": "bat-kha-chien-bai",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bat-kha-chien-bai-thumb.jpg",
-      "year": 2021,
-      "tmdb_id": "95557",
+      "slug": "thi-tran-ac-mong-phan-4",
+      "thumb_url": "https://img.ophim.live/uploads/movies/thi-tran-ac-mong-phan-4-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "124364",
       "tmdb_type": "tv",
-      "movie_id": "627ab32fdb9df06c65947c44",
-      "views": 12,
-      "plays": 9,
+      "movie_id": "69e4fb962b874d6bfb6bbee5",
+      "views": 4,
+      "plays": 3,
       "completions": 0,
-      "trending_score": 0.269,
+      "trending_score": 0.226,
       "title": {
-        "vi": "Bất Khả Chiến Bại",
-        "en": "INVINCIBLE"
+        "vi": "Thị Trấn Ác Mộng (Phần 4)",
+        "en": "FROM (Season 4)"
       },
-      "tmdb_rating": 8.636,
-      "poster_url": "https://image.tmdb.org/t/p/w500/lxVS24ZhG3WQf3IMbkFIg6olT6A.jpg"
+      "tmdb_rating": 8.485,
+      "poster_url": "https://image.tmdb.org/t/p/w500/pRtJagIxpfODzzb0T0NAvZSzErC.jpg"
     },
     {
-      "slug": "gia-dinh-hien-dai-phan-2",
-      "thumb_url": "https://img.ophim.live/uploads/movies/gia-dinh-hien-dai-phan-2-thumb.jpg",
-      "year": 2010,
-      "tmdb_id": "1421",
+      "slug": "sieu-anh-hung-pha-hoai",
+      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-anh-hung-pha-hoai-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "76479",
       "tmdb_type": "tv",
-      "movie_id": "64bcd7eff9e5c68186f7b5f3",
+      "movie_id": "62873d629e983cdfde3ac306",
+      "views": 4,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.195,
+      "title": {
+        "vi": "Siêu Anh Hùng Phá Hoại",
+        "en": "The Boys"
+      },
+      "tmdb_rating": 8.451,
+      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
+    },
+    {
+      "slug": "van-tu-hanh",
+      "thumb_url": "https://img.ophim.live/uploads/movies/van-tu-hanh-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "239901",
+      "tmdb_type": "tv",
+      "movie_id": "692f0e84dbdcc0b3a8a260e8",
+      "views": 4,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.195,
+      "title": {
+        "vi": "Vân Tú Hành",
+        "en": "The Legend of Rosy Clouds"
+      },
+      "tmdb_rating": 8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/2BplPHTd5BIPKXRawey3Q2hO3Iu.jpg"
+    },
+    {
+      "slug": "trai-dat-dong-bang",
+      "thumb_url": "https://img.ophim.live/uploads/movies/trai-dat-dong-bang-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "296232",
+      "tmdb_type": "tv",
+      "movie_id": "69d5e08d93c48ff6bfe68daa",
+      "views": 4,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.164,
+      "title": {
+        "vi": "Trái Đất Đóng Băng",
+        "en": "SNOWBALL EARTH"
+      },
+      "tmdb_rating": 8.3,
+      "poster_url": "https://image.tmdb.org/t/p/w500/cF09k4csKKjzr9C1Qw1S2WlK8YJ.jpg"
+    },
+    {
+      "slug": "rac-roi-tien-bac-cua-margo",
+      "thumb_url": "https://img.ophim.live/uploads/movies/rac-roi-tien-bac-cua-margo-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "245318",
+      "tmdb_type": "tv",
+      "movie_id": "69df658b93c48ff6bfe91299",
       "views": 1,
-      "plays": 29,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.24,
+      "trending_score": 0.156,
       "title": {
-        "vi": "Gia Đình Hiện Đại (Phần 2)",
-        "en": "Modern Family (Season 2)"
+        "vi": "Rắc Rối Tiền Bạc Của Margo",
+        "en": "Margo's Got Money Troubles"
       },
-      "tmdb_rating": 7.909,
-      "poster_url": "https://image.tmdb.org/t/p/w500/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg"
+      "tmdb_rating": 7.898,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fRR0Ho2c1nFJQiXWg4LNIgRPbg0.jpg"
     },
     {
-      "slug": null,
-      "thumb_url": null,
-      "year": null,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "movie_id": "653a15e0aab68118a3b68e6b",
-      "views": 0,
-      "plays": 31,
+      "slug": "liar-game",
+      "thumb_url": "https://img.ophim.live/uploads/movies/liar-game-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "300126",
+      "tmdb_type": "tv",
+      "movie_id": "69da021916bc1b4174f11ca4",
+      "views": 2,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.238,
+      "trending_score": 0.128,
       "title": {
-        "vi": null,
+        "vi": "LIAR GAME",
+        "en": "LIAR GAME"
+      },
+      "tmdb_rating": 7.833,
+      "poster_url": "https://image.tmdb.org/t/p/w500/w8yyntTxZlDlZ2TR8kb4C92pmcO.jpg"
+    },
+    {
+      "slug": "tham-tu-lung-danh-conan",
+      "thumb_url": "https://img.ophim.live/uploads/movies/tham-tu-lung-danh-conan-thumb.jpg",
+      "year": 2005,
+      "tmdb_id": "1221942",
+      "tmdb_type": "movie",
+      "movie_id": "62550d55b89e109508090858",
+      "views": 1,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.126,
+      "title": {
+        "vi": "Thám Tử Lừng Danh Conan",
         "en": null
       },
       "tmdb_rating": null,
-      "poster_url": null
-    },
-    {
-      "slug": "tho-oi",
-      "thumb_url": "https://img.ophim.live/uploads/movies/tho-oi-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "1528577",
-      "tmdb_type": "movie",
-      "movie_id": "697859d5eea244e3e8a691e9",
-      "views": 7,
-      "plays": 6,
-      "completions": 0,
-      "trending_score": 0.163,
-      "title": {
-        "vi": "Thỏ Ơi!!",
-        "en": "Bunny!!"
-      },
-      "tmdb_rating": 7,
-      "poster_url": "https://image.tmdb.org/t/p/w500/hYUBNcOwAzjdJIbtjGHvz3eH0Tg.jpg"
-    },
-    {
-      "slug": "rick-va-morty-phan-9",
-      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-9-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "60625",
-      "tmdb_type": "tv",
-      "movie_id": "6a13d0dce12218d7285724c1",
-      "views": 4,
-      "plays": 9,
-      "completions": 0,
-      "trending_score": 0.136,
-      "title": {
-        "vi": "Rick và Morty (Phần 9)",
-        "en": "Rick and Morty (Season 9)"
-      },
-      "tmdb_rating": 8.679,
-      "poster_url": "https://image.tmdb.org/t/p/w500/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg"
-    },
-    {
-      "slug": "gia-dinh-hien-dai-phan-1",
-      "thumb_url": "https://img.ophim.live/uploads/movies/gia-dinh-hien-dai-phan-1-thumb.jpg",
-      "year": 2009,
-      "tmdb_id": "1421",
-      "tmdb_type": "tv",
-      "movie_id": "64bcd7576f63d8738aec1af3",
-      "views": 1,
-      "plays": 12,
-      "completions": 0,
-      "trending_score": 0.109,
-      "title": {
-        "vi": "Gia Đình Hiện Đại (Phần 1)",
-        "en": "Modern Family (Season 1)"
-      },
-      "tmdb_rating": 7.909,
-      "poster_url": "https://image.tmdb.org/t/p/w500/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg"
+      "poster_url": "https://img.ophim.live/uploads/movies/tham-tu-lung-danh-conan-thumb.jpg"
     }
   ]
 }
