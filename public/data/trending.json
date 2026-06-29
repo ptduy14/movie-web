@@ -1,24 +1,42 @@
 {
-  "updated_at": "2026-06-22T06:40:49.308Z",
+  "updated_at": "2026-06-29T06:06:03.152Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "as-the-gods-will",
-      "thumb_url": "https://img.ophim.live/uploads/movies/as-the-gods-will-thumb.jpg",
-      "year": 2014,
-      "tmdb_id": "241863",
-      "tmdb_type": "movie",
-      "movie_id": "6231d1a23c735a9a446ddb51",
-      "views": 3,
-      "plays": 2,
+      "slug": "gia-toc-rong-phan-3",
+      "thumb_url": "https://img.ophim.live/uploads/movies/gia-toc-rong-phan-3-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "94997",
+      "tmdb_type": "tv",
+      "movie_id": "6a3a58714e6584edee499a5e",
+      "views": 6,
+      "plays": 3,
       "completions": 1,
-      "trending_score": 0.562,
+      "trending_score": 0.811,
       "title": {
-        "vi": "As the Gods Will",
-        "en": "As the Gods Will"
+        "vi": "Gia Tộc Rồng (Phần 3)",
+        "en": "House of the Dragon (Season 3)"
       },
-      "tmdb_rating": 7.1,
-      "poster_url": "https://image.tmdb.org/t/p/w500/3Obn9IR47fjhbtYtNrO7CBSrZ2w.jpg"
+      "tmdb_rating": 8.346,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg"
+    },
+    {
+      "slug": "thoat-khoi-tan-the",
+      "thumb_url": "https://img.ophim.live/uploads/movies/thoat-khoi-tan-the-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "687163",
+      "tmdb_type": "movie",
+      "movie_id": "69a11d7df063d23bbbcd2536",
+      "views": 2,
+      "plays": 1,
+      "completions": 1,
+      "trending_score": 0.537,
+      "title": {
+        "vi": "Thoát Khỏi Tận Thế",
+        "en": "Project Hail Mary"
+      },
+      "tmdb_rating": 8.689,
+      "poster_url": "https://image.tmdb.org/t/p/w500/u0xlWhNNGug0eYUb7cwrGmAOC7V.jpg"
     },
     {
       "slug": "bai-hoc-dang-doi",
@@ -27,34 +45,34 @@
       "tmdb_id": "276161",
       "tmdb_type": "tv",
       "movie_id": "6a2283ae2c0a4eaf26572b57",
-      "views": 1,
-      "plays": 13,
+      "views": 7,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.433,
+      "trending_score": 0.52,
       "title": {
         "vi": "Bài Học Đáng Đời",
         "en": "Teach You a Lesson"
       },
-      "tmdb_rating": 9.498,
+      "tmdb_rating": 9.485,
       "poster_url": "https://image.tmdb.org/t/p/w500/fMECSPrTmRClSViMsXFYmiYIcWP.jpg"
     },
     {
-      "slug": "spider-noir",
-      "thumb_url": "https://img.ophim.live/uploads/movies/spider-noir-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "220102",
+      "slug": "hay-goi-cho-saul-phan-1",
+      "thumb_url": "https://img.ophim.live/uploads/movies/hay-goi-cho-saul-phan-1-thumb.jpg",
+      "year": 2015,
+      "tmdb_id": "60059",
       "tmdb_type": "tv",
-      "movie_id": "6a1671f012f0391f00d24b9f",
-      "views": 6,
-      "plays": 2,
+      "movie_id": "625feff3db43524328afc039",
+      "views": 3,
+      "plays": 5,
       "completions": 0,
-      "trending_score": 0.262,
+      "trending_score": 0.486,
       "title": {
-        "vi": "Spider-Noir",
-        "en": "Spider-Noir"
+        "vi": "Hãy gọi cho Saul (Phần 1)",
+        "en": "Better Call Saul (Season 1)"
       },
-      "tmdb_rating": 8.521,
-      "poster_url": "https://image.tmdb.org/t/p/w500/kVZMLSkaYgH1cJpN19Y4vzmvbku.jpg"
+      "tmdb_rating": 8.706,
+      "poster_url": "https://image.tmdb.org/t/p/w500/zjg4jpK1Wp2kiRvtt5ND0kznako.jpg"
     },
     {
       "slug": "thi-tran-ac-mong-phan-4",
@@ -63,124 +81,106 @@
       "tmdb_id": "124364",
       "tmdb_type": "tv",
       "movie_id": "69e4fb962b874d6bfb6bbee5",
-      "views": 4,
-      "plays": 3,
+      "views": 5,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.226,
+      "trending_score": 0.463,
       "title": {
         "vi": "Thị Trấn Ác Mộng (Phần 4)",
         "en": "FROM (Season 4)"
       },
-      "tmdb_rating": 8.485,
+      "tmdb_rating": 8.5,
       "poster_url": "https://image.tmdb.org/t/p/w500/pRtJagIxpfODzzb0T0NAvZSzErC.jpg"
     },
     {
-      "slug": "sieu-anh-hung-pha-hoai",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-anh-hung-pha-hoai-thumb.jpg",
-      "year": 2019,
-      "tmdb_id": "76479",
+      "slug": "the-than-ngu-khi-su-cuoi-cung-phan-2-2026",
+      "thumb_url": "https://img.ophim.live/uploads/movies/the-than-ngu-khi-su-cuoi-cung-phan-2-2026-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "82452",
       "tmdb_type": "tv",
-      "movie_id": "62873d629e983cdfde3ac306",
+      "movie_id": "6a3d1958baf8dde7e3d1b0a9",
       "views": 4,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.195,
+      "trending_score": 0.274,
       "title": {
-        "vi": "Siêu Anh Hùng Phá Hoại",
-        "en": "The Boys"
+        "vi": "Thế Thần: Ngự khí sư cuối cùng (Phần 2)",
+        "en": "Avatar: The Last Airbender (Season 2)"
       },
-      "tmdb_rating": 8.451,
-      "poster_url": "https://image.tmdb.org/t/p/w500/in1R2dDc421JxsoRWaIIAqVI2KE.jpg"
+      "tmdb_rating": 7.8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/qOzznTQVBELUNgFBhlDHqs1KKSd.jpg"
     },
     {
-      "slug": "van-tu-hanh",
-      "thumb_url": "https://img.ophim.live/uploads/movies/van-tu-hanh-thumb.jpg",
+      "slug": "the-gioi-khung-long-tai-sinh",
+      "thumb_url": "https://img.ophim.live/uploads/movies/the-gioi-khung-long-tai-sinh-thumb.jpg",
       "year": 2025,
-      "tmdb_id": "239901",
-      "tmdb_type": "tv",
-      "movie_id": "692f0e84dbdcc0b3a8a260e8",
-      "views": 4,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.195,
-      "title": {
-        "vi": "Vân Tú Hành",
-        "en": "The Legend of Rosy Clouds"
-      },
-      "tmdb_rating": 8,
-      "poster_url": "https://image.tmdb.org/t/p/w500/2BplPHTd5BIPKXRawey3Q2hO3Iu.jpg"
-    },
-    {
-      "slug": "trai-dat-dong-bang",
-      "thumb_url": "https://img.ophim.live/uploads/movies/trai-dat-dong-bang-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "296232",
-      "tmdb_type": "tv",
-      "movie_id": "69d5e08d93c48ff6bfe68daa",
-      "views": 4,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.164,
-      "title": {
-        "vi": "Trái Đất Đóng Băng",
-        "en": "SNOWBALL EARTH"
-      },
-      "tmdb_rating": 8.3,
-      "poster_url": "https://image.tmdb.org/t/p/w500/cF09k4csKKjzr9C1Qw1S2WlK8YJ.jpg"
-    },
-    {
-      "slug": "rac-roi-tien-bac-cua-margo",
-      "thumb_url": "https://img.ophim.live/uploads/movies/rac-roi-tien-bac-cua-margo-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "245318",
-      "tmdb_type": "tv",
-      "movie_id": "69df658b93c48ff6bfe91299",
-      "views": 1,
-      "plays": 4,
-      "completions": 0,
-      "trending_score": 0.156,
-      "title": {
-        "vi": "Rắc Rối Tiền Bạc Của Margo",
-        "en": "Margo's Got Money Troubles"
-      },
-      "tmdb_rating": 7.898,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fRR0Ho2c1nFJQiXWg4LNIgRPbg0.jpg"
-    },
-    {
-      "slug": "liar-game",
-      "thumb_url": "https://img.ophim.live/uploads/movies/liar-game-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "300126",
-      "tmdb_type": "tv",
-      "movie_id": "69da021916bc1b4174f11ca4",
-      "views": 2,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.128,
-      "title": {
-        "vi": "LIAR GAME",
-        "en": "LIAR GAME"
-      },
-      "tmdb_rating": 7.833,
-      "poster_url": "https://image.tmdb.org/t/p/w500/w8yyntTxZlDlZ2TR8kb4C92pmcO.jpg"
-    },
-    {
-      "slug": "tham-tu-lung-danh-conan",
-      "thumb_url": "https://img.ophim.live/uploads/movies/tham-tu-lung-danh-conan-thumb.jpg",
-      "year": 2005,
-      "tmdb_id": "1221942",
+      "tmdb_id": "1234821",
       "tmdb_type": "movie",
-      "movie_id": "62550d55b89e109508090858",
+      "movie_id": "6881baafff9e37524c10a0d3",
       "views": 1,
-      "plays": 3,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.126,
+      "trending_score": 0.189,
       "title": {
-        "vi": "Thám Tử Lừng Danh Conan",
+        "vi": "Thế Giới Khủng Long: Tái Sinh",
+        "en": "Jurassic World Rebirth"
+      },
+      "tmdb_rating": 6.271,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1RICxzeoNCAO5NpcRMIgg1XT6fm.jpg"
+    },
+    {
+      "slug": "ho-giau-van",
+      "thumb_url": "https://img.ophim.live/uploads/movies/ho-giau-van-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "322634",
+      "tmdb_type": "tv",
+      "movie_id": "6a0b20bac52ec62c8b14b334",
+      "views": 1,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.189,
+      "title": {
+        "vi": "Hổ Giấu Vằn",
+        "en": "Wicked Temptation"
+      },
+      "tmdb_rating": 0,
+      "poster_url": "https://img.ophim.live/uploads/movies/ho-giau-van-thumb.jpg"
+    },
+    {
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "6447830a4f963f302bcb8f78",
+      "views": 0,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.16,
+      "title": {
+        "vi": null,
         "en": null
       },
       "tmdb_rating": null,
-      "poster_url": "https://img.ophim.live/uploads/movies/tham-tu-lung-danh-conan-thumb.jpg"
+      "poster_url": null
+    },
+    {
+      "slug": "bat-song-tinh-duyen",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bat-song-tinh-duyen-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "",
+      "tmdb_type": "tv",
+      "movie_id": "69f487916d4243e068f61e30",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.137,
+      "title": {
+        "vi": "Bắt Sóng Tình Duyên",
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": "https://img.ophim.live/uploads/movies/bat-song-tinh-duyen-thumb.jpg"
     }
   ]
 }
