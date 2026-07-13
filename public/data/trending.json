@@ -1,24 +1,60 @@
 {
-  "updated_at": "2026-07-06T05:37:20.953Z",
+  "updated_at": "2026-07-13T04:48:26.349Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "sac-xuan-gui-nguoi-tinh",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sac-xuan-gui-nguoi-tinh-thumb.jpg",
-      "year": 2024,
-      "tmdb_id": "244621",
-      "tmdb_type": "tv",
-      "movie_id": "66266ff02a743973709f657e",
-      "views": 1,
-      "plays": 16,
-      "completions": 0,
-      "trending_score": 0.42,
+      "slug": "bac-thay-cua-nhung-uoc-mo",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bac-thay-cua-nhung-uoc-mo-thumb.jpg",
+      "year": 2017,
+      "tmdb_id": "316029",
+      "tmdb_type": "movie",
+      "movie_id": "627d38c19e983cdfde3443e8",
+      "views": 2,
+      "plays": 4,
+      "completions": 1,
+      "trending_score": 0.526,
       "title": {
-        "vi": "Sắc Xuân Gửi Người Tình",
-        "en": "Will Love In Spring"
+        "vi": "Bậc Thầy Của Những Ước Mơ",
+        "en": "The Greatest Showman"
       },
-      "tmdb_rating": 8.632,
-      "poster_url": "https://image.tmdb.org/t/p/w500/rsTdoElwFSiF9MAAFqvbjLugpE3.jpg"
+      "tmdb_rating": 7.858,
+      "poster_url": "https://image.tmdb.org/t/p/w500/jLkvdw90E4znDs5byCVq0ueOgYy.jpg"
+    },
+    {
+      "slug": "am-anh-2026",
+      "thumb_url": "https://img.ophim.live/uploads/movies/am-anh-2026-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1339713",
+      "tmdb_type": "movie",
+      "movie_id": "6a44c4e62c0a4eaf265d6437",
+      "views": 21,
+      "plays": 11,
+      "completions": 0,
+      "trending_score": 0.493,
+      "title": {
+        "vi": "Ám Ảnh",
+        "en": "Obsession"
+      },
+      "tmdb_rating": 8.272,
+      "poster_url": "https://image.tmdb.org/t/p/w500/doQPOCVlIWZBRC2ZVsSXHi0luL8.jpg"
+    },
+    {
+      "slug": "nhung-co-nang-gilmore-phan-1",
+      "thumb_url": "https://img.ophim.live/uploads/movies/nhung-co-nang-gilmore-phan-1-thumb.jpg",
+      "year": 2000,
+      "tmdb_id": "4586",
+      "tmdb_type": "tv",
+      "movie_id": "623de1b8e3cd150b3990ec1f",
+      "views": 4,
+      "plays": 15,
+      "completions": 0,
+      "trending_score": 0.438,
+      "title": {
+        "vi": "Những cô nàng Gilmore (Phần 1)",
+        "en": "Gilmore Girls (Season 1)"
+      },
+      "tmdb_rating": 7.9,
+      "poster_url": "https://image.tmdb.org/t/p/w500/g1xtjgoVRvk965EoiGXC2YqYme2.jpg"
     },
     {
       "slug": "thoat-khoi-tan-the",
@@ -28,159 +64,123 @@
       "tmdb_type": "movie",
       "movie_id": "69a11d7df063d23bbbcd2536",
       "views": 10,
-      "plays": 5,
+      "plays": 6,
       "completions": 0,
-      "trending_score": 0.325,
+      "trending_score": 0.255,
       "title": {
         "vi": "Thoát Khỏi Tận Thế",
         "en": "Project Hail Mary"
       },
-      "tmdb_rating": 8.676,
-      "poster_url": "https://image.tmdb.org/t/p/w500/u0xlWhNNGug0eYUb7cwrGmAOC7V.jpg"
+      "tmdb_rating": 8.667,
+      "poster_url": "https://image.tmdb.org/t/p/w500/gATQxXU9tPj2DwHARCIL9YpDym7.jpg"
     },
     {
-      "slug": "khuc-cau-hon-thu-han",
-      "thumb_url": "https://img.ophim.live/uploads/movies/khuc-cau-hon-thu-han-thumb.jpg",
-      "year": 2024,
-      "tmdb_id": "229906",
-      "tmdb_type": "tv",
-      "movie_id": "6710c7914086eab850b177d3",
-      "views": 1,
-      "plays": 9,
-      "completions": 0,
-      "trending_score": 0.245,
-      "title": {
-        "vi": "Gundam: Khúc cầu hồn thù hận",
-        "en": "Gundam: Requiem for Vengeance"
-      },
-      "tmdb_rating": 7.049,
-      "poster_url": "https://image.tmdb.org/t/p/w500/ybJkwgv63Ht3bZNOrKsbTwYmaFC.jpg"
-    },
-    {
-      "slug": "am-anh-2026",
-      "thumb_url": "https://img.ophim.live/uploads/movies/am-anh-2026-thumb.jpg",
+      "slug": "nhung-ban-di-chuc-phan-1",
+      "thumb_url": "https://img.ophim.live/uploads/movies/nhung-ban-di-chuc-phan-1-thumb.jpg",
       "year": 2026,
-      "tmdb_id": "1339713",
-      "tmdb_type": "movie",
-      "movie_id": "6a44c4e62c0a4eaf265d6437",
+      "tmdb_id": "287527",
+      "tmdb_type": "tv",
+      "movie_id": "6a2f82c9e14b2140fc718709",
       "views": 6,
-      "plays": 4,
+      "plays": 7,
       "completions": 0,
-      "trending_score": 0.22,
+      "trending_score": 0.244,
       "title": {
-        "vi": "Ám Ảnh",
-        "en": "Obsession"
+        "vi": "Những Bản Di Chúc (Phần 1)",
+        "en": "The Testaments (Season 1)"
       },
-      "tmdb_rating": 8.244,
-      "poster_url": "https://image.tmdb.org/t/p/w500/doQPOCVlIWZBRC2ZVsSXHi0luL8.jpg"
+      "tmdb_rating": 8.3,
+      "poster_url": "https://image.tmdb.org/t/p/w500/nyf9QDf0Ls8kFfxwWGyYXGv1Akc.jpg"
     },
     {
-      "slug": "gia-toc-rong-phan-3",
-      "thumb_url": "https://img.ophim.live/uploads/movies/gia-toc-rong-phan-3-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "94997",
+      "slug": "sac-xuan-gui-nguoi-tinh",
+      "thumb_url": "https://img.ophim.live/uploads/movies/sac-xuan-gui-nguoi-tinh-thumb.jpg",
+      "year": 2024,
+      "tmdb_id": "244621",
       "tmdb_type": "tv",
-      "movie_id": "6a3a58714e6584edee499a5e",
-      "views": 9,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.205,
-      "title": {
-        "vi": "Gia Tộc Rồng (Phần 3)",
-        "en": "House of the Dragon (Season 3)"
-      },
-      "tmdb_rating": 8.359,
-      "poster_url": "https://image.tmdb.org/t/p/w500/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg"
-    },
-    {
-      "slug": null,
-      "thumb_url": null,
-      "year": null,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "movie_id": "6a13d0dce12218d7285724c1",
-      "views": 0,
+      "movie_id": "66266ff02a743973709f657e",
+      "views": 6,
       "plays": 3,
       "completions": 0,
-      "trending_score": 0.075,
+      "trending_score": 0.137,
       "title": {
-        "vi": null,
-        "en": null
+        "vi": "Sắc Xuân Gửi Người Tình",
+        "en": "Will Love In Spring"
       },
-      "tmdb_rating": null,
-      "poster_url": null
+      "tmdb_rating": 8.632,
+      "poster_url": "https://image.tmdb.org/t/p/w500/rsTdoElwFSiF9MAAFqvbjLugpE3.jpg"
     },
     {
-      "slug": "trang-trai-dutton",
-      "thumb_url": "https://img.ophim.live/uploads/movies/trang-trai-dutton-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "299167",
+      "slug": "star-wars-sach-cua-boba-fett",
+      "thumb_url": "https://img.ophim.live/uploads/movies/star-wars-sach-cua-boba-fett-thumb.jpg",
+      "year": 2021,
+      "tmdb_id": "115036",
       "tmdb_type": "tv",
-      "movie_id": "6a0b02307544913d492aafe1",
+      "movie_id": "62695bd7fa02df5563cbec25",
+      "views": 3,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.109,
+      "title": {
+        "vi": "Star Wars: Sách Của Boba Fett",
+        "en": "The Book of Boba Fett"
+      },
+      "tmdb_rating": 7.471,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7FCQ34cNZnA2rUMjjcjRZRKR8w4.jpg"
+    },
+    {
+      "slug": "hay-bat-toi-neu-co-the",
+      "thumb_url": "https://img.ophim.live/uploads/movies/hay-bat-toi-neu-co-the-thumb.jpg",
+      "year": 2002,
+      "tmdb_id": "640",
+      "tmdb_type": "movie",
+      "movie_id": "621795e14e98729b6822368e",
       "views": 2,
-      "plays": 1,
+      "plays": 3,
       "completions": 0,
-      "trending_score": 0.065,
+      "trending_score": 0.099,
       "title": {
-        "vi": "Trang Trại Dutton",
-        "en": "Dutton Ranch"
+        "vi": "Hãy bắt tôi nếu có thể",
+        "en": "Catch Me If You Can"
       },
-      "tmdb_rating": 9.257,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
+      "tmdb_rating": 7.978,
+      "poster_url": "https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg"
     },
     {
-      "slug": "sieu-sao-sieu-xit-2026",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sieu-sao-sieu-xit-2026-thumb.jpg",
+      "slug": "bong-ma-bao-thu",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bong-ma-bao-thu-thumb.jpg",
       "year": 2026,
-      "tmdb_id": "309104",
+      "tmdb_id": "262388",
       "tmdb_type": "tv",
-      "movie_id": "6a44c0b04f61d761f775d325",
-      "views": 1,
-      "plays": 1,
+      "movie_id": "6a4f38f54f61d761f77894df",
+      "views": 4,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.045,
+      "trending_score": 0.091,
       "title": {
-        "vi": "Siêu Sao Siêu Xịt",
-        "en": "I Wanna Be Sup'Tar"
+        "vi": "Bóng Ma Báo Thù",
+        "en": "M.I.A."
       },
-      "tmdb_rating": 6.7,
-      "poster_url": "https://image.tmdb.org/t/p/w500/ySeoQQSUalfIIvNfFnlRQemxS3i.jpg"
+      "tmdb_rating": 8.483,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uvocuo6mgQTtNa7O6a3MQoTfuh4.jpg"
     },
     {
-      "slug": "doi-tham-tu-cuu-an-mang-luc-nua-dem",
-      "thumb_url": "https://img.ophim.live/uploads/movies/doi-tham-tu-cuu-an-mang-luc-nua-dem-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "1301421",
+      "slug": "nguoi-nhen-tro-ve-nha",
+      "thumb_url": "https://img.ophim.live/uploads/movies/nguoi-nhen-tro-ve-nha-thumb.jpg",
+      "year": 2017,
+      "tmdb_id": "315635",
       "tmdb_type": "movie",
-      "movie_id": "69e883ef2b874d6bfb6cf754",
+      "movie_id": "620f7a2c91fa4af90ab6a48d",
       "views": 1,
-      "plays": 1,
+      "plays": 3,
       "completions": 0,
-      "trending_score": 0.045,
+      "trending_score": 0.09,
       "title": {
-        "vi": "Đội Thám Tử Cừu: Án Mạng Lúc Nửa Đêm",
-        "en": "The Sheep Detectives"
+        "vi": "Người Nhện: Trở về nhà",
+        "en": "Spider-Man: Homecoming"
       },
-      "tmdb_rating": 7.8,
-      "poster_url": "https://image.tmdb.org/t/p/w500/TEaSqmI6TZQVimULYbingDIdXT.jpg"
-    },
-    {
-      "slug": "huong-vi-tra",
-      "thumb_url": "https://img.ophim.live/uploads/movies/huong-vi-tra-thumb.jpg",
-      "year": 2004,
-      "tmdb_id": "15318",
-      "tmdb_type": "movie",
-      "movie_id": "62791da33a2c0c6289c09f2f",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.045,
-      "title": {
-        "vi": "Hương Vị Trà",
-        "en": "The Taste of Tea"
-      },
-      "tmdb_rating": 7.5,
-      "poster_url": "https://image.tmdb.org/t/p/w500/yapwfNElQYFY9TaVS03jv6Gk2Rs.jpg"
+      "tmdb_rating": 7.331,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sd1eByiFLL0arwkip6lV6l25cSj.jpg"
     }
   ]
 }
