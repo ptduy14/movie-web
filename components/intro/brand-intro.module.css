@@ -1,0 +1,159 @@
+/* MOVIEX brand intro — cinematic letter reveal.
+   Ported from the approved storyboard: staggered letter cascade + film grain +
+   red light-leak + scanline + vignette. Self-contained (no CDN fonts/scripts).
+   Compositor-friendly (opacity / transform). Visuals are CSS-driven and start
+   on first paint; the handoff is JS-driven (the `.handoff` class), with a
+   pure-CSS failsafe so a no-JS / stuck client is never trapped.
+
+   Timeline: letters 150–1150ms  ·  brand hold + pulse  ·  handoff ~1500ms. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+  /* Failsafe: if JS never runs (or stalls), force-hide after 3.4s. */
+  animation: introFailsafe 1ms linear 3400ms forwards;
+}
+
+/* Outro: the whole scene (black + letters + grain) dissolves as ONE, with a
+   gentle ease-out and a subtle scale push-in — a smooth cinematic hand-off to
+   the homepage crossfading through underneath (no abrupt cut, no separate
+   layers fighting each other). */
+.overlay.handoff {
+  animation: overlayOut 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* --- Atmosphere layers --- */
+.lightLeak {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 20%, rgba(225, 7, 17, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  animation: lightLeak 1600ms ease forwards;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+  animation: grain 0.8s steps(8) infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.scanline {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, rgba(225, 7, 17, 0.08) 50%, transparent 100%);
+  animation: scan 1600ms linear forwards;
+}
+
+/* --- Wordmark --- */
+.wordmark {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arial Black", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  font-weight: 900;
+  font-size: clamp(52px, 15vw, 120px);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: #e10711;
+  will-change: transform;
+  animation:
+    wordIn 700ms cubic-bezier(0.23, 1, 0.32, 1) both,
+    pulse 320ms ease-in-out 1150ms both;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em) scale(0.7);
+  will-change: opacity, transform;
+  animation: letterIn 500ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.letter:nth-child(1) { animation-delay: 150ms; }
+.letter:nth-child(2) { animation-delay: 250ms; }
+.letter:nth-child(3) { animation-delay: 350ms; }
+.letter:nth-child(4) { animation-delay: 450ms; }
+.letter:nth-child(5) { animation-delay: 550ms; }
+.letter:nth-child(6) { animation-delay: 650ms; }
+
+@keyframes letterIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes wordIn {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes grain {
+  0% { background-position: 0 0; }
+  100% { background-position: 4px 4px; }
+}
+
+@keyframes lightLeak {
+  0% { opacity: 0; }
+  30% { opacity: 0.35; }
+  70% { opacity: 0.15; }
+  100% { opacity: 0; }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+@keyframes overlayOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.04); }
+}
+
+@keyframes introFailsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Accessibility: reduced-motion → static wordmark, no grain/scan/leak/pulse.
+   Still plays (a short fade), still masks the warm-up — NOT a skip. */
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .lightLeak,
+  .scanline { animation: none; opacity: 0; }
+  .letter { animation: none; opacity: 1; transform: none; }
+  .wordmark { animation: revealRM 260ms ease-out both; }
+  .overlay.handoff { animation: overlayOut 320ms ease forwards; }
+}
+
+@keyframes revealRM {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

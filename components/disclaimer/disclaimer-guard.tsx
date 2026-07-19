@@ -18,9 +18,15 @@ export default function DisclaimerGuard({ children }: { children: React.ReactNod
     return () => clearTimeout(t);
   }, [isDisclaimerOpen, renderModal]);
 
+  // Children (the app + homepage) always render, even while the disclaimer is
+  // open — the modal is a fixed full-screen overlay that covers them and locks
+  // body scroll. Keeping them mounted lets the homepage fetch/hydrate during
+  // the brand intro and the disclaimer, so the page is ready by the time the
+  // overlay(s) lift. (Previously children were unmounted until accept, so a
+  // first-time user's homepage didn't even start loading until they clicked.)
   return (
     <>
-      {!isDisclaimerOpen && children}
+      {children}
       {renderModal && <DisclaimerModal />}
     </>
   );
