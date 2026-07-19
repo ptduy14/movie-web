@@ -9,6 +9,7 @@ import { getDetailMovieServerAction, getHeroLogoUrlsServerAction } from 'app/act
 import DetailMovie from 'types/detail-movie';
 import HeroSectionSkeleton from './hero-section-skeleton';
 import { useHomePageLoadingContext } from '../context/home-page-loading-context';
+import { markHomeReady } from 'lib/home-ready';
 import { FaChevronRight } from 'react-icons/fa6';
 
 export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
@@ -35,6 +36,9 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
       setLogoUrls(logos);
       setHasFetched(true);
       setISLoadingHomePage(false);
+      // Critical above-the-fold content is resolved — tell the brand intro the
+      // home is ready so it can hand off without a skeleton/pop-in flash.
+      markHomeReady();
     };
 
     getDescriptionMovies();

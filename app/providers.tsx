@@ -13,6 +13,7 @@ import HomePageLoadingProvider from '@/components/context/home-page-loading-cont
 import { DropdownProvider } from '@/components/context/dropdown-context';
 import DisclaimerModalProvider from '@/components/context/disclaimer-modal-context';
 import DisclaimerGuard from '@/components/disclaimer/disclaimer-guard';
+import IntroGate from '@/components/intro/intro-gate';
 import useCollectionFetcher from 'hooks/useCollectionFetcher';
 import useGuestLoginSync from 'hooks/useGuestLoginSync';
 import PostHogProvider from '@/components/analytics/PostHogProvider';
@@ -48,16 +49,18 @@ export default function Providers({
         <AuthProvider>
           <AuthModalProvider>
             <DisclaimerModalProvider initialAccepted={initialDisclaimerAccepted}>
-              <DisclaimerGuard>
-                <HomePageLoadingProvider>
-                  <GlobalEffects />
-                  <AuthModal />
-                  <DropdownProvider>
-                    <Layout>{children}</Layout>
-                  </DropdownProvider>
-                  <ToastContainer />
-                </HomePageLoadingProvider>
-              </DisclaimerGuard>
+              <IntroGate>
+                <DisclaimerGuard>
+                  <HomePageLoadingProvider>
+                    <GlobalEffects />
+                    <AuthModal />
+                    <DropdownProvider>
+                      <Layout>{children}</Layout>
+                    </DropdownProvider>
+                    <ToastContainer />
+                  </HomePageLoadingProvider>
+                </DisclaimerGuard>
+              </IntroGate>
             </DisclaimerModalProvider>
           </AuthModalProvider>
         </AuthProvider>
