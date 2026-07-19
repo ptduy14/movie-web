@@ -50,8 +50,11 @@ export default async function TrendingSection() {
   // poster_url is baked into trending.json by scripts/fetch-trending.mjs
   // (TMDB poster, then thumb_url fallback). Filter first, then assign ranks
   // — so missing-poster items don't produce gaps like "1, 3, 4, 7" in the UI.
+  // Cap at 9: the rank badge is single-digit only, so a two-digit "10" would
+  // render clipped behind the poster (looked like "1"). Keep it single-digit.
   const items: TrendingItem[] = trendingMovies
     .filter((m): m is TrendingMovie & { poster_url: string } => Boolean(m.poster_url))
+    .slice(0, 9)
     .map((m, i) => ({
       rank: i + 1,
       slug: m.slug,
