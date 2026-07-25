@@ -36,7 +36,7 @@ export default function ActorItem({ actor }: { actor: Actor | string }) {
           alt={name}
           fill
           className="object-cover object-center transition-transform duration-200 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 640px) 45vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
         />
       </div>
       <div className="mt-3 transition-colors group-hover:text-brand">{name}</div>

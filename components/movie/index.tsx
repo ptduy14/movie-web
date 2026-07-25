@@ -110,14 +110,23 @@ export default function MoviePage({
           <div className="flex w-full items-end gap-4 lg:gap-8">
             {/* Poster — kept for the IMDb/Netflix vibe */}
             <div className="w-24 shrink-0 sm:w-32 lg:w-52">
+              {/* Parent is `hidden lg:block` — this image only ever renders
+                  at >=1024px, where the box is a fixed 208px (`lg:w-52`),
+                  not viewport-relative. `loading="eager"` (not `priority`):
+                  the mobile hero below uses a different image
+                  (`poster_url` vs this `thumb_url`) and both blocks always
+                  coexist in the DOM regardless of viewport — `priority` on
+                  both would preload two different images unconditionally.
+                  Mobile gets the real `priority`/preload since that's
+                  where LCP is worse (see docs/pagespeed-performance-audit.md). */}
               <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg shadow-custom">
                 <Image
                   src={movie.movie.thumb_url}
                   alt={movie.movie.name}
                   fill
-                  priority
+                  loading="eager"
                   className="object-cover"
-                  sizes="(max-width: 1024px) 30vw, 13vw"
+                  sizes="208px"
                 />
               </div>
             </div>
@@ -192,10 +201,15 @@ export default function MoviePage({
           Streaming-app pattern (Netflix/Apple): no side poster, full-width
           actions for thumb reach. */}
       <div className="lg:hidden">
-        <div
-          className="relative w-full aspect-[16/10] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
-        >
+        <div className="relative w-full aspect-[16/10]">
+          <Image
+            src={movie.movie.poster_url}
+            alt={primaryTitle}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
           <div className="absolute inset-x-0 bottom-0 px-4 pb-3">
             {logoUrl ? (

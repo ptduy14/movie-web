@@ -112,7 +112,7 @@ export const MovieImagesOverlay = ({
                       alt={`Movie Image ${index + 1}`}
                       fill
                       className="object-contain"
-                      sizes="100vw"
+                      sizes="(max-width: 1024px) 100vw, 1024px"
                       priority={index === initialIndex}
                     />
                   </div>
