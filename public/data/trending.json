@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-07-13T04:48:26.349Z",
+  "updated_at": "2026-07-20T04:53:59.310Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "bac-thay-cua-nhung-uoc-mo",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bac-thay-cua-nhung-uoc-mo-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "316029",
-      "tmdb_type": "movie",
-      "movie_id": "627d38c19e983cdfde3443e8",
-      "views": 2,
-      "plays": 4,
-      "completions": 1,
-      "trending_score": 0.526,
+      "slug": "rick-va-morty-phan-4",
+      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-4-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "60625",
+      "tmdb_type": "tv",
+      "movie_id": "626f2bbb3a2c0c6289b978bc",
+      "views": 5,
+      "plays": 39,
+      "completions": 0,
+      "trending_score": 0.543,
       "title": {
-        "vi": "Bậc Thầy Của Những Ước Mơ",
-        "en": "The Greatest Showman"
+        "vi": "Rick và Morty (Phần 4)",
+        "en": "Rick and Morty (Season 4)"
       },
-      "tmdb_rating": 7.858,
-      "poster_url": "https://image.tmdb.org/t/p/w500/jLkvdw90E4znDs5byCVq0ueOgYy.jpg"
+      "tmdb_rating": 8.679,
+      "poster_url": "https://image.tmdb.org/t/p/w500/2jS5LyatFPXNm1PaYe63vKdSBCM.jpg"
     },
     {
       "slug": "am-anh-2026",
@@ -27,16 +27,34 @@
       "tmdb_id": "1339713",
       "tmdb_type": "movie",
       "movie_id": "6a44c4e62c0a4eaf265d6437",
-      "views": 21,
-      "plays": 11,
+      "views": 7,
+      "plays": 5,
       "completions": 0,
-      "trending_score": 0.493,
+      "trending_score": 0.251,
       "title": {
         "vi": "Ám Ảnh",
         "en": "Obsession"
       },
-      "tmdb_rating": 8.272,
-      "poster_url": "https://image.tmdb.org/t/p/w500/doQPOCVlIWZBRC2ZVsSXHi0luL8.jpg"
+      "tmdb_rating": 8.25,
+      "poster_url": "https://image.tmdb.org/t/p/w500/n6EQ4QmlOPIq6zE5cc3IXm9Y4Zl.jpg"
+    },
+    {
+      "slug": "hoang-tu-quy",
+      "thumb_url": "https://img.ophim.live/uploads/movies/hoang-tu-quy-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "1526531",
+      "tmdb_type": "movie",
+      "movie_id": "6a30c6c0e10cfe56c49ebbf9",
+      "views": 6,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.182,
+      "title": {
+        "vi": "Hoàng Tử Quỷ",
+        "en": "The Demon Prince"
+      },
+      "tmdb_rating": 0,
+      "poster_url": "https://img.ophim.live/uploads/movies/hoang-tu-quy-thumb.jpg"
     },
     {
       "slug": "nhung-co-nang-gilmore-phan-1",
@@ -45,106 +63,70 @@
       "tmdb_id": "4586",
       "tmdb_type": "tv",
       "movie_id": "623de1b8e3cd150b3990ec1f",
-      "views": 4,
-      "plays": 15,
+      "views": 1,
+      "plays": 13,
       "completions": 0,
-      "trending_score": 0.438,
+      "trending_score": 0.162,
       "title": {
         "vi": "Những cô nàng Gilmore (Phần 1)",
         "en": "Gilmore Girls (Season 1)"
       },
-      "tmdb_rating": 7.9,
+      "tmdb_rating": 7.895,
       "poster_url": "https://image.tmdb.org/t/p/w500/g1xtjgoVRvk965EoiGXC2YqYme2.jpg"
     },
     {
-      "slug": "thoat-khoi-tan-the",
-      "thumb_url": "https://img.ophim.live/uploads/movies/thoat-khoi-tan-the-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "687163",
+      "slug": "bac-thay-cua-nhung-uoc-mo",
+      "thumb_url": "https://img.ophim.live/uploads/movies/bac-thay-cua-nhung-uoc-mo-thumb.jpg",
+      "year": 2017,
+      "tmdb_id": "316029",
       "tmdb_type": "movie",
-      "movie_id": "69a11d7df063d23bbbcd2536",
-      "views": 10,
-      "plays": 6,
+      "movie_id": "627d38c19e983cdfde3443e8",
+      "views": 5,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.255,
+      "trending_score": 0.153,
       "title": {
-        "vi": "Thoát Khỏi Tận Thế",
-        "en": "Project Hail Mary"
+        "vi": "Bậc Thầy Của Những Ước Mơ",
+        "en": "The Greatest Showman"
       },
-      "tmdb_rating": 8.667,
-      "poster_url": "https://image.tmdb.org/t/p/w500/gATQxXU9tPj2DwHARCIL9YpDym7.jpg"
+      "tmdb_rating": 7.857,
+      "poster_url": "https://image.tmdb.org/t/p/w500/jLkvdw90E4znDs5byCVq0ueOgYy.jpg"
     },
     {
-      "slug": "nhung-ban-di-chuc-phan-1",
-      "thumb_url": "https://img.ophim.live/uploads/movies/nhung-ban-di-chuc-phan-1-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "287527",
+      "slug": "hoc-sinh-ca-biet",
+      "thumb_url": "https://img.ophim.live/uploads/movies/hoc-sinh-ca-biet-thumb.jpg",
+      "year": 2025,
+      "tmdb_id": "233347",
       "tmdb_type": "tv",
-      "movie_id": "6a2f82c9e14b2140fc718709",
-      "views": 6,
-      "plays": 7,
-      "completions": 0,
-      "trending_score": 0.244,
-      "title": {
-        "vi": "Những Bản Di Chúc (Phần 1)",
-        "en": "The Testaments (Season 1)"
-      },
-      "tmdb_rating": 8.3,
-      "poster_url": "https://image.tmdb.org/t/p/w500/nyf9QDf0Ls8kFfxwWGyYXGv1Akc.jpg"
-    },
-    {
-      "slug": "sac-xuan-gui-nguoi-tinh",
-      "thumb_url": "https://img.ophim.live/uploads/movies/sac-xuan-gui-nguoi-tinh-thumb.jpg",
-      "year": 2024,
-      "tmdb_id": "244621",
-      "tmdb_type": "tv",
-      "movie_id": "66266ff02a743973709f657e",
-      "views": 6,
-      "plays": 3,
-      "completions": 0,
-      "trending_score": 0.137,
-      "title": {
-        "vi": "Sắc Xuân Gửi Người Tình",
-        "en": "Will Love In Spring"
-      },
-      "tmdb_rating": 8.632,
-      "poster_url": "https://image.tmdb.org/t/p/w500/rsTdoElwFSiF9MAAFqvbjLugpE3.jpg"
-    },
-    {
-      "slug": "star-wars-sach-cua-boba-fett",
-      "thumb_url": "https://img.ophim.live/uploads/movies/star-wars-sach-cua-boba-fett-thumb.jpg",
-      "year": 2021,
-      "tmdb_id": "115036",
-      "tmdb_type": "tv",
-      "movie_id": "62695bd7fa02df5563cbec25",
-      "views": 3,
-      "plays": 3,
-      "completions": 0,
-      "trending_score": 0.109,
-      "title": {
-        "vi": "Star Wars: Sách Của Boba Fett",
-        "en": "The Book of Boba Fett"
-      },
-      "tmdb_rating": 7.471,
-      "poster_url": "https://image.tmdb.org/t/p/w500/7FCQ34cNZnA2rUMjjcjRZRKR8w4.jpg"
-    },
-    {
-      "slug": "hay-bat-toi-neu-co-the",
-      "thumb_url": "https://img.ophim.live/uploads/movies/hay-bat-toi-neu-co-the-thumb.jpg",
-      "year": 2002,
-      "tmdb_id": "640",
-      "tmdb_type": "movie",
-      "movie_id": "621795e14e98729b6822368e",
+      "movie_id": "6794f9ea262a77f96a5c0084",
       "views": 2,
+      "plays": 9,
+      "completions": 0,
+      "trending_score": 0.149,
+      "title": {
+        "vi": "Học Sinh Cá Biệt",
+        "en": "Study Group"
+      },
+      "tmdb_rating": 8.584,
+      "poster_url": "https://image.tmdb.org/t/p/w500/nZDeIfKCzp0qhu4N3HxrcKWN59J.jpg"
+    },
+    {
+      "slug": "saccharine",
+      "thumb_url": "https://img.ophim.live/uploads/movies/saccharine-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1363387",
+      "tmdb_type": "movie",
+      "movie_id": "6a461bb1e14b2140fc75cf3e",
+      "views": 4,
       "plays": 3,
       "completions": 0,
-      "trending_score": 0.099,
+      "trending_score": 0.145,
       "title": {
-        "vi": "Hãy bắt tôi nếu có thể",
-        "en": "Catch Me If You Can"
+        "vi": "Saccharine",
+        "en": "Saccharine"
       },
-      "tmdb_rating": 7.978,
-      "poster_url": "https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg"
+      "tmdb_rating": 6.116,
+      "poster_url": "https://image.tmdb.org/t/p/w500/wTlqMc4Jt8ZBtHh8CREblU3ajAB.jpg"
     },
     {
       "slug": "bong-ma-bao-thu",
@@ -154,33 +136,51 @@
       "tmdb_type": "tv",
       "movie_id": "6a4f38f54f61d761f77894df",
       "views": 4,
-      "plays": 2,
+      "plays": 3,
       "completions": 0,
-      "trending_score": 0.091,
+      "trending_score": 0.145,
       "title": {
         "vi": "Bóng Ma Báo Thù",
         "en": "M.I.A."
       },
-      "tmdb_rating": 8.483,
+      "tmdb_rating": 8.456,
       "poster_url": "https://image.tmdb.org/t/p/w500/uvocuo6mgQTtNa7O6a3MQoTfuh4.jpg"
     },
     {
-      "slug": "nguoi-nhen-tro-ve-nha",
-      "thumb_url": "https://img.ophim.live/uploads/movies/nguoi-nhen-tro-ve-nha-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "315635",
+      "slug": "sat-thu-john-wick",
+      "thumb_url": "https://img.ophim.live/uploads/movies/sat-thu-john-wick-thumb.jpg",
+      "year": 2014,
+      "tmdb_id": "245891",
       "tmdb_type": "movie",
-      "movie_id": "620f7a2c91fa4af90ab6a48d",
-      "views": 1,
-      "plays": 3,
+      "movie_id": "620f7ccc91fa4af90ab6a80b",
+      "views": 4,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.09,
+      "trending_score": 0.135,
       "title": {
-        "vi": "Người Nhện: Trở về nhà",
-        "en": "Spider-Man: Homecoming"
+        "vi": "Sát thủ John Wick",
+        "en": "John Wick"
       },
-      "tmdb_rating": 7.331,
-      "poster_url": "https://image.tmdb.org/t/p/w500/sd1eByiFLL0arwkip6lV6l25cSj.jpg"
+      "tmdb_rating": 7.46,
+      "poster_url": "https://image.tmdb.org/t/p/w500/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg"
+    },
+    {
+      "slug": "linh-lung-hoat-hinh",
+      "thumb_url": "https://img.ophim.live/uploads/movies/linh-lung-hoat-hinh-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "91097",
+      "tmdb_type": "tv",
+      "movie_id": "62a8b3687a956fb5db10aee3",
+      "views": 3,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.106,
+      "title": {
+        "vi": "Linh Lung",
+        "en": "Ling Cage"
+      },
+      "tmdb_rating": 8.387,
+      "poster_url": "https://image.tmdb.org/t/p/w500/p65f4XPIneEjFhASI9HuJId3D3d.jpg"
     }
   ]
 }
