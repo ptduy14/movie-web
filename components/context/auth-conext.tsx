@@ -2,8 +2,7 @@
 
 import { createContext, useContext } from 'react';
 import { LoginValidationSchemaType } from 'schemas/login-validation-schema';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../lib/firebase';
 import getFriendlyErrorMessage from 'utils/get-friendly-error-message';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/user-slice';
@@ -27,6 +26,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
   const login = async (data: LoginValidationSchemaType) => {
     try {
+      const [{ signInWithEmailAndPassword }, auth] = await Promise.all([
+        import('firebase/auth'),
+        getFirebaseAuth(),
+      ]);
       await signInWithEmailAndPassword(auth, data.email, data.password);
       const user = auth.currentUser;
 
@@ -56,6 +59,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   };
 
   const loginWithGoogle = async () => {
+    const [{ GoogleAuthProvider, signInWithPopup }, auth] = await Promise.all([
+      import('firebase/auth'),
+      getFirebaseAuth(),
+    ]);
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
     const user = auth.currentUser;

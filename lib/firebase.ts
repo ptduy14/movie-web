@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import type { Auth } from "firebase/auth";
 import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 // Firebase configuration
@@ -15,6 +15,18 @@ const firebaseConfig = {
 // Chỉ khởi tạo Firebase nếu chưa có khởi tạo
 const app = !getApps().length ? initializeApp(firebaseConfig,) : getApps()[0];
 
-export const auth = getAuth(app);
 export const db = initializeFirestore(app, {experimentalForceLongPolling: true});
 export default app;
+
+// `firebase/auth`'s `getAuth()` eagerly loads an iframe from `authDomain`
+// (moviex-ad32a.firebaseapp.com/auth/iframe.js) for session persistence —
+// that cost only makes sense to pay once the user actually attempts to
+// log in / sign up / sign out, not on every page load. Callers await this
+// instead of importing a top-level `auth` const.
+let authPromise: Promise<Auth> | null = null;
+export function getFirebaseAuth(): Promise<Auth> {
+  if (!authPromise) {
+    authPromise = import("firebase/auth").then(({ getAuth }) => getAuth(app));
+  }
+  return authPromise;
+}

@@ -106,13 +106,16 @@ export default function HeroMovieItem({
     <div className="relative w-full">
       {/* Desktop Layout — full-bleed background poster with overlaid content */}
       <div className="hidden lg:block container-wrapper relative w-full lg:h-screen">
+        {/* `.container-wrapper` is `width: 96%` (globals.css), not 100vw —
+            sizes must match or Next warns in dev that the image is
+            over-requested relative to its actual box. */}
         <Image
           src={movie.poster_url}
           alt={primaryTitle}
           fill
           priority={priority}
           loading={priority ? undefined : 'lazy'}
-          sizes="100vw"
+          sizes="96vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black opacity-45"></div>

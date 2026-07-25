@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../lib/firebase';
 import { toast } from 'react-toastify';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { IoShieldCheckmark, IoEye, IoEyeOff, IoCheckmark, IoClose } from 'react-icons/io5';
@@ -63,6 +62,9 @@ export default function SecuritySettings({ user }: SecuritySettingsProps) {
 
     setIsLoading(true);
     try {
+      const [{ updatePassword, reauthenticateWithCredential, EmailAuthProvider }, auth] =
+        await Promise.all([import('firebase/auth'), getFirebaseAuth()]);
+
       const currentUser = auth.currentUser;
       if (!currentUser) {
         throw new Error('Không tìm thấy người dùng');
