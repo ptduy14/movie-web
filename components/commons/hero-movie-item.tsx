@@ -9,6 +9,7 @@ import TMDBLogo from '../logos/TMDB-Logo';
 import MovieLogo from './movie-logo';
 import Category from 'types/category';
 import { GoDotFill } from 'react-icons/go';
+import Image from 'next/image';
 import { Link } from 'i18n/routing';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
@@ -42,6 +43,14 @@ interface HeroMovieItemProps {
    * on the image wrapper regardless of the poster's natural aspect ratio.
    */
   onNextSlide?: () => void;
+  /**
+   * True only for the slide that's actually visible on first paint. The
+   * parent Swiper (`effect="fade"`) mounts every slide at once — if every
+   * slide's poster requested `priority`, the browser would preload all of
+   * them at once, diluting the exact signal `priority` exists to give the
+   * one true LCP candidate. Defaults to false (lazy) for that reason.
+   */
+  priority?: boolean;
 }
 
 const isValidScore = (score?: number) => typeof score === 'number' && score > 0;
@@ -57,6 +66,7 @@ export default function HeroMovieItem({
   listItem,
   logoUrl,
   onNextSlide,
+  priority = false,
 }: HeroMovieItemProps) {
   const t = useTranslations('movie');
   const tRating = useTranslations('movie.rating');
@@ -95,10 +105,16 @@ export default function HeroMovieItem({
   return (
     <div className="relative w-full">
       {/* Desktop Layout — full-bleed background poster with overlaid content */}
-      <div
-        className="hidden lg:block container-wrapper relative w-full lg:h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${movie.poster_url})` }}
-      >
+      <div className="hidden lg:block container-wrapper relative w-full lg:h-screen">
+        <Image
+          src={movie.poster_url}
+          alt={primaryTitle}
+          fill
+          priority={priority}
+          loading={priority ? undefined : 'lazy'}
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black opacity-45"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
@@ -187,12 +203,14 @@ export default function HeroMovieItem({
         {/* Fixed 16:9 box reserves height before the image loads → no CLS
             (matches the hero skeleton's aspect ratio). */}
         <div className="relative w-full aspect-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={movie.poster_url}
             alt={primaryTitle}
-            loading="eager"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            priority={priority}
+            loading={priority ? undefined : 'lazy'}
+            sizes="100vw"
+            className="object-cover"
           />
           {/* Soft fade-out so the poster blends into the dark content area below */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
