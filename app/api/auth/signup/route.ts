@@ -1,4 +1,4 @@
-import { auth, db } from 'lib/firebase';
+import { getFirebaseAuth, db } from 'lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
@@ -7,6 +7,7 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
 
+    const auth = await getFirebaseAuth();
     await createUserWithEmailAndPassword(auth, data.email, data.password);
     const user = auth.currentUser;
 

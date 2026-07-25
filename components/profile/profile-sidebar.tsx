@@ -5,8 +5,7 @@ import { IoPerson, IoShieldCheckmark, IoLanguage, IoHelpCircle, IoLogOut } from 
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../../redux/slices/user-slice';
 import AuthServices from 'services/auth-services';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../lib/firebase';
 import { useState } from 'react';
 import LoadingSpinerBtn from '../loading/loading-spiner-btn';
 import { toast } from 'react-toastify';
@@ -54,6 +53,7 @@ export default function ProfileSidebar({
     try {
       analytics.authLogout();
       await AuthServices.removeAuthCookie();
+      const [{ signOut }, auth] = await Promise.all([import('firebase/auth'), getFirebaseAuth()]);
       await signOut(auth);
       dispatch(removeUser());
       toast.success('Đăng xuất thành công');
