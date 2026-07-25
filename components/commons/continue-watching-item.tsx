@@ -52,11 +52,14 @@ export default function ContinueWatchingItem({
       href={target === 'detail' ? `/movies/${movie.slug}` : `/movies/watch/${movie.slug}`}
     >
       <div className="relative w-full aspect-video overflow-hidden rounded isolate">
+        {/* Used both in a 1.2/2/3/4-per-view Swiper (home) and a 2/3/3/4-col
+            grid (/recent) — sizes takes the larger actual width per
+            breakpoint across both so neither context under-requests. */}
         <Image
           src={thumbSrc}
           fill
           alt={primaryTitle}
-          sizes="(max-width: 768px) 50vw, 20vw"
+          sizes="(max-width: 639px) 83vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
 

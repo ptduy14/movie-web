@@ -39,11 +39,14 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
       {/* See NewlyMovieItem note: `isolate` scopes badge z-indices so they
           don't bleed through header dropdowns (z-10). */}
       <div className="relative w-full aspect-[2/3] overflow-hidden rounded isolate">
+        {/* Reused across 2/3/4/5-col grids AND 2.2/3/4/5-per-view Swipers on
+            ~7 different pages — sizes takes the largest actual width seen
+            across those contexts per breakpoint, never the narrowest. */}
         <Image
           src={`${isMovieType ? process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url : movie.thumb_url}`}
           fill={true}
           alt={movie.name}
-          sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 18vw"
+          sizes="(max-width: 767px) 50vw, (max-width: 1023px) 25vw, 20vw"
         />
 
         {/* Top-left: Exclusive or NEW (only on Movie shape) */}

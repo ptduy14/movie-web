@@ -18,7 +18,7 @@ export default function MovieImageItem({ image, onClick }: MovieImageItemProps) 
           alt="Movie Image"
           fill
           className="object-cover object-center"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 639px) 83vw, (max-width: 1023px) 50vw, 33vw"
         />
       </div>
     </div>
