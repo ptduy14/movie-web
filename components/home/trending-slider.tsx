@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { FaStar } from 'react-icons/fa';
@@ -56,11 +57,13 @@ export default function TrendingSlider({ items }: TrendingSliderProps) {
             </span>
 
             <div className="relative z-10 flex-1 min-w-0 rounded-xl overflow-hidden bg-gray-800 shadow-lg">
-              <div className="aspect-[2/3]">
-                <img
+              <div className="relative aspect-[2/3]">
+                <Image
                   src={movie.poster_url}
                   alt={movie.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.07]"
+                  fill
+                  sizes="(max-width: 767px) 45vw, 20vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.07]"
                 />
               </div>
 

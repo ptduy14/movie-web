@@ -31,6 +31,7 @@
     "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
     "server-only": "^0.0.1",
+    "sharp": "^0.35.3",
     "swiper": "^11.1.9",
     "zod": "^3.23.8"
   },

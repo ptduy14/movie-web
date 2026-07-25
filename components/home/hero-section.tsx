@@ -69,7 +69,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
         loop={true}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
       >
-        {detailMovies.map((movie: DetailMovie) => {
+        {detailMovies.map((movie: DetailMovie, index) => {
           return (
             <SwiperSlide key={movie.movie._id}>
               <HeroMovieItem
@@ -77,6 +77,7 @@ export default function HeroSection({ movies }: { movies: NewlyMovie[] }) {
                 listItem={listItemBySlug.get(movie.movie.slug)}
                 logoUrl={logoUrls[movie.movie.slug] ?? null}
                 onNextSlide={handleClickToNextSlide}
+                priority={index === 0}
               />
             </SwiperSlide>
           );

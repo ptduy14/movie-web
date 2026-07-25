@@ -7,8 +7,15 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    unoptimized: true,
-    domains: ['img.ophim.live', 'lh3.googleusercontent.com', 'image.tmdb.org'],
+    // Self-hosted resize via app/api/image (sharp), NOT Vercel's metered
+    // Image Optimization API — see docs/pagespeed-performance-audit.md C1.
+    loader: 'custom',
+    loaderFile: './image-loader.ts',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'img.ophim.live' },
+      { protocol: 'https', hostname: 'image.tmdb.org' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+    ],
   },
   skipTrailingSlashRedirect: true,
   async redirects() {
