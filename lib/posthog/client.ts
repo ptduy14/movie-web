@@ -39,6 +39,10 @@ export function initPostHog(): void {
       maskAllInputs: true,
       maskTextSelector: '[data-private]',
     },
+    // No survey is defined/used anywhere in this app — this only avoids
+    // fetching PostHog's surveys.js bundle (~30KB) for a feature we don't
+    // use. Remove if surveys are ever adopted.
+    disable_surveys: true,
     loaded: (ph) => {
       if (isDev) ph.debug();
     },

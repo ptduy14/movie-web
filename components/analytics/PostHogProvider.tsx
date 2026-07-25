@@ -36,7 +36,16 @@ function PageviewTracker() {
 
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    initPostHog();
+    // Defer PostHog's init (and whatever extension scripts it decides to
+    // pull in, e.g. the session-recording recorder) until the main thread
+    // is idle rather than competing with initial render/hydration work.
+    // `timeout` guarantees it still runs even if the page never goes idle.
+    if (typeof window.requestIdleCallback === 'function') {
+      const handle = window.requestIdleCallback(() => initPostHog(), { timeout: 2000 });
+      return () => window.cancelIdleCallback(handle);
+    }
+    const timeoutId = window.setTimeout(initPostHog, 1);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
