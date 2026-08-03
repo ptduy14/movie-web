@@ -1,24 +1,42 @@
 {
-  "updated_at": "2026-07-27T04:53:38.286Z",
+  "updated_at": "2026-08-03T04:48:32.733Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": null,
-      "thumb_url": null,
-      "year": null,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "movie_id": "65648a3daa7d07ce5ca55f0e",
-      "views": 0,
-      "plays": 45,
-      "completions": 0,
-      "trending_score": 0.4,
+      "slug": "nguoi-nhen",
+      "thumb_url": "https://img.ophim.live/uploads/movies/nguoi-nhen-thumb.jpg",
+      "year": 2002,
+      "tmdb_id": "557",
+      "tmdb_type": "movie",
+      "movie_id": "620f97cd91fa4af90ab6bbd9",
+      "views": 2,
+      "plays": 3,
+      "completions": 1,
+      "trending_score": 0.508,
       "title": {
-        "vi": null,
-        "en": null
+        "vi": "Người Nhện",
+        "en": "Spider-Man"
       },
-      "tmdb_rating": null,
-      "poster_url": null
+      "tmdb_rating": 7.3,
+      "poster_url": "https://image.tmdb.org/t/p/w500/nXdAh5vUwERL4WGVMaee8RoDEAS.jpg"
+    },
+    {
+      "slug": "rick-va-morty-phan-6",
+      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-6-thumb.jpg",
+      "year": 2022,
+      "tmdb_id": "60625",
+      "tmdb_type": "tv",
+      "movie_id": "656832aaaa7d07ce5cabb329",
+      "views": 1,
+      "plays": 19,
+      "completions": 0,
+      "trending_score": 0.422,
+      "title": {
+        "vi": "Rick Và Morty (Phần 6)",
+        "en": "Rick and Morty (Season 6)"
+      },
+      "tmdb_rating": 8.68,
+      "poster_url": "https://image.tmdb.org/t/p/w500/2jS5LyatFPXNm1PaYe63vKdSBCM.jpg"
     },
     {
       "slug": "am-anh-2026",
@@ -27,16 +45,16 @@
       "tmdb_id": "1339713",
       "tmdb_type": "movie",
       "movie_id": "6a44c4e62c0a4eaf265d6437",
-      "views": 10,
-      "plays": 7,
+      "views": 9,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.216,
+      "trending_score": 0.242,
       "title": {
         "vi": "Ám Ảnh",
         "en": "Obsession"
       },
-      "tmdb_rating": 8.247,
-      "poster_url": "https://image.tmdb.org/t/p/w500/n6EQ4QmlOPIq6zE5cc3IXm9Y4Zl.jpg"
+      "tmdb_rating": 8.249,
+      "poster_url": "https://image.tmdb.org/t/p/w500/doQPOCVlIWZBRC2ZVsSXHi0luL8.jpg"
     },
     {
       "slug": "rick-va-morty-phan-4",
@@ -45,16 +63,70 @@
       "tmdb_id": "60625",
       "tmdb_type": "tv",
       "movie_id": "626f2bbb3a2c0c6289b978bc",
-      "views": 13,
+      "views": 7,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.209,
+      "trending_score": 0.177,
       "title": {
         "vi": "Rick và Morty (Phần 4)",
         "en": "Rick and Morty (Season 4)"
       },
-      "tmdb_rating": 8.679,
+      "tmdb_rating": 8.68,
       "poster_url": "https://image.tmdb.org/t/p/w500/2jS5LyatFPXNm1PaYe63vKdSBCM.jpg"
+    },
+    {
+      "slug": "niem-tin-vo-thuc",
+      "thumb_url": "https://img.ophim.live/uploads/movies/niem-tin-vo-thuc-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1659155",
+      "tmdb_type": "movie",
+      "movie_id": "6a654e700fd8af184f111e77",
+      "views": 4,
+      "plays": 4,
+      "completions": 0,
+      "trending_score": 0.173,
+      "title": {
+        "vi": "Niềm Tin Vô Thực",
+        "en": "The Truthers"
+      },
+      "tmdb_rating": 6.058,
+      "poster_url": "https://image.tmdb.org/t/p/w500/ltuAheARdaUHbaS8lX1ZPrNOXe5.jpg"
+    },
+    {
+      "slug": "doi-canh-kinh-hoang",
+      "thumb_url": "https://img.ophim.live/uploads/movies/doi-canh-kinh-hoang-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1424435",
+      "tmdb_type": "movie",
+      "movie_id": "6a492f781fea2c5da7b0bd76",
+      "views": 5,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.153,
+      "title": {
+        "vi": "Đôi Cánh Kinh Hoàng",
+        "en": "Wings of Dread"
+      },
+      "tmdb_rating": 6.4,
+      "poster_url": "https://image.tmdb.org/t/p/w500/iCnTJwkAMwIvaZgwpPHJJHfV0Er.jpg"
+    },
+    {
+      "slug": "duc-vong-tham-kin",
+      "thumb_url": "https://img.ophim.live/uploads/movies/duc-vong-tham-kin-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "320672",
+      "tmdb_type": "tv",
+      "movie_id": "69ef7884b692c7b208d66f6a",
+      "views": 4,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.152,
+      "title": {
+        "vi": "Dục Vọng Thầm Kín",
+        "en": "Whisper of Desire"
+      },
+      "tmdb_rating": 4.2,
+      "poster_url": "https://img.ophim.live/uploads/movies/duc-vong-tham-kin-thumb.jpg"
     },
     {
       "slug": "tap-lam-nguoi-xau-phan-2",
@@ -64,123 +136,51 @@
       "tmdb_type": "tv",
       "movie_id": "6260c380db43524328afed33",
       "views": 2,
-      "plays": 10,
+      "plays": 5,
       "completions": 0,
-      "trending_score": 0.12,
+      "trending_score": 0.15,
       "title": {
         "vi": "Tập làm người xấu (Phần 2)",
         "en": "Breaking Bad (Season 2)"
       },
-      "tmdb_rating": 8.948,
+      "tmdb_rating": 8.949,
       "poster_url": "https://image.tmdb.org/t/p/w500/anFx9aTOOYqgS3v7x3R84Kz67ly.jpg"
     },
     {
-      "slug": "dac-vu-kim-tai-khoi-dong",
-      "thumb_url": "https://img.ophim.live/uploads/movies/dac-vu-kim-tai-khoi-dong-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "296206",
-      "tmdb_type": "tv",
-      "movie_id": "6a3ea8611fea2c5da7ae92b2",
-      "views": 2,
-      "plays": 7,
-      "completions": 0,
-      "trending_score": 0.093,
-      "title": {
-        "vi": "Đặc Vụ Kim Tái Khởi Động",
-        "en": "Agent Kim Reactivated"
-      },
-      "tmdb_rating": 7.6,
-      "poster_url": "https://image.tmdb.org/t/p/w500/mxa7YxVln3Rwnd2Va82PoclTznj.jpg"
-    },
-    {
-      "slug": "tam-tay-lua-dao",
-      "thumb_url": "https://img.ophim.live/uploads/movies/tam-tay-lua-dao-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "324548",
-      "tmdb_type": "tv",
-      "movie_id": "6a34ba42de5e0f1b85d4960a",
-      "views": 3,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.055,
-      "title": {
-        "vi": "Tám Tay Lừa Đảo",
-        "en": "The Scammer Games"
-      },
-      "tmdb_rating": 0,
-      "poster_url": "https://img.ophim.live/uploads/movies/tam-tay-lua-dao-thumb.jpg"
-    },
-    {
-      "slug": "thieu-nu-phep-thuat-nanoha-exceeds",
-      "thumb_url": "https://img.ophim.live/uploads/movies/thieu-nu-phep-thuat-nanoha-exceeds-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "287075",
-      "tmdb_type": "tv",
-      "movie_id": "6a5bb3fc173846d6443da2ea",
-      "views": 2,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.04,
-      "title": {
-        "vi": "Thiếu Nữ Phép Thuật Nanoha EXCEEDS",
-        "en": "Magical Girl Lyrical NANOHA EXCEEDS Gun Blaze Vengeance"
-      },
-      "tmdb_rating": 7,
-      "poster_url": "https://image.tmdb.org/t/p/w500/l38ipYxoITWQaonHMNbgtWoYhH.jpg"
-    },
-    {
-      "slug": "su-khon-ngoan-tu-ton-thuong",
-      "thumb_url": "https://img.ophim.live/uploads/movies/su-khon-ngoan-tu-ton-thuong-thumb.jpg",
+      "slug": "nguoi-nhen-khong-con-nha",
+      "thumb_url": "https://img.ophim.live/uploads/movies/nguoi-nhen-khong-con-nha-thumb.jpg",
       "year": 2021,
-      "tmdb_id": "838617",
+      "tmdb_id": "634649",
       "tmdb_type": "movie",
-      "movie_id": "6a5ceb6112f0391f00e349b4",
-      "views": 2,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.04,
-      "title": {
-        "vi": "Sự Khôn Ngoan Từ Tổn Thương",
-        "en": "The Wisdom of Trauma"
-      },
-      "tmdb_rating": 7.1,
-      "poster_url": "https://image.tmdb.org/t/p/w500/mVrWEqqampxVe6PhJ1MjDoQqpx5.jpg"
-    },
-    {
-      "slug": "bac-thay-cua-nhung-uoc-mo",
-      "thumb_url": "https://img.ophim.live/uploads/movies/bac-thay-cua-nhung-uoc-mo-thumb.jpg",
-      "year": 2017,
-      "tmdb_id": "316029",
-      "tmdb_type": "movie",
-      "movie_id": "627d38c19e983cdfde3443e8",
-      "views": 2,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.04,
-      "title": {
-        "vi": "Bậc Thầy Của Những Ước Mơ",
-        "en": "The Greatest Showman"
-      },
-      "tmdb_rating": 7.857,
-      "poster_url": "https://image.tmdb.org/t/p/w500/jLkvdw90E4znDs5byCVq0ueOgYy.jpg"
-    },
-    {
-      "slug": "yeu-nu-thich-hang-hieu-2",
-      "thumb_url": "https://img.ophim.live/uploads/movies/yeu-nu-thich-hang-hieu-2-thumb-1782894079322.jpg",
-      "year": 2026,
-      "tmdb_id": "1314481",
-      "tmdb_type": "movie",
-      "movie_id": "69e8835231aa2678f8cbc332",
-      "views": 1,
+      "movie_id": "622de92dc3924897e5fd3bb0",
+      "views": 4,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.033,
+      "trending_score": 0.131,
       "title": {
-        "vi": "Yêu Nữ Thích Hàng Hiệu 2",
-        "en": "The Devil Wears Prada 2 (Season 2)"
+        "vi": "Người Nhện: Không Còn Nhà",
+        "en": "Spider-Man: No Way Home"
       },
-      "tmdb_rating": 7.16,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fCAURTUx3YfsJ8k9I0UamjSILiR.jpg"
+      "tmdb_rating": 7.934,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+    },
+    {
+      "slug": "all-shades-of-temptation",
+      "thumb_url": "https://img.ophim.live/uploads/movies/all-shades-of-temptation-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "1527004",
+      "tmdb_type": "movie",
+      "movie_id": "6a043778db41bcecb8eb574e",
+      "views": 4,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.11,
+      "title": {
+        "vi": "All Shades of Temptation",
+        "en": "All Shades of Temptation"
+      },
+      "tmdb_rating": 6.1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/ur9NPjYIcsM1BM096mmiWW53w7J.jpg"
     }
   ]
 }
