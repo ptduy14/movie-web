@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-08-10T03:18:46.494Z",
+  "updated_at": "2026-08-17T02:34:00.211Z",
   "interval_days": 7,
   "movies": [
     {
       "slug": "rick-va-morty-phan-6",
-      "thumb_url": "https://img.ophim.live/uploads/movies/rick-va-morty-phan-6-thumb.jpg",
+      "thumb_url": "rick-va-morty-phan-6-thumb.jpg",
       "year": 2022,
       "tmdb_id": "60625",
       "tmdb_type": "tv",
       "movie_id": "656832aaaa7d07ce5cabb329",
       "views": 2,
-      "plays": 67,
+      "plays": 22,
       "completions": 0,
-      "trending_score": 0.5,
+      "trending_score": 0.533,
       "title": {
         "vi": "Rick Và Morty (Phần 6)",
         "en": "Rick and Morty (Season 6)"
@@ -21,166 +21,166 @@
       "poster_url": "https://image.tmdb.org/t/p/w500/2jS5LyatFPXNm1PaYe63vKdSBCM.jpg"
     },
     {
-      "slug": "dac-vu-kim-tai-khoi-dong",
-      "thumb_url": "https://img.ophim.live/uploads/movies/dac-vu-kim-tai-khoi-dong-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "296206",
-      "tmdb_type": "tv",
-      "movie_id": "6a3ea8611fea2c5da7ae92b2",
-      "views": 4,
-      "plays": 5,
-      "completions": 0,
-      "trending_score": 0.23,
-      "title": {
-        "vi": "Đặc Vụ Kim Tái Khởi Động",
-        "en": "Agent Kim Reactivated"
-      },
-      "tmdb_rating": 8.042,
-      "poster_url": "https://image.tmdb.org/t/p/w500/mxa7YxVln3Rwnd2Va82PoclTznj.jpg"
-    },
-    {
-      "slug": "am-anh-2026",
-      "thumb_url": "am-anh-2026-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "1339713",
+      "slug": "khi-cac-so-hanh-dong",
+      "thumb_url": "khi-cac-so-hanh-dong-thumb.jpg",
+      "year": 1992,
+      "tmdb_id": "2005",
       "tmdb_type": "movie",
-      "movie_id": "6a44c4e62c0a4eaf265d6437",
-      "views": 4,
-      "plays": 2,
+      "movie_id": "64aa16fb621029c05fe8f3c8",
+      "views": 3,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.212,
+      "trending_score": 0.273,
       "title": {
-        "vi": "Ám Ảnh",
-        "en": "Obsession"
+        "vi": "Khi Các Sơ Hành Động",
+        "en": "Sister Act"
       },
-      "tmdb_rating": 8.231,
-      "poster_url": "https://image.tmdb.org/t/p/w500/cUnADM9fsYV69Fk0TkMp7xVLnKj.jpg"
-    },
-    {
-      "slug": "thac-loan-cung-2-em-sinh-vien",
-      "thumb_url": "thac-loan-cung-2-em-sinh-vien-thumb.jpg",
-      "year": 2020,
-      "tmdb_id": "938144",
-      "tmdb_type": "movie",
-      "movie_id": "6250244b8539e6487dcf6d28",
-      "views": 4,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.206,
-      "title": {
-        "vi": "Thác Loạn Cùng 2 Em Sinh Viên",
-        "en": "Neotube: Threesome Restaurant"
-      },
-      "tmdb_rating": 6,
-      "poster_url": "thac-loan-cung-2-em-sinh-vien-thumb.jpg"
+      "tmdb_rating": 6.832,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xZvVSZ0RTxIjblLV87vs7ADM12m.jpg"
     },
     {
       "slug": "nguoi-nhen",
-      "thumb_url": "https://img.ophim.live/uploads/movies/nguoi-nhen-thumb.jpg",
+      "thumb_url": "nguoi-nhen-thumb.jpg",
       "year": 2002,
       "tmdb_id": "557",
       "tmdb_type": "movie",
       "movie_id": "620f97cd91fa4af90ab6bbd9",
-      "views": 4,
+      "views": 3,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.206,
+      "trending_score": 0.218,
       "title": {
         "vi": "Người Nhện",
         "en": "Spider-Man"
       },
-      "tmdb_rating": 7.342,
-      "poster_url": "https://image.tmdb.org/t/p/w500/nXdAh5vUwERL4WGVMaee8RoDEAS.jpg"
+      "tmdb_rating": 7.3,
+      "poster_url": "https://image.tmdb.org/t/p/w500/or6XJBVpcEbIkma0V9zshnbEtx4.jpg"
     },
     {
-      "slug": "payback-bao-thu",
-      "thumb_url": "https://img.ophim.live/uploads/movies/payback-bao-thu-thumb.jpg",
+      "slug": "chien-dich-pho-portland",
+      "thumb_url": "chien-dich-pho-portland-thumb.jpg",
       "year": 2026,
-      "tmdb_id": "316294",
+      "tmdb_id": "297142",
       "tmdb_type": "tv",
-      "movie_id": "6a1e873a2c8b2895cfa7d675",
+      "movie_id": "6a6291b0f01a64048c6a8e58",
       "views": 3,
-      "plays": 3,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.168,
+      "trending_score": 0.218,
       "title": {
-        "vi": "PAYBACK: Báo Thù",
-        "en": "Payback"
+        "vi": "Chiến Dịch Phố Portland",
+        "en": "Portland Street Operation"
       },
-      "tmdb_rating": 9,
-      "poster_url": "https://image.tmdb.org/t/p/w500/616HQHGVqEh0ZbQIRdyjIBQfqhU.jpg"
+      "tmdb_rating": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/iWnzvyK5JU8eyzpyC5nQ7Q2Cl9o.jpg"
     },
     {
-      "slug": "yeu-yamada-o-lv999d",
-      "thumb_url": "yeu-yamada-o-lv999d-thumb.jpg",
-      "year": 2023,
-      "tmdb_id": "208067",
-      "tmdb_type": "tv",
-      "movie_id": "64291c12162420646b039844",
+      "slug": "aliens-vs-predator-requiem",
+      "thumb_url": "aliens-vs-predator-requiem-thumb.jpg",
+      "year": 2007,
+      "tmdb_id": "440",
+      "tmdb_type": "movie",
+      "movie_id": "646c6b129b6b2c58a9f7b8af",
       "views": 2,
-      "plays": 6,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.136,
+      "trending_score": 0.152,
       "title": {
-        "vi": "Yêu Yamada ở Lv999!",
-        "en": "My Love Story with Yamada-kun at Lv999"
+        "vi": "Aliens vs Predator: Requiem",
+        "en": "Aliens vs Predator: Requiem"
       },
-      "tmdb_rating": 8.068,
-      "poster_url": "https://image.tmdb.org/t/p/w500/6RTMDyXZpzACsSg5AcRSUHMO8m2.jpg"
+      "tmdb_rating": 5.158,
+      "poster_url": "https://image.tmdb.org/t/p/w500/5iTwPDNtvK6ZZF607BHBbU3HO0B.jpg"
     },
     {
-      "slug": "thoi-khac-cong-bo",
-      "thumb_url": "thoi-khac-cong-bo-thumb.jpg",
+      "slug": "chuyen-vui-cua-y-nhien",
+      "thumb_url": "chuyen-vui-cua-y-nhien-thumb.jpg",
       "year": 2026,
-      "tmdb_id": "1275779",
-      "tmdb_type": "movie",
-      "movie_id": "6a22563d6997f14383cf9dfb",
-      "views": 2,
-      "plays": 4,
-      "completions": 0,
-      "trending_score": 0.124,
-      "title": {
-        "vi": "Thời Khắc Công Bố",
-        "en": "Disclosure Day"
-      },
-      "tmdb_rating": 7.424,
-      "poster_url": "https://image.tmdb.org/t/p/w500/9XKXO68h0KGMCQ9ZZEdP0DWfcXS.jpg"
-    },
-    {
-      "slug": "the-gioi-khong-loi-thoat",
-      "thumb_url": "https://img.ophim.live/uploads/movies/the-gioi-khong-loi-thoat-thumb.jpg",
-      "year": 2020,
-      "tmdb_id": "110316",
+      "tmdb_id": "296915",
       "tmdb_type": "tv",
-      "movie_id": "6265f684489068f643a199d4",
-      "views": 2,
-      "plays": 3,
+      "movie_id": "6a60e44e9c324208c3c7b30c",
+      "views": 1,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.118,
+      "trending_score": 0.085,
       "title": {
-        "vi": "Thế giới không lối thoát",
-        "en": "Alice in Borderland"
+        "vi": "Chuyện Vui Của Y Nhiên",
+        "en": "Yiran's Silver Linings"
       },
-      "tmdb_rating": 8.092,
-      "poster_url": "https://image.tmdb.org/t/p/w500/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg"
+      "tmdb_rating": 8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/knk2p096jiAcUDxtQSomJgJLhT4.jpg"
     },
     {
-      "slug": "captain-america-noi-chien-sieu-anh-hung",
-      "thumb_url": "https://img.ophim.live/uploads/movies/captain-america-noi-chien-sieu-anh-hung-thumb.jpg",
-      "year": 2016,
-      "tmdb_id": "271110",
-      "tmdb_type": "movie",
-      "movie_id": "623089626507d05b94f59ffe",
-      "views": 2,
-      "plays": 3,
+      "slug": "mo-chuyen-phap-ly-phan-2",
+      "thumb_url": "mo-chuyen-phap-ly-phan-2-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "246483",
+      "tmdb_type": "tv",
+      "movie_id": "69cfc56b1d0b515454ba21d2",
+      "views": 1,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.118,
+      "trending_score": 0.085,
       "title": {
-        "vi": "Captain America: Nội Chiến Siêu Anh Hùng",
-        "en": "Captain America: Civil War"
+        "vi": "Mớ chuyện pháp lý (Phần 2)",
+        "en": "Maamla Legal Hai (Season 2)"
       },
-      "tmdb_rating": 7.45,
-      "poster_url": "https://image.tmdb.org/t/p/w500/nE0Po7FDiTIr7KaplUbewlTx1Ws.jpg"
+      "tmdb_rating": 7.672,
+      "poster_url": "https://image.tmdb.org/t/p/w500/tDP5vC5wxSpHKx88RdyRpdaSo2u.jpg"
+    },
+    {
+      "slug": "nang-ham-hoc-hoi",
+      "thumb_url": "nang-ham-hoc-hoi-thumb.jpg",
+      "year": 1974,
+      "tmdb_id": "250670",
+      "tmdb_type": "movie",
+      "movie_id": "6345b7fe2805d71a491c2152",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.085,
+      "title": {
+        "vi": "Nàng ham học hỏi",
+        "en": "Here Comes Flossie!"
+      },
+      "tmdb_rating": 7.5,
+      "poster_url": "https://image.tmdb.org/t/p/w500/3evtA2fcdmQNJOmVm8J5jVEUcu1.jpg"
+    },
+    {
+      "slug": "tieng-anh-thanh-tieng-yeu",
+      "thumb_url": "tieng-anh-thanh-tieng-yeu-thumb.jpg",
+      "year": 2026,
+      "tmdb_id": "315318",
+      "tmdb_type": "tv",
+      "movie_id": "6a3ff5dee12218d7285f7fd4",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.085,
+      "title": {
+        "vi": "Tiếng Anh Thành Tiếng Yêu",
+        "en": "My Tutor, My Love"
+      },
+      "tmdb_rating": 10,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uoldOpZY4aeS48Rgyqp1toXEvef.jpg"
+    },
+    {
+      "slug": "nguoi-nhen-3",
+      "thumb_url": "nguoi-nhen-3-thumb.jpg",
+      "year": 2007,
+      "tmdb_id": "559",
+      "tmdb_type": "movie",
+      "movie_id": "62187f20f5175150fec261a9",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.085,
+      "title": {
+        "vi": "Người nhện 3",
+        "en": "Spider-Man 3 (Season 3)"
+      },
+      "tmdb_rating": 6.474,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sJMTTGjtjvrMZ7G0oP9D13wNUum.jpg"
     }
   ]
 }
