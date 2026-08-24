@@ -1,7 +1,43 @@
 {
-  "updated_at": "2026-08-17T02:34:00.211Z",
+  "updated_at": "2026-08-24T02:37:34.545Z",
   "interval_days": 7,
   "movies": [
+    {
+      "slug": "harry-potter-va-hoang-tu-lai",
+      "thumb_url": "harry-potter-va-hoang-tu-lai-thumb.jpg",
+      "year": 2009,
+      "tmdb_id": "767",
+      "tmdb_type": "movie",
+      "movie_id": "622b247eeb35da19972e700d",
+      "views": 3,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.6,
+      "title": {
+        "vi": "Harry Potter và Hoàng tử lai",
+        "en": "Harry Potter and the Half-Blood Prince"
+      },
+      "tmdb_rating": 7.681,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1nTvFooV554TE0EQ3V5XfMs6CgX.jpg"
+    },
+    {
+      "slug": "nguoi-nhen-xa-nha",
+      "thumb_url": "nguoi-nhen-xa-nha-thumb.jpg",
+      "year": 2019,
+      "tmdb_id": "429617",
+      "tmdb_type": "movie",
+      "movie_id": "623086bc6507d05b94f59c23",
+      "views": 2,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": "Người Nhện: Xa Nhà",
+        "en": "Spider-Man: Far From Home"
+      },
+      "tmdb_rating": 7.4,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lcq8dVxeeOqHvvgcte707K0KVx5.jpg"
+    },
     {
       "slug": "rick-va-morty-phan-6",
       "thumb_url": "rick-va-morty-phan-6-thumb.jpg",
@@ -9,52 +45,16 @@
       "tmdb_id": "60625",
       "tmdb_type": "tv",
       "movie_id": "656832aaaa7d07ce5cabb329",
-      "views": 2,
-      "plays": 22,
+      "views": 3,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.533,
+      "trending_score": 0.333,
       "title": {
         "vi": "Rick Và Morty (Phần 6)",
         "en": "Rick and Morty (Season 6)"
       },
-      "tmdb_rating": 8.681,
+      "tmdb_rating": 8.683,
       "poster_url": "https://image.tmdb.org/t/p/w500/2jS5LyatFPXNm1PaYe63vKdSBCM.jpg"
-    },
-    {
-      "slug": "khi-cac-so-hanh-dong",
-      "thumb_url": "khi-cac-so-hanh-dong-thumb.jpg",
-      "year": 1992,
-      "tmdb_id": "2005",
-      "tmdb_type": "movie",
-      "movie_id": "64aa16fb621029c05fe8f3c8",
-      "views": 3,
-      "plays": 4,
-      "completions": 0,
-      "trending_score": 0.273,
-      "title": {
-        "vi": "Khi Các Sơ Hành Động",
-        "en": "Sister Act"
-      },
-      "tmdb_rating": 6.832,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xZvVSZ0RTxIjblLV87vs7ADM12m.jpg"
-    },
-    {
-      "slug": "nguoi-nhen",
-      "thumb_url": "nguoi-nhen-thumb.jpg",
-      "year": 2002,
-      "tmdb_id": "557",
-      "tmdb_type": "movie",
-      "movie_id": "620f97cd91fa4af90ab6bbd9",
-      "views": 3,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.218,
-      "title": {
-        "vi": "Người Nhện",
-        "en": "Spider-Man"
-      },
-      "tmdb_rating": 7.3,
-      "poster_url": "https://image.tmdb.org/t/p/w500/or6XJBVpcEbIkma0V9zshnbEtx4.jpg"
     },
     {
       "slug": "chien-dich-pho-portland",
@@ -63,10 +63,10 @@
       "tmdb_id": "297142",
       "tmdb_type": "tv",
       "movie_id": "6a6291b0f01a64048c6a8e58",
-      "views": 3,
-      "plays": 1,
+      "views": 1,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.218,
+      "trending_score": 0.333,
       "title": {
         "vi": "Chiến Dịch Phố Portland",
         "en": "Portland Street Operation"
@@ -75,112 +75,40 @@
       "poster_url": "https://image.tmdb.org/t/p/w500/iWnzvyK5JU8eyzpyC5nQ7Q2Cl9o.jpg"
     },
     {
-      "slug": "aliens-vs-predator-requiem",
-      "thumb_url": "aliens-vs-predator-requiem-thumb.jpg",
-      "year": 2007,
-      "tmdb_id": "440",
+      "slug": "valerie-and-her-week-of-wonders",
+      "thumb_url": "valerie-and-her-week-of-wonders-thumb.jpg",
+      "year": 1970,
+      "tmdb_id": "46315",
       "tmdb_type": "movie",
-      "movie_id": "646c6b129b6b2c58a9f7b8af",
+      "movie_id": "63c5143d61ec932ce96f6d99",
       "views": 2,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.152,
+      "trending_score": 0.267,
       "title": {
-        "vi": "Aliens vs Predator: Requiem",
-        "en": "Aliens vs Predator: Requiem"
+        "vi": "Valerie and Her Week of Wonders",
+        "en": "Valerie and Her Week of Wonders"
       },
-      "tmdb_rating": 5.158,
-      "poster_url": "https://image.tmdb.org/t/p/w500/5iTwPDNtvK6ZZF607BHBbU3HO0B.jpg"
+      "tmdb_rating": 6.963,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lY0IkdouazLBpPYot8dsPAsJqHK.jpg"
     },
     {
-      "slug": "chuyen-vui-cua-y-nhien",
-      "thumb_url": "chuyen-vui-cua-y-nhien-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "296915",
-      "tmdb_type": "tv",
-      "movie_id": "6a60e44e9c324208c3c7b30c",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.085,
-      "title": {
-        "vi": "Chuyện Vui Của Y Nhiên",
-        "en": "Yiran's Silver Linings"
-      },
-      "tmdb_rating": 8,
-      "poster_url": "https://image.tmdb.org/t/p/w500/knk2p096jiAcUDxtQSomJgJLhT4.jpg"
-    },
-    {
-      "slug": "mo-chuyen-phap-ly-phan-2",
-      "thumb_url": "mo-chuyen-phap-ly-phan-2-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "246483",
-      "tmdb_type": "tv",
-      "movie_id": "69cfc56b1d0b515454ba21d2",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.085,
-      "title": {
-        "vi": "Mớ chuyện pháp lý (Phần 2)",
-        "en": "Maamla Legal Hai (Season 2)"
-      },
-      "tmdb_rating": 7.672,
-      "poster_url": "https://image.tmdb.org/t/p/w500/tDP5vC5wxSpHKx88RdyRpdaSo2u.jpg"
-    },
-    {
-      "slug": "nang-ham-hoc-hoi",
-      "thumb_url": "nang-ham-hoc-hoi-thumb.jpg",
-      "year": 1974,
-      "tmdb_id": "250670",
+      "slug": "shes-the-man",
+      "thumb_url": "shes-the-man-thumb.jpg",
+      "year": 2006,
+      "tmdb_id": "9655",
       "tmdb_type": "movie",
-      "movie_id": "6345b7fe2805d71a491c2152",
+      "movie_id": "623863563d016a3b6718121c",
       "views": 1,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.085,
+      "trending_score": 0.2,
       "title": {
-        "vi": "Nàng ham học hỏi",
-        "en": "Here Comes Flossie!"
+        "vi": "She's the Man",
+        "en": "She's the Man"
       },
-      "tmdb_rating": 7.5,
-      "poster_url": "https://image.tmdb.org/t/p/w500/3evtA2fcdmQNJOmVm8J5jVEUcu1.jpg"
-    },
-    {
-      "slug": "tieng-anh-thanh-tieng-yeu",
-      "thumb_url": "tieng-anh-thanh-tieng-yeu-thumb.jpg",
-      "year": 2026,
-      "tmdb_id": "315318",
-      "tmdb_type": "tv",
-      "movie_id": "6a3ff5dee12218d7285f7fd4",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.085,
-      "title": {
-        "vi": "Tiếng Anh Thành Tiếng Yêu",
-        "en": "My Tutor, My Love"
-      },
-      "tmdb_rating": 10,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uoldOpZY4aeS48Rgyqp1toXEvef.jpg"
-    },
-    {
-      "slug": "nguoi-nhen-3",
-      "thumb_url": "nguoi-nhen-3-thumb.jpg",
-      "year": 2007,
-      "tmdb_id": "559",
-      "tmdb_type": "movie",
-      "movie_id": "62187f20f5175150fec261a9",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.085,
-      "title": {
-        "vi": "Người nhện 3",
-        "en": "Spider-Man 3 (Season 3)"
-      },
-      "tmdb_rating": 6.474,
-      "poster_url": "https://image.tmdb.org/t/p/w500/sJMTTGjtjvrMZ7G0oP9D13wNUum.jpg"
+      "tmdb_rating": 6.803,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xRElqFcUVuGf0s2rAQSSNAn1IS9.jpg"
     }
   ]
 }
