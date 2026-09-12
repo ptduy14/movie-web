@@ -1,10 +1,14 @@
-// Bakes the Vietnamese theatrical schedule (TMDB) into public/data/cinema.json
-// so the maintenance page can render it as a pure file read — no runtime API
-// calls, no API key in the browser, and no way for TMDB to break the page.
+// Bakes theatrical schedules (TMDB) into public/data/cinema.json so the
+// maintenance page can render them as a pure file read — no runtime API calls,
+// no API key in the browser, and no way for TMDB to break the page.
+//
+// One schedule per region, because a schedule is only useful where the reader
+// is: the Vietnamese page shows VN release dates, Vietnamese titles and the
+// Vietnamese poster artwork; the English page shows the US equivalents.
 //
 // Run via: node scripts/fetch-cinema.mjs
 // Required env vars: TMDB_ACCESS_TOKEN
-// Optional env vars: CINEMA_REGION, CINEMA_UPCOMING_LIMIT, CINEMA_NOW_PLAYING_LIMIT
+// Optional env vars: CINEMA_UPCOMING_LIMIT, CINEMA_NOW_PLAYING_LIMIT
 
 import { writeFileSync, mkdirSync } from 'fs'
 import { join, dirname } from 'path'
@@ -13,9 +17,14 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const TMDB_TOKEN        = process.env.TMDB_ACCESS_TOKEN
-const REGION            = process.env.CINEMA_REGION                || 'VN'
 const UPCOMING_LIMIT    = Number(process.env.CINEMA_UPCOMING_LIMIT    || '12')
 const NOW_PLAYING_LIMIT = Number(process.env.CINEMA_NOW_PLAYING_LIMIT || '10')
+
+// Keep in sync with REGION_BY_LOCALE in lib/cinema-data.ts.
+const REGIONS = [
+  { region: 'VN', language: 'vi-VN' },
+  { region: 'US', language: 'en-US' },
+]
 
 if (!TMDB_TOKEN) {
   console.error('Missing required env var: TMDB_ACCESS_TOKEN')
@@ -46,27 +55,33 @@ function pickTrailer(videos) {
 }
 
 /**
- * One TMDB list (upcoming | now_playing) → render-ready rows.
- *
- * Fetched twice, vi-VN and en-US, so both locales get a real localized title
- * instead of a client-side translation of a title that TMDB already has.
+ * A localised trailer first (a VN release usually has a Vietnamese-subtitled
+ * one), then English, then whatever TMDB has.
  */
-async function collect(endpoint, limit) {
-  const [vi, en] = await Promise.all([
-    api(`movie/${endpoint}?language=vi-VN&region=${REGION}&page=1`),
-    api(`movie/${endpoint}?language=en-US&region=${REGION}&page=1`),
-  ])
+async function findTrailer(movieId, language) {
+  const attempts = language === 'en-US' ? ['en-US', null] : [language, 'en-US', null]
+  for (const lang of attempts) {
+    const videos = await api(`movie/${movieId}/videos${lang ? `?language=${lang}` : ''}`)
+    const key = pickTrailer(videos)
+    if (key) return key
+  }
+  return null
+}
 
-  const englishTitle = new Map((en.results || []).map((m) => [m.id, m.title]))
+/**
+ * One TMDB list (upcoming | now_playing) for one region → render-ready rows.
+ *
+ * Title and poster both come from the region's own language, so nothing has to
+ * be translated or swapped at render time.
+ */
+async function collect(endpoint, { region, language }, limit) {
+  const list = await api(`movie/${endpoint}?language=${language}&region=${region}&page=1`)
 
-  const rows = (vi.results || [])
+  const rows = (list.results || [])
     .filter((m) => m.poster_path && m.release_date)
     .map((m) => ({
       id: m.id,
-      title: {
-        vi: m.title,
-        en: englishTitle.get(m.id) || m.original_title || m.title,
-      },
+      title: m.title || m.original_title,
       release_date: m.release_date,
       poster_path: m.poster_path,
       // vote_average is 0 for unreleased titles nobody has rated — show nothing
@@ -86,11 +101,9 @@ async function collect(endpoint, limit) {
   // trailer lookup must only cost that one movie its play button.
   for (const movie of selected) {
     try {
-      let videos = await api(`movie/${movie.id}/videos?language=en-US`)
-      if (!(videos.results || []).length) videos = await api(`movie/${movie.id}/videos`)
-      movie.trailer = pickTrailer(videos)
+      movie.trailer = await findTrailer(movie.id, language)
     } catch (err) {
-      console.warn(`  ! trailer lookup failed for ${movie.title.vi}: ${err.message}`)
+      console.warn(`  ! trailer lookup failed for ${movie.title}: ${err.message}`)
       movie.trailer = null
     }
   }
@@ -99,30 +112,38 @@ async function collect(endpoint, limit) {
 }
 
 async function main() {
-  console.log(`Fetching TMDB cinema schedule for region ${REGION}...`)
+  const regions = {}
 
-  const [upcoming, nowPlaying] = [
-    await collect('upcoming', UPCOMING_LIMIT),
-    await collect('now_playing', NOW_PLAYING_LIMIT),
-  ]
+  for (const target of REGIONS) {
+    console.log(`Fetching TMDB cinema schedule — region ${target.region} (${target.language})...`)
+
+    const upcoming = await collect('upcoming', target, UPCOMING_LIMIT)
+    const nowPlaying = await collect('now_playing', target, NOW_PLAYING_LIMIT)
+
+    regions[target.region] = {
+      region: target.region,
+      language: target.language,
+      upcoming,
+      now_playing: nowPlaying,
+    }
+
+    const withTrailer = [...upcoming, ...nowPlaying].filter((m) => m.trailer).length
+    console.log(
+      `  ${upcoming.length} upcoming + ${nowPlaying.length} now playing (${withTrailer} with trailer)`
+    )
+    upcoming.forEach((m) => console.log(`    ${m.release_date}  ${m.title}${m.trailer ? '  [trailer]' : ''}`))
+  }
 
   const payload = {
     updated_at: new Date().toISOString(),
-    region: REGION,
-    upcoming,
-    now_playing: nowPlaying,
+    regions,
   }
 
   const outDir = join(__dirname, '..', 'public', 'data')
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'cinema.json'), JSON.stringify(payload, null, 2))
 
-  const withTrailer = [...upcoming, ...nowPlaying].filter((m) => m.trailer).length
-  console.log(
-    `Saved ${upcoming.length} upcoming + ${nowPlaying.length} now playing ` +
-    `(${withTrailer} with trailer) → public/data/cinema.json`
-  )
-  upcoming.forEach((m) => console.log(`  ${m.release_date}  ${m.title.vi}${m.trailer ? '  [trailer]' : ''}`))
+  console.log(`Saved ${Object.keys(regions).join(', ')} → public/data/cinema.json`)
 }
 
 main().catch((err) => { console.error(err.message); process.exit(1) })

@@ -469,11 +469,11 @@
   "maintenance": {
     "title": "MovieX is temporarily offline",
     "note": "The site is down for maintenance. It will be back as soon as the work is done.",
-    "scrollCue": "Scroll down for what's coming to cinemas",
+    "scrollCue": "Scroll down for what's coming to US cinemas",
     "cinema": {
-      "upcomingTitle": "Coming to cinemas",
-      "upcomingMeta": "Vietnam · updated daily",
-      "nowPlayingTitle": "Now playing",
+      "upcomingTitle": "Coming to US cinemas",
+      "upcomingMeta": "Updated daily",
+      "nowPlayingTitle": "Now playing in the US",
       "nowPlayingMeta": "Scroll sideways for more",
       "today": "Today",
       "tomorrow": "Tomorrow",

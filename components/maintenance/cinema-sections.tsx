@@ -30,7 +30,6 @@ export interface CinemaLabels {
 interface Props {
   upcoming: CinemaMovie[];
   nowPlaying: CinemaMovie[];
-  locale: string;
   labels: CinemaLabels;
 }
 
@@ -43,9 +42,6 @@ const TMDB_POSTER = `${process.env.NEXT_PUBLIC_TMDB_IMG_DOMAIN}/t/p/w500`;
 
 const posterUrl = (path: string | null) => (path ? `${TMDB_POSTER}${path}` : '');
 
-const pickTitle = (movie: CinemaMovie, locale: string) =>
-  (locale === 'en' ? movie.title.en : movie.title.vi) || movie.title.vi || movie.title.en;
-
 /** Whole days between today and an ISO date, both at UTC midnight. */
 function daysUntil(iso: string, todayIso: string): number {
   const target = Date.parse(`${iso}T00:00:00Z`);
@@ -53,7 +49,7 @@ function daysUntil(iso: string, todayIso: string): number {
   return Math.round((target - today) / 86_400_000);
 }
 
-export default function CinemaSections({ upcoming, nowPlaying, locale, labels }: Props) {
+export default function CinemaSections({ upcoming, nowPlaying, labels }: Props) {
   const [trailer, setTrailer] = useState<OpenTrailer | null>(null);
 
   // The page is statically generated, so "today" has to come from the visitor's
@@ -102,7 +98,7 @@ export default function CinemaSections({ upcoming, nowPlaying, locale, labels }:
   };
 
   const card = (movie: CinemaMovie, small = false) => {
-    const title = pickTitle(movie, locale);
+    const title = movie.title;
     const playable = Boolean(movie.trailer);
     const open = () => movie.trailer && setTrailer({ key: movie.trailer, title });
 
