@@ -1,0 +1,65 @@
+name: Update cinema schedule (cron)
+
+# Refreshes the Vietnamese theatrical schedule shown on the maintenance page.
+# Runs daily at 00:30 UTC (07:30 Vietnam time) — release dates change slowly,
+# once a day is plenty.
+#
+# NOTE: the commit here deliberately does NOT carry `[skip ci]` (unlike
+# trending-cron). The maintenance page is statically generated from this file,
+# so it only picks up new data when the commit triggers a Vercel deploy.
+#
+# Required repository secrets:
+#   TMDB_ACCESS_TOKEN — TMDB v4 read access token (Bearer)
+
+on:
+  schedule:
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+    inputs:
+      upcoming_limit:
+        description: 'How many upcoming titles to bake'
+        required: false
+        default: '12'
+        type: string
+      now_playing_limit:
+        description: 'How many now-playing titles to bake'
+        required: false
+        default: '10'
+        type: string
+
+concurrency:
+  group: cinema-cron
+  cancel-in-progress: false
+
+jobs:
+  update-cinema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch cinema schedule from TMDB
+        env:
+          TMDB_ACCESS_TOKEN:        ${{ secrets.TMDB_ACCESS_TOKEN }}
+          CINEMA_UPCOMING_LIMIT:    ${{ github.event.inputs.upcoming_limit || '12' }}
+          CINEMA_NOW_PLAYING_LIMIT: ${{ github.event.inputs.now_playing_limit || '10' }}
+        run: node scripts/fetch-cinema.mjs
+
+      - name: Commit & push cinema.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/cinema.json
+          if git diff --cached --quiet; then
+            echo "No changes — cinema schedule is up to date."
+          else
+            git commit -m "chore: update cinema schedule"
+            git push
+          fi
