@@ -38,9 +38,24 @@ reached or indexed by accident.
 ## What the page shows
 
 1. The notice (`messages/{locale}.json` → `maintenance.*`).
-2. Below the fold: the Vietnamese cinema schedule — upcoming releases grouped
-   by date with a live countdown, plus what's now playing, each poster opening
-   its trailer in a lightbox.
+2. Below the fold: a cinema schedule — upcoming releases grouped by date with a
+   live countdown, plus what's now playing, each poster opening its trailer in
+   a lightbox.
+
+### One market per locale
+
+A release calendar is only useful where the reader is, so each locale gets its
+own market — `vi` → **VN**, `en` → **US** (mapped in `REGION_BY_LOCALE` in
+`lib/cinema-data.ts`, mirrored by `REGIONS` in `scripts/fetch-cinema.mjs`).
+
+That means different release dates, different titles **and different poster
+artwork**: TMDB serves localized posters, so the VN list shows the Vietnamese
+one-sheet and the US list shows the English one. Nothing is translated at
+render time — both versions are baked. Headings name the market outright
+("Sắp chiếu tại rạp Việt Nam" / "Coming to US cinemas") so nobody has to guess
+whose schedule they're reading.
+
+Adding a locale means adding it to both maps and re-running the script.
 
 The schedule is a **pure file read** of `public/data/cinema.json`. The page
 makes no network request at all: a page whose job is to announce an outage must
