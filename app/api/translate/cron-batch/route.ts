@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { runCronBatch } from 'services/cron-translation-service';
 import { routing } from 'i18n/routing';
+import { isMaintenanceMode } from 'lib/maintenance';
 
 /**
  * Translation cron endpoint — invoked by GitHub Actions on a schedule.
@@ -44,6 +45,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
+  // ---- 1b. Maintenance gate ----
+  // Answer 200, not 503: the caller is GitHub Actions running `curl -fsS`, and
+  // a deliberate no-op shouldn't paint the schedule red every hour. Nothing is
+  // touched here — no movie API, no Firestore, no Groq.
+  if (isMaintenanceMode()) {
+    return NextResponse.json({
+      status: 'skipped',
+      reason: 'maintenance',
+      message: 'MAINTENANCE_MODE is on — translation cron is paused.',
+    });
+  }
+
   // ---- 2. Parse + validate params ----
   const { searchParams } = new URL(req.url);
   const locale = (searchParams.get('locale') ?? 'en').toLowerCase();
@@ -70,6 +83,8 @@ export async function POST(req: NextRequest) {
   // ---- 3. Run batch ----
   try {
     const result = await runCronBatch(locale, pages);
+    // `skipped` = the movie API is unavailable; that's an upstream outage, not
+    // a server error on our side, so it stays a 200 with an explanatory body.
     return NextResponse.json(result, {
       status: result.status === 'failed' ? 500 : 200,
     });

@@ -464,5 +464,23 @@
     "searchTitle": "Tìm kiếm phim",
     "recentTitle": "Phim xem gần đây",
     "collectionTitle": "Bộ sưu tập phim"
+  },
+
+  "maintenance": {
+    "title": "Website đang tạm dừng hoạt động",
+    "note": "MovieX đang được bảo trì. Mình sẽ mở lại ngay khi xong.",
+    "scrollCue": "Cuộn xuống xem lịch chiếu rạp sắp tới",
+    "cinema": {
+      "upcomingTitle": "Sắp chiếu tại rạp",
+      "upcomingMeta": "Việt Nam · cập nhật hằng ngày",
+      "nowPlayingTitle": "Đang chiếu",
+      "nowPlayingMeta": "Kéo ngang để xem thêm",
+      "today": "Hôm nay",
+      "tomorrow": "Ngày mai",
+      "inDays": "còn {days} ngày",
+      "weekdays": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+      "watchTrailer": "Xem trailer",
+      "close": "Đóng"
+    }
   }
 }

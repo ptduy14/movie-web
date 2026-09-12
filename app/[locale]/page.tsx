@@ -2,6 +2,7 @@ import HomePage from '@/components/home';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from 'i18n/routing';
+import { isMaintenanceMode } from 'lib/maintenance';
 
 interface OPhimSeoOnPage {
   titleHead?: string;
@@ -42,7 +43,10 @@ export async function generateMetadata({
 
   // Only call OPhim for VI — its seoOnPage is Vietnamese-only.
   // For EN, stick with our locally-translated strings.
-  if (locale === 'vi') {
+  // Skipped entirely under maintenance: this is the one movie-API call that is
+  // cacheable (so it would otherwise run at build time, while every other
+  // fetch on this page is `no-store` and never runs during a gated request).
+  if (locale === 'vi' && !isMaintenanceMode()) {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/v1/api/home`, {
         next: { revalidate: 3600 },
