@@ -1,250 +1,373 @@
 {
-  "updated_at": "2026-09-12T09:41:06.418Z",
-  "region": "VN",
-  "upcoming": [
-    {
-      "id": 1423191,
-      "title": {
-        "vi": "Vùng Đất Quỷ Dữ",
-        "en": "Resident Evil"
-      },
-      "release_date": "2026-09-18",
-      "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-      "rating": null,
-      "trailer": "mNd1gb19A-c"
+  "updated_at": "2026-09-12T10:03:28.411Z",
+  "regions": {
+    "VN": {
+      "region": "VN",
+      "language": "vi-VN",
+      "upcoming": [
+        {
+          "id": 1423191,
+          "title": "Vùng Đất Quỷ Dữ",
+          "release_date": "2026-09-18",
+          "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
+          "rating": null,
+          "trailer": "mNd1gb19A-c"
+        },
+        {
+          "id": 242828,
+          "title": "Marnie Yêu Dấu",
+          "release_date": "2026-09-18",
+          "poster_path": "/vM6ZHg10Y180JsQc8wpgCkrDxtQ.jpg",
+          "rating": 7.9,
+          "trailer": "YBIfz76BYiY"
+        },
+        {
+          "id": 1630030,
+          "title": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
+          "release_date": "2026-09-18",
+          "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
+          "rating": 5.5,
+          "trailer": null
+        },
+        {
+          "id": 1665283,
+          "title": "Lên Hương",
+          "release_date": "2026-09-18",
+          "poster_path": "/bik7QmlDBRBajowLQyWv61owhPf.jpg",
+          "rating": null,
+          "trailer": "tMu23yKJ9_c"
+        },
+        {
+          "id": 1536008,
+          "title": "Tà Sư Sám Hối",
+          "release_date": "2026-09-18",
+          "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
+          "rating": 4,
+          "trailer": "MSn1lXb0pYw"
+        },
+        {
+          "id": 1740257,
+          "title": "NCT 127 5TH TOUR ‘NEO CITY  SEOUL - THE REDLINE’ in CINEMAS",
+          "release_date": "2026-09-20",
+          "poster_path": "/wLItpgfVeRL4VlqoaQJRQXzUmc1.jpg",
+          "rating": null,
+          "trailer": "nWZ_UY9voL4"
+        },
+        {
+          "id": 1465063,
+          "title": "Hòn Đảo Quên Lãng",
+          "release_date": "2026-09-25",
+          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
+          "rating": 10,
+          "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 1263337,
+          "title": "Trái Tim Quái Thú",
+          "release_date": "2026-09-25",
+          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
+          "rating": null,
+          "trailer": "UkMuGKqAux4"
+        },
+        {
+          "id": 10515,
+          "title": "Laputa: Lâu Đài Trên Không",
+          "release_date": "2026-09-25",
+          "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
+          "rating": 8,
+          "trailer": "6s_wR3uuWec"
+        },
+        {
+          "id": 1744300,
+          "title": "Út Lan 2",
+          "release_date": "2026-09-25",
+          "poster_path": "/tTCX6Hqsj9TsHuqU6aUKFh0Jg72.jpg",
+          "rating": null,
+          "trailer": "COeNSZ410Kg"
+        },
+        {
+          "id": 1248832,
+          "title": "Digger",
+          "release_date": "2026-10-02",
+          "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
+          "rating": null,
+          "trailer": "job8V254NAE"
+        },
+        {
+          "id": 1283515,
+          "title": "Verity: Bí Mật Bị Chôn Vùi",
+          "release_date": "2026-10-02",
+          "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
+          "rating": null,
+          "trailer": "xdPMKhjMSFs"
+        }
+      ],
+      "now_playing": [
+        {
+          "id": 1302904,
+          "title": "Bùa Yêu: Bí Mật Gia Tộc",
+          "release_date": "2026-09-11",
+          "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
+          "rating": 6.3,
+          "trailer": "Ho10_4IX1jE"
+        },
+        {
+          "id": 1633056,
+          "title": "Bát Tiên!",
+          "release_date": "2026-09-11",
+          "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
+          "rating": 7.9,
+          "trailer": "mvpFrJ5O2Ww"
+        },
+        {
+          "id": 1529513,
+          "title": "Cổ Thuật Hắc Ngải",
+          "release_date": "2026-09-11",
+          "poster_path": "/6Mez9DHThuM11lPXdTI5tu8BQng.jpg",
+          "rating": 6.3,
+          "trailer": null
+        },
+        {
+          "id": 1492461,
+          "title": "Mãi Nợ Một Lời Tạm Biệt",
+          "release_date": "2026-09-11",
+          "poster_path": "/sNy2vtWlkLbWMxkTAOeV1nTbudr.jpg",
+          "rating": null,
+          "trailer": "ck5rOLF1u98"
+        },
+        {
+          "id": 1751285,
+          "title": "SOOBIN LIVE CONCERT MOVIE: ALL-ROUNDER",
+          "release_date": "2026-09-10",
+          "poster_path": "/mj5ZCjdRfFI7oE8TQ1uNMqYNnKQ.jpg",
+          "rating": null,
+          "trailer": "-LmzL2FpOD0"
+        },
+        {
+          "id": 1393326,
+          "title": "Ma Tù",
+          "release_date": "2026-09-04",
+          "poster_path": "/9qp7Dczia8dadV7bnZNuK0ar2yF.jpg",
+          "rating": 7.2,
+          "trailer": "otL78_pk_A0"
+        },
+        {
+          "id": 1433367,
+          "title": "Một Đêm Duy Nhất",
+          "release_date": "2026-09-04",
+          "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
+          "rating": 6.7,
+          "trailer": "lDsAVq9lo9g"
+        },
+        {
+          "id": 1058424,
+          "title": "Hope: Vùng Tử Địa",
+          "release_date": "2026-09-04",
+          "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
+          "rating": 8.2,
+          "trailer": "OFaJzL83y0Q"
+        },
+        {
+          "id": 1235769,
+          "title": "Hành Trình Bất Hảo",
+          "release_date": "2026-09-04",
+          "poster_path": "/75pKNDL5NKlraxtF3OoMHMXiE49.jpg",
+          "rating": 9,
+          "trailer": "1na2T_TzFcg"
+        },
+        {
+          "id": 1288445,
+          "title": "Tàu Buôn Người",
+          "release_date": "2026-08-28",
+          "poster_path": "/nDcgl5K2MCZk3xK3bh383CmIZsS.jpg",
+          "rating": 6.4,
+          "trailer": "2Iqvbe98Gb4"
+        }
+      ]
     },
-    {
-      "id": 242828,
-      "title": {
-        "vi": "Marnie Yêu Dấu",
-        "en": "When Marnie Was There"
-      },
-      "release_date": "2026-09-18",
-      "poster_path": "/vM6ZHg10Y180JsQc8wpgCkrDxtQ.jpg",
-      "rating": 7.9,
-      "trailer": "YBIfz76BYiY"
-    },
-    {
-      "id": 1630030,
-      "title": {
-        "vi": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
-        "en": "Demon Agent"
-      },
-      "release_date": "2026-09-18",
-      "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
-      "rating": 5.5,
-      "trailer": null
-    },
-    {
-      "id": 1665283,
-      "title": {
-        "vi": "Lên Hương",
-        "en": "Luck For Sale"
-      },
-      "release_date": "2026-09-18",
-      "poster_path": "/bik7QmlDBRBajowLQyWv61owhPf.jpg",
-      "rating": null,
-      "trailer": "tMu23yKJ9_c"
-    },
-    {
-      "id": 1536008,
-      "title": {
-        "vi": "Tà Sư Sám Hối",
-        "en": "Confessions of a Shaman"
-      },
-      "release_date": "2026-09-18",
-      "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
-      "rating": 4,
-      "trailer": "MSn1lXb0pYw"
-    },
-    {
-      "id": 1740257,
-      "title": {
-        "vi": "NCT 127 5TH TOUR ‘NEO CITY  SEOUL - THE REDLINE’ in CINEMAS",
-        "en": "NCT 127 5TH TOUR ‘NEO CITY  SEOUL - THE REDLINE’ in CINEMAS"
-      },
-      "release_date": "2026-09-20",
-      "poster_path": "/wLItpgfVeRL4VlqoaQJRQXzUmc1.jpg",
-      "rating": null,
-      "trailer": "nWZ_UY9voL4"
-    },
-    {
-      "id": 1465063,
-      "title": {
-        "vi": "Hòn Đảo Quên Lãng",
-        "en": "Forgotten Island"
-      },
-      "release_date": "2026-09-25",
-      "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-      "rating": 10,
-      "trailer": "PhgY8cOJiQA"
-    },
-    {
-      "id": 1263337,
-      "title": {
-        "vi": "Trái Tim Quái Thú",
-        "en": "Heart of the Beast"
-      },
-      "release_date": "2026-09-25",
-      "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-      "rating": null,
-      "trailer": "UkMuGKqAux4"
-    },
-    {
-      "id": 10515,
-      "title": {
-        "vi": "Laputa: Lâu Đài Trên Không",
-        "en": "Castle in the Sky"
-      },
-      "release_date": "2026-09-25",
-      "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
-      "rating": 8,
-      "trailer": "6s_wR3uuWec"
-    },
-    {
-      "id": 1744300,
-      "title": {
-        "vi": "Út Lan 2",
-        "en": "Ut Lan 2"
-      },
-      "release_date": "2026-09-25",
-      "poster_path": "/tTCX6Hqsj9TsHuqU6aUKFh0Jg72.jpg",
-      "rating": null,
-      "trailer": "COeNSZ410Kg"
-    },
-    {
-      "id": 1248832,
-      "title": {
-        "vi": "Digger",
-        "en": "Digger"
-      },
-      "release_date": "2026-10-02",
-      "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-      "rating": null,
-      "trailer": "job8V254NAE"
-    },
-    {
-      "id": 1283515,
-      "title": {
-        "vi": "Verity: Bí Mật Bị Chôn Vùi",
-        "en": "Verity"
-      },
-      "release_date": "2026-10-02",
-      "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-      "rating": null,
-      "trailer": "xdPMKhjMSFs"
+    "US": {
+      "region": "US",
+      "language": "en-US",
+      "upcoming": [
+        {
+          "id": 1423191,
+          "title": "Resident Evil",
+          "release_date": "2026-09-18",
+          "poster_path": "/qku2uWSoJ9amQV5MWo1Eek29iji.jpg",
+          "rating": null,
+          "trailer": "mNd1gb19A-c"
+        },
+        {
+          "id": 1433583,
+          "title": "The Weight",
+          "release_date": "2026-09-18",
+          "poster_path": "/8i5iZV50CoEtmDCFM7RSxCkpE8h.jpg",
+          "rating": 7.5,
+          "trailer": "7YpuMymmiJ8"
+        },
+        {
+          "id": 1198654,
+          "title": "Bad Apples",
+          "release_date": "2026-09-18",
+          "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
+          "rating": 7.4,
+          "trailer": "4nhu80EmVQE"
+        },
+        {
+          "id": 1477104,
+          "title": "Shaun the Sheep: The Beast of Mossy Bottom",
+          "release_date": "2026-09-18",
+          "poster_path": "/mMOptSPBVGUA9GHgnpsC35GzZ7e.jpg",
+          "rating": null,
+          "trailer": "daZMq0AyOMc"
+        },
+        {
+          "id": 1732420,
+          "title": "Power Trip",
+          "release_date": "2026-09-24",
+          "poster_path": "/eNcd1fIpeCMuIqacgdMfbKnHpVp.jpg",
+          "rating": null,
+          "trailer": "D_4gRvGlpmU"
+        },
+        {
+          "id": 1465063,
+          "title": "Forgotten Island",
+          "release_date": "2026-09-25",
+          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
+          "rating": 10,
+          "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 1263337,
+          "title": "Heart of the Beast",
+          "release_date": "2026-09-25",
+          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
+          "rating": null,
+          "trailer": "UkMuGKqAux4"
+        },
+        {
+          "id": 1375441,
+          "title": "Primetime",
+          "release_date": "2026-09-25",
+          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+          "rating": null,
+          "trailer": "5fHXyqQOKL8"
+        },
+        {
+          "id": 1384514,
+          "title": "The Vvaan",
+          "release_date": "2026-09-25",
+          "poster_path": "/4zj0EEHQrfNtPEnASlqCLNyeQa7.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1393326,
+          "title": "Ghost in the Cell",
+          "release_date": "2026-10-02",
+          "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
+          "rating": 7.2,
+          "trailer": "otL78_pk_A0"
+        },
+        {
+          "id": 1248832,
+          "title": "Digger",
+          "release_date": "2026-10-02",
+          "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+          "rating": null,
+          "trailer": "job8V254NAE"
+        },
+        {
+          "id": 1283515,
+          "title": "Verity",
+          "release_date": "2026-10-02",
+          "poster_path": "/7ZgjGeacN0PwenoQX4DjI4FlN6Z.jpg",
+          "rating": null,
+          "trailer": "xdPMKhjMSFs"
+        }
+      ],
+      "now_playing": [
+        {
+          "id": 1302904,
+          "title": "Practical Magic 2",
+          "release_date": "2026-09-11",
+          "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+          "rating": 6.3,
+          "trailer": "Ho10_4IX1jE"
+        },
+        {
+          "id": 1709391,
+          "title": "Hanuman Ansh",
+          "release_date": "2026-09-11",
+          "poster_path": "/as2Y3zGUa2IUS3uAx2sh6Ano3es.jpg",
+          "rating": 8.6,
+          "trailer": "YpGhCA2X3gU"
+        },
+        {
+          "id": 1058424,
+          "title": "Hope",
+          "release_date": "2026-09-09",
+          "poster_path": "/h39KOfADZB5I7JzNh9ih9GbZdoK.jpg",
+          "rating": 8,
+          "trailer": "OFaJzL83y0Q"
+        },
+        {
+          "id": 1377237,
+          "title": "Runner",
+          "release_date": "2026-09-07",
+          "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
+          "rating": 7.8,
+          "trailer": "B6Z9MM1LhEA"
+        },
+        {
+          "id": 1530121,
+          "title": "The Girl in the River",
+          "release_date": "2026-09-04",
+          "poster_path": "/zk2saSFclmoJDxBovrOTp8W6NSz.jpg",
+          "rating": 7.4,
+          "trailer": "WKPSSLbnh-E"
+        },
+        {
+          "id": 1380417,
+          "title": "By Any Means",
+          "release_date": "2026-09-04",
+          "poster_path": "/f4hdIed8vh10O8TkQ1CkHS8MQ3G.jpg",
+          "rating": 8.1,
+          "trailer": "fvnyrBnUx4E"
+        },
+        {
+          "id": 1101412,
+          "title": "Fall 2: Deadpoint",
+          "release_date": "2026-09-02",
+          "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
+          "rating": 6.7,
+          "trailer": "Krs0VDIjhmE"
+        },
+        {
+          "id": 1204680,
+          "title": "Coyote vs. Acme",
+          "release_date": "2026-08-28",
+          "poster_path": "/vhv7lBWYM0DUuNU2a0V7Rhq21dD.jpg",
+          "rating": 7.6,
+          "trailer": "kMsiD1Nky5I"
+        },
+        {
+          "id": 1375646,
+          "title": "Colony",
+          "release_date": "2026-08-28",
+          "poster_path": "/tN799oUR0f1gUKDYdMNrDaY7I51.jpg",
+          "rating": 8.1,
+          "trailer": "LW6dpj1uCK8"
+        },
+        {
+          "id": 1384216,
+          "title": "The Dog Stars",
+          "release_date": "2026-08-28",
+          "poster_path": "/A7i16oDi03qrKep5pBfuTWNUTb.jpg",
+          "rating": 6.6,
+          "trailer": "-xSxaE1ClEE"
+        }
+      ]
     }
-  ],
-  "now_playing": [
-    {
-      "id": 1302904,
-      "title": {
-        "vi": "Bùa Yêu: Bí Mật Gia Tộc",
-        "en": "Practical Magic 2"
-      },
-      "release_date": "2026-09-11",
-      "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-      "rating": 6.3,
-      "trailer": "Ho10_4IX1jE"
-    },
-    {
-      "id": 1633056,
-      "title": {
-        "vi": "Bát Tiên!",
-        "en": "All Wishes Come True!"
-      },
-      "release_date": "2026-09-11",
-      "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
-      "rating": 7.9,
-      "trailer": "mvpFrJ5O2Ww"
-    },
-    {
-      "id": 1529513,
-      "title": {
-        "vi": "Cổ Thuật Hắc Ngải",
-        "en": "Kong Tao"
-      },
-      "release_date": "2026-09-11",
-      "poster_path": "/6Mez9DHThuM11lPXdTI5tu8BQng.jpg",
-      "rating": 6.3,
-      "trailer": null
-    },
-    {
-      "id": 1492461,
-      "title": {
-        "vi": "Mãi Nợ Một Lời Tạm Biệt",
-        "en": "Chrysalis"
-      },
-      "release_date": "2026-09-11",
-      "poster_path": "/sNy2vtWlkLbWMxkTAOeV1nTbudr.jpg",
-      "rating": null,
-      "trailer": null
-    },
-    {
-      "id": 1751285,
-      "title": {
-        "vi": "SOOBIN LIVE CONCERT MOVIE: ALL-ROUNDER",
-        "en": "SOOBIN LIVE CONCERT MOVIE: ALL-ROUNDER"
-      },
-      "release_date": "2026-09-10",
-      "poster_path": "/mj5ZCjdRfFI7oE8TQ1uNMqYNnKQ.jpg",
-      "rating": null,
-      "trailer": null
-    },
-    {
-      "id": 1393326,
-      "title": {
-        "vi": "Ma Tù",
-        "en": "Ghost in the Cell"
-      },
-      "release_date": "2026-09-04",
-      "poster_path": "/9qp7Dczia8dadV7bnZNuK0ar2yF.jpg",
-      "rating": 7.2,
-      "trailer": "otL78_pk_A0"
-    },
-    {
-      "id": 1433367,
-      "title": {
-        "vi": "Một Đêm Duy Nhất",
-        "en": "One Night Only"
-      },
-      "release_date": "2026-09-04",
-      "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
-      "rating": 6.7,
-      "trailer": "lDsAVq9lo9g"
-    },
-    {
-      "id": 1058424,
-      "title": {
-        "vi": "Hope: Vùng Tử Địa",
-        "en": "Hope"
-      },
-      "release_date": "2026-09-04",
-      "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
-      "rating": 8.2,
-      "trailer": "OFaJzL83y0Q"
-    },
-    {
-      "id": 1235769,
-      "title": {
-        "vi": "Hành Trình Bất Hảo",
-        "en": "The Journey to Gyeong-ju"
-      },
-      "release_date": "2026-09-04",
-      "poster_path": "/75pKNDL5NKlraxtF3OoMHMXiE49.jpg",
-      "rating": 9,
-      "trailer": "1na2T_TzFcg"
-    },
-    {
-      "id": 1288445,
-      "title": {
-        "vi": "Tàu Buôn Người",
-        "en": "Mutiny"
-      },
-      "release_date": "2026-08-28",
-      "poster_path": "/nDcgl5K2MCZk3xK3bh383CmIZsS.jpg",
-      "rating": 6.4,
-      "trailer": "2Iqvbe98Gb4"
-    }
-  ]
+  }
 }

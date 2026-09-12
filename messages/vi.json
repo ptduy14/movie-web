@@ -469,11 +469,11 @@
   "maintenance": {
     "title": "Website đang tạm dừng hoạt động",
     "note": "MovieX đang được bảo trì. Mình sẽ mở lại ngay khi xong.",
-    "scrollCue": "Cuộn xuống xem lịch chiếu rạp sắp tới",
+    "scrollCue": "Cuộn xuống xem lịch chiếu rạp Việt Nam",
     "cinema": {
-      "upcomingTitle": "Sắp chiếu tại rạp",
-      "upcomingMeta": "Việt Nam · cập nhật hằng ngày",
-      "nowPlayingTitle": "Đang chiếu",
+      "upcomingTitle": "Sắp chiếu tại rạp Việt Nam",
+      "upcomingMeta": "Cập nhật hằng ngày",
+      "nowPlayingTitle": "Đang chiếu tại Việt Nam",
       "nowPlayingMeta": "Kéo ngang để xem thêm",
       "today": "Hôm nay",
       "tomorrow": "Ngày mai",

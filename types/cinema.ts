@@ -1,8 +1,8 @@
-/** One theatrical title baked into `public/data/cinema.json`. */
+/** One theatrical title, already localised to its region's language. */
 export interface CinemaMovie {
   id: number;
-  title: { vi: string; en: string };
-  /** `YYYY-MM-DD`, already regionalised to VN by the bake script. */
+  title: string;
+  /** `YYYY-MM-DD` — the release date in this region, not a global one. */
   release_date: string;
   /** TMDB path (`/abc.jpg`); the full URL is composed at render time. */
   poster_path: string | null;
@@ -11,9 +11,15 @@ export interface CinemaMovie {
   trailer: string | null;
 }
 
-export interface CinemaData {
-  updated_at: string;
+/** One region's schedule: its own dates, titles and poster artwork. */
+export interface CinemaRegion {
   region: string;
+  language: string;
   upcoming: CinemaMovie[];
   now_playing: CinemaMovie[];
+}
+
+export interface CinemaData {
+  updated_at: string;
+  regions: Record<string, CinemaRegion>;
 }

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { routing } from 'i18n/routing';
-import { readCinemaData } from 'lib/cinema-data';
+import { readCinemaSchedule } from 'lib/cinema-data';
 import CinemaSections from '@/components/maintenance/cinema-sections';
 import styles from '@/components/maintenance/maintenance.module.css';
 
@@ -30,7 +30,8 @@ export default async function MaintenancePage({
   if (!routing.locales.includes(locale as any)) notFound();
 
   const t = await getTranslations({ locale, namespace: 'maintenance' });
-  const cinema = await readCinemaData();
+  // Each locale gets its own market: vi → VN dates/titles/posters, en → US.
+  const cinema = await readCinemaSchedule(locale);
   const hasSchedule = cinema.upcoming.length > 0 || cinema.now_playing.length > 0;
 
   return (
@@ -57,7 +58,6 @@ export default async function MaintenancePage({
           <CinemaSections
             upcoming={cinema.upcoming}
             nowPlaying={cinema.now_playing}
-            locale={locale}
             labels={{
               upcomingTitle: t('cinema.upcomingTitle'),
               upcomingMeta: t('cinema.upcomingMeta'),
