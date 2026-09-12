@@ -20,8 +20,14 @@ export interface CronProgress {
   totalSkippedCache: number;
   /** Unix ms of the most recent run. */
   lastRunAt: number;
-  /** Outcome of the last run. `partial` = ran into time/error mid-batch. */
-  lastRunStatus: 'success' | 'partial' | 'failed' | 'idle';
+  /**
+   * Outcome of the last run.
+   * - `partial` = ran into time/error mid-batch.
+   * - `skipped` = nothing was attempted: maintenance mode, or the movie API is
+   *   unavailable so there is no work to do (not our failure — see the
+   *   `failed` vs `skipped` split in `cron-translation-service`).
+   */
+  lastRunStatus: 'success' | 'partial' | 'failed' | 'skipped' | 'idle';
   /** Last error message (if any) — useful for monitoring without log access. */
   lastError: string | null;
 }

@@ -208,6 +208,11 @@ GROQ_MODEL=llama-3.3-70b-versatile
 
 # ── Cron security ─────────────────────────────────────────────
 CRON_SECRET=any_random_long_string
+
+# ── Maintenance mode ──────────────────────────────────────────
+# "true" gates every user-facing route to the maintenance page and pauses
+# the translation cron. See docs/maintenance-mode.md
+MAINTENANCE_MODE=false
 ```
 
 > 💡 To generate the base64 service-account string, download your Firebase service-account JSON, then run:
