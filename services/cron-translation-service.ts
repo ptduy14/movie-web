@@ -8,6 +8,23 @@ import type { CronProgress, CronRunResult } from 'types/cron-meta';
 const PAGE_SIZE = 24; // matches OPhim default for /v1/api/danh-sach/phim-moi
 const TIMEOUT_BUFFER_MS = 50_000; // give up before Vercel hobby's 60s ceiling
 
+/**
+ * The movie API is unreachable, or answered with something that isn't the JSON
+ * we asked for (an HTML 404/5xx page, a challenge, a proxy error).
+ *
+ * Split out from ordinary errors on purpose: an upstream that is down is not a
+ * failure of this job. It makes the run report `skipped` (HTTP 200) instead of
+ * `failed` (HTTP 500), so the scheduler doesn't go red every hour over someone
+ * else's outage — and it stops the batch immediately rather than retrying the
+ * next page against the same dead host.
+ */
+export class UpstreamUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'UpstreamUnavailableError';
+  }
+}
+
 interface OPhimListItem {
   _id: string;
   slug: string;
@@ -79,6 +96,7 @@ export async function runCronBatch(locale: string, pageCount: number): Promise<C
   let translated = 0;
   let failed = 0;
   let lastError: string | null = null;
+  let upstreamDown = false;
   let totalPages = progress.totalPages;
   let totalItems = progress.totalItems;
 
@@ -132,18 +150,29 @@ export async function runCronBatch(locale: string, pageCount: number): Promise<C
       }
     } catch (err: any) {
       lastError = err.message ?? String(err);
-      console.warn(`[cron-translation-service] page ${nextPage} failed:`, lastError);
-      failed += 1;
+
+      if (err instanceof UpstreamUnavailableError) {
+        // Nothing to retry — every remaining page would hit the same dead host.
+        upstreamDown = true;
+        console.warn(`[cron-translation-service] movie API unavailable, stopping run:`, lastError);
+      } else {
+        console.warn(`[cron-translation-service] page ${nextPage} failed:`, lastError);
+        failed += 1;
+      }
       break;
     }
   }
 
-  // Final progress write capturing terminal status
-  const status: CronProgress['lastRunStatus'] = lastError
-    ? pagesProcessed > 0
+  // Final progress write capturing terminal status. `skipped` (upstream down,
+  // nothing translated) is reported separately from `failed` (our bug) so the
+  // API route can answer 200 instead of 500.
+  const status: CronProgress['lastRunStatus'] = !lastError
+    ? 'success'
+    : pagesProcessed > 0
       ? 'partial'
-      : 'failed'
-    : 'success';
+      : upstreamDown
+        ? 'skipped'
+        : 'failed';
 
   await saveCronProgress(locale, {
     ...progress,
@@ -186,9 +215,18 @@ interface PageResult {
  *   5. Persist each translated item to Firestore (parallel best-effort).
  */
 async function processPage(locale: string, page: number): Promise<PageResult> {
-  const list = await MovieServices.getNewMovies(page, PAGE_SIZE);
+  let list: any;
+  try {
+    list = await MovieServices.getNewMovies(page, PAGE_SIZE);
+  } catch (err: any) {
+    // `MovieServices` calls `res.json()` unguarded, so a non-JSON body (an HTML
+    // 404 page, a proxy error) surfaces here as a SyntaxError rather than a
+    // network error. Either way the upstream gave us nothing usable.
+    throw new UpstreamUnavailableError(`movie API list page ${page}: ${err?.message ?? err}`);
+  }
+
   if (list?.status !== 'success') {
-    throw new Error(`OPhim list page ${page} returned non-success status`);
+    throw new UpstreamUnavailableError(`movie API list page ${page} returned non-success status`);
   }
 
   const items: OPhimListItem[] = list?.data?.items ?? [];
