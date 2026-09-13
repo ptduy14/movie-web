@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T10:14:51.375Z",
+  "updated_at": "2026-09-13T05:16:02.641Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -22,20 +22,20 @@
           "trailer": "YBIfz76BYiY"
         },
         {
-          "id": 1630030,
-          "title": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
-          "release_date": "2026-09-18",
-          "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
-          "rating": 5.5,
-          "trailer": null
-        },
-        {
           "id": 1665283,
           "title": "Lên Hương",
           "release_date": "2026-09-18",
           "poster_path": "/bik7QmlDBRBajowLQyWv61owhPf.jpg",
           "rating": null,
           "trailer": "tMu23yKJ9_c"
+        },
+        {
+          "id": 1630030,
+          "title": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
+          "release_date": "2026-09-18",
+          "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
+          "rating": 5.5,
+          "trailer": null
         },
         {
           "id": 1536008,
@@ -131,7 +131,7 @@
           "id": 1492461,
           "title": "Mãi Nợ Một Lời Tạm Biệt",
           "release_date": "2026-09-11",
-          "poster_path": "/sNy2vtWlkLbWMxkTAOeV1nTbudr.jpg",
+          "poster_path": "/T4Nd669fQbgk3VNxkMhs7I3txd.jpg",
           "rating": null,
           "trailer": "ck5rOLF1u98"
         },
@@ -164,7 +164,7 @@
           "title": "Hope: Vùng Tử Địa",
           "release_date": "2026-09-04",
           "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
-          "rating": 8.2,
+          "rating": 7.9,
           "trailer": "OFaJzL83y0Q"
         },
         {
@@ -194,7 +194,7 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/qku2uWSoJ9amQV5MWo1Eek29iji.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -210,7 +210,7 @@
           "title": "Bad Apples",
           "release_date": "2026-09-18",
           "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "4nhu80EmVQE"
         },
         {
@@ -234,7 +234,7 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 10,
+          "rating": 9,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Hope",
           "release_date": "2026-09-09",
           "poster_path": "/h39KOfADZB5I7JzNh9ih9GbZdoK.jpg",
-          "rating": 8,
+          "rating": 7.9,
           "trailer": "OFaJzL83y0Q"
         },
         {
@@ -316,24 +316,8 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.8,
+          "rating": 7.9,
           "trailer": "B6Z9MM1LhEA"
-        },
-        {
-          "id": 1530121,
-          "title": "The Girl in the River",
-          "release_date": "2026-09-04",
-          "poster_path": "/zk2saSFclmoJDxBovrOTp8W6NSz.jpg",
-          "rating": 7.4,
-          "trailer": "WKPSSLbnh-E"
-        },
-        {
-          "id": 1380417,
-          "title": "By Any Means",
-          "release_date": "2026-09-04",
-          "poster_path": "/f4hdIed8vh10O8TkQ1CkHS8MQ3G.jpg",
-          "rating": 8.1,
-          "trailer": "fvnyrBnUx4E"
         },
         {
           "id": 1101412,
@@ -366,6 +350,22 @@
           "poster_path": "/A7i16oDi03qrKep5pBfuTWNUTb.jpg",
           "rating": 6.6,
           "trailer": "-xSxaE1ClEE"
+        },
+        {
+          "id": 1480574,
+          "title": "Just Play Dead",
+          "release_date": "2026-08-28",
+          "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
+          "rating": 6.1,
+          "trailer": "LlAajeOoFBo"
+        },
+        {
+          "id": 1514026,
+          "title": "Buddy",
+          "release_date": "2026-08-28",
+          "poster_path": "/6Lh4ZlsAISFQFVfLZ90sE9ycVnN.jpg",
+          "rating": 8,
+          "trailer": "O1fNEHX9tSM"
         }
       ]
     }
