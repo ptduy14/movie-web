@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13T05:16:02.641Z",
+  "updated_at": "2026-09-14T05:20:39.386Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -20,6 +20,14 @@
           "poster_path": "/vM6ZHg10Y180JsQc8wpgCkrDxtQ.jpg",
           "rating": 7.9,
           "trailer": "YBIfz76BYiY"
+        },
+        {
+          "id": 1536008,
+          "title": "Tà Sư Sám Hối",
+          "release_date": "2026-09-18",
+          "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
+          "rating": 4,
+          "trailer": "MSn1lXb0pYw"
         },
         {
           "id": 1665283,
@@ -38,14 +46,6 @@
           "trailer": null
         },
         {
-          "id": 1536008,
-          "title": "Tà Sư Sám Hối",
-          "release_date": "2026-09-18",
-          "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
-          "rating": 4,
-          "trailer": "MSn1lXb0pYw"
-        },
-        {
           "id": 1740257,
           "title": "NCT 127 5TH TOUR ‘NEO CITY  SEOUL - THE REDLINE’ in CINEMAS",
           "release_date": "2026-09-20",
@@ -58,7 +58,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 10,
+          "rating": 9,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.3,
+          "rating": 6,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -152,20 +152,20 @@
           "trailer": "otL78_pk_A0"
         },
         {
-          "id": 1433367,
-          "title": "Một Đêm Duy Nhất",
-          "release_date": "2026-09-04",
-          "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
-          "rating": 6.7,
-          "trailer": "lDsAVq9lo9g"
-        },
-        {
           "id": 1058424,
           "title": "Hope: Vùng Tử Địa",
           "release_date": "2026-09-04",
           "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
-          "rating": 7.9,
+          "rating": 7.8,
           "trailer": "OFaJzL83y0Q"
+        },
+        {
+          "id": 1433367,
+          "title": "Một Đêm Duy Nhất",
+          "release_date": "2026-09-04",
+          "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
+          "rating": 6.6,
+          "trailer": "lDsAVq9lo9g"
         },
         {
           "id": 1235769,
@@ -210,7 +210,7 @@
           "title": "Bad Apples",
           "release_date": "2026-09-18",
           "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "4nhu80EmVQE"
         },
         {
@@ -218,16 +218,8 @@
           "title": "Shaun the Sheep: The Beast of Mossy Bottom",
           "release_date": "2026-09-18",
           "poster_path": "/mMOptSPBVGUA9GHgnpsC35GzZ7e.jpg",
-          "rating": null,
+          "rating": 5.7,
           "trailer": "daZMq0AyOMc"
-        },
-        {
-          "id": 1732420,
-          "title": "Power Trip",
-          "release_date": "2026-09-24",
-          "poster_path": "/eNcd1fIpeCMuIqacgdMfbKnHpVp.jpg",
-          "rating": null,
-          "trailer": "D_4gRvGlpmU"
         },
         {
           "id": 1465063,
@@ -284,6 +276,14 @@
           "poster_path": "/7ZgjGeacN0PwenoQX4DjI4FlN6Z.jpg",
           "rating": null,
           "trailer": "xdPMKhjMSFs"
+        },
+        {
+          "id": 1244523,
+          "title": "Beware Boiúna",
+          "release_date": "2026-10-02",
+          "poster_path": "/tENVMxKvOkslv8kagVNdIEQ13RT.jpg",
+          "rating": null,
+          "trailer": "4fn4UcgzRhg"
         }
       ],
       "now_playing": [
@@ -292,7 +292,7 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.3,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Hope",
           "release_date": "2026-09-09",
           "poster_path": "/h39KOfADZB5I7JzNh9ih9GbZdoK.jpg",
-          "rating": 7.9,
+          "rating": 7.8,
           "trailer": "OFaJzL83y0Q"
         },
         {
@@ -316,7 +316,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.9,
+          "rating": 8,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -324,7 +324,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.7,
+          "rating": 6.8,
           "trailer": "Krs0VDIjhmE"
         },
         {
