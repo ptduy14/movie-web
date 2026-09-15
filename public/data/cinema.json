@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T05:20:39.386Z",
+  "updated_at": "2026-09-15T05:11:24.438Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": 10,
+          "rating": 9.2,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -86,20 +86,20 @@
           "trailer": "COeNSZ410Kg"
         },
         {
+          "id": 1511747,
+          "title": "Trại Buôn Người",
+          "release_date": "2026-09-25",
+          "poster_path": "/UZKQvD9lGBovoz8EMkq7sYCwAT.jpg",
+          "rating": null,
+          "trailer": "wwnLCM027Yo"
+        },
+        {
           "id": 1248832,
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
           "rating": null,
           "trailer": "job8V254NAE"
-        },
-        {
-          "id": 1283515,
-          "title": "Verity: Bí Mật Bị Chôn Vùi",
-          "release_date": "2026-10-02",
-          "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": null,
-          "trailer": "xdPMKhjMSFs"
         }
       ],
       "now_playing": [
@@ -108,7 +108,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -148,7 +148,7 @@
           "title": "Ma Tù",
           "release_date": "2026-09-04",
           "poster_path": "/9qp7Dczia8dadV7bnZNuK0ar2yF.jpg",
-          "rating": 7.2,
+          "rating": 7.3,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -194,7 +194,7 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/qku2uWSoJ9amQV5MWo1Eek29iji.jpg",
-          "rating": 10,
+          "rating": 9.2,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -206,20 +206,28 @@
           "trailer": "7YpuMymmiJ8"
         },
         {
-          "id": 1198654,
-          "title": "Bad Apples",
-          "release_date": "2026-09-18",
-          "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
-          "rating": 7.6,
-          "trailer": "4nhu80EmVQE"
-        },
-        {
           "id": 1477104,
           "title": "Shaun the Sheep: The Beast of Mossy Bottom",
           "release_date": "2026-09-18",
           "poster_path": "/mMOptSPBVGUA9GHgnpsC35GzZ7e.jpg",
-          "rating": 5.7,
+          "rating": 5.8,
           "trailer": "daZMq0AyOMc"
+        },
+        {
+          "id": 1198654,
+          "title": "Bad Apples",
+          "release_date": "2026-09-18",
+          "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
+          "rating": 7.5,
+          "trailer": "4nhu80EmVQE"
+        },
+        {
+          "id": 1732420,
+          "title": "Power Trip",
+          "release_date": "2026-09-24",
+          "poster_path": "/eNcd1fIpeCMuIqacgdMfbKnHpVp.jpg",
+          "rating": null,
+          "trailer": "D_4gRvGlpmU"
         },
         {
           "id": 1465063,
@@ -258,7 +266,7 @@
           "title": "Ghost in the Cell",
           "release_date": "2026-10-02",
           "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
-          "rating": 7.2,
+          "rating": 7.3,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -276,14 +284,6 @@
           "poster_path": "/7ZgjGeacN0PwenoQX4DjI4FlN6Z.jpg",
           "rating": null,
           "trailer": "xdPMKhjMSFs"
-        },
-        {
-          "id": 1244523,
-          "title": "Beware Boiúna",
-          "release_date": "2026-10-02",
-          "poster_path": "/tENVMxKvOkslv8kagVNdIEQ13RT.jpg",
-          "rating": null,
-          "trailer": "4fn4UcgzRhg"
         }
       ],
       "now_playing": [
@@ -316,7 +316,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 8,
+          "rating": 7.8,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -356,7 +356,7 @@
           "title": "Just Play Dead",
           "release_date": "2026-08-28",
           "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
-          "rating": 6.1,
+          "rating": 6,
           "trailer": "LlAajeOoFBo"
         },
         {
