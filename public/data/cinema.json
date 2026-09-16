@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T05:11:24.438Z",
+  "updated_at": "2026-09-16T05:07:07.939Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": 9.2,
+          "rating": 8.4,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -58,7 +58,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 9,
+          "rating": 8.8,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -104,6 +104,30 @@
       ],
       "now_playing": [
         {
+          "id": 1423191,
+          "title": "Vùng Đất Quỷ Dữ",
+          "release_date": "2026-09-18",
+          "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
+          "rating": 8.4,
+          "trailer": "mNd1gb19A-c"
+        },
+        {
+          "id": 242828,
+          "title": "Marnie Yêu Dấu",
+          "release_date": "2026-09-18",
+          "poster_path": "/vM6ZHg10Y180JsQc8wpgCkrDxtQ.jpg",
+          "rating": 7.9,
+          "trailer": "YBIfz76BYiY"
+        },
+        {
+          "id": 1536008,
+          "title": "Tà Sư Sám Hối",
+          "release_date": "2026-09-18",
+          "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
+          "rating": 4,
+          "trailer": "MSn1lXb0pYw"
+        },
+        {
           "id": 1302904,
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
@@ -128,27 +152,11 @@
           "trailer": null
         },
         {
-          "id": 1492461,
-          "title": "Mãi Nợ Một Lời Tạm Biệt",
-          "release_date": "2026-09-11",
-          "poster_path": "/T4Nd669fQbgk3VNxkMhs7I3txd.jpg",
-          "rating": null,
-          "trailer": "ck5rOLF1u98"
-        },
-        {
-          "id": 1751285,
-          "title": "SOOBIN LIVE CONCERT MOVIE: ALL-ROUNDER",
-          "release_date": "2026-09-10",
-          "poster_path": "/mj5ZCjdRfFI7oE8TQ1uNMqYNnKQ.jpg",
-          "rating": null,
-          "trailer": "-LmzL2FpOD0"
-        },
-        {
           "id": 1393326,
           "title": "Ma Tù",
           "release_date": "2026-09-04",
           "poster_path": "/9qp7Dczia8dadV7bnZNuK0ar2yF.jpg",
-          "rating": 7.3,
+          "rating": 7.2,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -174,14 +182,6 @@
           "poster_path": "/75pKNDL5NKlraxtF3OoMHMXiE49.jpg",
           "rating": 9,
           "trailer": "1na2T_TzFcg"
-        },
-        {
-          "id": 1288445,
-          "title": "Tàu Buôn Người",
-          "release_date": "2026-08-28",
-          "poster_path": "/nDcgl5K2MCZk3xK3bh383CmIZsS.jpg",
-          "rating": 6.4,
-          "trailer": "2Iqvbe98Gb4"
         }
       ]
     },
@@ -189,38 +189,6 @@
       "region": "US",
       "language": "en-US",
       "upcoming": [
-        {
-          "id": 1423191,
-          "title": "Resident Evil",
-          "release_date": "2026-09-18",
-          "poster_path": "/qku2uWSoJ9amQV5MWo1Eek29iji.jpg",
-          "rating": 9.2,
-          "trailer": "mNd1gb19A-c"
-        },
-        {
-          "id": 1433583,
-          "title": "The Weight",
-          "release_date": "2026-09-18",
-          "poster_path": "/8i5iZV50CoEtmDCFM7RSxCkpE8h.jpg",
-          "rating": 7.5,
-          "trailer": "7YpuMymmiJ8"
-        },
-        {
-          "id": 1477104,
-          "title": "Shaun the Sheep: The Beast of Mossy Bottom",
-          "release_date": "2026-09-18",
-          "poster_path": "/mMOptSPBVGUA9GHgnpsC35GzZ7e.jpg",
-          "rating": 5.8,
-          "trailer": "daZMq0AyOMc"
-        },
-        {
-          "id": 1198654,
-          "title": "Bad Apples",
-          "release_date": "2026-09-18",
-          "poster_path": "/60BxAjKM20ABTSYnWZcJ8ExiVNL.jpg",
-          "rating": 7.5,
-          "trailer": "4nhu80EmVQE"
-        },
         {
           "id": 1732420,
           "title": "Power Trip",
@@ -234,7 +202,7 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 9,
+          "rating": 8.8,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -242,7 +210,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -251,7 +219,7 @@
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
           "rating": null,
-          "trailer": "5fHXyqQOKL8"
+          "trailer": "C0NZa01qTRU"
         },
         {
           "id": 1384514,
@@ -266,7 +234,7 @@
           "title": "Ghost in the Cell",
           "release_date": "2026-10-02",
           "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
-          "rating": 7.3,
+          "rating": 7.2,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -284,9 +252,49 @@
           "poster_path": "/7ZgjGeacN0PwenoQX4DjI4FlN6Z.jpg",
           "rating": null,
           "trailer": "xdPMKhjMSFs"
+        },
+        {
+          "id": 1244523,
+          "title": "Beware Boiúna",
+          "release_date": "2026-10-02",
+          "poster_path": "/tENVMxKvOkslv8kagVNdIEQ13RT.jpg",
+          "rating": null,
+          "trailer": "4fn4UcgzRhg"
+        },
+        {
+          "id": 1269325,
+          "title": "Drishyam: The Conclusion",
+          "release_date": "2026-10-02",
+          "poster_path": "/7T62GSduOWDMB0gGDBs9pmtLTSB.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1400837,
+          "title": "Other Mommy",
+          "release_date": "2026-10-09",
+          "poster_path": "/8CXwxpyvQiz9COMLZov4Oae8NKb.jpg",
+          "rating": null,
+          "trailer": "-mnTITqqiT0"
+        },
+        {
+          "id": 1281331,
+          "title": "The Social Reckoning",
+          "release_date": "2026-10-09",
+          "poster_path": "/qZr5bxGXE1t2A9pNSikb9fQKzov.jpg",
+          "rating": null,
+          "trailer": "R8ANzYpaZaY"
         }
       ],
       "now_playing": [
+        {
+          "id": 1423191,
+          "title": "Resident Evil",
+          "release_date": "2026-09-18",
+          "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
+          "rating": 8.4,
+          "trailer": "mNd1gb19A-c"
+        },
         {
           "id": 1302904,
           "title": "Practical Magic 2",
@@ -307,8 +315,8 @@
           "id": 1058424,
           "title": "Hope",
           "release_date": "2026-09-09",
-          "poster_path": "/h39KOfADZB5I7JzNh9ih9GbZdoK.jpg",
-          "rating": 7.8,
+          "poster_path": "/1n37BJchWHLiSYQkuFxe5KjB951.jpg",
+          "rating": 7.5,
           "trailer": "OFaJzL83y0Q"
         },
         {
@@ -358,14 +366,6 @@
           "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
           "rating": 6,
           "trailer": "LlAajeOoFBo"
-        },
-        {
-          "id": 1514026,
-          "title": "Buddy",
-          "release_date": "2026-08-28",
-          "poster_path": "/6Lh4ZlsAISFQFVfLZ90sE9ycVnN.jpg",
-          "rating": 8,
-          "trailer": "O1fNEHX9tSM"
         }
       ]
     }
