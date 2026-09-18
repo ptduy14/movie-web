@@ -1,10 +1,18 @@
 {
-  "updated_at": "2026-09-17T05:11:53.493Z",
+  "updated_at": "2026-09-18T05:04:38.291Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
+        {
+          "id": 1465063,
+          "title": "Hòn Đảo Quên Lãng",
+          "release_date": "2026-09-25",
+          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
+          "rating": 8.6,
+          "trailer": "PhgY8cOJiQA"
+        },
         {
           "id": 1263337,
           "title": "Trái Tim Quái Thú",
@@ -12,14 +20,6 @@
           "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
           "rating": 10,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Hòn Đảo Quên Lãng",
-          "release_date": "2026-09-25",
-          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 8.8,
-          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 10515,
@@ -78,20 +78,20 @@
           "trailer": "-mnTITqqiT0"
         },
         {
-          "id": 149871,
-          "title": "Chuyện Nàng Công Chúa Kaguya",
-          "release_date": "2026-10-09",
-          "poster_path": "/5EM4TE9wlLfvA9yQaQZdKR5RwrR.jpg",
-          "rating": 8.1,
-          "trailer": "iPm7HfO3mis"
-        },
-        {
           "id": 1281331,
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
           "rating": null,
           "trailer": "R8ANzYpaZaY"
+        },
+        {
+          "id": 149871,
+          "title": "Chuyện Nàng Công Chúa Kaguya",
+          "release_date": "2026-10-09",
+          "poster_path": "/5EM4TE9wlLfvA9yQaQZdKR5RwrR.jpg",
+          "rating": 8.1,
+          "trailer": "iPm7HfO3mis"
         },
         {
           "id": 1749884,
@@ -108,7 +108,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": 8.1,
+          "rating": 7.9,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -128,14 +128,6 @@
           "trailer": "MSn1lXb0pYw"
         },
         {
-          "id": 1665283,
-          "title": "Lên Hương",
-          "release_date": "2026-09-18",
-          "poster_path": "/bik7QmlDBRBajowLQyWv61owhPf.jpg",
-          "rating": null,
-          "trailer": "tMu23yKJ9_c"
-        },
-        {
           "id": 1302904,
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
@@ -144,20 +136,20 @@
           "trailer": "Ho10_4IX1jE"
         },
         {
-          "id": 1633056,
-          "title": "Bát Tiên!",
-          "release_date": "2026-09-11",
-          "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
-          "rating": 7.9,
-          "trailer": "mvpFrJ5O2Ww"
-        },
-        {
           "id": 1529513,
           "title": "Cổ Thuật Hắc Ngải",
           "release_date": "2026-09-11",
           "poster_path": "/6Mez9DHThuM11lPXdTI5tu8BQng.jpg",
           "rating": 6.3,
           "trailer": null
+        },
+        {
+          "id": 1633056,
+          "title": "Bát Tiên!",
+          "release_date": "2026-09-11",
+          "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
+          "rating": 7.9,
+          "trailer": "mvpFrJ5O2Ww"
         },
         {
           "id": 1492461,
@@ -182,6 +174,14 @@
           "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
           "rating": 7.4,
           "trailer": "OFaJzL83y0Q"
+        },
+        {
+          "id": 1433367,
+          "title": "Một Đêm Duy Nhất",
+          "release_date": "2026-09-04",
+          "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
+          "rating": 6.5,
+          "trailer": "lDsAVq9lo9g"
         }
       ]
     },
@@ -190,20 +190,20 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1263337,
-          "title": "Heart of the Beast",
-          "release_date": "2026-09-25",
-          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 10,
-          "trailer": "UkMuGKqAux4"
-        },
-        {
           "id": 1465063,
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 8.8,
+          "rating": 8.6,
           "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 1263337,
+          "title": "Heart of the Beast",
+          "release_date": "2026-09-25",
+          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
+          "rating": null,
+          "trailer": "UkMuGKqAux4"
         },
         {
           "id": 1375441,
@@ -292,7 +292,7 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 8.1,
+          "rating": 7.9,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -302,14 +302,6 @@
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
           "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
-        },
-        {
-          "id": 1709391,
-          "title": "Hanuman Ansh",
-          "release_date": "2026-09-11",
-          "poster_path": "/as2Y3zGUa2IUS3uAx2sh6Ano3es.jpg",
-          "rating": 8.6,
-          "trailer": "YpGhCA2X3gU"
         },
         {
           "id": 1058424,
@@ -332,7 +324,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.6,
+          "rating": 6.7,
           "trailer": "Krs0VDIjhmE"
         },
         {
@@ -340,7 +332,7 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "kMsiD1Nky5I"
         },
         {
@@ -366,6 +358,14 @@
           "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
           "rating": 6,
           "trailer": "LlAajeOoFBo"
+        },
+        {
+          "id": 1213243,
+          "title": "Toxic: A Fairy Tale for Grown-ups",
+          "release_date": "2026-08-26",
+          "poster_path": "/oiIPU4lvnI0Ag2K9cyAi44eCaoE.jpg",
+          "rating": 8,
+          "trailer": "EfluEyQ5QIA"
         }
       ]
     }
