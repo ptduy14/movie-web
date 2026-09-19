@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T05:04:38.291Z",
+  "updated_at": "2026-09-19T04:55:21.558Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -43,7 +43,7 @@
           "release_date": "2026-09-25",
           "poster_path": "/UZKQvD9lGBovoz8EMkq7sYCwAT.jpg",
           "rating": null,
-          "trailer": "wwnLCM027Yo"
+          "trailer": "eM7mM7VUv10"
         },
         {
           "id": 1248832,
@@ -108,7 +108,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": 7.9,
+          "rating": 7.6,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.1,
+          "rating": 6,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -152,12 +152,12 @@
           "trailer": "mvpFrJ5O2Ww"
         },
         {
-          "id": 1492461,
-          "title": "Mãi Nợ Một Lời Tạm Biệt",
-          "release_date": "2026-09-11",
-          "poster_path": "/T4Nd669fQbgk3VNxkMhs7I3txd.jpg",
-          "rating": null,
-          "trailer": "ck5rOLF1u98"
+          "id": 1751285,
+          "title": "SOOBIN LIVE CONCERT MOVIE: ALL-ROUNDER",
+          "release_date": "2026-09-10",
+          "poster_path": "/mj5ZCjdRfFI7oE8TQ1uNMqYNnKQ.jpg",
+          "rating": 8,
+          "trailer": "-LmzL2FpOD0"
         },
         {
           "id": 1393326,
@@ -202,7 +202,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -210,14 +210,14 @@
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 5.5,
+          "rating": 5.3,
           "trailer": "C0NZa01qTRU"
         },
         {
           "id": 1384514,
           "title": "The Vvaan",
           "release_date": "2026-09-25",
-          "poster_path": "/4zj0EEHQrfNtPEnASlqCLNyeQa7.jpg",
+          "poster_path": "/zBkOqt65B1MPUCSa6t2d9IzmICN.jpg",
           "rating": null,
           "trailer": null
         },
@@ -230,12 +230,12 @@
           "trailer": "uEcoV-ngH38"
         },
         {
-          "id": 1554956,
-          "title": "The Incomer",
-          "release_date": "2026-09-25",
-          "poster_path": "/iccroKK1eUTdCnLfmp7I3YXwAKF.jpg",
-          "rating": 6.2,
-          "trailer": "vJ6TSvmnUEE"
+          "id": 1755291,
+          "title": "NAZA",
+          "release_date": "2026-09-30",
+          "poster_path": "/aXlTjDmbYVNjGWt256MWeYVKFN.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1393326,
@@ -292,7 +292,7 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.9,
+          "rating": 7.6,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -300,8 +300,16 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.1,
+          "rating": 6,
           "trailer": "Ho10_4IX1jE"
+        },
+        {
+          "id": 977942,
+          "title": "The Uprising",
+          "release_date": "2026-09-10",
+          "poster_path": "/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
+          "rating": 6.9,
+          "trailer": "lyhCxZN4Ro8"
         },
         {
           "id": 1058424,
@@ -324,7 +332,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.7,
+          "rating": 6.8,
           "trailer": "Krs0VDIjhmE"
         },
         {
@@ -332,7 +340,7 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "kMsiD1Nky5I"
         },
         {
@@ -356,16 +364,8 @@
           "title": "Just Play Dead",
           "release_date": "2026-08-28",
           "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
-          "rating": 6,
+          "rating": 5.9,
           "trailer": "LlAajeOoFBo"
-        },
-        {
-          "id": 1213243,
-          "title": "Toxic: A Fairy Tale for Grown-ups",
-          "release_date": "2026-08-26",
-          "poster_path": "/oiIPU4lvnI0Ag2K9cyAi44eCaoE.jpg",
-          "rating": 8,
-          "trailer": "EfluEyQ5QIA"
         }
       ]
     }
