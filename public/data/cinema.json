@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T04:55:21.558Z",
+  "updated_at": "2026-09-20T05:16:42.649Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -18,7 +18,7 @@
           "title": "Trái Tim Quái Thú",
           "release_date": "2026-09-25",
           "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 10,
+          "rating": 8.8,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
           "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
-          "rating": 7.6,
+          "rating": 7.3,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -148,7 +148,7 @@
           "title": "Bát Tiên!",
           "release_date": "2026-09-11",
           "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
-          "rating": 7.9,
+          "rating": 8,
           "trailer": "mvpFrJ5O2Ww"
         },
         {
@@ -190,6 +190,14 @@
       "language": "en-US",
       "upcoming": [
         {
+          "id": 1376856,
+          "title": "The Paradise",
+          "release_date": "2026-09-24",
+          "poster_path": "/9k5F5Lk2bUP7ODifk1KP5Vw8yGm.jpg",
+          "rating": null,
+          "trailer": "Y3xewv1ZnHc"
+        },
+        {
           "id": 1465063,
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
@@ -202,7 +210,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 10,
+          "rating": 8.8,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -212,14 +220,6 @@
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
           "rating": 5.3,
           "trailer": "C0NZa01qTRU"
-        },
-        {
-          "id": 1384514,
-          "title": "The Vvaan",
-          "release_date": "2026-09-25",
-          "poster_path": "/zBkOqt65B1MPUCSa6t2d9IzmICN.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1437396,
@@ -292,7 +292,7 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.6,
+          "rating": 7.3,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -304,12 +304,12 @@
           "trailer": "Ho10_4IX1jE"
         },
         {
-          "id": 977942,
-          "title": "The Uprising",
-          "release_date": "2026-09-10",
-          "poster_path": "/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
-          "rating": 6.9,
-          "trailer": "lyhCxZN4Ro8"
+          "id": 1228834,
+          "title": "The Fix",
+          "release_date": "2026-09-11",
+          "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
+          "rating": 7.3,
+          "trailer": "l5Luvr9TRRc"
         },
         {
           "id": 1058424,
@@ -324,7 +324,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.8,
+          "rating": 7.9,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -360,12 +360,12 @@
           "trailer": "-xSxaE1ClEE"
         },
         {
-          "id": 1480574,
-          "title": "Just Play Dead",
-          "release_date": "2026-08-28",
-          "poster_path": "/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
-          "rating": 5.9,
-          "trailer": "LlAajeOoFBo"
+          "id": 1213243,
+          "title": "Toxic: A Fairy Tale for Grown-ups",
+          "release_date": "2026-08-26",
+          "poster_path": "/oiIPU4lvnI0Ag2K9cyAi44eCaoE.jpg",
+          "rating": 8,
+          "trailer": "EfluEyQ5QIA"
         }
       ]
     }
