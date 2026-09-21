@@ -1,10 +1,18 @@
 {
-  "updated_at": "2026-09-20T05:16:42.649Z",
+  "updated_at": "2026-09-21T05:19:40.148Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
+        {
+          "id": 1263337,
+          "title": "Trái Tim Quái Thú",
+          "release_date": "2026-09-25",
+          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
+          "rating": 7.7,
+          "trailer": "UkMuGKqAux4"
+        },
         {
           "id": 1465063,
           "title": "Hòn Đảo Quên Lãng",
@@ -12,14 +20,6 @@
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
           "rating": 8.6,
           "trailer": "PhgY8cOJiQA"
-        },
-        {
-          "id": 1263337,
-          "title": "Trái Tim Quái Thú",
-          "release_date": "2026-09-25",
-          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 8.8,
-          "trailer": "UkMuGKqAux4"
         },
         {
           "id": 10515,
@@ -132,7 +132,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -198,36 +198,28 @@
           "trailer": "Y3xewv1ZnHc"
         },
         {
-          "id": 1465063,
-          "title": "Forgotten Island",
-          "release_date": "2026-09-25",
-          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 8.6,
-          "trailer": "PhgY8cOJiQA"
-        },
-        {
           "id": 1263337,
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 8.8,
+          "rating": 7.8,
           "trailer": "UkMuGKqAux4"
+        },
+        {
+          "id": 1465063,
+          "title": "Forgotten Island",
+          "release_date": "2026-09-25",
+          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
+          "rating": 8.5,
+          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1375441,
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 5.3,
+          "rating": 6.5,
           "trailer": "C0NZa01qTRU"
-        },
-        {
-          "id": 1437396,
-          "title": "Your Mother Your Mother Your Mother",
-          "release_date": "2026-09-25",
-          "poster_path": "/4KaPZSKnInnArErTTgy9Oy14leR.jpg",
-          "rating": null,
-          "trailer": "uEcoV-ngH38"
         },
         {
           "id": 1755291,
@@ -270,6 +262,14 @@
           "trailer": "4fn4UcgzRhg"
         },
         {
+          "id": 1596303,
+          "title": "The Last First: Winter K2",
+          "release_date": "2026-10-02",
+          "poster_path": "/6pavyVdI2z7PlOUwB7nlnhLRSgl.jpg",
+          "rating": null,
+          "trailer": "zgGpyr5MFK8"
+        },
+        {
           "id": 1269325,
           "title": "Drishyam: The Conclusion",
           "release_date": "2026-10-02",
@@ -281,7 +281,7 @@
           "id": 1400837,
           "title": "Other Mommy",
           "release_date": "2026-10-09",
-          "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+          "poster_path": "/mH3eovbLEK38DmVZ4nHSORpzuVI.jpg",
           "rating": null,
           "trailer": "-mnTITqqiT0"
         }
@@ -292,24 +292,24 @@
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.3,
+          "rating": 7.4,
           "trailer": "mNd1gb19A-c"
-        },
-        {
-          "id": 1302904,
-          "title": "Practical Magic 2",
-          "release_date": "2026-09-11",
-          "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6,
-          "trailer": "Ho10_4IX1jE"
         },
         {
           "id": 1228834,
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
-          "rating": 7.3,
+          "rating": 7.4,
           "trailer": "l5Luvr9TRRc"
+        },
+        {
+          "id": 1302904,
+          "title": "Practical Magic 2",
+          "release_date": "2026-09-11",
+          "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+          "rating": 6.1,
+          "trailer": "Ho10_4IX1jE"
         },
         {
           "id": 1058424,
@@ -360,12 +360,12 @@
           "trailer": "-xSxaE1ClEE"
         },
         {
-          "id": 1213243,
-          "title": "Toxic: A Fairy Tale for Grown-ups",
-          "release_date": "2026-08-26",
-          "poster_path": "/oiIPU4lvnI0Ag2K9cyAi44eCaoE.jpg",
-          "rating": 8,
-          "trailer": "EfluEyQ5QIA"
+          "id": 1288445,
+          "title": "Mutiny",
+          "release_date": "2026-08-21",
+          "poster_path": "/pu2VxGlpGwffOx292w18b1tv96j.jpg",
+          "rating": 6.4,
+          "trailer": "2Iqvbe98Gb4"
         }
       ]
     }
