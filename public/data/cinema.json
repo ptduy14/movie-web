@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T05:19:40.148Z",
+  "updated_at": "2026-09-22T05:17:15.135Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -18,7 +18,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 8.6,
+          "rating": 7.9,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -41,7 +41,7 @@
           "id": 1511747,
           "title": "Trại Buôn Người",
           "release_date": "2026-09-25",
-          "poster_path": "/UZKQvD9lGBovoz8EMkq7sYCwAT.jpg",
+          "poster_path": "/lwoPa795ysdVSkvmlB93HyGH1SJ.jpg",
           "rating": null,
           "trailer": "eM7mM7VUv10"
         },
@@ -132,7 +132,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.1,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -190,19 +190,11 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1376856,
-          "title": "The Paradise",
-          "release_date": "2026-09-24",
-          "poster_path": "/9k5F5Lk2bUP7ODifk1KP5Vw8yGm.jpg",
-          "rating": null,
-          "trailer": "Y3xewv1ZnHc"
-        },
-        {
           "id": 1263337,
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.8,
+          "rating": 7.9,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -210,22 +202,38 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 8.5,
+          "rating": 7.9,
           "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1375441,
           "title": "Primetime",
           "release_date": "2026-09-25",
-          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+          "poster_path": "/51VDtNQFuD2I86hrT4ekytg9Dq3.jpg",
           "rating": 6.5,
           "trailer": "C0NZa01qTRU"
+        },
+        {
+          "id": 1384514,
+          "title": "The Vvaan",
+          "release_date": "2026-09-25",
+          "poster_path": "/n0TSVS0saO1bJy8DAssE43G7pBE.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1755291,
           "title": "NAZA",
           "release_date": "2026-09-30",
           "poster_path": "/aXlTjDmbYVNjGWt256MWeYVKFN.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1768117,
+          "title": "Dust",
+          "release_date": "2026-10-01",
+          "poster_path": "/3N4FSKVLVNDWm4eAYqYNywgX6eK.jpg",
           "rating": null,
           "trailer": null
         },
@@ -249,7 +257,7 @@
           "id": 1283515,
           "title": "Verity",
           "release_date": "2026-10-02",
-          "poster_path": "/7ZgjGeacN0PwenoQX4DjI4FlN6Z.jpg",
+          "poster_path": "/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
           "rating": null,
           "trailer": "xdPMKhjMSFs"
         },
@@ -268,14 +276,6 @@
           "poster_path": "/6pavyVdI2z7PlOUwB7nlnhLRSgl.jpg",
           "rating": null,
           "trailer": "zgGpyr5MFK8"
-        },
-        {
-          "id": 1269325,
-          "title": "Drishyam: The Conclusion",
-          "release_date": "2026-10-02",
-          "poster_path": "/7T62GSduOWDMB0gGDBs9pmtLTSB.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1400837,
@@ -308,7 +308,7 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.1,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -340,7 +340,7 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "kMsiD1Nky5I"
         },
         {
