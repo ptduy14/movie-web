@@ -1,50 +1,10 @@
 {
-  "updated_at": "2026-09-22T05:17:15.135Z",
+  "updated_at": "2026-09-23T05:02:52.621Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1263337,
-          "title": "Trái Tim Quái Thú",
-          "release_date": "2026-09-25",
-          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 7.7,
-          "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Hòn Đảo Quên Lãng",
-          "release_date": "2026-09-25",
-          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 7.9,
-          "trailer": "PhgY8cOJiQA"
-        },
-        {
-          "id": 10515,
-          "title": "Laputa: Lâu Đài Trên Không",
-          "release_date": "2026-09-25",
-          "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
-          "rating": 8,
-          "trailer": "6s_wR3uuWec"
-        },
-        {
-          "id": 1744300,
-          "title": "Út Lan 2",
-          "release_date": "2026-09-25",
-          "poster_path": "/tTCX6Hqsj9TsHuqU6aUKFh0Jg72.jpg",
-          "rating": null,
-          "trailer": "COeNSZ410Kg"
-        },
-        {
-          "id": 1511747,
-          "title": "Trại Buôn Người",
-          "release_date": "2026-09-25",
-          "poster_path": "/lwoPa795ysdVSkvmlB93HyGH1SJ.jpg",
-          "rating": null,
-          "trailer": "eM7mM7VUv10"
-        },
         {
           "id": 1248832,
           "title": "Digger",
@@ -62,6 +22,14 @@
           "trailer": "xdPMKhjMSFs"
         },
         {
+          "id": 1319525,
+          "title": "จีบซ้ำซ้ำ เฮนรี่จำไม่ได้",
+          "release_date": "2026-10-02",
+          "poster_path": "/qlw9WtySGW6AUdbkwgWUltvIAf3.jpg",
+          "rating": 9,
+          "trailer": "q1xP2WQyn-E"
+        },
+        {
           "id": 1756422,
           "title": "Án Mạng Karaoke",
           "release_date": "2026-10-02",
@@ -73,7 +41,7 @@
           "id": 1400837,
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
-          "poster_path": "/7sb0HpRZSYMTQH4pqqqDElPMwfM.jpg",
+          "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
           "rating": null,
           "trailer": "-mnTITqqiT0"
         },
@@ -100,6 +68,38 @@
           "poster_path": "/2IBPaHSc0YY55mI9fSyCfcoKi8V.jpg",
           "rating": null,
           "trailer": null
+        },
+        {
+          "id": 1153576,
+          "title": "Phim Street Fighter",
+          "release_date": "2026-10-16",
+          "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
+          "rating": null,
+          "trailer": "U6sbm1OaJb8"
+        },
+        {
+          "id": 1255833,
+          "title": "Cá Voi Nuốt Chửng",
+          "release_date": "2026-10-16",
+          "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
+          "rating": null,
+          "trailer": "Dw-5ZGapGTQ"
+        },
+        {
+          "id": 83389,
+          "title": "Ngọn Đồi Hoa Hồng Anh",
+          "release_date": "2026-10-16",
+          "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
+          "rating": 7.5,
+          "trailer": "a0DIxdy8CZA"
+        },
+        {
+          "id": 1744848,
+          "title": "Chị Chị Em Em 3",
+          "release_date": "2026-10-16",
+          "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
+          "rating": null,
+          "trailer": "kgzSbNJWnf4"
         }
       ],
       "now_playing": [
@@ -118,14 +118,6 @@
           "poster_path": "/vM6ZHg10Y180JsQc8wpgCkrDxtQ.jpg",
           "rating": 7.9,
           "trailer": "YBIfz76BYiY"
-        },
-        {
-          "id": 1536008,
-          "title": "Tà Sư Sám Hối",
-          "release_date": "2026-09-18",
-          "poster_path": "/pJYzMDpq5A62YXPIQWSBMdqqmJP.jpg",
-          "rating": 4,
-          "trailer": "MSn1lXb0pYw"
         },
         {
           "id": 1302904,
@@ -150,6 +142,14 @@
           "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
           "rating": 8,
           "trailer": "mvpFrJ5O2Ww"
+        },
+        {
+          "id": 1492461,
+          "title": "Mãi Nợ Một Lời Tạm Biệt",
+          "release_date": "2026-09-11",
+          "poster_path": "/T4Nd669fQbgk3VNxkMhs7I3txd.jpg",
+          "rating": null,
+          "trailer": "ck5rOLF1u98"
         },
         {
           "id": 1751285,
@@ -190,42 +190,10 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1263337,
-          "title": "Heart of the Beast",
-          "release_date": "2026-09-25",
-          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.9,
-          "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Forgotten Island",
-          "release_date": "2026-09-25",
-          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 7.9,
-          "trailer": "PhgY8cOJiQA"
-        },
-        {
-          "id": 1375441,
-          "title": "Primetime",
-          "release_date": "2026-09-25",
-          "poster_path": "/51VDtNQFuD2I86hrT4ekytg9Dq3.jpg",
-          "rating": 6.5,
-          "trailer": "C0NZa01qTRU"
-        },
-        {
-          "id": 1384514,
-          "title": "The Vvaan",
-          "release_date": "2026-09-25",
-          "poster_path": "/n0TSVS0saO1bJy8DAssE43G7pBE.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1755291,
           "title": "NAZA",
           "release_date": "2026-09-30",
-          "poster_path": "/aXlTjDmbYVNjGWt256MWeYVKFN.jpg",
+          "poster_path": "/b4Gyj8VRoJAeU13jfKPuOTMr5GL.jpg",
           "rating": null,
           "trailer": null
         },
@@ -278,21 +246,69 @@
           "trailer": "zgGpyr5MFK8"
         },
         {
+          "id": 1336166,
+          "title": "Rolling Loud: The Movie",
+          "release_date": "2026-10-02",
+          "poster_path": "/z2EwfMhkGIHhF337c19fd1NNjN1.jpg",
+          "rating": null,
+          "trailer": "o_pIiP1A0RY"
+        },
+        {
           "id": 1400837,
           "title": "Other Mommy",
           "release_date": "2026-10-09",
-          "poster_path": "/mH3eovbLEK38DmVZ4nHSORpzuVI.jpg",
+          "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
           "rating": null,
           "trailer": "-mnTITqqiT0"
+        },
+        {
+          "id": 1391021,
+          "title": "Once Upon a Time in the Middle East",
+          "release_date": "2026-10-09",
+          "poster_path": "/wAuGgXjA7GV8NrKfmUKl2AP8vqG.jpg",
+          "rating": 9.1,
+          "trailer": "iHDNxZF7LRw"
+        },
+        {
+          "id": 1281331,
+          "title": "The Social Reckoning",
+          "release_date": "2026-10-09",
+          "poster_path": "/qZr5bxGXE1t2A9pNSikb9fQKzov.jpg",
+          "rating": null,
+          "trailer": "R8ANzYpaZaY"
+        },
+        {
+          "id": 1401459,
+          "title": "Fjord",
+          "release_date": "2026-10-09",
+          "poster_path": "/3PPPIeSdeivjUn3O9RahGiaJ9b8.jpg",
+          "rating": 7.2,
+          "trailer": "frg59VOungA"
         }
       ],
       "now_playing": [
+        {
+          "id": 1263337,
+          "title": "Heart of the Beast",
+          "release_date": "2026-09-25",
+          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
+          "rating": 7.8,
+          "trailer": "UkMuGKqAux4"
+        },
+        {
+          "id": 1465063,
+          "title": "Forgotten Island",
+          "release_date": "2026-09-25",
+          "poster_path": "/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
+          "rating": 7.4,
+          "trailer": "PhgY8cOJiQA"
+        },
         {
           "id": 1423191,
           "title": "Resident Evil",
           "release_date": "2026-09-18",
           "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.4,
+          "rating": 7.3,
           "trailer": "mNd1gb19A-c"
         },
         {
@@ -300,7 +316,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
-          "rating": 7.4,
+          "rating": 7.3,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -324,7 +340,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.9,
+          "rating": 7.7,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -332,7 +348,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.8,
+          "rating": 6.4,
           "trailer": "Krs0VDIjhmE"
         },
         {
@@ -350,22 +366,6 @@
           "poster_path": "/tN799oUR0f1gUKDYdMNrDaY7I51.jpg",
           "rating": 8.1,
           "trailer": "LW6dpj1uCK8"
-        },
-        {
-          "id": 1384216,
-          "title": "The Dog Stars",
-          "release_date": "2026-08-28",
-          "poster_path": "/A7i16oDi03qrKep5pBfuTWNUTb.jpg",
-          "rating": 6.6,
-          "trailer": "-xSxaE1ClEE"
-        },
-        {
-          "id": 1288445,
-          "title": "Mutiny",
-          "release_date": "2026-08-21",
-          "poster_path": "/pu2VxGlpGwffOx292w18b1tv96j.jpg",
-          "rating": 6.4,
-          "trailer": "2Iqvbe98Gb4"
         }
       ]
     }
