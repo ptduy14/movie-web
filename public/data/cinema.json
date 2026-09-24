@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-23T05:02:52.621Z",
+  "updated_at": "2026-09-24T05:14:09.322Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": null,
+          "rating": 9.3,
           "trailer": "job8V254NAE"
         },
         {
@@ -104,6 +104,30 @@
       ],
       "now_playing": [
         {
+          "id": 1263337,
+          "title": "Trái Tim Quái Thú",
+          "release_date": "2026-09-25",
+          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
+          "rating": 7.7,
+          "trailer": "UkMuGKqAux4"
+        },
+        {
+          "id": 1465063,
+          "title": "Hòn Đảo Quên Lãng",
+          "release_date": "2026-09-25",
+          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
+          "rating": 7.6,
+          "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 10515,
+          "title": "Laputa: Lâu Đài Trên Không",
+          "release_date": "2026-09-25",
+          "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
+          "rating": 8,
+          "trailer": "6s_wR3uuWec"
+        },
+        {
           "id": 1423191,
           "title": "Vùng Đất Quỷ Dữ",
           "release_date": "2026-09-18",
@@ -158,30 +182,6 @@
           "poster_path": "/mj5ZCjdRfFI7oE8TQ1uNMqYNnKQ.jpg",
           "rating": 8,
           "trailer": "-LmzL2FpOD0"
-        },
-        {
-          "id": 1393326,
-          "title": "Ma Tù",
-          "release_date": "2026-09-04",
-          "poster_path": "/9qp7Dczia8dadV7bnZNuK0ar2yF.jpg",
-          "rating": 7.2,
-          "trailer": "otL78_pk_A0"
-        },
-        {
-          "id": 1058424,
-          "title": "Hope: Vùng Tử Địa",
-          "release_date": "2026-09-04",
-          "poster_path": "/yY5GFSFM4eQknenk2oCoC19EeF5.jpg",
-          "rating": 7.4,
-          "trailer": "OFaJzL83y0Q"
-        },
-        {
-          "id": 1433367,
-          "title": "Một Đêm Duy Nhất",
-          "release_date": "2026-09-04",
-          "poster_path": "/vY7HPRfYLJCTWwVnTiEO17ZPQZy.jpg",
-          "rating": 6.5,
-          "trailer": "lDsAVq9lo9g"
         }
       ]
     },
@@ -189,6 +189,14 @@
       "region": "US",
       "language": "en-US",
       "upcoming": [
+        {
+          "id": 1437396,
+          "title": "Your Mother Your Mother Your Mother",
+          "release_date": "2026-09-25",
+          "poster_path": "/4KaPZSKnInnArErTTgy9Oy14leR.jpg",
+          "rating": 10,
+          "trailer": "uEcoV-ngH38"
+        },
         {
           "id": 1755291,
           "title": "NAZA",
@@ -218,7 +226,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": null,
+          "rating": 9.3,
           "trailer": "job8V254NAE"
         },
         {
@@ -235,7 +243,7 @@
           "release_date": "2026-10-02",
           "poster_path": "/tENVMxKvOkslv8kagVNdIEQ13RT.jpg",
           "rating": null,
-          "trailer": "4fn4UcgzRhg"
+          "trailer": "MQKqgFVU4dQ"
         },
         {
           "id": 1596303,
@@ -262,14 +270,6 @@
           "trailer": "-mnTITqqiT0"
         },
         {
-          "id": 1391021,
-          "title": "Once Upon a Time in the Middle East",
-          "release_date": "2026-10-09",
-          "poster_path": "/wAuGgXjA7GV8NrKfmUKl2AP8vqG.jpg",
-          "rating": 9.1,
-          "trailer": "iHDNxZF7LRw"
-        },
-        {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
@@ -278,12 +278,12 @@
           "trailer": "R8ANzYpaZaY"
         },
         {
-          "id": 1401459,
-          "title": "Fjord",
+          "id": 1391021,
+          "title": "Once Upon a Time in the Middle East",
           "release_date": "2026-10-09",
-          "poster_path": "/3PPPIeSdeivjUn3O9RahGiaJ9b8.jpg",
-          "rating": 7.2,
-          "trailer": "frg59VOungA"
+          "poster_path": "/wAuGgXjA7GV8NrKfmUKl2AP8vqG.jpg",
+          "rating": 9.1,
+          "trailer": "iHDNxZF7LRw"
         }
       ],
       "now_playing": [
@@ -292,7 +292,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.8,
+          "rating": 7.7,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -300,7 +300,7 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
-          "rating": 7.4,
+          "rating": 7.6,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -316,7 +316,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
-          "rating": 7.3,
+          "rating": 7.5,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -340,7 +340,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.7,
+          "rating": 7.6,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -348,7 +348,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.4,
+          "rating": 6.3,
           "trailer": "Krs0VDIjhmE"
         },
         {
@@ -356,7 +356,7 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "kMsiD1Nky5I"
         },
         {
