@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T05:14:09.322Z",
+  "updated_at": "2026-09-25T05:15:43.365Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 9.3,
+          "rating": 9.5,
           "trailer": "job8V254NAE"
         },
         {
@@ -148,7 +148,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.2,
+          "rating": 6.3,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -190,14 +190,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1437396,
-          "title": "Your Mother Your Mother Your Mother",
-          "release_date": "2026-09-25",
-          "poster_path": "/4KaPZSKnInnArErTTgy9Oy14leR.jpg",
-          "rating": 10,
-          "trailer": "uEcoV-ngH38"
-        },
-        {
           "id": 1755291,
           "title": "NAZA",
           "release_date": "2026-09-30",
@@ -226,14 +218,14 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 9.3,
+          "rating": 9.5,
           "trailer": "job8V254NAE"
         },
         {
           "id": 1283515,
           "title": "Verity",
           "release_date": "2026-10-02",
-          "poster_path": "/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
+          "poster_path": "/e2t7NjahJTgz2PMx2BW4ZRgHR6Z.jpg",
           "rating": null,
           "trailer": "xdPMKhjMSFs"
         },
@@ -246,20 +238,20 @@
           "trailer": "MQKqgFVU4dQ"
         },
         {
+          "id": 1336166,
+          "title": "Rolling Loud: The Movie",
+          "release_date": "2026-10-02",
+          "poster_path": "/5TV0Z7egC37vpI1UjKIvSgqLMMx.jpg",
+          "rating": null,
+          "trailer": "o_pIiP1A0RY"
+        },
+        {
           "id": 1596303,
           "title": "The Last First: Winter K2",
           "release_date": "2026-10-02",
           "poster_path": "/6pavyVdI2z7PlOUwB7nlnhLRSgl.jpg",
           "rating": null,
           "trailer": "zgGpyr5MFK8"
-        },
-        {
-          "id": 1336166,
-          "title": "Rolling Loud: The Movie",
-          "release_date": "2026-10-02",
-          "poster_path": "/z2EwfMhkGIHhF337c19fd1NNjN1.jpg",
-          "rating": null,
-          "trailer": "o_pIiP1A0RY"
         },
         {
           "id": 1400837,
@@ -284,6 +276,14 @@
           "poster_path": "/wAuGgXjA7GV8NrKfmUKl2AP8vqG.jpg",
           "rating": 9.1,
           "trailer": "iHDNxZF7LRw"
+        },
+        {
+          "id": 1375156,
+          "title": "Udta Teer",
+          "release_date": "2026-10-09",
+          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
+          "rating": null,
+          "trailer": null
         }
       ],
       "now_playing": [
@@ -316,7 +316,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
-          "rating": 7.5,
+          "rating": 7.2,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -324,7 +324,7 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.2,
+          "rating": 6.3,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -356,7 +356,7 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "kMsiD1Nky5I"
         },
         {
