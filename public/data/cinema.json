@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T05:15:43.365Z",
+  "updated_at": "2026-09-26T05:21:08.185Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 9.5,
+          "rating": 8.6,
           "trailer": "job8V254NAE"
         },
         {
@@ -34,6 +34,14 @@
           "title": "Án Mạng Karaoke",
           "release_date": "2026-10-02",
           "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1425552,
+          "title": "Scotty: Giải Cứu Hoàng Thượng",
+          "release_date": "2026-10-02",
+          "poster_path": "/meRgKB2DAbPntIpuTIv4OtGpsb2.jpg",
           "rating": null,
           "trailer": null
         },
@@ -92,14 +100,6 @@
           "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
           "rating": 7.5,
           "trailer": "a0DIxdy8CZA"
-        },
-        {
-          "id": 1744848,
-          "title": "Chị Chị Em Em 3",
-          "release_date": "2026-10-16",
-          "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
-          "rating": null,
-          "trailer": "kgzSbNJWnf4"
         }
       ],
       "now_playing": [
@@ -116,7 +116,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 7.6,
+          "rating": 7.8,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -193,15 +193,7 @@
           "id": 1755291,
           "title": "NAZA",
           "release_date": "2026-09-30",
-          "poster_path": "/b4Gyj8VRoJAeU13jfKPuOTMr5GL.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1768117,
-          "title": "Dust",
-          "release_date": "2026-10-01",
-          "poster_path": "/3N4FSKVLVNDWm4eAYqYNywgX6eK.jpg",
+          "poster_path": "/uLsG2CW8oHnmXWdtPyruSegI8rF.jpg",
           "rating": null,
           "trailer": null
         },
@@ -210,7 +202,7 @@
           "title": "Ghost in the Cell",
           "release_date": "2026-10-02",
           "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
-          "rating": 7.2,
+          "rating": 7.1,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -218,7 +210,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 9.5,
+          "rating": 8.6,
           "trailer": "job8V254NAE"
         },
         {
@@ -241,7 +233,7 @@
           "id": 1336166,
           "title": "Rolling Loud: The Movie",
           "release_date": "2026-10-02",
-          "poster_path": "/5TV0Z7egC37vpI1UjKIvSgqLMMx.jpg",
+          "poster_path": "/yJsGgMrE2wE1rdtu70LI6rrF3mo.jpg",
           "rating": null,
           "trailer": "o_pIiP1A0RY"
         },
@@ -262,10 +254,18 @@
           "trailer": "-mnTITqqiT0"
         },
         {
+          "id": 1375156,
+          "title": "Udta Teer",
+          "release_date": "2026-10-09",
+          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
-          "poster_path": "/qZr5bxGXE1t2A9pNSikb9fQKzov.jpg",
+          "poster_path": "/hDe0OryfBINwmZDRtQjnh6UKUJf.jpg",
           "rating": null,
           "trailer": "R8ANzYpaZaY"
         },
@@ -278,12 +278,12 @@
           "trailer": "iHDNxZF7LRw"
         },
         {
-          "id": 1375156,
-          "title": "Udta Teer",
+          "id": 1401459,
+          "title": "Fjord",
           "release_date": "2026-10-09",
-          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
-          "rating": null,
-          "trailer": null
+          "poster_path": "/3PPPIeSdeivjUn3O9RahGiaJ9b8.jpg",
+          "rating": 7.2,
+          "trailer": "frg59VOungA"
         }
       ],
       "now_playing": [
@@ -292,16 +292,24 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.7,
+          "rating": 7.9,
           "trailer": "UkMuGKqAux4"
         },
         {
           "id": 1465063,
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
-          "poster_path": "/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
+          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
           "rating": 7.6,
           "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 1375441,
+          "title": "Primetime",
+          "release_date": "2026-09-25",
+          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+          "rating": 7,
+          "trailer": "C0NZa01qTRU"
         },
         {
           "id": 1423191,
@@ -332,7 +340,7 @@
           "title": "Hope",
           "release_date": "2026-09-09",
           "poster_path": "/1n37BJchWHLiSYQkuFxe5KjB951.jpg",
-          "rating": 7.4,
+          "rating": 7.3,
           "trailer": "OFaJzL83y0Q"
         },
         {
@@ -348,7 +356,7 @@
           "title": "Fall 2: Deadpoint",
           "release_date": "2026-09-02",
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
-          "rating": 6.3,
+          "rating": 6.2,
           "trailer": "Krs0VDIjhmE"
         },
         {
@@ -356,16 +364,8 @@
           "title": "Coyote vs. Acme",
           "release_date": "2026-08-28",
           "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "kMsiD1Nky5I"
-        },
-        {
-          "id": 1375646,
-          "title": "Colony",
-          "release_date": "2026-08-28",
-          "poster_path": "/tN799oUR0f1gUKDYdMNrDaY7I51.jpg",
-          "rating": 8.1,
-          "trailer": "LW6dpj1uCK8"
         }
       ]
     }
