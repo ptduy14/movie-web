@@ -18,7 +18,6 @@
     "unknown": "Không xác định",
     "comingSoon": "Tính năng này sẽ sớm được triển khai"
   },
-
   "header": {
     "menu": {
       "singleMovies": "Phim lẻ",
@@ -35,7 +34,6 @@
     },
     "search": "Tìm kiếm phim"
   },
-
   "home": {
     "continueWatching": "Tiếp Tục Xem",
     "topPicks": "Tuyển chọn cho bạn",
@@ -56,7 +54,6 @@
       "movies": "phim"
     }
   },
-
   "card": {
     "watchNow": "Xem ngay",
     "addToCollection": "Thêm vào bộ sưu tập",
@@ -65,7 +62,6 @@
     "newBadge": "Mới",
     "exclusiveBadge": "Độc quyền"
   },
-
   "movie": {
     "watch": "Xem phim",
     "moreLikeThis": "Phim Liên Quan",
@@ -97,61 +93,26 @@
       "votes": "votes"
     }
   },
-
   "watch": {
-    "serverHint": "Nếu xem phim bị giật lag vui lòng chọn một trong các server bên dưới",
     "episodeList": "Danh sách tập phim",
     "episodeLabel": "Tập {index}",
+    "seasonList": "Danh sách phần",
+    "seasonLabel": "Phần {index}",
+    "unavailable": "Phim này chưa có nguồn phát. Bạn quay lại sau nhé.",
     "progressNotification": {
       "episodePrefix": "tập {index}-",
       "message": "Hệ thống nhận thấy bạn đang xem đến",
       "question": "bạn muốn tiếp tục xem chứ ?",
       "accept": "Có",
       "reject": "Xem lại từ đầu"
-    },
-    "player": {
-      "settings": {
-        "speed": "Tốc độ phát",
-        "language": "Âm thanh / Ngôn ngữ",
-        "autoPlayNext": "Tự động phát tập tiếp theo",
-        "normal": "Bình thường"
-      },
-      "nextEpisode": {
-        "upNext": "Tập tiếp theo",
-        "playNow": "Phát ngay",
-        "playInSeconds": "Phát sau {seconds}s",
-        "dismiss": "Đóng"
-      },
-      "lock": {
-        "lock": "Khóa màn hình",
-        "holdToUnlock": "Giữ để mở khóa"
-      },
-      "shortcuts": {
-        "title": "Phím tắt",
-        "close": "Đóng",
-        "playPause": "Phát / tạm dừng",
-        "back10": "Lùi 10s",
-        "forward10": "Tiến 10s",
-        "seek5": "Lùi / tiến 5s",
-        "volume": "Tăng / giảm âm lượng",
-        "mute": "Tắt tiếng",
-        "fullscreen": "Toàn màn hình",
-        "speed": "Giảm / tăng tốc độ",
-        "jump": "Nhảy đến 0–90%",
-        "pip": "Hình trong hình",
-        "nextEpisode": "Tập tiếp theo",
-        "help": "Hiện trợ giúp này"
-      }
     }
   },
-
   "lists": {
     "endOfList": "🎬 Bạn đã xem hết danh sách",
     "errorLoading": "❌ Đã có lỗi khi tải phim",
     "emptyCategory": "Chưa có phim nào trong danh mục này",
     "searchPlaceholder": "Nhập tên phim..."
   },
-
   "search": {
     "promptTitle": "Tìm bộ phim bạn muốn xem",
     "promptSubtitle": "Nhập tên phim ở trên, hoặc khám phá theo thể loại bên dưới",
@@ -161,7 +122,6 @@
     "noResultsSubtitle": "Thử từ khóa khác hoặc kiểm tra lại chính tả",
     "suggestions": "Có thể bạn thích"
   },
-
   "filter": {
     "browse": "Duyệt phim",
     "count": "{count, number} phim",
@@ -177,14 +137,12 @@
     "sortYearDesc": "Năm: mới nhất",
     "sortYearAsc": "Năm: cũ nhất"
   },
-
   "bottomNav": {
     "home": "Trang chủ",
     "search": "Tìm kiếm",
     "myList": "Bộ sưu tập",
     "profile": "Tài khoản"
   },
-
   "disclaimer": {
     "eyebrow": "Lưu ý",
     "title": "Tuyên bố miễn trừ trách nhiệm",
@@ -198,7 +156,6 @@
     "agree": "Đồng ý & Tiếp tục",
     "learnMore": "Tìm hiểu thêm"
   },
-
   "auth": {
     "login": {
       "title": "Đăng nhập khoản MovieX",
@@ -222,23 +179,19 @@
       "successToast": "Đăng ký tài khoản thành công"
     }
   },
-
   "accountMenu": {
     "collection": "Bộ sưu tập",
     "recent": "Phim xem gần đây",
     "profile": "Thông tin cá nhân",
     "logout": "Đăng xuất"
   },
-
   "collection": {
     "title": "Bộ sưu tập phim của bạn"
   },
-
   "recent": {
     "title": "Phim xem gần đây",
     "subtitle": "MovieX giờ đã có tính năng lưu tiến trình tất cả phim mà bạn đã xem"
   },
-
   "profile": {
     "loginRequired": {
       "title": "Vui lòng đăng nhập",
@@ -378,7 +331,6 @@
       }
     }
   },
-
   "comment": {
     "heading": "Bình luận",
     "submit": "Bình luận",
@@ -394,7 +346,6 @@
     "sortNewest": "Mới nhất",
     "sortTop": "Nhiều thích"
   },
-
   "notification": {
     "title": "Thông báo",
     "markRead": "Đánh dấu đã đọc",
@@ -410,7 +361,6 @@
       "yourComment": "bình luận của bạn."
     }
   },
-
   "footer": {
     "description": "MovieX - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng tiếng Full HD. Kho phim mới không lỗ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung Quốc, Thái Lan, Nhật Bản, Âu Mỹ... đã đang thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!",
     "info": {
@@ -438,7 +388,6 @@
     "disclaimer": "MOVIEX không lưu trữ bất kỳ nội dung nào trên trang web này. Tất cả nội dung đều được lấy từ các nguồn bên thứ ba.",
     "seo": "Xem phim online chất lượng cao tại MOVIEX - Trang web xem phim trực tuyến hàng đầu Việt Nam"
   },
-
   "errors": {
     "invalidCredentials": "Thông tin đăng nhập không hợp lệ",
     "userNotFound": "Tài khoản không tồn tại.",
@@ -447,7 +396,6 @@
     "invalidEmail": "Địa chỉ email không hợp lệ",
     "default": "Đã xảy ra lỗi. Vui lòng thử lại sau."
   },
-
   "toasts": {
     "addedToCollection": "Đã thêm vào bộ sưu tập",
     "removedFromCollection": "Đã xóa khỏi bộ sưu tập",
@@ -457,7 +405,6 @@
     "removedFromRecent": "Đã xóa khỏi danh sách đã xem",
     "genericError": "Có lỗi xảy ra"
   },
-
   "metadata": {
     "homeTitle": "MovieX - Xem Phim Online | Phim Lẻ | TV Show | Phim Bộ | Hoạt Hình | Vietsub | Lồng Tiếng Cập Nhật Liên Tục",
     "homeDescription": "Xem phim online với hàng nghìn phim lẻ, TV show, phim bộ thuộc nhiều thể loại hấp dẫn, đã được lồng tiếng và cập nhật mới nhất mỗi ngày. Trải nghiệm xem phim chất lượng cao hoàn toàn miễn phí tại MovieX.",
@@ -465,7 +412,6 @@
     "recentTitle": "Phim xem gần đây",
     "collectionTitle": "Bộ sưu tập phim"
   },
-
   "maintenance": {
     "title": "Website đang tạm dừng hoạt động",
     "note": "MovieX đang được bảo trì. Mình sẽ mở lại ngay khi xong.",
@@ -478,7 +424,15 @@
       "today": "Hôm nay",
       "tomorrow": "Ngày mai",
       "inDays": "còn {days} ngày",
-      "weekdays": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+      "weekdays": [
+        "CN",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7"
+      ],
       "watchTrailer": "Xem trailer",
       "close": "Đóng"
     }

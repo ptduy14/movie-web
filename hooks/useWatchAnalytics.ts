@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { analytics } from 'lib/posthog/events';
+import type { VidsrcEvent } from 'hooks/useVidsrcBridge';
 
 type ProgressMilestone = 25 | 50 | 75 | 95;
 const MILESTONES: ProgressMilestone[] = [25, 50, 75, 95];
@@ -10,21 +11,39 @@ interface UseWatchAnalyticsOptions {
   movieId: string;
   episodeIndex: number;
   serverIndex: number;
-  videoRef: React.RefObject<HTMLVideoElement | null>;
 }
 
+export interface UseWatchAnalyticsReturn {
+  /** Feed every player event here — wire it to the bridge's `onEvent`. */
+  trackEvent: (event: VidsrcEvent) => void;
+}
+
+/**
+ * Playback analytics, driven by the vidsrc player's postMessage events.
+ *
+ * Previously this listened to `play` / `timeupdate` / `ended` on a `<video>`
+ * element. The iframe reports the same three moments — `playing`, periodic
+ * progress (also `playing`), and `completed` — so the milestone logic is
+ * unchanged. The one difference worth knowing: progress ticks arrive about
+ * every five seconds instead of several times a second, which is plenty for
+ * quarter-of-the-way milestones and much cheaper.
+ */
 export function useWatchAnalytics({
   movieId,
   episodeIndex,
   serverIndex,
-  videoRef,
-}: UseWatchAnalyticsOptions) {
+}: UseWatchAnalyticsOptions): UseWatchAnalyticsReturn {
   const playStartedRef = useRef(false);
   const completedRef = useRef(false);
   const firedMilestonesRef = useRef<Set<ProgressMilestone>>(new Set());
   const playStartTsRef = useRef<number | null>(null);
 
-  // Reset milestone tracking when movie / episode / server changes
+  // Keep the identifying context in a ref so `trackEvent` stays stable and
+  // the bridge listener never needs re-attaching.
+  const contextRef = useRef({ movieId, episodeIndex, serverIndex });
+  contextRef.current = { movieId, episodeIndex, serverIndex };
+
+  // Reset milestone tracking when title / episode / season changes.
   useEffect(() => {
     playStartedRef.current = false;
     completedRef.current = false;
@@ -32,47 +51,36 @@ export function useWatchAnalytics({
     playStartTsRef.current = null;
   }, [movieId, episodeIndex, serverIndex]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+  const trackEvent = useCallback((event: VidsrcEvent) => {
+    const ctx = contextRef.current;
 
-    const handlePlay = () => {
-      if (playStartedRef.current) return;
-      playStartedRef.current = true;
-      playStartTsRef.current = Date.now();
-      analytics.moviePlayStarted(movieId, episodeIndex, serverIndex);
-    };
+    if (event.status === 'playing') {
+      if (!playStartedRef.current) {
+        playStartedRef.current = true;
+        playStartTsRef.current = Date.now();
+        analytics.moviePlayStarted(ctx.movieId, ctx.episodeIndex, ctx.serverIndex);
+      }
 
-    const handleTimeUpdate = () => {
-      const { currentTime, duration } = video;
-      if (!duration || duration <= 0) return;
-      const percent = (currentTime / duration) * 100;
-
-      for (const m of MILESTONES) {
-        if (percent >= m && !firedMilestonesRef.current.has(m)) {
-          firedMilestonesRef.current.add(m);
-          analytics.moviePlayProgress(movieId, m);
+      if (event.duration > 0) {
+        const percent = (event.progress / event.duration) * 100;
+        for (const m of MILESTONES) {
+          if (percent >= m && !firedMilestonesRef.current.has(m)) {
+            firedMilestonesRef.current.add(m);
+            analytics.moviePlayProgress(ctx.movieId, m);
+          }
         }
       }
-    };
+      return;
+    }
 
-    const handleEnded = () => {
-      if (completedRef.current) return;
+    if (event.status === 'completed' && !completedRef.current) {
       completedRef.current = true;
       const watchDuration = playStartTsRef.current
         ? Math.round((Date.now() - playStartTsRef.current) / 1000)
-        : Math.round(video.duration ?? 0);
-      analytics.moviePlayCompleted(movieId, watchDuration);
-    };
+        : Math.round(event.duration);
+      analytics.moviePlayCompleted(ctx.movieId, watchDuration);
+    }
+  }, []);
 
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('ended', handleEnded);
-
-    return () => {
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('ended', handleEnded);
-    };
-  }, [movieId, episodeIndex, serverIndex, videoRef]);
+  return { trackEvent };
 }
