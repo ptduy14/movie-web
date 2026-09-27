@@ -3,7 +3,8 @@ interface MovieCollection {
     lang: string,
     name: string,
     origin_name: string,
-    quality: string,
+    /** Absent when the source never reported one — the badge hides itself. */
+    quality?: string,
     slug: string,
     thumb_url: string
 }
