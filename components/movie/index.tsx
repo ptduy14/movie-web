@@ -53,6 +53,7 @@ export default function MoviePage({
   images,
   logoUrl,
   relatedMovies = [],
+  aiTranslated = false,
 }: {
   movie: DetailMovie;
   credit: Credit | undefined;
@@ -64,6 +65,8 @@ export default function MoviePage({
   logoUrl?: string | null;
   /** "More Like This" — same-genre titles, fetched server-side. */
   relatedMovies?: NewlyMovie[];
+  /** True when the synopsis was machine-translated into the active locale. */
+  aiTranslated?: boolean;
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;
@@ -283,6 +286,7 @@ export default function MoviePage({
         credit={credit}
         images={images}
         relatedMovies={relatedMovies}
+        aiTranslated={aiTranslated}
       />
 
       <StickyWatchCta

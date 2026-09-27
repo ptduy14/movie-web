@@ -9,9 +9,8 @@ import sharp from 'sharp';
  */
 
 const ALLOWED_HOSTS = new Set([
-  'img.ophim.live',
-  'image.tmdb.org',
-  'lh3.googleusercontent.com',
+  'image.tmdb.org',          // all catalog artwork
+  'lh3.googleusercontent.com', // Google account avatars
 ]);
 
 // Next.js default imageSizes + deviceSizes — keep in sync with next.config.mjs.
@@ -33,8 +32,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: 'missing url or w' }, { status: 400 });
   }
 
-  // rawUrl is either an absolute remote URL (movie posters from OPhim/TMDB/
-  // Google) or a same-origin relative path (local/static images bundled by
+  // rawUrl is either an absolute remote URL (TMDB artwork, Google avatars)
+  // or a same-origin relative path (local/static images bundled by
   // Next itself, e.g. /_next/static/media/*) — next/image sends both through
   // the same custom loader, so both must be handled here.
   let source: URL;

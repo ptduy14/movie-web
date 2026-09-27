@@ -21,7 +21,7 @@ const formatVotes = (count?: number) => {
 
 const buildImdbUrl = (id: string) => `https://www.imdb.com/title/${id}/`;
 const buildTmdbUrl = (type: string, id: string) => {
-  // OPhim returns "tv" or "movie" — TMDB URL paths use the same names
+  // The catalog's media type is "tv" or "movie" — TMDB URL paths match
   const safeType = type === 'movie' ? 'movie' : 'tv';
   return `https://www.themoviedb.org/${safeType}/${id}`;
 };

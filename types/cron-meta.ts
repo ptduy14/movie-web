@@ -8,9 +8,9 @@
 export interface CronProgress {
   /** Last successfully processed page (1-indexed). 0 means never run. */
   lastPage: number;
-  /** Total pages in the OPhim catalog as of last run (recomputed each run). */
+  /** Total catalog pages as of last run (recomputed each run). */
   totalPages: number;
-  /** Total items in the OPhim catalog as of last run. */
+  /** Total catalog items as of last run. */
   totalItems: number;
   /** Lifetime count of movies the cron has iterated over. */
   totalProcessed: number;

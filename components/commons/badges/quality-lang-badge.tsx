@@ -11,8 +11,10 @@ interface QualityLangBadgeProps {
 /**
  * Top-right corner badge: combines lang + quality into a single chip.
  *
- * Lang strings come from OPhim raw response (Vietnamese). We localize via
- * the LANG_MAP and then shorten common forms to fit a small chip.
+ * `lang` is always "Phụ đề" for catalog items — the playback provider serves
+ * original audio with subtitles, never a Vietnamese dub. The older Vietsub /
+ * Thuyết Minh forms still appear in watch history written before the
+ * migration, so LANG_MAP keeps handling them.
  *
  * Quality is universal (HD/Full HD/4K) — no localization.
  */

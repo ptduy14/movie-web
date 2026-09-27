@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const DEFAULT_PAGE_SIZE = 24; // OPhim default totalItemsPerPage
+const DEFAULT_PAGE_SIZE = 20; // TMDB returns 20 results per page
 
 /**
  * A fetcher may return a bare items array, or `{ items, totalItems }` to also
@@ -34,7 +34,8 @@ export interface UseInfinitePaginationOptions<T> {
   resetKey?: string | number;
   /**
    * Used to detect "end of list": when the API returns less than this many items,
-   * we assume there's no more pages. Defaults to OPhim's standard 24.
+   * we assume there's no more pages. Defaults to TMDB's page size of 20.
+   * Prefer reporting `hasMore` from the fetcher when the list is filtered.
    */
   pageSize?: number;
 }

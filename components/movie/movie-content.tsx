@@ -34,11 +34,14 @@ export default function MovieContent({
   credit,
   images,
   relatedMovies = [],
+  aiTranslated = false,
 }: {
   movie: DetailMovie;
   credit: Credit | undefined;
   images: MovieImage[];
   relatedMovies?: NewlyMovie[];
+  /** True when the synopsis was machine-translated into the active locale. */
+  aiTranslated?: boolean;
 }) {
   const t = useTranslations('movie.info');
   const tCommon = useTranslations('common');
@@ -69,7 +72,11 @@ export default function MovieContent({
         <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
           <div className="space-y-3 lg:flex-[0_0_63%]">
             <h3 className="text-lg font-bold lg:text-xl">{t('content')}</h3>
-            <MovieSummary summary={movie.movie.content} expandable />
+            <MovieSummary
+              summary={movie.movie.content}
+              expandable
+              aiTranslated={aiTranslated}
+            />
           </div>
 
           <div className="lg:flex-1">
