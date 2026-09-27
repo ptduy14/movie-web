@@ -1,0 +1,64 @@
+name: Sync vidsrc availability index (cron)
+
+# Rebuilds the Redis set of TMDB ids that vidsrc can actually play, from the
+# provider's `/ids/*.txt` dumps. Those dumps are regenerated once a day, so
+# running more often would only burn Redis commands.
+#
+# Scheduled at 02:40 UTC (09:40 Vietnam time): after the upstream refresh,
+# and offset from both the cinema cron (00:30) and GitHub's busy :00 minute.
+#
+# Nothing user-facing breaks if this fails — `services/vidsrc-availability.ts`
+# fails open, so a stale or missing index means unfiltered lists, not a blank
+# site. A run that fails several days running is still worth investigating:
+# lists will slowly fill with titles that no longer play.
+#
+# Required repository secrets:
+#   - SITE_URL      e.g. https://moviex.vercel.app   (no trailing slash)
+#   - CRON_SECRET   matches the env var on the server
+
+on:
+  schedule:
+    - cron: '40 2 * * *'
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'Which index to rebuild'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - movie
+          - tv
+
+concurrency:
+  group: vidsrc-ids-cron
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Rebuild availability index
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SYNC_TYPE: ${{ github.event.inputs.type || 'all' }}
+        run: |
+          if [ -z "$SITE_URL" ] || [ -z "$CRON_SECRET" ]; then
+            echo "::error::SITE_URL and CRON_SECRET repository secrets are required"
+            exit 1
+          fi
+
+          echo "Rebuilding vidsrc availability index (type=$SYNC_TYPE)"
+          # -f makes curl exit non-zero on a 4xx/5xx so a failed sync paints
+          # the run red instead of passing silently with an error body.
+          curl -fsS --max-time 300 \
+            -X POST \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            "$SITE_URL/api/vidsrc/sync-ids?type=$SYNC_TYPE" \
+            | tee response.json
+
+          echo
+          echo "Stored: $(grep -o '"idsStored":[0-9]*' response.json | head -2 | tr '\n' ' ')"
