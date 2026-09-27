@@ -1,8 +1,13 @@
-const movieFormat = [
-    {name: 'Phim lẻ', slug: 'phim-le'},
-    {name: 'Phim bộ', slug: 'phim-bo'},
-    {name: 'Hoạt hình', slug: 'hoat-hinh'},
-    {name: 'TV show', slug: 'tv-shows'}
-]
+import { BROWSE_FORMAT_SLUGS } from 'constants/tmdb-taxonomy';
+import { FORMAT_MAP } from 'constants/i18n-mappings';
+
+/**
+ * The four browse formats, derived from the catalog taxonomy so the menu and
+ * the discover constraints can never drift apart.
+ */
+const movieFormat = BROWSE_FORMAT_SLUGS.map((slug) => ({
+  name: FORMAT_MAP.vi[slug] ?? slug,
+  slug,
+}));
 
 export default movieFormat;

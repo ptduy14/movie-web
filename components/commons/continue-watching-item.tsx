@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { resolveImageUrl } from 'lib/tmdb-image';
 import { Link } from 'i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 import { IoClose } from 'react-icons/io5';
@@ -42,9 +43,10 @@ export default function ContinueWatchingItem({
     ? Math.min(100, Math.max(0, (movie.progressTime! / movie.progressDuration!) * 100))
     : 0;
 
-  const thumbSrc = movie.thumb_url.startsWith('http')
-    ? movie.thumb_url
-    : `${process.env.NEXT_PUBLIC_IMG_DOMAIN}${movie.thumb_url}`;
+  // `resolveImageUrl` already passes absolute urls through untouched, which
+  // matters here: history records written before the migration hold absolute
+  // urls from the old provider's CDN.
+  const thumbSrc = resolveImageUrl(movie.thumb_url, 'poster');
 
   return (
     <Link

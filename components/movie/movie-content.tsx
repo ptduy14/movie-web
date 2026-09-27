@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import type NewlyMovie from 'types/newly-movie';
 import Country from 'types/country';
 import DetailMovie from 'types/detail-movie';
 import Trailer from './trailer';
@@ -37,7 +38,7 @@ export default function MovieContent({
   movie: DetailMovie;
   credit: Credit | undefined;
   images: MovieImage[];
-  relatedMovies?: MovieType[];
+  relatedMovies?: NewlyMovie[];
 }) {
   const t = useTranslations('movie.info');
   const tCommon = useTranslations('common');

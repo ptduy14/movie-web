@@ -1,6 +1,7 @@
 'use client';
 
 import RegularMovieItem from '../commons/regular-movie-item';
+import type NewlyMovie from 'types/newly-movie';
 import type Movie from 'types/movie';
 
 /**
@@ -13,7 +14,7 @@ import type Movie from 'types/movie';
  */
 interface RelatedMoviesProps {
   title: string;
-  movies: Movie[];
+  movies: NewlyMovie[];
 }
 
 export default function RelatedMovies({ title, movies }: RelatedMoviesProps) {

@@ -16,21 +16,21 @@ on:
   workflow_dispatch:
     inputs:
       locale:
-        description: 'Target locale (currently only `en` is wired up)'
+        description: 'Target locale (currently only `vi` is wired up)'
         required: true
-        default: 'en'
+        default: 'vi'
         type: choice
         options:
-          - en
+          - vi
       pages:
-        description: 'Number of OPhim pages to process this run (1-20)'
+        description: 'Number of catalog pages to process this run (1-20)'
         required: true
         default: '5'
         type: string
 
 # Stop a queued run if a previous one is still going to avoid double-translating.
 concurrency:
-  group: translate-cron-${{ github.event.inputs.locale || 'en' }}
+  group: translate-cron-${{ github.event.inputs.locale || 'vi' }}
   cancel-in-progress: false
 
 jobs:
@@ -41,7 +41,7 @@ jobs:
       - name: Resolve inputs
         id: inputs
         run: |
-          LOCALE="${{ github.event.inputs.locale || 'en' }}"
+          LOCALE="${{ github.event.inputs.locale || 'vi' }}"
           PAGES="${{ github.event.inputs.pages || '2' }}"
           echo "locale=$LOCALE" >> "$GITHUB_OUTPUT"
           echo "pages=$PAGES"   >> "$GITHUB_OUTPUT"

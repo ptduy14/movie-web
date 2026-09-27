@@ -1,7 +1,7 @@
 import type { TmdbImagesResponse } from 'types/tmdb-logo';
 
 const TMDBServices = {
-  getCredits: async (movieId: number, type: string) => {
+  getCredits: async (movieId: string | number, type: string) => {
     const res = await fetch(
       `https://api.themoviedb.org/3/${type}/${movieId}/credits?language=en-US`,
       {

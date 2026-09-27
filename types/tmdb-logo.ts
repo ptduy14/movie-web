@@ -22,4 +22,7 @@ export interface TmdbImagesResponse {
   id: number;
   logos?: TmdbLogo[];
   posters?: TmdbLogo[];
+  /** Landscape stills. These back the detail page's image gallery, which the
+   *  previous provider served from its own `/images` endpoint. */
+  backdrops?: TmdbLogo[];
 }

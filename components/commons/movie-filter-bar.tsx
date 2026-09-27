@@ -20,20 +20,16 @@ import {
   localizedCountry,
 } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
-import type { MovieFilters } from 'services/movie-services';
+import type { MovieFilters } from 'types/movie-filters';
 
 export type FilterDimension = 'category' | 'country' | 'year';
 
 /**
- * Translate the `sort` URL param into OPhim sort params. Exported so the
- * browse pages can build the same `MovieFilters` from the URL the bar writes.
- * Only `year` sorting is wired (verified supported); '' = API default order.
+ * The sort tokens this bar writes to the URL. The catalog service maps them
+ * onto TMDB's `sort_by`, which names its date field differently per media
+ * type — so the translation belongs there, not here.
  */
-export function parseSort(sort: string | null | undefined): Pick<MovieFilters, 'sortField' | 'sortType'> {
-  if (sort === 'year_desc') return { sortField: 'year', sortType: 'desc' };
-  if (sort === 'year_asc') return { sortField: 'year', sortType: 'asc' };
-  return {};
-}
+export const SORT_TOKENS = ['', 'year_desc', 'year_asc', 'rating_desc'] as const;
 
 interface Option {
   value: string;

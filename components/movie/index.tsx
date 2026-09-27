@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import type NewlyMovie from 'types/newly-movie';
 import DetailMovie from 'types/detail-movie';
 import type Movie from 'types/movie';
 import { FaPlay } from 'react-icons/fa';
@@ -62,7 +63,7 @@ export default function MoviePage({
    */
   logoUrl?: string | null;
   /** "More Like This" — same-genre titles, fetched server-side. */
-  relatedMovies?: Movie[];
+  relatedMovies?: NewlyMovie[];
 }) {
   const t = useTranslations('movie');
   const locale = useLocale() as Locale;

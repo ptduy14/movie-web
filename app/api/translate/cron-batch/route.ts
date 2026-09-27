@@ -11,9 +11,9 @@ import { isMaintenanceMode } from 'lib/maintenance';
  *   anonymous attacker could spam the endpoint and burn your Groq quota.
  *
  * Query params:
- *   - `locale`  (default `en`)  — target locale; must be in `routing.locales`
- *                                  and not the default `vi`.
- *   - `pages`   (default `5`)   — number of OPhim pages to process this run.
+ *   - `locale`  (default `vi`)  — target locale; must be in `routing.locales`
+ *                                  and must not be `en`, which is the source.
+ *   - `pages`   (default `5`)   — number of catalog pages to process this run.
  *                                  Capped at 20 to keep us under Vercel's 60s
  *                                  function timeout.
  *
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
   // ---- 2. Parse + validate params ----
   const { searchParams } = new URL(req.url);
-  const locale = (searchParams.get('locale') ?? 'en').toLowerCase();
+  const locale = (searchParams.get('locale') ?? 'vi').toLowerCase();
   const pagesRaw = parseInt(searchParams.get('pages') ?? `${DEFAULT_PAGES}`, 10);
   const pages = Number.isFinite(pagesRaw)
     ? Math.max(1, Math.min(MAX_PAGES, pagesRaw))
@@ -71,10 +71,14 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-  if (locale === routing.defaultLocale) {
+  // English needs no work: TMDB is an English-first catalog, so `en` is the
+  // SOURCE language now. This guard used to reject the default locale (`vi`)
+  // for exactly the opposite reason — the previous catalog was Vietnamese.
+  if (locale === 'en') {
     return NextResponse.json(
       {
-        error: `Locale '${locale}' is the default — nothing to translate. Use a non-default locale.`,
+        error:
+          "Locale 'en' is the source language — nothing to translate. Use a target locale such as 'vi'.",
       },
       { status: 400 }
     );

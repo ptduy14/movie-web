@@ -2,8 +2,9 @@
 
 import { Link } from 'i18n/routing';
 import { useLocale } from 'next-intl';
-import Movie from 'types/movie';
+import NewlyMovie from 'types/newly-movie';
 import MovieCollection from 'types/movie-collection';
+import { resolveImageUrl } from 'lib/tmdb-image';
 import Image from 'next/image';
 import RatingBadge from './badges/rating-badge';
 import QualityLangBadge from './badges/quality-lang-badge';
@@ -13,9 +14,14 @@ import MovieCardOverlay from './movie-card-overlay';
 import { preferredTitle, secondaryTitle, localizedCountry } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
 
-export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollection }) {
-  // MovieCollection lacks v1/home extension fields — narrow with type guard
-  const isMovieType = isMovie(movie);
+export default function RegularMovieItem({
+  movie,
+}: {
+  movie: NewlyMovie | MovieCollection;
+}) {
+  // MovieCollection (Firestore) lacks the catalog's extension fields — narrow
+  // with a type guard before reading any of them.
+  const isMovieType = isCatalogItem(movie);
   const locale = useLocale() as Locale;
   const primaryTitle = preferredTitle(movie.name, movie.origin_name, locale);
   const subTitle = secondaryTitle(movie.name, movie.origin_name, locale);
@@ -43,7 +49,7 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
             ~7 different pages — sizes takes the largest actual width seen
             across those contexts per breakpoint, never the narrowest. */}
         <Image
-          src={`${isMovieType ? process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url : movie.thumb_url}`}
+          src={resolveImageUrl(movie.thumb_url, 'poster')}
           fill={true}
           alt={movie.name}
           sizes="(max-width: 767px) 50vw, (max-width: 1023px) 25vw, 20vw"
@@ -109,8 +115,8 @@ export default function RegularMovieItem({ movie }: { movie: Movie | MovieCollec
   );
 }
 
-function isMovie(item: Movie | MovieCollection): item is Movie {
-  // Movie items (from OPhim list/detail endpoints) carry MongoDB `_id`;
+function isCatalogItem(item: NewlyMovie | MovieCollection): item is NewlyMovie {
+  // Catalog items carry the namespaced `_id` ("movie-68721");
   // MovieCollection (from Firestore) uses `id` instead.
-  return (item as Movie)._id !== undefined;
+  return (item as NewlyMovie)._id !== undefined;
 }

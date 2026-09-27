@@ -1,39 +1,56 @@
 'use server';
 
 import NewlyMovie from 'types/newly-movie';
-import MovieServices, { type MovieFilters } from 'services/movie-services';
-import { redirect } from 'i18n/routing';
+import DetailMovie from 'types/detail-movie';
 import { getLocale } from 'next-intl/server';
 import { localizeMovieContentsBatch } from 'services/movie-content-localizer';
 import { fetchMovieLogoUrl } from 'utils/tmdb-logo';
 import type { Locale } from 'i18n/routing';
+import {
+  browseByFormat,
+  browseByGenre,
+  browseByCountry,
+  searchTitles,
+  getTitleDetail,
+  getBecauseYouWatchedTitles,
+  type CatalogPage,
+} from 'services/catalog-service';
+import type { MovieFilters } from 'types/movie-filters';
 
-export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
+export type { MovieFilters, CatalogPage };
+
+/**
+ * Resolve full detail for a small set of list items — the hero carousel,
+ * which needs synopses the list endpoints don't carry.
+ *
+ * Failures are dropped rather than thrown: a hero with four slides is fine,
+ * a home page that 500s because one title 404'd is not.
+ */
+export async function getDetailMovieServerAction(movies: NewlyMovie[]): Promise<DetailMovie[]> {
   const locale = await getLocale();
-  const fetcher = movies.map((movie: NewlyMovie) => {
-    return MovieServices.getDetailMovie(movie.slug);
-  });
 
-  const detailMovies = await Promise.all(fetcher);
+  const settled = await Promise.allSettled(
+    movies.map((movie) => getTitleDetail(movie.slug, locale))
+  );
 
-  // Batched localization: 1 Groq call for ALL cache-miss movies in this set
-  // instead of N parallel calls (saves free-tier RPM quota).
-  // No-op when locale === 'vi'.
+  const detailMovies = settled
+    .filter(
+      (r): r is PromiseFulfilledResult<DetailMovie> =>
+        r.status === 'fulfilled' && r.value !== null
+    )
+    .map((r) => r.value);
+
+  // One batched translation call for every title still missing a synopsis in
+  // this locale, instead of one call per title.
   const items = detailMovies
-    .filter((d: any) => d?.movie?.content)
-    .map((d: any) => ({
-      movieId: d.movie._id,
-      content: d.movie.content,
-      sourceModifiedAt: d.movie.modified?.time ?? null,
-    }));
+    .filter((d) => d.movie.content)
+    .map((d) => ({ movieId: d.movie._id, content: d.movie.content }));
 
   const localizedMap = await localizeMovieContentsBatch(items, locale);
 
-  detailMovies.forEach((detail: any) => {
-    if (detail?.movie?.content) {
-      const localized = localizedMap.get(detail.movie._id);
-      if (localized) detail.movie.content = localized;
-    }
+  detailMovies.forEach((detail) => {
+    const localized = localizedMap.get(detail.movie._id);
+    if (localized) detail.movie.content = localized;
   });
 
   return detailMovies;
@@ -42,10 +59,9 @@ export async function getDetailMovieServerAction(movies: NewlyMovie[]) {
 /**
  * Resolve TMDB logo URLs for a batch of hero movies, keyed by movie slug.
  *
- * Each movie triggers one TMDB images request, fired in parallel. Missing or
- * failed lookups map to `null` so the component falls back to text. With Next
- * data cache disabled, this is a fresh fan-out per hero render — keep an eye
- * on Vercel function duration if the hero slide count grows.
+ * Each movie triggers one TMDB images request, fired in parallel and served
+ * from the Upstash cache on repeat views. Missing or failed lookups map to
+ * `null` so the component falls back to text.
  */
 export async function getHeroLogoUrlsServerAction(
   movies: NewlyMovie[]
@@ -59,48 +75,43 @@ export async function getHeroLogoUrlsServerAction(
   return map;
 }
 
-export async function getMoviesByFormat(slug: string, page: number, filters?: MovieFilters) {
-  const res = await MovieServices.getMoviesFormat(slug, page, filters);
-  return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
+export async function getMoviesByFormat(
+  slug: string,
+  page: number,
+  filters?: MovieFilters
+): Promise<CatalogPage> {
+  const locale = await getLocale();
+  return browseByFormat(slug, page, filters, locale);
 }
 
-export async function getMoviesByType(slug: string, page: number, filters?: MovieFilters) {
-  const res = await MovieServices.getMoviesType(slug, page, filters);
-  return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
+export async function getMoviesByType(
+  slug: string,
+  page: number,
+  filters?: MovieFilters
+): Promise<CatalogPage> {
+  const locale = await getLocale();
+  return browseByGenre(slug, page, filters, locale);
 }
 
-export async function getMoviesByCountry(slug: string, page: number, filters?: MovieFilters) {
-  try {
-    const res = await MovieServices.getMoviesCountry(slug, page, filters);
-
-    if (res.status === 'error') throw new Error('');
-
-    return { items: res.data.items, totalItems: res.data.params?.pagination?.totalItems ?? null };
-  } catch (error) {
-    const locale = await getLocale();
-    redirect({ href: '/', locale });
-  }
+export async function getMoviesByCountry(
+  slug: string,
+  page: number,
+  filters?: MovieFilters
+): Promise<CatalogPage> {
+  const locale = await getLocale();
+  return browseByCountry(slug, page, filters, locale);
 }
 
-export async function searchingMovie(slug: string) {
-  const res = await MovieServices.searchMovie(slug);
-  return res;
+export async function searchingMovie(query: string): Promise<CatalogPage> {
+  const locale = await getLocale();
+  return searchTitles(query, locale);
 }
 
 /**
- * "Because you watched" — given a watched movie's slug, resolve its first
- * genre (from the detail endpoint, since recent-movie records don't store
- * category) and return same-genre titles. Best-effort: any failure or a
- * categoryless movie yields an empty list so the rail hides.
+ * "Because you watched" — same-genre titles for a slug taken from watch
+ * history. Best-effort; an empty array hides the rail.
  */
-export async function getBecauseYouWatched(slug: string) {
-  try {
-    const detail = await MovieServices.getDetailMovie(slug);
-    const category = detail?.movie?.category?.[0];
-    if (!category?.slug) return [];
-    const res = await MovieServices.getMoviesType(category.slug, 1);
-    return res?.data?.items ?? [];
-  } catch {
-    return [];
-  }
+export async function getBecauseYouWatched(slug: string): Promise<NewlyMovie[]> {
+  const locale = await getLocale();
+  return getBecauseYouWatchedTitles(slug, locale);
 }
