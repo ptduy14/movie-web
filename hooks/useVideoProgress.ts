@@ -7,6 +7,22 @@ import { saveRecentMovie, getRecentMovie } from 'lib/recent-movies-storage';
 import { analytics } from 'lib/posthog/events';
 import type DetailMovie from 'types/detail-movie';
 import type { IRecentMovie } from 'types/recent-movie';
+import type { PlaybackSnapshot } from 'hooks/useVidsrcBridge';
+
+/**
+ * Watch-progress persistence.
+ *
+ * Playback lives in a cross-origin iframe now, so this reads a snapshot fed
+ * by `useVidsrcBridge` instead of touching a `<video>` element. The storage
+ * behaviour is unchanged: localStorage every 20s for everyone, Firestore
+ * every 60s for signed-in users, plus force-syncs on pause, tab-hide and
+ * unload.
+ *
+ * One real consequence of the iframe: progress arrives roughly every five
+ * seconds rather than continuously, so a saved position can lag actual
+ * playback by up to that much. That is well inside the tolerance of a
+ * "resume where you left off" prompt.
+ */
 
 /** Extract resume-prompt fields. Returns null when no usable progress. */
 function toRestoredProgress(entry: IRecentMovie | null): {
@@ -36,7 +52,8 @@ export interface RestoredProgress {
 
 export interface UseVideoProgressOptions {
   movie: DetailMovie;
-  videoRef: React.RefObject<HTMLVideoElement | null>;
+  /** Latest playback snapshot from the vidsrc bridge. */
+  playbackRef: React.RefObject<PlaybackSnapshot>;
   episodeIndex: number;
   episodeLink: string;
   serverIndex: number;
@@ -52,11 +69,13 @@ export interface UseVideoProgressReturn {
   handleRejectResume: () => void;
   setVideoProgress: React.Dispatch<React.SetStateAction<number | null>>;
   videoProgress: number | null;
+  /** Call from the bridge's status handler so a pause force-syncs. */
+  handlePlaybackPaused: () => void;
 }
 
 export function useVideoProgress({
   movie,
-  videoRef,
+  playbackRef,
   episodeIndex,
   episodeLink,
   serverIndex,
@@ -85,12 +104,17 @@ export function useVideoProgress({
 
   const hasRestoredRef = useRef(false);
 
+  /**
+   * Guard against resuming into an episode that no longer exists — a series
+   * can gain or lose seasons between visits. Matches on the embed URL, which
+   * is what episode records now store.
+   */
   const isValidEpisodeLink = useCallback(
     (link: string) => {
       if (!link) return false;
       for (const ep of movie.episodes || []) {
         for (const s of ep.server_data || []) {
-          if (s?.link_m3u8 === link) return true;
+          if (s?.link_embed === link) return true;
         }
       }
       return false;
@@ -101,7 +125,7 @@ export function useVideoProgress({
   /** Single shape used for both localStorage and Firestore writes. */
   const buildRecentMovieEntry = useCallback(
     (time: number): IRecentMovie => {
-      const rawDuration = videoRef.current?.duration;
+      const rawDuration = playbackRef.current?.duration;
       const validDuration =
         typeof rawDuration === 'number' && isFinite(rawDuration) && rawDuration > 0
           ? rawDuration
@@ -120,7 +144,7 @@ export function useVideoProgress({
         progressDuration: validDuration,
       };
     },
-    [movie.movie, videoRef]
+    [movie.movie, playbackRef]
   );
 
   const saveToLocalStorage = useCallback(
@@ -193,43 +217,36 @@ export function useVideoProgress({
     return () => clearTimeout(t);
   }, [movieId, user, isValidEpisodeLink]);
 
+  const isPlaying = useCallback(
+    () => playbackRef.current?.status === 'playing' && playbackRef.current.currentTime > 0,
+    [playbackRef]
+  );
+
   // Auto-save to localStorage every 20s (guest + auth).
   useEffect(() => {
     const id = setInterval(() => {
-      const video = videoRef.current;
-      if (video && !video.paused && video.currentTime > 0) {
-        saveToLocalStorage(video.currentTime);
-      }
+      if (isPlaying()) saveToLocalStorage(playbackRef.current!.currentTime);
     }, LS_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [saveToLocalStorage, videoRef]);
+  }, [saveToLocalStorage, isPlaying, playbackRef]);
 
   // Auto-sync to Firestore every 60s (auth only).
   useEffect(() => {
     if (!user) return;
     const id = setInterval(() => {
-      const video = videoRef.current;
-      if (video && !video.paused && video.currentTime > 0) {
-        syncToFirestore(video.currentTime);
-      }
+      if (isPlaying()) syncToFirestore(playbackRef.current!.currentTime);
     }, FS_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [user, syncToFirestore, videoRef]);
+  }, [user, syncToFirestore, isPlaying, playbackRef]);
 
-  // Force-sync on pause.
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handlePause = () => {
-      const time = video.currentTime;
-      if (time > 0) forceSyncRef.current(time);
-    };
-
-    video.addEventListener('pause', handlePause);
-    return () => video.removeEventListener('pause', handlePause);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [videoRef]);
+  /**
+   * Force-sync on pause. The iframe has no `pause` DOM event to listen for,
+   * so the watch page routes the bridge's status transition here instead.
+   */
+  const handlePlaybackPaused = useCallback(() => {
+    const time = playbackRef.current?.currentTime ?? 0;
+    if (time > 0) forceSyncRef.current(time);
+  }, [playbackRef]);
 
   // Force-sync on visibility hide / page hide / SPA unmount.
   useEffect(() => {
@@ -239,7 +256,7 @@ export function useVideoProgress({
       const now = Date.now();
       if (now - lastSavedAt < 2000) return;
       lastSavedAt = now;
-      const time = videoRef.current?.currentTime ?? 0;
+      const time = playbackRef.current?.currentTime ?? 0;
       if (time > 0) forceSyncRef.current(time);
     };
 
@@ -250,7 +267,7 @@ export function useVideoProgress({
     // pagehide: auth → sendBeacon (survives tab close), guest → sync localStorage.
     const handlePageHide = () => {
       const currentUser = userRef.current;
-      const time = videoRef.current?.currentTime ?? 0;
+      const time = playbackRef.current?.currentTime ?? 0;
       if (time <= 0) return;
 
       if (currentUser) {
@@ -273,7 +290,7 @@ export function useVideoProgress({
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('pagehide', handlePageHide);
-      const time = videoRef.current?.currentTime ?? 0;
+      const time = playbackRef.current?.currentTime ?? 0;
       if (time > 0) saveRecentMovie(buildRecentMovieEntry(time));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -284,7 +301,7 @@ export function useVideoProgress({
 
     if (setServerIndex && movie.episodes) {
       for (let i = 0; i < movie.episodes.length; i++) {
-        const found = movie.episodes[i].server_data?.some((s) => s?.link_m3u8 === epLink);
+        const found = movie.episodes[i].server_data?.some((s) => s?.link_embed === epLink);
         if (found) {
           setServerIndex(i);
           break;
@@ -294,6 +311,8 @@ export function useVideoProgress({
 
     setEpisodeIndex(epIdx);
     setEpisodeLink(epLink);
+    // The player cannot be seeked from outside, so resuming means rebuilding
+    // the embed URL with `?startAt=` — which remounts the iframe.
     setVideoProgress(position);
     setIsShowResumePrompt(false);
     analytics.resumeAccepted(movieId, position);
@@ -311,5 +330,6 @@ export function useVideoProgress({
     handleRejectResume,
     setVideoProgress,
     videoProgress,
+    handlePlaybackPaused,
   };
 }
