@@ -22,7 +22,7 @@ interface MovieCardOverlayProps {
   episodeCurrent?: string;
   categories?: Category[];
   countries?: Country[];
-  /** Raw duration string from OPhim, e.g. "45 phút/tập" or "117 Phút". May be "? phút/tập". */
+  /** Duration label from the catalog, e.g. "45 phút/tập" or "117 Phút". */
   time?: string;
   imdb?: Imdb;
   tmdb?: Tmdb;

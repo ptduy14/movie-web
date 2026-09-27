@@ -5,7 +5,8 @@ import Image from 'next/image';
 /**
  * Cast member card — now clickable.
  *
- * OPhim has no person/filmography endpoint and its in-app search is title-only
+ * The site has no person pages: search is title-only, so a cast member
+ * links out to TMDB rather than to a filmography we don't render
  * (searching an actor name dead-ends), so we link out to TMDB for a real
  * filmography: credited cast → the person page, bare-name actors → a TMDB
  * person search. Opens in a new tab.

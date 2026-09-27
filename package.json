@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "migrate:firestore": "node --env-file=.env scripts/migrate-firestore-collections.js",
-    "migrate:firestore:dry": "node --env-file=.env scripts/migrate-firestore-collections.js --dry-run"
+    "migrate:firestore:dry": "node --env-file=.env scripts/migrate-firestore-collections.js --dry-run",
+    "wipe:legacy": "node --env-file=.env scripts/wipe-legacy-collections.js",
+    "wipe:legacy:confirm": "node --env-file=.env scripts/wipe-legacy-collections.js --confirm"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -12,7 +12,6 @@ const nextConfig = {
     loader: 'custom',
     loaderFile: './image-loader.ts',
     remotePatterns: [
-      { protocol: 'https', hostname: 'img.ophim.live' },
       { protocol: 'https', hostname: 'image.tmdb.org' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
     ],

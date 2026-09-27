@@ -59,13 +59,13 @@
 
 ## 📖 About The Project
 
-**MovieX** is a full-featured, production-ready movie streaming web app built with **Next.js 14 (App Router)**. It delivers a Netflix-style browsing experience with secure authentication, smooth HLS video playback, cross-device watch-progress sync, and an **AI-powered translation pipeline** that automatically localizes movie metadata into multiple languages.
+**MovieX** is a full-featured, production-ready movie streaming web app built with **Next.js 14 (App Router)**. It delivers a Netflix-style browsing experience with secure authentication, embedded video playback, cross-device watch-progress sync, and an **AI-powered translation pipeline** that fills in movie synopses wherever the catalog has no official translation.
 
 ### Why MovieX?
 
 - ⚡ **Built on the modern Next.js App Router** — server components, streaming SSR, and locale-prefixed routes for SEO.
 - 🤖 **AI-driven internationalization** — uses the **Groq LLM API** (Llama 3.3 70B) inside a Vercel Cron job to batch-translate movie content, so users in any locale see fully localized titles and descriptions without manual work.
-- 📺 **Real HLS streaming** with adaptive bitrate via `hls.js`, episode selection, and per-server fallbacks.
+- 📺 **Streaming playback** through the VidSrc embed, with season and episode selection driven by TMDB.
 - ☁️ **Firebase-backed user data** — auth, Firestore for collections/comments/notifications, and persistent watch-progress sync across devices.
 - 🌍 **Truly multilingual UX** — locale-aware routing with `next-intl`, language switcher, and localized date/number formatting.
 
@@ -75,7 +75,7 @@
 
 ### 🎥 Streaming & Playback
 
-- **HLS adaptive streaming** with custom-built video player
+- **Embedded player** with resume, watch-progress sync and playback analytics over `postMessage`
 - **Episode navigation** for series with multiple seasons
 - **Multi-server fallback** — switch between mirror sources when one fails
 - **Resume where you left off** — watch progress is auto-saved and synced
@@ -121,7 +121,8 @@
 | **State Management**     | [Redux Toolkit](https://redux-toolkit.js.org/), [redux-persist](https://github.com/rt2zz/redux-persist), React Context                                                                            |
 | **Forms & Validation**   | [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/), [@hookform/resolvers](https://github.com/react-hook-form/resolvers)                                                     |
 | **Backend & Data**       | [Firebase Auth](https://firebase.google.com/products/auth), [Cloud Firestore](https://firebase.google.com/products/firestore), [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup) |
-| **Video**                | [hls.js](https://github.com/video-dev/hls.js/) for adaptive HLS streaming                                                                                                                         |
+| **Catalog**              | [TMDB](https://www.themoviedb.org/) for metadata, artwork and search                                                                                                                             |
+| **Video**                | [VidSrc](https://vidsrc.sh/) embed for playback                                                                                                                                                  |
 | **AI / Translation**     | [Groq SDK](https://groq.com/) running [Llama 3.3 70B](https://ai.meta.com/llama/)                                                                                                                 |
 | **Internationalization** | [next-intl](https://next-intl-docs.vercel.app/)                                                                                                                                                   |
 | **External APIs**        | [TMDB API](https://developer.themoviedb.org/docs) for metadata                                                                                                                                    |
@@ -199,8 +200,10 @@ NEXT_PUBLIC_TMDB_ACCESS_TOKEN=your_tmdb_v4_access_token
 NEXT_PUBLIC_TMDB_IMG_DOMAIN=https://image.tmdb.org
 
 # ── Movie content source (bring your own) ─────────────────────
-NEXT_PUBLIC_API_DOMAIN=https://your-movie-api.example.com
-NEXT_PUBLIC_IMG_DOMAIN=https://your-image-cdn.example.com/
+NEXT_PUBLIC_VIDSRC_DOMAIN=https://vidsrc.sh
+# Apply an iframe sandbox to the player. Leave false until verified against
+# the provider's anti-sandbox check — see docs/vidsrc-migration-plan.md.
+NEXT_PUBLIC_VIDSRC_SANDBOX=false
 
 # ── AI translation (optional, only if cron is enabled) ────────
 GROQ_API_KEY=your_groq_api_key
@@ -276,7 +279,7 @@ movie-web/
 ## 🗺 Roadmap
 
 - [x] Authentication & user profiles
-- [x] HLS video playback with episode selection
+- [x] Embedded video playback with season and episode selection
 - [x] Watch progress sync across devices
 - [x] AI-powered batch translation pipeline
 - [x] Comments & notifications

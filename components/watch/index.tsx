@@ -36,7 +36,9 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
 
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
-  const seasons = movie.episodes ?? [];
+  // Memoized so the `??` doesn't hand every callback below a fresh array
+  // identity on each render, which would rebuild them all every time.
+  const seasons = useMemo(() => movie.episodes ?? [], [movie.episodes]);
   const isMultiEpisode = isHaveEpisodesMovie(movie);
   const mediaType = (movie.movie.tmdb?.type ?? 'movie') as MediaType;
 

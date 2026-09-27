@@ -86,6 +86,11 @@ export default async function Movie({ params }: MoviePageParams) {
     }
   }
 
+  // True when TMDB had no synopsis in this locale and we fell back to the
+  // English text — the only case where the reader is looking at machine
+  // translation and deserves to be told.
+  const aiTranslated = Boolean(movie.movie.content) && movie.movie.content_lang !== params.locale;
+
   // Fill in the synopsis when TMDB had no translation for this locale.
   if (movie.movie.content) {
     movie.movie.content = await getLocalizedMovieContent(
@@ -105,6 +110,7 @@ export default async function Movie({ params }: MoviePageParams) {
       images={images}
       logoUrl={logoUrl}
       relatedMovies={relatedMovies}
+      aiTranslated={aiTranslated}
     />
   );
 }
