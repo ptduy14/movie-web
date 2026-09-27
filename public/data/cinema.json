@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-26T05:21:08.185Z",
+  "updated_at": "2026-09-27T05:37:21.690Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 8.6,
+          "rating": 7.8,
           "trailer": "job8V254NAE"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Trái Tim Quái Thú",
           "release_date": "2026-09-25",
           "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 7.7,
+          "rating": 7.6,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 7.8,
+          "rating": 7.9,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -144,11 +144,19 @@
           "trailer": "YBIfz76BYiY"
         },
         {
+          "id": 1630030,
+          "title": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
+          "release_date": "2026-09-18",
+          "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
+          "rating": 5.5,
+          "trailer": null
+        },
+        {
           "id": 1302904,
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.3,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -166,14 +174,6 @@
           "poster_path": "/63rh0wf63v7XBTPfijuyqoZBQDZ.jpg",
           "rating": 8,
           "trailer": "mvpFrJ5O2Ww"
-        },
-        {
-          "id": 1492461,
-          "title": "Mãi Nợ Một Lời Tạm Biệt",
-          "release_date": "2026-09-11",
-          "poster_path": "/T4Nd669fQbgk3VNxkMhs7I3txd.jpg",
-          "rating": null,
-          "trailer": "ck5rOLF1u98"
         },
         {
           "id": 1751285,
@@ -194,15 +194,15 @@
           "title": "NAZA",
           "release_date": "2026-09-30",
           "poster_path": "/uLsG2CW8oHnmXWdtPyruSegI8rF.jpg",
-          "rating": null,
-          "trailer": null
+          "rating": 7,
+          "trailer": "YIBRLEEaueo"
         },
         {
           "id": 1393326,
           "title": "Ghost in the Cell",
           "release_date": "2026-10-02",
           "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
-          "rating": 7.1,
+          "rating": 7.2,
           "trailer": "otL78_pk_A0"
         },
         {
@@ -210,7 +210,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 8.6,
+          "rating": 7.8,
           "trailer": "job8V254NAE"
         },
         {
@@ -254,20 +254,20 @@
           "trailer": "-mnTITqqiT0"
         },
         {
-          "id": 1375156,
-          "title": "Udta Teer",
-          "release_date": "2026-10-09",
-          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
           "poster_path": "/hDe0OryfBINwmZDRtQjnh6UKUJf.jpg",
           "rating": null,
           "trailer": "R8ANzYpaZaY"
+        },
+        {
+          "id": 1375156,
+          "title": "Udta Teer",
+          "release_date": "2026-10-09",
+          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1391021,
@@ -282,7 +282,7 @@
           "title": "Fjord",
           "release_date": "2026-10-09",
           "poster_path": "/3PPPIeSdeivjUn3O9RahGiaJ9b8.jpg",
-          "rating": 7.2,
+          "rating": 7.1,
           "trailer": "frg59VOungA"
         }
       ],
@@ -292,7 +292,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.9,
+          "rating": 7.6,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -300,7 +300,7 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 7.6,
+          "rating": 7.9,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -308,8 +308,16 @@
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 7,
+          "rating": 7.1,
           "trailer": "C0NZa01qTRU"
+        },
+        {
+          "id": 1384514,
+          "title": "The Vvaan",
+          "release_date": "2026-09-25",
+          "poster_path": "/fygsmzrKBGV3O4ky6l26wKF8QBA.jpg",
+          "rating": 9.4,
+          "trailer": null
         },
         {
           "id": 1423191,
@@ -324,7 +332,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
-          "rating": 7.2,
+          "rating": 7,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -332,7 +340,7 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.3,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -358,14 +366,6 @@
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
           "rating": 6.2,
           "trailer": "Krs0VDIjhmE"
-        },
-        {
-          "id": 1204680,
-          "title": "Coyote vs. Acme",
-          "release_date": "2026-08-28",
-          "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
-          "rating": 7.6,
-          "trailer": "kMsiD1Nky5I"
         }
       ]
     }
