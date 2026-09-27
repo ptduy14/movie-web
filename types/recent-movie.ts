@@ -6,7 +6,8 @@ export interface IRecentMovie {
   name: string;
   origin_name: string;
   lang: string;
-  quality: string;
+  /** Absent when the source never reported one — the badge hides itself. */
+  quality?: string;
   // Watch progress fields — populated as the user watches; absent for entries
   // created on a first-time visit before the player has saved any position.
   progressTime?: number;
