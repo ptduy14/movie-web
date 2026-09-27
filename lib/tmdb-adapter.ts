@@ -325,6 +325,12 @@ export interface AdaptDetailOptions {
   mediaType: MediaType;
   /** YouTube key from `getTrailerKey`. */
   trailerKey?: string | null;
+  /**
+   * Overview text to use instead of `detail.overview`, with the language it
+   * is written in. The catalog supplies this when TMDB had no translation in
+   * the requested locale and it fell back to English.
+   */
+  overrideContent?: { text: string; lang: string };
 }
 
 /** Full TMDB detail → `DetailMovie` (the shape the detail and watch pages take). */
@@ -376,7 +382,8 @@ export function adaptDetail(detail: TmdbDetail, opts: AdaptDetailOptions): Detai
     country: toCountries(countries, locale),
     actor: cast.slice(0, 20).map((c) => c.name),
     director: crew.filter((c) => c.job === 'Director').map((c) => c.name),
-    content: detail.overview ?? '',
+    content: opts.overrideContent?.text ?? detail.overview ?? '',
+    content_lang: opts.overrideContent?.lang ?? locale,
     trailer_url: trailerKey ? `https://www.youtube.com/watch?v=${trailerKey}` : '',
   };
 

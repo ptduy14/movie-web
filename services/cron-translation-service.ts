@@ -1,22 +1,47 @@
 import 'server-only';
-import MovieServices from './movie-services';
+import { createHash } from 'crypto';
 import { getCachedTranslation, saveCachedTranslation } from './firebase-translation-service';
 import { translateMovieContentsBatch } from './groq-translation-service';
 import { getCronProgress, saveCronProgress } from './cron-progress-service';
+import { discover, TmdbError } from './tmdb-catalog-service';
+import { availabilityMap } from './vidsrc-availability';
+import { mediaId } from 'lib/media-key';
+import type { MediaType } from 'constants/tmdb-taxonomy';
 import type { CronProgress, CronRunResult } from 'types/cron-meta';
+import type { TmdbListItem } from 'types/tmdb-api';
 
-const PAGE_SIZE = 24; // matches OPhim default for /v1/api/danh-sach/phim-moi
+/**
+ * Pre-warms the Vietnamese synopsis cache.
+ *
+ * TMDB translates the popular end of its catalog itself; the long tail comes
+ * back with an empty `overview` for vi-VN. Those are the titles this job
+ * translates ahead of time, so a visitor who lands on one doesn't wait on a
+ * Groq round trip mid-render.
+ *
+ * Direction note: under the previous catalog this ran Vietnamese → English.
+ * TMDB supplies English, so it now runs English → Vietnamese and the DEFAULT
+ * locale is the one that needs filling in. `vi` is the only meaningful target
+ * today; `en` needs nothing.
+ *
+ * Walk strategy: TMDB discover, ordered by popularity, movies and series
+ * alternating page by page. Popularity order matters — it means the titles
+ * most likely to be opened get a synopsis first, and an interrupted walk
+ * still leaves the catalog better off than it found it.
+ */
+
+/** TMDB pages hold 20 results. */
+const PAGE_SIZE = 20;
 const TIMEOUT_BUFFER_MS = 50_000; // give up before Vercel hobby's 60s ceiling
 
 /**
- * The movie API is unreachable, or answered with something that isn't the JSON
- * we asked for (an HTML 404/5xx page, a challenge, a proxy error).
+ * TMDB is unreachable, or answered with something that isn't the JSON we
+ * asked for.
  *
- * Split out from ordinary errors on purpose: an upstream that is down is not a
- * failure of this job. It makes the run report `skipped` (HTTP 200) instead of
- * `failed` (HTTP 500), so the scheduler doesn't go red every hour over someone
- * else's outage — and it stops the batch immediately rather than retrying the
- * next page against the same dead host.
+ * Split out from ordinary errors on purpose: an upstream that is down is not
+ * a failure of this job. It makes the run report `skipped` (HTTP 200) instead
+ * of `failed` (HTTP 500), so the scheduler doesn't go red over someone else's
+ * outage — and it stops the batch immediately rather than retrying the next
+ * page against the same dead host.
  */
 export class UpstreamUnavailableError extends Error {
   constructor(message: string) {
@@ -25,361 +50,216 @@ export class UpstreamUnavailableError extends Error {
   }
 }
 
-interface OPhimListItem {
-  _id: string;
-  slug: string;
-  modified?: { time: string };
+function hashSource(content: string): string {
+  return createHash('sha1').update(content).digest('hex').slice(0, 16);
 }
 
-interface OPhimDetailItem {
-  movie?: {
-    _id: string;
-    content?: string;
-    modified?: { time: string };
-  };
+/** Alternate media types across pages so neither starves the other. */
+function mediaTypeForPage(page: number): MediaType {
+  return page % 2 === 1 ? 'movie' : 'tv';
+}
+
+/** TMDB page number for our page cursor, given the alternating walk. */
+function tmdbPageForPage(page: number): number {
+  return Math.floor((page - 1) / 2) + 1;
+}
+
+interface PageOutcome {
+  itemsSeen: number;
+  cacheHits: number;
+  translated: number;
+  failed: number;
+  totalPages: number;
 }
 
 /**
- * Run a translation cron batch for a single locale.
+ * Process one cursor page: fetch the same TMDB page in both languages, find
+ * the titles with no Vietnamese synopsis, translate them in one Groq call.
  *
- * High-level algorithm:
- *   1. Read persisted progress (`lastPage`, totals, etc.).
- *   2. Determine page window to process [lastPage+1 ... lastPage+pageCount],
- *      wrapping back to 1 when the catalog ends.
- *   3. For each page:
- *      a. Fetch list from OPhim → 24 items with `_id`, `slug`, `modified.time`.
- *      b. Cache lookup in parallel; identify which movies are missing or stale.
- *      c. For misses: fetch the detail endpoint to get `content` (parallel).
- *      d. Send all misses' contents in ONE batched Groq call.
- *      e. Save translations to Firestore (parallel writes).
- *      f. Persist progress so a crash leaves us at a safe checkpoint.
- *   4. Stop early if approaching the 60s Vercel timeout.
- *   5. Return a structured summary for monitoring.
- *
- * Cost behaviour:
- *   - Cache-aware: pages where every movie is already translated cost 0
- *     Groq calls (only Firestore reads).
- *   - One Groq call per page max, regardless of how many movies are missing
- *     (1..24).
- *   - OPhim list + detail fetches are unbounded but free.
+ * Two discover calls per page (vi-VN and en-US) is what makes this cheap. The
+ * alternative — asking TMDB per title whether a Vietnamese overview exists —
+ * would be one request per item instead of two per twenty.
  */
-export async function runCronBatch(locale: string, pageCount: number): Promise<CronRunResult> {
-  const startTime = Date.now();
+async function processPage(page: number, locale: string): Promise<PageOutcome> {
+  const mediaType = mediaTypeForPage(page);
+  const tmdbPage = tmdbPageForPage(page);
 
-  if (locale === 'vi') {
-    return {
-      locale,
-      startPage: 0,
-      endPage: 0,
-      pagesProcessed: 0,
-      itemsSeen: 0,
-      cacheHits: 0,
-      translated: 0,
-      failed: 0,
-      durationMs: 0,
-      status: 'success',
-      message: 'Skipped: vi is the source language, nothing to translate.',
-    };
+  let localized: { results: TmdbListItem[]; total_pages: number };
+  let english: { results: TmdbListItem[]; total_pages: number };
+  try {
+    [localized, english] = await Promise.all([
+      discover({ mediaType, locale, page: tmdbPage }),
+      discover({ mediaType, locale: 'en', page: tmdbPage }),
+    ]);
+  } catch (err) {
+    throw new UpstreamUnavailableError(
+      err instanceof TmdbError ? `TMDB ${err.status} on ${err.path}` : 'TMDB request failed'
+    );
   }
 
-  const progress = await getCronProgress(locale);
+  const englishById = new Map(english.results.map((r) => [r.id, r]));
+  const totalPages = localized.total_pages * 2; // two cursor pages per TMDB page
 
-  // Determine starting page. Wrap to 1 when we've cycled past the end so the
-  // cron keeps catching newly-added or recently-modified movies.
-  let nextPage =
-    progress.totalPages > 0 && progress.lastPage >= progress.totalPages ? 1 : progress.lastPage + 1;
-  const startPage = nextPage;
+  if (localized.results.length === 0) {
+    return { itemsSeen: 0, cacheHits: 0, translated: 0, failed: 0, totalPages };
+  }
 
+  // Only spend quota on titles that can actually be played. Translating a
+  // synopsis nobody can reach is pure cost.
+  const playable = await availabilityMap(
+    mediaType,
+    localized.results.map((r) => r.id)
+  );
+
+  const candidates = localized.results.filter((item) => {
+    if (playable.get(String(item.id)) === false) return false;
+    // A non-empty localized overview means TMDB already has it — nothing to do.
+    if (item.overview) return false;
+    return Boolean(englishById.get(item.id)?.overview);
+  });
+
+  const itemsSeen = localized.results.length;
+  if (candidates.length === 0) {
+    return { itemsSeen, cacheHits: itemsSeen, translated: 0, failed: 0, totalPages };
+  }
+
+  const probes = await Promise.all(
+    candidates.map(async (item) => {
+      const id = mediaId(mediaType, item.id);
+      const source = englishById.get(item.id)!.overview!;
+      const sourceHash = hashSource(source);
+      const cached = await getCachedTranslation(id, locale);
+      return { id, source, sourceHash, isFresh: cached?.sourceHash === sourceHash };
+    })
+  );
+
+  const misses = probes.filter((p) => !p.isFresh);
+  const cacheHits = itemsSeen - misses.length;
+
+  if (misses.length === 0) {
+    return { itemsSeen, cacheHits, translated: 0, failed: 0, totalPages };
+  }
+
+  let translatedMap: Map<string, string>;
+  try {
+    translatedMap = await translateMovieContentsBatch(
+      misses.map((m) => ({ id: m.id, content: m.source })),
+      locale,
+      'en'
+    );
+  } catch (err: any) {
+    console.warn(`[cron-translation] page ${page}: Groq batch failed:`, err.message);
+    return { itemsSeen, cacheHits, translated: 0, failed: misses.length, totalPages };
+  }
+
+  let failed = 0;
+  await Promise.all(
+    misses.map((m) => {
+      const content = translatedMap.get(m.id);
+      if (!content) {
+        failed += 1;
+        return Promise.resolve();
+      }
+      return saveCachedTranslation(m.id, locale, {
+        content,
+        translatedAt: Date.now(),
+        sourceHash: m.sourceHash,
+        sourceLang: 'en',
+      });
+    })
+  );
+
+  return { itemsSeen, cacheHits, translated: misses.length - failed, failed, totalPages };
+}
+
+/**
+ * Run a batch for a single locale.
+ *
+ *   1. Read the persisted cursor.
+ *   2. Process `pageCount` pages from there, wrapping to 1 at the end of the
+ *      catalog.
+ *   3. Checkpoint after every page, so a crash resumes rather than restarts.
+ *   4. Stop early when close to the function timeout.
+ */
+export async function runCronBatch(locale: string, pageCount: number): Promise<CronRunResult> {
+  const startedAt = Date.now();
+  const progress: CronProgress = await getCronProgress(locale);
+
+  const startPage = progress.lastPage + 1;
+  let page = startPage;
   let pagesProcessed = 0;
   let itemsSeen = 0;
   let cacheHits = 0;
   let translated = 0;
   let failed = 0;
-  let lastError: string | null = null;
-  let upstreamDown = false;
-  let totalPages = progress.totalPages;
-  let totalItems = progress.totalItems;
+  let totalPages = progress.totalPages || 0;
+  let status: CronProgress['lastRunStatus'] = 'success';
+  let message: string | undefined;
 
-  for (let i = 0; i < pageCount; i++) {
-    if (Date.now() - startTime > TIMEOUT_BUFFER_MS) {
-      lastError = 'Stopped early to avoid Vercel timeout';
-      break;
-    }
-
-    try {
-      const pageResult = await processPage(locale, nextPage);
-      itemsSeen += pageResult.itemsSeen;
-      cacheHits += pageResult.cacheHits;
-      translated += pageResult.translated;
-      failed += pageResult.failed;
-
-      if (pageResult.totalItems > 0) {
-        totalItems = pageResult.totalItems;
-        totalPages = Math.ceil(totalItems / PAGE_SIZE);
+  try {
+    for (let i = 0; i < pageCount; i++) {
+      if (Date.now() - startedAt > TIMEOUT_BUFFER_MS) {
+        status = 'partial';
+        message = 'stopped early to stay under the function timeout';
+        break;
       }
 
-      // Successful page → advance pointer + persist immediately
-      const advancedPage = nextPage;
-      nextPage = advancedPage + 1;
+      const outcome = await processPage(page, locale);
+
       pagesProcessed += 1;
+      itemsSeen += outcome.itemsSeen;
+      cacheHits += outcome.cacheHits;
+      translated += outcome.translated;
+      failed += outcome.failed;
+      if (outcome.totalPages) totalPages = outcome.totalPages;
 
-      const updated: CronProgress = {
+      // Checkpoint before advancing, so an interrupted run resumes on the
+      // page after the last one that actually completed.
+      await saveCronProgress(locale, {
         ...progress,
-        lastPage: advancedPage >= totalPages && totalPages > 0 ? totalPages : advancedPage,
+        lastPage: page,
         totalPages,
-        totalItems,
-        totalProcessed: progress.totalProcessed + pageResult.itemsSeen,
-        totalTranslated: progress.totalTranslated + pageResult.translated,
-        totalSkippedCache: progress.totalSkippedCache + pageResult.cacheHits,
+        totalItems: totalPages * PAGE_SIZE,
+        totalProcessed: progress.totalProcessed + itemsSeen,
+        totalTranslated: progress.totalTranslated + translated,
+        totalSkippedCache: progress.totalSkippedCache + cacheHits,
         lastRunAt: Date.now(),
-        lastRunStatus: 'success',
+        lastRunStatus: status,
         lastError: null,
-      };
-      // Mutate progress so subsequent iterations see the new lifetime totals
-      progress.totalProcessed = updated.totalProcessed;
-      progress.totalTranslated = updated.totalTranslated;
-      progress.totalSkippedCache = updated.totalSkippedCache;
-      progress.lastPage = updated.lastPage;
-      progress.totalPages = updated.totalPages;
-      progress.totalItems = updated.totalItems;
-      await saveCronProgress(locale, updated);
+      });
 
-      // Wrap to page 1 if we hit the end
-      if (totalPages > 0 && nextPage > totalPages) {
-        nextPage = 1;
-      }
-    } catch (err: any) {
-      lastError = err.message ?? String(err);
-
-      if (err instanceof UpstreamUnavailableError) {
-        // Nothing to retry — every remaining page would hit the same dead host.
-        upstreamDown = true;
-        console.warn(`[cron-translation-service] movie API unavailable, stopping run:`, lastError);
-      } else {
-        console.warn(`[cron-translation-service] page ${nextPage} failed:`, lastError);
-        failed += 1;
-      }
-      break;
+      // TMDB caps discover at 500 pages regardless of total_pages, so the
+      // walk wraps well before the catalog "ends".
+      page = page + 1 > Math.min(totalPages || Infinity, 1000) ? 1 : page + 1;
+    }
+  } catch (err: any) {
+    if (err instanceof UpstreamUnavailableError) {
+      status = 'skipped';
+      message = err.message;
+    } else {
+      status = 'failed';
+      message = err?.message ?? 'unknown error';
+      await saveCronProgress(locale, {
+        ...progress,
+        lastPage: Math.max(startPage - 1, progress.lastPage),
+        lastRunAt: Date.now(),
+        lastRunStatus: 'failed',
+        lastError: message ?? null,
+      });
     }
   }
-
-  // Final progress write capturing terminal status. `skipped` (upstream down,
-  // nothing translated) is reported separately from `failed` (our bug) so the
-  // API route can answer 200 instead of 500.
-  const status: CronProgress['lastRunStatus'] = !lastError
-    ? 'success'
-    : pagesProcessed > 0
-      ? 'partial'
-      : upstreamDown
-        ? 'skipped'
-        : 'failed';
-
-  await saveCronProgress(locale, {
-    ...progress,
-    lastRunAt: Date.now(),
-    lastRunStatus: status,
-    lastError,
-  });
 
   return {
     locale,
     startPage,
-    endPage: nextPage - 1 < startPage ? startPage : nextPage - 1,
+    endPage: Math.max(page - 1, startPage - 1),
     pagesProcessed,
     itemsSeen,
     cacheHits,
     translated,
     failed,
-    durationMs: Date.now() - startTime,
+    durationMs: Date.now() - startedAt,
     status,
-    message: lastError ?? undefined,
-  };
-}
-
-interface PageResult {
-  itemsSeen: number;
-  cacheHits: number;
-  translated: number;
-  failed: number;
-  totalItems: number; // from pagination — propagates to global totals
-}
-
-/**
- * Process exactly one OPhim list page for the target locale.
- *
- * Steps:
- *   1. Fetch the list page (24 items, no `content`).
- *   2. Probe Firestore cache for each item in parallel.
- *   3. For cache misses: fetch detail endpoint in parallel to get `content`.
- *   4. Batched Groq call for all (movieId, content) pairs that need work.
- *   5. Persist each translated item to Firestore (parallel best-effort).
- */
-async function processPage(locale: string, page: number): Promise<PageResult> {
-  let list: any;
-  try {
-    list = await MovieServices.getNewMovies(page, PAGE_SIZE);
-  } catch (err: any) {
-    // `MovieServices` calls `res.json()` unguarded, so a non-JSON body (an HTML
-    // 404 page, a proxy error) surfaces here as a SyntaxError rather than a
-    // network error. Either way the upstream gave us nothing usable.
-    throw new UpstreamUnavailableError(`movie API list page ${page}: ${err?.message ?? err}`);
-  }
-
-  if (list?.status !== 'success') {
-    throw new UpstreamUnavailableError(`movie API list page ${page} returned non-success status`);
-  }
-
-  const items: OPhimListItem[] = list?.data?.items ?? [];
-  const totalItems: number = list?.data?.params?.pagination?.totalItems ?? 0;
-
-  if (items.length === 0) {
-    return { itemsSeen: 0, cacheHits: 0, translated: 0, failed: 0, totalItems };
-  }
-
-  // 1. Cache probe — find cache hits vs misses
-  const cacheChecks = await Promise.all(
-    items.map(async (it) => {
-      const cached = await getCachedTranslation(it._id, locale);
-      const sourceModifiedAt = it.modified?.time ?? null;
-      const isFresh =
-        !!cached &&
-        (cached.sourceModifiedAt === sourceModifiedAt ||
-          (cached.sourceModifiedAt == null && sourceModifiedAt == null));
-      return { item: it, cached, isFresh };
-    })
-  );
-
-  const misses = cacheChecks.filter((c) => !c.isFresh).map((c) => c.item);
-  const cacheHits = items.length - misses.length;
-
-  if (misses.length === 0) {
-    return {
-      itemsSeen: items.length,
-      cacheHits,
-      translated: 0,
-      failed: 0,
-      totalItems,
-    };
-  }
-
-  // 2. Fetch detail (for `content` field) for misses, in parallel
-  const detailFetches = await Promise.all(
-    misses.map(async (m) => {
-      try {
-        const detail: OPhimDetailItem = await MovieServices.getDetailMovie(m.slug);
-        return { item: m, detail };
-      } catch (err: any) {
-        console.warn(`[cron-translation-service] detail fetch failed for ${m.slug}:`, err.message);
-        return { item: m, detail: null };
-      }
-    })
-  );
-
-  // Filter to those with NON-EMPTY content. Empty `<p></p>` or whitespace-only
-  // content gives Groq nothing to translate; skip rather than waste a slot
-  // in the batch.
-  const toTranslate = detailFetches
-    .filter((d) => {
-      const c = d.detail?.movie?.content;
-      if (!c) return false;
-      // Strip HTML tags to check if there's actual text
-      const stripped = c.replace(/<[^>]*>/g, '').trim();
-      return stripped.length > 0;
-    })
-    .map((d) => ({
-      movieId: d.item._id,
-      slug: d.item.slug,
-      content: d.detail!.movie!.content!,
-      sourceModifiedAt: d.item.modified?.time ?? null,
-    }));
-
-  // Diagnose detail-fetch / empty-content failures so we can see them in logs
-  const detailFailedItems = misses.filter((m) => !toTranslate.find((t) => t.movieId === m._id));
-  if (detailFailedItems.length > 0) {
-    console.log(
-      `[cron-translation-service] page ${page}: ${detailFailedItems.length} movies skipped (no content / fetch failed):`,
-      detailFailedItems.map((m) => m.slug)
-    );
-  }
-
-  const detailFailed = detailFailedItems.length;
-
-  if (toTranslate.length === 0) {
-    return {
-      itemsSeen: items.length,
-      cacheHits,
-      translated: 0,
-      failed: detailFailed,
-      totalItems,
-    };
-  }
-
-  // 3. ONE batched Groq call for all misses on this page
-  let translatedMap: Map<string, string>;
-  try {
-    translatedMap = await translateMovieContentsBatch(
-      toTranslate.map((t) => ({ id: t.movieId, content: t.content })),
-      locale
-    );
-  } catch (err: any) {
-    console.warn(`[cron-translation-service] batch translate failed on page ${page}:`, err.message);
-    return {
-      itemsSeen: items.length,
-      cacheHits,
-      translated: 0,
-      failed: detailFailed + toTranslate.length,
-      totalItems,
-    };
-  }
-
-  // 3b. Retry
-  const missingFromBatch = toTranslate.filter((t) => !translatedMap.has(t.movieId));
-  if (missingFromBatch.length > 0) {
-    console.log(
-      `[cron-translation-service] page ${page}: Groq omitted ${missingFromBatch.length} entries, retrying:`,
-      missingFromBatch.map((m) => m.slug)
-    );
-    try {
-      const retryMap = await translateMovieContentsBatch(
-        missingFromBatch.map((t) => ({ id: t.movieId, content: t.content })),
-        locale
-      );
-      retryMap.forEach((v, k) => translatedMap.set(k, v));
-    } catch (err: any) {
-      console.warn(`[cron-translation-service] retry batch failed on page ${page}:`, err.message);
-      // Non-fatal — those items remain unsaved and will be retried next cron run
-    }
-  }
-
-  // 4. Persist each translation (parallel best-effort)
-  let GroqFailed = 0;
-  const writes = toTranslate.map((t) => {
-    const content = translatedMap.get(t.movieId);
-    if (!content) {
-      GroqFailed += 1;
-      return Promise.resolve();
-    }
-    return saveCachedTranslation(t.movieId, locale, {
-      content,
-      translatedAt: Date.now(),
-      sourceModifiedAt: t.sourceModifiedAt,
-    });
-  });
-  await Promise.all(writes);
-
-  const translated = toTranslate.length - GroqFailed;
-
-  if (GroqFailed > 0) {
-    console.log(
-      `[cron-translation-service] page ${page}: ${GroqFailed} entries still missing after retry — will be picked up by next cron run`
-    );
-  }
-
-  return {
-    itemsSeen: items.length,
-    cacheHits,
-    translated,
-    failed: detailFailed + GroqFailed,
-    totalItems,
+    message,
   };
 }

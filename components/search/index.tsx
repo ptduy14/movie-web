@@ -1,7 +1,7 @@
 'use client';
 import { searchingMovie } from 'app/actions';
 import { useEffect, useState } from 'react';
-import Movie from 'types/movie';
+import NewlyMovie from 'types/newly-movie';
 import { isNotNull } from 'utils/movie-utils';
 import RegularMovieItem from '../commons/regular-movie-item';
 import LoadingSpinner from '../loading/loading-spinner';
@@ -16,7 +16,7 @@ export default function SearchMoviePage({
   movieName: string;
   suggestions: SearchSuggestion[];
 }) {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<NewlyMovie[]>([]);
   // Seed the spinner true when arriving with a query in the URL so we don't
   // flash the "no results" state before the first fetch resolves.
   const [isFetching, setIsFetching] = useState<boolean>(isNotNull(movieName));
@@ -28,7 +28,7 @@ export default function SearchMoviePage({
       if (isNotNull(movieName)) {
         setIsFetching(true);
         const res = await searchingMovie(movieName);
-        const items = res.data.items;
+        const items = res.items;
         setMovies(items);
         setIsFetching(false);
         analytics.searchPerformed(movieName, items?.length ?? 0);
@@ -54,7 +54,7 @@ export default function SearchMoviePage({
         </div>
       ) : hasQuery && movies.length !== 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6 mt-8 lg:mt-14">
-          {movies.map((movie: Movie, index: number) => (
+          {movies.map((movie: NewlyMovie, index: number) => (
             <RegularMovieItem movie={movie} key={index} />
           ))}
         </div>

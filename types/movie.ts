@@ -24,5 +24,14 @@ export default interface Movie extends NewlyMovie{
     actor: string[],
     director: string[],
     content: string,
+    /**
+     * Which language `content` is actually in.
+     *
+     * TMDB answers a vi-VN request with an empty overview when no Vietnamese
+     * translation exists, in which case the catalog falls back to the English
+     * text. Recording that here lets the localizer decide whether a machine
+     * translation is needed instead of guessing from the text itself.
+     */
+    content_lang?: string,
     trailer_url: string,
 }

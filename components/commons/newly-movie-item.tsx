@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl';
 import Movie from 'types/movie';
 import NewlyMovie from 'types/newly-movie';
 import Image from 'next/image';
+import { resolveImageUrl } from 'lib/tmdb-image';
 import RatingBadge from './badges/rating-badge';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
@@ -46,7 +47,7 @@ export default function NewlyMovieItem({ movie }: { movie: NewlyMovie | Movie })
       */}
       <div className="relative w-full aspect-[2/3] overflow-hidden rounded isolate">
         <Image
-          src={process.env.NEXT_PUBLIC_IMG_DOMAIN + movie.thumb_url}
+          src={resolveImageUrl(movie.thumb_url, 'poster')}
           fill={true}
           alt={movie.name}
           sizes="(max-width: 640px) 45vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"

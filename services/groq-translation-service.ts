@@ -4,6 +4,11 @@ import Groq from 'groq-sdk';
 /**
  * Groq-backed translation service — the sole translation provider.
  *
+ * Direction: English -> Vietnamese (and, in principle, any pair in
+ * `LOCALE_LANGUAGE_NAMES`). It ran the other way round under the previous
+ * catalog, which supplied Vietnamese text and needed English; TMDB supplies
+ * English and the Vietnamese site is what needs filling in.
+ *
  * Why Groq (and not Groq / HuggingFace):
  *   - Groq free tier: 20 RPD on `Groq-2.5-flash-lite` — too low for cron.
  *   - HuggingFace free tier: shrinking credits + translation models destroy
@@ -27,6 +32,7 @@ if (!GROQ_API_KEY) {
 const groq = GROQ_API_KEY ? new Groq({ apiKey: GROQ_API_KEY }) : null;
 
 const LOCALE_LANGUAGE_NAMES: Record<string, string> = {
+  vi: 'Vietnamese',
   en: 'English',
   ja: 'Japanese',
   ko: 'Korean',
@@ -46,7 +52,8 @@ export interface BatchTranslationItem {
  */
 export async function translateMovieContentsBatch(
   items: BatchTranslationItem[],
-  targetLocale: string
+  targetLocale: string,
+  sourceLocale: string = 'en'
 ): Promise<Map<string, string>> {
   if (!groq) {
     throw new Error('Groq client not initialized — check GROQ_API_KEY');
@@ -57,10 +64,14 @@ export async function translateMovieContentsBatch(
   if (!targetLanguage) {
     throw new Error(`Unsupported translation target: ${targetLocale}`);
   }
+  const sourceLanguage = LOCALE_LANGUAGE_NAMES[sourceLocale] ?? 'English';
+  if (sourceLocale === targetLocale) {
+    throw new Error(`Refusing to translate ${sourceLocale} into itself`);
+  }
 
   const inputJson = JSON.stringify(items.map((it) => ({ id: it.id, content: it.content })));
 
-  const systemPrompt = `You translate Vietnamese movie synopses to ${targetLanguage}.
+  const systemPrompt = `You translate ${sourceLanguage} movie synopses to ${targetLanguage}.
 Rules:
 - Output ONLY a JSON object: {"results": [{"id": "<id>", "content": "<translated>"}, ...]}.
 - Translate naturally, like a real movie description.
@@ -114,9 +125,14 @@ Rules:
 export async function translateMovieContent(
   movieId: string,
   content: string,
-  targetLocale: string
+  targetLocale: string,
+  sourceLocale: string = 'en'
 ): Promise<string> {
-  const map = await translateMovieContentsBatch([{ id: movieId, content }], targetLocale);
+  const map = await translateMovieContentsBatch(
+    [{ id: movieId, content }],
+    targetLocale,
+    sourceLocale
+  );
   const out = map.get(movieId);
   if (!out) {
     throw new Error('Groq returned no content for single-item translation');

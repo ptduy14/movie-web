@@ -1,73 +1,78 @@
 /**
- * Hardcoded display name mappings for OPhim API data, keyed by slug.
+ * Display names for catalog taxonomy, keyed by slug.
  *
- * OPhim returns Vietnamese names directly in API responses (`category[].name`,
- * `country[].name`, `lang`, etc.). To support en (or future locales) without
- * a translation API, we map the canonical slug to a localized display name.
+ * The catalog speaks TMDB genre ids and ISO country codes;
+ * `constants/tmdb-taxonomy.ts` turns those into stable slugs, and this file
+ * turns slugs into words a person reads. TMDB does return localized genre
+ * names, but they arrive with a "Phim " prefix on every entry ("Phim Hành
+ * Động", "Phim Hài") which reads badly in a chip, so we keep our own.
  *
  * Pattern:
  *   localizedCategory('hanh-dong', 'en') → 'Action'
  *   localizedCategory('hanh-dong', 'vi') → 'Hành Động'
  *   localizedCategory('unknown-slug', 'en') → 'unknown-slug' (fallback)
  *
- * Add new entries when OPhim introduces new categories/countries.
- * Add new locales by extending the inner objects.
+ * Keep the keys in sync with `MOVIE_GENRE_SLUG_TO_ID` / `TV_GENRE_SLUG_TO_ID`
+ * and `COUNTRY_SLUG_TO_ISO`. A missing entry degrades to the raw slug rather
+ * than throwing, so a new TMDB genre shows up as readable-ish text until
+ * someone names it here.
  */
 
 import type { Locale } from 'i18n/routing';
 
 // ============================================================================
 // CATEGORIES (genres)
-// Slugs are stable across OPhim — derived from URL paths /v1/api/the-loai/<slug>
 // ============================================================================
 export const CATEGORY_MAP: Record<Locale, Record<string, string>> = {
   vi: {
     'hanh-dong': 'Hành Động',
-    'co-trang': 'Cổ Trang',
-    'vien-tuong': 'Viễn Tưởng',
-    'kinh-di': 'Kinh Dị',
-    'tai-lieu': 'Tài Liệu',
-    'bi-an': 'Bí Ẩn',
-    'phim-18': 'Phim 18+',
-    'tinh-cam': 'Tình Cảm',
-    'tam-ly': 'Tâm Lý',
-    'the-thao': 'Thể Thao',
     'phieu-luu': 'Phiêu Lưu',
-    'am-nhac': 'Âm Nhạc',
-    'gia-dinh': 'Gia Đình',
-    'hoc-duong': 'Học Đường',
+    'hoat-hinh': 'Hoạt Hình',
     'hai-huoc': 'Hài Hước',
-    'vo-thuat': 'Võ Thuật',
-    'khoa-hoc': 'Khoa Học',
-    'than-thoai': 'Thần Thoại',
-    'chinh-kich': 'Chính Kịch',
-    'kinh-dien': 'Kinh Điển',
     'hinh-su': 'Hình Sự',
-    'short-drama': 'Short Drama',
+    'tai-lieu': 'Tài Liệu',
+    'chinh-kich': 'Chính Kịch',
+    'gia-dinh': 'Gia Đình',
+    'gia-tuong': 'Giả Tưởng',
+    'lich-su': 'Lịch Sử',
+    'kinh-di': 'Kinh Dị',
+    'am-nhac': 'Âm Nhạc',
+    'bi-an': 'Bí Ẩn',
+    'tinh-cam': 'Tình Cảm',
+    'vien-tuong': 'Viễn Tưởng',
+    'gay-can': 'Gay Cấn',
+    'chien-tranh': 'Chiến Tranh',
+    'mien-tay': 'Miền Tây',
+    'thieu-nhi': 'Thiếu Nhi',
+    'thoi-su': 'Thời Sự',
+    'truyen-hinh-thuc-te': 'Truyền Hình Thực Tế',
+    'phim-dai': 'Phim Dài Tập',
+    talkshow: 'Talkshow',
   },
   en: {
     'hanh-dong': 'Action',
-    'co-trang': 'Period',
-    'vien-tuong': 'Sci-Fi',
-    'kinh-di': 'Horror',
-    'tai-lieu': 'Documentary',
-    'bi-an': 'Mystery',
-    'phim-18': '18+',
-    'tinh-cam': 'Romance',
-    'tam-ly': 'Drama',
-    'the-thao': 'Sports',
     'phieu-luu': 'Adventure',
-    'am-nhac': 'Music',
-    'gia-dinh': 'Family',
-    'hoc-duong': 'School',
+    'hoat-hinh': 'Animation',
     'hai-huoc': 'Comedy',
-    'vo-thuat': 'Martial Arts',
-    'khoa-hoc': 'Science',
-    'than-thoai': 'Mythology',
-    'chinh-kich': 'Drama',
-    'kinh-dien': 'Classic',
     'hinh-su': 'Crime',
-    'short-drama': 'Short Drama',
+    'tai-lieu': 'Documentary',
+    'chinh-kich': 'Drama',
+    'gia-dinh': 'Family',
+    'gia-tuong': 'Fantasy',
+    'lich-su': 'History',
+    'kinh-di': 'Horror',
+    'am-nhac': 'Music',
+    'bi-an': 'Mystery',
+    'tinh-cam': 'Romance',
+    'vien-tuong': 'Sci-Fi',
+    'gay-can': 'Thriller',
+    'chien-tranh': 'War',
+    'mien-tay': 'Western',
+    'thieu-nhi': 'Kids',
+    'thoi-su': 'News',
+    'truyen-hinh-thuc-te': 'Reality',
+    'phim-dai': 'Soap',
+    talkshow: 'Talk Show',
   },
 };
 
@@ -76,80 +81,80 @@ export const CATEGORY_MAP: Record<Locale, Record<string, string>> = {
 // ============================================================================
 export const COUNTRY_MAP: Record<Locale, Record<string, string>> = {
   vi: {
-    'trung-quoc': 'Trung Quốc',
+    'viet-nam': 'Việt Nam',
+    'hoa-ky': 'Hoa Kỳ',
     'han-quoc': 'Hàn Quốc',
+    'trung-quoc': 'Trung Quốc',
     'nhat-ban': 'Nhật Bản',
     'thai-lan': 'Thái Lan',
-    'au-my': 'Âu Mỹ',
     'dai-loan': 'Đài Loan',
     'hong-kong': 'Hồng Kông',
     'an-do': 'Ấn Độ',
     anh: 'Anh',
     phap: 'Pháp',
-    canada: 'Canada',
-    'quoc-gia-khac': 'Quốc Gia Khác',
     duc: 'Đức',
+    y: 'Ý',
     'tay-ban-nha': 'Tây Ban Nha',
+    canada: 'Canada',
+    uc: 'Úc',
+    nga: 'Nga',
     'tho-nhi-ky': 'Thổ Nhĩ Kỳ',
     'ha-lan': 'Hà Lan',
     indonesia: 'Indonesia',
-    nga: 'Nga',
-    mexico: 'Mexico',
-    'ba-lan': 'Ba Lan',
-    uc: 'Úc',
-    'thuy-dien': 'Thụy Điển',
-    malaysia: 'Malaysia',
-    brazil: 'Brazil',
     philippines: 'Philippines',
-    'bo-dao-nha': 'Bồ Đào Nha',
-    y: 'Ý',
+    malaysia: 'Malaysia',
+    singapore: 'Singapore',
+    mexico: 'Mexico',
+    brazil: 'Brazil',
+    'ba-lan': 'Ba Lan',
+    'thuy-dien': 'Thụy Điển',
     'dan-mach': 'Đan Mạch',
-    uae: 'UAE',
     'na-uy': 'Na Uy',
     'thuy-si': 'Thụy Sĩ',
-    'chau-phi': 'Châu Phi',
+    'bo-dao-nha': 'Bồ Đào Nha',
     'nam-phi': 'Nam Phi',
     ukraina: 'Ukraina',
     'a-rap-xe-ut': 'Ả Rập Xê Út',
-    'viet-nam': 'Việt Nam',
+    uae: 'UAE',
+    argentina: 'Argentina',
   },
   en: {
-    'trung-quoc': 'China',
+    'viet-nam': 'Vietnam',
+    'hoa-ky': 'United States',
     'han-quoc': 'South Korea',
+    'trung-quoc': 'China',
     'nhat-ban': 'Japan',
     'thai-lan': 'Thailand',
-    'au-my': 'US/Europe',
     'dai-loan': 'Taiwan',
     'hong-kong': 'Hong Kong',
     'an-do': 'India',
     anh: 'United Kingdom',
     phap: 'France',
-    canada: 'Canada',
-    'quoc-gia-khac': 'Other',
     duc: 'Germany',
+    y: 'Italy',
     'tay-ban-nha': 'Spain',
+    canada: 'Canada',
+    uc: 'Australia',
+    nga: 'Russia',
     'tho-nhi-ky': 'Turkey',
     'ha-lan': 'Netherlands',
     indonesia: 'Indonesia',
-    nga: 'Russia',
-    mexico: 'Mexico',
-    'ba-lan': 'Poland',
-    uc: 'Australia',
-    'thuy-dien': 'Sweden',
-    malaysia: 'Malaysia',
-    brazil: 'Brazil',
     philippines: 'Philippines',
-    'bo-dao-nha': 'Portugal',
-    y: 'Italy',
+    malaysia: 'Malaysia',
+    singapore: 'Singapore',
+    mexico: 'Mexico',
+    brazil: 'Brazil',
+    'ba-lan': 'Poland',
+    'thuy-dien': 'Sweden',
     'dan-mach': 'Denmark',
-    uae: 'UAE',
     'na-uy': 'Norway',
     'thuy-si': 'Switzerland',
-    'chau-phi': 'Africa',
+    'bo-dao-nha': 'Portugal',
     'nam-phi': 'South Africa',
     ukraina: 'Ukraine',
     'a-rap-xe-ut': 'Saudi Arabia',
-    'viet-nam': 'Vietnam',
+    uae: 'UAE',
+    argentina: 'Argentina',
   },
 };
 
@@ -172,12 +177,17 @@ export const FORMAT_MAP: Record<Locale, Record<string, string>> = {
 };
 
 // ============================================================================
-// MOVIE LANGUAGE LABELS (Vietsub / Thuyết Minh / Lồng Tiếng)
-// OPhim returns these as raw strings in `movie.lang`. Match against the
-// raw string and produce a localized version.
+// AUDIO / SUBTITLE LABELS
+//
+// The playback provider serves original audio with subtitles — there is no
+// Vietnamese dub or voiceover in its catalog. `lang` is therefore always
+// 'Phụ đề'. The older Vietsub / Thuyết Minh / Lồng Tiếng entries are kept so
+// that watch-history records written before the migration still render a
+// sensible chip instead of raw Vietnamese on the English site.
 // ============================================================================
 export const LANG_MAP: Record<Locale, Record<string, string>> = {
   vi: {
+    'Phụ đề': 'Phụ đề',
     Vietsub: 'Vietsub',
     'Thuyết Minh': 'Thuyết Minh',
     'Lồng Tiếng': 'Lồng Tiếng',
@@ -185,6 +195,7 @@ export const LANG_MAP: Record<Locale, Record<string, string>> = {
     'Vietsub + Lồng Tiếng': 'Vietsub + Lồng Tiếng',
   },
   en: {
+    'Phụ đề': 'Subtitled',
     Vietsub: 'Subbed',
     'Thuyết Minh': 'Voiceover',
     'Lồng Tiếng': 'Dubbed',
@@ -217,8 +228,11 @@ export function localizedLang(rawLang: string, locale: Locale): string {
 
 // ============================================================================
 // PATTERN-BASED LOCALIZERS
-// OPhim returns predictable Vietnamese strings for `time` and `episode_current`.
-// We localize them via deterministic regex replacement → no API call cost.
+//
+// The adapter emits duration and episode-status strings in Vietnamese
+// ("130 Phút", "45 phút/tập", "Hoàn tất (73/73)", "Tập 8") because Vietnamese
+// is the site's primary locale. These turn them into English by deterministic
+// replacement — no API call, no translation quota.
 // ============================================================================
 
 /**
@@ -226,7 +240,6 @@ export function localizedLang(rawLang: string, locale: Locale): string {
  *
  *   "45 phút/tập"        → "45 min/ep"
  *   "117 Phút"           → "117 mins"
- *   "? phút/tập"         → "? min/ep"
  *   "1 giờ 30 phút"      → "1 hr 30 min"
  *
  * Returns the original string unchanged for `vi` locale or unrecognized formats.
@@ -250,9 +263,7 @@ export function localizedTime(time: string | undefined, locale: Locale): string 
  * Localize episode status strings.
  *
  *   "Tập 4"                  → "Ep 4"
- *   "Tập đặc biệt"           → "Special"
  *   "Hoàn tất (10/10)"       → "Completed (10/10)"
- *   "Trailer"                → "Trailer" (universal, kept as-is)
  *   "Full"                   → "Full" (universal)
  *
  * Returns original on locale `vi` or no pattern match.
@@ -275,21 +286,32 @@ export function localizedEpisodeCurrent(
 }
 
 /**
- * Pick the locale-appropriate movie display title.
+ * Localize a season label produced by the adapter ("Phần 1" → "Season 1").
+ */
+export function localizedSeason(seasonName: string | undefined, locale: Locale): string {
+  if (!seasonName) return '';
+  if (locale === 'vi') return seasonName;
+  return seasonName.replace(/^Phần\s+(\d+)$/i, 'Season $1');
+}
+
+/**
+ * The title shown as the primary label on a card.
  *
- * Strategy: avoid spending Groq API quota on translating titles. Instead,
- * for non-vi locales prefer `origin_name` (already in the source language for
- * most movies — "Your Friends & Neighbors", "The Bangkok Red Opera", etc.).
+ * TMDB already returns a locale-appropriate title — `title`/`name` come back
+ * translated when a translation exists and fall back to the original
+ * otherwise. So the right primary title is simply `name`, for every locale.
  *
- * Returns the raw `name` for `vi` locale or when `origin_name` is missing.
+ * This used to prefer `origin_name` on non-`vi` locales, because the previous
+ * provider only ever returned Vietnamese in `name`. Doing that against TMDB
+ * would actively regress the English site: it would show "기생충" where TMDB
+ * had already supplied "Parasite".
  */
 export function preferredTitle(
   name: string,
   origin_name: string | undefined,
-  locale: Locale
+  _locale: Locale
 ): string {
-  if (locale === 'vi') return name;
-  return origin_name?.trim() || name;
+  return name?.trim() || origin_name || '';
 }
 
 /**
@@ -297,21 +319,15 @@ export function preferredTitle(
  * (newly / regular / continue-watching). Hero + detail pages have their own
  * subtitle logic — see those files.
  *
- * Locale-asymmetric by design:
- *  - `vi`: returns `origin_name` (the original-language title) so Vietnamese
- *    viewers see the source-language alt name as context — useful for
- *    recognizing the movie from its international title.
- *  - `en` and other non-vi locales: returns empty. English-speaking viewers
- *    don't gain meaningful context from a Vietnamese alt name in a small
- *    card, and the bilingual stack adds visual noise to the grid. Callers
- *    already gate render with `subTitle && ...`, so this just suppresses the
- *    `<div>` entirely.
+ * Returns the original-language title when it differs from what is already
+ * on screen, and nothing when it would just repeat it. Showing "Parasite /
+ * Parasite" is noise; showing "Ký Sinh Trùng / Parasite" is context.
  */
 export function secondaryTitle(
   name: string,
   origin_name: string | undefined,
-  locale: Locale
+  _locale: Locale
 ): string {
-  if (locale === 'vi') return origin_name ?? '';
-  return '';
+  if (!origin_name) return '';
+  return origin_name.trim() === name?.trim() ? '' : origin_name;
 }

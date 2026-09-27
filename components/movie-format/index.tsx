@@ -3,16 +3,16 @@
 import { useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import Movie from 'types/movie';
+import NewlyMovie from 'types/newly-movie';
 import RegularMovieItem from '../commons/regular-movie-item';
 import { getMoviesByFormat } from 'app/actions';
 import { useInfinitePagination } from 'hooks/useInfinitePagination';
 import { MovieGridLoadMoreSkeleton } from '../commons/movie-grid-skeleton';
 import InfiniteScrollSentinel from '../commons/infinite-scroll-sentinel';
-import MovieFilterBar, { parseSort } from '../commons/movie-filter-bar';
+import MovieFilterBar from '../commons/movie-filter-bar';
 import { localizedFormat } from 'constants/i18n-mappings';
 import type { Locale } from 'i18n/routing';
-import type { MovieFilters } from 'services/movie-services';
+import type { MovieFilters } from 'types/movie-filters';
 
 export default function MovieFormatPage({ slug }: { slug: string }) {
   const locale = useLocale() as Locale;
@@ -28,18 +28,15 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
         category: category || undefined,
         country: country || undefined,
         year: year || undefined,
-        ...parseSort(sort),
+        sort: sort || undefined,
       };
-      return getMoviesByFormat(slug, page, filters) as Promise<{
-        items: Movie[];
-        totalItems: number | null;
-      }>;
+      return getMoviesByFormat(slug, page, filters);
     },
     [slug, category, country, year, sort]
   );
 
   const { items: movies, totalItems, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
-    useInfinitePagination<Movie>({
+    useInfinitePagination<NewlyMovie>({
       fetcher,
       resetKey: `${slug}|${category}|${country}|${year}|${sort}`,
     });
@@ -59,7 +56,7 @@ export default function MovieFormatPage({ slug }: { slug: string }) {
       ) : (
         <div className="mt-6 lg:mt-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 container-wrapper px-4 sm:px-6 md:px-8 lg:px-0">
-            {movies.map((movie: Movie, index: number) => (
+            {movies.map((movie: NewlyMovie, index: number) => (
               <RegularMovieItem movie={movie} key={`${movie._id}-${index}`} />
             ))}
           </div>

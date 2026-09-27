@@ -8,8 +8,17 @@ const DEFAULT_PAGE_SIZE = 24; // OPhim default totalItemsPerPage
 /**
  * A fetcher may return a bare items array, or `{ items, totalItems }` to also
  * surface the catalog-wide total (used for the "N titles" header count).
+ *
+ * `hasMore` overrides the "a short page means the end" heuristic. Browse
+ * pages need it because they drop titles the playback provider can't serve:
+ * a page can come back half-empty and still have twenty more pages behind
+ * it, which the heuristic would read as the end of the list.
  */
-export type PaginatedFetch<T> = { items: T[]; totalItems?: number | null };
+export type PaginatedFetch<T> = {
+  items: T[];
+  totalItems?: number | null;
+  hasMore?: boolean;
+};
 
 export interface UseInfinitePaginationOptions<T> {
   /**
@@ -113,10 +122,16 @@ export function useInfinitePagination<T>({
           setTotalItems(result.totalItems);
         }
 
+        const reportedHasMore = Array.isArray(result) ? undefined : result.hasMore;
+
         if (!data || data.length === 0) {
-          setHasMore(false);
+          // An explicit `hasMore: true` still wins here — a page can filter
+          // down to nothing and yet have more pages behind it. The sentinel
+          // then asks for the next page instead of declaring the end.
+          setHasMore(reportedHasMore === true);
         } else {
-          if (data.length < pageSize) setHasMore(false);
+          if (typeof reportedHasMore === 'boolean') setHasMore(reportedHasMore);
+          else if (data.length < pageSize) setHasMore(false);
           setItems((prev) => (isInitial ? data : [...prev, ...data]));
         }
       } catch (err) {
