@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T05:37:21.690Z",
+  "updated_at": "2026-09-28T05:45:04.234Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -108,7 +108,7 @@
           "title": "Trái Tim Quái Thú",
           "release_date": "2026-09-25",
           "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 7.6,
+          "rating": 7.7,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 7.9,
+          "rating": 8,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -156,7 +156,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.2,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -238,14 +238,6 @@
           "trailer": "o_pIiP1A0RY"
         },
         {
-          "id": 1596303,
-          "title": "The Last First: Winter K2",
-          "release_date": "2026-10-02",
-          "poster_path": "/6pavyVdI2z7PlOUwB7nlnhLRSgl.jpg",
-          "rating": null,
-          "trailer": "zgGpyr5MFK8"
-        },
-        {
           "id": 1400837,
           "title": "Other Mommy",
           "release_date": "2026-10-09",
@@ -278,12 +270,20 @@
           "trailer": "iHDNxZF7LRw"
         },
         {
-          "id": 1401459,
-          "title": "Fjord",
-          "release_date": "2026-10-09",
-          "poster_path": "/3PPPIeSdeivjUn3O9RahGiaJ9b8.jpg",
-          "rating": 7.1,
-          "trailer": "frg59VOungA"
+          "id": 1153576,
+          "title": "Street Fighter",
+          "release_date": "2026-10-16",
+          "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
+          "rating": null,
+          "trailer": "U6sbm1OaJb8"
+        },
+        {
+          "id": 1422041,
+          "title": "La bola negra",
+          "release_date": "2026-10-16",
+          "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
+          "rating": 8.2,
+          "trailer": "IRHtqjHYPew"
         }
       ],
       "now_playing": [
@@ -292,16 +292,8 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.6,
+          "rating": 7.7,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Forgotten Island",
-          "release_date": "2026-09-25",
-          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 7.9,
-          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1375441,
@@ -312,12 +304,12 @@
           "trailer": "C0NZa01qTRU"
         },
         {
-          "id": 1384514,
-          "title": "The Vvaan",
+          "id": 1465063,
+          "title": "Forgotten Island",
           "release_date": "2026-09-25",
-          "poster_path": "/fygsmzrKBGV3O4ky6l26wKF8QBA.jpg",
-          "rating": 9.4,
-          "trailer": null
+          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
+          "rating": 8.1,
+          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1423191,
@@ -331,7 +323,7 @@
           "id": 1228834,
           "title": "The Fix",
           "release_date": "2026-09-11",
-          "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
+          "poster_path": "/9iSkee8DPpwBQI3GhXSTGZJKNYM.jpg",
           "rating": 7,
           "trailer": "l5Luvr9TRRc"
         },
@@ -356,7 +348,7 @@
           "title": "Runner",
           "release_date": "2026-09-07",
           "poster_path": "/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-          "rating": 7.6,
+          "rating": 7.7,
           "trailer": "B6Z9MM1LhEA"
         },
         {
@@ -366,6 +358,14 @@
           "poster_path": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
           "rating": 6.2,
           "trailer": "Krs0VDIjhmE"
+        },
+        {
+          "id": 1204680,
+          "title": "Coyote vs. Acme",
+          "release_date": "2026-08-28",
+          "poster_path": "/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
+          "rating": 7.6,
+          "trailer": "kMsiD1Nky5I"
         }
       ]
     }
