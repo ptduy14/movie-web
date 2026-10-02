@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T06:25:11.592Z",
+  "updated_at": "2026-10-02T06:03:38.605Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -30,12 +30,28 @@
           "trailer": "iPm7HfO3mis"
         },
         {
+          "id": 1623376,
+          "title": "Blue Lock: Cuộc Chiến Của Những Tiền Đạo",
+          "release_date": "2026-10-09",
+          "poster_path": "/taGdDDoNzBYbcucNWXpNQopGHkg.jpg",
+          "rating": 9,
+          "trailer": null
+        },
+        {
           "id": 1749884,
           "title": "Án Mạng Xém Hoàn Hảo",
           "release_date": "2026-10-09",
           "poster_path": "/2IBPaHSc0YY55mI9fSyCfcoKi8V.jpg",
           "rating": null,
           "trailer": null
+        },
+        {
+          "id": 1248832,
+          "title": "Digger",
+          "release_date": "2026-10-16",
+          "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
+          "rating": 7.7,
+          "trailer": "job8V254NAE"
         },
         {
           "id": 1153576,
@@ -84,7 +100,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 7.3,
+          "rating": 7.8,
           "trailer": "job8V254NAE"
         },
         {
@@ -92,14 +108,14 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 7,
+          "rating": 6.9,
           "trailer": "xdPMKhjMSFs"
         },
         {
           "id": 1319525,
-          "title": "จีบซ้ำซ้ำ เฮนรี่จำไม่ได้",
+          "title": "Quyết Cua Anh Này",
           "release_date": "2026-10-02",
-          "poster_path": "/qlw9WtySGW6AUdbkwgWUltvIAf3.jpg",
+          "poster_path": "/lFrDNCEspkTMYt6Z81LCyW8eZIl.jpg",
           "rating": 6,
           "trailer": "q1xP2WQyn-E"
         },
@@ -190,28 +206,12 @@
           "trailer": "R8ANzYpaZaY"
         },
         {
-          "id": 1375156,
-          "title": "Udta Teer",
-          "release_date": "2026-10-09",
-          "poster_path": "/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1391021,
           "title": "Once Upon a Time in the Middle East",
           "release_date": "2026-10-09",
           "poster_path": "/wAuGgXjA7GV8NrKfmUKl2AP8vqG.jpg",
           "rating": 9,
           "trailer": "iHDNxZF7LRw"
-        },
-        {
-          "id": 1572116,
-          "title": "Monster Mia",
-          "release_date": "2026-10-09",
-          "poster_path": "/rEIgF9W6OXJiHpM1fXLVVMqQlfF.jpg",
-          "rating": 9.5,
-          "trailer": "CbqDABPksnw"
         },
         {
           "id": 1422041,
@@ -234,7 +234,7 @@
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.7,
+          "rating": 7.8,
           "trailer": "mcrwcvad84U"
         },
         {
@@ -260,6 +260,22 @@
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
           "rating": null,
           "trailer": "KCR-rz0YfD4"
+        },
+        {
+          "id": 1483525,
+          "title": "Possible Love",
+          "release_date": "2026-10-23",
+          "poster_path": "/fA66iCvHkxFbicOExARWCKB1fvE.jpg",
+          "rating": 9,
+          "trailer": "zd3qXH9qN70"
+        },
+        {
+          "id": 1437696,
+          "title": "Fatherland",
+          "release_date": "2026-10-23",
+          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
+          "rating": 7.3,
+          "trailer": "52zHLYf25M0"
         }
       ],
       "now_playing": [
@@ -268,7 +284,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.3,
+          "rating": 7.8,
           "trailer": "job8V254NAE"
         },
         {
@@ -276,7 +292,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/dGSsPovyUW5XVekXcy7F2GyhTEh.jpg",
-          "rating": 7.2,
+          "rating": 6.9,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -300,7 +316,7 @@
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 7.1,
+          "rating": 7,
           "trailer": "C0NZa01qTRU"
         },
         {
@@ -324,7 +340,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/9iSkee8DPpwBQI3GhXSTGZJKNYM.jpg",
-          "rating": 7.1,
+          "rating": 7.2,
           "trailer": "l5Luvr9TRRc"
         },
         {
