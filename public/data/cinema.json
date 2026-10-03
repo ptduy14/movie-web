@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T06:03:38.605Z",
+  "updated_at": "2026-10-03T05:37:48.233Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -46,11 +46,19 @@
           "trailer": null
         },
         {
+          "id": 1489932,
+          "title": "Always Lalisa",
+          "release_date": "2026-10-12",
+          "poster_path": "/o2s3QoaBQCbGQd72d7dgLbuJE0z.jpg",
+          "rating": null,
+          "trailer": "s6NUEu1x64I"
+        },
+        {
           "id": 1248832,
           "title": "Digger",
           "release_date": "2026-10-16",
           "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 7.7,
+          "rating": 7.5,
           "trailer": "job8V254NAE"
         },
         {
@@ -96,19 +104,11 @@
       ],
       "now_playing": [
         {
-          "id": 1248832,
-          "title": "Digger",
-          "release_date": "2026-10-02",
-          "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 7.8,
-          "trailer": "job8V254NAE"
-        },
-        {
           "id": 1283515,
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.9,
+          "rating": 6.6,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -172,8 +172,16 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.2,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
+        },
+        {
+          "id": 1529513,
+          "title": "Cổ Thuật Hắc Ngải",
+          "release_date": "2026-09-11",
+          "poster_path": "/6Mez9DHThuM11lPXdTI5tu8BQng.jpg",
+          "rating": 6.3,
+          "trailer": null
         }
       ]
     },
@@ -218,7 +226,7 @@
           "title": "La bola negra",
           "release_date": "2026-10-16",
           "poster_path": "/l76qrRUs1e1Th4CNeQIQ10TjHOl.jpg",
-          "rating": 8.7,
+          "rating": 8.5,
           "trailer": "lBVxKt0gKDY"
         },
         {
@@ -230,20 +238,20 @@
           "trailer": "U6sbm1OaJb8"
         },
         {
-          "id": 1503762,
-          "title": "Sense and Sensibility",
-          "release_date": "2026-10-16",
-          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.8,
-          "trailer": "mcrwcvad84U"
-        },
-        {
           "id": 1255833,
           "title": "Whalefall",
           "release_date": "2026-10-16",
           "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
           "rating": null,
           "trailer": "Dw-5ZGapGTQ"
+        },
+        {
+          "id": 1503762,
+          "title": "Sense and Sensibility",
+          "release_date": "2026-10-16",
+          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+          "rating": 7.7,
+          "trailer": "mcrwcvad84U"
         },
         {
           "id": 1765072,
@@ -265,17 +273,17 @@
           "id": 1483525,
           "title": "Possible Love",
           "release_date": "2026-10-23",
-          "poster_path": "/fA66iCvHkxFbicOExARWCKB1fvE.jpg",
+          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
           "rating": 9,
           "trailer": "zd3qXH9qN70"
         },
         {
-          "id": 1437696,
-          "title": "Fatherland",
+          "id": 791523,
+          "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.3,
-          "trailer": "52zHLYf25M0"
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "rating": null,
+          "trailer": "bJQGtSeLPII"
         }
       ],
       "now_playing": [
@@ -284,7 +292,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.8,
+          "rating": 7.6,
           "trailer": "job8V254NAE"
         },
         {
@@ -292,7 +300,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/dGSsPovyUW5XVekXcy7F2GyhTEh.jpg",
-          "rating": 6.9,
+          "rating": 6.6,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -328,6 +336,14 @@
           "trailer": "PhgY8cOJiQA"
         },
         {
+          "id": 1229906,
+          "title": "Family",
+          "release_date": "2026-09-25",
+          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
+          "rating": 10,
+          "trailer": "iSMs7CnxA5g"
+        },
+        {
           "id": 1423191,
           "title": "Resident Evil",
           "release_date": "2026-09-18",
@@ -340,7 +356,7 @@
           "title": "The Fix",
           "release_date": "2026-09-11",
           "poster_path": "/9iSkee8DPpwBQI3GhXSTGZJKNYM.jpg",
-          "rating": 7.2,
+          "rating": 7,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -348,16 +364,8 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.2,
+          "rating": 6.1,
           "trailer": "Ho10_4IX1jE"
-        },
-        {
-          "id": 977942,
-          "title": "The Uprising",
-          "release_date": "2026-09-10",
-          "poster_path": "/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
-          "rating": 8,
-          "trailer": "lyhCxZN4Ro8"
         }
       ]
     }
