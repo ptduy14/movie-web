@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T05:37:48.233Z",
+  "updated_at": "2026-10-04T06:13:20.574Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -57,8 +57,8 @@
           "id": 1248832,
           "title": "Digger",
           "release_date": "2026-10-16",
-          "poster_path": "/d83tkXcvS5fdsgiCS9n6GLnRYmC.jpg",
-          "rating": 7.5,
+          "poster_path": "/ivaJBdvZiq7An27tKA5Ys2FSHsS.jpg",
+          "rating": 7.4,
           "trailer": "job8V254NAE"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.6,
+          "rating": 6.7,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -124,7 +124,7 @@
           "title": "Trái Tim Quái Thú",
           "release_date": "2026-09-25",
           "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -172,7 +172,7 @@
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
-          "rating": 6.1,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
         },
         {
@@ -222,20 +222,20 @@
           "trailer": "iHDNxZF7LRw"
         },
         {
-          "id": 1422041,
-          "title": "La bola negra",
-          "release_date": "2026-10-16",
-          "poster_path": "/l76qrRUs1e1Th4CNeQIQ10TjHOl.jpg",
-          "rating": 8.5,
-          "trailer": "lBVxKt0gKDY"
-        },
-        {
           "id": 1153576,
           "title": "Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
           "rating": null,
           "trailer": "U6sbm1OaJb8"
+        },
+        {
+          "id": 1422041,
+          "title": "La bola negra",
+          "release_date": "2026-10-16",
+          "poster_path": "/l76qrRUs1e1Th4CNeQIQ10TjHOl.jpg",
+          "rating": 8.6,
+          "trailer": "lBVxKt0gKDY"
         },
         {
           "id": 1255833,
@@ -250,8 +250,8 @@
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.7,
-          "trailer": "mcrwcvad84U"
+          "rating": 7.6,
+          "trailer": "OFLyW0lxFU0"
         },
         {
           "id": 1765072,
@@ -292,7 +292,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.6,
+          "rating": 7.4,
           "trailer": "job8V254NAE"
         },
         {
@@ -304,19 +304,11 @@
           "trailer": "xdPMKhjMSFs"
         },
         {
-          "id": 1393326,
-          "title": "Ghost in the Cell",
-          "release_date": "2026-10-02",
-          "poster_path": "/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
-          "rating": 7.1,
-          "trailer": "otL78_pk_A0"
-        },
-        {
           "id": 1263337,
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
-          "poster_path": "/mYqiF90igComG2L2qm8SwFbaMwn.jpg",
-          "rating": 7.6,
+          "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
+          "rating": 7.5,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -324,7 +316,7 @@
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 7,
+          "rating": 7.1,
           "trailer": "C0NZa01qTRU"
         },
         {
@@ -332,7 +324,7 @@
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -355,8 +347,8 @@
           "id": 1228834,
           "title": "The Fix",
           "release_date": "2026-09-11",
-          "poster_path": "/9iSkee8DPpwBQI3GhXSTGZJKNYM.jpg",
-          "rating": 7,
+          "poster_path": "/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
+          "rating": 7.1,
           "trailer": "l5Luvr9TRRc"
         },
         {
@@ -364,8 +356,16 @@
           "title": "Practical Magic 2",
           "release_date": "2026-09-11",
           "poster_path": "/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-          "rating": 6.1,
+          "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
+        },
+        {
+          "id": 977942,
+          "title": "The Uprising",
+          "release_date": "2026-09-10",
+          "poster_path": "/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
+          "rating": 7.9,
+          "trailer": "lyhCxZN4Ro8"
         }
       ]
     }
