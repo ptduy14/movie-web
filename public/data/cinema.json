@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T06:13:20.574Z",
+  "updated_at": "2026-10-05T06:05:54.596Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -58,7 +58,7 @@
           "title": "Digger",
           "release_date": "2026-10-16",
           "poster_path": "/ivaJBdvZiq7An27tKA5Ys2FSHsS.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "job8V254NAE"
         },
         {
@@ -78,6 +78,14 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
+          "id": 1477104,
+          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
+          "release_date": "2026-10-16",
+          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
+          "rating": 7.1,
+          "trailer": "daZMq0AyOMc"
+        },
+        {
           "id": 83389,
           "title": "Ngọn Đồi Hoa Hồng Anh",
           "release_date": "2026-10-16",
@@ -92,14 +100,6 @@
           "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
           "rating": null,
           "trailer": "kgzSbNJWnf4"
-        },
-        {
-          "id": 1689157,
-          "title": "Mẹ Mìn",
-          "release_date": "2026-10-23",
-          "poster_path": "/526o7OOLyqzYcC39Y3d85B8fgVS.jpg",
-          "rating": null,
-          "trailer": null
         }
       ],
       "now_playing": [
@@ -108,7 +108,7 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.7,
+          "rating": 6.6,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -209,7 +209,7 @@
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
-          "poster_path": "/2RmNbvlv9jDrLGDDkdYZDifKGCm.jpg",
+          "poster_path": "/nZ8cQbjAQHRuSqwxvuYhOfxyhfW.jpg",
           "rating": null,
           "trailer": "R8ANzYpaZaY"
         },
@@ -234,7 +234,7 @@
           "title": "La bola negra",
           "release_date": "2026-10-16",
           "poster_path": "/l76qrRUs1e1Th4CNeQIQ10TjHOl.jpg",
-          "rating": 8.6,
+          "rating": 8.5,
           "trailer": "lBVxKt0gKDY"
         },
         {
@@ -254,12 +254,12 @@
           "trailer": "OFLyW0lxFU0"
         },
         {
-          "id": 1765072,
-          "title": "You Can See Everything",
-          "release_date": "2026-10-16",
-          "poster_path": "/qhFWz1BsEMg5rcs6TAstmGQggMT.jpg",
-          "rating": null,
-          "trailer": "IEx8D1Wb__U"
+          "id": 1483525,
+          "title": "Possible Love",
+          "release_date": "2026-10-23",
+          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
+          "rating": 9,
+          "trailer": "zd3qXH9qN70"
         },
         {
           "id": 1400940,
@@ -270,20 +270,20 @@
           "trailer": "KCR-rz0YfD4"
         },
         {
-          "id": 1483525,
-          "title": "Possible Love",
-          "release_date": "2026-10-23",
-          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
-          "rating": 9,
-          "trailer": "zd3qXH9qN70"
-        },
-        {
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": null,
           "trailer": "bJQGtSeLPII"
+        },
+        {
+          "id": 1437696,
+          "title": "Fatherland",
+          "release_date": "2026-10-23",
+          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
+          "rating": 7.3,
+          "trailer": "52zHLYf25M0"
         }
       ],
       "now_playing": [
@@ -292,15 +292,15 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "job8V254NAE"
         },
         {
           "id": 1283515,
           "title": "Verity",
           "release_date": "2026-10-02",
-          "poster_path": "/dGSsPovyUW5XVekXcy7F2GyhTEh.jpg",
-          "rating": 6.6,
+          "poster_path": "/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
+          "rating": 6.7,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "UkMuGKqAux4"
         },
         {
@@ -316,7 +316,7 @@
           "title": "Primetime",
           "release_date": "2026-09-25",
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 7.1,
+          "rating": 6.9,
           "trailer": "C0NZa01qTRU"
         },
         {
