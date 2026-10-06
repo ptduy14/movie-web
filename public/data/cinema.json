@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T06:05:54.596Z",
+  "updated_at": "2026-10-06T06:46:14.578Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -18,7 +18,7 @@
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": null,
+          "rating": 8,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Hòn Đảo Quên Lãng",
           "release_date": "2026-09-25",
           "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 8.3,
+          "rating": 8.2,
           "trailer": "PhgY8cOJiQA"
         },
         {
@@ -168,20 +168,20 @@
           "trailer": "YBIfz76BYiY"
         },
         {
+          "id": 1630030,
+          "title": "Yêu Nhân Thần Thám: Kỳ Án Trường An",
+          "release_date": "2026-09-18",
+          "poster_path": "/9rangsKv5gvtJ4dAfClyCe8e55.jpg",
+          "rating": 6,
+          "trailer": null
+        },
+        {
           "id": 1302904,
           "title": "Bùa Yêu: Bí Mật Gia Tộc",
           "release_date": "2026-09-11",
           "poster_path": "/fNyixhNFs5iWZ3QXhdT8t8D6lsk.jpg",
           "rating": 6.2,
           "trailer": "Ho10_4IX1jE"
-        },
-        {
-          "id": 1529513,
-          "title": "Cổ Thuật Hắc Ngải",
-          "release_date": "2026-09-11",
-          "poster_path": "/6Mez9DHThuM11lPXdTI5tu8BQng.jpg",
-          "rating": 6.3,
-          "trailer": null
         }
       ]
     },
@@ -209,8 +209,8 @@
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
-          "poster_path": "/nZ8cQbjAQHRuSqwxvuYhOfxyhfW.jpg",
-          "rating": null,
+          "poster_path": "/hDe0OryfBINwmZDRtQjnh6UKUJf.jpg",
+          "rating": 8,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -222,10 +222,18 @@
           "trailer": "iHDNxZF7LRw"
         },
         {
+          "id": 1234139,
+          "title": "Jailer 2",
+          "release_date": "2026-10-15",
+          "poster_path": "/uPNAz3mYu6MDh2kA0V6qT2m412T.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1153576,
           "title": "Street Fighter",
           "release_date": "2026-10-16",
-          "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
+          "poster_path": "/utKzCSCz2HtXwcDGfWLj2IHhSob.jpg",
           "rating": null,
           "trailer": "U6sbm1OaJb8"
         },
@@ -276,14 +284,6 @@
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": null,
           "trailer": "bJQGtSeLPII"
-        },
-        {
-          "id": 1437696,
-          "title": "Fatherland",
-          "release_date": "2026-10-23",
-          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.3,
-          "trailer": "52zHLYf25M0"
         }
       ],
       "now_playing": [
@@ -292,7 +292,7 @@
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "job8V254NAE"
         },
         {
@@ -300,7 +300,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
-          "rating": 6.7,
+          "rating": 6.6,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -308,24 +308,8 @@
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1375441,
-          "title": "Primetime",
-          "release_date": "2026-09-25",
-          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
-          "rating": 6.9,
-          "trailer": "C0NZa01qTRU"
-        },
-        {
-          "id": 1465063,
-          "title": "Forgotten Island",
-          "release_date": "2026-09-25",
-          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-          "rating": 8.3,
-          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1229906,
@@ -334,6 +318,22 @@
           "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
           "rating": 10,
           "trailer": "iSMs7CnxA5g"
+        },
+        {
+          "id": 1375441,
+          "title": "Primetime",
+          "release_date": "2026-09-25",
+          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+          "rating": 6.8,
+          "trailer": "C0NZa01qTRU"
+        },
+        {
+          "id": 1465063,
+          "title": "Forgotten Island",
+          "release_date": "2026-09-25",
+          "poster_path": "/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
+          "rating": 8.2,
+          "trailer": "PhgY8cOJiQA"
         },
         {
           "id": 1423191,
@@ -364,7 +364,7 @@
           "title": "The Uprising",
           "release_date": "2026-09-10",
           "poster_path": "/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
-          "rating": 7.9,
+          "rating": 8,
           "trailer": "lyhCxZN4Ro8"
         }
       ]
