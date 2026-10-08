@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T06:21:16.304Z",
+  "updated_at": "2026-10-08T06:32:27.181Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Digger",
           "release_date": "2026-10-16",
           "poster_path": "/ivaJBdvZiq7An27tKA5Ys2FSHsS.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "job8V254NAE"
         },
         {
@@ -67,7 +67,7 @@
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
           "rating": null,
-          "trailer": "KCR-rz0YfD4"
+          "trailer": "stmlbnq4Sdk"
         },
         {
           "id": 1659696,
@@ -84,31 +84,15 @@
           "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
           "rating": null,
           "trailer": "FeJs6ZntVYM"
-        },
-        {
-          "id": 1773490,
-          "title": "Huyết Thống",
-          "release_date": "2026-10-30",
-          "poster_path": "/n3vwR4lMNN4tWchgDOV166nrMmV.jpg",
-          "rating": null,
-          "trailer": null
         }
       ],
       "now_playing": [
-        {
-          "id": 1489932,
-          "title": "Always Lalisa",
-          "release_date": "2026-10-12",
-          "poster_path": "/o2s3QoaBQCbGQd72d7dgLbuJE0z.jpg",
-          "rating": null,
-          "trailer": "s6NUEu1x64I"
-        },
         {
           "id": 1400837,
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 5.5,
+          "rating": 9,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -116,7 +100,7 @@
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": 8.8,
+          "rating": 8.9,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -174,6 +158,14 @@
           "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
           "rating": 8,
           "trailer": "6s_wR3uuWec"
+        },
+        {
+          "id": 1423191,
+          "title": "Vùng Đất Quỷ Dữ",
+          "release_date": "2026-09-18",
+          "poster_path": "/jlFMvLuzjwt7aI1QVtiNVnFHNBe.jpg",
+          "rating": 7.3,
+          "trailer": "mNd1gb19A-c"
         }
       ]
     },
@@ -185,7 +177,7 @@
           "id": 1234139,
           "title": "Jailer 2",
           "release_date": "2026-10-15",
-          "poster_path": "/uPNAz3mYu6MDh2kA0V6qT2m412T.jpg",
+          "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
           "rating": null,
           "trailer": null
         },
@@ -201,7 +193,7 @@
           "id": 1422041,
           "title": "LA BOLA NEGRA",
           "release_date": "2026-10-16",
-          "poster_path": "/l76qrRUs1e1Th4CNeQIQ10TjHOl.jpg",
+          "poster_path": "/7HwFQTMghL6HOvzEnXYUvyuZXeh.jpg",
           "rating": 8.5,
           "trailer": "lBVxKt0gKDY"
         },
@@ -218,14 +210,14 @@
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "OFLyW0lxFU0"
         },
         {
           "id": 1765072,
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
-          "poster_path": "/qhFWz1BsEMg5rcs6TAstmGQggMT.jpg",
+          "poster_path": "/fYnS7wwZ4cdLElAcDhyIQUUBqHS.jpg",
           "rating": null,
           "trailer": "IEx8D1Wb__U"
         },
@@ -243,7 +235,7 @@
           "release_date": "2026-10-23",
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
           "rating": null,
-          "trailer": "KCR-rz0YfD4"
+          "trailer": "stmlbnq4Sdk"
         },
         {
           "id": 791523,
@@ -284,22 +276,30 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.5,
+          "rating": 9,
           "trailer": "-mnTITqqiT0"
+        },
+        {
+          "id": 1281331,
+          "title": "The Social Reckoning",
+          "release_date": "2026-10-09",
+          "poster_path": "/nZ8cQbjAQHRuSqwxvuYhOfxyhfW.jpg",
+          "rating": 8.9,
+          "trailer": "R8ANzYpaZaY"
         },
         {
           "id": 1248832,
           "title": "Digger",
           "release_date": "2026-10-02",
           "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "job8V254NAE"
         },
         {
           "id": 1283515,
           "title": "Verity",
           "release_date": "2026-10-02",
-          "poster_path": "/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
+          "poster_path": "/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg",
           "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
         },
@@ -316,7 +316,7 @@
           "title": "Beware Boiúna",
           "release_date": "2026-10-02",
           "poster_path": "/uW5YMPxJUzT9bkafrCKHXjPTCoQ.jpg",
-          "rating": 5.3,
+          "rating": 5.8,
           "trailer": "MQKqgFVU4dQ"
         },
         {
@@ -332,7 +332,7 @@
           "title": "Family",
           "release_date": "2026-09-25",
           "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
-          "rating": 6.5,
+          "rating": 6.3,
           "trailer": "iSMs7CnxA5g"
         },
         {
@@ -350,14 +350,6 @@
           "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
           "rating": 6.8,
           "trailer": "C0NZa01qTRU"
-        },
-        {
-          "id": 1423191,
-          "title": "Resident Evil",
-          "release_date": "2026-09-18",
-          "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.3,
-          "trailer": "mNd1gb19A-c"
         }
       ]
     }
