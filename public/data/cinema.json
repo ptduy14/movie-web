@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T06:33:37.929Z",
+  "updated_at": "2026-10-10T06:16:55.189Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -46,14 +46,6 @@
           "trailer": "a0DIxdy8CZA"
         },
         {
-          "id": 1744848,
-          "title": "Chị Chị Em Em 3",
-          "release_date": "2026-10-16",
-          "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
-          "rating": null,
-          "trailer": "kgzSbNJWnf4"
-        },
-        {
           "id": 1689157,
           "title": "Mẹ Mìn",
           "release_date": "2026-10-23",
@@ -70,12 +62,20 @@
           "trailer": "KCR-rz0YfD4"
         },
         {
-          "id": 1659696,
-          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
+          "id": 1744848,
+          "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
-          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
+          "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
           "rating": null,
-          "trailer": "lPW-aj3o-zI"
+          "trailer": "kgzSbNJWnf4"
+        },
+        {
+          "id": 1756422,
+          "title": "Án Mạng Karaoke",
+          "release_date": "2026-10-30",
+          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
+          "rating": null,
+          "trailer": "N_jtjt1xb-o"
         },
         {
           "id": 1659702,
@@ -84,15 +84,31 @@
           "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
           "rating": null,
           "trailer": "FeJs6ZntVYM"
+        },
+        {
+          "id": 1659696,
+          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
+          "release_date": "2026-10-30",
+          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
+          "rating": null,
+          "trailer": null
         }
       ],
       "now_playing": [
+        {
+          "id": 1489932,
+          "title": "Always Lalisa",
+          "release_date": "2026-10-12",
+          "poster_path": "/o2s3QoaBQCbGQd72d7dgLbuJE0z.jpg",
+          "rating": null,
+          "trailer": "s6NUEu1x64I"
+        },
         {
           "id": 1400837,
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 7.8,
+          "rating": 6.4,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -100,7 +116,7 @@
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": 7.8,
+          "rating": 7.6,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -124,16 +140,8 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.5,
+          "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
-        },
-        {
-          "id": 1319525,
-          "title": "Quyết Cua Anh Này",
-          "release_date": "2026-10-02",
-          "poster_path": "/lFrDNCEspkTMYt6Z81LCyW8eZIl.jpg",
-          "rating": 6,
-          "trailer": "q1xP2WQyn-E"
         },
         {
           "id": 1263337,
@@ -190,14 +198,6 @@
           "trailer": "U6sbm1OaJb8"
         },
         {
-          "id": 1255833,
-          "title": "Whalefall",
-          "release_date": "2026-10-16",
-          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": null,
-          "trailer": "Dw-5ZGapGTQ"
-        },
-        {
           "id": 1422041,
           "title": "LA BOLA NEGRA",
           "release_date": "2026-10-16",
@@ -206,10 +206,18 @@
           "trailer": "lBVxKt0gKDY"
         },
         {
+          "id": 1255833,
+          "title": "Whalefall",
+          "release_date": "2026-10-16",
+          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
+          "rating": null,
+          "trailer": "Dw-5ZGapGTQ"
+        },
+        {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
-          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+          "poster_path": "/p1vgrJqcZMppdRZ2eoHIlpdTltA.jpg",
           "rating": 7.4,
           "trailer": "OFLyW0lxFU0"
         },
@@ -241,7 +249,7 @@
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
           "rating": null,
           "trailer": "bJQGtSeLPII"
         },
@@ -254,12 +262,12 @@
           "trailer": "52zHLYf25M0"
         },
         {
-          "id": 1195803,
-          "title": "Wicker",
-          "release_date": "2026-10-23",
-          "poster_path": "/eOYkNDalgt1v6UGjw3AoFR5qo9D.jpg",
-          "rating": null,
-          "trailer": "UVAki9SGrlg"
+          "id": 1517123,
+          "title": "On the Road",
+          "release_date": "2026-10-28",
+          "poster_path": "/u169hcLX3OsM9eRs4wtIzi0ymGZ.jpg",
+          "rating": 8.4,
+          "trailer": "vDFkdSdYiEs"
         },
         {
           "id": 1294189,
@@ -276,7 +284,7 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 7.9,
+          "rating": 6.4,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -284,7 +292,7 @@
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
           "poster_path": "/nZ8cQbjAQHRuSqwxvuYhOfxyhfW.jpg",
-          "rating": 7.8,
+          "rating": 7.6,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -300,7 +308,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg",
-          "rating": 6.5,
+          "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
         },
         {
