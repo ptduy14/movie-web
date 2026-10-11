@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T06:16:55.189Z",
+  "updated_at": "2026-10-11T06:17:00.795Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -30,20 +30,20 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
-          "id": 1477104,
-          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
-          "release_date": "2026-10-16",
-          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
-          "rating": 7.1,
-          "trailer": "daZMq0AyOMc"
-        },
-        {
           "id": 83389,
           "title": "Ngọn Đồi Hoa Hồng Anh",
           "release_date": "2026-10-16",
           "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
           "rating": 7.5,
           "trailer": "a0DIxdy8CZA"
+        },
+        {
+          "id": 1477104,
+          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
+          "release_date": "2026-10-16",
+          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
+          "rating": 7.1,
+          "trailer": "daZMq0AyOMc"
         },
         {
           "id": 1689157,
@@ -62,20 +62,20 @@
           "trailer": "KCR-rz0YfD4"
         },
         {
+          "id": 1659696,
+          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
+          "release_date": "2026-10-30",
+          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1744848,
           "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
           "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
           "rating": null,
           "trailer": "kgzSbNJWnf4"
-        },
-        {
-          "id": 1756422,
-          "title": "Án Mạng Karaoke",
-          "release_date": "2026-10-30",
-          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
-          "rating": null,
-          "trailer": "N_jtjt1xb-o"
         },
         {
           "id": 1659702,
@@ -86,29 +86,21 @@
           "trailer": "FeJs6ZntVYM"
         },
         {
-          "id": 1659696,
-          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
+          "id": 1756422,
+          "title": "Án Mạng Karaoke",
           "release_date": "2026-10-30",
-          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
+          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
           "rating": null,
-          "trailer": null
+          "trailer": "N_jtjt1xb-o"
         }
       ],
       "now_playing": [
-        {
-          "id": 1489932,
-          "title": "Always Lalisa",
-          "release_date": "2026-10-12",
-          "poster_path": "/o2s3QoaBQCbGQd72d7dgLbuJE0z.jpg",
-          "rating": null,
-          "trailer": "s6NUEu1x64I"
-        },
         {
           "id": 1400837,
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 6.4,
+          "rating": 5.9,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -116,7 +108,7 @@
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": 7.6,
+          "rating": 7.3,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -142,6 +134,14 @@
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
           "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
+        },
+        {
+          "id": 1319525,
+          "title": "Quyết Cua Anh Này",
+          "release_date": "2026-10-02",
+          "poster_path": "/lFrDNCEspkTMYt6Z81LCyW8eZIl.jpg",
+          "rating": 6,
+          "trailer": "q1xP2WQyn-E"
         },
         {
           "id": 1263337,
@@ -202,7 +202,7 @@
           "title": "LA BOLA NEGRA",
           "release_date": "2026-10-16",
           "poster_path": "/dbpyc3Zo0m4E15XcQ7tTwlLBEtE.jpg",
-          "rating": 8.5,
+          "rating": 8.4,
           "trailer": "lBVxKt0gKDY"
         },
         {
@@ -217,8 +217,8 @@
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
-          "poster_path": "/p1vgrJqcZMppdRZ2eoHIlpdTltA.jpg",
-          "rating": 7.4,
+          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+          "rating": 7.3,
           "trailer": "OFLyW0lxFU0"
         },
         {
@@ -254,20 +254,12 @@
           "trailer": "bJQGtSeLPII"
         },
         {
-          "id": 1437696,
-          "title": "Fatherland",
+          "id": 1195803,
+          "title": "Wicker",
           "release_date": "2026-10-23",
-          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.3,
-          "trailer": "52zHLYf25M0"
-        },
-        {
-          "id": 1517123,
-          "title": "On the Road",
-          "release_date": "2026-10-28",
-          "poster_path": "/u169hcLX3OsM9eRs4wtIzi0ymGZ.jpg",
-          "rating": 8.4,
-          "trailer": "vDFkdSdYiEs"
+          "poster_path": "/eOYkNDalgt1v6UGjw3AoFR5qo9D.jpg",
+          "rating": null,
+          "trailer": "UVAki9SGrlg"
         },
         {
           "id": 1294189,
@@ -276,23 +268,39 @@
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
           "rating": null,
           "trailer": "aHrMFtt40_Q"
+        },
+        {
+          "id": 1381071,
+          "title": "Godzilla Minus Zero",
+          "release_date": "2026-11-03",
+          "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
+          "rating": null,
+          "trailer": "-9MA9BnA7Uo"
         }
       ],
       "now_playing": [
+        {
+          "id": 1236045,
+          "title": "Animals",
+          "release_date": "2026-10-09",
+          "poster_path": "/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
+          "rating": 7.5,
+          "trailer": "ZkN2M4ODdys"
+        },
         {
           "id": 1400837,
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 6.4,
+          "rating": 5.9,
           "trailer": "-mnTITqqiT0"
         },
         {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
-          "poster_path": "/nZ8cQbjAQHRuSqwxvuYhOfxyhfW.jpg",
-          "rating": 7.6,
+          "poster_path": "/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
+          "rating": 7.4,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -312,28 +320,12 @@
           "trailer": "xdPMKhjMSFs"
         },
         {
-          "id": 1269325,
-          "title": "Drishyam: The Conclusion",
-          "release_date": "2026-10-02",
-          "poster_path": "/67FsF2kpgEZ1T5Qos4adgqm9dLf.jpg",
-          "rating": 7.6,
-          "trailer": "MFQFxsDWbA8"
-        },
-        {
           "id": 1263337,
           "title": "Heart of the Beast",
           "release_date": "2026-09-25",
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
           "rating": 7.4,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1229906,
-          "title": "Family",
-          "release_date": "2026-09-25",
-          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
-          "rating": 6,
-          "trailer": "iSMs7CnxA5g"
         },
         {
           "id": 1465063,
@@ -344,10 +336,18 @@
           "trailer": "PhgY8cOJiQA"
         },
         {
+          "id": 1229906,
+          "title": "Family",
+          "release_date": "2026-09-25",
+          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
+          "rating": 6,
+          "trailer": "iSMs7CnxA5g"
+        },
+        {
           "id": 1375441,
           "title": "Primetime",
           "release_date": "2026-09-25",
-          "poster_path": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+          "poster_path": "/51VDtNQFuD2I86hrT4ekytg9Dq3.jpg",
           "rating": 6.8,
           "trailer": "C0NZa01qTRU"
         },
