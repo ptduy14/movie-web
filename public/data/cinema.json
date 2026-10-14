@@ -1,42 +1,10 @@
 {
-  "updated_at": "2026-10-13T07:00:58.988Z",
+  "updated_at": "2026-10-14T05:15:55.629Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1153576,
-          "title": "Phim Street Fighter",
-          "release_date": "2026-10-16",
-          "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6,
-          "trailer": "U6sbm1OaJb8"
-        },
-        {
-          "id": 1255833,
-          "title": "Cá Voi Nuốt Chửng",
-          "release_date": "2026-10-16",
-          "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": null,
-          "trailer": "Dw-5ZGapGTQ"
-        },
-        {
-          "id": 83389,
-          "title": "Ngọn Đồi Hoa Hồng Anh",
-          "release_date": "2026-10-16",
-          "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
-          "rating": 7.5,
-          "trailer": "a0DIxdy8CZA"
-        },
-        {
-          "id": 1477104,
-          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
-          "release_date": "2026-10-16",
-          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
-          "rating": 7.1,
-          "trailer": "daZMq0AyOMc"
-        },
         {
           "id": 1689157,
           "title": "Mẹ Mìn",
@@ -59,7 +27,7 @@
           "release_date": "2026-10-30",
           "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
           "rating": null,
-          "trailer": "kgzSbNJWnf4"
+          "trailer": "T2agdzhXOaY"
         },
         {
           "id": 1659696,
@@ -84,9 +52,73 @@
           "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
           "rating": null,
           "trailer": "FeJs6ZntVYM"
+        },
+        {
+          "id": 1381071,
+          "title": "Godzilla Trừ Không",
+          "release_date": "2026-11-06",
+          "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
+          "rating": null,
+          "trailer": "pWJjYoqVSjQ"
+        },
+        {
+          "id": 1716710,
+          "title": "Chuyến Đi Nhớ Đời",
+          "release_date": "2026-11-06",
+          "poster_path": "/xV9qzT5EYQOxlLXHQgdayWrsjG7.jpg",
+          "rating": null,
+          "trailer": "pgmZCaGA_zg"
+        },
+        {
+          "id": 1692603,
+          "title": "Bò Sữa Bay",
+          "release_date": "2026-11-06",
+          "poster_path": "/y2AC6NxknGlZapSwCSYMOMxHOvl.jpg",
+          "rating": null,
+          "trailer": "2Y8yw8bAG1o"
+        },
+        {
+          "id": 1752234,
+          "title": "Ngày Con Còn Mẹ",
+          "release_date": "2026-11-11",
+          "poster_path": "/rOOHeRw4g30FtljcjPL2PZzF2Zs.jpg",
+          "rating": null,
+          "trailer": null
         }
       ],
       "now_playing": [
+        {
+          "id": 1153576,
+          "title": "Phim Street Fighter",
+          "release_date": "2026-10-16",
+          "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
+          "rating": 8.2,
+          "trailer": "U6sbm1OaJb8"
+        },
+        {
+          "id": 1255833,
+          "title": "Cá Voi Nuốt Chửng",
+          "release_date": "2026-10-16",
+          "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
+          "rating": 10,
+          "trailer": "Dw-5ZGapGTQ"
+        },
+        {
+          "id": 83389,
+          "title": "Ngọn Đồi Hoa Hồng Anh",
+          "release_date": "2026-10-16",
+          "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
+          "rating": 7.5,
+          "trailer": "a0DIxdy8CZA"
+        },
+        {
+          "id": 1477104,
+          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
+          "release_date": "2026-10-16",
+          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
+          "rating": 7.1,
+          "trailer": "daZMq0AyOMc"
+        },
         {
           "id": 1489932,
           "title": "Always Lalisa",
@@ -132,40 +164,8 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.4,
+          "rating": 6.3,
           "trailer": "xdPMKhjMSFs"
-        },
-        {
-          "id": 1319525,
-          "title": "Quyết Cua Anh Này",
-          "release_date": "2026-10-02",
-          "poster_path": "/lFrDNCEspkTMYt6Z81LCyW8eZIl.jpg",
-          "rating": 6,
-          "trailer": "q1xP2WQyn-E"
-        },
-        {
-          "id": 1263337,
-          "title": "Trái Tim Quái Thú",
-          "release_date": "2026-09-25",
-          "poster_path": "/2nVdUaSsD4cV2GwwZpuXbiHIXM.jpg",
-          "rating": 7.4,
-          "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Hòn Đảo Quên Lãng",
-          "release_date": "2026-09-25",
-          "poster_path": "/qgWcLlSXt8dWFjX4z01dUzXOkmt.jpg",
-          "rating": 8.1,
-          "trailer": "PhgY8cOJiQA"
-        },
-        {
-          "id": 10515,
-          "title": "Laputa: Lâu Đài Trên Không",
-          "release_date": "2026-09-25",
-          "poster_path": "/l15RDgdYu62b3xHDPOodlWdMCnz.jpg",
-          "rating": 8,
-          "trailer": "6s_wR3uuWec"
         }
       ]
     },
@@ -176,7 +176,7 @@
         {
           "id": 1234139,
           "title": "Jailer 2",
-          "release_date": "2026-10-15",
+          "release_date": "2026-10-14",
           "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
           "rating": null,
           "trailer": null
@@ -186,30 +186,30 @@
           "title": "Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
-          "rating": 6,
+          "rating": 8.3,
           "trailer": "U6sbm1OaJb8"
-        },
-        {
-          "id": 1422041,
-          "title": "LA BOLA NEGRA",
-          "release_date": "2026-10-16",
-          "poster_path": "/dbpyc3Zo0m4E15XcQ7tTwlLBEtE.jpg",
-          "rating": 8.4,
-          "trailer": "lBVxKt0gKDY"
         },
         {
           "id": 1255833,
           "title": "Whalefall",
           "release_date": "2026-10-16",
           "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "Dw-5ZGapGTQ"
+        },
+        {
+          "id": 1422041,
+          "title": "La bola negra",
+          "release_date": "2026-10-16",
+          "poster_path": "/dbpyc3Zo0m4E15XcQ7tTwlLBEtE.jpg",
+          "rating": 8.4,
+          "trailer": "lBVxKt0gKDY"
         },
         {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-16",
-          "poster_path": "/ySkfsMQxSVokn5zYavQByFDrzsy.jpg",
+          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
           "rating": 7.4,
           "trailer": "OFLyW0lxFU0"
         },
@@ -217,17 +217,9 @@
           "id": 1765072,
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
-          "poster_path": "/scjtk4dEfXjnR1oKJUuvzw5sXdP.jpg",
+          "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
           "rating": 1,
           "trailer": "IEx8D1Wb__U"
-        },
-        {
-          "id": 1389379,
-          "title": "Ranabaali",
-          "release_date": "2026-10-16",
-          "poster_path": "/fmqDwVpmiAk4cav5ElC2KAJRM3F.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1400940,
@@ -249,7 +241,7 @@
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": null,
           "trailer": "bJQGtSeLPII"
         },
@@ -260,6 +252,14 @@
           "poster_path": "/eOYkNDalgt1v6UGjw3AoFR5qo9D.jpg",
           "rating": null,
           "trailer": "UVAki9SGrlg"
+        },
+        {
+          "id": 1437696,
+          "title": "Fatherland",
+          "release_date": "2026-10-23",
+          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
+          "rating": 7.3,
+          "trailer": "52zHLYf25M0"
         },
         {
           "id": 1294189,
@@ -284,7 +284,7 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.9,
+          "rating": 6,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -316,7 +316,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg",
-          "rating": 6.4,
+          "rating": 6.3,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -324,7 +324,7 @@
           "title": "Infirmary",
           "release_date": "2026-10-02",
           "poster_path": "/bHiAp8WWHgfUrJmRnoiw4URYGcq.jpg",
-          "rating": 5.3,
+          "rating": 5.4,
           "trailer": "gN1LMAwyvGY"
         },
         {
@@ -336,20 +336,20 @@
           "trailer": "UkMuGKqAux4"
         },
         {
-          "id": 1229906,
-          "title": "Family",
-          "release_date": "2026-09-25",
-          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
-          "rating": 6,
-          "trailer": "iSMs7CnxA5g"
-        },
-        {
           "id": 1465063,
           "title": "Forgotten Island",
           "release_date": "2026-09-25",
           "poster_path": "/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
-          "rating": 8.1,
+          "rating": 8,
           "trailer": "PhgY8cOJiQA"
+        },
+        {
+          "id": 1229906,
+          "title": "Family",
+          "release_date": "2026-09-25",
+          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
+          "rating": 6.3,
+          "trailer": "iSMs7CnxA5g"
         }
       ]
     }
