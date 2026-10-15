@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14T05:15:55.629Z",
+  "updated_at": "2026-10-15T05:02:54.129Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -18,7 +18,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": null,
+          "rating": 8.3,
           "trailer": "KCR-rz0YfD4"
         },
         {
@@ -92,7 +92,7 @@
           "title": "Phim Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 8.2,
+          "rating": 6.5,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -100,7 +100,7 @@
           "title": "Cá Voi Nuốt Chửng",
           "release_date": "2026-10-16",
           "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 10,
+          "rating": 8.6,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -140,7 +140,7 @@
           "title": "Phán Xét Sự Thật",
           "release_date": "2026-10-09",
           "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": 7.1,
+          "rating": 7,
           "trailer": "R8ANzYpaZaY"
         },
         {
@@ -174,30 +174,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1234139,
-          "title": "Jailer 2",
-          "release_date": "2026-10-14",
-          "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1153576,
-          "title": "Street Fighter",
-          "release_date": "2026-10-16",
-          "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
-          "rating": 8.3,
-          "trailer": "U6sbm1OaJb8"
-        },
-        {
-          "id": 1255833,
-          "title": "Whalefall",
-          "release_date": "2026-10-16",
-          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": 10,
-          "trailer": "Dw-5ZGapGTQ"
-        },
-        {
           "id": 1422041,
           "title": "La bola negra",
           "release_date": "2026-10-16",
@@ -206,27 +182,19 @@
           "trailer": "lBVxKt0gKDY"
         },
         {
-          "id": 1503762,
-          "title": "Sense and Sensibility",
-          "release_date": "2026-10-16",
-          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.4,
-          "trailer": "OFLyW0lxFU0"
-        },
-        {
-          "id": 1765072,
-          "title": "You Can See Everything",
-          "release_date": "2026-10-16",
-          "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 1,
-          "trailer": "IEx8D1Wb__U"
+          "id": 1491920,
+          "title": "Kung Fu Soccer",
+          "release_date": "2026-10-23",
+          "poster_path": "/6QgJQrClh9ej357yzLWgCxrjAmJ.jpg",
+          "rating": 5.9,
+          "trailer": "hR6I5FaHpyI"
         },
         {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-          "rating": null,
+          "rating": 8.3,
           "trailer": "KCR-rz0YfD4"
         },
         {
@@ -254,29 +222,69 @@
           "trailer": "UVAki9SGrlg"
         },
         {
-          "id": 1437696,
-          "title": "Fatherland",
-          "release_date": "2026-10-23",
-          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.3,
-          "trailer": "52zHLYf25M0"
-        },
-        {
           "id": 1294189,
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
           "rating": null,
           "trailer": "aHrMFtt40_Q"
+        },
+        {
+          "id": 1381071,
+          "title": "Godzilla Minus Zero",
+          "release_date": "2026-11-03",
+          "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
+          "rating": null,
+          "trailer": "pWJjYoqVSjQ"
+        },
+        {
+          "id": 656908,
+          "title": "Ramayana",
+          "release_date": "2026-11-05",
+          "poster_path": "/gOWnXaBxqT6k2y40hKfYU6c0Ym.jpg",
+          "rating": null,
+          "trailer": "74nF-FWAS6M"
+        },
+        {
+          "id": 1165366,
+          "title": "De Gaulle: Résistance",
+          "release_date": "2026-11-06",
+          "poster_path": "/4ri8KO5i7ldQiS3807KXn6awQEs.jpg",
+          "rating": 7.8,
+          "trailer": "dKUArYoZ_0U"
+        },
+        {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": null,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 891621,
+          "title": "Wild Horse Nine",
+          "release_date": "2026-11-06",
+          "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
+          "rating": null,
+          "trailer": "kqxuamKxRTo"
         }
       ],
       "now_playing": [
+        {
+          "id": 1153576,
+          "title": "Street Fighter",
+          "release_date": "2026-10-16",
+          "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
+          "rating": 6.7,
+          "trailer": "U6sbm1OaJb8"
+        },
         {
           "id": 1236045,
           "title": "Animals",
           "release_date": "2026-10-09",
           "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-          "rating": 7.4,
+          "rating": 7.2,
           "trailer": "ZkN2M4ODdys"
         },
         {
@@ -300,8 +308,16 @@
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
           "poster_path": "/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
-          "rating": 7.1,
+          "rating": 7,
           "trailer": "R8ANzYpaZaY"
+        },
+        {
+          "id": 1381078,
+          "title": "Love of Your Life",
+          "release_date": "2026-10-07",
+          "poster_path": "/gOaRyRpilYPEsVLEPHOH9eHNw5E.jpg",
+          "rating": 6.3,
+          "trailer": "HzGx48E64Xg"
         },
         {
           "id": 1248832,
@@ -316,7 +332,7 @@
           "title": "Verity",
           "release_date": "2026-10-02",
           "poster_path": "/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg",
-          "rating": 6.3,
+          "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
         },
         {
@@ -334,22 +350,6 @@
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
           "rating": 7.4,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1465063,
-          "title": "Forgotten Island",
-          "release_date": "2026-09-25",
-          "poster_path": "/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
-          "rating": 8,
-          "trailer": "PhgY8cOJiQA"
-        },
-        {
-          "id": 1229906,
-          "title": "Family",
-          "release_date": "2026-09-25",
-          "poster_path": "/cTXGUz1Mle56A6vAK2GAf1j8Wtn.jpg",
-          "rating": 6.3,
-          "trailer": "iSMs7CnxA5g"
         }
       ]
     }
