@@ -1,9 +1,11 @@
 import MovieWatchPage from '@/components/watch';
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { permanentRedirect, redirect } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { getTitleDetail } from 'services/catalog-service';
 import { getLocalizedMovieContent } from 'services/movie-content-localizer';
+import { preferredTitle } from 'constants/i18n-mappings';
+import type { Locale } from 'i18n/routing';
 
 interface WatchPageParams {
   params: { locale: string; slug: string };
@@ -29,7 +31,10 @@ export async function generateMetadata({ params }: WatchPageParams): Promise<Met
         )
       : undefined;
 
-    return { title: detail.movie.name, description };
+    return {
+      title: preferredTitle(detail.movie.name, detail.movie.origin_name, params.locale as Locale),
+      description,
+    };
   } catch {
     return { title: 'Movie' };
   }
@@ -44,13 +49,18 @@ export default async function MovieWatch({ params }: WatchPageParams) {
     redirect(`/${params.locale}`);
   }
 
-  // Unreleased titles have a TMDB entry but nothing to play. Send them to the
-  // detail page, which can still show the synopsis and trailer.
-  const hasPlayableEpisode = movie.episodes.some((season) =>
-    season.server_data.some((ep) => Boolean(ep.link_embed))
+  if (movie.movie.slug !== params.slug) {
+    permanentRedirect(`/${params.locale}/movies/watch/${movie.movie.slug}`);
+  }
+
+  // Trailers and not-yet-uploaded titles have nothing to play: no catalog
+  // stream and no backup address. The detail page can still show the
+  // synopsis and trailer.
+  const hasPlayableEpisode = movie.episodes.some((server) =>
+    server.server_data.some((ep) => Boolean(ep.link_m3u8 || ep.link_embed))
   );
   if (!hasPlayableEpisode) {
-    redirect(`/${params.locale}/movies/${params.slug}`);
+    redirect(`/${params.locale}/movies/${movie.movie.slug}`);
   }
 
   return <MovieWatchPage movie={movie} />;

@@ -44,7 +44,9 @@ export async function getDetailMovieServerAction(movies: NewlyMovie[]): Promise<
   // this locale, instead of one call per title.
   const items = detailMovies
     .filter((d) => d.movie.content)
-    .map((d) => ({ movieId: d.movie._id, content: d.movie.content }));
+    // The source language matters: without it the localizer assumes English
+    // and "translates" a synopsis that is already in the page's language.
+    .map((d) => ({ movieId: d.movie._id, content: d.movie.content, contentLang: d.movie.content_lang }));
 
   const localizedMap = await localizeMovieContentsBatch(items, locale);
 

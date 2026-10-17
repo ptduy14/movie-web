@@ -1,9 +1,9 @@
 import { Redis } from '@upstash/redis';
 
 /**
- * Singleton Upstash Redis client used as a low-cost cache layer in front of
- * external APIs (TMDB images, TMDB catalog responses) and as the store for
- * the vidsrc availability index.
+ * Singleton Upstash Redis client, used as a low-cost cache in front of TMDB
+ * image lookups (title logos). Optional: everything works without it, only
+ * slower.
  *
  * Credential env vars come in two flavours depending on how the store was
  * attached:
@@ -26,11 +26,17 @@ import { Redis } from '@upstash/redis';
 const url = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
 const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
 
-const redis: Redis | null = url && token ? new Redis({ url, token }) : null;
+/**
+ * No retries. Redis is only a cache here, so an unreachable instance should
+ * cost one failed request, not the client's default retry ladder — with a
+ * dead host (DNS ENOTFOUND) that ladder took ~9.5 s per lookup and stalled
+ * the home hero behind it.
+ */
+const redis: Redis | null = url && token ? new Redis({ url, token, retry: { retries: 0 } }) : null;
 
 if (!redis && process.env.NODE_ENV !== 'production') {
   console.warn(
-    '[upstash] no Redis credentials found (checked UPSTASH_REDIS_REST_* and KV_REST_API_*) — caching and the vidsrc availability index are disabled'
+    '[upstash] no Redis credentials found (checked UPSTASH_REDIS_REST_* and KV_REST_API_*) — TMDB logo caching is disabled'
   );
 }
 

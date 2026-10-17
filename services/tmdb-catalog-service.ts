@@ -6,12 +6,13 @@ import type {
   TmdbSeasonDetail,
 } from 'types/tmdb-api';
 import type { MediaType } from 'constants/tmdb-taxonomy';
-import { genreIdForSlug, isoForCountrySlug, formatDefinition } from 'constants/tmdb-taxonomy';
 
 /**
- * Raw TMDB catalog access. One place that knows about auth, timeouts,
- * language codes and pagination; everything above it works in app types via
- * `lib/tmdb-adapter.ts`.
+ * Raw TMDB access. Since v3 TMDB is not the catalog source, so this
+ * is down to what the extras need: weekly trending for the hero, search
+ * for matching titles the catalog has no TMDB id for, and detail / season /
+ * trailer lookups for `services/tmdb-enrichment.ts`. One place that knows
+ * about auth, timeouts and language codes.
  *
  * Every response is guarded. The previous provider layer called a bare
  * `res.json()` in all twelve methods, so the day the upstream started
@@ -107,126 +108,6 @@ async function tmdbFetch<T>(
   } finally {
     clearTimeout(timer);
   }
-}
-
-// ============================================================================
-// DISCOVER
-// ============================================================================
-
-export interface DiscoverOptions {
-  mediaType: MediaType;
-  locale?: string;
-  page?: number;
-  /** Genre slug from `constants/tmdb-taxonomy`. Ignored if the genre does not
-   *  exist for this media type. */
-  genreSlug?: string;
-  /** Explicit TMDB genre ids — used by format definitions. OR-ed together. */
-  genreIds?: number[];
-  countrySlug?: string;
-  year?: string | number;
-  /** `''` | `'year_desc'` | `'year_asc'` — the vocabulary the filter bar writes. */
-  sort?: string;
-}
-
-/**
- * Translate the filter bar's `sort` token into a TMDB `sort_by` value.
- *
- * TMDB names the date field differently per media type, which is why this
- * needs the media type rather than being a plain lookup table. Anything
- * unrecognized (including `''`) falls back to popularity, TMDB's own default
- * and the only sensible ordering for an unfiltered browse page.
- */
-function sortBy(sort: string | undefined, mediaType: MediaType): string {
-  const dateField = mediaType === 'tv' ? 'first_air_date' : 'primary_release_date';
-  if (sort === 'year_desc') return `${dateField}.desc`;
-  if (sort === 'year_asc') return `${dateField}.asc`;
-  if (sort === 'rating_desc') return 'vote_average.desc';
-  return 'popularity.desc';
-}
-
-export async function discover(opts: DiscoverOptions): Promise<TmdbPagedResponse> {
-  const { mediaType, locale, page = 1, genreSlug, genreIds, countrySlug, year, sort } = opts;
-
-  const genres: number[] = [];
-  if (genreIds?.length) genres.push(...genreIds);
-  if (genreSlug) {
-    const id = genreIdForSlug(genreSlug, mediaType);
-    if (id !== undefined) genres.push(id);
-  }
-
-  const yearParam = mediaType === 'tv' ? 'first_air_date_year' : 'primary_release_year';
-
-  return tmdbFetch<TmdbPagedResponse>(`/discover/${mediaType}`, {
-    language: tmdbLanguage(locale),
-    page,
-    sort_by: sortBy(sort, mediaType),
-    // Comma = AND, pipe = OR. Format definitions ("TV show" = reality OR talk
-    // OR news) need OR; a single genre filter is unaffected either way.
-    with_genres: genres.length ? genres.join('|') : undefined,
-    with_origin_country: countrySlug ? isoForCountrySlug(countrySlug) : undefined,
-    [yearParam]: year || undefined,
-    include_adult: false,
-    // Titles with no votes at all are overwhelmingly data-entry stubs with no
-    // poster. They would pass the availability filter only to render as grey
-    // boxes, so they are cheaper to exclude here than to filter downstream.
-    'vote_count.gte': sort === 'rating_desc' ? 50 : undefined,
-  });
-}
-
-/**
- * Discover for a browse "format" (`phim-le`, `phim-bo`, `hoat-hinh`, `tv-shows`).
- *
- * `hoat-hinh` spans both media types, so it issues two discover calls and
- * interleaves them — a page therefore holds up to 40 items rather than 20,
- * and `total_results` is the sum. Interleaving (rather than concatenating)
- * matters: concatenation would render every animated film before the first
- * animated series, which looks broken on a grid.
- */
-export async function discoverByFormat(
-  formatSlug: string,
-  opts: Omit<DiscoverOptions, 'mediaType'> = {}
-): Promise<TmdbPagedResponse & { mediaTypeByIndex: MediaType[] }> {
-  const def = formatDefinition(formatSlug);
-  if (!def) {
-    return { page: 1, results: [], total_pages: 0, total_results: 0, mediaTypeByIndex: [] };
-  }
-
-  const responses = await Promise.all(
-    def.mediaTypes.map((mediaType) =>
-      discover({ ...opts, mediaType, genreIds: def.genreIds?.[mediaType] })
-        .then((res) => ({ mediaType, res }))
-        .catch(() => ({ mediaType, res: null as TmdbPagedResponse | null }))
-    )
-  );
-
-  const alive = responses.filter((r) => r.res !== null) as {
-    mediaType: MediaType;
-    res: TmdbPagedResponse;
-  }[];
-
-  if (alive.length === 0) {
-    throw new TmdbError('all discover calls failed', 0, `/discover[${formatSlug}]`);
-  }
-
-  const results: TmdbListItem[] = [];
-  const mediaTypeByIndex: MediaType[] = [];
-  const longest = Math.max(...alive.map((r) => r.res.results.length));
-  for (let i = 0; i < longest; i++) {
-    for (const { mediaType, res } of alive) {
-      const item = res.results[i];
-      if (!item) continue;
-      results.push(item);
-      mediaTypeByIndex.push(mediaType);
-    }
-  }
-
-  return {
-    page: opts.page ?? 1,
-    results,
-    total_pages: Math.max(...alive.map((r) => r.res.total_pages)),
-    total_results: alive.reduce((sum, r) => sum + r.res.total_results, 0),
-    mediaTypeByIndex,
-  };
 }
 
 // ============================================================================

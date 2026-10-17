@@ -16,12 +16,12 @@ on:
   workflow_dispatch:
     inputs:
       locale:
-        description: 'Target locale (currently only `vi` is wired up)'
+        description: 'Target locale (`en` — The catalog synopses are Vietnamese)'
         required: true
-        default: 'vi'
+        default: 'en'
         type: choice
         options:
-          - vi
+          - en
       pages:
         description: 'Number of catalog pages to process this run (1-20)'
         required: true
@@ -30,7 +30,7 @@ on:
 
 # Stop a queued run if a previous one is still going to avoid double-translating.
 concurrency:
-  group: translate-cron-${{ github.event.inputs.locale || 'vi' }}
+  group: translate-cron-${{ github.event.inputs.locale || 'en' }}
   cancel-in-progress: false
 
 jobs:
@@ -41,7 +41,7 @@ jobs:
       - name: Resolve inputs
         id: inputs
         run: |
-          LOCALE="${{ github.event.inputs.locale || 'vi' }}"
+          LOCALE="${{ github.event.inputs.locale || 'en' }}"
           PAGES="${{ github.event.inputs.pages || '2' }}"
           echo "locale=$LOCALE" >> "$GITHUB_OUTPUT"
           echo "pages=$PAGES"   >> "$GITHUB_OUTPUT"

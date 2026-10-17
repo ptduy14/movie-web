@@ -19,14 +19,12 @@ export interface UseWatchAnalyticsReturn {
 }
 
 /**
- * Playback analytics, driven by the vidsrc player's postMessage events.
+ * Playback analytics, driven by player events in the `VidsrcEvent` shape.
  *
- * Previously this listened to `play` / `timeupdate` / `ended` on a `<video>`
- * element. The iframe reports the same three moments — `playing`, periodic
- * progress (also `playing`), and `completed` — so the milestone logic is
- * unchanged. The one difference worth knowing: progress ticks arrive about
- * every five seconds instead of several times a second, which is plenty for
- * quarter-of-the-way milestones and much cheaper.
+ * Both playback surfaces speak it: the vidsrc iframe natively (postMessage),
+ * the hls.js player through `useVideoElementBridge`. Progress ticks arrive
+ * about every five seconds either way — plenty for quarter-of-the-way
+ * milestones and much cheaper than per-`timeupdate`.
  */
 export function useWatchAnalytics({
   movieId,

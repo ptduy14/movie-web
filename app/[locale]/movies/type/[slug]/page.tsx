@@ -1,6 +1,9 @@
 import MovieTypePage from '@/components/move-type';
 import PageParams from 'types/page-params';
 import movieType from 'data/movie-type';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { LEGACY_GENRE_REDIRECTS, isBrowsableGenre } from 'constants/catalog-taxonomy';
+import { queryString } from 'utils/query-string';
 
 export async function generateMetadata({ params }: PageParams) {
   const type = movieType.find((type) => type.slug === params.slug);
@@ -13,6 +16,19 @@ export async function generateMetadata({ params }: PageParams) {
   };
 }
 
-export default function MovieType({ params }: { params: { slug: string } }) {
+export default function MovieType({
+  params,
+  searchParams,
+}: {
+  params: { locale: string; slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
+  const legacy = LEGACY_GENRE_REDIRECTS[params.slug];
+  if (legacy) {
+    permanentRedirect(`/${params.locale}/movies/type/${legacy}${queryString(searchParams)}`);
+  }
+  // Unknown slugs and hidden genres (phim-18) are not pages.
+  if (!isBrowsableGenre(params.slug)) notFound();
+
   return <MovieTypePage slug={params.slug} />;
 }

@@ -1,8 +1,8 @@
-import { BROWSE_FORMAT_SLUGS } from 'constants/tmdb-taxonomy';
+import { BROWSE_FORMAT_SLUGS } from 'constants/catalog-taxonomy';
 import { FORMAT_MAP } from 'constants/i18n-mappings';
 
 /**
- * The four browse formats, derived from the catalog taxonomy so the menu and
+ * The four header-menu formats, derived from the catalog taxonomy so the menu and
  * the discover constraints can never drift apart.
  */
 const movieFormat = BROWSE_FORMAT_SLUGS.map((slug) => ({

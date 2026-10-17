@@ -1,4 +1,4 @@
-import { BROWSE_GENRE_SLUGS } from 'constants/tmdb-taxonomy';
+import { BROWSE_GENRE_SLUGS } from 'constants/catalog-taxonomy';
 import { CATEGORY_MAP } from 'constants/i18n-mappings';
 
 /**

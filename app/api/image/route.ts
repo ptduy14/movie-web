@@ -9,7 +9,8 @@ import sharp from 'sharp';
  */
 
 const ALLOWED_HOSTS = new Set([
-  'image.tmdb.org',          // all catalog artwork
+  'image.tmdb.org',          // TMDB artwork (hero logos, stills, cast)
+  'phimimg.com',             // catalog posters and stills — originals up to ~1 MB
   'lh3.googleusercontent.com', // Google account avatars
 ]);
 

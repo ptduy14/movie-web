@@ -11,7 +11,7 @@ interface RatingLinksProps {
 }
 
 const isValidScore = (score?: number) => typeof score === 'number' && score > 0;
-const isValidId = (id?: string) => typeof id === 'string' && id.length > 0;
+const isValidId = (id?: string | null) => typeof id === 'string' && id.length > 0;
 
 const formatVotes = (count?: number) => {
   if (!count || count <= 0) return '';
@@ -19,8 +19,8 @@ const formatVotes = (count?: number) => {
   return String(count);
 };
 
-const buildImdbUrl = (id: string) => `https://www.imdb.com/title/${id}/`;
-const buildTmdbUrl = (type: string, id: string) => {
+const buildImdbUrl = (id: string | null) => `https://www.imdb.com/title/${id}/`;
+const buildTmdbUrl = (type: string | null, id: string | null) => {
   // The catalog's media type is "tv" or "movie" — TMDB URL paths match
   const safeType = type === 'movie' ? 'movie' : 'tv';
   return `https://www.themoviedb.org/${safeType}/${id}`;

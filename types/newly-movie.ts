@@ -47,4 +47,10 @@ export default interface NewlyMovie {
   lang?: string; // always "Phụ đề" — vidsrc serves subtitles, never a VI dub
   category?: Category[];
   country?: Country[];
+
+  // ---- catalog-only (absent on TMDB-built rows) ----
+  /** Audio tracks on offer: `vs` Vietsub, `tm` Thuyết Minh, `lt` Lồng Tiếng. */
+  lang_key?: string[];
+  /** Theatrical release. */
+  chieurap?: boolean;
 }

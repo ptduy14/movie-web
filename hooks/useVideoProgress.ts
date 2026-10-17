@@ -12,17 +12,22 @@ import type { PlaybackSnapshot } from 'hooks/useVidsrcBridge';
 /**
  * Watch-progress persistence.
  *
- * Playback lives in a cross-origin iframe now, so this reads a snapshot fed
- * by `useVidsrcBridge` instead of touching a `<video>` element. The storage
- * behaviour is unchanged: localStorage every 20s for everyone, Firestore
- * every 60s for signed-in users, plus force-syncs on pause, tab-hide and
- * unload.
+ * Reads a playback snapshot rather than a `<video>` element, because the
+ * watch page has two surfaces — the hls.js player and the vidsrc iframe
+ * fallback — and both feed the same `PlaybackSnapshot` shape
+ * (`useVideoElementBridge` / `useVidsrcBridge`). Storage: localStorage every
+ * 20s for everyone, Firestore every 60s for signed-in users, plus
+ * force-syncs on pause, tab-hide and unload.
  *
- * One real consequence of the iframe: progress arrives roughly every five
- * seconds rather than continuously, so a saved position can lag actual
- * playback by up to that much. That is well inside the tolerance of a
- * "resume where you left off" prompt.
+ * The saved `episodeLink` is the episode's playable address — its m3u8 when
+ * it has one, else its embed URL — and a record matches an episode by
+ * either, so progress saved on one surface still resumes on the other.
  */
+
+/** Does this stored link point at `ep`? */
+function matchesEpisode(link: string, ep: { link_m3u8?: string; link_embed?: string } | undefined) {
+  return !!ep && !!link && (ep.link_m3u8 === link || ep.link_embed === link);
+}
 
 /** Extract resume-prompt fields. Returns null when no usable progress. */
 function toRestoredProgress(entry: IRecentMovie | null): {
@@ -105,16 +110,16 @@ export function useVideoProgress({
   const hasRestoredRef = useRef(false);
 
   /**
-   * Guard against resuming into an episode that no longer exists — a series
-   * can gain or lose seasons between visits. Matches on the embed URL, which
-   * is what episode records now store.
+   * Guard against resuming into an episode that no longer exists — or one
+   * whose stream moved to a new host since the record was written, which
+   * the catalog has done three times in a year.
    */
   const isValidEpisodeLink = useCallback(
     (link: string) => {
       if (!link) return false;
       for (const ep of movie.episodes || []) {
         for (const s of ep.server_data || []) {
-          if (s?.link_embed === link) return true;
+          if (matchesEpisode(link, s)) return true;
         }
       }
       return false;
@@ -301,7 +306,7 @@ export function useVideoProgress({
 
     if (setServerIndex && movie.episodes) {
       for (let i = 0; i < movie.episodes.length; i++) {
-        const found = movie.episodes[i].server_data?.some((s) => s?.link_embed === epLink);
+        const found = movie.episodes[i].server_data?.some((s) => matchesEpisode(epLink, s));
         if (found) {
           setServerIndex(i);
           break;
@@ -311,8 +316,8 @@ export function useVideoProgress({
 
     setEpisodeIndex(epIdx);
     setEpisodeLink(epLink);
-    // The player cannot be seeked from outside, so resuming means rebuilding
-    // the embed URL with `?startAt=` — which remounts the iframe.
+    // The hls.js player seeks to this; the iframe fallback rebuilds its URL
+    // with `?startAt=` instead, since it can't be seeked from outside.
     setVideoProgress(position);
     setIsShowResumePrompt(false);
     analytics.resumeAccepted(movieId, position);

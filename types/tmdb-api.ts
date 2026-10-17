@@ -160,6 +160,8 @@ export interface TmdbEpisode {
 export interface TmdbSeasonDetail {
   season_number: number;
   name?: string;
+  /** Describes this season; often empty in non-English locales. */
+  overview?: string;
   episodes?: TmdbEpisode[];
 }
 

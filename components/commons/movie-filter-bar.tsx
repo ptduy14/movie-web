@@ -13,23 +13,18 @@ import {
   IoOptionsOutline,
   IoSwapVertical,
 } from 'react-icons/io5';
-import {
-  CATEGORY_MAP,
-  COUNTRY_MAP,
-  localizedCategory,
-  localizedCountry,
-} from 'constants/i18n-mappings';
+import { localizedCategory, localizedCountry } from 'constants/i18n-mappings';
+import { BROWSE_GENRE_SLUGS, COUNTRY_SLUGS } from 'constants/catalog-taxonomy';
 import type { Locale } from 'i18n/routing';
-import type { MovieFilters } from 'types/movie-filters';
 
-export type FilterDimension = 'category' | 'country' | 'year';
+export type FilterDimension = 'category' | 'country' | 'year' | 'lang';
 
 /**
  * The sort tokens this bar writes to the URL. The catalog service maps them
- * onto TMDB's `sort_by`, which names its date field differently per media
- * type — so the translation belongs there, not here.
+ * onto the catalog's `sort_field` / `sort_type`. There is no rating sort upstream,
+ * so none is offered.
  */
-export const SORT_TOKENS = ['', 'year_desc', 'year_asc', 'rating_desc'] as const;
+export const SORT_TOKENS = ['', 'year_desc', 'year_asc'] as const;
 
 interface Option {
   value: string;
@@ -62,6 +57,7 @@ export default function MovieFilterBar({
   const country = searchParams.get('country') ?? '';
   const year = searchParams.get('year') ?? '';
   const sort = searchParams.get('sort') ?? '';
+  const lang = searchParams.get('lang') ?? '';
   const setParam = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) params.set(key, value);
@@ -73,7 +69,7 @@ export default function MovieFilterBar({
   const clearAll = () => {
     const params = new URLSearchParams(searchParams.toString());
     // Sort is a separate concern (kept in its own control), so clear filters only.
-    ['category', 'country', 'year'].forEach((k) => params.delete(k));
+    ['category', 'country', 'year', 'lang'].forEach((k) => params.delete(k));
     const qs = params.toString();
     replace(qs ? `${pathname}?${qs}` : pathname);
   };
@@ -81,14 +77,14 @@ export default function MovieFilterBar({
   const categoryOptions = useMemo<Option[]>(
     () => [
       { value: '', label: t('all') },
-      ...Object.keys(CATEGORY_MAP.vi).map((s) => ({ value: s, label: localizedCategory(s, locale) })),
+      ...BROWSE_GENRE_SLUGS.map((s) => ({ value: s, label: localizedCategory(s, locale) })),
     ],
     [locale, t]
   );
   const countryOptions = useMemo<Option[]>(
     () => [
       { value: '', label: t('all') },
-      ...Object.keys(COUNTRY_MAP.vi).map((s) => ({ value: s, label: localizedCountry(s, locale) })),
+      ...COUNTRY_SLUGS.map((s) => ({ value: s, label: localizedCountry(s, locale) })),
     ],
     [locale, t]
   );
@@ -98,6 +94,15 @@ export default function MovieFilterBar({
     for (let y = current; y >= current - 26; y--) opts.push({ value: String(y), label: String(y) });
     return opts;
   }, [t]);
+  const langOptions = useMemo<Option[]>(
+    () => [
+      { value: '', label: t('all') },
+      { value: 'vietsub', label: t('langVietsub') },
+      { value: 'thuyet-minh', label: t('langVoiceover') },
+      { value: 'long-tieng', label: t('langDubbed') },
+    ],
+    [t]
+  );
   const sortOptions = useMemo<Option[]>(
     () => [
       { value: '', label: t('sortLatest') },
@@ -109,10 +114,13 @@ export default function MovieFilterBar({
 
   const currentSortLabel = sortOptions.find((o) => o.value === sort)?.label ?? t('sortLatest');
 
-  const activeFilters: { param: 'category' | 'country' | 'year'; label: string }[] = [];
+  const activeFilters: { param: FilterDimension; label: string }[] = [];
   if (category) activeFilters.push({ param: 'category', label: localizedCategory(category, locale) });
   if (country) activeFilters.push({ param: 'country', label: localizedCountry(country, locale) });
   if (year) activeFilters.push({ param: 'year', label: year });
+  if (lang) {
+    activeFilters.push({ param: 'lang', label: langOptions.find((o) => o.value === lang)?.label ?? lang });
+  }
 
   return (
     <div>
@@ -159,6 +167,14 @@ export default function MovieFilterBar({
                 value={year}
                 options={yearOptions}
                 onChange={(v) => setParam('year', v)}
+              />
+            )}
+            {dimensions.includes('lang') && (
+              <FilterDropdown
+                label={t('lang')}
+                value={lang}
+                options={langOptions}
+                onChange={(v) => setParam('lang', v)}
               />
             )}
           </div>

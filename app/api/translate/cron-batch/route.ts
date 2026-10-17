@@ -11,8 +11,8 @@ import { isMaintenanceMode } from 'lib/maintenance';
  *   anonymous attacker could spam the endpoint and burn your Groq quota.
  *
  * Query params:
- *   - `locale`  (default `vi`)  — target locale; must be in `routing.locales`
- *                                  and must not be `en`, which is the source.
+ *   - `locale`  (default `en`)  — target locale; must be in `routing.locales`
+ *                                  and must not be `vi`, which is the source.
  *   - `pages`   (default `5`)   — number of catalog pages to process this run.
  *                                  Capped at 20 to keep us under Vercel's 60s
  *                                  function timeout.
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
   // ---- 2. Parse + validate params ----
   const { searchParams } = new URL(req.url);
-  const locale = (searchParams.get('locale') ?? 'vi').toLowerCase();
+  const locale = (searchParams.get('locale') ?? 'en').toLowerCase();
   const pagesRaw = parseInt(searchParams.get('pages') ?? `${DEFAULT_PAGES}`, 10);
   const pages = Number.isFinite(pagesRaw)
     ? Math.max(1, Math.min(MAX_PAGES, pagesRaw))
@@ -71,14 +71,14 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-  // English needs no work: TMDB is an English-first catalog, so `en` is the
-  // SOURCE language now. This guard used to reject the default locale (`vi`)
-  // for exactly the opposite reason — the previous catalog was Vietnamese.
-  if (locale === 'en') {
+  // Vietnamese needs no work: The catalog writes every synopsis in Vietnamese, so
+  // `vi` is the SOURCE language. (Under the TMDB catalog it was the other way
+  // round, and this guard rejected `en`.)
+  if (locale === 'vi') {
     return NextResponse.json(
       {
         error:
-          "Locale 'en' is the source language — nothing to translate. Use a target locale such as 'vi'.",
+          "Locale 'vi' is the source language — nothing to translate. Use a target locale such as 'en'.",
       },
       { status: 400 }
     );

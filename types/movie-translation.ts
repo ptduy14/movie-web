@@ -23,7 +23,7 @@ export interface MovieTranslationLocaleData {
  *
  * Nested locale fields make it cheap to fetch all locales in one read and
  * trivial to add new ones without a schema migration. Note the direction
- * change since the OPhim era: the source is now English and `vi` is a
+ * change since the v1 era: the source is now English and `vi` is a
  * TRANSLATION target, where before Vietnamese was the source and `en` the
  * target.
  */

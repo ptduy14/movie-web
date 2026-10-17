@@ -5,6 +5,92 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] — 2026-10-17
+
+The catalog and the main player were replaced again. A Vietnamese movie API
+is now both the catalog AND the stream; TMDB is demoted to an extras layer
+and vidsrc to a backup player. Stored ids, URLs and watch history from 2.x do not
+carry over — hence a major version.
+
+### Context
+
+v2's TMDB + vidsrc pairing played only what vidsrc happened to carry, with
+subtitles only — no Vietnamese voiceover or dub — and depended on a daily id
+index to hide titles that would not play. The new catalog hosts a stream for
+every title it lists, in up to three audio versions (Vietsub / Thuyết Minh / Lồng
+Tiếng), with Vietnamese metadata. Its video CDN only answers Vietnamese IPs,
+which shaped most of the player work below.
+
+### Added
+
+- Catalog API client, adapter and taxonomy: `services/catalog-api.ts`,
+  `lib/catalog-adapter.ts`, `constants/catalog-taxonomy.ts`.
+- Home rails "Phim Chiếu Rạp" and "Có Thuyết Minh"; the daily banner shows
+  the catalog's real "updated today" count.
+- Audio filter (Vietsub / Thuyết minh / Lồng tiếng) on every browse page.
+- "Seasons" row on the detail page — the catalog lists each season as its own
+  title, linked here.
+- `lib/hls-ad-filter.ts`: a custom hls.js playlist loader that cuts the 30 s
+  video ad the catalog splices into its playlists.
+- `hooks/useStreamReachability.ts` + `components/watch/stream-notice.tsx`:
+  detects when the stream can't load and why (Cloudflare WARP, a VPN,
+  viewing from abroad, or the CDN), tells the viewer what to switch off, and
+  offers — or, abroad, switches to — the backup source. All in the browser;
+  no IP leaves it.
+- `hooks/useVideoElementBridge.ts`: feeds `<video>` playback into the same
+  snapshot/event shape as the iframe bridge, so progress and analytics work
+  on either player.
+- `services/tmdb-enrichment.ts`: matches titles that have no TMDB id
+  (~22% of the catalog), adds the English synopsis and title on `en`, rating,
+  trailer and IMDb id. Time-boxed to 3 s.
+
+### Changed
+
+- **Title identity.** URLs are catalog slugs (`/movies/nha-ngoai-giao-phan-4`),
+  storage keys are catalog `_id`s. v2 slugs (`…-tv-1399`) resolve by TMDB id
+  and redirect; retired genre/country slugs redirect to their nearest
+  catalog equivalent (`gia-tuong` → `vien-tuong`, `hoa-ky` → `au-my`).
+- **Playback.** The in-house `hls.js` player and its controls are back, on
+  the catalog's own m3u8 streams. The vidsrc iframe is the backup source. `episodes[]` means
+  audio servers again, not seasons.
+- **Translation direction** flipped back to VI → EN: the catalog writes
+  Vietnamese, and the English site uses TMDB's own English text first. The
+  translation cron walks the catalog's latest feed and only translates titles
+  TMDB can't cover; its default target locale is now `en`.
+- English pages show the original title (`origin_name`, or TMDB's English
+  title) as the primary title and in `<title>`.
+- `Tmdb.id` / `Imdb.id` are nullable.
+- `phimimg.com` is allowed by `next/image` and the `/api/image` resizer —
+  some catalog originals are ~1 MB.
+
+### Removed
+
+- The vidsrc availability index: `services/vidsrc-availability.ts`,
+  `POST /api/vidsrc/sync-ids`, `.github/workflows/vidsrc-ids-cron.yml`, and
+  vidsrc's latest-feed / id-dump readers.
+- `lib/tmdb-adapter.ts`, TMDB discover, and the TMDB genre/country/format
+  taxonomy (`constants/tmdb-taxonomy.ts` now only exports `MediaType`).
+- The "rating" sort — the catalog API has no rating order.
+
+### Data
+
+- Firestore collections keyed by the previous catalog's ids are wiped with
+  `npm run wipe:legacy:confirm` (decision D3). A dry run on 2026-10-17
+  counted 33,577 `translations` (from the v1 provider, no `sourceHash`, mostly
+  ids the catalog doesn't have), 4 `userMovies`, 6 `movieComments` (+5), 3
+  `userNotifications` (+3) and 1 `cronMeta`. `users` is not touched.
+
+### Known issues
+
+- The main stream only plays from Vietnamese IPs. Elsewhere the backup
+  source plays, with subtitles only.
+- Native-HLS browsers that lack MSE (older iOS Safari) can't run the ad
+  filter and will show the spliced ad.
+- Old-slug redirects are streamed (`NEXT_REDIRECT` after a 200, because of
+  `loading.tsx`), not HTTP 301s.
+- Gate K2 — the catalog API reachable from the Vercel region — is checked on the
+  first preview deploy.
+
 ## [2.0.0] — 2026-09-27
 
 The data source and the player were both replaced. Nothing about the previous
@@ -14,10 +100,10 @@ carry over.
 
 ### Context
 
-`ophim1.com`, the catalog behind every list, detail and playback URL, was shut
+The original catalog API, behind every list, detail and playback URL, was shut
 down permanently — its API paths return 404 and its image CDN went with them.
 Two replacement investigations are in `docs/`: `vsmov-migration.md` (VSMOV and
-KKPhim, the like-for-like options) and `vidsrc-investigation.md` (vidsrc.sh).
+the catalog, the like-for-like options) and `vidsrc-investigation.md` (vidsrc.sh).
 vidsrc.sh was chosen.
 
 vidsrc solves playback only — it has no search, no metadata and no browse — so
@@ -69,10 +155,10 @@ the catalog moved to TMDB and the two are joined by an availability index.
 
 ### Removed
 
-- `services/movie-services.ts` and every OPhim endpoint.
+- `services/movie-services.ts` and every v1 provider endpoint.
 - `hls.js`, `components/watch/video-controls/**`, `video-player.tsx`,
   `server-section.tsx`, and the four player hooks.
-- `NEXT_PUBLIC_API_DOMAIN`, `NEXT_PUBLIC_IMG_DOMAIN`, and `img.ophim.live`
+- `NEXT_PUBLIC_API_DOMAIN`, `NEXT_PUBLIC_IMG_DOMAIN`, and `img.v1.live`
   from the image allowlist.
 - The `au-my` country filter — it meant "US + Europe", which has no ISO code
   and no discover equivalent. Use `hoa-ky` plus the individual entries.
@@ -99,5 +185,5 @@ the catalog moved to TMDB and the two are joined by an availability index.
 
 ## [0.1.0]
 
-Initial development version, backed by the OPhim catalog with an in-house
+Initial development version, backed by the v1 provider's catalog with an in-house
 `hls.js` player. Never formally tagged.
