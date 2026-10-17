@@ -13,6 +13,7 @@ const nextConfig = {
     loaderFile: './image-loader.ts',
     remotePatterns: [
       { protocol: 'https', hostname: 'image.tmdb.org' },
+      { protocol: 'https', hostname: 'phimimg.com' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
     ],
   },

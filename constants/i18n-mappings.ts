@@ -1,21 +1,20 @@
 /**
  * Display names for catalog taxonomy, keyed by slug.
  *
- * The catalog speaks TMDB genre ids and ISO country codes;
- * `constants/tmdb-taxonomy.ts` turns those into stable slugs, and this file
- * turns slugs into words a person reads. TMDB does return localized genre
- * names, but they arrive with a "Phim " prefix on every entry ("Phim Hành
- * Động", "Phim Hài") which reads badly in a chip, so we keep our own.
+ * The slugs are the catalog's (`constants/catalog-taxonomy.ts`); this file turns
+ * them into words a person reads, in each locale. The catalog does send its own
+ * Vietnamese names, but only Vietnamese, and a few of them are TMDB's English
+ * genre names leaking through — so the site keeps its own.
  *
  * Pattern:
  *   localizedCategory('hanh-dong', 'en') → 'Action'
  *   localizedCategory('hanh-dong', 'vi') → 'Hành Động'
  *   localizedCategory('unknown-slug', 'en') → 'unknown-slug' (fallback)
  *
- * Keep the keys in sync with `MOVIE_GENRE_SLUG_TO_ID` / `TV_GENRE_SLUG_TO_ID`
- * and `COUNTRY_SLUG_TO_ISO`. A missing entry degrades to the raw slug rather
- * than throwing, so a new TMDB genre shows up as readable-ish text until
- * someone names it here.
+ * A few TMDB-era slugs (`gia-tuong`, `hoa-ky`, `talkshow`…) are still named
+ * here: v2 watch history and collections may carry them in chips, and the
+ * browse routes redirect them to their catalog equivalents. A missing entry
+ * degrades to the raw slug rather than throwing.
  */
 
 import type { Locale } from 'i18n/routing';
@@ -48,6 +47,17 @@ export const CATEGORY_MAP: Record<Locale, Record<string, string>> = {
     'truyen-hinh-thuc-te': 'Truyền Hình Thực Tế',
     'phim-dai': 'Phim Dài Tập',
     talkshow: 'Talkshow',
+    // Catalog-only genres
+    'tam-ly': 'Tâm Lý',
+    'than-thoai': 'Thần Thoại',
+    'co-trang': 'Cổ Trang',
+    'vo-thuat': 'Võ Thuật',
+    'tre-em': 'Trẻ Em',
+    'hoc-duong': 'Học Đường',
+    'the-thao': 'Thể Thao',
+    'khoa-hoc': 'Khoa Học',
+    'kinh-dien': 'Kinh Điển',
+    'phim-ngan': 'Phim Ngắn',
   },
   en: {
     'hanh-dong': 'Action',
@@ -73,6 +83,17 @@ export const CATEGORY_MAP: Record<Locale, Record<string, string>> = {
     'truyen-hinh-thuc-te': 'Reality',
     'phim-dai': 'Soap',
     talkshow: 'Talk Show',
+    // Catalog-only genres
+    'tam-ly': 'Psychological',
+    'than-thoai': 'Mythology',
+    'co-trang': 'Period',
+    'vo-thuat': 'Martial Arts',
+    'tre-em': 'Kids',
+    'hoc-duong': 'School',
+    'the-thao': 'Sports',
+    'khoa-hoc': 'Science',
+    'kinh-dien': 'Classics',
+    'phim-ngan': 'Shorts',
   },
 };
 
@@ -117,6 +138,9 @@ export const COUNTRY_MAP: Record<Locale, Record<string, string>> = {
     'a-rap-xe-ut': 'Ả Rập Xê Út',
     uae: 'UAE',
     argentina: 'Argentina',
+    'au-my': 'Âu Mỹ',
+    'chau-phi': 'Châu Phi',
+    'quoc-gia-khac': 'Nước khác',
   },
   en: {
     'viet-nam': 'Vietnam',
@@ -155,6 +179,9 @@ export const COUNTRY_MAP: Record<Locale, Record<string, string>> = {
     'a-rap-xe-ut': 'Saudi Arabia',
     uae: 'UAE',
     argentina: 'Argentina',
+    'au-my': 'US & Europe',
+    'chau-phi': 'Africa',
+    'quoc-gia-khac': 'Elsewhere',
   },
 };
 
@@ -167,12 +194,18 @@ export const FORMAT_MAP: Record<Locale, Record<string, string>> = {
     'phim-bo': 'Phim bộ',
     'hoat-hinh': 'Hoạt hình',
     'tv-shows': 'TV show',
+    'phim-chieu-rap': 'Chiếu rạp',
+    'phim-thuyet-minh': 'Thuyết minh',
+    'phim-long-tieng': 'Lồng tiếng',
   },
   en: {
     'phim-le': 'Movies',
     'phim-bo': 'TV Series',
     'hoat-hinh': 'Animation',
     'tv-shows': 'TV Shows',
+    'phim-chieu-rap': 'Theatrical',
+    'phim-thuyet-minh': 'Voiceover',
+    'phim-long-tieng': 'Dubbed',
   },
 };
 
@@ -297,21 +330,19 @@ export function localizedSeason(seasonName: string | undefined, locale: Locale):
 /**
  * The title shown as the primary label on a card.
  *
- * TMDB already returns a locale-appropriate title — `title`/`name` come back
- * translated when a translation exists and fall back to the original
- * otherwise. So the right primary title is simply `name`, for every locale.
- *
- * This used to prefer `origin_name` on non-`vi` locales, because the previous
- * provider only ever returned Vietnamese in `name`. Doing that against TMDB
- * would actively regress the English site: it would show "기생충" where TMDB
- * had already supplied "Parasite".
+ * The catalog names every title in Vietnamese and keeps the
+ * original in `origin_name` — "Nhà Ngoại Giao (Phần 4)" / "The Diplomat
+ * (Season 4)". So Vietnamese readers get `name`, everyone else gets the
+ * original, which is English for most of the catalog and at least not a
+ * language they didn't ask for for the rest.
  */
 export function preferredTitle(
   name: string,
   origin_name: string | undefined,
-  _locale: Locale
+  locale: Locale
 ): string {
-  return name?.trim() || origin_name || '';
+  if (locale === 'vi') return name?.trim() || origin_name || '';
+  return origin_name?.trim() || name || '';
 }
 
 /**
@@ -319,15 +350,15 @@ export function preferredTitle(
  * (newly / regular / continue-watching). Hero + detail pages have their own
  * subtitle logic — see those files.
  *
- * Returns the original-language title when it differs from what is already
- * on screen, and nothing when it would just repeat it. Showing "Parasite /
- * Parasite" is noise; showing "Ký Sinh Trùng / Parasite" is context.
+ * On `vi` it is the original title when it differs ("Ký Sinh Trùng" over
+ * "Parasite"). On other locales the original is already the primary title,
+ * and a Vietnamese line under it would be noise, so nothing is shown.
  */
 export function secondaryTitle(
   name: string,
   origin_name: string | undefined,
-  _locale: Locale
+  locale: Locale
 ): string {
-  if (!origin_name) return '';
+  if (locale !== 'vi' || !origin_name) return '';
   return origin_name.trim() === name?.trim() ? '' : origin_name;
 }

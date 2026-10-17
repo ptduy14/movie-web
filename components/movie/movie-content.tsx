@@ -16,7 +16,8 @@ import RelatedMovies from './related-movies';
 import type MovieType from 'types/movie';
 import { Link } from 'i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
-import { localizedCountry, localizedLang } from 'constants/i18n-mappings';
+import { localizedCountry, localizedLang, localizedSeason } from 'constants/i18n-mappings';
+import type SeasonLink from 'types/season-link';
 import type { Locale } from 'i18n/routing';
 
 /**
@@ -34,12 +35,15 @@ export default function MovieContent({
   credit,
   images,
   relatedMovies = [],
+  seasons = [],
   aiTranslated = false,
 }: {
   movie: DetailMovie;
   credit: Credit | undefined;
   images: MovieImage[];
   relatedMovies?: NewlyMovie[];
+  /** Every season of this series, current one included. Empty hides the row. */
+  seasons?: SeasonLink[];
   /** True when the synopsis was machine-translated into the active locale. */
   aiTranslated?: boolean;
 }) {
@@ -99,6 +103,35 @@ export default function MovieContent({
             </div>
           </div>
         </div>
+
+        {/* Seasons — each one is its own title upstream */}
+        {seasons.length > 1 && (
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold lg:text-xl">{tMovie('seasons')}</h3>
+            <div className="flex flex-wrap gap-2">
+              {seasons.map((s) =>
+                s.slug === movie.movie.slug ? (
+                  <span
+                    key={s.slug}
+                    aria-current="page"
+                    className="rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-black"
+                  >
+                    {localizedSeason(`Phần ${s.season}`, locale)}
+                  </span>
+                ) : (
+                  <Link
+                    key={s.slug}
+                    href={`/movies/${s.slug}`}
+                    title={s.name}
+                    className="rounded-md border border-gray-600 px-3 py-1.5 text-sm transition-colors hover:border-white hover:bg-white hover:text-black"
+                  >
+                    {localizedSeason(`Phần ${s.season}`, locale)}
+                  </Link>
+                )
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Cast */}
         <ActorList movie={movie} credit={credit} />

@@ -34,4 +34,10 @@ export default interface Movie extends NewlyMovie{
      */
     content_lang?: string,
     trailer_url: string,
+
+    // ---- catalog-only (absent on TMDB-built titles) ----
+    /** `ongoing` | `completed` | `trailer`. */
+    status?: string,
+    /** Planned episode count, when the catalog knows it. */
+    episode_total?: number,
 }

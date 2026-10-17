@@ -1,26 +1,20 @@
 import type { MediaType } from 'constants/tmdb-taxonomy';
 
 /**
- * vidsrc.sh — the playback provider.
+ * vidsrc.sh — the BACKUP playback source.
  *
- * vidsrc exposes no catalog API worth the name: there is no search, no
- * metadata, no browse. What it gives us is three things, and this module is
- * the only place that knows about any of them:
- *
- *   1. `/embed/...`            — the iframe URL for a title (the whole point)
- *   2. `/{kind}/latest/*.json` — the 250 most recently added items
- *   3. `/ids/*.txt`            — every id it can play, refreshed daily
- *
- * Everything the user reads on the page comes from TMDB instead; see
- * `services/tmdb-catalog-service.ts`.
+ * Since v3 the main player streams the catalog's own m3u8; vidsrc's iframe is
+ * what the watch page falls back to when that stream can't be reached
+ * (viewers outside Vietnam, a dead link). Only the embed URL is used now —
+ * the "latest" feeds and daily id dumps that powered v2's availability
+ * index are gone with it, because the catalog hosts a stream for every title it
+ * lists.
  */
 
 const VIDSRC_DOMAIN = (process.env.NEXT_PUBLIC_VIDSRC_DOMAIN || 'https://vidsrc.sh').replace(
   /\/+$/,
   ''
 );
-
-const FETCH_TIMEOUT_MS = 15000;
 
 // ============================================================================
 // EMBED URLS
@@ -110,94 +104,4 @@ export function vidsrcOrigin(): string {
  */
 export function subtitleLanguagesFor(locale: string | undefined): string[] {
   return locale === 'vi' ? ['vi', 'en'] : ['en'];
-}
-
-// ============================================================================
-// LATEST FEEDS
-// ============================================================================
-
-export interface VidsrcLatestMovie {
-  imdb_id: string;
-  tmdb_id: string | null;
-  title: string;
-  embed_url: string;
-  embed_url_tmdb?: string;
-  quality?: string;
-  time_added?: string;
-}
-
-export interface VidsrcLatestEpisode extends Omit<VidsrcLatestMovie, 'title'> {
-  show_title: string;
-  season: string;
-  episode: string;
-}
-
-export type VidsrcLatestKind = 'movies' | 'tvshows' | 'episodes';
-
-interface VidsrcFeedResponse<T> {
-  result: T[];
-  pages: number;
-}
-
-/**
- * One page of vidsrc's "recently added" feed, 50 items per page.
- *
- * The published docs suggest these feeds walk the entire catalogue
- * (`"pages": 1833` in their example). They do not: every feed reports
- * `pages: 5` and page 6 returns an empty array, so the reachable window is
- * the newest 250 items. Treat this as a "what's new" rail, never as a
- * catalog source — that job belongs to TMDB, with `/ids/*.txt` deciding what
- * is playable.
- */
-export async function getLatest<T = VidsrcLatestMovie>(
-  kind: VidsrcLatestKind,
-  page = 1
-): Promise<T[]> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    const res = await fetch(`${VIDSRC_DOMAIN}/${kind}/latest/page-${page}.json`, {
-      signal: controller.signal,
-      next: { revalidate: 60 * 10 }, // feed is edge-cached ~5 min upstream
-    });
-    if (!res.ok) return [];
-    const json = (await res.json()) as VidsrcFeedResponse<T>;
-    return Array.isArray(json?.result) ? json.result : [];
-  } catch {
-    // The "what's new" rail is decorative — an outage hides it, nothing more.
-    return [];
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-// ============================================================================
-// ID LISTS  (source of truth for the availability index)
-// ============================================================================
-
-export type VidsrcIdList =
-  | 'movie_tmdb'
-  | 'movie_imdb'
-  | 'tv_tmdb'
-  | 'tv_imdb'
-  | 'eps_tmdb'
-  | 'eps_imdb';
-
-/**
- * Stream one of the daily id dumps as an array of lines.
- *
- * These are large — ~95k movie ids, ~20k TV ids, ~508k episode ids as of
- * 2026-09-20 — so this is for the sync cron only. Nothing in a request path
- * should ever call it.
- */
-export async function fetchIdList(list: VidsrcIdList): Promise<string[]> {
-  const res = await fetch(`${VIDSRC_DOMAIN}/ids/${list}.txt`, { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error(`vidsrc id list ${list} responded ${res.status}`);
-  }
-  const text = await res.text();
-  return text
-    .split('\n')
-    .map((line) => line.trim())
-    .filter(Boolean);
 }

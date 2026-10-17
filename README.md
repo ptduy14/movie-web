@@ -65,7 +65,7 @@
 
 - ⚡ **Built on the modern Next.js App Router** — server components, streaming SSR, and locale-prefixed routes for SEO.
 - 🤖 **AI-driven internationalization** — uses the **Groq LLM API** (Llama 3.3 70B) inside a Vercel Cron job to batch-translate movie content, so users in any locale see fully localized titles and descriptions without manual work.
-- 📺 **Streaming playback** through the VidSrc embed, with season and episode selection driven by TMDB.
+- 📺 **Streaming playback** in an in-house hls.js player — Vietsub, Thuyết minh or Lồng tiếng — with a VidSrc backup source for viewers outside Vietnam.
 - ☁️ **Firebase-backed user data** — auth, Firestore for collections/comments/notifications, and persistent watch-progress sync across devices.
 - 🌍 **Truly multilingual UX** — locale-aware routing with `next-intl`, language switcher, and localized date/number formatting.
 
@@ -97,7 +97,7 @@
 - **Full-text movie search** with debounced input and brand-safe placeholders
 - **Browse by type, country, and format** with infinite scroll
 - **Curated home page** — hero carousel, daily updates, recommendations
-- **TMDB-powered metadata** including cast, crew, ratings, and trailers
+- **Vietnamese catalog, TMDB extras** — titles, Vietnamese metadata and streams from the catalog API; cast photos, ratings, trailers and English text from TMDB
 
 ### 🤖 AI-Powered Translation
 
@@ -121,11 +121,11 @@
 | **State Management**     | [Redux Toolkit](https://redux-toolkit.js.org/), [redux-persist](https://github.com/rt2zz/redux-persist), React Context                                                                            |
 | **Forms & Validation**   | [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/), [@hookform/resolvers](https://github.com/react-hook-form/resolvers)                                                     |
 | **Backend & Data**       | [Firebase Auth](https://firebase.google.com/products/auth), [Cloud Firestore](https://firebase.google.com/products/firestore), [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup) |
-| **Catalog**              | [TMDB](https://www.themoviedb.org/) for metadata, artwork and search                                                                                                                             |
-| **Video**                | [VidSrc](https://vidsrc.sh/) embed for playback                                                                                                                                                  |
+| **Catalog**              | A Vietnamese movie API (`CATALOG_API_BASE`) for titles, search, taxonomy and streams; [TMDB](https://www.themoviedb.org/) for extras |
+| **Video**                | [hls.js](https://github.com/video-dev/hls.js) on the catalog's streams; [VidSrc](https://vidsrc.sh/) embed as the backup source                                                                         |
 | **AI / Translation**     | [Groq SDK](https://groq.com/) running [Llama 3.3 70B](https://ai.meta.com/llama/)                                                                                                                 |
 | **Internationalization** | [next-intl](https://next-intl-docs.vercel.app/)                                                                                                                                                   |
-| **External APIs**        | [TMDB API](https://developer.themoviedb.org/docs) for metadata                                                                                                                                    |
+| **External APIs**        | [TMDB API](https://developer.themoviedb.org/docs)                                                                                                 |
 | **Deployment**           | [Vercel](https://vercel.com/) (Edge + Cron Jobs)                                                                                                                                                  |
 
 ---
@@ -199,7 +199,10 @@ NEXT_PUBLIC_FIREBASE_CREDENTIALS_BASE64=your_base64_service_account
 NEXT_PUBLIC_TMDB_ACCESS_TOKEN=your_tmdb_v4_access_token
 NEXT_PUBLIC_TMDB_IMG_DOMAIN=https://image.tmdb.org
 
-# ── Movie content source (bring your own) ─────────────────────
+# ── Movie content source ──────────────────────────────────────
+# Catalog API base (optional — defaults to https://phimapi.com)
+CATALOG_API_BASE=https://phimapi.com
+# Backup player
 NEXT_PUBLIC_VIDSRC_DOMAIN=https://vidsrc.sh
 # Apply an iframe sandbox to the player. Leave false until verified against
 # the provider's anti-sandbox check — see docs/vidsrc-migration-plan.md.

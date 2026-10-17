@@ -45,7 +45,9 @@
       "singleNewlyUpdated": "Phim Lẻ Mới Cập Nhật",
       "tvSeriesNewlyUpdated": "Phim Bộ Mới Cập Nhật",
       "cartoonNewlyUpdated": "Phim Hoạt Hình Mới Cập Nhật",
-      "tvShowsNewlyUpdated": "TV Show Mới Cập Nhật"
+      "tvShowsNewlyUpdated": "TV Show Mới Cập Nhật",
+      "theatricalNewlyUpdated": "Phim Chiếu Rạp",
+      "voicedNewlyUpdated": "Có Thuyết Minh"
     },
     "banner": {
       "todayCount": "Hôm nay có",
@@ -91,13 +93,12 @@
       "viewOnImdb": "Xem trên IMDb",
       "viewOnTmdb": "Xem trên TMDB",
       "votes": "votes"
-    }
+    },
+    "seasons": "Các phần"
   },
   "watch": {
     "episodeList": "Danh sách tập phim",
     "episodeLabel": "Tập {index}",
-    "seasonList": "Danh sách phần",
-    "seasonLabel": "Phần {index}",
     "unavailable": "Phim này chưa có nguồn phát. Bạn quay lại sau nhé.",
     "progressNotification": {
       "episodePrefix": "tập {index}-",
@@ -105,6 +106,71 @@
       "question": "bạn muốn tiếp tục xem chứ ?",
       "accept": "Có",
       "reject": "Xem lại từ đầu"
+    },
+    "serverList": "Âm thanh",
+    "player": {
+      "settings": {
+        "speed": "Tốc độ phát",
+        "language": "Âm thanh / Ngôn ngữ",
+        "autoPlayNext": "Tự động phát tập tiếp theo",
+        "normal": "Bình thường"
+      },
+      "nextEpisode": {
+        "upNext": "Tập tiếp theo",
+        "playNow": "Phát ngay",
+        "playInSeconds": "Phát sau {seconds}s",
+        "dismiss": "Đóng"
+      },
+      "lock": {
+        "lock": "Khóa màn hình",
+        "holdToUnlock": "Giữ để mở khóa"
+      },
+      "shortcuts": {
+        "title": "Phím tắt",
+        "close": "Đóng",
+        "playPause": "Phát / tạm dừng",
+        "back10": "Lùi 10s",
+        "forward10": "Tiến 10s",
+        "seek5": "Lùi / tiến 5s",
+        "volume": "Tăng / giảm âm lượng",
+        "mute": "Tắt tiếng",
+        "fullscreen": "Toàn màn hình",
+        "speed": "Giảm / tăng tốc độ",
+        "jump": "Nhảy đến 0–90%",
+        "pip": "Hình trong hình",
+        "nextEpisode": "Tập tiếp theo",
+        "help": "Hiện trợ giúp này"
+      }
+    },
+    "stream": {
+      "warp": {
+        "title": "Bạn đang bật WARP (1.1.1.1)",
+        "body": "Nguồn phim này chỉ mở cho mạng trong nước. Tắt WARP rồi bấm Thử lại là xem được bản Vietsub và Thuyết minh."
+      },
+      "vpn": {
+        "title": "Có vẻ bạn đang dùng VPN",
+        "body": "Nguồn chính chỉ nhận kết nối từ Việt Nam. Tắt VPN rồi thử lại, hoặc xem bằng nguồn dự phòng (chỉ có phụ đề)."
+      },
+      "abroad": {
+        "title": "Nguồn chính chỉ phát trong Việt Nam",
+        "body": "Từ chỗ bạn đang ở, bản Vietsub không mở được. Nguồn dự phòng vẫn xem được, có phụ đề."
+      },
+      "cdn": {
+        "title": "Nguồn này đang không phát được",
+        "body": "Thử đổi sang server âm thanh khác bên dưới, hoặc xem bằng nguồn dự phòng."
+      },
+      "unknown": {
+        "title": "Phim chưa tải được",
+        "body": "Nếu bạn đang bật VPN hoặc WARP, tắt đi rồi thử lại. Không thì dùng nguồn dự phòng."
+      },
+      "fallback": {
+        "abroad": "Bạn đang xem nguồn dự phòng vì nguồn chính chỉ phát trong Việt Nam. Bản này có phụ đề, không có thuyết minh hay lồng tiếng.",
+        "chosen": "Bạn đang xem nguồn dự phòng: có phụ đề, không có thuyết minh hay lồng tiếng."
+      },
+      "retry": "Thử lại",
+      "useFallback": "Xem nguồn dự phòng",
+      "useMain": "Quay lại nguồn chính",
+      "noFallback": "Phim này chưa có nguồn dự phòng."
     }
   },
   "lists": {
@@ -135,7 +201,11 @@
     "clear": "Xóa lọc",
     "sortLatest": "Mới nhất",
     "sortYearDesc": "Năm: mới nhất",
-    "sortYearAsc": "Năm: cũ nhất"
+    "sortYearAsc": "Năm: cũ nhất",
+    "lang": "Âm thanh",
+    "langVietsub": "Vietsub",
+    "langVoiceover": "Thuyết minh",
+    "langDubbed": "Lồng tiếng"
   },
   "bottomNav": {
     "home": "Trang chủ",

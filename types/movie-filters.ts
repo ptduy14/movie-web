@@ -14,6 +14,8 @@ export type MovieFilters = {
   country?: string;
   /** Release year, as a string because it comes from the URL. */
   year?: string;
-  /** Raw sort token from the URL: '' | 'year_desc' | 'year_asc' | 'rating_desc'. */
+  /** Raw sort token from the URL: '' | 'year_desc' | 'year_asc'. */
   sort?: string;
+  /** Audio track: 'vietsub' | 'thuyet-minh' | 'long-tieng'. */
+  lang?: string;
 };

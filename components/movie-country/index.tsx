@@ -20,6 +20,7 @@ export default function MovieCountryPage({ slug }: { slug: string }) {
   const category = searchParams.get('category') ?? '';
   const year = searchParams.get('year') ?? '';
   const sort = searchParams.get('sort') ?? '';
+  const lang = searchParams.get('lang') ?? '';
 
   const fetcher = useCallback(
     (page: number) => {
@@ -27,21 +28,22 @@ export default function MovieCountryPage({ slug }: { slug: string }) {
         category: category || undefined,
         year: year || undefined,
         sort: sort || undefined,
+        lang: lang || undefined,
       };
       return getMoviesByCountry(slug, page, filters);
     },
-    [slug, category, year, sort]
+    [slug, category, year, sort, lang]
   );
 
   const { items: movies, totalItems, isLoading, isLoadingMore, hasMore, error, sentinelRef, retry } =
-    useInfinitePagination<NewlyMovie>({ fetcher, resetKey: `${slug}|${category}|${year}|${sort}` });
+    useInfinitePagination<NewlyMovie>({ fetcher, resetKey: `${slug}|${category}|${year}|${sort}|${lang}` });
 
   return (
     <div className="pt-[3.75rem]">
       <div className="container-wrapper px-4 sm:px-6 md:px-8 lg:px-0">
         <MovieFilterBar
           title={localizedCountry(slug, locale)}
-          dimensions={['category', 'year']}
+          dimensions={['category', 'year', 'lang']}
           count={totalItems}
         />
       </div>

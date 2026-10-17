@@ -3,38 +3,40 @@ import { createHash } from 'crypto';
 import { getCachedTranslation, saveCachedTranslation } from './firebase-translation-service';
 import { translateMovieContentsBatch } from './groq-translation-service';
 import { getCronProgress, saveCronProgress } from './cron-progress-service';
-import { discover, TmdbError } from './tmdb-catalog-service';
-import { availabilityMap } from './vidsrc-availability';
-import { mediaId } from 'lib/media-key';
-import type { MediaType } from 'constants/tmdb-taxonomy';
+import { getLatest, getTitle, CatalogApiError } from './catalog-api';
+import { enrichDetail } from './tmdb-enrichment';
+import { adaptDetail } from 'lib/catalog-adapter';
 import type { CronProgress, CronRunResult } from 'types/cron-meta';
-import type { TmdbListItem } from 'types/tmdb-api';
 
 /**
- * Pre-warms the Vietnamese synopsis cache.
+ * Pre-warms the synopsis cache for the English site.
  *
- * TMDB translates the popular end of its catalog itself; the long tail comes
- * back with an empty `overview` for vi-VN. Those are the titles this job
- * translates ahead of time, so a visitor who lands on one doesn't wait on a
- * Groq round trip mid-render.
+ * The catalog writes every synopsis in Vietnamese. On `en`, the detail page asks
+ * TMDB first (`services/tmdb-enrichment`) and only falls back to a Groq
+ * translation when TMDB has nothing — a title with no TMDB id and no
+ * confident match, or a TMDB entry without an English overview. Those are
+ * the titles this job translates ahead of time, so a visitor who opens one
+ * doesn't wait on Groq mid-render.
  *
- * Direction note: under the previous catalog this ran Vietnamese → English.
- * TMDB supplies English, so it now runs English → Vietnamese and the DEFAULT
- * locale is the one that needs filling in. `vi` is the only meaningful target
- * today; `en` needs nothing.
+ * Direction: Vietnamese → English. `vi` needs nothing; it is the source.
  *
- * Walk strategy: TMDB discover, ordered by popularity, movies and series
- * alternating page by page. Popularity order matters — it means the titles
- * most likely to be opened get a synopsis first, and an interrupted walk
- * still leaves the catalog better off than it found it.
+ * Walk: the catalog's "recently updated" feed, newest first, 24 titles a page.
+ * Newest-first means fresh uploads get covered within the hour, and an
+ * interrupted walk still leaves the most-visited end of the catalog done.
+ *
+ * Cost per page: one list request, then — only for titles without a TMDB
+ * id (about a fifth) — one catalog detail plus the TMDB match. Titles with a
+ * TMDB id are skipped without a detail request: TMDB serves their English
+ * text at render time for free.
  */
 
-/** TMDB pages hold 20 results. */
-const PAGE_SIZE = 20;
+/** `phim-moi-cap-nhat-v3` is fixed at 24 a page. */
+const PAGE_SIZE = 24;
 const TIMEOUT_BUFFER_MS = 50_000; // give up before Vercel hobby's 60s ceiling
+const SOURCE_LANG = 'vi';
 
 /**
- * TMDB is unreachable, or answered with something that isn't the JSON we
+ * The catalog is unreachable, or answered with something that isn't the JSON we
  * asked for.
  *
  * Split out from ordinary errors on purpose: an upstream that is down is not
@@ -50,18 +52,9 @@ export class UpstreamUnavailableError extends Error {
   }
 }
 
+/** Must match `hashSource` in `movie-content-localizer`, or cache hits never land. */
 function hashSource(content: string): string {
   return createHash('sha1').update(content).digest('hex').slice(0, 16);
-}
-
-/** Alternate media types across pages so neither starves the other. */
-function mediaTypeForPage(page: number): MediaType {
-  return page % 2 === 1 ? 'movie' : 'tv';
-}
-
-/** TMDB page number for our page cursor, given the alternating walk. */
-function tmdbPageForPage(page: number): number {
-  return Math.floor((page - 1) / 2) + 1;
 }
 
 interface PageOutcome {
@@ -73,67 +66,53 @@ interface PageOutcome {
 }
 
 /**
- * Process one cursor page: fetch the same TMDB page in both languages, find
- * the titles with no Vietnamese synopsis, translate them in one Groq call.
+ * Process one feed page: find the titles whose English synopsis would have
+ * to come from Groq, and translate the ones not already cached in one call.
  *
- * Two discover calls per page (vi-VN and en-US) is what makes this cheap. The
- * alternative — asking TMDB per title whether a Vietnamese overview exists —
- * would be one request per item instead of two per twenty.
+ * "Would have to come from Groq" is decided by running the SAME path the
+ * detail page runs — adapt, then enrich — so the job translates exactly the
+ * text the page will look up, hashed the same way.
  */
 async function processPage(page: number, locale: string): Promise<PageOutcome> {
-  const mediaType = mediaTypeForPage(page);
-  const tmdbPage = tmdbPageForPage(page);
-
-  let localized: { results: TmdbListItem[]; total_pages: number };
-  let english: { results: TmdbListItem[]; total_pages: number };
+  let feed;
   try {
-    [localized, english] = await Promise.all([
-      discover({ mediaType, locale, page: tmdbPage }),
-      discover({ mediaType, locale: 'en', page: tmdbPage }),
-    ]);
+    feed = await getLatest(page);
   } catch (err) {
     throw new UpstreamUnavailableError(
-      err instanceof TmdbError ? `TMDB ${err.status} on ${err.path}` : 'TMDB request failed'
+      err instanceof CatalogApiError ? `the catalog ${err.status} on ${err.path}` : 'Catalog API request failed'
     );
   }
 
-  const englishById = new Map(english.results.map((r) => [r.id, r]));
-  const totalPages = localized.total_pages * 2; // two cursor pages per TMDB page
-
-  if (localized.results.length === 0) {
-    return { itemsSeen: 0, cacheHits: 0, translated: 0, failed: 0, totalPages };
-  }
-
-  // Only spend quota on titles that can actually be played. Translating a
-  // synopsis nobody can reach is pure cost.
-  const playable = await availabilityMap(
-    mediaType,
-    localized.results.map((r) => r.id)
-  );
-
-  const candidates = localized.results.filter((item) => {
-    if (playable.get(String(item.id)) === false) return false;
-    // A non-empty localized overview means TMDB already has it — nothing to do.
-    if (item.overview) return false;
-    return Boolean(englishById.get(item.id)?.overview);
-  });
-
-  const itemsSeen = localized.results.length;
-  if (candidates.length === 0) {
+  const totalPages = feed.totalPages;
+  const itemsSeen = feed.items.length;
+  const untracked = feed.items.filter((item) => !item.tmdb?.id);
+  if (untracked.length === 0) {
     return { itemsSeen, cacheHits: itemsSeen, translated: 0, failed: 0, totalPages };
   }
 
   const probes = await Promise.all(
-    candidates.map(async (item) => {
-      const id = mediaId(mediaType, item.id);
-      const source = englishById.get(item.id)!.overview!;
-      const sourceHash = hashSource(source);
-      const cached = await getCachedTranslation(id, locale);
-      return { id, source, sourceHash, isFresh: cached?.sourceHash === sourceHash };
+    untracked.map(async (item) => {
+      try {
+        const raw = await getTitle(item.slug);
+        if (!raw) return null;
+        const detail = await enrichDetail(adaptDetail(raw, { locale }), locale);
+        // TMDB matched and supplied English — nothing for Groq to do.
+        if (detail.movie.content_lang === locale || !detail.movie.content) return null;
+
+        const id = detail.movie._id;
+        const source = detail.movie.content;
+        const sourceHash = hashSource(source);
+        const cached = await getCachedTranslation(id, locale);
+        return { id, source, sourceHash, isFresh: cached?.sourceHash === sourceHash };
+      } catch {
+        // One broken title must not sink the page.
+        return null;
+      }
     })
   );
 
-  const misses = probes.filter((p) => !p.isFresh);
+  const needed = probes.filter((p): p is NonNullable<typeof p> => p !== null);
+  const misses = needed.filter((p) => !p.isFresh);
   const cacheHits = itemsSeen - misses.length;
 
   if (misses.length === 0) {
@@ -145,7 +124,7 @@ async function processPage(page: number, locale: string): Promise<PageOutcome> {
     translatedMap = await translateMovieContentsBatch(
       misses.map((m) => ({ id: m.id, content: m.source })),
       locale,
-      'en'
+      SOURCE_LANG
     );
   } catch (err: any) {
     console.warn(`[cron-translation] page ${page}: Groq batch failed:`, err.message);
@@ -164,7 +143,7 @@ async function processPage(page: number, locale: string): Promise<PageOutcome> {
         content,
         translatedAt: Date.now(),
         sourceHash: m.sourceHash,
-        sourceLang: 'en',
+        sourceLang: SOURCE_LANG,
       });
     })
   );
@@ -177,7 +156,7 @@ async function processPage(page: number, locale: string): Promise<PageOutcome> {
  *
  *   1. Read the persisted cursor.
  *   2. Process `pageCount` pages from there, wrapping to 1 at the end of the
- *      catalog.
+ *      feed.
  *   3. Checkpoint after every page, so a crash resumes rather than restarts.
  *   4. Stop early when close to the function timeout.
  */
@@ -228,9 +207,7 @@ export async function runCronBatch(locale: string, pageCount: number): Promise<C
         lastError: null,
       });
 
-      // TMDB caps discover at 500 pages regardless of total_pages, so the
-      // walk wraps well before the catalog "ends".
-      page = page + 1 > Math.min(totalPages || Infinity, 1000) ? 1 : page + 1;
+      page = page + 1 > (totalPages || Infinity) ? 1 : page + 1;
     }
   } catch (err: any) {
     if (err instanceof UpstreamUnavailableError) {

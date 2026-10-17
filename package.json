@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -19,6 +19,7 @@
     "firebase": "^10.14.1",
     "firebase-admin": "^13.2.0",
     "groq-sdk": "^1.1.2",
+    "hls.js": "^1.7.3",
     "next": "14.2.5",
     "next-intl": "^4.11.0",
     "posthog-js": "^1.372.10",

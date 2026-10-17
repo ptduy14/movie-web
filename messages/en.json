@@ -45,7 +45,9 @@
       "singleNewlyUpdated": "Latest Movies",
       "tvSeriesNewlyUpdated": "Latest TV Series",
       "cartoonNewlyUpdated": "Latest Animation",
-      "tvShowsNewlyUpdated": "Latest TV Shows"
+      "tvShowsNewlyUpdated": "Latest TV Shows",
+      "theatricalNewlyUpdated": "Theatrical Releases",
+      "voicedNewlyUpdated": "With Vietnamese Voiceover"
     },
     "banner": {
       "todayCount": "Today,",
@@ -91,13 +93,12 @@
       "viewOnImdb": "View on IMDb",
       "viewOnTmdb": "View on TMDB",
       "votes": "votes"
-    }
+    },
+    "seasons": "Seasons"
   },
   "watch": {
     "episodeList": "Episodes",
     "episodeLabel": "Ep {index}",
-    "seasonList": "Seasons",
-    "seasonLabel": "Season {index}",
     "unavailable": "No source for this title yet. Check back later.",
     "progressNotification": {
       "episodePrefix": "ep {index}-",
@@ -105,6 +106,71 @@
       "question": "would you like to continue watching?",
       "accept": "Yes",
       "reject": "Restart from beginning"
+    },
+    "serverList": "Audio",
+    "player": {
+      "settings": {
+        "speed": "Playback speed",
+        "language": "Audio / Language",
+        "autoPlayNext": "Auto-play next episode",
+        "normal": "Normal"
+      },
+      "nextEpisode": {
+        "upNext": "Up next",
+        "playNow": "Play now",
+        "playInSeconds": "Playing in {seconds}s",
+        "dismiss": "Dismiss"
+      },
+      "lock": {
+        "lock": "Lock screen",
+        "holdToUnlock": "Hold to unlock"
+      },
+      "shortcuts": {
+        "title": "Keyboard shortcuts",
+        "close": "Close",
+        "playPause": "Play / pause",
+        "back10": "Back 10s",
+        "forward10": "Forward 10s",
+        "seek5": "Back / forward 5s",
+        "volume": "Volume up / down",
+        "mute": "Mute",
+        "fullscreen": "Fullscreen",
+        "speed": "Speed down / up",
+        "jump": "Jump to 0–90%",
+        "pip": "Picture-in-Picture",
+        "nextEpisode": "Next episode",
+        "help": "Show this help"
+      }
+    },
+    "stream": {
+      "warp": {
+        "title": "Cloudflare WARP is on",
+        "body": "This stream only plays on Vietnamese connections. Switch WARP off and hit Try again."
+      },
+      "vpn": {
+        "title": "Looks like you're on a VPN",
+        "body": "The main source only accepts connections from Vietnam. Turn the VPN off and try again, or watch the backup source (subtitles only)."
+      },
+      "abroad": {
+        "title": "The main source only streams in Vietnam",
+        "body": "It won't open from where you are. The backup source works, with subtitles."
+      },
+      "cdn": {
+        "title": "This source isn't playing right now",
+        "body": "Try another audio server below, or switch to the backup source."
+      },
+      "unknown": {
+        "title": "The video didn't load",
+        "body": "If a VPN or WARP is on, turn it off and try again. Otherwise, use the backup source."
+      },
+      "fallback": {
+        "abroad": "You're on the backup source because the main one only streams inside Vietnam. Subtitles, no Vietnamese voiceover or dub.",
+        "chosen": "You're on the backup source: subtitles, no Vietnamese voiceover or dub."
+      },
+      "retry": "Try again",
+      "useFallback": "Use backup source",
+      "useMain": "Back to main source",
+      "noFallback": "No backup source for this title yet."
     }
   },
   "lists": {
@@ -135,7 +201,11 @@
     "clear": "Clear filters",
     "sortLatest": "Latest",
     "sortYearDesc": "Year: newest",
-    "sortYearAsc": "Year: oldest"
+    "sortYearAsc": "Year: oldest",
+    "lang": "Audio",
+    "langVietsub": "Vietnamese subs",
+    "langVoiceover": "Voiceover",
+    "langDubbed": "Dubbed"
   },
   "bottomNav": {
     "home": "Home",

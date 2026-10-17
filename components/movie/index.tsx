@@ -13,6 +13,7 @@ import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import { Link } from 'i18n/routing';
 import Image from 'next/image';
 import MovieImage from 'types/movie-image';
+import type SeasonLink from 'types/season-link';
 import RatingLinks from '../commons/rating-links';
 import MovieLogo from '../commons/movie-logo';
 import { useLocale, useTranslations } from 'next-intl';
@@ -53,6 +54,7 @@ export default function MoviePage({
   images,
   logoUrl,
   relatedMovies = [],
+  seasons = [],
   aiTranslated = false,
 }: {
   movie: DetailMovie;
@@ -65,6 +67,8 @@ export default function MoviePage({
   logoUrl?: string | null;
   /** "More Like This" — same-genre titles, fetched server-side. */
   relatedMovies?: NewlyMovie[];
+  /** Every season of this series (see `getOtherSeasons`). */
+  seasons?: SeasonLink[];
   /** True when the synopsis was machine-translated into the active locale. */
   aiTranslated?: boolean;
 }) {
@@ -81,8 +85,8 @@ export default function MoviePage({
       country: movie.movie.country?.map((c) => c.name),
       year: movie.movie.year,
       thumb_url: movie.movie.thumb_url,
-      tmdb_id: movie.movie.tmdb?.id,
-      tmdb_type: movie.movie.tmdb?.type,
+      tmdb_id: movie.movie.tmdb?.id ?? undefined,
+      tmdb_type: movie.movie.tmdb?.type ?? undefined,
     });
   }, [movie.movie._id]);
 
@@ -286,6 +290,7 @@ export default function MoviePage({
         credit={credit}
         images={images}
         relatedMovies={relatedMovies}
+        seasons={seasons}
         aiTranslated={aiTranslated}
       />
 

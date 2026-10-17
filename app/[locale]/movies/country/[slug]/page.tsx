@@ -2,6 +2,9 @@ import MovieCountryPage from '@/components/movie-country';
 import { Metadata } from 'next';
 import PageParams from 'types/page-params';
 import countries from 'data/countries';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { LEGACY_COUNTRY_REDIRECTS, isKnownCountry } from 'constants/catalog-taxonomy';
+import { queryString } from 'utils/query-string';
 
 export async function generateMetadata({ params }: PageParams) {
   const country = countries.find((country) => country.slug === params.slug);
@@ -14,6 +17,18 @@ export async function generateMetadata({ params }: PageParams) {
   };
 }
 
-export default function MovieCountry({ params }: { params: { slug: string } }) {
+export default function MovieCountry({
+  params,
+  searchParams,
+}: {
+  params: { locale: string; slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
+  const legacy = LEGACY_COUNTRY_REDIRECTS[params.slug];
+  if (legacy) {
+    permanentRedirect(`/${params.locale}/movies/country/${legacy}${queryString(searchParams)}`);
+  }
+  if (!isKnownCountry(params.slug)) notFound();
+
   return <MovieCountryPage slug={params.slug} />;
 }

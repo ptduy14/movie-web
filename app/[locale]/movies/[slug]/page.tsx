@@ -1,13 +1,17 @@
 import MoviePage from '@/components/movie';
-import TMDBServices from 'services/tmdb-services';
-import { redirect } from 'next/navigation';
+import { permanentRedirect, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { getLocalizedMovieContent } from 'services/movie-content-localizer';
+import { preferredTitle } from 'constants/i18n-mappings';
 import { fetchMovieLogoUrl } from 'utils/tmdb-logo';
-import { getTitleDetail, getRelatedTitles } from 'services/catalog-service';
+import {
+  getTitleDetail,
+  getRelatedTitles,
+  getOtherSeasons,
+  getTitleExtras,
+} from 'services/catalog-service';
 import type { Locale } from 'i18n/routing';
-import type MovieImage from 'types/movie-image';
 
 interface MoviePageParams {
   params: { locale: string; slug: string };
@@ -38,7 +42,10 @@ export async function generateMetadata({ params }: MoviePageParams): Promise<Met
         )
       : undefined;
 
-    return { title: detail.movie.name, description };
+    return {
+      title: preferredTitle(detail.movie.name, detail.movie.origin_name, params.locale as Locale),
+      description,
+    };
   } catch {
     return { title: 'Movie' };
   }
@@ -49,49 +56,32 @@ export default async function Movie({ params }: MoviePageParams) {
 
   const movie = await getTitleDetail(params.slug, params.locale);
 
-  // A slug that doesn't parse, or a title TMDB no longer has. Anything else
-  // (a timeout, a 5xx) throws out of `getTitleDetail` and reaches the error
-  // boundary instead of silently pretending the title doesn't exist.
+  // A slug that resolves to nothing. Anything else (a timeout, a 5xx) throws
+  // out of `getTitleDetail` and reaches the error boundary instead of
+  // silently pretending the title doesn't exist.
   if (!movie) {
     redirect(`/${params.locale}`);
   }
 
-  // "More Like This" — kicked off here so it overlaps the credits and logo
-  // lookups below. Best-effort: failures yield an empty list and hide the row.
-  const relatedPromise = getRelatedTitles(movie, params.locale);
-
-  let credit;
-  if (movie.movie.tmdb?.id) {
-    try {
-      credit = await TMDBServices.getCredits(movie.movie.tmdb.id, movie.movie.tmdb.type);
-    } catch {
-      // Non-fatal: detail page still renders without TMDB credits
-      credit = undefined;
-    }
+  // A v2.0.0 slug (`…-tv-1399`) resolved through its TMDB id. Send the
+  // visitor — and search engines — to the canonical catalog URL.
+  if (movie.movie.slug !== params.slug) {
+    permanentRedirect(`/${params.locale}/movies/${movie.movie.slug}`);
   }
 
-  // Best-effort logo lookup. Falls back to null → component renders text title.
-  const logoUrl = await fetchMovieLogoUrl(movie.movie.tmdb, params.locale as Locale);
+  // Kicked off together so the slow ones overlap. All best-effort: each
+  // failure just hides its section.
+  const [relatedMovies, seasons, extras, logoUrl] = await Promise.all([
+    getRelatedTitles(movie, params.locale),
+    getOtherSeasons(movie),
+    getTitleExtras(movie.movie.slug),
+    fetchMovieLogoUrl(movie.movie.tmdb, params.locale as Locale),
+  ]);
 
-  // Gallery: TMDB backdrops, replacing the previous provider's /images
-  // endpoint. The gallery components only read `file_path`, so the shapes are
-  // compatible. An empty array hides the section.
-  let images: MovieImage[] = [];
-  if (movie.movie.tmdb?.id) {
-    try {
-      const res = await TMDBServices.getImages(movie.movie.tmdb.id, movie.movie.tmdb.type);
-      images = (res.backdrops ?? []).slice(0, 12) as unknown as MovieImage[];
-    } catch {
-      // Gallery is decorative — a failure just hides it.
-    }
-  }
-
-  // True when TMDB had no synopsis in this locale and we fell back to the
-  // English text — the only case where the reader is looking at machine
-  // translation and deserves to be told.
+  // The catalog writes every synopsis in Vietnamese, so on any other locale this
+  // is machine translation and the reader deserves to be told.
   const aiTranslated = Boolean(movie.movie.content) && movie.movie.content_lang !== params.locale;
 
-  // Fill in the synopsis when TMDB had no translation for this locale.
   if (movie.movie.content) {
     movie.movie.content = await getLocalizedMovieContent(
       movie.movie._id,
@@ -101,15 +91,14 @@ export default async function Movie({ params }: MoviePageParams) {
     );
   }
 
-  const relatedMovies = await relatedPromise;
-
   return (
     <MoviePage
       movie={movie}
-      credit={credit}
-      images={images}
+      credit={extras.credit}
+      images={extras.images}
       logoUrl={logoUrl}
       relatedMovies={relatedMovies}
+      seasons={seasons}
       aiTranslated={aiTranslated}
     />
   );

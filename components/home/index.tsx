@@ -7,7 +7,7 @@ import TrendingSection from './trending-section';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { localizedCategory } from 'constants/i18n-mappings';
 import {
-  getNewlyAddedRail,
+  getNewlyAddedFeed,
   getFormatRail,
   getGenreRail,
   getTrendingRail,
@@ -22,35 +22,39 @@ export default async function HomePage() {
   const t = await getTranslations('home.lists');
   const locale = (await getLocale()) as Locale;
 
-  // `Promise.all` is safe here ONLY because every one of these rails resolves
-  // to [] on failure rather than rejecting — see `safeRail` in the catalog
-  // service. The previous version fanned out raw fetches through
-  // `Promise.all`, so a single upstream hiccup rejected the whole render and
-  // the page flushed a blank 200.
-  const [newlyAdded, hero, singleMovies, tvSeries, cartoonMovies, tvShows, ...genreResults] =
-    await Promise.all([
-      getNewlyAddedRail(locale),
-      getTrendingRail(locale, 5),
-      getFormatRail('phim-le', locale),
-      getFormatRail('phim-bo', locale),
-      getFormatRail('hoat-hinh', locale),
-      getFormatRail('tv-shows', locale),
-      ...GENRE_ROW_SLUGS.map((slug) => getGenreRail(slug, locale)),
-    ]);
+  // `Promise.all` is safe here ONLY because every one of these resolves to
+  // an empty value on failure rather than rejecting — see `safeRail` in the
+  // catalog service. One upstream hiccup must cost one rail, not the page.
+  const [
+    latest,
+    hero,
+    theatrical,
+    singleMovies,
+    tvSeries,
+    cartoonMovies,
+    voiced,
+    tvShows,
+    ...genreResults
+  ] = await Promise.all([
+    getNewlyAddedFeed(locale),
+    getTrendingRail(locale, 5),
+    getFormatRail('phim-chieu-rap', locale),
+    getFormatRail('phim-le', locale),
+    getFormatRail('phim-bo', locale),
+    getFormatRail('hoat-hinh', locale),
+    getFormatRail('phim-thuyet-minh', locale),
+    getFormatRail('tv-shows', locale),
+    ...GENRE_ROW_SLUGS.map((slug) => getGenreRail(slug, locale)),
+  ]);
+  const newlyAdded = latest.items;
 
-  // The hero needs five titles with artwork; trending is the best source for
-  // that. Fall back to the "recently added" rail when trending is empty so
-  // the page never opens on a hero-shaped hole.
+  // Trending already falls back to theatrical releases on its own; this
+  // second fallback only matters when the catalog itself is down.
   const heroMovies = (hero.length > 0 ? hero : newlyAdded).slice(0, 5);
 
-  // The banner claims "N titles added today", so count the ones that actually
-  // were. `newlyAdded.length` would just report the rail size (always 14) and
-  // turn the banner into decoration that reads like data.
-  const DAY_MS = 24 * 60 * 60 * 1000;
-  const addedTodayCount = newlyAdded.filter((m) => {
-    const at = m.modified?.time ? Date.parse(m.modified.time) : NaN;
-    return Number.isFinite(at) && Date.now() - at < DAY_MS;
-  }).length;
+  // The catalog reports the real "updated today" count for the whole catalog —
+  // counting the rail's 14 rows would cap the banner at 14.
+  const addedTodayCount = latest.updatedToday;
 
   return (
     <div className="h-full">
@@ -62,6 +66,13 @@ export default async function HomePage() {
         <TrendingSection />
         {newlyAdded.length > 0 && (
           <MovieList listName={t('newlyUpdated')} movies={newlyAdded} isNewlyMovieItem={true} />
+        )}
+        {theatrical.length > 0 && (
+          <MovieList
+            movies={theatrical}
+            listName={t('theatricalNewlyUpdated')}
+            isNewlyMovieItem={false}
+          />
         )}
         {singleMovies.length > 0 && (
           <MovieList
@@ -81,6 +92,13 @@ export default async function HomePage() {
           <MovieList
             movies={cartoonMovies}
             listName={t('cartoonNewlyUpdated')}
+            isNewlyMovieItem={false}
+          />
+        )}
+        {voiced.length > 0 && (
+          <MovieList
+            movies={voiced}
+            listName={t('voicedNewlyUpdated')}
             isNewlyMovieItem={false}
           />
         )}
