@@ -25,6 +25,8 @@ export type ResumePrompt = {
 type VideoPlayerProps = {
   videoUrl: string;
   thumbnail: string;
+  /** Responsive candidates for `thumbnail` (TMDB backdrops), when available. */
+  thumbnailSrcSet?: string;
   videoProgress: number | null;
   meta: PlayerMeta;
   resume: ResumePrompt;
@@ -55,6 +57,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     {
       videoUrl,
       thumbnail,
+      thumbnailSrcSet,
       videoProgress,
       meta,
       resume,
@@ -207,7 +210,13 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           ref={overlay}
           className="absolute inset-0 z-20 flex items-center justify-center bg-black"
         >
-          <img src={thumbnail} alt="" className="h-full w-full object-cover object-center" />
+          <img
+            src={thumbnail}
+            srcSet={thumbnailSrcSet}
+            sizes={thumbnailSrcSet ? '100vw' : undefined}
+            alt=""
+            className="h-full w-full object-cover object-center"
+          />
           {isCanPlay ? (
             <FaPlay
               className="absolute z-10 cursor-pointer text-ink-primary transition-all duration-200 hover:scale-125"
