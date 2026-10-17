@@ -203,7 +203,7 @@ export const FORMAT_MAP: Record<Locale, Record<string, string>> = {
     'phim-bo': 'TV Series',
     'hoat-hinh': 'Animation',
     'tv-shows': 'TV Shows',
-    'phim-chieu-rap': 'Theatrical',
+    'phim-chieu-rap': 'Theatrical Releases',
     'phim-thuyet-minh': 'Voiceover',
     'phim-long-tieng': 'Dubbed',
   },
