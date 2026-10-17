@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T04:52:22.894Z",
+  "updated_at": "2026-10-17T04:53:34.290Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -19,7 +19,7 @@
           "release_date": "2026-10-24",
           "poster_path": "/aRoPHxYzfQjCLxSp4H4sJANNmou.jpg",
           "rating": null,
-          "trailer": null
+          "trailer": "q0XKUFGn_M4"
         },
         {
           "id": 1797226,
@@ -27,7 +27,7 @@
           "release_date": "2026-10-24",
           "poster_path": "/8udWFUoL5NxqKR1xtYinhcxY3gn.jpg",
           "rating": null,
-          "trailer": null
+          "trailer": "q0XKUFGn_M4"
         },
         {
           "id": 1797200,
@@ -35,14 +35,14 @@
           "release_date": "2026-10-24",
           "poster_path": "/p3SW5xiKdUJ0zIY3hMyyCQ6tcru.jpg",
           "rating": null,
-          "trailer": null
+          "trailer": "q0XKUFGn_M4"
         },
         {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 8.7,
+          "rating": 8.2,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Phim Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6.4,
+          "rating": 6.3,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Cá Voi Nuốt Chửng",
           "release_date": "2026-10-16",
           "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 7.6,
+          "rating": 6.8,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -190,14 +190,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1422041,
-          "title": "La bola negra",
-          "release_date": "2026-10-16",
-          "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
-          "rating": 8.4,
-          "trailer": "lBVxKt0gKDY"
-        },
-        {
           "id": 1491920,
           "title": "Kung Fu Soccer",
           "release_date": "2026-10-23",
@@ -210,7 +202,7 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-          "rating": 8.6,
+          "rating": 8.2,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -220,14 +212,6 @@
           "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
           "rating": 8,
           "trailer": "zd3qXH9qN70"
-        },
-        {
-          "id": 858035,
-          "title": "Klara and the Sun",
-          "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": null,
-          "trailer": "wixzainceAE"
         },
         {
           "id": 791523,
@@ -244,6 +228,14 @@
           "poster_path": "/eOYkNDalgt1v6UGjw3AoFR5qo9D.jpg",
           "rating": null,
           "trailer": "UVAki9SGrlg"
+        },
+        {
+          "id": 858035,
+          "title": "Klara and the Sun",
+          "release_date": "2026-10-23",
+          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
+          "rating": null,
+          "trailer": "wixzainceAE"
         },
         {
           "id": 1294189,
@@ -284,6 +276,14 @@
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
           "rating": null,
           "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 891621,
+          "title": "Wild Horse Nine",
+          "release_date": "2026-11-06",
+          "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
+          "rating": null,
+          "trailer": "kqxuamKxRTo"
         }
       ],
       "now_playing": [
@@ -292,15 +292,23 @@
           "title": "Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
-          "rating": 6.5,
+          "rating": 6.2,
           "trailer": "U6sbm1OaJb8"
+        },
+        {
+          "id": 1234139,
+          "title": "Jailer 2",
+          "release_date": "2026-10-14",
+          "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+          "rating": 8,
+          "trailer": null
         },
         {
           "id": 1236045,
           "title": "Animals",
           "release_date": "2026-10-09",
           "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-          "rating": 7.2,
+          "rating": 7.1,
           "trailer": "ZkN2M4ODdys"
         },
         {
@@ -308,7 +316,7 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 6,
+          "rating": 5.9,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -316,23 +324,15 @@
           "title": "V/H/S/Mixtape",
           "release_date": "2026-10-09",
           "poster_path": "/uS8yoiA6NfsuYeOTbVfpem8Ib9.jpg",
-          "rating": 4.3,
+          "rating": 4.8,
           "trailer": "GrIouRKyPDw"
-        },
-        {
-          "id": 1476746,
-          "title": "The Florist",
-          "release_date": "2026-10-09",
-          "poster_path": "/4tnRvIiWMzVA2Tw9c7INLo4sfo0.jpg",
-          "rating": 6.7,
-          "trailer": "LNmIdALXoKo"
         },
         {
           "id": 1381078,
           "title": "Love of Your Life",
           "release_date": "2026-10-07",
-          "poster_path": "/gOaRyRpilYPEsVLEPHOH9eHNw5E.jpg",
-          "rating": 6.4,
+          "poster_path": "/dL3Tcv4FU2K85bgnGRBgLjFSrLr.jpg",
+          "rating": 6.8,
           "trailer": "HzGx48E64Xg"
         },
         {
