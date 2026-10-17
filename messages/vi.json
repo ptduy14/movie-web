@@ -480,7 +480,15 @@
     "homeDescription": "Xem phim online với hàng nghìn phim lẻ, TV show, phim bộ thuộc nhiều thể loại hấp dẫn, đã được lồng tiếng và cập nhật mới nhất mỗi ngày. Trải nghiệm xem phim chất lượng cao hoàn toàn miễn phí tại MovieX.",
     "searchTitle": "Tìm kiếm phim",
     "recentTitle": "Phim xem gần đây",
-    "collectionTitle": "Bộ sưu tập phim"
+    "collectionTitle": "Bộ sưu tập phim",
+    "browse": {
+      "genreTitle": "Phim {name} mới cập nhật | MovieX",
+      "genreDescription": "Phim {name} mới nhất, cập nhật mỗi ngày — Vietsub, thuyết minh và lồng tiếng.",
+      "countryTitle": "Phim {name} mới cập nhật | MovieX",
+      "countryDescription": "Phim {name} mới nhất, cập nhật mỗi ngày — Vietsub, thuyết minh và lồng tiếng.",
+      "formatTitle": "{name} mới cập nhật | MovieX",
+      "formatDescription": "{name} mới nhất, cập nhật mỗi ngày — Vietsub, thuyết minh và lồng tiếng."
+    }
   },
   "maintenance": {
     "title": "Website đang tạm dừng hoạt động",

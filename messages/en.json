@@ -480,7 +480,15 @@
     "homeDescription": "Watch thousands of movies, TV shows, and series across many genres online — subtitled or dubbed and updated daily. Enjoy high-quality streaming for free at MovieX.",
     "searchTitle": "Search movies",
     "recentTitle": "Recently watched",
-    "collectionTitle": "Movie collection"
+    "collectionTitle": "Movie collection",
+    "browse": {
+      "genreTitle": "{name} movies & series | MovieX",
+      "genreDescription": "The newest {name} titles, updated daily — with Vietnamese subtitles, voiceover or dub.",
+      "countryTitle": "Movies & series from {name} | MovieX",
+      "countryDescription": "The newest titles from {name}, updated daily — with Vietnamese subtitles, voiceover or dub.",
+      "formatTitle": "{name} | MovieX",
+      "formatDescription": "{name}: the newest titles, updated daily — with Vietnamese subtitles, voiceover or dub."
+    }
   },
   "maintenance": {
     "title": "MovieX is temporarily offline",

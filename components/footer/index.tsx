@@ -15,20 +15,23 @@ export default function Footer() {
     t('info.contact'),
   ];
 
+  // Category links point at the browse routes. "Anime" is animation from
+  // Japan (a filter on the animation list) and "New releases" is this
+  // year's films — the catalog has no list of either on its own.
   const formatLinks = [
-    t('categories.single'),
-    t('categories.series'),
-    t('categories.theater'),
-    t('categories.anime'),
-    t('categories.cartoon'),
+    { label: t('categories.single'), href: '/movies/format/phim-le' },
+    { label: t('categories.series'), href: '/movies/format/phim-bo' },
+    { label: t('categories.theater'), href: '/movies/format/phim-chieu-rap' },
+    { label: t('categories.anime'), href: '/movies/format/hoat-hinh?country=nhat-ban' },
+    { label: t('categories.cartoon'), href: '/movies/format/hoat-hinh' },
   ];
 
   const genreLinks = [
-    t('categories.action'),
-    t('categories.romance'),
-    t('categories.horror'),
-    t('categories.sciFi'),
-    t('categories.newest'),
+    { label: t('categories.action'), href: '/movies/type/hanh-dong' },
+    { label: t('categories.romance'), href: '/movies/type/tinh-cam' },
+    { label: t('categories.horror'), href: '/movies/type/kinh-di' },
+    { label: t('categories.sciFi'), href: '/movies/type/vien-tuong' },
+    { label: t('categories.newest'), href: `/movies/format/phim-le?year=${new Date().getFullYear()}` },
   ];
 
   return (
@@ -84,14 +87,14 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <ul className="space-y-3">
-                  {formatLinks.map((item, index) => (
-                    <li key={index}>
+                  {formatLinks.map((item) => (
+                    <li key={item.href}>
                       <Link
-                        href="/"
+                        href={item.href}
                         className="text-sm text-gray-400 hover:text-red-500 transition-colors duration-300 flex items-center group"
                       >
                         <span className="w-1 h-1 bg-red-600 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        {item}
+                        {item.label}
                       </Link>
                     </li>
                   ))}
@@ -99,14 +102,14 @@ export default function Footer() {
               </div>
               <div>
                 <ul className="space-y-3">
-                  {genreLinks.map((item, index) => (
-                    <li key={index}>
+                  {genreLinks.map((item) => (
+                    <li key={item.href}>
                       <Link
-                        href="/"
+                        href={item.href}
                         className="text-sm text-gray-400 hover:text-red-500 transition-colors duration-300 flex items-center group"
                       >
                         <span className="w-1 h-1 bg-red-600 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        {item}
+                        {item.label}
                       </Link>
                     </li>
                   ))}
