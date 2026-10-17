@@ -23,7 +23,7 @@
  *   node --env-file=.env.local scripts/migrate-firestore-collections.js
  *
  *   # Or set the credential env var inline:
- *   NEXT_PUBLIC_FIREBASE_CREDENTIALS_BASE64=... node scripts/migrate-firestore-collections.js
+ *   FIREBASE_CREDENTIALS_BASE64=... node scripts/migrate-firestore-collections.js
  *
  *   # Dry run (read only, no writes):
  *   node --env-file=.env.local scripts/migrate-firestore-collections.js --dry-run
@@ -31,10 +31,10 @@
 
 const admin = require('firebase-admin');
 
-const credsB64 = process.env.NEXT_PUBLIC_FIREBASE_CREDENTIALS_BASE64;
+const credsB64 = process.env.FIREBASE_CREDENTIALS_BASE64;
 if (!credsB64) {
   console.error(
-    'ERROR: NEXT_PUBLIC_FIREBASE_CREDENTIALS_BASE64 is not set.\n' +
+    'ERROR: FIREBASE_CREDENTIALS_BASE64 is not set.\n' +
       'Run with `node --env-file=.env.local scripts/migrate-firestore-collections.js`.'
   );
   process.exit(1);
