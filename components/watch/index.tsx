@@ -15,6 +15,7 @@ import { useStreamReachability } from 'hooks/useStreamReachability';
 import { analytics } from 'lib/posthog/events';
 import { subtitleLanguagesFor } from 'services/vidsrc-service';
 import { localizedLang } from 'constants/i18n-mappings';
+import { tmdbBackdropLoader, tmdbBackdropSrcSet } from 'lib/tmdb-image';
 import type { Locale } from 'i18n/routing';
 import type { PlaybackSnapshot, VidsrcEvent, VidsrcStatus } from 'hooks/useVidsrcBridge';
 import type { NextEpisodePreview, PlayerServer } from './video-controls/player-context';
@@ -281,15 +282,24 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
     [servers, locale]
   );
 
+  // Pre-play poster: TMDB's backdrop when the title has one (sharp, from
+  // TMDB's CDN); the catalog's landscape still — often 780px — otherwise.
+  const backdrop = movie.movie.tmdb_backdrop;
+  const posterSrc = backdrop
+    ? tmdbBackdropLoader({ src: backdrop, width: 1920 })
+    : movie.movie.poster_url;
+  const posterSrcSet = backdrop ? tmdbBackdropSrcSet(backdrop) : undefined;
+  const posterW780 = backdrop ? tmdbBackdropLoader({ src: backdrop, width: 780 }) : '';
+
   const nextEpisode: NextEpisodePreview | null = useMemo(() => {
     const nextIdx = episodeIndex + 1;
     if (nextIdx >= episodes.length) return null;
     return {
       index: nextIdx,
       label: isMultiEpisode ? t('episodeLabel', { index: nextIdx + 1 }) : episodes[nextIdx].name,
-      thumbnail: movie.movie.poster_url || movie.movie.thumb_url,
+      thumbnail: posterW780 || movie.movie.poster_url || movie.movie.thumb_url,
     };
-  }, [episodes, episodeIndex, isMultiEpisode, movie.movie.poster_url, movie.movie.thumb_url, t]);
+  }, [episodes, episodeIndex, isMultiEpisode, posterW780, movie.movie.poster_url, movie.movie.thumb_url, t]);
 
   const resume = {
     show: isShowResumePrompt,
@@ -314,7 +324,8 @@ export default function MovieWatchPage({ movie }: { movie: DetailMovie }) {
         <VideoPlayer
           ref={videoRef}
           videoUrl={m3u8}
-          thumbnail={movie.movie.poster_url}
+          thumbnail={posterSrc}
+          thumbnailSrcSet={posterSrcSet}
           videoProgress={videoProgress}
           meta={{
             title: movie.movie.name,

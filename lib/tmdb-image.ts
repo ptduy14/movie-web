@@ -52,6 +52,22 @@ export function tmdbBackdropLoader({ src, width }: { src: string; width: number 
 }
 
 /**
+ * `srcset` for a plain `<img>` showing a TMDB backdrop (the player's
+ * pre-play poster), with the same buckets as `tmdbBackdropLoader`.
+ *
+ * `w1280` is declared as `1920w` on purpose: it is what the loader serves
+ * up to 1080p, and declaring its true width would push every 1080p screen
+ * onto the multi-megabyte original.
+ */
+export function tmdbBackdropSrcSet(path: string): string {
+  return [
+    `${tmdbBackdropLoader({ src: path, width: 780 })} 780w`,
+    `${tmdbBackdropLoader({ src: path, width: 1920 })} 1920w`,
+    `${tmdbBackdropLoader({ src: path, width: 3840 })} 3840w`,
+  ].join(', ');
+}
+
+/**
  * Build an absolute TMDB image URL from a raw path.
  * Returns `''` for a null/empty path so callers can test truthiness rather
  * than rendering `undefined` into a `src` attribute.
