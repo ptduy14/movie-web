@@ -193,7 +193,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
 # ── Firebase Admin (server) ───────────────────────────────────
 # base64-encoded service-account JSON
-NEXT_PUBLIC_FIREBASE_CREDENTIALS_BASE64=your_base64_service_account
+FIREBASE_CREDENTIALS_BASE64=your_base64_service_account
 
 # ── TMDB ──────────────────────────────────────────────────────
 NEXT_PUBLIC_TMDB_ACCESS_TOKEN=your_tmdb_v4_access_token
