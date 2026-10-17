@@ -185,11 +185,15 @@ export async function getTrendingRail(locale: string, limit = HERO_SIZE): Promis
       const settled = await Promise.allSettled(
         candidates.map((r) => getTitleByTmdb(r.media_type as 'movie' | 'tv', r.id))
       );
-      for (const result of settled) {
+      for (let i = 0; i < settled.length; i++) {
+        const result = settled[i];
         if (result.status !== 'fulfilled' || !result.value) continue;
         const { movie } = adaptDetail(result.value, { locale });
         if (seen.has(movie._id) || !movie.poster_url) continue;
         seen.add(movie._id);
+        // The trending row already carries TMDB's primary backdrop (textless
+        // for every title sampled) — a sharp hero image at no extra request.
+        if (candidates[i].backdrop_path) movie.tmdb_backdrop = candidates[i].backdrop_path!;
         picked.push(movie);
         if (picked.length >= limit) break;
       }

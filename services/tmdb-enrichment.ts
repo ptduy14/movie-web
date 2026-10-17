@@ -156,6 +156,9 @@ async function enrich(detail: DetailMovie, locale: string): Promise<DetailMovie>
     vote_count: movie.tmdb?.vote_count || tmdb?.vote_count || 0,
   };
 
+  // Sharp hero image; the catalog's landscape still is often 780px wide.
+  if (!movie.tmdb_backdrop && tmdb?.backdrop_path) movie.tmdb_backdrop = tmdb.backdrop_path;
+
   const imdbId = tmdb?.external_ids?.imdb_id;
   if (!movie.imdb?.id && imdbId) {
     movie.imdb = { id: imdbId, vote_average: 0, vote_count: 0 };

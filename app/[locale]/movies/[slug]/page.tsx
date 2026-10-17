@@ -80,6 +80,13 @@ export default async function Movie({ params }: MoviePageParams) {
 
   // The catalog writes every synopsis in Vietnamese, so on any other locale this
   // is machine translation and the reader deserves to be told.
+  // Header image: TMDB's primary backdrop (set by enrichment); failing that,
+  // the first wide textless still from the gallery we already loaded.
+  if (!movie.movie.tmdb_backdrop) {
+    const still = extras.images.find((img) => !img.iso_639_1 && img.width >= 1280);
+    if (still) movie.movie.tmdb_backdrop = still.file_path;
+  }
+
   const aiTranslated = Boolean(movie.movie.content) && movie.movie.content_lang !== params.locale;
 
   if (movie.movie.content) {

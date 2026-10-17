@@ -12,6 +12,7 @@ import Credit from 'types/credit';
 import BtnAddToCollection from '../buttons/btn-add-to-collection';
 import { Link } from 'i18n/routing';
 import Image from 'next/image';
+import { tmdbBackdropLoader } from 'lib/tmdb-image';
 import MovieImage from 'types/movie-image';
 import type SeasonLink from 'types/season-link';
 import RatingLinks from '../commons/rating-links';
@@ -102,16 +103,29 @@ export default function MoviePage({
   const episodeCurrent = localizedEpisodeCurrent(movie.movie.episode_current, locale);
   const time = localizedTime(movie.movie.time, locale);
   const hasCategories = Boolean(movie.movie.category && movie.movie.category.length > 0);
+  const backdrop = movie.movie.tmdb_backdrop;
+  const heroImage = backdrop
+    ? { src: backdrop, loader: tmdbBackdropLoader }
+    : { src: movie.movie.poster_url };
 
   return (
     <div>
       {/* Cinematic full-bleed hero — DESKTOP only (poster + info cluster).
           Mobile uses the single-column streaming layout below. */}
-      <div
-        className="hidden lg:block relative w-full min-h-[42rem] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${movie.movie.poster_url})` }}
-      >
-        <div className="absolute inset-0 bg-black/55"></div>
+      <div className="hidden lg:block relative w-full min-h-[42rem]">
+        {/* Backdrop: TMDB's (sharp, straight from its CDN) when there is
+            one, else the catalog's landscape still. Used to be a CSS
+            background, which downloaded the catalog original — up to 4 MB —
+            with no resizing at all. */}
+        <Image
+          {...heroImage}
+          alt=""
+          fill
+          loading="eager"
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className={`absolute inset-0 ${backdrop ? 'bg-black/55' : 'bg-black/65'}`}></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
 
         <div className="container-wrapper-movie relative flex min-h-[30rem] items-end px-4 pb-6 lg:min-h-[42rem] lg:px-0 lg:pb-10">
@@ -211,7 +225,7 @@ export default function MoviePage({
       <div className="lg:hidden">
         <div className="relative w-full aspect-[16/10]">
           <Image
-            src={movie.movie.poster_url}
+            {...heroImage}
             alt={primaryTitle}
             fill
             priority

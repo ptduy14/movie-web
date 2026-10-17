@@ -33,6 +33,25 @@ export const TMDB_SIZES = {
 export type TmdbImageKind = keyof typeof TMDB_SIZES;
 
 /**
+ * `next/image` loader for full-bleed TMDB backdrops (hero, detail header).
+ *
+ * Unlike every other image, these skip `/api/image`: TMDB already serves
+ * pre-sized variants from its own CDN (1-year cache), so resizing them on a
+ * Vercel Function would only spend function time to make a file TMDB has.
+ * Each requested width maps to a TMDB bucket — `w780` for phones, `w1280`
+ * for up to 1080p, `original` for 2K/4K and Retina.
+ *
+ * `src` is the bare TMDB path (`/abc.jpg`), e.g. `NewlyMovie.tmdb_backdrop`.
+ */
+export function tmdbBackdropLoader({ src, width }: { src: string; width: number }): string {
+  // Up to 1920px requested, w1280 is used: on a 1080p screen that is a 1.5x
+  // upscale, visually indistinguishable from the original at ~1/6 the bytes
+  // (~150–200 KB vs 0.4–2 MB). Only 2K/4K/Retina requests get the original.
+  const size = width <= 780 ? 'w780' : width <= 1920 ? 'w1280' : 'original';
+  return `${TMDB_BASE}/t/p/${size}${src}`;
+}
+
+/**
  * Build an absolute TMDB image URL from a raw path.
  * Returns `''` for a null/empty path so callers can test truthiness rather
  * than rendering `undefined` into a `src` attribute.

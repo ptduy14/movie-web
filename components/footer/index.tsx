@@ -3,6 +3,7 @@
 import { Link } from 'i18n/routing';
 import { FaGithub } from "react-icons/fa";
 import { useTranslations } from 'next-intl';
+import TMDBLogo from '../logos/TMDB-Logo';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -124,6 +125,21 @@ export default function Footer() {
           <p className="text-sm text-gray-500">{t('copyright')}</p>
           <p className="mt-2 text-xs text-gray-600">{t('disclaimer')}</p>
           <p className="mt-2 text-xs text-gray-600">{t('seo')}</p>
+
+          {/* Required by TMDB's API terms: their logo plus this exact notice,
+              less prominent than our own branding. Kept in English on both
+              locales because it is TMDB's wording, not ours. */}
+          <a
+            href="https://www.themoviedb.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-3 text-xs text-gray-600 hover:text-gray-400 transition-colors"
+          >
+            <span className="w-20 shrink-0">
+              <TMDBLogo />
+            </span>
+            <span>{t('tmdbAttribution')}</span>
+          </a>
         </div>
       </div>
     </footer>
