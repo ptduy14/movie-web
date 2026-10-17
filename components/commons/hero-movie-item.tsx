@@ -10,6 +10,7 @@ import MovieLogo from './movie-logo';
 import Category from 'types/category';
 import { GoDotFill } from 'react-icons/go';
 import Image from 'next/image';
+import { tmdbBackdropLoader } from 'lib/tmdb-image';
 import { Link } from 'i18n/routing';
 import QualityLangBadge from './badges/quality-lang-badge';
 import ExclusiveBadge from './badges/exclusive-badge';
@@ -99,6 +100,15 @@ export default function HeroMovieItem({
     </span>
   ));
 
+  // Hero image: TMDB's textless backdrop when there is one (sharp, served
+  // straight from TMDB's CDN), else the catalog's landscape still — which is
+  // often only 780px wide, so it gets a heavier overlay to hide the softness.
+  const backdrop = listItem?.tmdb_backdrop ?? movie.tmdb_backdrop;
+  const heroImage = backdrop
+    ? { src: backdrop, loader: tmdbBackdropLoader }
+    : { src: movie.poster_url };
+  const overlayClass = backdrop ? 'opacity-45' : 'opacity-60';
+
   const showImdb = isValidScore(imdb?.vote_average);
   const showTmdb = isValidScore(tmdb?.vote_average);
 
@@ -110,7 +120,7 @@ export default function HeroMovieItem({
             sizes must match or Next warns in dev that the image is
             over-requested relative to its actual box. */}
         <Image
-          src={movie.poster_url}
+          {...heroImage}
           alt={primaryTitle}
           fill
           priority={priority}
@@ -118,7 +128,7 @@ export default function HeroMovieItem({
           sizes="96vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-45"></div>
+        <div className={`absolute inset-0 bg-black ${overlayClass}`}></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black to-50%"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black to-10%"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black to-10%"></div>
@@ -207,7 +217,7 @@ export default function HeroMovieItem({
             (matches the hero skeleton's aspect ratio). */}
         <div className="relative w-full aspect-video">
           <Image
-            src={movie.poster_url}
+            {...heroImage}
             alt={primaryTitle}
             fill
             priority={priority}

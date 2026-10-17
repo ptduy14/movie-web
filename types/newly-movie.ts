@@ -53,4 +53,11 @@ export default interface NewlyMovie {
   lang_key?: string[];
   /** Theatrical release. */
   chieurap?: boolean;
+
+  /**
+   * TMDB backdrop path (`/abc.jpg`) for full-bleed heroes — the catalog's own
+   * landscape image is often only 780px wide. Load it with
+   * `tmdbBackdropLoader`, never through `/api/image`.
+   */
+  tmdb_backdrop?: string;
 }

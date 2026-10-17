@@ -456,7 +456,8 @@
     },
     "copyright": "© 2024 MOVIEX. Tất cả các quyền được bảo lưu.",
     "disclaimer": "MOVIEX không lưu trữ bất kỳ nội dung nào trên trang web này. Tất cả nội dung đều được lấy từ các nguồn bên thứ ba.",
-    "seo": "Xem phim online chất lượng cao tại MOVIEX - Trang web xem phim trực tuyến hàng đầu Việt Nam"
+    "seo": "Xem phim online chất lượng cao tại MOVIEX - Trang web xem phim trực tuyến hàng đầu Việt Nam",
+    "tmdbAttribution": "This product uses the TMDB API but is not endorsed or certified by TMDB."
   },
   "errors": {
     "invalidCredentials": "Thông tin đăng nhập không hợp lệ",

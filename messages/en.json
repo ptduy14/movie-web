@@ -456,7 +456,8 @@
     },
     "copyright": "© 2024 MOVIEX. All rights reserved.",
     "disclaimer": "MOVIEX does not host any content on this site. All content is sourced from third parties.",
-    "seo": "High-quality online movie streaming at MOVIEX — the leading streaming platform in Vietnam"
+    "seo": "High-quality online movie streaming at MOVIEX — the leading streaming platform in Vietnam",
+    "tmdbAttribution": "This product uses the TMDB API but is not endorsed or certified by TMDB."
   },
   "errors": {
     "invalidCredentials": "Invalid sign-in credentials",
