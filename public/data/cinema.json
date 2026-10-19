@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T05:00:20.284Z",
+  "updated_at": "2026-10-19T05:08:54.539Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -42,7 +42,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -62,20 +62,20 @@
           "trailer": "T2agdzhXOaY"
         },
         {
-          "id": 1756422,
-          "title": "Án Mạng Karaoke",
-          "release_date": "2026-10-30",
-          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
-          "rating": null,
-          "trailer": "N_jtjt1xb-o"
-        },
-        {
           "id": 1659702,
           "title": "Siêu Cảnh Sát Vũ Trụ Gavan Infinity: Ngày Mặt Trời Rướm Lệ",
           "release_date": "2026-10-30",
           "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
           "rating": null,
           "trailer": "FeJs6ZntVYM"
+        },
+        {
+          "id": 1756422,
+          "title": "Án Mạng Karaoke",
+          "release_date": "2026-10-30",
+          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
+          "rating": null,
+          "trailer": "N_jtjt1xb-o"
         },
         {
           "id": 1381071,
@@ -108,7 +108,7 @@
           "title": "Phim Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6.3,
+          "rating": 6.4,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Cá Voi Nuốt Chửng",
           "release_date": "2026-10-16",
           "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 6.9,
+          "rating": 6.8,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
           "release_date": "2026-10-16",
           "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
-          "rating": 7,
+          "rating": 7.2,
           "trailer": "daZMq0AyOMc"
         },
         {
@@ -148,7 +148,7 @@
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 5.9,
+          "rating": 6,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -194,40 +194,24 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "f7jlCqdtwdM"
         },
         {
           "id": 1491920,
           "title": "Kung Fu Soccer",
           "release_date": "2026-10-23",
-          "poster_path": "/6QgJQrClh9ej357yzLWgCxrjAmJ.jpg",
+          "poster_path": "/kTf9kJ3QMQqYs6wNdYJeVtwIZ2Z.jpg",
           "rating": 5.8,
-          "trailer": "hR6I5FaHpyI"
+          "trailer": "ru-fkVO4eTs"
         },
         {
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "bJQGtSeLPII"
-        },
-        {
-          "id": 1483525,
-          "title": "Possible Love",
-          "release_date": "2026-10-23",
-          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
-          "rating": 8,
-          "trailer": "zd3qXH9qN70"
-        },
-        {
-          "id": 1195803,
-          "title": "Wicker",
-          "release_date": "2026-10-23",
-          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-          "rating": null,
-          "trailer": "UVAki9SGrlg"
         },
         {
           "id": 858035,
@@ -238,12 +222,28 @@
           "trailer": "wixzainceAE"
         },
         {
+          "id": 1195803,
+          "title": "Wicker",
+          "release_date": "2026-10-23",
+          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+          "rating": null,
+          "trailer": "UVAki9SGrlg"
+        },
+        {
           "id": 1437696,
           "title": "Fatherland",
           "release_date": "2026-10-23",
           "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
           "rating": 7.4,
           "trailer": "52zHLYf25M0"
+        },
+        {
+          "id": 1483525,
+          "title": "Possible Love",
+          "release_date": "2026-10-23",
+          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
+          "rating": 8,
+          "trailer": "zd3qXH9qN70"
         },
         {
           "id": 1294189,
@@ -265,17 +265,9 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
-          "poster_path": "/gOWnXaBxqT6k2y40hKfYU6c0Ym.jpg",
+          "poster_path": "/b11RXdbaBI4ATpHiAMOGc6WTgvu.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
-        },
-        {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
-          "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": null,
-          "trailer": "tkZpcypT8Z4"
         },
         {
           "id": 1165366,
@@ -284,6 +276,14 @@
           "poster_path": "/4ri8KO5i7ldQiS3807KXn6awQEs.jpg",
           "rating": 7.8,
           "trailer": "dKUArYoZ_0U"
+        },
+        {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": null,
+          "trailer": "tkZpcypT8Z4"
         }
       ],
       "now_playing": [
@@ -291,7 +291,7 @@
           "id": 1153576,
           "title": "Street Fighter",
           "release_date": "2026-10-16",
-          "poster_path": "/ccxdepKqORLwccbzvO4eAGkN0IC.jpg",
+          "poster_path": "/pwUb3gdkSrlyMZWs0MFOQg3N5s7.jpg",
           "rating": 6.3,
           "trailer": "U6sbm1OaJb8"
         },
@@ -300,7 +300,7 @@
           "title": "Whalefall",
           "release_date": "2026-10-16",
           "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": 6.9,
+          "rating": 6.7,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Animals",
           "release_date": "2026-10-09",
           "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-          "rating": 7.1,
+          "rating": 7,
           "trailer": "ZkN2M4ODdys"
         },
         {
@@ -316,8 +316,16 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.9,
+          "rating": 6,
           "trailer": "-mnTITqqiT0"
+        },
+        {
+          "id": 1288069,
+          "title": "Tenzing",
+          "release_date": "2026-10-09",
+          "poster_path": "/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
+          "rating": 8.2,
+          "trailer": "KkYCY5YR12U"
         },
         {
           "id": 1742441,
@@ -332,7 +340,7 @@
           "title": "The Florist",
           "release_date": "2026-10-09",
           "poster_path": "/4tnRvIiWMzVA2Tw9c7INLo4sfo0.jpg",
-          "rating": 6.3,
+          "rating": 5.9,
           "trailer": "LNmIdALXoKo"
         },
         {
@@ -340,7 +348,7 @@
           "title": "Love of Your Life",
           "release_date": "2026-10-07",
           "poster_path": "/dL3Tcv4FU2K85bgnGRBgLjFSrLr.jpg",
-          "rating": 6.9,
+          "rating": 6.8,
           "trailer": "HzGx48E64Xg"
         },
         {
@@ -358,14 +366,6 @@
           "poster_path": "/1ApfSA8JTqeha3GTFEY8syV4auq.jpg",
           "rating": 7.4,
           "trailer": "UkMuGKqAux4"
-        },
-        {
-          "id": 1423191,
-          "title": "Resident Evil",
-          "release_date": "2026-09-18",
-          "poster_path": "/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-          "rating": 7.3,
-          "trailer": "mNd1gb19A-c"
         }
       ]
     }
