@@ -1,5 +1,150 @@
 {
-  "updated_at": "2026-10-12T07:24:21.093Z",
+  "updated_at": "2026-10-19T06:14:58.509Z",
   "interval_days": 7,
-  "movies": []
+  "movies": [
+    {
+      "slug": "tomb-raider-huyen-thoai-bat-dau",
+      "thumb_url": "https://phimimg.com/upload/vod/20251002-1/4a17777db8336a77babdbe6a63558ae4.jpg",
+      "year": 2018,
+      "tmdb_id": "338970",
+      "tmdb_type": "movie",
+      "movie_id": "9ce3d416394a5c9a29756027ff8cb37a",
+      "views": 3,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.6,
+      "title": {
+        "vi": "Tomb Raider: Huyền Thoại Bắt Đầu",
+        "en": "Tomb Raider"
+      },
+      "tmdb_rating": 6.362,
+      "poster_url": "https://image.tmdb.org/t/p/w500/s4Qn5LF6OwK4rIifmthIDtbqDSs.jpg"
+    },
+    {
+      "slug": "f1-phim-dien-anh",
+      "thumb_url": "https://phimimg.com/upload/vod/20250821-1/0f6921e399320d2f405c0e56efa42af5.jpg",
+      "year": 2025,
+      "tmdb_id": "911430",
+      "tmdb_type": "movie",
+      "movie_id": "cc65a7dd40f9de3463468921203d2177",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.533,
+      "title": {
+        "vi": "F1 Phim Điện Ảnh",
+        "en": "F1"
+      },
+      "tmdb_rating": 7.828,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
+    },
+    {
+      "slug": "nhung-nguoi-ban-ma-phan-1",
+      "thumb_url": "https://phimimg.com/uploads/movies/20260927/nhung-nguoi-ban-ma-phan-1-poster.webp",
+      "year": 2021,
+      "tmdb_id": "126027",
+      "tmdb_type": "tv",
+      "movie_id": "7a69b637405d15c65b31815c82af8b67",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.467,
+      "title": {
+        "vi": "Những Người Bạn Ma (Phần 1)",
+        "en": "Ghosts (Season 1)"
+      },
+      "tmdb_rating": 8.1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/8yBQYa6AdvMY5H9CiAv0HkvF3UE.jpg"
+    },
+    {
+      "slug": "song-menh-coi-hoang-tuyen",
+      "thumb_url": "https://phimimg.com/upload/vod/20260406-1/3c48ae9098dc344eb0dd90b9ed136bcd.jpg",
+      "year": 2026,
+      "tmdb_id": "260463",
+      "tmdb_type": "tv",
+      "movie_id": "0fca245d13ae0fde217d65da2aeaebdc",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.467,
+      "title": {
+        "vi": "Song Mệnh Cõi Hoàng Tuyền",
+        "en": "Daemons of the Shadow Realm"
+      },
+      "tmdb_rating": 8.264,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vIE1llfr1lcmzlsV4xn8vhgtlQN.jpg"
+    },
+    {
+      "slug": "ben-10-chay-dua-voi-thoi-gian",
+      "thumb_url": "https://phimimg.com/upload/vod/20260609-1/3857bc9e6487cfb92327eb0680dd1771.jpg",
+      "year": 2008,
+      "tmdb_id": "16000",
+      "tmdb_type": "movie",
+      "movie_id": "499d139d7c871d4b41ca6aade4419e42",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.467,
+      "title": {
+        "vi": "Ben 10: Chạy Đua Với Thời Gian",
+        "en": "Ben 10: Race Against Time"
+      },
+      "tmdb_rating": 5.9,
+      "poster_url": "https://image.tmdb.org/t/p/w500/3lRxpzq4rlRbmfSen583MAl4EB3.jpg"
+    },
+    {
+      "slug": "dai-chien-tang-lop-am-thuc-phan-1",
+      "thumb_url": "https://phimimg.com/upload/vod/20251227-1/22a0514db1ff43dcb953f3c3a4ff7728.jpg",
+      "year": 2024,
+      "tmdb_id": "245684",
+      "tmdb_type": "tv",
+      "movie_id": "8f34e6c58e3875b532232d5c0165afa2",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.467,
+      "title": {
+        "vi": "Đại Chiến Tầng Lớp Ẩm Thực (Phần 1)",
+        "en": "Culinary Class Wars (Season 1)"
+      },
+      "tmdb_rating": 8.259,
+      "poster_url": "https://image.tmdb.org/t/p/w500/dYMFQfzIJwCYAHwf3ZjiL2iVFIy.jpg"
+    },
+    {
+      "slug": "mot-tran-thanh-danh",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261017/mot-tran-thanh-danh-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1563627",
+      "tmdb_type": "movie",
+      "movie_id": "78e73e5986d9069f468b83c3f5ea4ac2",
+      "views": 1,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.467,
+      "title": {
+        "vi": "Một Trận Thành Danh",
+        "en": "A Better Jianghu"
+      },
+      "tmdb_rating": 5,
+      "poster_url": "https://phimimg.com/uploads/movies/20261017/mot-tran-thanh-danh-poster.webp"
+    },
+    {
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "f512bcc142683f9185ea27c41855ed64",
+      "views": 0,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": null,
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": null
+    }
+  ]
 }
