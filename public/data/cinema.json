@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T05:08:54.539Z",
+  "updated_at": "2026-10-20T05:09:37.738Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -42,7 +42,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 8.3,
+          "rating": 8.1,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Phim Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6.4,
+          "rating": 6.3,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Cá Voi Nuốt Chửng",
           "release_date": "2026-10-16",
           "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 6.8,
+          "rating": 6.7,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
           "release_date": "2026-10-16",
           "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
-          "rating": 7.2,
+          "rating": 7.3,
           "trailer": "daZMq0AyOMc"
         },
         {
@@ -180,7 +180,7 @@
           "title": "Verity: Bí Mật Bị Chôn Vùi",
           "release_date": "2026-10-02",
           "poster_path": "/54MwktkK2i2GJM8fYU9jNXGaHk.jpg",
-          "rating": 6.3,
+          "rating": 6.4,
           "trailer": "xdPMKhjMSFs"
         }
       ]
@@ -190,11 +190,19 @@
       "language": "en-US",
       "upcoming": [
         {
+          "id": 858035,
+          "title": "Klara and the Sun",
+          "release_date": "2026-10-23",
+          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
+          "rating": null,
+          "trailer": "wixzainceAE"
+        },
+        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-          "rating": 8.3,
+          "rating": 8.1,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -210,24 +218,8 @@
           "title": "Wildwood",
           "release_date": "2026-10-23",
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-          "rating": 10,
+          "rating": 9.3,
           "trailer": "bJQGtSeLPII"
-        },
-        {
-          "id": 858035,
-          "title": "Klara and the Sun",
-          "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": null,
-          "trailer": "wixzainceAE"
-        },
-        {
-          "id": 1195803,
-          "title": "Wicker",
-          "release_date": "2026-10-23",
-          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-          "rating": null,
-          "trailer": "UVAki9SGrlg"
         },
         {
           "id": 1437696,
@@ -238,12 +230,12 @@
           "trailer": "52zHLYf25M0"
         },
         {
-          "id": 1483525,
-          "title": "Possible Love",
+          "id": 1195803,
+          "title": "Wicker",
           "release_date": "2026-10-23",
-          "poster_path": "/dLz9yHeLw4x4sD0WTSNi7HuK2ke.jpg",
-          "rating": 8,
-          "trailer": "zd3qXH9qN70"
+          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+          "rating": 1,
+          "trailer": "UVAki9SGrlg"
         },
         {
           "id": 1294189,
@@ -265,9 +257,17 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
-          "poster_path": "/b11RXdbaBI4ATpHiAMOGc6WTgvu.jpg",
+          "poster_path": "/hX94xNPYwazKOVGGqL1GiwMSNuY.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
+        },
+        {
+          "id": 891621,
+          "title": "Wild Horse Nine",
+          "release_date": "2026-11-06",
+          "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
+          "rating": null,
+          "trailer": "kqxuamKxRTo"
         },
         {
           "id": 1165366,
@@ -304,6 +304,14 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
+          "id": 1234139,
+          "title": "Jailer 2",
+          "release_date": "2026-10-14",
+          "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+          "rating": 8,
+          "trailer": null
+        },
+        {
           "id": 1236045,
           "title": "Animals",
           "release_date": "2026-10-09",
@@ -324,16 +332,8 @@
           "title": "Tenzing",
           "release_date": "2026-10-09",
           "poster_path": "/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "KkYCY5YR12U"
-        },
-        {
-          "id": 1742441,
-          "title": "V/H/S/Mixtape",
-          "release_date": "2026-10-09",
-          "poster_path": "/uS8yoiA6NfsuYeOTbVfpem8Ib9.jpg",
-          "rating": 4.8,
-          "trailer": "GrIouRKyPDw"
         },
         {
           "id": 1476746,
@@ -344,20 +344,20 @@
           "trailer": "LNmIdALXoKo"
         },
         {
+          "id": 1742441,
+          "title": "V/H/S/Mixtape",
+          "release_date": "2026-10-09",
+          "poster_path": "/uS8yoiA6NfsuYeOTbVfpem8Ib9.jpg",
+          "rating": 4.7,
+          "trailer": "GrIouRKyPDw"
+        },
+        {
           "id": 1381078,
           "title": "Love of Your Life",
           "release_date": "2026-10-07",
           "poster_path": "/dL3Tcv4FU2K85bgnGRBgLjFSrLr.jpg",
-          "rating": 6.8,
+          "rating": 6.9,
           "trailer": "HzGx48E64Xg"
-        },
-        {
-          "id": 1248832,
-          "title": "Digger",
-          "release_date": "2026-10-02",
-          "poster_path": "/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-          "rating": 7.5,
-          "trailer": "job8V254NAE"
         },
         {
           "id": 1263337,
