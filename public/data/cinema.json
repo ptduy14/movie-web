@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T05:14:57.476Z",
+  "updated_at": "2026-10-23T05:13:53.517Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -30,20 +30,20 @@
           "trailer": "FeJs6ZntVYM"
         },
         {
-          "id": 1756422,
-          "title": "Án Mạng Karaoke",
-          "release_date": "2026-10-30",
-          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
-          "rating": null,
-          "trailer": "N_jtjt1xb-o"
-        },
-        {
           "id": 1744848,
           "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
           "poster_path": "/qRdoAtvsmg4qNO6uXxoBeH9Z1qO.jpg",
           "rating": null,
           "trailer": "T2agdzhXOaY"
+        },
+        {
+          "id": 1756422,
+          "title": "Án Mạng Karaoke",
+          "release_date": "2026-10-30",
+          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
+          "rating": null,
+          "trailer": "N_jtjt1xb-o"
         },
         {
           "id": 1329566,
@@ -81,7 +81,7 @@
           "id": 1752234,
           "title": "Ngày Con Còn Mẹ",
           "release_date": "2026-11-11",
-          "poster_path": "/rOOHeRw4g30FtljcjPL2PZzF2Zs.jpg",
+          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
           "rating": null,
           "trailer": null
         },
@@ -120,20 +120,20 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
+          "id": 1477104,
+          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
+          "release_date": "2026-10-16",
+          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
+          "rating": 7.4,
+          "trailer": "daZMq0AyOMc"
+        },
+        {
           "id": 83389,
           "title": "Ngọn Đồi Hoa Hồng Anh",
           "release_date": "2026-10-16",
           "poster_path": "/4tw1Q0Hpvvac55jwz213DCI4LUQ.jpg",
           "rating": 7.5,
           "trailer": "a0DIxdy8CZA"
-        },
-        {
-          "id": 1477104,
-          "title": "Shaun the Sheep: \"Quái Lạ\" Ghé Nhà",
-          "release_date": "2026-10-16",
-          "poster_path": "/4XDUPhEjxLRyCUU5uB4XgE6kOBE.jpg",
-          "rating": 7.3,
-          "trailer": "daZMq0AyOMc"
         },
         {
           "id": 1489932,
@@ -148,7 +148,7 @@
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 5.9,
+          "rating": 5.8,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -186,7 +186,7 @@
           "title": "Fatherland",
           "release_date": "2026-10-23",
           "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "52zHLYf25M0"
         },
         {
@@ -209,7 +209,7 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
-          "poster_path": "/b11RXdbaBI4ATpHiAMOGc6WTgvu.jpg",
+          "poster_path": "/hX94xNPYwazKOVGGqL1GiwMSNuY.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
         },
@@ -222,6 +222,14 @@
           "trailer": "kqxuamKxRTo"
         },
         {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": null,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
           "id": 1165366,
           "title": "De Gaulle: Résistance",
           "release_date": "2026-11-06",
@@ -230,12 +238,12 @@
           "trailer": "dKUArYoZ_0U"
         },
         {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
+          "id": 1050981,
+          "title": "Being Heumann",
           "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "poster_path": "/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
           "rating": null,
-          "trailer": "tkZpcypT8Z4"
+          "trailer": "CQp2pUXLvJk"
         },
         {
           "id": 1585239,
@@ -254,18 +262,10 @@
           "trailer": "UKaWzMf9Ybc"
         },
         {
-          "id": 1131943,
-          "title": "Madden",
-          "release_date": "2026-11-11",
-          "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": null,
-          "trailer": "xzh7HzLXXpk"
-        },
-        {
           "id": 1567605,
           "title": "Ebenezer",
           "release_date": "2026-11-13",
-          "poster_path": "/bmemRcNQgljyRNNM9kPeqmt8HNO.jpg",
+          "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
           "rating": null,
           "trailer": "l_Ozo1xUgbU"
         },
@@ -283,17 +283,9 @@
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-23",
-          "poster_path": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-          "rating": 7.3,
+          "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
+          "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
-        },
-        {
-          "id": 858035,
-          "title": "Klara and the Sun",
-          "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": 6.2,
-          "trailer": "wixzainceAE"
         },
         {
           "id": 1153576,
@@ -316,7 +308,7 @@
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
           "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 8.9,
+          "rating": 8.8,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -324,7 +316,7 @@
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.4,
+          "rating": 7.3,
           "trailer": "OFLyW0lxFU0"
         },
         {
@@ -344,6 +336,14 @@
           "trailer": "-mnTITqqiT0"
         },
         {
+          "id": 1236045,
+          "title": "Animals",
+          "release_date": "2026-10-09",
+          "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
+          "rating": 7,
+          "trailer": "ZkN2M4ODdys"
+        },
+        {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
@@ -352,12 +352,12 @@
           "trailer": "R8ANzYpaZaY"
         },
         {
-          "id": 1236045,
-          "title": "Animals",
+          "id": 1288069,
+          "title": "Tenzing",
           "release_date": "2026-10-09",
-          "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-          "rating": 7,
-          "trailer": "ZkN2M4ODdys"
+          "poster_path": "/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
+          "rating": 8.3,
+          "trailer": "KkYCY5YR12U"
         }
       ]
     }
