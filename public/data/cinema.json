@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T05:13:53.517Z",
+  "updated_at": "2026-10-24T04:55:52.154Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 7.4,
+          "rating": 7.6,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -62,20 +62,20 @@
           "trailer": "pWJjYoqVSjQ"
         },
         {
-          "id": 1716710,
-          "title": "Chuyến Đi Nhớ Đời",
-          "release_date": "2026-11-06",
-          "poster_path": "/xV9qzT5EYQOxlLXHQgdayWrsjG7.jpg",
-          "rating": null,
-          "trailer": "pgmZCaGA_zg"
-        },
-        {
           "id": 1692603,
           "title": "Bò Sữa Bay",
           "release_date": "2026-11-06",
           "poster_path": "/y2AC6NxknGlZapSwCSYMOMxHOvl.jpg",
           "rating": null,
           "trailer": "2Y8yw8bAG1o"
+        },
+        {
+          "id": 1716710,
+          "title": "Chuyến Đi Nhớ Đời",
+          "release_date": "2026-11-06",
+          "poster_path": "/xV9qzT5EYQOxlLXHQgdayWrsjG7.jpg",
+          "rating": null,
+          "trailer": "pgmZCaGA_zg"
         },
         {
           "id": 1752234,
@@ -182,14 +182,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1437696,
-          "title": "Fatherland",
-          "release_date": "2026-10-23",
-          "poster_path": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
-          "rating": 7.4,
-          "trailer": "52zHLYf25M0"
-        },
-        {
           "id": 1294189,
           "title": "The Mongoose",
           "release_date": "2026-10-30",
@@ -218,7 +210,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": null,
+          "rating": 8.5,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -276,6 +268,14 @@
           "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
           "rating": 6.2,
           "trailer": "R-9dlnkY448"
+        },
+        {
+          "id": 1437511,
+          "title": "How to Rob a Bank",
+          "release_date": "2026-11-13",
+          "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
+          "rating": null,
+          "trailer": "MVvWKh336m4"
         }
       ],
       "now_playing": [
@@ -284,8 +284,16 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.4,
+          "rating": 7.6,
           "trailer": "f7jlCqdtwdM"
+        },
+        {
+          "id": 858035,
+          "title": "Klara and the Sun",
+          "release_date": "2026-10-23",
+          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
+          "rating": 6.2,
+          "trailer": "wixzainceAE"
         },
         {
           "id": 1153576,
@@ -308,7 +316,7 @@
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
           "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 8.8,
+          "rating": 9.1,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -316,7 +324,7 @@
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.3,
+          "rating": 7.2,
           "trailer": "OFLyW0lxFU0"
         },
         {
@@ -324,7 +332,7 @@
           "title": "Jailer 2",
           "release_date": "2026-10-14",
           "poster_path": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
-          "rating": 8,
+          "rating": 8.1,
           "trailer": null
         },
         {
@@ -332,7 +340,7 @@
           "title": "Other Mommy",
           "release_date": "2026-10-09",
           "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.9,
+          "rating": 5.8,
           "trailer": "-mnTITqqiT0"
         },
         {
@@ -350,14 +358,6 @@
           "poster_path": "/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
           "rating": 7,
           "trailer": "R8ANzYpaZaY"
-        },
-        {
-          "id": 1288069,
-          "title": "Tenzing",
-          "release_date": "2026-10-09",
-          "poster_path": "/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
-          "rating": 8.3,
-          "trailer": "KkYCY5YR12U"
         }
       ]
     }
