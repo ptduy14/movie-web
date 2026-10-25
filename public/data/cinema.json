@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T04:55:52.154Z",
+  "updated_at": "2026-10-25T05:08:50.417Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -108,7 +108,7 @@
           "title": "Chiến Binh Đường Phố",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6.3,
+          "rating": 6.4,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -116,7 +116,7 @@
           "title": "Cá Voi Nuốt Chửng",
           "release_date": "2026-10-16",
           "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 6.5,
+          "rating": 6.6,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
@@ -230,20 +230,20 @@
           "trailer": "dKUArYoZ_0U"
         },
         {
+          "id": 1585239,
+          "title": "Club Kid",
+          "release_date": "2026-11-06",
+          "poster_path": "/o1qMU0ZB5XDX8IXJFFu3AkhOqjh.jpg",
+          "rating": null,
+          "trailer": "guKEdb_iRXw"
+        },
+        {
           "id": 1050981,
           "title": "Being Heumann",
           "release_date": "2026-11-06",
           "poster_path": "/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
           "rating": null,
           "trailer": "CQp2pUXLvJk"
-        },
-        {
-          "id": 1585239,
-          "title": "Club Kid",
-          "release_date": "2026-11-06",
-          "poster_path": "/3CdM37GtEDMAp7fGlRn9MCpFjn1.jpg",
-          "rating": null,
-          "trailer": "guKEdb_iRXw"
         },
         {
           "id": 1562642,
@@ -262,20 +262,20 @@
           "trailer": "l_Ozo1xUgbU"
         },
         {
-          "id": 1088548,
-          "title": "Bitter Christmas",
-          "release_date": "2026-11-13",
-          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
-          "rating": 6.2,
-          "trailer": "R-9dlnkY448"
-        },
-        {
           "id": 1437511,
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
           "rating": null,
           "trailer": "MVvWKh336m4"
+        },
+        {
+          "id": 1088548,
+          "title": "Bitter Christmas",
+          "release_date": "2026-11-13",
+          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
+          "rating": 6.2,
+          "trailer": "R-9dlnkY448"
         }
       ],
       "now_playing": [
@@ -288,19 +288,19 @@
           "trailer": "f7jlCqdtwdM"
         },
         {
-          "id": 858035,
-          "title": "Klara and the Sun",
+          "id": 791523,
+          "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": 6.2,
-          "trailer": "wixzainceAE"
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "rating": 8.7,
+          "trailer": "bJQGtSeLPII"
         },
         {
           "id": 1153576,
           "title": "Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/ccxdepKqORLwccbzvO4eAGkN0IC.jpg",
-          "rating": 6.3,
+          "rating": 6.4,
           "trailer": "U6sbm1OaJb8"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Whalefall",
           "release_date": "2026-10-16",
           "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": 6.5,
+          "rating": 6.6,
           "trailer": "Dw-5ZGapGTQ"
         },
         {
