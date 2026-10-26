@@ -1,132 +1,78 @@
 {
-  "updated_at": "2026-10-19T06:14:58.509Z",
+  "updated_at": "2026-10-26T06:17:38.291Z",
   "interval_days": 7,
   "movies": [
     {
-      "slug": "tomb-raider-huyen-thoai-bat-dau",
-      "thumb_url": "https://phimimg.com/upload/vod/20251002-1/4a17777db8336a77babdbe6a63558ae4.jpg",
-      "year": 2018,
-      "tmdb_id": "338970",
-      "tmdb_type": "movie",
-      "movie_id": "9ce3d416394a5c9a29756027ff8cb37a",
-      "views": 3,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.6,
-      "title": {
-        "vi": "Tomb Raider: Huyền Thoại Bắt Đầu",
-        "en": "Tomb Raider"
-      },
-      "tmdb_rating": 6.362,
-      "poster_url": "https://image.tmdb.org/t/p/w500/s4Qn5LF6OwK4rIifmthIDtbqDSs.jpg"
-    },
-    {
-      "slug": "f1-phim-dien-anh",
-      "thumb_url": "https://phimimg.com/upload/vod/20250821-1/0f6921e399320d2f405c0e56efa42af5.jpg",
-      "year": 2025,
-      "tmdb_id": "911430",
-      "tmdb_type": "movie",
-      "movie_id": "cc65a7dd40f9de3463468921203d2177",
-      "views": 2,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.533,
-      "title": {
-        "vi": "F1 Phim Điện Ảnh",
-        "en": "F1"
-      },
-      "tmdb_rating": 7.828,
-      "poster_url": "https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
-    },
-    {
-      "slug": "nhung-nguoi-ban-ma-phan-1",
-      "thumb_url": "https://phimimg.com/uploads/movies/20260927/nhung-nguoi-ban-ma-phan-1-poster.webp",
-      "year": 2021,
-      "tmdb_id": "126027",
+      "slug": "nguoi-thay-y-duc-phan-1",
+      "thumb_url": "https://phimimg.com/upload/vod/20231004-1/aedaed06dd0202136691549aa2bb08ae.jpg",
+      "year": 2016,
+      "tmdb_id": "68398",
       "tmdb_type": "tv",
-      "movie_id": "7a69b637405d15c65b31815c82af8b67",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.467,
+      "movie_id": "55b1927fdafef39c48e5b73b5d61ea60",
+      "views": 2,
+      "plays": 12,
+      "completions": 4,
+      "trending_score": 0.867,
       "title": {
-        "vi": "Những Người Bạn Ma (Phần 1)",
-        "en": "Ghosts (Season 1)"
+        "vi": "Người Thầy Y Đức (Phần 1)",
+        "en": "Dr. Romantic (Season 1)"
       },
       "tmdb_rating": 8.1,
-      "poster_url": "https://image.tmdb.org/t/p/w500/8yBQYa6AdvMY5H9CiAv0HkvF3UE.jpg"
+      "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
     },
     {
-      "slug": "song-menh-coi-hoang-tuyen",
-      "thumb_url": "https://phimimg.com/upload/vod/20260406-1/3c48ae9098dc344eb0dd90b9ed136bcd.jpg",
+      "slug": "trang-trai-dutton",
+      "thumb_url": "https://phimimg.com/upload/vod/20260604-1/c714d7ad21f9fea3380edbfba93b72e8.jpg",
       "year": 2026,
-      "tmdb_id": "260463",
+      "tmdb_id": "299167",
       "tmdb_type": "tv",
-      "movie_id": "0fca245d13ae0fde217d65da2aeaebdc",
+      "movie_id": "085fc1406248327158619fb1326434cc",
       "views": 1,
-      "plays": 1,
+      "plays": 12,
       "completions": 0,
-      "trending_score": 0.467,
+      "trending_score": 0.433,
       "title": {
-        "vi": "Song Mệnh Cõi Hoàng Tuyền",
-        "en": "Daemons of the Shadow Realm"
+        "vi": "Trang Trại Dutton",
+        "en": "Dutton Ranch"
       },
-      "tmdb_rating": 8.264,
-      "poster_url": "https://image.tmdb.org/t/p/w500/vIE1llfr1lcmzlsV4xn8vhgtlQN.jpg"
+      "tmdb_rating": 9.134,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
     },
     {
-      "slug": "ben-10-chay-dua-voi-thoi-gian",
-      "thumb_url": "https://phimimg.com/upload/vod/20260609-1/3857bc9e6487cfb92327eb0680dd1771.jpg",
-      "year": 2008,
-      "tmdb_id": "16000",
-      "tmdb_type": "movie",
-      "movie_id": "499d139d7c871d4b41ca6aade4419e42",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.467,
-      "title": {
-        "vi": "Ben 10: Chạy Đua Với Thời Gian",
-        "en": "Ben 10: Race Against Time"
-      },
-      "tmdb_rating": 5.9,
-      "poster_url": "https://image.tmdb.org/t/p/w500/3lRxpzq4rlRbmfSen583MAl4EB3.jpg"
-    },
-    {
-      "slug": "dai-chien-tang-lop-am-thuc-phan-1",
-      "thumb_url": "https://phimimg.com/upload/vod/20251227-1/22a0514db1ff43dcb953f3c3a4ff7728.jpg",
-      "year": 2024,
-      "tmdb_id": "245684",
-      "tmdb_type": "tv",
-      "movie_id": "8f34e6c58e3875b532232d5c0165afa2",
-      "views": 1,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.467,
-      "title": {
-        "vi": "Đại Chiến Tầng Lớp Ẩm Thực (Phần 1)",
-        "en": "Culinary Class Wars (Season 1)"
-      },
-      "tmdb_rating": 8.259,
-      "poster_url": "https://image.tmdb.org/t/p/w500/dYMFQfzIJwCYAHwf3ZjiL2iVFIy.jpg"
-    },
-    {
-      "slug": "mot-tran-thanh-danh",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261017/mot-tran-thanh-danh-poster.webp",
+      "slug": "yeu-la-mu-quang-ha-lan",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp",
       "year": 2026,
-      "tmdb_id": "1563627",
-      "tmdb_type": "movie",
-      "movie_id": "78e73e5986d9069f468b83c3f5ea4ac2",
-      "views": 1,
+      "tmdb_id": "290750",
+      "tmdb_type": "tv",
+      "movie_id": "e591c1f05d9a8acca48d6b8182711e61",
+      "views": 3,
+      "plays": 7,
+      "completions": 1,
+      "trending_score": 0.433,
+      "title": {
+        "vi": "Yêu Là Mù Quáng: Hà Lan",
+        "en": "Love Is Blind: Netherlands"
+      },
+      "tmdb_rating": 6,
+      "poster_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp"
+    },
+    {
+      "slug": "vision-quest",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
+      "year": 2026,
+      "tmdb_id": "213375",
+      "tmdb_type": "tv",
+      "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
+      "views": 6,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.467,
+      "trending_score": 0.233,
       "title": {
-        "vi": "Một Trận Thành Danh",
-        "en": "A Better Jianghu"
+        "vi": "Vision Quest",
+        "en": "VisionQuest"
       },
-      "tmdb_rating": 5,
-      "poster_url": "https://phimimg.com/uploads/movies/20261017/mot-tran-thanh-danh-poster.webp"
+      "tmdb_rating": 8.8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg"
     },
     {
       "slug": null,
@@ -136,15 +82,105 @@
       "tmdb_type": null,
       "movie_id": "f512bcc142683f9185ea27c41855ed64",
       "views": 0,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.4,
+      "plays": 4,
+      "completions": 1,
+      "trending_score": 0.233,
       "title": {
         "vi": null,
         "en": null
       },
       "tmdb_rating": null,
       "poster_url": null
+    },
+    {
+      "slug": "f1-phim-dien-anh",
+      "thumb_url": "https://phimimg.com/upload/vod/20250821-1/0f6921e399320d2f405c0e56efa42af5.jpg",
+      "year": 2025,
+      "tmdb_id": "911430",
+      "tmdb_type": "movie",
+      "movie_id": "cc65a7dd40f9de3463468921203d2177",
+      "views": 5,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.2,
+      "title": {
+        "vi": "F1 Phim Điện Ảnh",
+        "en": "F1"
+      },
+      "tmdb_rating": 7.831,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
+    },
+    {
+      "slug": "cuc-quan-ly-ky-uc",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261004/cuc-quan-ly-ky-uc-poster.webp",
+      "year": 2026,
+      "tmdb_id": "280564",
+      "tmdb_type": "tv",
+      "movie_id": "e7ec8bad741ed94bf92b26ac00cd8f2a",
+      "views": 2,
+      "plays": 4,
+      "completions": 0,
+      "trending_score": 0.2,
+      "title": {
+        "vi": "Cục Quản Lý Ký Ức",
+        "en": "False Memory"
+      },
+      "tmdb_rating": 7.9,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sSvgBIvcwGoWmbdlbpZI5kHBtVv.jpg"
+    },
+    {
+      "slug": "nu-luat-su-ky-la-minami",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261020/nu-luat-su-ky-la-minami-poster.webp",
+      "year": 2026,
+      "tmdb_id": "332713",
+      "tmdb_type": "tv",
+      "movie_id": "a95f918eec4c76552a532fb6c5e2024f",
+      "views": 3,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.167,
+      "title": {
+        "vi": "Nữ Luật Sư Kỳ Lạ Minami",
+        "en": "Extraordinary Attorney Minami"
+      },
+      "tmdb_rating": 6,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xnNu56T04JDZRBIDxclpr83s7K.jpg"
+    },
+    {
+      "slug": "gia-thuyet-tinh-yeu",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261019/gia-thuyet-tinh-yeu-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1032863",
+      "tmdb_type": "movie",
+      "movie_id": "de56e94ad19a737206d071b93cd64be5",
+      "views": 3,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.167,
+      "title": {
+        "vi": "Giả Thuyết Tình Yêu",
+        "en": "The Love Hypothesis"
+      },
+      "tmdb_rating": 7.987,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vfZxVHextAGC70zrNhS8lsROqP1.jpg"
+    },
+    {
+      "slug": "bac-thay-tinh-duc-phan-2",
+      "thumb_url": "https://phimimg.com/upload/vod/20251116-1/a3f13be4adcc8cf8c9762e1e0026c2a2.jpg",
+      "year": 2014,
+      "tmdb_id": "58937",
+      "tmdb_type": "tv",
+      "movie_id": "35fe071cd4426fe8a90666101fff1bf0",
+      "views": 3,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.133,
+      "title": {
+        "vi": "Bậc Thầy Tình Dục (Phần 2)",
+        "en": "Masters of Sex (Season 2)"
+      },
+      "tmdb_rating": 7.09,
+      "poster_url": "https://image.tmdb.org/t/p/w500/e5CKTAqZM43PvqRHoGMKvHXECyT.jpg"
     }
   ]
 }
