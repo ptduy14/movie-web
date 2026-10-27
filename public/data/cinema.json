@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T05:10:59.019Z",
+  "updated_at": "2026-10-27T05:27:36.858Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -33,7 +33,7 @@
           "id": 1744848,
           "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
-          "poster_path": "/rqMUclEn9f5ClSUzoMQeEeckZ1E.jpg",
+          "poster_path": "/yCQSzMciwhHJdJnoV4jp8r3mkiH.jpg",
           "rating": null,
           "trailer": "T2agdzhXOaY"
         },
@@ -186,7 +186,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 8.6,
+          "rating": 8.5,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -201,7 +201,7 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-04",
-          "poster_path": "/cK6xaYrb498y2rmMRSZmRKaCXKL.jpg",
+          "poster_path": "/hX94xNPYwazKOVGGqL1GiwMSNuY.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
         },
@@ -210,7 +210,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 9,
+          "rating": 9.2,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -254,20 +254,20 @@
           "trailer": "UKaWzMf9Ybc"
         },
         {
-          "id": 1131943,
-          "title": "Madden",
-          "release_date": "2026-11-11",
-          "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": null,
-          "trailer": "xzh7HzLXXpk"
-        },
-        {
           "id": 1567605,
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
           "rating": null,
           "trailer": "l_Ozo1xUgbU"
+        },
+        {
+          "id": 1088548,
+          "title": "Bitter Christmas",
+          "release_date": "2026-11-13",
+          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
+          "rating": 6.2,
+          "trailer": "R-9dlnkY448"
         },
         {
           "id": 1437511,
@@ -284,7 +284,7 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -292,16 +292,8 @@
           "title": "Wildwood",
           "release_date": "2026-10-23",
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-          "rating": 8.9,
+          "rating": 8.6,
           "trailer": "bJQGtSeLPII"
-        },
-        {
-          "id": 858035,
-          "title": "Klara and the Sun",
-          "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": 5.5,
-          "trailer": "wixzainceAE"
         },
         {
           "id": 1153576,
@@ -312,6 +304,14 @@
           "trailer": "U6sbm1OaJb8"
         },
         {
+          "id": 1765072,
+          "title": "You Can See Everything",
+          "release_date": "2026-10-16",
+          "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
+          "rating": 9.1,
+          "trailer": "IEx8D1Wb__U"
+        },
+        {
           "id": 1255833,
           "title": "Whalefall",
           "release_date": "2026-10-16",
@@ -320,28 +320,12 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
-          "id": 1765072,
-          "title": "You Can See Everything",
-          "release_date": "2026-10-16",
-          "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 9,
-          "trailer": "IEx8D1Wb__U"
-        },
-        {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
-          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+          "poster_path": "/5bmH9lyNVEW6DXBf4rYx9Os7Fuo.jpg",
           "rating": 7.2,
           "trailer": "OFLyW0lxFU0"
-        },
-        {
-          "id": 1400837,
-          "title": "Other Mommy",
-          "release_date": "2026-10-09",
-          "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.8,
-          "trailer": "-mnTITqqiT0"
         },
         {
           "id": 1236045,
@@ -352,12 +336,28 @@
           "trailer": "ZkN2M4ODdys"
         },
         {
+          "id": 1400837,
+          "title": "Other Mommy",
+          "release_date": "2026-10-09",
+          "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+          "rating": 5.8,
+          "trailer": "-mnTITqqiT0"
+        },
+        {
           "id": 1281331,
           "title": "The Social Reckoning",
           "release_date": "2026-10-09",
           "poster_path": "/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
           "rating": 7,
           "trailer": "R8ANzYpaZaY"
+        },
+        {
+          "id": 1476746,
+          "title": "The Florist",
+          "release_date": "2026-10-09",
+          "poster_path": "/4tnRvIiWMzVA2Tw9c7INLo4sfo0.jpg",
+          "rating": 5.7,
+          "trailer": "LNmIdALXoKo"
         }
       ]
     }
