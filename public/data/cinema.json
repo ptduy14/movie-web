@@ -1,58 +1,10 @@
 {
-  "updated_at": "2026-10-27T05:27:36.858Z",
+  "updated_at": "2026-10-28T06:09:07.162Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1400940,
-          "title": "Clayface",
-          "release_date": "2026-10-30",
-          "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 7.6,
-          "trailer": "f7jlCqdtwdM"
-        },
-        {
-          "id": 1659696,
-          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
-          "release_date": "2026-10-30",
-          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1659702,
-          "title": "Siêu Cảnh Sát Vũ Trụ Gavan Infinity: Ngày Mặt Trời Rướm Lệ",
-          "release_date": "2026-10-30",
-          "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
-          "rating": null,
-          "trailer": "FeJs6ZntVYM"
-        },
-        {
-          "id": 1744848,
-          "title": "Chị Chị Em Em 3",
-          "release_date": "2026-10-30",
-          "poster_path": "/yCQSzMciwhHJdJnoV4jp8r3mkiH.jpg",
-          "rating": null,
-          "trailer": "T2agdzhXOaY"
-        },
-        {
-          "id": 1329566,
-          "title": "金陵御猫",
-          "release_date": "2026-10-30",
-          "poster_path": "/ohUKwYDla2uKG9GQjaQB5Dua41t.jpg",
-          "rating": 6.5,
-          "trailer": "FWqM3IBJyTw"
-        },
-        {
-          "id": 1756422,
-          "title": "Án Mạng Karaoke",
-          "release_date": "2026-10-30",
-          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
-          "rating": null,
-          "trailer": "N_jtjt1xb-o"
-        },
         {
           "id": 1381071,
           "title": "Godzilla Trừ Không",
@@ -92,9 +44,49 @@
           "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
           "rating": null,
           "trailer": "MVvWKh336m4"
+        },
+        {
+          "id": 1300968,
+          "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
+          "release_date": "2026-11-20",
+          "poster_path": "/BjG1p4g93AgsHuwUEenNqmodsr.jpg",
+          "rating": null,
+          "trailer": "Dr060OLTodE"
+        },
+        {
+          "id": 1720229,
+          "title": "Trại Giam Hạnh Phúc",
+          "release_date": "2026-11-20",
+          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
+          "rating": null,
+          "trailer": null
         }
       ],
       "now_playing": [
+        {
+          "id": 1400940,
+          "title": "Clayface",
+          "release_date": "2026-10-30",
+          "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
+          "rating": 7.5,
+          "trailer": "f7jlCqdtwdM"
+        },
+        {
+          "id": 1659696,
+          "title": "Kamen Rider ZEZTZ: Nhiệm Vụ Từ Biệt",
+          "release_date": "2026-10-30",
+          "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1659702,
+          "title": "Siêu Cảnh Sát Vũ Trụ Gavan Infinity: Ngày Mặt Trời Rướm Lệ",
+          "release_date": "2026-10-30",
+          "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
+          "rating": null,
+          "trailer": "FeJs6ZntVYM"
+        },
         {
           "id": 1797226,
           "title": "하이브 치어링 파티",
@@ -150,30 +142,6 @@
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
           "rating": 5.8,
           "trailer": "-mnTITqqiT0"
-        },
-        {
-          "id": 1281331,
-          "title": "Phán Xét Sự Thật",
-          "release_date": "2026-10-09",
-          "poster_path": "/yPFKOAqUs6AxhLNT1igcBULvWLq.jpg",
-          "rating": 7,
-          "trailer": "R8ANzYpaZaY"
-        },
-        {
-          "id": 149871,
-          "title": "Chuyện Nàng Công Chúa Kaguya",
-          "release_date": "2026-10-09",
-          "poster_path": "/5EM4TE9wlLfvA9yQaQZdKR5RwrR.jpg",
-          "rating": 8.1,
-          "trailer": "iPm7HfO3mis"
-        },
-        {
-          "id": 1623376,
-          "title": "Blue Lock: Cuộc Chiến Của Những Tiền Đạo",
-          "release_date": "2026-10-09",
-          "poster_path": "/taGdDDoNzBYbcucNWXpNQopGHkg.jpg",
-          "rating": 9,
-          "trailer": null
         }
       ]
     },
@@ -181,14 +149,6 @@
       "region": "US",
       "language": "en-US",
       "upcoming": [
-        {
-          "id": 1294189,
-          "title": "The Mongoose",
-          "release_date": "2026-10-30",
-          "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 8.5,
-          "trailer": "aHrMFtt40_Q"
-        },
         {
           "id": 1381071,
           "title": "Godzilla Minus Zero",
@@ -201,7 +161,7 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-04",
-          "poster_path": "/hX94xNPYwazKOVGGqL1GiwMSNuY.jpg",
+          "poster_path": "/cK6xaYrb498y2rmMRSZmRKaCXKL.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
         },
@@ -238,14 +198,6 @@
           "trailer": "guKEdb_iRXw"
         },
         {
-          "id": 1286656,
-          "title": "I Play Rocky",
-          "release_date": "2026-11-06",
-          "poster_path": "/xE5tY3lppZUyG7WKKThsuYHuAHr.jpg",
-          "rating": null,
-          "trailer": "jq5oCjhQtIc"
-        },
-        {
           "id": 1562642,
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
@@ -262,23 +214,47 @@
           "trailer": "l_Ozo1xUgbU"
         },
         {
-          "id": 1088548,
-          "title": "Bitter Christmas",
-          "release_date": "2026-11-13",
-          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
-          "rating": 6.2,
-          "trailer": "R-9dlnkY448"
-        },
-        {
           "id": 1437511,
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
           "rating": null,
           "trailer": "MVvWKh336m4"
+        },
+        {
+          "id": 1505644,
+          "title": "ENE Repeat",
+          "release_date": "2026-11-19",
+          "poster_path": "/qMBlRfQNusaUhhBAIcHmforVTW5.jpg",
+          "rating": null,
+          "trailer": "l0FcBZJLY9I"
+        },
+        {
+          "id": 1300968,
+          "title": "The Hunger Games: Sunrise on the Reaping",
+          "release_date": "2026-11-20",
+          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
+          "rating": null,
+          "trailer": "Dr060OLTodE"
+        },
+        {
+          "id": 1595124,
+          "title": "Steps",
+          "release_date": "2026-11-20",
+          "poster_path": "/8Kj6Fsgdsdr7XsxrgHwIlSFF1fz.jpg",
+          "rating": null,
+          "trailer": "tNV4i3BqUGY"
         }
       ],
       "now_playing": [
+        {
+          "id": 1294189,
+          "title": "The Mongoose",
+          "release_date": "2026-10-30",
+          "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
+          "rating": 8,
+          "trailer": "aHrMFtt40_Q"
+        },
         {
           "id": 1400940,
           "title": "Clayface",
@@ -294,6 +270,22 @@
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": 8.6,
           "trailer": "bJQGtSeLPII"
+        },
+        {
+          "id": 858035,
+          "title": "Klara and the Sun",
+          "release_date": "2026-10-23",
+          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
+          "rating": 5.6,
+          "trailer": "wixzainceAE"
+        },
+        {
+          "id": 1195803,
+          "title": "Wicker",
+          "release_date": "2026-10-23",
+          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+          "rating": 8,
+          "trailer": "kA9NfV4pM_Q"
         },
         {
           "id": 1153576,
@@ -323,8 +315,8 @@
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
-          "poster_path": "/5bmH9lyNVEW6DXBf4rYx9Os7Fuo.jpg",
-          "rating": 7.2,
+          "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+          "rating": 7.3,
           "trailer": "OFLyW0lxFU0"
         },
         {
@@ -334,30 +326,6 @@
           "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
           "rating": 7,
           "trailer": "ZkN2M4ODdys"
-        },
-        {
-          "id": 1400837,
-          "title": "Other Mommy",
-          "release_date": "2026-10-09",
-          "poster_path": "/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-          "rating": 5.8,
-          "trailer": "-mnTITqqiT0"
-        },
-        {
-          "id": 1281331,
-          "title": "The Social Reckoning",
-          "release_date": "2026-10-09",
-          "poster_path": "/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
-          "rating": 7,
-          "trailer": "R8ANzYpaZaY"
-        },
-        {
-          "id": 1476746,
-          "title": "The Florist",
-          "release_date": "2026-10-09",
-          "poster_path": "/4tnRvIiWMzVA2Tw9c7INLo4sfo0.jpg",
-          "rating": 5.7,
-          "trailer": "LNmIdALXoKo"
         }
       ]
     }
