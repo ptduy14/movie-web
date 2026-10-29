@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T06:09:07.162Z",
+  "updated_at": "2026-10-29T06:18:22.051Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -80,18 +80,18 @@
           "trailer": null
         },
         {
-          "id": 1659702,
-          "title": "Siêu Cảnh Sát Vũ Trụ Gavan Infinity: Ngày Mặt Trời Rướm Lệ",
-          "release_date": "2026-10-30",
-          "poster_path": "/9kzVitF2WWSje7qc5PPlrh0GY2j.jpg",
-          "rating": null,
-          "trailer": "FeJs6ZntVYM"
-        },
-        {
           "id": 1797226,
           "title": "하이브 치어링 파티",
           "release_date": "2026-10-24",
           "poster_path": "/8udWFUoL5NxqKR1xtYinhcxY3gn.jpg",
+          "rating": null,
+          "trailer": "q0XKUFGn_M4"
+        },
+        {
+          "id": 1797200,
+          "title": "세븐틴 월드 투어 '뉴_'",
+          "release_date": "2026-10-24",
+          "poster_path": "/p3SW5xiKdUJ0zIY3hMyyCQ6tcru.jpg",
           "rating": null,
           "trailer": "q0XKUFGn_M4"
         },
@@ -161,7 +161,7 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-04",
-          "poster_path": "/cK6xaYrb498y2rmMRSZmRKaCXKL.jpg",
+          "poster_path": "/hz2Hv8tPToHvQ7HaxzqeLvahmcJ.jpg",
           "rating": null,
           "trailer": "AYkPRN874m8"
         },
@@ -170,7 +170,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 9.2,
+          "rating": 8.8,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -190,12 +190,12 @@
           "trailer": "dKUArYoZ_0U"
         },
         {
-          "id": 1585239,
-          "title": "Club Kid",
+          "id": 1286656,
+          "title": "I Play Rocky",
           "release_date": "2026-11-06",
-          "poster_path": "/o1qMU0ZB5XDX8IXJFFu3AkhOqjh.jpg",
+          "poster_path": "/xE5tY3lppZUyG7WKKThsuYHuAHr.jpg",
           "rating": null,
-          "trailer": "guKEdb_iRXw"
+          "trailer": "jq5oCjhQtIc"
         },
         {
           "id": 1562642,
@@ -212,14 +212,6 @@
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
           "rating": null,
           "trailer": "l_Ozo1xUgbU"
-        },
-        {
-          "id": 1437511,
-          "title": "How to Rob a Bank",
-          "release_date": "2026-11-13",
-          "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": null,
-          "trailer": "MVvWKh336m4"
         },
         {
           "id": 1505644,
@@ -244,6 +236,14 @@
           "poster_path": "/8Kj6Fsgdsdr7XsxrgHwIlSFF1fz.jpg",
           "rating": null,
           "trailer": "tNV4i3BqUGY"
+        },
+        {
+          "id": 1538497,
+          "title": "Hexed",
+          "release_date": "2026-11-25",
+          "poster_path": "/3zxrelHqoPJwOP4oj4Wq1cNOUdG.jpg",
+          "rating": null,
+          "trailer": "IuosV-TRxDU"
         }
       ],
       "now_playing": [
@@ -252,7 +252,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 8,
+          "rating": 7,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -272,20 +272,12 @@
           "trailer": "bJQGtSeLPII"
         },
         {
-          "id": 858035,
-          "title": "Klara and the Sun",
+          "id": 1727734,
+          "title": "Ali G: Who Iz I?",
           "release_date": "2026-10-23",
-          "poster_path": "/xqovj2p6HRsgHxN81qYAYF4StgM.jpg",
-          "rating": 5.6,
-          "trailer": "wixzainceAE"
-        },
-        {
-          "id": 1195803,
-          "title": "Wicker",
-          "release_date": "2026-10-23",
-          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-          "rating": 8,
-          "trailer": "kA9NfV4pM_Q"
+          "poster_path": "/uTyVxPeWX8Ai30IQoyDDQONNcq.jpg",
+          "rating": 5.4,
+          "trailer": "pV32AcPa-iA"
         },
         {
           "id": 1153576,
@@ -300,7 +292,7 @@
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
           "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 9.1,
+          "rating": 9.2,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -312,11 +304,19 @@
           "trailer": "Dw-5ZGapGTQ"
         },
         {
+          "id": 1376400,
+          "title": "Crawlers",
+          "release_date": "2026-10-16",
+          "poster_path": "/lNXeEpg4yLSRwXwOeR5lbPgwbqL.jpg",
+          "rating": 6.1,
+          "trailer": "4DowjB87tRE"
+        },
+        {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.3,
+          "rating": 7.4,
           "trailer": "OFLyW0lxFU0"
         },
         {
