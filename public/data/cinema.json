@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T06:18:22.051Z",
+  "updated_at": "2026-10-30T06:18:10.677Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -14,20 +14,28 @@
           "trailer": "pWJjYoqVSjQ"
         },
         {
+          "id": 1584855,
+          "title": "Thiên Đường Tăm Tối",
+          "release_date": "2026-11-06",
+          "poster_path": "/3XneeGMSvbPBFW63oJERhedHcHe.jpg",
+          "rating": 5.5,
+          "trailer": "Yhdt5zJ1_Jc"
+        },
+        {
+          "id": 1716222,
+          "title": "Đơn Hàng Ma Ám",
+          "release_date": "2026-11-06",
+          "poster_path": "/5XQyttCSqAYnTXrZR48XFnYO2qo.jpg",
+          "rating": 6,
+          "trailer": "iAAtCbIbGfU"
+        },
+        {
           "id": 1692603,
           "title": "Bò Sữa Bay",
           "release_date": "2026-11-06",
           "poster_path": "/y2AC6NxknGlZapSwCSYMOMxHOvl.jpg",
           "rating": null,
           "trailer": "2Y8yw8bAG1o"
-        },
-        {
-          "id": 1716710,
-          "title": "Chuyến Đi Nhớ Đời",
-          "release_date": "2026-11-06",
-          "poster_path": "/xV9qzT5EYQOxlLXHQgdayWrsjG7.jpg",
-          "rating": null,
-          "trailer": "pgmZCaGA_zg"
         },
         {
           "id": 1752234,
@@ -64,6 +72,14 @@
       ],
       "now_playing": [
         {
+          "id": 1770234,
+          "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
+          "release_date": "2026-10-31",
+          "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -84,14 +100,6 @@
           "title": "하이브 치어링 파티",
           "release_date": "2026-10-24",
           "poster_path": "/8udWFUoL5NxqKR1xtYinhcxY3gn.jpg",
-          "rating": null,
-          "trailer": "q0XKUFGn_M4"
-        },
-        {
-          "id": 1797200,
-          "title": "세븐틴 월드 투어 '뉴_'",
-          "release_date": "2026-10-24",
-          "poster_path": "/p3SW5xiKdUJ0zIY3hMyyCQ6tcru.jpg",
           "rating": null,
           "trailer": "q0XKUFGn_M4"
         },
@@ -140,7 +148,7 @@
           "title": "Người Mẹ Khác",
           "release_date": "2026-10-09",
           "poster_path": "/nZYi7HeXJVfJmZ0kprb1cJBHN2g.jpg",
-          "rating": 5.8,
+          "rating": 5.9,
           "trailer": "-mnTITqqiT0"
         }
       ]
@@ -170,7 +178,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 8.8,
+          "rating": 8.9,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -178,7 +186,7 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "tkZpcypT8Z4"
         },
         {
@@ -225,7 +233,7 @@
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
+          "poster_path": "/j1MNyNNgNQL6f27cb3m3uKaPKd6.jpg",
           "rating": null,
           "trailer": "Dr060OLTodE"
         },
@@ -252,7 +260,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 7,
+          "rating": 6.7,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -267,7 +275,7 @@
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
           "rating": 8.6,
           "trailer": "bJQGtSeLPII"
         },
@@ -276,7 +284,7 @@
           "title": "Ali G: Who Iz I?",
           "release_date": "2026-10-23",
           "poster_path": "/uTyVxPeWX8Ai30IQoyDDQONNcq.jpg",
-          "rating": 5.4,
+          "rating": 6,
           "trailer": "pV32AcPa-iA"
         },
         {
@@ -292,16 +300,8 @@
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
           "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 9.2,
+          "rating": 9.1,
           "trailer": "IEx8D1Wb__U"
-        },
-        {
-          "id": 1255833,
-          "title": "Whalefall",
-          "release_date": "2026-10-16",
-          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": 6.6,
-          "trailer": "Dw-5ZGapGTQ"
         },
         {
           "id": 1376400,
@@ -310,6 +310,14 @@
           "poster_path": "/lNXeEpg4yLSRwXwOeR5lbPgwbqL.jpg",
           "rating": 6.1,
           "trailer": "4DowjB87tRE"
+        },
+        {
+          "id": 1255833,
+          "title": "Whalefall",
+          "release_date": "2026-10-16",
+          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
+          "rating": 6.6,
+          "trailer": "Dw-5ZGapGTQ"
         },
         {
           "id": 1503762,
