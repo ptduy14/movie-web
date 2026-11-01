@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T06:10:13.388Z",
+  "updated_at": "2026-11-01T06:40:40.378Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -84,7 +84,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -177,8 +177,8 @@
           "id": 1117898,
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 8.5,
+          "poster_path": "/tYH4rQZlHtuFSeDS0bsV17khvJC.jpg",
+          "rating": 7.7,
           "trailer": "tkZpcypT8Z4"
         },
         {
@@ -210,7 +210,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": null,
+          "rating": 7,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -260,15 +260,15 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 7.1,
+          "rating": 7.3,
           "trailer": "aHrMFtt40_Q"
         },
         {
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
-          "rating": 8.6,
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "rating": 8.7,
           "trailer": "bJQGtSeLPII"
         },
         {
@@ -276,7 +276,7 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -288,12 +288,12 @@
           "trailer": "pV32AcPa-iA"
         },
         {
-          "id": 1153576,
-          "title": "Street Fighter",
-          "release_date": "2026-10-16",
-          "poster_path": "/ccxdepKqORLwccbzvO4eAGkN0IC.jpg",
-          "rating": 6.4,
-          "trailer": "U6sbm1OaJb8"
+          "id": 1195803,
+          "title": "Wicker",
+          "release_date": "2026-10-23",
+          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+          "rating": 7.6,
+          "trailer": "kA9NfV4pM_Q"
         },
         {
           "id": 1376400,
@@ -304,36 +304,36 @@
           "trailer": "4DowjB87tRE"
         },
         {
+          "id": 1153576,
+          "title": "Street Fighter",
+          "release_date": "2026-10-16",
+          "poster_path": "/ccxdepKqORLwccbzvO4eAGkN0IC.jpg",
+          "rating": 6.3,
+          "trailer": "U6sbm1OaJb8"
+        },
+        {
           "id": 1765072,
           "title": "You Can See Everything",
           "release_date": "2026-10-16",
           "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 9.1,
+          "rating": 8.9,
           "trailer": "IEx8D1Wb__U"
         },
         {
-          "id": 1255833,
-          "title": "Whalefall",
+          "id": 1422041,
+          "title": "LA BOLA NEGRA",
           "release_date": "2026-10-16",
-          "poster_path": "/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-          "rating": 6.6,
-          "trailer": "Dw-5ZGapGTQ"
+          "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
+          "rating": 8,
+          "trailer": "lBVxKt0gKDY"
         },
         {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.4,
+          "rating": 7.3,
           "trailer": "OFLyW0lxFU0"
-        },
-        {
-          "id": 1236045,
-          "title": "Animals",
-          "release_date": "2026-10-09",
-          "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-          "rating": 7,
-          "trailer": "ZkN2M4ODdys"
         }
       ]
     }
