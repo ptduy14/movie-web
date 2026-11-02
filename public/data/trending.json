@@ -1,7 +1,97 @@
 {
-  "updated_at": "2026-10-26T06:17:38.291Z",
+  "updated_at": "2026-11-02T07:42:03.751Z",
   "interval_days": 7,
   "movies": [
+    {
+      "slug": "sieu-trom-lupin-phan-4",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261024/lupin-phan-4-poster.webp",
+      "year": 2026,
+      "tmdb_id": "96677",
+      "tmdb_type": "tv",
+      "movie_id": "aa40b422ed866ff1e2649e58633f9de0",
+      "views": 18,
+      "plays": 7,
+      "completions": 0,
+      "trending_score": 0.6,
+      "title": {
+        "vi": "Siêu Trộm Lupin (Phần 4)",
+        "en": "Lupin (Season 4)"
+      },
+      "tmdb_rating": 7.7,
+      "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
+    },
+    {
+      "slug": "ban-nang-thu",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261010/ban-nang-thu-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1236045",
+      "tmdb_type": "movie",
+      "movie_id": "4895d244a58265c4748906cc0b46f295",
+      "views": 2,
+      "plays": 1,
+      "completions": 1,
+      "trending_score": 0.479,
+      "title": {
+        "vi": "Bản Năng Thú",
+        "en": "Animals"
+      },
+      "tmdb_rating": 6.966,
+      "poster_url": "https://image.tmdb.org/t/p/w500/iISM36voS1E8gX9BM0DVK0kgi3E.jpg"
+    },
+    {
+      "slug": "khach-san-cuu-nan",
+      "thumb_url": "https://phimimg.com/upload/vod/20240104-1/2ff178122aeb507dfff33cc4f7271f00.jpg",
+      "year": 2004,
+      "tmdb_id": "205",
+      "tmdb_type": "movie",
+      "movie_id": "3f97b78c2ce73939fca9916a27115445",
+      "views": 1,
+      "plays": 1,
+      "completions": 1,
+      "trending_score": 0.468,
+      "title": {
+        "vi": "Khách Sạn Cứu Nạn",
+        "en": "Hotel Rwanda"
+      },
+      "tmdb_rating": 7.721,
+      "poster_url": "https://image.tmdb.org/t/p/w500/p3pHw85UMZPegfMZBA6dZ06yarm.jpg"
+    },
+    {
+      "slug": "to-tung-phan-1",
+      "thumb_url": "https://phimimg.com/upload/vod/20240927-1/7849606764fd399e320c091b58fab4fa.jpg",
+      "year": 2011,
+      "tmdb_id": "37680",
+      "tmdb_type": "tv",
+      "movie_id": "c7cfbf9f79f5b277b5d74e2419c60a50",
+      "views": 1,
+      "plays": 5,
+      "completions": 0,
+      "trending_score": 0.297,
+      "title": {
+        "vi": "Tố Tụng (Phần 1)",
+        "en": "Suits (Season 1)"
+      },
+      "tmdb_rating": 8.2,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vQiryp6LioFxQThywxbC6TuoDjy.jpg"
+    },
+    {
+      "slug": "verity-bi-mat-bi-chon-vui",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261030/verity-bi-mat-bi-chon-vui-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1283515",
+      "tmdb_type": "movie",
+      "movie_id": "9a19d3e5fbb5af058684134f27d4b252",
+      "views": 7,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.249,
+      "title": {
+        "vi": "Verity: Bí Mật Bị Chôn Vùi",
+        "en": "Verity"
+      },
+      "tmdb_rating": 6.836,
+      "poster_url": "https://image.tmdb.org/t/p/w500/rmaNMA1seHqpjtnYKzyynFAr1g8.jpg"
+    },
     {
       "slug": "nguoi-thay-y-duc-phan-1",
       "thumb_url": "https://phimimg.com/upload/vod/20231004-1/aedaed06dd0202136691549aa2bb08ae.jpg",
@@ -9,178 +99,88 @@
       "tmdb_id": "68398",
       "tmdb_type": "tv",
       "movie_id": "55b1927fdafef39c48e5b73b5d61ea60",
-      "views": 2,
-      "plays": 12,
-      "completions": 4,
-      "trending_score": 0.867,
+      "views": 5,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.227,
       "title": {
         "vi": "Người Thầy Y Đức (Phần 1)",
         "en": "Dr. Romantic (Season 1)"
       },
-      "tmdb_rating": 8.1,
+      "tmdb_rating": 8.139,
       "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
     },
     {
-      "slug": "trang-trai-dutton",
-      "thumb_url": "https://phimimg.com/upload/vod/20260604-1/c714d7ad21f9fea3380edbfba93b72e8.jpg",
-      "year": 2026,
-      "tmdb_id": "299167",
-      "tmdb_type": "tv",
-      "movie_id": "085fc1406248327158619fb1326434cc",
-      "views": 1,
-      "plays": 12,
-      "completions": 0,
-      "trending_score": 0.433,
-      "title": {
-        "vi": "Trang Trại Dutton",
-        "en": "Dutton Ranch"
-      },
-      "tmdb_rating": 9.134,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
-    },
-    {
-      "slug": "yeu-la-mu-quang-ha-lan",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp",
-      "year": 2026,
-      "tmdb_id": "290750",
-      "tmdb_type": "tv",
-      "movie_id": "e591c1f05d9a8acca48d6b8182711e61",
-      "views": 3,
-      "plays": 7,
-      "completions": 1,
-      "trending_score": 0.433,
-      "title": {
-        "vi": "Yêu Là Mù Quáng: Hà Lan",
-        "en": "Love Is Blind: Netherlands"
-      },
-      "tmdb_rating": 6,
-      "poster_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp"
-    },
-    {
-      "slug": "vision-quest",
+      "slug": "vision-hanh-trinh-tim-lai-ky-uc",
       "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
       "year": 2026,
       "tmdb_id": "213375",
       "tmdb_type": "tv",
       "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
-      "views": 6,
-      "plays": 1,
+      "views": 3,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.233,
+      "trending_score": 0.148,
       "title": {
-        "vi": "Vision Quest",
+        "vi": "Vision: Hành Trình Tìm Lại Ký Ức",
         "en": "VisionQuest"
       },
-      "tmdb_rating": 8.8,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg"
+      "tmdb_rating": 8.641,
+      "poster_url": "https://image.tmdb.org/t/p/w500/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg"
     },
     {
-      "slug": null,
-      "thumb_url": null,
-      "year": null,
-      "tmdb_id": null,
-      "tmdb_type": null,
-      "movie_id": "f512bcc142683f9185ea27c41855ed64",
-      "views": 0,
-      "plays": 4,
-      "completions": 1,
-      "trending_score": 0.233,
-      "title": {
-        "vi": null,
-        "en": null
-      },
-      "tmdb_rating": null,
-      "poster_url": null
-    },
-    {
-      "slug": "f1-phim-dien-anh",
-      "thumb_url": "https://phimimg.com/upload/vod/20250821-1/0f6921e399320d2f405c0e56efa42af5.jpg",
-      "year": 2025,
-      "tmdb_id": "911430",
-      "tmdb_type": "movie",
-      "movie_id": "cc65a7dd40f9de3463468921203d2177",
-      "views": 5,
-      "plays": 1,
-      "completions": 0,
-      "trending_score": 0.2,
-      "title": {
-        "vi": "F1 Phim Điện Ảnh",
-        "en": "F1"
-      },
-      "tmdb_rating": 7.831,
-      "poster_url": "https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
-    },
-    {
-      "slug": "cuc-quan-ly-ky-uc",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261004/cuc-quan-ly-ky-uc-poster.webp",
-      "year": 2026,
-      "tmdb_id": "280564",
+      "slug": "sieu-trom-lupin-phan-3",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261024/lupin-phan-3-poster.webp",
+      "year": 2023,
+      "tmdb_id": "96677",
       "tmdb_type": "tv",
-      "movie_id": "e7ec8bad741ed94bf92b26ac00cd8f2a",
-      "views": 2,
-      "plays": 4,
-      "completions": 0,
-      "trending_score": 0.2,
-      "title": {
-        "vi": "Cục Quản Lý Ký Ức",
-        "en": "False Memory"
-      },
-      "tmdb_rating": 7.9,
-      "poster_url": "https://image.tmdb.org/t/p/w500/sSvgBIvcwGoWmbdlbpZI5kHBtVv.jpg"
-    },
-    {
-      "slug": "nu-luat-su-ky-la-minami",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261020/nu-luat-su-ky-la-minami-poster.webp",
-      "year": 2026,
-      "tmdb_id": "332713",
-      "tmdb_type": "tv",
-      "movie_id": "a95f918eec4c76552a532fb6c5e2024f",
+      "movie_id": "c28cccd4486efb636bd7d753ca52d487",
       "views": 3,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.167,
+      "trending_score": 0.148,
       "title": {
-        "vi": "Nữ Luật Sư Kỳ Lạ Minami",
-        "en": "Extraordinary Attorney Minami"
+        "vi": "Siêu Trộm Lupin (Phần 3)",
+        "en": "Lupin (Season 3)"
       },
-      "tmdb_rating": 6,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xnNu56T04JDZRBIDxclpr83s7K.jpg"
+      "tmdb_rating": 7.7,
+      "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
     },
     {
-      "slug": "gia-thuyet-tinh-yeu",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261019/gia-thuyet-tinh-yeu-poster.webp",
+      "slug": "nguoi-nhen-khoi-dau-moi",
+      "thumb_url": "https://phimimg.com/uploads/movies/20260827/nguoi-nhen-khoi-dau-moi-poster.webp",
       "year": 2026,
-      "tmdb_id": "1032863",
+      "tmdb_id": "969681",
       "tmdb_type": "movie",
-      "movie_id": "de56e94ad19a737206d071b93cd64be5",
+      "movie_id": "36908cc1066bd4fdd686b4d35de256d2",
       "views": 3,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.167,
+      "trending_score": 0.148,
       "title": {
-        "vi": "Giả Thuyết Tình Yêu",
-        "en": "The Love Hypothesis"
+        "vi": "Người Nhện: Khởi Đầu Mới",
+        "en": "Spider-Man: Brand New Day"
       },
-      "tmdb_rating": 7.987,
-      "poster_url": "https://image.tmdb.org/t/p/w500/vfZxVHextAGC70zrNhS8lsROqP1.jpg"
+      "tmdb_rating": 8.479,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1brq8q3u1GmS5Sef2FkNwImrHWT.jpg"
     },
     {
-      "slug": "bac-thay-tinh-duc-phan-2",
-      "thumb_url": "https://phimimg.com/upload/vod/20251116-1/a3f13be4adcc8cf8c9762e1e0026c2a2.jpg",
-      "year": 2014,
-      "tmdb_id": "58937",
+      "slug": "linh-moi-phan-2",
+      "thumb_url": "https://phimimg.com/upload/vod/20250417-1/fec4808c9744aaf996acc14c982097cd.jpg",
+      "year": 2019,
+      "tmdb_id": "79744",
       "tmdb_type": "tv",
-      "movie_id": "35fe071cd4426fe8a90666101fff1bf0",
-      "views": 3,
-      "plays": 1,
+      "movie_id": "cbec56ea8d7b1d9787f7c1297488c798",
+      "views": 1,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.133,
+      "trending_score": 0.125,
       "title": {
-        "vi": "Bậc Thầy Tình Dục (Phần 2)",
-        "en": "Masters of Sex (Season 2)"
+        "vi": "Lính Mới (Phần 2)",
+        "en": "The Rookie (Season 2)"
       },
-      "tmdb_rating": 7.09,
-      "poster_url": "https://image.tmdb.org/t/p/w500/e5CKTAqZM43PvqRHoGMKvHXECyT.jpg"
+      "tmdb_rating": 8.538,
+      "poster_url": "https://image.tmdb.org/t/p/w500/bL1mwXDnH5fCxqc4S2n40hoVyoe.jpg"
     }
   ]
 }
