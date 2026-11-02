@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T06:40:40.378Z",
+  "updated_at": "2026-11-02T06:40:06.494Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -96,12 +96,12 @@
           "trailer": null
         },
         {
-          "id": 1797226,
-          "title": "하이브 치어링 파티",
-          "release_date": "2026-10-24",
-          "poster_path": "/8udWFUoL5NxqKR1xtYinhcxY3gn.jpg",
+          "id": 1744848,
+          "title": "Chị Chị Em Em 3",
+          "release_date": "2026-10-30",
+          "poster_path": "/rqMUclEn9f5ClSUzoMQeEeckZ1E.jpg",
           "rating": null,
-          "trailer": "q0XKUFGn_M4"
+          "trailer": "T2agdzhXOaY"
         },
         {
           "id": 1153576,
@@ -186,7 +186,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 8.8,
+          "rating": 8.7,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -260,7 +260,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 7.3,
+          "rating": 7.7,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -276,7 +276,7 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -284,16 +284,8 @@
           "title": "Ali G: Who Iz I?",
           "release_date": "2026-10-23",
           "poster_path": "/uTyVxPeWX8Ai30IQoyDDQONNcq.jpg",
-          "rating": 6.1,
+          "rating": 5.8,
           "trailer": "pV32AcPa-iA"
-        },
-        {
-          "id": 1195803,
-          "title": "Wicker",
-          "release_date": "2026-10-23",
-          "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-          "rating": 7.6,
-          "trailer": "kA9NfV4pM_Q"
         },
         {
           "id": 1376400,
@@ -334,6 +326,14 @@
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
           "rating": 7.3,
           "trailer": "OFLyW0lxFU0"
+        },
+        {
+          "id": 1236045,
+          "title": "Animals",
+          "release_date": "2026-10-09",
+          "poster_path": "/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
+          "rating": 7,
+          "trailer": "ZkN2M4ODdys"
         }
       ]
     }
