@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T06:40:06.494Z",
+  "updated_at": "2026-11-03T07:09:24.362Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
-          "rating": 10,
+          "rating": 9.3,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -62,6 +62,14 @@
           "trailer": "Dr060OLTodE"
         },
         {
+          "id": 1662293,
+          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
+          "release_date": "2026-11-20",
+          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1720229,
           "title": "Trại Giam Hạnh Phúc",
           "release_date": "2026-11-20",
@@ -76,7 +84,7 @@
           "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
           "release_date": "2026-10-31",
           "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
-          "rating": null,
+          "rating": 8,
           "trailer": null
         },
         {
@@ -84,7 +92,7 @@
           "title": "Clayface",
           "release_date": "2026-10-30",
           "poster_path": "/vyQJ8ER4DYKVrCeraQ1VGQf7Olt.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -99,13 +107,13 @@
           "id": 1744848,
           "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
-          "poster_path": "/rqMUclEn9f5ClSUzoMQeEeckZ1E.jpg",
+          "poster_path": "/8mR122VqlhcdsTDdtaPsbD7WJO6.jpg",
           "rating": null,
           "trailer": "T2agdzhXOaY"
         },
         {
           "id": 1153576,
-          "title": "Chiến Binh Đường Phố",
+          "title": "Phim Street Fighter",
           "release_date": "2026-10-16",
           "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
           "rating": 6.3,
@@ -162,7 +170,7 @@
           "title": "Godzilla Minus Zero",
           "release_date": "2026-11-03",
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": null,
+          "rating": 9.4,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -186,7 +194,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 8.7,
+          "rating": 8.9,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -238,20 +246,20 @@
           "trailer": "Dr060OLTodE"
         },
         {
-          "id": 1595124,
-          "title": "Steps",
-          "release_date": "2026-11-20",
-          "poster_path": "/8Kj6Fsgdsdr7XsxrgHwIlSFF1fz.jpg",
-          "rating": null,
-          "trailer": "tNV4i3BqUGY"
-        },
-        {
           "id": 1538497,
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/3zxrelHqoPJwOP4oj4Wq1cNOUdG.jpg",
           "rating": null,
           "trailer": "IuosV-TRxDU"
+        },
+        {
+          "id": 1457866,
+          "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
+          "release_date": "2026-11-25",
+          "poster_path": "/44iyquHYfSInzp7rYYQyRV1Ndtk.jpg",
+          "rating": null,
+          "trailer": "RjEZaUBbUvU"
         }
       ],
       "now_playing": [
@@ -260,15 +268,15 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 7.7,
+          "rating": 7.5,
           "trailer": "aHrMFtt40_Q"
         },
         {
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-          "rating": 8.7,
+          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
+          "rating": 8.6,
           "trailer": "bJQGtSeLPII"
         },
         {
@@ -276,7 +284,7 @@
           "title": "Clayface",
           "release_date": "2026-10-23",
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
         },
         {
@@ -296,6 +304,14 @@
           "trailer": "4DowjB87tRE"
         },
         {
+          "id": 1422041,
+          "title": "LA BOLA NEGRA",
+          "release_date": "2026-10-16",
+          "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
+          "rating": 8.1,
+          "trailer": "lBVxKt0gKDY"
+        },
+        {
           "id": 1153576,
           "title": "Street Fighter",
           "release_date": "2026-10-16",
@@ -312,19 +328,11 @@
           "trailer": "IEx8D1Wb__U"
         },
         {
-          "id": 1422041,
-          "title": "LA BOLA NEGRA",
-          "release_date": "2026-10-16",
-          "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
-          "rating": 8,
-          "trailer": "lBVxKt0gKDY"
-        },
-        {
           "id": 1503762,
           "title": "Sense and Sensibility",
           "release_date": "2026-10-14",
           "poster_path": "/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-          "rating": 7.3,
+          "rating": 7.2,
           "trailer": "OFLyW0lxFU0"
         },
         {
