@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T07:14:31.315Z",
+  "updated_at": "2026-11-06T07:14:02.912Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -30,18 +30,18 @@
           "trailer": "Dr060OLTodE"
         },
         {
-          "id": 1662293,
-          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
-          "release_date": "2026-11-20",
-          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1720229,
           "title": "Trại Giam Hạnh Phúc",
           "release_date": "2026-11-20",
           "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
+          "id": 1662293,
+          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
+          "release_date": "2026-11-20",
+          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
           "rating": null,
           "trailer": null
         },
@@ -88,11 +88,19 @@
       ],
       "now_playing": [
         {
+          "id": 656908,
+          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
+          "release_date": "2026-11-06",
+          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
+          "rating": 6.6,
+          "trailer": "AYkPRN874m8"
+        },
+        {
           "id": 1381071,
           "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
-          "rating": 8.1,
+          "rating": 8.3,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -112,14 +120,6 @@
           "trailer": "Yhdt5zJ1_Jc"
         },
         {
-          "id": 1770234,
-          "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
-          "release_date": "2026-10-31",
-          "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
-          "rating": 8,
-          "trailer": null
-        },
-        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -136,20 +136,20 @@
           "trailer": null
         },
         {
-          "id": 1744848,
-          "title": "Chị Chị Em Em 3",
-          "release_date": "2026-10-30",
-          "poster_path": "/8mR122VqlhcdsTDdtaPsbD7WJO6.jpg",
-          "rating": null,
-          "trailer": "T2agdzhXOaY"
-        },
-        {
           "id": 1756422,
           "title": "Án Mạng Karaoke",
           "release_date": "2026-10-30",
           "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
           "rating": 6,
           "trailer": "N_jtjt1xb-o"
+        },
+        {
+          "id": 1744848,
+          "title": "Chị Chị Em Em 3",
+          "release_date": "2026-10-30",
+          "poster_path": "/8mR122VqlhcdsTDdtaPsbD7WJO6.jpg",
+          "rating": null,
+          "trailer": "T2agdzhXOaY"
         },
         {
           "id": 1153576,
@@ -178,7 +178,7 @@
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
           "poster_path": "/xE5tY3lppZUyG7WKKThsuYHuAHr.jpg",
-          "rating": 8.6,
+          "rating": 8.5,
           "trailer": "jq5oCjhQtIc"
         },
         {
@@ -214,20 +214,20 @@
           "trailer": "MVvWKh336m4"
         },
         {
-          "id": 1379486,
-          "title": "Victorian Psycho",
-          "release_date": "2026-11-13",
-          "poster_path": "/9LHVZevgdsdbjJdkFr6bk9EwX7q.jpg",
-          "rating": null,
-          "trailer": "sDiFol_2j2I"
-        },
-        {
           "id": 1381273,
           "title": "Paper Tiger",
           "release_date": "2026-11-13",
           "poster_path": "/p6oLmq5KmuWY6uRXBQBL2q30jia.jpg",
           "rating": null,
           "trailer": "MLwTyQOhBkw"
+        },
+        {
+          "id": 1379486,
+          "title": "Victorian Psycho",
+          "release_date": "2026-11-13",
+          "poster_path": "/9LHVZevgdsdbjJdkFr6bk9EwX7q.jpg",
+          "rating": null,
+          "trailer": "sDiFol_2j2I"
         },
         {
           "id": 1088548,
@@ -246,20 +246,20 @@
           "trailer": "Dr060OLTodE"
         },
         {
-          "id": 1595124,
-          "title": "Steps",
-          "release_date": "2026-11-20",
-          "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-          "rating": null,
-          "trailer": "tNV4i3BqUGY"
-        },
-        {
           "id": 848700,
           "title": "Minotaur",
           "release_date": "2026-11-20",
           "poster_path": "/bM37B5CuMWrPyGPpNsKzTGict4Q.jpg",
           "rating": 7.6,
           "trailer": "wdFIMrC4oW8"
+        },
+        {
+          "id": 1595124,
+          "title": "Steps",
+          "release_date": "2026-11-20",
+          "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
+          "rating": null,
+          "trailer": "tNV4i3BqUGY"
         },
         {
           "id": 1599230,
@@ -272,11 +272,19 @@
       ],
       "now_playing": [
         {
+          "id": 656908,
+          "title": "Ramayana: Rise of a Legend",
+          "release_date": "2026-11-05",
+          "poster_path": "/hz2Hv8tPToHvQ7HaxzqeLvahmcJ.jpg",
+          "rating": 6.6,
+          "trailer": "AYkPRN874m8"
+        },
+        {
           "id": 1381071,
           "title": "Godzilla Minus Zero",
           "release_date": "2026-11-03",
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": 8.2,
+          "rating": 8.3,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -284,14 +292,14 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 6.4,
+          "rating": 6.1,
           "trailer": "aHrMFtt40_Q"
         },
         {
           "id": 791523,
           "title": "Wildwood",
           "release_date": "2026-10-23",
-          "poster_path": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": 8.5,
           "trailer": "bJQGtSeLPII"
         },
@@ -316,7 +324,7 @@
           "title": "Wicker",
           "release_date": "2026-10-23",
           "poster_path": "/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-          "rating": 7.5,
+          "rating": 7.7,
           "trailer": "kA9NfV4pM_Q"
         },
         {
@@ -324,7 +332,7 @@
           "title": "LA BOLA NEGRA",
           "release_date": "2026-10-16",
           "poster_path": "/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
-          "rating": 8,
+          "rating": 8.1,
           "trailer": "lBVxKt0gKDY"
         },
         {
@@ -342,14 +350,6 @@
           "poster_path": "/ccxdepKqORLwccbzvO4eAGkN0IC.jpg",
           "rating": 6.3,
           "trailer": "U6sbm1OaJb8"
-        },
-        {
-          "id": 1765072,
-          "title": "You Can See Everything",
-          "release_date": "2026-10-16",
-          "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
-          "rating": 8.9,
-          "trailer": "IEx8D1Wb__U"
         }
       ]
     }
