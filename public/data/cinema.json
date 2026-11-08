@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T06:27:46.101Z",
+  "updated_at": "2026-11-08T06:34:02.440Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -18,7 +18,7 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": null,
+          "rating": 8,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -88,20 +88,20 @@
       ],
       "now_playing": [
         {
-          "id": 656908,
-          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
-          "release_date": "2026-11-06",
-          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.1,
-          "trailer": "AYkPRN874m8"
-        },
-        {
           "id": 1381071,
           "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
-          "rating": 8.1,
+          "rating": 8.2,
           "trailer": "pWJjYoqVSjQ"
+        },
+        {
+          "id": 656908,
+          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
+          "release_date": "2026-11-06",
+          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
+          "rating": 7.8,
+          "trailer": "AYkPRN874m8"
         },
         {
           "id": 1716222,
@@ -120,6 +120,14 @@
           "trailer": "Yhdt5zJ1_Jc"
         },
         {
+          "id": 1692603,
+          "title": "Bò Sữa Bay",
+          "release_date": "2026-11-06",
+          "poster_path": "/y2AC6NxknGlZapSwCSYMOMxHOvl.jpg",
+          "rating": null,
+          "trailer": "2Y8yw8bAG1o"
+        },
+        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -134,14 +142,6 @@
           "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
           "rating": null,
           "trailer": null
-        },
-        {
-          "id": 1756422,
-          "title": "Án Mạng Karaoke",
-          "release_date": "2026-10-30",
-          "poster_path": "/o3LCNcEfE0J8qIQ37NKpoOq1Sj5.jpg",
-          "rating": 6,
-          "trailer": "N_jtjt1xb-o"
         },
         {
           "id": 1744848,
@@ -202,7 +202,7 @@
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": null,
+          "rating": 8,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -222,12 +222,12 @@
           "trailer": "sDiFol_2j2I"
         },
         {
-          "id": 1809505,
-          "title": "Dark Noon",
-          "release_date": "2026-11-19",
-          "poster_path": "/c47IqLeltfbQKAAces0eRMmLEi7.jpg",
-          "rating": null,
-          "trailer": "T6Ms_6r_k08"
+          "id": 1088548,
+          "title": "Bitter Christmas",
+          "release_date": "2026-11-13",
+          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
+          "rating": 6.2,
+          "trailer": "R-9dlnkY448"
         },
         {
           "id": 1300968,
@@ -265,7 +265,7 @@
           "id": 1538497,
           "title": "Hexed",
           "release_date": "2026-11-25",
-          "poster_path": "/nhbgwTVrx9YgAZWJXu0Etc0OJ76.jpg",
+          "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
           "rating": null,
           "trailer": "IuosV-TRxDU"
         }
@@ -276,15 +276,15 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7,
+          "rating": 7.2,
           "trailer": "tkZpcypT8Z4"
         },
         {
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
-          "poster_path": "/hz2Hv8tPToHvQ7HaxzqeLvahmcJ.jpg",
-          "rating": 7.4,
+          "poster_path": "/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
+          "rating": 7.8,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -292,7 +292,7 @@
           "title": "Godzilla Minus Zero",
           "release_date": "2026-11-03",
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": 8.1,
+          "rating": 8.2,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -300,7 +300,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 5.9,
+          "rating": 5.8,
           "trailer": "aHrMFtt40_Q"
         },
         {
