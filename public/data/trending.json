@@ -1,7 +1,43 @@
 {
-  "updated_at": "2026-11-02T07:42:03.751Z",
+  "updated_at": "2026-11-09T07:59:57.279Z",
   "interval_days": 7,
   "movies": [
+    {
+      "slug": "nguoi-thay-y-duc-phan-2",
+      "thumb_url": "https://phimimg.com/upload/vod/20231004-1/f85391fc7eb29d88c2e407888c52032d.jpg",
+      "year": 2020,
+      "tmdb_id": "68398",
+      "tmdb_type": "tv",
+      "movie_id": "e8b1cbd05f6e6a358a81dee52493dd06",
+      "views": 1,
+      "plays": 21,
+      "completions": 15,
+      "trending_score": 0.822,
+      "title": {
+        "vi": "Người Thầy Y Đức (Phần 2)",
+        "en": "Dr. Romantic (Season 2)"
+      },
+      "tmdb_rating": 8.139,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
+    },
+    {
+      "slug": "vung-dat-quy-du-2026",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261102/vung-dat-quy-du-2026-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1423191",
+      "tmdb_type": "movie",
+      "movie_id": "6c2da4657b471b8781c2a1def5031772",
+      "views": 9,
+      "plays": 5,
+      "completions": 0,
+      "trending_score": 0.295,
+      "title": {
+        "vi": "Vùng Đất Quỷ Dữ",
+        "en": "Resident Evil"
+      },
+      "tmdb_rating": 7.493,
+      "poster_url": "https://image.tmdb.org/t/p/w500/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg"
+    },
     {
       "slug": "sieu-trom-lupin-phan-4",
       "thumb_url": "https://phimimg.com/uploads/movies/20261024/lupin-phan-4-poster.webp",
@@ -9,178 +45,142 @@
       "tmdb_id": "96677",
       "tmdb_type": "tv",
       "movie_id": "aa40b422ed866ff1e2649e58633f9de0",
-      "views": 18,
-      "plays": 7,
+      "views": 8,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.6,
+      "trending_score": 0.254,
       "title": {
         "vi": "Siêu Trộm Lupin (Phần 4)",
         "en": "Lupin (Season 4)"
       },
-      "tmdb_rating": 7.7,
+      "tmdb_rating": 7.68,
       "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
     },
     {
-      "slug": "ban-nang-thu",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261010/ban-nang-thu-poster.webp",
+      "slug": "trang-trai-dutton",
+      "thumb_url": "https://phimimg.com/upload/vod/20260604-1/c714d7ad21f9fea3380edbfba93b72e8.jpg",
       "year": 2026,
-      "tmdb_id": "1236045",
-      "tmdb_type": "movie",
-      "movie_id": "4895d244a58265c4748906cc0b46f295",
+      "tmdb_id": "299167",
+      "tmdb_type": "tv",
+      "movie_id": "085fc1406248327158619fb1326434cc",
       "views": 2,
-      "plays": 1,
-      "completions": 1,
-      "trending_score": 0.479,
-      "title": {
-        "vi": "Bản Năng Thú",
-        "en": "Animals"
-      },
-      "tmdb_rating": 6.966,
-      "poster_url": "https://image.tmdb.org/t/p/w500/iISM36voS1E8gX9BM0DVK0kgi3E.jpg"
-    },
-    {
-      "slug": "khach-san-cuu-nan",
-      "thumb_url": "https://phimimg.com/upload/vod/20240104-1/2ff178122aeb507dfff33cc4f7271f00.jpg",
-      "year": 2004,
-      "tmdb_id": "205",
-      "tmdb_type": "movie",
-      "movie_id": "3f97b78c2ce73939fca9916a27115445",
-      "views": 1,
-      "plays": 1,
-      "completions": 1,
-      "trending_score": 0.468,
-      "title": {
-        "vi": "Khách Sạn Cứu Nạn",
-        "en": "Hotel Rwanda"
-      },
-      "tmdb_rating": 7.721,
-      "poster_url": "https://image.tmdb.org/t/p/w500/p3pHw85UMZPegfMZBA6dZ06yarm.jpg"
-    },
-    {
-      "slug": "to-tung-phan-1",
-      "thumb_url": "https://phimimg.com/upload/vod/20240927-1/7849606764fd399e320c091b58fab4fa.jpg",
-      "year": 2011,
-      "tmdb_id": "37680",
-      "tmdb_type": "tv",
-      "movie_id": "c7cfbf9f79f5b277b5d74e2419c60a50",
-      "views": 1,
       "plays": 5,
-      "completions": 0,
-      "trending_score": 0.297,
+      "completions": 1,
+      "trending_score": 0.166,
       "title": {
-        "vi": "Tố Tụng (Phần 1)",
-        "en": "Suits (Season 1)"
+        "vi": "Trang Trại Dutton",
+        "en": "Dutton Ranch"
       },
-      "tmdb_rating": 8.2,
-      "poster_url": "https://image.tmdb.org/t/p/w500/vQiryp6LioFxQThywxbC6TuoDjy.jpg"
+      "tmdb_rating": 9.134,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
     },
     {
-      "slug": "verity-bi-mat-bi-chon-vui",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261030/verity-bi-mat-bi-chon-vui-poster.webp",
+      "slug": "khai-huyen-z-the-gioi-moi",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261103/khai-huyen-z-the-gioi-moi-poster.webp",
       "year": 2026,
-      "tmdb_id": "1283515",
+      "tmdb_id": "1507696",
       "tmdb_type": "movie",
-      "movie_id": "9a19d3e5fbb5af058684134f27d4b252",
-      "views": 7,
-      "plays": 3,
+      "movie_id": "cf2a4f835e014513e2329dc9317265b7",
+      "views": 4,
+      "plays": 4,
       "completions": 0,
-      "trending_score": 0.249,
+      "trending_score": 0.165,
       "title": {
-        "vi": "Verity: Bí Mật Bị Chôn Vùi",
-        "en": "Verity"
+        "vi": "Khải Huyền Z: Thế Giới Mới",
+        "en": "Apocalypse Z: New World"
       },
-      "tmdb_rating": 6.836,
-      "poster_url": "https://image.tmdb.org/t/p/w500/rmaNMA1seHqpjtnYKzyynFAr1g8.jpg"
+      "tmdb_rating": 6.087,
+      "poster_url": "https://image.tmdb.org/t/p/w500/wXln4DUrwcyjcFPwgQxFPYTlG1Z.jpg"
     },
     {
-      "slug": "nguoi-thay-y-duc-phan-1",
-      "thumb_url": "https://phimimg.com/upload/vod/20231004-1/aedaed06dd0202136691549aa2bb08ae.jpg",
-      "year": 2016,
-      "tmdb_id": "68398",
-      "tmdb_type": "tv",
-      "movie_id": "55b1927fdafef39c48e5b73b5d61ea60",
-      "views": 5,
-      "plays": 3,
-      "completions": 0,
-      "trending_score": 0.227,
-      "title": {
-        "vi": "Người Thầy Y Đức (Phần 1)",
-        "en": "Dr. Romantic (Season 1)"
-      },
-      "tmdb_rating": 8.139,
-      "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
-    },
-    {
-      "slug": "vision-hanh-trinh-tim-lai-ky-uc",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
+      "slug": "xac-song-thanh-pho-chet-phan-3",
+      "thumb_url": "https://phimimg.com/uploads/movies/20260817/xac-song-thanh-pho-chet-phan-3-poster.webp",
       "year": 2026,
-      "tmdb_id": "213375",
+      "tmdb_id": "194583",
       "tmdb_type": "tv",
-      "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
-      "views": 3,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.148,
-      "title": {
-        "vi": "Vision: Hành Trình Tìm Lại Ký Ức",
-        "en": "VisionQuest"
-      },
-      "tmdb_rating": 8.641,
-      "poster_url": "https://image.tmdb.org/t/p/w500/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg"
-    },
-    {
-      "slug": "sieu-trom-lupin-phan-3",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261024/lupin-phan-3-poster.webp",
-      "year": 2023,
-      "tmdb_id": "96677",
-      "tmdb_type": "tv",
-      "movie_id": "c28cccd4486efb636bd7d753ca52d487",
-      "views": 3,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.148,
-      "title": {
-        "vi": "Siêu Trộm Lupin (Phần 3)",
-        "en": "Lupin (Season 3)"
-      },
-      "tmdb_rating": 7.7,
-      "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
-    },
-    {
-      "slug": "nguoi-nhen-khoi-dau-moi",
-      "thumb_url": "https://phimimg.com/uploads/movies/20260827/nguoi-nhen-khoi-dau-moi-poster.webp",
-      "year": 2026,
-      "tmdb_id": "969681",
-      "tmdb_type": "movie",
-      "movie_id": "36908cc1066bd4fdd686b4d35de256d2",
-      "views": 3,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.148,
-      "title": {
-        "vi": "Người Nhện: Khởi Đầu Mới",
-        "en": "Spider-Man: Brand New Day"
-      },
-      "tmdb_rating": 8.479,
-      "poster_url": "https://image.tmdb.org/t/p/w500/1brq8q3u1GmS5Sef2FkNwImrHWT.jpg"
-    },
-    {
-      "slug": "linh-moi-phan-2",
-      "thumb_url": "https://phimimg.com/upload/vod/20250417-1/fec4808c9744aaf996acc14c982097cd.jpg",
-      "year": 2019,
-      "tmdb_id": "79744",
-      "tmdb_type": "tv",
-      "movie_id": "cbec56ea8d7b1d9787f7c1297488c798",
+      "movie_id": "5889308d24bcd3c3c1b50fb3a28713d9",
       "views": 1,
+      "plays": 7,
+      "completions": 0,
+      "trending_score": 0.156,
+      "title": {
+        "vi": "Xác Sống: Thành Phố Chết (Phần 3)",
+        "en": "The Walking Dead: Dead City (Season 3)"
+      },
+      "tmdb_rating": 7.905,
+      "poster_url": "https://image.tmdb.org/t/p/w500/wjBdhUaDGKAAUSTxkUm6zPaXHxH.jpg"
+    },
+    {
+      "slug": "nha-tai-tro",
+      "thumb_url": "https://phimimg.com/upload/vod/20260525-1/e8d50644f5f05bdbd482db77bb12e159.jpg",
+      "year": 2025,
+      "tmdb_id": "1421198",
+      "tmdb_type": "movie",
+      "movie_id": "45fe956e79b231a0fad4a5f65feb82e0",
+      "views": 4,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.146,
+      "title": {
+        "vi": "Nhà Tài Trợ",
+        "en": "Sponsor"
+      },
+      "tmdb_rating": 7.3,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7Opn9aPs8UCBJQ6lqou3i8f9omC.jpg"
+    },
+    {
+      "slug": "me-oi-con-dang-mang-thai-ngoai-hanh-tinh",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261103/me-oi-con-dang-mang-thai-ngoai-hanh-tinh-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1596301",
+      "tmdb_type": "movie",
+      "movie_id": "133d5c90fe82009198bbfd7a50106675",
+      "views": 4,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.125,
+      "trending_score": 0.127,
       "title": {
-        "vi": "Lính Mới (Phần 2)",
-        "en": "The Rookie (Season 2)"
+        "vi": "Mẹ Ơi, Con Đang Mang Thai Ngoài Hành Tinh",
+        "en": "Mum, I'm Alien Pregnant"
       },
-      "tmdb_rating": 8.538,
-      "poster_url": "https://image.tmdb.org/t/p/w500/bL1mwXDnH5fCxqc4S2n40hoVyoe.jpg"
+      "tmdb_rating": 6.833,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1UWjL6OnlZXAQev3ZTjn83ZCs59.jpg"
+    },
+    {
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "6a51f60c3f37a0ed0f068aa3",
+      "views": 0,
+      "plays": 5,
+      "completions": 1,
+      "trending_score": 0.122,
+      "title": {
+        "vi": null,
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": null
+    },
+    {
+      "slug": "harry-potter-va-chiec-coc-lua",
+      "thumb_url": "https://phimimg.com/upload/vod/20250602-1/b7b55d9ad5585acd63a0d51717edbe7e.jpg",
+      "year": 2005,
+      "tmdb_id": "674",
+      "tmdb_type": "movie",
+      "movie_id": "f8c0c968632845cd133308b1a494967f",
+      "views": 2,
+      "plays": 4,
+      "completions": 0,
+      "trending_score": 0.121,
+      "title": {
+        "vi": "Harry Potter và Chiếc Cốc Lửa",
+        "en": "Harry Potter and the Goblet of Fire"
+      },
+      "tmdb_rating": 7.804,
+      "poster_url": "https://image.tmdb.org/t/p/w500/66hYnHiYsZDykIeCzHxLlTTmx1k.jpg"
     }
   ]
 }
