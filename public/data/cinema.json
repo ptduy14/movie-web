@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T07:03:38.661Z",
+  "updated_at": "2026-11-10T07:39:27.198Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -25,7 +25,7 @@
           "id": 1300968,
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
-          "poster_path": "/BjG1p4g93AgsHuwUEenNqmodsr.jpg",
+          "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
           "rating": null,
           "trailer": "Dr060OLTodE"
         },
@@ -55,7 +55,7 @@
         },
         {
           "id": 1765072,
-          "title": "You Can See Everything",
+          "title": "Điểm Mù",
           "release_date": "2026-11-27",
           "poster_path": "/8xQlSsMpikHi0WINkqNOgx8kuaZ.jpg",
           "rating": 8.9,
@@ -76,6 +76,14 @@
           "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
           "rating": null,
           "trailer": "9CKu3WoMYCg"
+        },
+        {
+          "id": 1590933,
+          "title": "Người, Tựa Một Vì Sao",
+          "release_date": "2026-11-27",
+          "poster_path": "/sM4P60sNzycnJMZRrpGiN4KYGAy.jpg",
+          "rating": 8,
+          "trailer": null
         },
         {
           "id": 1689157,
@@ -100,7 +108,7 @@
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.5,
+          "rating": 7.7,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -124,7 +132,7 @@
           "title": "Bò Sữa Bay",
           "release_date": "2026-11-06",
           "poster_path": "/y2AC6NxknGlZapSwCSYMOMxHOvl.jpg",
-          "rating": null,
+          "rating": 7,
           "trailer": "2Y8yw8bAG1o"
         },
         {
@@ -147,7 +155,7 @@
           "id": 1744848,
           "title": "Chị Chị Em Em 3",
           "release_date": "2026-10-30",
-          "poster_path": "/8mR122VqlhcdsTDdtaPsbD7WJO6.jpg",
+          "poster_path": "/aFOS7OFrXTFgYenMoEqg8jNA5AX.jpg",
           "rating": null,
           "trailer": "T2agdzhXOaY"
         },
@@ -186,7 +194,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 4,
+          "rating": 8.3,
           "trailer": "l_Ozo1xUgbU"
         },
         {
@@ -212,6 +220,14 @@
           "poster_path": "/9LHVZevgdsdbjJdkFr6bk9EwX7q.jpg",
           "rating": null,
           "trailer": "sDiFol_2j2I"
+        },
+        {
+          "id": 1088548,
+          "title": "Bitter Christmas",
+          "release_date": "2026-11-13",
+          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
+          "rating": 6.2,
+          "trailer": "R-9dlnkY448"
         },
         {
           "id": 1300968,
@@ -246,19 +262,11 @@
           "trailer": "TpNEh5vvAns"
         },
         {
-          "id": 1615596,
-          "title": "Best Pancakes in the County",
-          "release_date": "2026-11-20",
-          "poster_path": "/wXVYDQl2ENk3NhT1ETS4C8cAEOC.jpg",
-          "rating": null,
-          "trailer": "JQsr_JLAiq0"
-        },
-        {
           "id": 1650896,
           "title": "Peppa Pig: Perfect Holiday",
           "release_date": "2026-11-22",
           "poster_path": "/oYe06Fh4BHn6SNSCTaUNg0zSEj2.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": null
         },
         {
@@ -280,14 +288,6 @@
           "trailer": "UKaWzMf9Ybc"
         },
         {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
-          "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7.2,
-          "trailer": "tkZpcypT8Z4"
-        },
-        {
           "id": 891621,
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
@@ -296,11 +296,27 @@
           "trailer": "kqxuamKxRTo"
         },
         {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": 7,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 1327835,
+          "title": "Mookuthi Amman 2",
+          "release_date": "2026-11-06",
+          "poster_path": "/dNNzsstJeQxnESyH0hZcLGblLMz.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
-          "rating": 7.9,
+          "rating": 7.7,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -340,16 +356,8 @@
           "title": "La Bola Negra",
           "release_date": "2026-10-16",
           "poster_path": "/7HwFQTMghL6HOvzEnXYUvyuZXeh.jpg",
-          "rating": 8.1,
+          "rating": 8,
           "trailer": "lBVxKt0gKDY"
-        },
-        {
-          "id": 1376400,
-          "title": "Crawlers",
-          "release_date": "2026-10-16",
-          "poster_path": "/lNXeEpg4yLSRwXwOeR5lbPgwbqL.jpg",
-          "rating": 6.1,
-          "trailer": "4DowjB87tRE"
         }
       ]
     }
