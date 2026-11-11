@@ -1,26 +1,10 @@
 {
-  "updated_at": "2026-11-10T07:39:27.198Z",
+  "updated_at": "2026-11-11T06:58:25.166Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1752234,
-          "title": "Ngày Con Còn Mẹ",
-          "release_date": "2026-11-11",
-          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1437511,
-          "title": "Bí Kíp Luyện Cướp",
-          "release_date": "2026-11-13",
-          "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": 8,
-          "trailer": "MVvWKh336m4"
-        },
         {
           "id": 1300968,
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
@@ -92,15 +76,47 @@
           "poster_path": "/526o7OOLyqzYcC39Y3d85B8fgVS.jpg",
           "rating": null,
           "trailer": null
+        },
+        {
+          "id": 1078446,
+          "title": "Đêm Hung Tàn 2",
+          "release_date": "2026-12-04",
+          "poster_path": "/m5ZVKQU1bqsH42vkw8TLc1bQzpb.jpg",
+          "rating": null,
+          "trailer": "FmM2giDwLAE"
+        },
+        {
+          "id": 1804242,
+          "title": "Bắt Cá Ba Tay",
+          "release_date": "2026-12-04",
+          "poster_path": "/7hg6U8oLXRtWpWjJfKSRqKKzLOz.jpg",
+          "rating": null,
+          "trailer": "J_rPrr6bW5o"
         }
       ],
       "now_playing": [
+        {
+          "id": 1437511,
+          "title": "Bí Kíp Luyện Cướp",
+          "release_date": "2026-11-13",
+          "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
+          "rating": 9,
+          "trailer": "MVvWKh336m4"
+        },
+        {
+          "id": 1752234,
+          "title": "Ngày Con Còn Mẹ",
+          "release_date": "2026-11-11",
+          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
+          "rating": null,
+          "trailer": null
+        },
         {
           "id": 1381071,
           "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
-          "rating": 8,
+          "rating": 7.8,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -108,7 +124,7 @@
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.7,
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -136,6 +152,14 @@
           "trailer": "2Y8yw8bAG1o"
         },
         {
+          "id": 1770234,
+          "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
+          "release_date": "2026-10-31",
+          "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
+          "rating": 8,
+          "trailer": null
+        },
+        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -150,30 +174,6 @@
           "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
           "rating": null,
           "trailer": null
-        },
-        {
-          "id": 1744848,
-          "title": "Chị Chị Em Em 3",
-          "release_date": "2026-10-30",
-          "poster_path": "/aFOS7OFrXTFgYenMoEqg8jNA5AX.jpg",
-          "rating": null,
-          "trailer": "T2agdzhXOaY"
-        },
-        {
-          "id": 1153576,
-          "title": "Phim Street Fighter",
-          "release_date": "2026-10-16",
-          "poster_path": "/lnaGK9y2Dw1cwRz8e7X5plvYVdI.jpg",
-          "rating": 6.3,
-          "trailer": "U6sbm1OaJb8"
-        },
-        {
-          "id": 1255833,
-          "title": "Cá Voi Nuốt Chửng",
-          "release_date": "2026-10-16",
-          "poster_path": "/t644ur9Yj3ypD2r4y82c5GssPj3.jpg",
-          "rating": 6.6,
-          "trailer": "Dw-5ZGapGTQ"
         }
       ]
     },
@@ -186,7 +186,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9,
+          "rating": 9.4,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -194,7 +194,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 8.3,
+          "rating": 8.6,
           "trailer": "l_Ozo1xUgbU"
         },
         {
@@ -202,7 +202,7 @@
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 8,
+          "rating": 9,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -210,7 +210,7 @@
           "title": "Paper Tiger",
           "release_date": "2026-11-13",
           "poster_path": "/p6oLmq5KmuWY6uRXBQBL2q30jia.jpg",
-          "rating": null,
+          "rating": 6,
           "trailer": "MLwTyQOhBkw"
         },
         {
@@ -233,7 +233,7 @@
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
+          "poster_path": "/j1MNyNNgNQL6f27cb3m3uKaPKd6.jpg",
           "rating": null,
           "trailer": "Dr060OLTodE"
         },
@@ -242,7 +242,7 @@
           "title": "Minotaur",
           "release_date": "2026-11-20",
           "poster_path": "/bM37B5CuMWrPyGPpNsKzTGict4Q.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "wdFIMrC4oW8"
         },
         {
@@ -265,7 +265,7 @@
           "id": 1650896,
           "title": "Peppa Pig: Perfect Holiday",
           "release_date": "2026-11-22",
-          "poster_path": "/oYe06Fh4BHn6SNSCTaUNg0zSEj2.jpg",
+          "poster_path": "/he7GN5W8lrhvu09qe6GauTBlFg1.jpg",
           "rating": 10,
           "trailer": null
         },
@@ -280,11 +280,19 @@
       ],
       "now_playing": [
         {
+          "id": 1567605,
+          "title": "Ebenezer",
+          "release_date": "2026-11-13",
+          "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
+          "rating": 8.6,
+          "trailer": "l_Ozo1xUgbU"
+        },
+        {
           "id": 1562642,
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9,
+          "rating": 8.8,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -300,7 +308,7 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7,
+          "rating": 7.2,
           "trailer": "tkZpcypT8Z4"
         },
         {
@@ -316,7 +324,7 @@
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
-          "rating": 7.7,
+          "rating": 7.6,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -324,7 +332,7 @@
           "title": "Godzilla Minus Zero",
           "release_date": "2026-11-03",
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": 8,
+          "rating": 7.8,
           "trailer": "pWJjYoqVSjQ"
         },
         {
@@ -332,7 +340,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 5.6,
+          "rating": 5.9,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -350,14 +358,6 @@
           "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
           "rating": 7.4,
           "trailer": "f7jlCqdtwdM"
-        },
-        {
-          "id": 1422041,
-          "title": "La Bola Negra",
-          "release_date": "2026-10-16",
-          "poster_path": "/7HwFQTMghL6HOvzEnXYUvyuZXeh.jpg",
-          "rating": 8,
-          "trailer": "lBVxKt0gKDY"
         }
       ]
     }
