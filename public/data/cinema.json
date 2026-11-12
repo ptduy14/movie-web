@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T06:58:25.166Z",
+  "updated_at": "2026-11-12T07:35:34.819Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -22,20 +22,20 @@
           "trailer": null
         },
         {
-          "id": 1720229,
-          "title": "Trại Giam Hạnh Phúc",
-          "release_date": "2026-11-20",
-          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1365598,
           "title": "Kiến Lé Phiêu Lưu Ké",
           "release_date": "2026-11-20",
           "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
           "rating": 6.7,
           "trailer": "vbhTyM5E9QE"
+        },
+        {
+          "id": 1720229,
+          "title": "Trại Giam Hạnh Phúc",
+          "release_date": "2026-11-20",
+          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1765072,
@@ -100,7 +100,7 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": 9,
+          "rating": 8.5,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -124,7 +124,7 @@
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.5,
+          "rating": 7.8,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -182,30 +182,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1562642,
-          "title": "Ghost Soldier",
-          "release_date": "2026-11-11",
-          "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9.4,
-          "trailer": "UKaWzMf9Ybc"
-        },
-        {
-          "id": 1567605,
-          "title": "Ebenezer",
-          "release_date": "2026-11-13",
-          "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 8.6,
-          "trailer": "l_Ozo1xUgbU"
-        },
-        {
-          "id": 1437511,
-          "title": "How to Rob a Bank",
-          "release_date": "2026-11-13",
-          "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 9,
-          "trailer": "MVvWKh336m4"
-        },
-        {
           "id": 1381273,
           "title": "Paper Tiger",
           "release_date": "2026-11-13",
@@ -214,20 +190,20 @@
           "trailer": "MLwTyQOhBkw"
         },
         {
-          "id": 1379486,
-          "title": "Victorian Psycho",
-          "release_date": "2026-11-13",
-          "poster_path": "/9LHVZevgdsdbjJdkFr6bk9EwX7q.jpg",
-          "rating": null,
-          "trailer": "sDiFol_2j2I"
-        },
-        {
           "id": 1088548,
           "title": "Bitter Christmas",
           "release_date": "2026-11-13",
           "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
           "rating": 6.2,
           "trailer": "R-9dlnkY448"
+        },
+        {
+          "id": 1131943,
+          "title": "Madden",
+          "release_date": "2026-11-18",
+          "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
+          "rating": null,
+          "trailer": "xzh7HzLXXpk"
         },
         {
           "id": 1300968,
@@ -276,6 +252,30 @@
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
           "rating": null,
           "trailer": "IuosV-TRxDU"
+        },
+        {
+          "id": 1400336,
+          "title": "Focker-in-Law",
+          "release_date": "2026-11-25",
+          "poster_path": "/gPdzdeehaoaYqxH2rA6yayEDSsS.jpg",
+          "rating": null,
+          "trailer": "9CKu3WoMYCg"
+        },
+        {
+          "id": 1457866,
+          "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
+          "release_date": "2026-11-25",
+          "poster_path": "/thX8Rs7nfgmPHfCgjoFuRovy49l.jpg",
+          "rating": null,
+          "trailer": "fJH-wfSXnWg"
+        },
+        {
+          "id": 1476614,
+          "title": "All of a Sudden",
+          "release_date": "2026-11-25",
+          "poster_path": "/fgxhBo4elwt89J5k9wzhHSXGQmY.jpg",
+          "rating": 7.9,
+          "trailer": "2AxtdPvDojA"
         }
       ],
       "now_playing": [
@@ -284,7 +284,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 8.6,
+          "rating": 8.3,
           "trailer": "l_Ozo1xUgbU"
         },
         {
@@ -292,7 +292,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 8.8,
+          "rating": 9,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -304,14 +304,6 @@
           "trailer": "kqxuamKxRTo"
         },
         {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
-          "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7.2,
-          "trailer": "tkZpcypT8Z4"
-        },
-        {
           "id": 1327835,
           "title": "Mookuthi Amman 2",
           "release_date": "2026-11-06",
@@ -320,11 +312,27 @@
           "trailer": null
         },
         {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": 7.2,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 1697911,
+          "title": "Drummer Boy",
+          "release_date": "2026-11-06",
+          "poster_path": "/bhjdgMm2fFrysSzVqv5RwRwIbVf.jpg",
+          "rating": 7.8,
+          "trailer": "rXaR4nXRvOY"
+        },
+        {
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
-          "rating": 7.6,
+          "rating": 7.8,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -340,7 +348,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 5.9,
+          "rating": 6.1,
           "trailer": "aHrMFtt40_Q"
         },
         {
@@ -350,14 +358,6 @@
           "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
           "rating": 8.5,
           "trailer": "bJQGtSeLPII"
-        },
-        {
-          "id": 1400940,
-          "title": "Clayface",
-          "release_date": "2026-10-23",
-          "poster_path": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
-          "rating": 7.4,
-          "trailer": "f7jlCqdtwdM"
         }
       ]
     }
