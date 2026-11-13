@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T07:35:34.819Z",
+  "updated_at": "2026-11-13T07:06:31.300Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -100,7 +100,7 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": 8.5,
+          "rating": 6.1,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -117,14 +117,14 @@
           "release_date": "2026-11-06",
           "poster_path": "/okxuQ9YDNiW6cAVOvDaco2J9y6A.jpg",
           "rating": 7.8,
-          "trailer": "pWJjYoqVSjQ"
+          "trailer": "Pu0pH5BuCPM"
         },
         {
           "id": 656908,
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.8,
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -152,14 +152,6 @@
           "trailer": "2Y8yw8bAG1o"
         },
         {
-          "id": 1770234,
-          "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
-          "release_date": "2026-10-31",
-          "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
-          "rating": 8,
-          "trailer": null
-        },
-        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -174,6 +166,14 @@
           "poster_path": "/dg6w7NwKxoeAMxXkbYUIT03fHbD.jpg",
           "rating": null,
           "trailer": null
+        },
+        {
+          "id": 1744848,
+          "title": "Chị Chị Em Em 3",
+          "release_date": "2026-10-30",
+          "poster_path": "/aFOS7OFrXTFgYenMoEqg8jNA5AX.jpg",
+          "rating": null,
+          "trailer": "T2agdzhXOaY"
         }
       ]
     },
@@ -222,14 +222,6 @@
           "trailer": "wdFIMrC4oW8"
         },
         {
-          "id": 1595124,
-          "title": "Steps",
-          "release_date": "2026-11-20",
-          "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-          "rating": null,
-          "trailer": "tNV4i3BqUGY"
-        },
-        {
           "id": 1599230,
           "title": "Elsinore",
           "release_date": "2026-11-20",
@@ -238,12 +230,12 @@
           "trailer": "TpNEh5vvAns"
         },
         {
-          "id": 1650896,
-          "title": "Peppa Pig: Perfect Holiday",
-          "release_date": "2026-11-22",
-          "poster_path": "/he7GN5W8lrhvu09qe6GauTBlFg1.jpg",
-          "rating": 10,
-          "trailer": null
+          "id": 1595124,
+          "title": "Steps",
+          "release_date": "2026-11-20",
+          "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
+          "rating": null,
+          "trailer": "tNV4i3BqUGY"
         },
         {
           "id": 1538497,
@@ -257,7 +249,7 @@
           "id": 1400336,
           "title": "Focker-in-Law",
           "release_date": "2026-11-25",
-          "poster_path": "/gPdzdeehaoaYqxH2rA6yayEDSsS.jpg",
+          "poster_path": "/bZhYdECsSuCrmbfYhKAc2bgsNz.jpg",
           "rating": null,
           "trailer": "9CKu3WoMYCg"
         },
@@ -276,6 +268,14 @@
           "poster_path": "/fgxhBo4elwt89J5k9wzhHSXGQmY.jpg",
           "rating": 7.9,
           "trailer": "2AxtdPvDojA"
+        },
+        {
+          "id": 1165369,
+          "title": "De Gaulle: Liberté",
+          "release_date": "2026-12-04",
+          "poster_path": "/297x0HIqSCp19pN9wlduK9PONRv.jpg",
+          "rating": 7.9,
+          "trailer": "J6MRNchmZkY"
         }
       ],
       "now_playing": [
@@ -284,7 +284,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 8.3,
+          "rating": 7.8,
           "trailer": "l_Ozo1xUgbU"
         },
         {
@@ -304,20 +304,20 @@
           "trailer": "kqxuamKxRTo"
         },
         {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": 7.4,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
           "id": 1327835,
           "title": "Mookuthi Amman 2",
           "release_date": "2026-11-06",
           "poster_path": "/dNNzsstJeQxnESyH0hZcLGblLMz.jpg",
           "rating": null,
           "trailer": null
-        },
-        {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
-          "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7.2,
-          "trailer": "tkZpcypT8Z4"
         },
         {
           "id": 1697911,
@@ -331,8 +331,8 @@
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
-          "poster_path": "/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
-          "rating": 7.8,
+          "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -341,7 +341,7 @@
           "release_date": "2026-11-03",
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
           "rating": 7.8,
-          "trailer": "pWJjYoqVSjQ"
+          "trailer": "Pu0pH5BuCPM"
         },
         {
           "id": 1294189,
