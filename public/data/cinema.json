@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T07:06:31.300Z",
+  "updated_at": "2026-11-14T06:55:11.398Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": null,
+          "rating": 9,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -100,16 +100,8 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": 6.1,
+          "rating": 6.9,
           "trailer": "MVvWKh336m4"
-        },
-        {
-          "id": 1752234,
-          "title": "Ngày Con Còn Mẹ",
-          "release_date": "2026-11-11",
-          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1381071,
@@ -152,6 +144,14 @@
           "trailer": "2Y8yw8bAG1o"
         },
         {
+          "id": 1770234,
+          "title": "BTS World Tour 'Arirang' In São Paulo: Live Viewing",
+          "release_date": "2026-10-31",
+          "poster_path": "/co7oHM6UMhuskwfp9lzXQW9zGBw.jpg",
+          "rating": 8,
+          "trailer": null
+        },
+        {
           "id": 1400940,
           "title": "Clayface",
           "release_date": "2026-10-30",
@@ -182,22 +182,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1381273,
-          "title": "Paper Tiger",
-          "release_date": "2026-11-13",
-          "poster_path": "/p6oLmq5KmuWY6uRXBQBL2q30jia.jpg",
-          "rating": 6,
-          "trailer": "MLwTyQOhBkw"
-        },
-        {
-          "id": 1088548,
-          "title": "Bitter Christmas",
-          "release_date": "2026-11-13",
-          "poster_path": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
-          "rating": 6.2,
-          "trailer": "R-9dlnkY448"
-        },
-        {
           "id": 1131943,
           "title": "Madden",
           "release_date": "2026-11-18",
@@ -210,7 +194,7 @@
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
           "poster_path": "/j1MNyNNgNQL6f27cb3m3uKaPKd6.jpg",
-          "rating": null,
+          "rating": 9,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -276,6 +260,22 @@
           "poster_path": "/297x0HIqSCp19pN9wlduK9PONRv.jpg",
           "rating": 7.9,
           "trailer": "J6MRNchmZkY"
+        },
+        {
+          "id": 1078446,
+          "title": "Violent Night 2",
+          "release_date": "2026-12-04",
+          "poster_path": "/7HPvgItDw9NgW3iy4tFRRuGNbuN.jpg",
+          "rating": null,
+          "trailer": "FmM2giDwLAE"
+        },
+        {
+          "id": 940009,
+          "title": "Ray Gunn",
+          "release_date": "2026-12-04",
+          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
+          "rating": null,
+          "trailer": "oAmCTknTA6I"
         }
       ],
       "now_playing": [
@@ -284,7 +284,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 7.8,
+          "rating": 8,
           "trailer": "l_Ozo1xUgbU"
         },
         {
@@ -292,7 +292,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9,
+          "rating": 9.1,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -308,7 +308,7 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7.4,
+          "rating": 7.1,
           "trailer": "tkZpcypT8Z4"
         },
         {
@@ -348,7 +348,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 6.1,
+          "rating": 6.3,
           "trailer": "aHrMFtt40_Q"
         },
         {
