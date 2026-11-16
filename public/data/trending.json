@@ -1,43 +1,7 @@
 {
-  "updated_at": "2026-11-09T07:59:57.279Z",
+  "updated_at": "2026-11-16T08:01:27.266Z",
   "interval_days": 7,
   "movies": [
-    {
-      "slug": "nguoi-thay-y-duc-phan-2",
-      "thumb_url": "https://phimimg.com/upload/vod/20231004-1/f85391fc7eb29d88c2e407888c52032d.jpg",
-      "year": 2020,
-      "tmdb_id": "68398",
-      "tmdb_type": "tv",
-      "movie_id": "e8b1cbd05f6e6a358a81dee52493dd06",
-      "views": 1,
-      "plays": 21,
-      "completions": 15,
-      "trending_score": 0.822,
-      "title": {
-        "vi": "Người Thầy Y Đức (Phần 2)",
-        "en": "Dr. Romantic (Season 2)"
-      },
-      "tmdb_rating": 8.139,
-      "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
-    },
-    {
-      "slug": "vung-dat-quy-du-2026",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261102/vung-dat-quy-du-2026-poster.webp",
-      "year": 2026,
-      "tmdb_id": "1423191",
-      "tmdb_type": "movie",
-      "movie_id": "6c2da4657b471b8781c2a1def5031772",
-      "views": 9,
-      "plays": 5,
-      "completions": 0,
-      "trending_score": 0.295,
-      "title": {
-        "vi": "Vùng Đất Quỷ Dữ",
-        "en": "Resident Evil"
-      },
-      "tmdb_rating": 7.493,
-      "poster_url": "https://image.tmdb.org/t/p/w500/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg"
-    },
     {
       "slug": "sieu-trom-lupin-phan-4",
       "thumb_url": "https://phimimg.com/uploads/movies/20261024/lupin-phan-4-poster.webp",
@@ -46,9 +10,9 @@
       "tmdb_type": "tv",
       "movie_id": "aa40b422ed866ff1e2649e58633f9de0",
       "views": 8,
-      "plays": 4,
-      "completions": 0,
-      "trending_score": 0.254,
+      "plays": 13,
+      "completions": 2,
+      "trending_score": 0.733,
       "title": {
         "vi": "Siêu Trộm Lupin (Phần 4)",
         "en": "Lupin (Season 4)"
@@ -57,94 +21,130 @@
       "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
     },
     {
-      "slug": "trang-trai-dutton",
-      "thumb_url": "https://phimimg.com/upload/vod/20260604-1/c714d7ad21f9fea3380edbfba93b72e8.jpg",
+      "slug": "yeu-la-mu-quang-phan-10",
+      "thumb_url": "https://phimimg.com/upload/vod/20260508-1/fa6a0857c3d8c421f5e2803d4da136d8.jpg",
       "year": 2026,
-      "tmdb_id": "299167",
+      "tmdb_id": "99353",
       "tmdb_type": "tv",
-      "movie_id": "085fc1406248327158619fb1326434cc",
-      "views": 2,
-      "plays": 5,
-      "completions": 1,
-      "trending_score": 0.166,
+      "movie_id": "f5e988012e8de1972afaae235744bd1d",
+      "views": 3,
+      "plays": 8,
+      "completions": 4,
+      "trending_score": 0.696,
       "title": {
-        "vi": "Trang Trại Dutton",
-        "en": "Dutton Ranch"
+        "vi": "Yêu Là Mù Quáng (Phần 10)",
+        "en": "Love Is Blind (Season 10)"
       },
-      "tmdb_rating": 9.134,
-      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
+      "tmdb_rating": 6.254,
+      "poster_url": "https://image.tmdb.org/t/p/w500/8XhV6ke8ltRYoG4SYmibF2bGwrC.jpg"
     },
     {
-      "slug": "khai-huyen-z-the-gioi-moi",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261103/khai-huyen-z-the-gioi-moi-poster.webp",
+      "slug": "su-thi-odyssey",
+      "thumb_url": "https://phimimg.com/uploads/movies/20260829/su-thi-odyssey-poster.webp",
       "year": 2026,
-      "tmdb_id": "1507696",
+      "tmdb_id": "1368337",
       "tmdb_type": "movie",
-      "movie_id": "cf2a4f835e014513e2329dc9317265b7",
-      "views": 4,
-      "plays": 4,
+      "movie_id": "af28037dc21fedb68cf53f8f0f8f5b70",
+      "views": 12,
+      "plays": 9,
       "completions": 0,
-      "trending_score": 0.165,
+      "trending_score": 0.477,
       "title": {
-        "vi": "Khải Huyền Z: Thế Giới Mới",
-        "en": "Apocalypse Z: New World"
+        "vi": "Sử Thi Odyssey",
+        "en": "The Odyssey"
       },
-      "tmdb_rating": 6.087,
-      "poster_url": "https://image.tmdb.org/t/p/w500/wXln4DUrwcyjcFPwgQxFPYTlG1Z.jpg"
+      "tmdb_rating": 8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg"
     },
     {
-      "slug": "xac-song-thanh-pho-chet-phan-3",
-      "thumb_url": "https://phimimg.com/uploads/movies/20260817/xac-song-thanh-pho-chet-phan-3-poster.webp",
+      "slug": "the-gioi-phep-thuat-phan-2",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261004/the-gioi-phep-thuat-phan-2-poster.webp",
       "year": 2026,
-      "tmdb_id": "194583",
+      "tmdb_id": "73223",
       "tmdb_type": "tv",
-      "movie_id": "5889308d24bcd3c3c1b50fb3a28713d9",
+      "movie_id": "89566b82bd957ba1c885835317351d3a",
       "views": 1,
-      "plays": 7,
+      "plays": 5,
       "completions": 0,
-      "trending_score": 0.156,
+      "trending_score": 0.171,
       "title": {
-        "vi": "Xác Sống: Thành Phố Chết (Phần 3)",
-        "en": "The Walking Dead: Dead City (Season 3)"
+        "vi": "Thế Giới Phép Thuật (Phần 2)",
+        "en": "Black Clover (Season 2)"
       },
-      "tmdb_rating": 7.905,
-      "poster_url": "https://image.tmdb.org/t/p/w500/wjBdhUaDGKAAUSTxkUm6zPaXHxH.jpg"
+      "tmdb_rating": 8.534,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uZUtoVChBGhNj9OfrM2LYpwBm8E.jpg"
     },
     {
-      "slug": "nha-tai-tro",
-      "thumb_url": "https://phimimg.com/upload/vod/20260525-1/e8d50644f5f05bdbd482db77bb12e159.jpg",
-      "year": 2025,
-      "tmdb_id": "1421198",
-      "tmdb_type": "movie",
-      "movie_id": "45fe956e79b231a0fad4a5f65feb82e0",
-      "views": 4,
+      "slug": "vision-hanh-trinh-tim-lai-ky-uc",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
+      "year": 2026,
+      "tmdb_id": "213375",
+      "tmdb_type": "tv",
+      "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
+      "views": 3,
       "plays": 3,
       "completions": 0,
-      "trending_score": 0.146,
+      "trending_score": 0.142,
       "title": {
-        "vi": "Nhà Tài Trợ",
-        "en": "Sponsor"
+        "vi": "Vision: Hành Trình Tìm Lại Ký Ức",
+        "en": "VisionQuest"
       },
-      "tmdb_rating": 7.3,
-      "poster_url": "https://image.tmdb.org/t/p/w500/7Opn9aPs8UCBJQ6lqou3i8f9omC.jpg"
+      "tmdb_rating": 8.333,
+      "poster_url": "https://image.tmdb.org/t/p/w500/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg"
     },
     {
-      "slug": "me-oi-con-dang-mang-thai-ngoai-hanh-tinh",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261103/me-oi-con-dang-mang-thai-ngoai-hanh-tinh-poster.webp",
-      "year": 2026,
-      "tmdb_id": "1596301",
+      "slug": "phu-thuy-toi-thuong",
+      "thumb_url": "https://phimimg.com/upload/vod/20250625-1/49251d06f817df134b460eec552c75c5.jpg",
+      "year": 2016,
+      "tmdb_id": "284052",
       "tmdb_type": "movie",
-      "movie_id": "133d5c90fe82009198bbfd7a50106675",
-      "views": 4,
+      "movie_id": "bc3ff3ecffc6ba348bbc43cb98ee4dcf",
+      "views": 3,
       "plays": 2,
       "completions": 0,
-      "trending_score": 0.127,
+      "trending_score": 0.112,
       "title": {
-        "vi": "Mẹ Ơi, Con Đang Mang Thai Ngoài Hành Tinh",
-        "en": "Mum, I'm Alien Pregnant"
+        "vi": "Phù Thuỷ Tối Thượng",
+        "en": "Doctor Strange"
       },
-      "tmdb_rating": 6.833,
-      "poster_url": "https://image.tmdb.org/t/p/w500/1UWjL6OnlZXAQev3ZTjn83ZCs59.jpg"
+      "tmdb_rating": 7.425,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg"
+    },
+    {
+      "slug": "bros-2022",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261109/bros-2022-poster.webp",
+      "year": 2022,
+      "tmdb_id": "614939",
+      "tmdb_type": "movie",
+      "movie_id": "265970c68531096b8fc60ce52186fc8d",
+      "views": 2,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.095,
+      "title": {
+        "vi": "Người Anh Em",
+        "en": "Bros"
+      },
+      "tmdb_rating": 6.634,
+      "poster_url": "https://image.tmdb.org/t/p/w500/op02Hv5i4Z049nGJYmk6BScRqHO.jpg"
+    },
+    {
+      "slug": "nguoi-me-khac",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261112/nguoi-me-khac-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1400837",
+      "tmdb_type": "movie",
+      "movie_id": "a870db68a9737169a501a22a7ebc3a8d",
+      "views": 2,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.095,
+      "title": {
+        "vi": "Người Mẹ Khác",
+        "en": "Other Mommy"
+      },
+      "tmdb_rating": 6.296,
+      "poster_url": "https://image.tmdb.org/t/p/w500/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg"
     },
     {
       "slug": null,
@@ -152,11 +152,11 @@
       "year": null,
       "tmdb_id": null,
       "tmdb_type": null,
-      "movie_id": "6a51f60c3f37a0ed0f068aa3",
+      "movie_id": "5889308d24bcd3c3c1b50fb3a28713d9",
       "views": 0,
-      "plays": 5,
-      "completions": 1,
-      "trending_score": 0.122,
+      "plays": 3,
+      "completions": 0,
+      "trending_score": 0.092,
       "title": {
         "vi": null,
         "en": null
@@ -165,22 +165,22 @@
       "poster_url": null
     },
     {
-      "slug": "harry-potter-va-chiec-coc-lua",
-      "thumb_url": "https://phimimg.com/upload/vod/20250602-1/b7b55d9ad5585acd63a0d51717edbe7e.jpg",
-      "year": 2005,
-      "tmdb_id": "674",
+      "slug": "mot-ngay-he-tuoi-sang-hon",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261112/mot-ngay-he-tuoi-sang-hon-poster-3.webp",
+      "year": 1991,
+      "tmdb_id": "15804",
       "tmdb_type": "movie",
-      "movie_id": "f8c0c968632845cd133308b1a494967f",
-      "views": 2,
-      "plays": 4,
+      "movie_id": "3a6c2c9231df58107434b942fa600b22",
+      "views": 3,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.121,
+      "trending_score": 0.081,
       "title": {
-        "vi": "Harry Potter và Chiếc Cốc Lửa",
-        "en": "Harry Potter and the Goblet of Fire"
+        "vi": "Một Ngày Hè Tươi Sáng Hơn",
+        "en": "A Brighter Summer Day"
       },
-      "tmdb_rating": 7.804,
-      "poster_url": "https://image.tmdb.org/t/p/w500/66hYnHiYsZDykIeCzHxLlTTmx1k.jpg"
+      "tmdb_rating": 8.199,
+      "poster_url": "https://image.tmdb.org/t/p/w500/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg"
     }
   ]
 }
