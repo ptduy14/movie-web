@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T07:08:40.290Z",
+  "updated_at": "2026-11-17T08:21:57.288Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -14,20 +14,20 @@
           "trailer": "Dr060OLTodE"
         },
         {
-          "id": 1662293,
-          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
-          "release_date": "2026-11-20",
-          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1365598,
           "title": "Kiến Lé Phiêu Lưu Ké",
           "release_date": "2026-11-20",
           "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
           "rating": 6.7,
           "trailer": "vbhTyM5E9QE"
+        },
+        {
+          "id": 1662293,
+          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
+          "release_date": "2026-11-20",
+          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1720229,
@@ -42,7 +42,7 @@
           "title": "Điểm Mù",
           "release_date": "2026-11-27",
           "poster_path": "/8xQlSsMpikHi0WINkqNOgx8kuaZ.jpg",
-          "rating": 8.9,
+          "rating": 8.8,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -99,8 +99,8 @@
           "id": 1437511,
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
-          "poster_path": "/xep4kKlNOIiJcXC6Ymvu1IyilAn.jpg",
-          "rating": 6.5,
+          "poster_path": "/yrvHDNNHrNyu2MFwks8glrBZ0sx.jpg",
+          "rating": 6,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -124,7 +124,7 @@
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -182,11 +182,19 @@
       "language": "en-US",
       "upcoming": [
         {
+          "id": 1384528,
+          "title": "O.M: Operation Mole",
+          "release_date": "2026-11-19",
+          "poster_path": "/vFnFLqXjf7RQfkNxrrys43BZKxJ.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
-          "rating": 9.4,
+          "poster_path": "/j1MNyNNgNQL6f27cb3m3uKaPKd6.jpg",
+          "rating": 9.3,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -212,14 +220,6 @@
           "poster_path": "/kohUtEueIVyDXC30MaOdi36aAwn.jpg",
           "rating": null,
           "trailer": "TpNEh5vvAns"
-        },
-        {
-          "id": 1384528,
-          "title": "O.M: Operation Mole",
-          "release_date": "2026-11-20",
-          "poster_path": "/vFnFLqXjf7RQfkNxrrys43BZKxJ.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1538497,
@@ -284,7 +284,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 7.7,
+          "rating": 7.6,
           "trailer": "D-n-lqKVr78"
         },
         {
@@ -292,7 +292,7 @@
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 6.5,
+          "rating": 6.2,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -308,7 +308,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 7.9,
+          "rating": 8,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -316,7 +316,7 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 6.9,
+          "rating": 7,
           "trailer": "tkZpcypT8Z4"
         },
         {
@@ -332,7 +332,7 @@
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
-          "rating": 7.4,
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
         },
         {
