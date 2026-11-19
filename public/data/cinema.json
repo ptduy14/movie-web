@@ -1,42 +1,10 @@
 {
-  "updated_at": "2026-11-18T07:51:28.225Z",
+  "updated_at": "2026-11-19T07:47:43.220Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1300968,
-          "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
-          "release_date": "2026-11-20",
-          "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 8.6,
-          "trailer": "Dr060OLTodE"
-        },
-        {
-          "id": 1662293,
-          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
-          "release_date": "2026-11-20",
-          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1365598,
-          "title": "Kiến Lé Phiêu Lưu Ké",
-          "release_date": "2026-11-20",
-          "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
-          "rating": 6.7,
-          "trailer": "vbhTyM5E9QE"
-        },
-        {
-          "id": 1720229,
-          "title": "Trại Giam Hạnh Phúc",
-          "release_date": "2026-11-20",
-          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
-          "rating": null,
-          "trailer": null
-        },
         {
           "id": 1765072,
           "title": "Điểm Mù",
@@ -46,20 +14,20 @@
           "trailer": "IEx8D1Wb__U"
         },
         {
+          "id": 1400336,
+          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
+          "release_date": "2026-11-27",
+          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
+          "rating": 4,
+          "trailer": "9CKu3WoMYCg"
+        },
+        {
           "id": 1538497,
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
           "rating": null,
           "trailer": "IuosV-TRxDU"
-        },
-        {
-          "id": 1400336,
-          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
-          "release_date": "2026-11-27",
-          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": null,
-          "trailer": "9CKu3WoMYCg"
         },
         {
           "id": 1590933,
@@ -96,20 +64,36 @@
       ],
       "now_playing": [
         {
+          "id": 1269644,
+          "title": "Amrum",
+          "release_date": "2026-11-24",
+          "poster_path": "/yrFHlsSa5bK2LrV0oN6xpdodyBI.jpg",
+          "rating": 7.2,
+          "trailer": "-izT0MKkvZY"
+        },
+        {
+          "id": 1318864,
+          "title": "Người Gặp Thời",
+          "release_date": "2026-11-21",
+          "poster_path": "/tFzSSetNzvdaxms6RLfr2pyu9sM.jpg",
+          "rating": 6.5,
+          "trailer": null
+        },
+        {
+          "id": 11489,
+          "title": "Rosetta",
+          "release_date": "2026-11-21",
+          "poster_path": "/zdWX3mNm9rzEU9f363y0NPehFrS.jpg",
+          "rating": 7.1,
+          "trailer": "woN2P4r65oA"
+        },
+        {
           "id": 1300968,
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 8.3,
+          "rating": 7.5,
           "trailer": "Dr060OLTodE"
-        },
-        {
-          "id": 1662293,
-          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
-          "release_date": "2026-11-20",
-          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
-          "rating": null,
-          "trailer": null
         },
         {
           "id": 1365598,
@@ -120,10 +104,10 @@
           "trailer": "vbhTyM5E9QE"
         },
         {
-          "id": 1720229,
-          "title": "Trại Giam Hạnh Phúc",
+          "id": 1662293,
+          "title": "Ma Mút Con Vượt Kỷ Băng Hà",
           "release_date": "2026-11-20",
-          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
+          "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
           "rating": null,
           "trailer": null
         },
@@ -132,24 +116,8 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/yrvHDNNHrNyu2MFwks8glrBZ0sx.jpg",
-          "rating": 6,
+          "rating": 6.1,
           "trailer": "MVvWKh336m4"
-        },
-        {
-          "id": 1752234,
-          "title": "Ngày Con Còn Mẹ",
-          "release_date": "2026-11-11",
-          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
-          "rating": null,
-          "trailer": "gihuep9BNSg"
-        },
-        {
-          "id": 656908,
-          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
-          "release_date": "2026-11-06",
-          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.5,
-          "trailer": "AYkPRN874m8"
         },
         {
           "id": 1381071,
@@ -160,20 +128,20 @@
           "trailer": "Pu0pH5BuCPM"
         },
         {
+          "id": 656908,
+          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
+          "release_date": "2026-11-06",
+          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
+          "rating": 7.5,
+          "trailer": "AYkPRN874m8"
+        },
+        {
           "id": 1584855,
           "title": "Thiên Đường Tăm Tối",
           "release_date": "2026-11-06",
           "poster_path": "/3XneeGMSvbPBFW63oJERhedHcHe.jpg",
           "rating": 5.5,
           "trailer": "Yhdt5zJ1_Jc"
-        },
-        {
-          "id": 1716222,
-          "title": "Đơn Hàng Ma Ám",
-          "release_date": "2026-11-06",
-          "poster_path": "/5XQyttCSqAYnTXrZR48XFnYO2qo.jpg",
-          "rating": 6,
-          "trailer": "iAAtCbIbGfU"
         }
       ]
     },
@@ -182,12 +150,12 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1299329,
-          "title": "Josephine",
-          "release_date": "2026-11-20",
-          "poster_path": "/6pUSCeInGp4Ut3rqgPNWUrmKBUi.jpg",
-          "rating": null,
-          "trailer": "d7NLG3IfowQ"
+          "id": 1400336,
+          "title": "Focker-in-Law",
+          "release_date": "2026-11-25",
+          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
+          "rating": 4,
+          "trailer": "9CKu3WoMYCg"
         },
         {
           "id": 1538497,
@@ -198,18 +166,10 @@
           "trailer": "IuosV-TRxDU"
         },
         {
-          "id": 1400336,
-          "title": "Focker-in-Law",
-          "release_date": "2026-11-25",
-          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 4,
-          "trailer": "9CKu3WoMYCg"
-        },
-        {
           "id": 1457866,
           "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
           "release_date": "2026-11-25",
-          "poster_path": "/5jO6rhfethzH7xdWl6KCOxCNCzQ.jpg",
+          "poster_path": "/thX8Rs7nfgmPHfCgjoFuRovy49l.jpg",
           "rating": null,
           "trailer": "fJH-wfSXnWg"
         },
@@ -265,7 +225,7 @@
           "id": 1391239,
           "title": "The Debut",
           "release_date": "2026-12-11",
-          "poster_path": "/5CZdxLiBpYMBXwo0rur6YzZTVP4.jpg",
+          "poster_path": "/qk8qWJxM9hZSbSjSoEz0LAzcoPb.jpg",
           "rating": null,
           "trailer": "lF9n06SMDPU"
         },
@@ -276,6 +236,14 @@
           "poster_path": "/4k3ph6BoeZr7IMiQx8ioEV8d9cJ.jpg",
           "rating": 7.6,
           "trailer": "KrmkNoxS6t4"
+        },
+        {
+          "id": 1408207,
+          "title": "Zero A.D.: The Birth of Christ",
+          "release_date": "2026-12-11",
+          "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
+          "rating": null,
+          "trailer": "lRF1Etsd4wo"
         }
       ],
       "now_playing": [
@@ -284,7 +252,7 @@
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
           "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
-          "rating": 8.3,
+          "rating": 7.5,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -292,7 +260,7 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 7.6,
+          "rating": 7.5,
           "trailer": "D-n-lqKVr78"
         },
         {
@@ -300,7 +268,7 @@
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 6,
+          "rating": 6.2,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -308,7 +276,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 8.9,
+          "rating": 9,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -316,7 +284,7 @@
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
           "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-          "rating": 8,
+          "rating": 7.9,
           "trailer": "kqxuamKxRTo"
         },
         {
@@ -324,8 +292,16 @@
           "title": "The Cat in the Hat",
           "release_date": "2026-11-06",
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 7,
+          "rating": 6.8,
           "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 1697911,
+          "title": "Drummer Boy",
+          "release_date": "2026-11-06",
+          "poster_path": "/bhjdgMm2fFrysSzVqv5RwRwIbVf.jpg",
+          "rating": 7.8,
+          "trailer": "rXaR4nXRvOY"
         },
         {
           "id": 656908,
@@ -350,14 +326,6 @@
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
           "rating": 6.4,
           "trailer": "aHrMFtt40_Q"
-        },
-        {
-          "id": 791523,
-          "title": "Wildwood",
-          "release_date": "2026-10-23",
-          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-          "rating": 8.5,
-          "trailer": "bJQGtSeLPII"
         }
       ]
     }
