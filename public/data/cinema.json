@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T07:47:43.220Z",
+  "updated_at": "2026-11-20T07:39:46.650Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -60,6 +60,22 @@
           "poster_path": "/7hg6U8oLXRtWpWjJfKSRqKKzLOz.jpg",
           "rating": null,
           "trailer": "J_rPrr6bW5o"
+        },
+        {
+          "id": 1455670,
+          "title": "Bà Chúa Tuyết",
+          "release_date": "2026-12-11",
+          "poster_path": "/fiW3eVCpKCdHNQnxgvHCosh9zn4.jpg",
+          "rating": 6,
+          "trailer": "Ld6vfl_49co"
+        },
+        {
+          "id": 1830881,
+          "title": "Phi Vụ Bông Tuyết Vàng",
+          "release_date": "2026-12-11",
+          "poster_path": "/dMR1oh8J5hXSBmpJvhC90Iy5Rs4.jpg",
+          "rating": null,
+          "trailer": null
         }
       ],
       "now_playing": [
@@ -92,7 +108,7 @@
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 7.5,
+          "rating": 7.3,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -116,16 +132,16 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/yrvHDNNHrNyu2MFwks8glrBZ0sx.jpg",
-          "rating": 6.1,
+          "rating": 6.2,
           "trailer": "MVvWKh336m4"
         },
         {
-          "id": 1381071,
-          "title": "Godzilla Trừ Không",
-          "release_date": "2026-11-06",
-          "poster_path": "/oISOIs13TZhHg0XcbgFn8KNIlSE.jpg",
-          "rating": 7.7,
-          "trailer": "Pu0pH5BuCPM"
+          "id": 1752234,
+          "title": "Ngày Con Còn Mẹ",
+          "release_date": "2026-11-11",
+          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
+          "rating": null,
+          "trailer": "gihuep9BNSg"
         },
         {
           "id": 656908,
@@ -136,12 +152,12 @@
           "trailer": "AYkPRN874m8"
         },
         {
-          "id": 1584855,
-          "title": "Thiên Đường Tăm Tối",
+          "id": 1381071,
+          "title": "Godzilla Trừ Không",
           "release_date": "2026-11-06",
-          "poster_path": "/3XneeGMSvbPBFW63oJERhedHcHe.jpg",
-          "rating": 5.5,
-          "trailer": "Yhdt5zJ1_Jc"
+          "poster_path": "/oISOIs13TZhHg0XcbgFn8KNIlSE.jpg",
+          "rating": 7.7,
+          "trailer": "Pu0pH5BuCPM"
         }
       ]
     },
@@ -166,6 +182,14 @@
           "trailer": "IuosV-TRxDU"
         },
         {
+          "id": 1461490,
+          "title": "Hershey",
+          "release_date": "2026-11-25",
+          "poster_path": "/ojd8Gu2bPsOzdMz6Ip5AYDu4Vki.jpg",
+          "rating": null,
+          "trailer": "NsHJw58wWRg"
+        },
+        {
           "id": 1457866,
           "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
           "release_date": "2026-11-25",
@@ -177,25 +201,25 @@
           "id": 1476614,
           "title": "All of a Sudden",
           "release_date": "2026-11-25",
-          "poster_path": "/kFD1vl6FPt8heIIgFiAyIbZqrYh.jpg",
+          "poster_path": "/qPJ4yjGitxUGRJiyxUlM51OEbp5.jpg",
           "rating": 7.8,
           "trailer": "2AxtdPvDojA"
         },
         {
-          "id": 1461490,
-          "title": "Hershey",
+          "id": 1720486,
+          "title": "Lilo & Scratch",
           "release_date": "2026-11-25",
-          "poster_path": "/ojd8Gu2bPsOzdMz6Ip5AYDu4Vki.jpg",
+          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
           "rating": null,
-          "trailer": "NsHJw58wWRg"
+          "trailer": null
         },
         {
-          "id": 1165369,
-          "title": "De Gaulle: Liberté",
+          "id": 1287520,
+          "title": "November 1963",
           "release_date": "2026-12-04",
-          "poster_path": "/vyI8RnUy0tV7F0rj0WUjlNKIIHx.jpg",
-          "rating": 7.9,
-          "trailer": "J6MRNchmZkY"
+          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+          "rating": null,
+          "trailer": "8N9e-skJ3hw"
         },
         {
           "id": 1078446,
@@ -204,6 +228,14 @@
           "poster_path": "/7HPvgItDw9NgW3iy4tFRRuGNbuN.jpg",
           "rating": null,
           "trailer": "FmM2giDwLAE"
+        },
+        {
+          "id": 1165369,
+          "title": "De Gaulle: Liberté",
+          "release_date": "2026-12-04",
+          "poster_path": "/vyI8RnUy0tV7F0rj0WUjlNKIIHx.jpg",
+          "rating": 7.9,
+          "trailer": "J6MRNchmZkY"
         },
         {
           "id": 940009,
@@ -228,22 +260,6 @@
           "poster_path": "/qk8qWJxM9hZSbSjSoEz0LAzcoPb.jpg",
           "rating": null,
           "trailer": "lF9n06SMDPU"
-        },
-        {
-          "id": 1176962,
-          "title": "Rose",
-          "release_date": "2026-12-11",
-          "poster_path": "/4k3ph6BoeZr7IMiQx8ioEV8d9cJ.jpg",
-          "rating": 7.6,
-          "trailer": "KrmkNoxS6t4"
-        },
-        {
-          "id": 1408207,
-          "title": "Zero A.D.: The Birth of Christ",
-          "release_date": "2026-12-11",
-          "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
-          "rating": null,
-          "trailer": "lRF1Etsd4wo"
         }
       ],
       "now_playing": [
@@ -252,8 +268,16 @@
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
           "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "Dr060OLTodE"
+        },
+        {
+          "id": 1131943,
+          "title": "Madden",
+          "release_date": "2026-11-18",
+          "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
+          "rating": 8,
+          "trailer": "xzh7HzLXXpk"
         },
         {
           "id": 1567605,
@@ -276,7 +300,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9,
+          "rating": 9.1,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -294,14 +318,6 @@
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
           "rating": 6.8,
           "trailer": "tkZpcypT8Z4"
-        },
-        {
-          "id": 1697911,
-          "title": "Drummer Boy",
-          "release_date": "2026-11-06",
-          "poster_path": "/bhjdgMm2fFrysSzVqv5RwRwIbVf.jpg",
-          "rating": 7.8,
-          "trailer": "rXaR4nXRvOY"
         },
         {
           "id": 656908,
@@ -324,7 +340,7 @@
           "title": "The Mongoose",
           "release_date": "2026-10-30",
           "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 6.4,
+          "rating": 6.5,
           "trailer": "aHrMFtt40_Q"
         }
       ]
