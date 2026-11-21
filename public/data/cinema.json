@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T07:39:46.650Z",
+  "updated_at": "2026-11-21T07:37:10.603Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -14,20 +14,20 @@
           "trailer": "IEx8D1Wb__U"
         },
         {
-          "id": 1400336,
-          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
-          "release_date": "2026-11-27",
-          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": 4,
-          "trailer": "9CKu3WoMYCg"
-        },
-        {
           "id": 1538497,
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
           "rating": null,
           "trailer": "IuosV-TRxDU"
+        },
+        {
+          "id": 1400336,
+          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
+          "release_date": "2026-11-27",
+          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
+          "rating": 7,
+          "trailer": "9CKu3WoMYCg"
         },
         {
           "id": 1590933,
@@ -108,7 +108,7 @@
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 7.3,
+          "rating": 7.5,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -128,6 +128,14 @@
           "trailer": null
         },
         {
+          "id": 1720229,
+          "title": "Trại Giam Hạnh Phúc",
+          "release_date": "2026-11-20",
+          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
+          "rating": null,
+          "trailer": "gXfaBKCL9z4"
+        },
+        {
           "id": 1437511,
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
@@ -136,19 +144,11 @@
           "trailer": "MVvWKh336m4"
         },
         {
-          "id": 1752234,
-          "title": "Ngày Con Còn Mẹ",
-          "release_date": "2026-11-11",
-          "poster_path": "/f0TgImN08ra9O6ovrFHxv8wthLf.jpg",
-          "rating": null,
-          "trailer": "gihuep9BNSg"
-        },
-        {
           "id": 656908,
           "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
           "release_date": "2026-11-06",
           "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -166,14 +166,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1400336,
-          "title": "Focker-in-Law",
-          "release_date": "2026-11-25",
-          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 4,
-          "trailer": "9CKu3WoMYCg"
-        },
-        {
           "id": 1538497,
           "title": "Hexed",
           "release_date": "2026-11-25",
@@ -182,12 +174,28 @@
           "trailer": "IuosV-TRxDU"
         },
         {
+          "id": 1400336,
+          "title": "Focker In-Law",
+          "release_date": "2026-11-25",
+          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
+          "rating": 7,
+          "trailer": "9CKu3WoMYCg"
+        },
+        {
           "id": 1461490,
           "title": "Hershey",
           "release_date": "2026-11-25",
           "poster_path": "/ojd8Gu2bPsOzdMz6Ip5AYDu4Vki.jpg",
-          "rating": null,
+          "rating": 9,
           "trailer": "NsHJw58wWRg"
+        },
+        {
+          "id": 1720486,
+          "title": "Lilo & Scratch",
+          "release_date": "2026-11-25",
+          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
+          "rating": null,
+          "trailer": null
         },
         {
           "id": 1457866,
@@ -201,25 +209,17 @@
           "id": 1476614,
           "title": "All of a Sudden",
           "release_date": "2026-11-25",
-          "poster_path": "/qPJ4yjGitxUGRJiyxUlM51OEbp5.jpg",
+          "poster_path": "/kFD1vl6FPt8heIIgFiAyIbZqrYh.jpg",
           "rating": 7.8,
           "trailer": "2AxtdPvDojA"
         },
         {
-          "id": 1720486,
-          "title": "Lilo & Scratch",
-          "release_date": "2026-11-25",
-          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1287520,
-          "title": "November 1963",
+          "id": 1165369,
+          "title": "De Gaulle: Liberté",
           "release_date": "2026-12-04",
-          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
-          "rating": null,
-          "trailer": "8N9e-skJ3hw"
+          "poster_path": "/vyI8RnUy0tV7F0rj0WUjlNKIIHx.jpg",
+          "rating": 7.9,
+          "trailer": "J6MRNchmZkY"
         },
         {
           "id": 1078446,
@@ -230,12 +230,12 @@
           "trailer": "FmM2giDwLAE"
         },
         {
-          "id": 1165369,
-          "title": "De Gaulle: Liberté",
+          "id": 1287520,
+          "title": "November 1963",
           "release_date": "2026-12-04",
-          "poster_path": "/vyI8RnUy0tV7F0rj0WUjlNKIIHx.jpg",
-          "rating": 7.9,
-          "trailer": "J6MRNchmZkY"
+          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+          "rating": null,
+          "trailer": "8N9e-skJ3hw"
         },
         {
           "id": 940009,
@@ -276,7 +276,7 @@
           "title": "Madden",
           "release_date": "2026-11-18",
           "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": 8,
+          "rating": 7.4,
           "trailer": "xzh7HzLXXpk"
         },
         {
@@ -300,14 +300,14 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9.1,
+          "rating": 8.9,
           "trailer": "UKaWzMf9Ybc"
         },
         {
           "id": 891621,
           "title": "Wild Horse Nine",
           "release_date": "2026-11-06",
-          "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
+          "poster_path": "/jc9lhVWASTgkuQiukNNxaivsTns.jpg",
           "rating": 7.9,
           "trailer": "kqxuamKxRTo"
         },
@@ -320,11 +320,19 @@
           "trailer": "tkZpcypT8Z4"
         },
         {
+          "id": 1286656,
+          "title": "I Play Rocky",
+          "release_date": "2026-11-06",
+          "poster_path": "/jKW6b89n5EGbJXtxTZYBcDHLpYg.jpg",
+          "rating": 8.5,
+          "trailer": "jq5oCjhQtIc"
+        },
+        {
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "AYkPRN874m8"
         },
         {
@@ -334,14 +342,6 @@
           "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
           "rating": 7.7,
           "trailer": "Pu0pH5BuCPM"
-        },
-        {
-          "id": 1294189,
-          "title": "The Mongoose",
-          "release_date": "2026-10-30",
-          "poster_path": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
-          "rating": 6.5,
-          "trailer": "aHrMFtt40_Q"
         }
       ]
     }
