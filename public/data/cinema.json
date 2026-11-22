@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21T07:37:10.603Z",
+  "updated_at": "2026-11-22T07:19:14.004Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Điểm Mù",
           "release_date": "2026-11-27",
           "poster_path": "/8xQlSsMpikHi0WINkqNOgx8kuaZ.jpg",
-          "rating": 8.8,
+          "rating": 8.9,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -18,7 +18,7 @@
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": null,
+          "rating": 5,
           "trailer": "IuosV-TRxDU"
         },
         {
@@ -108,16 +108,8 @@
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 7.5,
+          "rating": 7.7,
           "trailer": "Dr060OLTodE"
-        },
-        {
-          "id": 1365598,
-          "title": "Kiến Lé Phiêu Lưu Ké",
-          "release_date": "2026-11-20",
-          "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
-          "rating": 6.7,
-          "trailer": "vbhTyM5E9QE"
         },
         {
           "id": 1662293,
@@ -128,12 +120,12 @@
           "trailer": null
         },
         {
-          "id": 1720229,
-          "title": "Trại Giam Hạnh Phúc",
+          "id": 1365598,
+          "title": "Kiến Lé Phiêu Lưu Ké",
           "release_date": "2026-11-20",
-          "poster_path": "/lQWHcA1Lt2MOizjyCcOZHzsZeOP.jpg",
-          "rating": null,
-          "trailer": "gXfaBKCL9z4"
+          "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
+          "rating": 6.7,
+          "trailer": "vbhTyM5E9QE"
         },
         {
           "id": 1437511,
@@ -158,6 +150,14 @@
           "poster_path": "/oISOIs13TZhHg0XcbgFn8KNIlSE.jpg",
           "rating": 7.7,
           "trailer": "Pu0pH5BuCPM"
+        },
+        {
+          "id": 1584855,
+          "title": "Thiên Đường Tăm Tối",
+          "release_date": "2026-11-06",
+          "poster_path": "/3XneeGMSvbPBFW63oJERhedHcHe.jpg",
+          "rating": 6.2,
+          "trailer": "Yhdt5zJ1_Jc"
         }
       ]
     },
@@ -170,7 +170,7 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": null,
+          "rating": 5,
           "trailer": "IuosV-TRxDU"
         },
         {
@@ -190,14 +190,6 @@
           "trailer": "NsHJw58wWRg"
         },
         {
-          "id": 1720486,
-          "title": "Lilo & Scratch",
-          "release_date": "2026-11-25",
-          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
           "id": 1457866,
           "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
           "release_date": "2026-11-25",
@@ -206,20 +198,20 @@
           "trailer": "fJH-wfSXnWg"
         },
         {
+          "id": 1720486,
+          "title": "Lilo & Scratch",
+          "release_date": "2026-11-25",
+          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
+          "rating": null,
+          "trailer": null
+        },
+        {
           "id": 1476614,
           "title": "All of a Sudden",
           "release_date": "2026-11-25",
           "poster_path": "/kFD1vl6FPt8heIIgFiAyIbZqrYh.jpg",
           "rating": 7.8,
           "trailer": "2AxtdPvDojA"
-        },
-        {
-          "id": 1165369,
-          "title": "De Gaulle: Liberté",
-          "release_date": "2026-12-04",
-          "poster_path": "/vyI8RnUy0tV7F0rj0WUjlNKIIHx.jpg",
-          "rating": 7.9,
-          "trailer": "J6MRNchmZkY"
         },
         {
           "id": 1078446,
@@ -238,12 +230,12 @@
           "trailer": "8N9e-skJ3hw"
         },
         {
-          "id": 940009,
-          "title": "Ray Gunn",
+          "id": 1165369,
+          "title": "De Gaulle: Liberté",
           "release_date": "2026-12-04",
-          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
-          "rating": null,
-          "trailer": "oAmCTknTA6I"
+          "poster_path": "/297x0HIqSCp19pN9wlduK9PONRv.jpg",
+          "rating": 7.9,
+          "trailer": "J6MRNchmZkY"
         },
         {
           "id": 1452168,
@@ -252,6 +244,14 @@
           "poster_path": "/bcyGYWfcXr0GnXewaE5gkvYy1iQ.jpg",
           "rating": null,
           "trailer": "I6tMFYT9s7E"
+        },
+        {
+          "id": 940009,
+          "title": "Ray Gunn",
+          "release_date": "2026-12-04",
+          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
+          "rating": null,
+          "trailer": "oAmCTknTA6I"
         },
         {
           "id": 1391239,
@@ -268,7 +268,7 @@
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
           "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
-          "rating": 7.4,
+          "rating": 7.6,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -276,7 +276,7 @@
           "title": "Madden",
           "release_date": "2026-11-18",
           "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": 7.4,
+          "rating": 7,
           "trailer": "xzh7HzLXXpk"
         },
         {
@@ -300,7 +300,7 @@
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 8.9,
+          "rating": 9,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -324,7 +324,7 @@
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
           "poster_path": "/jKW6b89n5EGbJXtxTZYBcDHLpYg.jpg",
-          "rating": 8.5,
+          "rating": 8.4,
           "trailer": "jq5oCjhQtIc"
         },
         {
