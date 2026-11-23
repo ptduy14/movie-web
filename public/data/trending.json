@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T08:01:27.266Z",
+  "updated_at": "2026-11-23T09:09:03.851Z",
   "interval_days": 7,
   "movies": [
     {
@@ -9,15 +9,15 @@
       "tmdb_id": "96677",
       "tmdb_type": "tv",
       "movie_id": "aa40b422ed866ff1e2649e58633f9de0",
-      "views": 8,
-      "plays": 13,
-      "completions": 2,
-      "trending_score": 0.733,
+      "views": 2,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.6,
       "title": {
         "vi": "Siêu Trộm Lupin (Phần 4)",
         "en": "Lupin (Season 4)"
       },
-      "tmdb_rating": 7.68,
+      "tmdb_rating": 7.681,
       "poster_url": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg"
     },
     {
@@ -27,124 +27,88 @@
       "tmdb_id": "99353",
       "tmdb_type": "tv",
       "movie_id": "f5e988012e8de1972afaae235744bd1d",
-      "views": 3,
-      "plays": 8,
-      "completions": 4,
-      "trending_score": 0.696,
+      "views": 1,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.5,
       "title": {
         "vi": "Yêu Là Mù Quáng (Phần 10)",
         "en": "Love Is Blind (Season 10)"
       },
-      "tmdb_rating": 6.254,
+      "tmdb_rating": 6.285,
       "poster_url": "https://image.tmdb.org/t/p/w500/8XhV6ke8ltRYoG4SYmibF2bGwrC.jpg"
     },
     {
-      "slug": "su-thi-odyssey",
-      "thumb_url": "https://phimimg.com/uploads/movies/20260829/su-thi-odyssey-poster.webp",
-      "year": 2026,
-      "tmdb_id": "1368337",
+      "slug": "cuoc-choi-cua-ba-nguoi-tatsulok-tatlo-magkasalo",
+      "thumb_url": "https://phimimg.com/upload/vod/20251020-1/acf2bbefb613638e9799eae79d640973.jpg",
+      "year": 2024,
+      "tmdb_id": "1357459",
       "tmdb_type": "movie",
-      "movie_id": "af28037dc21fedb68cf53f8f0f8f5b70",
-      "views": 12,
-      "plays": 9,
-      "completions": 0,
-      "trending_score": 0.477,
-      "title": {
-        "vi": "Sử Thi Odyssey",
-        "en": "The Odyssey"
-      },
-      "tmdb_rating": 8,
-      "poster_url": "https://image.tmdb.org/t/p/w500/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg"
-    },
-    {
-      "slug": "the-gioi-phep-thuat-phan-2",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261004/the-gioi-phep-thuat-phan-2-poster.webp",
-      "year": 2026,
-      "tmdb_id": "73223",
-      "tmdb_type": "tv",
-      "movie_id": "89566b82bd957ba1c885835317351d3a",
-      "views": 1,
-      "plays": 5,
-      "completions": 0,
-      "trending_score": 0.171,
-      "title": {
-        "vi": "Thế Giới Phép Thuật (Phần 2)",
-        "en": "Black Clover (Season 2)"
-      },
-      "tmdb_rating": 8.534,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uZUtoVChBGhNj9OfrM2LYpwBm8E.jpg"
-    },
-    {
-      "slug": "vision-hanh-trinh-tim-lai-ky-uc",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
-      "year": 2026,
-      "tmdb_id": "213375",
-      "tmdb_type": "tv",
-      "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
-      "views": 3,
-      "plays": 3,
-      "completions": 0,
-      "trending_score": 0.142,
-      "title": {
-        "vi": "Vision: Hành Trình Tìm Lại Ký Ức",
-        "en": "VisionQuest"
-      },
-      "tmdb_rating": 8.333,
-      "poster_url": "https://image.tmdb.org/t/p/w500/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg"
-    },
-    {
-      "slug": "phu-thuy-toi-thuong",
-      "thumb_url": "https://phimimg.com/upload/vod/20250625-1/49251d06f817df134b460eec552c75c5.jpg",
-      "year": 2016,
-      "tmdb_id": "284052",
-      "tmdb_type": "movie",
-      "movie_id": "bc3ff3ecffc6ba348bbc43cb98ee4dcf",
-      "views": 3,
-      "plays": 2,
-      "completions": 0,
-      "trending_score": 0.112,
-      "title": {
-        "vi": "Phù Thuỷ Tối Thượng",
-        "en": "Doctor Strange"
-      },
-      "tmdb_rating": 7.425,
-      "poster_url": "https://image.tmdb.org/t/p/w500/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg"
-    },
-    {
-      "slug": "bros-2022",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261109/bros-2022-poster.webp",
-      "year": 2022,
-      "tmdb_id": "614939",
-      "tmdb_type": "movie",
-      "movie_id": "265970c68531096b8fc60ce52186fc8d",
+      "movie_id": "0d022f051861ec2aead58307fd858269",
       "views": 2,
-      "plays": 2,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.095,
+      "trending_score": 0.4,
       "title": {
-        "vi": "Người Anh Em",
-        "en": "Bros"
+        "vi": "Cuộc Chơi Của Ba Người (Tatsulok: Tatlo Magkasalo)",
+        "en": "Tatsulok: Tatlo Magkasalo"
       },
-      "tmdb_rating": 6.634,
-      "poster_url": "https://image.tmdb.org/t/p/w500/op02Hv5i4Z049nGJYmk6BScRqHO.jpg"
+      "tmdb_rating": 5.5,
+      "poster_url": "https://phimimg.com/upload/vod/20251020-1/acf2bbefb613638e9799eae79d640973.jpg"
     },
     {
-      "slug": "nguoi-me-khac",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261112/nguoi-me-khac-poster.webp",
-      "year": 2026,
-      "tmdb_id": "1400837",
+      "slug": "ham-muon",
+      "thumb_url": "https://phimimg.com/upload/vod/20251010-1/82c22fc9f87cb3a1e83eeb71aa379ee8.jpg",
+      "year": 2025,
+      "tmdb_id": "1476453",
       "tmdb_type": "movie",
-      "movie_id": "a870db68a9737169a501a22a7ebc3a8d",
+      "movie_id": "07d0ddc0e08a75edd8252a4ee32a4b05",
       "views": 2,
-      "plays": 2,
+      "plays": 1,
       "completions": 0,
-      "trending_score": 0.095,
+      "trending_score": 0.4,
       "title": {
-        "vi": "Người Mẹ Khác",
-        "en": "Other Mommy"
+        "vi": "Ham Muốn",
+        "en": "Kirot"
       },
-      "tmdb_rating": 6.296,
-      "poster_url": "https://image.tmdb.org/t/p/w500/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg"
+      "tmdb_rating": 5.5,
+      "poster_url": "https://phimimg.com/upload/vod/20251010-1/82c22fc9f87cb3a1e83eeb71aa379ee8.jpg"
+    },
+    {
+      "slug": "khong-moi",
+      "thumb_url": "https://phimimg.com/upload/vod/20250606-1/008dd554c8340de4b730ae3bf49bf613.jpg",
+      "year": 2025,
+      "tmdb_id": "1379912",
+      "tmdb_type": "movie",
+      "movie_id": "c6b2aa071387a2e68359d61f88ea16f6",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": "Không Mời",
+        "en": "Uninvited"
+      },
+      "tmdb_rating": 6.5,
+      "poster_url": "https://image.tmdb.org/t/p/w500/gchPjcZwTif6FEHEV7Z07i9PhOE.jpg"
+    },
+    {
+      "slug": "nhung-mua-yeu",
+      "thumb_url": "https://phimimg.com/upload/vod/20260513-1/b9782d738fec6a279670f4dc1b9685f3.jpg",
+      "year": 2023,
+      "tmdb_id": "849177",
+      "tmdb_type": "movie",
+      "movie_id": "8b559bb0b6348d0baedcfd7e3b468f54",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": "Những Mùa Yêu",
+        "en": "Seasons"
+      },
+      "tmdb_rating": 6.8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/kz0jM9Uw15ElDXQSpfNQupZuLPI.jpg"
     },
     {
       "slug": null,
@@ -152,11 +116,11 @@
       "year": null,
       "tmdb_id": null,
       "tmdb_type": null,
-      "movie_id": "5889308d24bcd3c3c1b50fb3a28713d9",
+      "movie_id": "6a51f60c3f37a0ed0f068aa3",
       "views": 0,
-      "plays": 3,
+      "plays": 2,
       "completions": 0,
-      "trending_score": 0.092,
+      "trending_score": 0.4,
       "title": {
         "vi": null,
         "en": null
@@ -165,22 +129,58 @@
       "poster_url": null
     },
     {
-      "slug": "mot-ngay-he-tuoi-sang-hon",
-      "thumb_url": "https://phimimg.com/uploads/movies/20261112/mot-ngay-he-tuoi-sang-hon-poster-3.webp",
-      "year": 1991,
-      "tmdb_id": "15804",
+      "slug": "trong-thoi-ky-bat-on",
+      "thumb_url": "https://phimimg.com/upload/vod/20260518-1/d04c5d333fd2fd1171305ca77b9e10f6.jpg",
+      "year": 2025,
+      "tmdb_id": "1509522",
       "tmdb_type": "movie",
-      "movie_id": "3a6c2c9231df58107434b942fa600b22",
-      "views": 3,
+      "movie_id": "a59aff30810b066bbe31d1fae79596af",
+      "views": 2,
       "plays": 1,
       "completions": 0,
-      "trending_score": 0.081,
+      "trending_score": 0.4,
       "title": {
-        "vi": "Một Ngày Hè Tươi Sáng Hơn",
-        "en": "A Brighter Summer Day"
+        "vi": "Trong Thời Kỳ Bất ổn",
+        "en": "In a Time of Uncertainty"
       },
-      "tmdb_rating": 8.199,
-      "poster_url": "https://image.tmdb.org/t/p/w500/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg"
+      "tmdb_rating": 0,
+      "poster_url": "https://phimimg.com/upload/vod/20260518-1/d04c5d333fd2fd1171305ca77b9e10f6.jpg"
+    },
+    {
+      "slug": "coi-troi-hon-nhan",
+      "thumb_url": "https://phimimg.com/uploads/movies/20260723/coi-troi-hon-nhan-poster.webp",
+      "year": 2025,
+      "tmdb_id": "1560168",
+      "tmdb_type": "movie",
+      "movie_id": "6a61dfa138652312d50e8e9a",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": "Cởi Trói Hôn Nhân",
+        "en": "UnMarry"
+      },
+      "tmdb_rating": 8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/tesrfUyiRpiFAaE9OybSoTo12W5.jpg"
+    },
+    {
+      "slug": "hoa-dai-dong-noi-2025",
+      "thumb_url": "https://phimimg.com/upload/vod/20250524-1/2fe245641959890f0f237354c30070df.jpg",
+      "year": 2023,
+      "tmdb_id": "1163231",
+      "tmdb_type": "movie",
+      "movie_id": "0b7361b9b59ab639eb91b016ddb87421",
+      "views": 2,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.4,
+      "title": {
+        "vi": "Hoa Dại Đồng Nội",
+        "en": "Wild Flowers"
+      },
+      "tmdb_rating": 3.7,
+      "poster_url": "https://image.tmdb.org/t/p/w500/hpR9HDYFmkrNMNow92K9tuEgnlv.jpg"
     }
   ]
 }
