@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T07:19:14.004Z",
+  "updated_at": "2026-11-23T08:03:39.828Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -10,7 +10,7 @@
           "title": "Điểm Mù",
           "release_date": "2026-11-27",
           "poster_path": "/8xQlSsMpikHi0WINkqNOgx8kuaZ.jpg",
-          "rating": 8.9,
+          "rating": 8.8,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -18,15 +18,15 @@
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": 5,
-          "trailer": "IuosV-TRxDU"
+          "rating": 7.7,
+          "trailer": "9ke5KSOUl-U"
         },
         {
           "id": 1400336,
           "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
           "release_date": "2026-11-27",
           "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": 7,
+          "rating": 7.3,
           "trailer": "9CKu3WoMYCg"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 7.7,
+          "rating": 7.8,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -132,7 +132,7 @@
           "title": "Bí Kíp Luyện Cướp",
           "release_date": "2026-11-13",
           "poster_path": "/yrvHDNNHrNyu2MFwks8glrBZ0sx.jpg",
-          "rating": 6.2,
+          "rating": 6.4,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -170,15 +170,15 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 5,
-          "trailer": "IuosV-TRxDU"
+          "rating": 7.7,
+          "trailer": "9ke5KSOUl-U"
         },
         {
           "id": 1400336,
           "title": "Focker In-Law",
           "release_date": "2026-11-25",
           "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 7,
+          "rating": 7.3,
           "trailer": "9CKu3WoMYCg"
         },
         {
@@ -186,7 +186,7 @@
           "title": "Hershey",
           "release_date": "2026-11-25",
           "poster_path": "/ojd8Gu2bPsOzdMz6Ip5AYDu4Vki.jpg",
-          "rating": 9,
+          "rating": 9.3,
           "trailer": "NsHJw58wWRg"
         },
         {
@@ -222,20 +222,20 @@
           "trailer": "FmM2giDwLAE"
         },
         {
-          "id": 1287520,
-          "title": "November 1963",
-          "release_date": "2026-12-04",
-          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
-          "rating": null,
-          "trailer": "8N9e-skJ3hw"
-        },
-        {
           "id": 1165369,
           "title": "De Gaulle: Liberté",
           "release_date": "2026-12-04",
           "poster_path": "/297x0HIqSCp19pN9wlduK9PONRv.jpg",
           "rating": 7.9,
           "trailer": "J6MRNchmZkY"
+        },
+        {
+          "id": 1287520,
+          "title": "November 1963",
+          "release_date": "2026-12-04",
+          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+          "rating": null,
+          "trailer": "8N9e-skJ3hw"
         },
         {
           "id": 1452168,
@@ -267,16 +267,24 @@
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
-          "rating": 7.6,
+          "poster_path": "/nzIXSQNgYZwFOMrmv0d0I3ulvkM.jpg",
+          "rating": 7.8,
           "trailer": "Dr060OLTodE"
+        },
+        {
+          "id": 1595124,
+          "title": "Steps",
+          "release_date": "2026-11-20",
+          "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
+          "rating": 6.9,
+          "trailer": "tNV4i3BqUGY"
         },
         {
           "id": 1131943,
           "title": "Madden",
           "release_date": "2026-11-18",
           "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": 7,
+          "rating": 6.8,
           "trailer": "xzh7HzLXXpk"
         },
         {
@@ -292,7 +300,7 @@
           "title": "How to Rob a Bank",
           "release_date": "2026-11-13",
           "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 6.2,
+          "rating": 6.4,
           "trailer": "MVvWKh336m4"
         },
         {
@@ -304,22 +312,6 @@
           "trailer": "UKaWzMf9Ybc"
         },
         {
-          "id": 891621,
-          "title": "Wild Horse Nine",
-          "release_date": "2026-11-06",
-          "poster_path": "/jc9lhVWASTgkuQiukNNxaivsTns.jpg",
-          "rating": 7.9,
-          "trailer": "kqxuamKxRTo"
-        },
-        {
-          "id": 1117898,
-          "title": "The Cat in the Hat",
-          "release_date": "2026-11-06",
-          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
-          "rating": 6.8,
-          "trailer": "tkZpcypT8Z4"
-        },
-        {
           "id": 1286656,
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
@@ -328,20 +320,28 @@
           "trailer": "jq5oCjhQtIc"
         },
         {
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": 7,
+          "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 891621,
+          "title": "Wild Horse Nine",
+          "release_date": "2026-11-06",
+          "poster_path": "/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
+          "rating": 7.9,
+          "trailer": "kqxuamKxRTo"
+        },
+        {
           "id": 656908,
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
           "rating": 7.4,
           "trailer": "AYkPRN874m8"
-        },
-        {
-          "id": 1381071,
-          "title": "Godzilla Minus Zero",
-          "release_date": "2026-11-03",
-          "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": 7.7,
-          "trailer": "Pu0pH5BuCPM"
         }
       ]
     }
