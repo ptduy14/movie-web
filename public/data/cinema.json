@@ -1,58 +1,10 @@
 {
-  "updated_at": "2026-11-24T10:19:23.048Z",
+  "updated_at": "2026-11-25T09:00:07.278Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
-        {
-          "id": 1457866,
-          "title": "NHỮNG THẢM HỌA PHIÊU LƯU MỚI CỦA CLIFF BOOTH",
-          "release_date": "2026-11-25",
-          "poster_path": "/eHP06lF63seXl5hQhk8DCuoaL2m.jpg",
-          "rating": null,
-          "trailer": "fJH-wfSXnWg"
-        },
-        {
-          "id": 1765072,
-          "title": "Điểm Mù",
-          "release_date": "2026-11-27",
-          "poster_path": "/8xQlSsMpikHi0WINkqNOgx8kuaZ.jpg",
-          "rating": 8.8,
-          "trailer": "IEx8D1Wb__U"
-        },
-        {
-          "id": 1538497,
-          "title": "Hexed: Thế Giới Phép Thuật",
-          "release_date": "2026-11-27",
-          "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": 8.2,
-          "trailer": "9ke5KSOUl-U"
-        },
-        {
-          "id": 1400336,
-          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
-          "release_date": "2026-11-27",
-          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": 8,
-          "trailer": "9CKu3WoMYCg"
-        },
-        {
-          "id": 1590933,
-          "title": "Người, Tựa Một Vì Sao",
-          "release_date": "2026-11-27",
-          "poster_path": "/sM4P60sNzycnJMZRrpGiN4KYGAy.jpg",
-          "rating": 8,
-          "trailer": null
-        },
-        {
-          "id": 1689157,
-          "title": "Mẹ Mìn",
-          "release_date": "2026-11-27",
-          "poster_path": "/526o7OOLyqzYcC39Y3d85B8fgVS.jpg",
-          "rating": null,
-          "trailer": null
-        },
         {
           "id": 1078446,
           "title": "Đêm Hung Tàn 2",
@@ -84,12 +36,60 @@
           "poster_path": "/dMR1oh8J5hXSBmpJvhC90Iy5Rs4.jpg",
           "rating": null,
           "trailer": null
+        },
+        {
+          "id": 1003596,
+          "title": "Avengers: Ngày Tận Thế",
+          "release_date": "2026-12-18",
+          "poster_path": "/2NRUUSow5XBcmFXJta7W5JrfWk7.jpg",
+          "rating": null,
+          "trailer": "msxsRECi7F8"
+        },
+        {
+          "id": 1170608,
+          "title": "Dune: Hành Tinh Cát - Phần Ba",
+          "release_date": "2026-12-18",
+          "poster_path": "/dsxmCGa2gxxtHO20G3T6W5OgcXE.jpg",
+          "rating": null,
+          "trailer": "mWjLTxrXsxk"
         }
       ],
       "now_playing": [
         {
+          "id": 1765072,
+          "title": "Điểm Mù",
+          "release_date": "2026-11-27",
+          "poster_path": "/fbN5s2RnsPbUVOol8XbPuAeClc3.jpg",
+          "rating": 8.7,
+          "trailer": "IEx8D1Wb__U"
+        },
+        {
+          "id": 1538497,
+          "title": "Hexed: Thế Giới Phép Thuật",
+          "release_date": "2026-11-27",
+          "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
+          "rating": 6.8,
+          "trailer": "9ke5KSOUl-U"
+        },
+        {
+          "id": 1400336,
+          "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
+          "release_date": "2026-11-27",
+          "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
+          "rating": 7.6,
+          "trailer": "9CKu3WoMYCg"
+        },
+        {
+          "id": 1590933,
+          "title": "Người, Tựa Một Vì Sao",
+          "release_date": "2026-11-27",
+          "poster_path": "/sM4P60sNzycnJMZRrpGiN4KYGAy.jpg",
+          "rating": 8,
+          "trailer": null
+        },
+        {
           "id": 1457866,
-          "title": "NHỮNG THẢM HỌA PHIÊU LƯU MỚI CỦA CLIFF BOOTH",
+          "title": "Những Thảm Hoạ Phiêu Lưu Mới Của Cliff Booth",
           "release_date": "2026-11-25",
           "poster_path": "/eHP06lF63seXl5hQhk8DCuoaL2m.jpg",
           "rating": null,
@@ -128,44 +128,12 @@
           "trailer": "Dr060OLTodE"
         },
         {
-          "id": 1365598,
-          "title": "Kiến Lé Phiêu Lưu Ké",
-          "release_date": "2026-11-20",
-          "poster_path": "/cINQlAL3zqlq9n69fnBbS1zTuWb.jpg",
-          "rating": 6.7,
-          "trailer": "vbhTyM5E9QE"
-        },
-        {
           "id": 1662293,
           "title": "Ma Mút Con Vượt Kỷ Băng Hà",
           "release_date": "2026-11-20",
           "poster_path": "/g5T7HJm5EB6TM0z5buh8ELecBM2.jpg",
           "rating": null,
           "trailer": null
-        },
-        {
-          "id": 1437511,
-          "title": "Bí Kíp Luyện Cướp",
-          "release_date": "2026-11-13",
-          "poster_path": "/yrvHDNNHrNyu2MFwks8glrBZ0sx.jpg",
-          "rating": 6.5,
-          "trailer": "MVvWKh336m4"
-        },
-        {
-          "id": 656908,
-          "title": "Ramayana: Khởi Nguồn Một Huyền Thoại",
-          "release_date": "2026-11-06",
-          "poster_path": "/dI0jgiSu7yy26tUGi7P1fxRpRIz.jpg",
-          "rating": 7.3,
-          "trailer": "AYkPRN874m8"
-        },
-        {
-          "id": 1381071,
-          "title": "Godzilla Trừ Không",
-          "release_date": "2026-11-06",
-          "poster_path": "/oISOIs13TZhHg0XcbgFn8KNIlSE.jpg",
-          "rating": 7.7,
-          "trailer": "Pu0pH5BuCPM"
         }
       ]
     },
@@ -174,52 +142,12 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1538497,
-          "title": "Hexed",
-          "release_date": "2026-11-25",
-          "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 8.2,
-          "trailer": "9ke5KSOUl-U"
-        },
-        {
-          "id": 1400336,
-          "title": "Focker In-Law",
-          "release_date": "2026-11-25",
-          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 8,
-          "trailer": "9CKu3WoMYCg"
-        },
-        {
-          "id": 1461490,
-          "title": "Hershey",
-          "release_date": "2026-11-25",
-          "poster_path": "/ojd8Gu2bPsOzdMz6Ip5AYDu4Vki.jpg",
-          "rating": 9.3,
-          "trailer": "NsHJw58wWRg"
-        },
-        {
           "id": 1457866,
           "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
           "release_date": "2026-11-25",
           "poster_path": "/thX8Rs7nfgmPHfCgjoFuRovy49l.jpg",
           "rating": null,
           "trailer": "fJH-wfSXnWg"
-        },
-        {
-          "id": 1720486,
-          "title": "Lilo & Scratch",
-          "release_date": "2026-11-25",
-          "poster_path": "/fiKAxvuHInioQHGJU0fGDxc6hXR.jpg",
-          "rating": null,
-          "trailer": null
-        },
-        {
-          "id": 1476614,
-          "title": "All of a Sudden",
-          "release_date": "2026-11-25",
-          "poster_path": "/kFD1vl6FPt8heIIgFiAyIbZqrYh.jpg",
-          "rating": 7.8,
-          "trailer": "2AxtdPvDojA"
         },
         {
           "id": 1078446,
@@ -238,12 +166,12 @@
           "trailer": "J6MRNchmZkY"
         },
         {
-          "id": 1287520,
-          "title": "November 1963",
+          "id": 940009,
+          "title": "Ray Gunn",
           "release_date": "2026-12-04",
-          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
           "rating": null,
-          "trailer": "8N9e-skJ3hw"
+          "trailer": "oAmCTknTA6I"
         },
         {
           "id": 1452168,
@@ -254,12 +182,20 @@
           "trailer": "I6tMFYT9s7E"
         },
         {
-          "id": 940009,
-          "title": "Ray Gunn",
+          "id": 1287520,
+          "title": "November 1963",
           "release_date": "2026-12-04",
-          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
-          "rating": null,
-          "trailer": "oAmCTknTA6I"
+          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+          "rating": 5,
+          "trailer": "8N9e-skJ3hw"
+        },
+        {
+          "id": 1129104,
+          "title": "Flavia",
+          "release_date": "2026-12-04",
+          "poster_path": "/xwm7TGTmQcM2PkVvMxTjpYYk600.jpg",
+          "rating": 6.5,
+          "trailer": "wFfvJtE4uBg"
         },
         {
           "id": 1391239,
@@ -268,6 +204,38 @@
           "poster_path": "/qk8qWJxM9hZSbSjSoEz0LAzcoPb.jpg",
           "rating": null,
           "trailer": "lF9n06SMDPU"
+        },
+        {
+          "id": 1408207,
+          "title": "Zero A.D.: The Birth of Christ",
+          "release_date": "2026-12-11",
+          "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
+          "rating": null,
+          "trailer": "lRF1Etsd4wo"
+        },
+        {
+          "id": 1176962,
+          "title": "Rose",
+          "release_date": "2026-12-11",
+          "poster_path": "/4k3ph6BoeZr7IMiQx8ioEV8d9cJ.jpg",
+          "rating": 7.6,
+          "trailer": "KrmkNoxS6t4"
+        },
+        {
+          "id": 1532610,
+          "title": "Ink",
+          "release_date": "2026-12-11",
+          "poster_path": "/aZECpoGsveEXtxogaz0GMiyVB6n.jpg",
+          "rating": null,
+          "trailer": "-IK_cCkRqfU"
+        },
+        {
+          "id": 1003596,
+          "title": "Avengers: Doomsday",
+          "release_date": "2026-12-18",
+          "poster_path": "/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
+          "rating": null,
+          "trailer": "Wb8Tq_HD4E8"
         }
       ],
       "now_playing": [
@@ -276,14 +244,22 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 8.2,
+          "rating": 7.6,
           "trailer": "9ke5KSOUl-U"
+        },
+        {
+          "id": 1400336,
+          "title": "Focker In-Law",
+          "release_date": "2026-11-25",
+          "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
+          "rating": 7.6,
+          "trailer": "9CKu3WoMYCg"
         },
         {
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
+          "poster_path": "/bBBI8JgWLVC4CQ0UrVDOJ7MkuvW.jpg",
           "rating": 7.8,
           "trailer": "Dr060OLTodE"
         },
@@ -292,7 +268,7 @@
           "title": "Steps",
           "release_date": "2026-11-20",
           "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-          "rating": 7,
+          "rating": 7.2,
           "trailer": "tNV4i3BqUGY"
         },
         {
@@ -300,7 +276,7 @@
           "title": "Madden",
           "release_date": "2026-11-18",
           "poster_path": "/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-          "rating": 6.7,
+          "rating": 6.5,
           "trailer": "xzh7HzLXXpk"
         },
         {
@@ -331,7 +307,7 @@
           "id": 1286656,
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
-          "poster_path": "/jKW6b89n5EGbJXtxTZYBcDHLpYg.jpg",
+          "poster_path": "/sPID7NqwpNdSAEMhazCvidxxeNo.jpg",
           "rating": 8.4,
           "trailer": "jq5oCjhQtIc"
         },
@@ -340,16 +316,8 @@
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
-          "rating": 7.3,
+          "rating": 7.5,
           "trailer": "AYkPRN874m8"
-        },
-        {
-          "id": 1381071,
-          "title": "Godzilla Minus Zero",
-          "release_date": "2026-11-03",
-          "poster_path": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-          "rating": 7.7,
-          "trailer": "Pu0pH5BuCPM"
         }
       ]
     }
