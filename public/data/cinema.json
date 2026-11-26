@@ -1,10 +1,18 @@
 {
-  "updated_at": "2026-11-25T09:00:07.278Z",
+  "updated_at": "2026-11-26T08:47:25.989Z",
   "regions": {
     "VN": {
       "region": "VN",
       "language": "vi-VN",
       "upcoming": [
+        {
+          "id": 791523,
+          "title": "Wildwood",
+          "release_date": "2026-12-04",
+          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "rating": 8.5,
+          "trailer": "bJQGtSeLPII"
+        },
         {
           "id": 1078446,
           "title": "Đêm Hung Tàn 2",
@@ -60,7 +68,7 @@
           "title": "Điểm Mù",
           "release_date": "2026-11-27",
           "poster_path": "/fbN5s2RnsPbUVOol8XbPuAeClc3.jpg",
-          "rating": 8.7,
+          "rating": 8.6,
           "trailer": "IEx8D1Wb__U"
         },
         {
@@ -68,7 +76,7 @@
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": 6.8,
+          "rating": 6,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -76,7 +84,7 @@
           "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
           "release_date": "2026-11-27",
           "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": 7.6,
+          "rating": 6.9,
           "trailer": "9CKu3WoMYCg"
         },
         {
@@ -142,14 +150,6 @@
       "language": "en-US",
       "upcoming": [
         {
-          "id": 1457866,
-          "title": "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
-          "release_date": "2026-11-25",
-          "poster_path": "/thX8Rs7nfgmPHfCgjoFuRovy49l.jpg",
-          "rating": null,
-          "trailer": "fJH-wfSXnWg"
-        },
-        {
           "id": 1078446,
           "title": "Violent Night 2",
           "release_date": "2026-12-04",
@@ -166,20 +166,20 @@
           "trailer": "J6MRNchmZkY"
         },
         {
-          "id": 940009,
-          "title": "Ray Gunn",
-          "release_date": "2026-12-04",
-          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
-          "rating": null,
-          "trailer": "oAmCTknTA6I"
-        },
-        {
           "id": 1452168,
           "title": "Behemoth!",
           "release_date": "2026-12-04",
           "poster_path": "/bcyGYWfcXr0GnXewaE5gkvYy1iQ.jpg",
           "rating": null,
           "trailer": "I6tMFYT9s7E"
+        },
+        {
+          "id": 940009,
+          "title": "Ray Gunn",
+          "release_date": "2026-12-04",
+          "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
+          "rating": null,
+          "trailer": "oAmCTknTA6I"
         },
         {
           "id": 1287520,
@@ -196,6 +196,14 @@
           "poster_path": "/xwm7TGTmQcM2PkVvMxTjpYYk600.jpg",
           "rating": 6.5,
           "trailer": "wFfvJtE4uBg"
+        },
+        {
+          "id": 1045968,
+          "title": "The Fox",
+          "release_date": "2026-12-04",
+          "poster_path": "/unIaSB9LZ0r3iZ2jBAQ2Qi5mFIp.jpg",
+          "rating": 6,
+          "trailer": "_XEZHlWlZ_o"
         },
         {
           "id": 1391239,
@@ -222,20 +230,20 @@
           "trailer": "KrmkNoxS6t4"
         },
         {
-          "id": 1532610,
-          "title": "Ink",
-          "release_date": "2026-12-11",
-          "poster_path": "/aZECpoGsveEXtxogaz0GMiyVB6n.jpg",
-          "rating": null,
-          "trailer": "-IK_cCkRqfU"
-        },
-        {
           "id": 1003596,
           "title": "Avengers: Doomsday",
           "release_date": "2026-12-18",
           "poster_path": "/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
           "rating": null,
           "trailer": "Wb8Tq_HD4E8"
+        },
+        {
+          "id": 1170608,
+          "title": "Dune: Part Three",
+          "release_date": "2026-12-18",
+          "poster_path": "/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg",
+          "rating": null,
+          "trailer": "uJqaGLmZpGo"
         }
       ],
       "now_playing": [
@@ -244,7 +252,7 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 7.6,
+          "rating": 6.3,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -252,14 +260,14 @@
           "title": "Focker In-Law",
           "release_date": "2026-11-25",
           "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 7.6,
+          "rating": 7.1,
           "trailer": "9CKu3WoMYCg"
         },
         {
           "id": 1300968,
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
-          "poster_path": "/bBBI8JgWLVC4CQ0UrVDOJ7MkuvW.jpg",
+          "poster_path": "/5ffVOGY3x3Sn3jovzvycJeizpks.jpg",
           "rating": 7.8,
           "trailer": "Dr060OLTodE"
         },
@@ -268,7 +276,7 @@
           "title": "Steps",
           "release_date": "2026-11-20",
           "poster_path": "/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-          "rating": 7.2,
+          "rating": 7.1,
           "trailer": "tNV4i3BqUGY"
         },
         {
@@ -307,17 +315,17 @@
           "id": 1286656,
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
-          "poster_path": "/sPID7NqwpNdSAEMhazCvidxxeNo.jpg",
+          "poster_path": "/8q8AF8xvV1drhACtEL2Iti5gJ8P.jpg",
           "rating": 8.4,
           "trailer": "jq5oCjhQtIc"
         },
         {
-          "id": 656908,
-          "title": "Ramayana: Rise of a Legend",
-          "release_date": "2026-11-05",
-          "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
-          "rating": 7.5,
-          "trailer": "AYkPRN874m8"
+          "id": 1117898,
+          "title": "The Cat in the Hat",
+          "release_date": "2026-11-06",
+          "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+          "rating": 7.3,
+          "trailer": "tkZpcypT8Z4"
         }
       ]
     }
