@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T08:47:25.989Z",
+  "updated_at": "2026-11-27T08:58:05.383Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -27,7 +27,15 @@
           "release_date": "2026-12-04",
           "poster_path": "/7hg6U8oLXRtWpWjJfKSRqKKzLOz.jpg",
           "rating": null,
-          "trailer": "J_rPrr6bW5o"
+          "trailer": "R5t_0rwVWKs"
+        },
+        {
+          "id": 1408207,
+          "title": "Khởi Nguồn Giáng Sinh",
+          "release_date": "2026-12-11",
+          "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
+          "rating": 10,
+          "trailer": "lRF1Etsd4wo"
         },
         {
           "id": 1455670,
@@ -43,7 +51,7 @@
           "release_date": "2026-12-11",
           "poster_path": "/dMR1oh8J5hXSBmpJvhC90Iy5Rs4.jpg",
           "rating": null,
-          "trailer": null
+          "trailer": "NmTPCfCEOBg"
         },
         {
           "id": 1003596,
@@ -76,7 +84,7 @@
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": 6,
+          "rating": 5.8,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -84,7 +92,7 @@
           "title": "Gặp Gỡ Thông Gia: Dâu Mới Trình Làng",
           "release_date": "2026-11-27",
           "poster_path": "/rOvmiVH0PtqHv0YGUKRnrTZIlY0.jpg",
-          "rating": 6.9,
+          "rating": 7.1,
           "trailer": "9CKu3WoMYCg"
         },
         {
@@ -100,7 +108,7 @@
           "title": "Những Thảm Hoạ Phiêu Lưu Mới Của Cliff Booth",
           "release_date": "2026-11-25",
           "poster_path": "/eHP06lF63seXl5hQhk8DCuoaL2m.jpg",
-          "rating": null,
+          "rating": 8,
           "trailer": "fJH-wfSXnWg"
         },
         {
@@ -112,20 +120,20 @@
           "trailer": "-izT0MKkvZY"
         },
         {
-          "id": 1318864,
-          "title": "Người Gặp Thời",
-          "release_date": "2026-11-21",
-          "poster_path": "/tFzSSetNzvdaxms6RLfr2pyu9sM.jpg",
-          "rating": 6.5,
-          "trailer": null
-        },
-        {
           "id": 11489,
           "title": "Rosetta",
           "release_date": "2026-11-21",
           "poster_path": "/zdWX3mNm9rzEU9f363y0NPehFrS.jpg",
           "rating": 7.1,
           "trailer": "woN2P4r65oA"
+        },
+        {
+          "id": 1318864,
+          "title": "Người Gặp Thời",
+          "release_date": "2026-11-21",
+          "poster_path": "/tFzSSetNzvdaxms6RLfr2pyu9sM.jpg",
+          "rating": 6.5,
+          "trailer": null
         },
         {
           "id": 1300968,
@@ -178,24 +186,8 @@
           "title": "Ray Gunn",
           "release_date": "2026-12-04",
           "poster_path": "/rpP29aOKpHy1FhX8OZQdUICEs2j.jpg",
-          "rating": null,
+          "rating": 9,
           "trailer": "oAmCTknTA6I"
-        },
-        {
-          "id": 1287520,
-          "title": "November 1963",
-          "release_date": "2026-12-04",
-          "poster_path": "/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
-          "rating": 5,
-          "trailer": "8N9e-skJ3hw"
-        },
-        {
-          "id": 1129104,
-          "title": "Flavia",
-          "release_date": "2026-12-04",
-          "poster_path": "/xwm7TGTmQcM2PkVvMxTjpYYk600.jpg",
-          "rating": 6.5,
-          "trailer": "wFfvJtE4uBg"
         },
         {
           "id": 1045968,
@@ -204,6 +196,14 @@
           "poster_path": "/unIaSB9LZ0r3iZ2jBAQ2Qi5mFIp.jpg",
           "rating": 6,
           "trailer": "_XEZHlWlZ_o"
+        },
+        {
+          "id": 1129104,
+          "title": "Flavia",
+          "release_date": "2026-12-04",
+          "poster_path": "/xwm7TGTmQcM2PkVvMxTjpYYk600.jpg",
+          "rating": 6.5,
+          "trailer": "wFfvJtE4uBg"
         },
         {
           "id": 1391239,
@@ -218,7 +218,7 @@
           "title": "Zero A.D.: The Birth of Christ",
           "release_date": "2026-12-11",
           "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
-          "rating": null,
+          "rating": 10,
           "trailer": "lRF1Etsd4wo"
         },
         {
@@ -228,6 +228,14 @@
           "poster_path": "/4k3ph6BoeZr7IMiQx8ioEV8d9cJ.jpg",
           "rating": 7.6,
           "trailer": "KrmkNoxS6t4"
+        },
+        {
+          "id": 1532610,
+          "title": "Ink",
+          "release_date": "2026-12-11",
+          "poster_path": "/aZECpoGsveEXtxogaz0GMiyVB6n.jpg",
+          "rating": null,
+          "trailer": "-IK_cCkRqfU"
         },
         {
           "id": 1003596,
@@ -252,7 +260,7 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 6.3,
+          "rating": 5.5,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -292,23 +300,15 @@
           "title": "Ebenezer",
           "release_date": "2026-11-13",
           "poster_path": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-          "rating": 7.5,
+          "rating": 7.6,
           "trailer": "D-n-lqKVr78"
-        },
-        {
-          "id": 1437511,
-          "title": "How to Rob a Bank",
-          "release_date": "2026-11-13",
-          "poster_path": "/ifYDZkr2qkHFz87TNVvlxajOxl5.jpg",
-          "rating": 6.5,
-          "trailer": "MVvWKh336m4"
         },
         {
           "id": 1562642,
           "title": "Ghost Soldier",
           "release_date": "2026-11-11",
           "poster_path": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-          "rating": 9,
+          "rating": 8.9,
           "trailer": "UKaWzMf9Ybc"
         },
         {
@@ -316,7 +316,7 @@
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
           "poster_path": "/8q8AF8xvV1drhACtEL2Iti5gJ8P.jpg",
-          "rating": 8.4,
+          "rating": 8.3,
           "trailer": "jq5oCjhQtIc"
         },
         {
@@ -326,6 +326,14 @@
           "poster_path": "/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
           "rating": 7.3,
           "trailer": "tkZpcypT8Z4"
+        },
+        {
+          "id": 656908,
+          "title": "Ramayana: Rise of a Legend",
+          "release_date": "2026-11-05",
+          "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
+          "rating": 7.5,
+          "trailer": "AYkPRN874m8"
         }
       ]
     }
