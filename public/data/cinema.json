@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T08:58:05.383Z",
+  "updated_at": "2026-11-28T08:19:17.826Z",
   "regions": {
     "VN": {
       "region": "VN",
@@ -7,9 +7,9 @@
       "upcoming": [
         {
           "id": 791523,
-          "title": "Wildwood",
+          "title": "Wildwood: Lời Tiên Tri Của Khu Rừng",
           "release_date": "2026-12-04",
-          "poster_path": "/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+          "poster_path": "/hCdObdCGqpChYQS4XeW1bX36h9v.jpg",
           "rating": 8.5,
           "trailer": "bJQGtSeLPII"
         },
@@ -18,7 +18,7 @@
           "title": "Đêm Hung Tàn 2",
           "release_date": "2026-12-04",
           "poster_path": "/m5ZVKQU1bqsH42vkw8TLc1bQzpb.jpg",
-          "rating": null,
+          "rating": 5.8,
           "trailer": "FmM2giDwLAE"
         },
         {
@@ -33,7 +33,7 @@
           "id": 1408207,
           "title": "Khởi Nguồn Giáng Sinh",
           "release_date": "2026-12-11",
-          "poster_path": "/dUeEofJFpp04OjRr2hatZGCFrlR.jpg",
+          "poster_path": "/vgE0JH4MS3NF6IBeXFpskEPlVzu.jpg",
           "rating": 10,
           "trailer": "lRF1Etsd4wo"
         },
@@ -84,7 +84,7 @@
           "title": "Hexed: Thế Giới Phép Thuật",
           "release_date": "2026-11-27",
           "poster_path": "/kaujVsr4qhsVyQurU1TDG4y477I.jpg",
-          "rating": 5.8,
+          "rating": 5.9,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -108,7 +108,7 @@
           "title": "Những Thảm Hoạ Phiêu Lưu Mới Của Cliff Booth",
           "release_date": "2026-11-25",
           "poster_path": "/eHP06lF63seXl5hQhk8DCuoaL2m.jpg",
-          "rating": 8,
+          "rating": 8.2,
           "trailer": "fJH-wfSXnWg"
         },
         {
@@ -120,14 +120,6 @@
           "trailer": "-izT0MKkvZY"
         },
         {
-          "id": 11489,
-          "title": "Rosetta",
-          "release_date": "2026-11-21",
-          "poster_path": "/zdWX3mNm9rzEU9f363y0NPehFrS.jpg",
-          "rating": 7.1,
-          "trailer": "woN2P4r65oA"
-        },
-        {
           "id": 1318864,
           "title": "Người Gặp Thời",
           "release_date": "2026-11-21",
@@ -136,11 +128,19 @@
           "trailer": null
         },
         {
+          "id": 11489,
+          "title": "Rosetta",
+          "release_date": "2026-11-21",
+          "poster_path": "/zdWX3mNm9rzEU9f363y0NPehFrS.jpg",
+          "rating": 7.1,
+          "trailer": "woN2P4r65oA"
+        },
+        {
           "id": 1300968,
           "title": "Đấu Trường Sinh Tử: Bình Minh Ngày Chiêu Quân",
           "release_date": "2026-11-20",
           "poster_path": "/sW8pW5AjNOLaRlhuJcyJ7ID6Mhq.jpg",
-          "rating": 7.8,
+          "rating": 7.7,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -162,7 +162,7 @@
           "title": "Violent Night 2",
           "release_date": "2026-12-04",
           "poster_path": "/7HPvgItDw9NgW3iy4tFRRuGNbuN.jpg",
-          "rating": null,
+          "rating": 5.8,
           "trailer": "FmM2giDwLAE"
         },
         {
@@ -177,7 +177,7 @@
           "id": 1452168,
           "title": "Behemoth!",
           "release_date": "2026-12-04",
-          "poster_path": "/bcyGYWfcXr0GnXewaE5gkvYy1iQ.jpg",
+          "poster_path": "/tlP9FKIJV4goEKH5160Hz8Gc32i.jpg",
           "rating": null,
           "trailer": "I6tMFYT9s7E"
         },
@@ -196,14 +196,6 @@
           "poster_path": "/unIaSB9LZ0r3iZ2jBAQ2Qi5mFIp.jpg",
           "rating": 6,
           "trailer": "_XEZHlWlZ_o"
-        },
-        {
-          "id": 1129104,
-          "title": "Flavia",
-          "release_date": "2026-12-04",
-          "poster_path": "/xwm7TGTmQcM2PkVvMxTjpYYk600.jpg",
-          "rating": 6.5,
-          "trailer": "wFfvJtE4uBg"
         },
         {
           "id": 1391239,
@@ -230,12 +222,12 @@
           "trailer": "KrmkNoxS6t4"
         },
         {
-          "id": 1532610,
-          "title": "Ink",
+          "id": 1473784,
+          "title": "Bunker",
           "release_date": "2026-12-11",
-          "poster_path": "/aZECpoGsveEXtxogaz0GMiyVB6n.jpg",
+          "poster_path": "/gPo96q7vKzoCiZlLH4T78FYStk0.jpg",
           "rating": null,
-          "trailer": "-IK_cCkRqfU"
+          "trailer": "6Z-78xNh2KI"
         },
         {
           "id": 1003596,
@@ -252,6 +244,14 @@
           "poster_path": "/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg",
           "rating": null,
           "trailer": "uJqaGLmZpGo"
+        },
+        {
+          "id": 1154730,
+          "title": "La Gradiva",
+          "release_date": "2026-12-18",
+          "poster_path": "/y6AkOgTEPM9nTJUOeyvHqlf6Bgp.jpg",
+          "rating": 7.2,
+          "trailer": "5yY6V9MbEoE"
         }
       ],
       "now_playing": [
@@ -260,7 +260,7 @@
           "title": "Hexed",
           "release_date": "2026-11-25",
           "poster_path": "/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-          "rating": 5.5,
+          "rating": 5.9,
           "trailer": "9ke5KSOUl-U"
         },
         {
@@ -268,7 +268,7 @@
           "title": "Focker In-Law",
           "release_date": "2026-11-25",
           "poster_path": "/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-          "rating": 7.1,
+          "rating": 7.2,
           "trailer": "9CKu3WoMYCg"
         },
         {
@@ -276,7 +276,7 @@
           "title": "The Hunger Games: Sunrise on the Reaping",
           "release_date": "2026-11-20",
           "poster_path": "/5ffVOGY3x3Sn3jovzvycJeizpks.jpg",
-          "rating": 7.8,
+          "rating": 7.7,
           "trailer": "Dr060OLTodE"
         },
         {
@@ -315,7 +315,7 @@
           "id": 1286656,
           "title": "I Play Rocky",
           "release_date": "2026-11-06",
-          "poster_path": "/8q8AF8xvV1drhACtEL2Iti5gJ8P.jpg",
+          "poster_path": "/xE5tY3lppZUyG7WKKThsuYHuAHr.jpg",
           "rating": 8.3,
           "trailer": "jq5oCjhQtIc"
         },
@@ -332,7 +332,7 @@
           "title": "Ramayana: Rise of a Legend",
           "release_date": "2026-11-05",
           "poster_path": "/vBQ7wks68OhJKlb3RnXSl2yXBXK.jpg",
-          "rating": 7.5,
+          "rating": 7.4,
           "trailer": "AYkPRN874m8"
         }
       ]
